@@ -41,7 +41,7 @@ export const navItems: NavItem[] = [
   },
   { label: "Prices", href: "/prices" },
   { label: "Why Us", href: "/about" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Gallery", href: "/photos" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -65,7 +65,7 @@ export const footerCompany = [
   { label: "FAQ", href: "/faq" },
   { label: "Certificates", href: "/certificates" },
   { label: "Our Fleet", href: "/fleet" },
-  { label: "Photos", href: "/gallery" },
+  { label: "Photos", href: "/photos" },
   { label: "Contact Us", href: "/contact" },
   { label: "Prices", href: "/prices" },
   { label: "Testimonials", href: "/testimonials" },
