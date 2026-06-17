@@ -6,6 +6,10 @@ import { ChevronDown } from "@/components/ui/icons";
 export type FaqItem = {
   question: string;
   answer: string;
+  /** Optional bullet list rendered after the answer paragraph. */
+  bullets?: string[];
+  /** Optional closing paragraph rendered after the bullet list. */
+  answerAfter?: string;
 };
 
 type Props = {
@@ -61,6 +65,26 @@ export default function Faq({ items, defaultOpen = 0, className = "" }: Props) {
               className="pb-5"
             >
               <p className="text-base leading-relaxed text-brand-charcoal/85">{item.answer}</p>
+              {item.bullets && (
+                <ul className="mt-3 space-y-2">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2.5">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
+                      />
+                      <span className="text-base leading-relaxed text-brand-charcoal/85">
+                        {bullet}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {item.answerAfter && (
+                <p className="mt-3 text-base leading-relaxed text-brand-charcoal/85">
+                  {item.answerAfter}
+                </p>
+              )}
             </div>
           </div>
         );
