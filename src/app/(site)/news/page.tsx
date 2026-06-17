@@ -6,6 +6,9 @@ import Testimonials from "@/components/home/Testimonials";
 import Accreditations from "@/components/home/Accreditations";
 import { ArrowRight, ChevronLeft, ChevronRight } from "@/components/ui/icons";
 import { getAllPosts, POSTS_PER_PAGE } from "@/lib/news";
+import { getDbPosts } from "@/lib/cms";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Moving News - Tips, Guides & Industry Insights | Top Removals",
@@ -13,17 +16,44 @@ export const metadata: Metadata = {
     "The Top Removals blog — practical moving tips, office relocation guides and industry insights to help you plan a smoother house or business move in London and the UK.",
 };
 
+type Card = { slug: string; title: string; date: string; excerpt: string; cover: string };
+
+function parseDate(d: string): number {
+  const [day, month, year] = d.split("/").map(Number);
+  return new Date(year || 0, (month || 1) - 1, day || 1).getTime();
+}
+
 export default async function NewsPage({
   searchParams,
 }: {
   searchParams: Promise<{ page?: string }>;
 }) {
   const { page } = await searchParams;
-  const posts = getAllPosts();
+
+  const fileCards: Card[] = getAllPosts().map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    date: p.date,
+    excerpt: p.excerpt,
+    cover: p.coverImage,
+  }));
+  const dbCards: Card[] = (await getDbPosts()).map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    date: p.date,
+    excerpt: p.excerpt,
+    cover: p.cover_image || "/banner-bg.svg",
+  }));
+
+  // Merge, prefer DB on slug clash, sort newest first.
+  const bySlug = new Map<string, Card>();
+  [...fileCards, ...dbCards].forEach((c) => bySlug.set(c.slug, c));
+  const posts = [...bySlug.values()].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
   const current = Math.min(Math.max(1, Number(page) || 1), totalPages);
-  const start = (current - 1) * POSTS_PER_PAGE;
-  const pagePosts = posts.slice(start, start + POSTS_PER_PAGE);
+  const startIdx = (current - 1) * POSTS_PER_PAGE;
+  const pagePosts = posts.slice(startIdx, startIdx + POSTS_PER_PAGE);
 
   return (
     <>
@@ -41,17 +71,19 @@ export default async function NewsPage({
                 key={post.slug}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
               >
-                <Link href={`/news/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden">
+                <Link href={`/news/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-brand-navy">
                   <Image
-                    src={post.coverImage}
+                    src={post.cover}
                     alt={post.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-md bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
-                    {post.date}
-                  </span>
+                  {post.date && (
+                    <span className="absolute left-4 top-4 rounded-md bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+                      {post.date}
+                    </span>
+                  )}
                 </Link>
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-lg font-bold leading-snug text-brand-navy">
@@ -74,17 +106,11 @@ export default async function NewsPage({
             ))}
           </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <nav aria-label="Pagination" className="mt-14 flex items-center justify-center gap-2">
-              <PagerLink
-                page={current - 1}
-                disabled={current === 1}
-                aria="Previous page"
-              >
+              <PagerLink page={current - 1} disabled={current === 1} aria="Previous page">
                 <ChevronLeft className="h-5 w-5" />
               </PagerLink>
-
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
                 <Link
                   key={n}
@@ -99,7 +125,6 @@ export default async function NewsPage({
                   {n}
                 </Link>
               ))}
-
               <PagerLink page={current + 1} disabled={current === totalPages} aria="Next page">
                 <ChevronRight className="h-5 w-5" />
               </PagerLink>
