@@ -96,7 +96,7 @@ export default function InternationalRemovalsPage() {
             Get a Free Online Quote in Under 2 Minutes!
           </p>
           <div className="mt-4 flex flex-wrap gap-4">
-            <Button href="/quick-quote" variant="outline" size="lg">
+            <Button href="/book-a-service#quick-quote" variant="outline" size="lg">
               Quick Quote
             </Button>
             <Button href="/book-a-service" variant="orange" size="lg">

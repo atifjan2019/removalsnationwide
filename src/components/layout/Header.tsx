@@ -87,10 +87,10 @@ export default function Header() {
 
         {/* Desktop CTAs */}
         <div className="hidden items-center gap-3 lg:flex">
-          <Button href="/quote" variant="outline" size="sm">
+          <Button href="/book-a-service#quick-quote" variant="outline" size="sm">
             Quick Quote
           </Button>
-          <Button href="/book" variant="orange" size="sm">
+          <Button href="/book-a-service" variant="orange" size="sm">
             Book a Service
           </Button>
         </div>
@@ -182,10 +182,10 @@ export default function Header() {
           </ul>
 
           <div className="flex flex-col gap-3 border-t border-black/5 p-5">
-            <Button href="/quote" variant="outline" size="md" onClick={() => setMobileOpen(false)}>
+            <Button href="/book-a-service#quick-quote" variant="outline" size="md" onClick={() => setMobileOpen(false)}>
               Quick Quote
             </Button>
-            <Button href="/book" variant="orange" size="md" onClick={() => setMobileOpen(false)}>
+            <Button href="/book-a-service" variant="orange" size="md" onClick={() => setMobileOpen(false)}>
               Book a Service
             </Button>
           </div>

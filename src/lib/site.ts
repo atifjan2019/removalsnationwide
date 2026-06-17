@@ -69,6 +69,6 @@ export const footerCompany = [
   { label: "Contact Us", href: "/contact" },
   { label: "Prices", href: "/prices" },
   { label: "Testimonials", href: "/testimonials" },
-  { label: "Book a Service", href: "/book" },
+  { label: "Book a Service", href: "/book-a-service" },
   { label: "Current Offers", href: "/offers" },
 ];

@@ -96,7 +96,7 @@ export default function OfficeRemovalsPage() {
       {/* Hero CTAs */}
       <section className="bg-white pt-10">
         <div className="mx-auto flex max-w-[88rem] flex-wrap gap-4 px-4">
-          <Button href="/quick-quote" variant="outline" size="lg">
+          <Button href="/book-a-service#quick-quote" variant="outline" size="lg">
             Quick Quote
           </Button>
           <Button href="/book-a-service" variant="orange" size="lg">
