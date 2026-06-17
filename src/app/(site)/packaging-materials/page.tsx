@@ -207,7 +207,7 @@ export default function PackagingMaterialsPage() {
       <CtaBand
         heading="Contact Us Now and Get Your Packing Materials Today"
         buttonLabel="Book a Service"
-        buttonHref="/book-a-service"
+        buttonHref="/bookservice"
       />
 
       <Testimonials />

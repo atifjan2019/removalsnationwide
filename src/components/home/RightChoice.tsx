@@ -55,7 +55,7 @@ export default function RightChoice() {
         </div>
 
         <div className="mt-10">
-          <Button href="/about" variant="orange" size="lg">
+          <Button href="/about-us" variant="orange" size="lg">
             Read More
           </Button>
         </div>

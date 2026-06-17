@@ -106,10 +106,10 @@ export default function PackingServicePage() {
             Get a Free Online Quote in Under 2 Minutes!
           </p>
           <div className="mt-4 flex flex-wrap gap-4">
-            <Button href="/book-a-service#quick-quote" variant="outline" size="lg">
+            <Button href="/bookservice#quick-quote" variant="outline" size="lg">
               Quick Quote
             </Button>
-            <Button href="/book-a-service" variant="orange" size="lg">
+            <Button href="/bookservice" variant="orange" size="lg">
               Book a Service
             </Button>
           </div>
@@ -210,7 +210,7 @@ export default function PackingServicePage() {
       <CtaBand
         heading="Contact Us Now and Book Your Packing Services Today"
         buttonLabel="Book a Service"
-        buttonHref="/book-a-service"
+        buttonHref="/bookservice"
       />
 
       <Testimonials />

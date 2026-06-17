@@ -95,10 +95,10 @@ export default function OfficeRemovalsPage() {
       {/* Hero CTAs */}
       <section className="bg-white pt-10">
         <div className="mx-auto flex max-w-[88rem] flex-wrap gap-4 px-4">
-          <Button href="/book-a-service#quick-quote" variant="outline" size="lg">
+          <Button href="/bookservice#quick-quote" variant="outline" size="lg">
             Quick Quote
           </Button>
-          <Button href="/book-a-service" variant="orange" size="lg">
+          <Button href="/bookservice" variant="orange" size="lg">
             Book a Service
           </Button>
         </div>
@@ -206,7 +206,7 @@ export default function OfficeRemovalsPage() {
       <CtaBand
         heading="Contact Us Now and Book Your Office Removal Today"
         actions={[
-          { label: "Book a Service", href: "/book-a-service", variant: "navy" },
+          { label: "Book a Service", href: "/bookservice", variant: "navy" },
           { label: "Quick Quote", href: "/quick-quote", variant: "outline-light" },
         ]}
       />

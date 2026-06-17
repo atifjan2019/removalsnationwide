@@ -97,10 +97,10 @@ export default function Footer() {
         <div className="mx-auto flex max-w-[88rem] flex-col items-center justify-between gap-3 px-4 py-5 text-center text-xs text-white/60 sm:flex-row sm:text-left">
           <p>{company.registration}</p>
           <div className="flex items-center gap-4">
-            <Link href="/terms" className="transition hover:text-brand-orange">
+            <Link href="/terms-and-conditions" className="transition hover:text-brand-orange">
               Terms &amp; Conditions
             </Link>
-            <Link href="/privacy" className="transition hover:text-brand-orange">
+            <Link href="/privacy-policy" className="transition hover:text-brand-orange">
               Privacy Policy
             </Link>
           </div>

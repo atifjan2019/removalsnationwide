@@ -178,7 +178,7 @@ export default function CrateHirePage() {
       <CtaBand
         heading="Contact Us Now and Book Your Crate Hire Services Today"
         buttonLabel="Book a Service"
-        buttonHref="/book-a-service"
+        buttonHref="/bookservice"
       />
 
       <Testimonials />

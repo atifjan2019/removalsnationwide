@@ -382,7 +382,7 @@ export default function BookingForm() {
           />
           <span className="text-sm leading-relaxed text-brand-charcoal/85">
             <span className="text-brand-orange">*</span> By ticking this box you accept our{" "}
-            <Link href="/terms" className="font-semibold text-brand-orange hover:underline">
+            <Link href="/terms-and-conditions" className="font-semibold text-brand-orange hover:underline">
               Terms and Conditions
             </Link>
           </span>

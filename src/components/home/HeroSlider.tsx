@@ -91,10 +91,10 @@ export default function HeroSlider() {
                 {slide.subheading}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="/book-a-service#quick-quote" variant="orange" size="lg">
+                <Button href="/bookservice#quick-quote" variant="orange" size="lg">
                   Get a Free Quote
                 </Button>
-                <Button href="/book-a-service" variant="outline-light" size="lg">
+                <Button href="/bookservice" variant="outline-light" size="lg">
                   Book a Service
                 </Button>
               </div>

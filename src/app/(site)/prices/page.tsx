@@ -140,7 +140,7 @@ export default function PricesPage() {
         heading="Contact Us Now and Get Your Free Quote"
         actions={[
           { label: "Quick Quote", href: "/quick-quote", variant: "navy" },
-          { label: "Book a Service", href: "/book-a-service", variant: "outline-light" },
+          { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 

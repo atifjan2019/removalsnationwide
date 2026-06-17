@@ -74,8 +74,8 @@ export default async function AreasPage() {
       <CtaBand
         heading="Moving In Your Area? Let's Talk"
         actions={[
-          { label: "Quick Quote", href: "/book-a-service#quick-quote", variant: "navy" },
-          { label: "Book a Service", href: "/book-a-service", variant: "outline-light" },
+          { label: "Quick Quote", href: "/bookservice#quick-quote", variant: "navy" },
+          { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 

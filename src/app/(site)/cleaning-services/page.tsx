@@ -167,7 +167,7 @@ export default function CleaningServicesPage() {
       <CtaBand
         heading="Contact Us Now and Book Your Cleaning Services Today"
         buttonLabel="Book a Service"
-        buttonHref="/book-a-service"
+        buttonHref="/bookservice"
       />
 
       <Testimonials />

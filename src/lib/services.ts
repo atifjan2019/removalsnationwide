@@ -30,7 +30,7 @@ export type ServiceDef = {
 export const services: ServiceDef[] = [
   {
     title: "International Services",
-    href: "/services/international-removals",
+    href: "/international-removals",
     Icon: GlobeIcon,
     featured: true,
     description:
@@ -38,7 +38,7 @@ export const services: ServiceDef[] = [
   },
   {
     title: "House Removals",
-    href: "/services/house-removals",
+    href: "/house-removals",
     Icon: HomeIcon,
     featured: true,
     description:
@@ -46,7 +46,7 @@ export const services: ServiceDef[] = [
   },
   {
     title: "Office Removals",
-    href: "/services/office-removals",
+    href: "/office-removals",
     Icon: BuildingIcon,
     featured: true,
     description:
@@ -54,7 +54,7 @@ export const services: ServiceDef[] = [
   },
   {
     title: "Storage Services",
-    href: "/services/london-storage",
+    href: "/storage",
     Icon: BoxIcon,
     featured: true,
     description:
@@ -62,7 +62,7 @@ export const services: ServiceDef[] = [
   },
   {
     title: "Man and Van Services",
-    href: "/services/man-and-van",
+    href: "/man-and-van-london",
     Icon: VanIcon,
     featured: true,
     description:
@@ -70,7 +70,7 @@ export const services: ServiceDef[] = [
   },
   {
     title: "Packing Services",
-    href: "/services/packing-service",
+    href: "/packing-service",
     Icon: PackageIcon,
     featured: true,
     description:
@@ -78,35 +78,35 @@ export const services: ServiceDef[] = [
   },
   {
     title: "Packaging Materials",
-    href: "/services/packaging-materials",
+    href: "/packaging-materials",
     Icon: TapeIcon,
     description:
       "High-quality boxes, bubble wrap, tape and protective materials for every kind of move. Buy only what you need, delivered when you need it.",
   },
   {
     title: "Crate Hire",
-    href: "/services/crate-hire",
+    href: "/crate-hire",
     Icon: CrateIcon,
     description:
       "Durable, stackable plastic crates available for hire - the eco-friendly, secure way to move your home or office without endless cardboard boxes.",
   },
   {
     title: "Rubbish Disposal",
-    href: "/services/rubbish-disposal",
+    href: "/rubbish-disposal",
     Icon: TrashIcon,
     description:
       "Fast, responsible removal and disposal of unwanted items and waste, so your old or new property is left clean and clutter-free.",
   },
   {
     title: "Single Item / E-bay Deliveries",
-    href: "/services/single-item-deliveries",
+    href: "/single-item",
     Icon: TagIcon,
     description:
       "Need to move just one item or deliver an eBay purchase? We offer affordable single-item and same-day delivery across London and the UK.",
   },
   {
     title: "Cleaning Services",
-    href: "/services/cleaning-services",
+    href: "/cleaning-services",
     Icon: SprayIcon,
     description:
       "End of tenancy, carpet and upholstery cleaning to help you get your deposit back or prepare your new home - at money-saving rates.",

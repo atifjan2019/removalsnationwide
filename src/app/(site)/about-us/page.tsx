@@ -154,7 +154,7 @@ export default function AboutPage() {
               Contact us now for a friendly, professional advice and a no-obligation quote.
             </p>
             <div className="mt-6 flex justify-center">
-              <Button href="/book-a-service" variant="orange" size="lg">
+              <Button href="/bookservice" variant="orange" size="lg">
                 Book a Service
               </Button>
             </div>

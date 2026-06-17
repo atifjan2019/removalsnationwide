@@ -256,7 +256,7 @@ export default function RubbishDisposalPage() {
       <CtaBand
         heading="Contact Us Now and Book Your Rubbish Disposal Services Today"
         buttonLabel="Book a Service"
-        buttonHref="/book-a-service"
+        buttonHref="/bookservice"
       />
 
       <Testimonials />

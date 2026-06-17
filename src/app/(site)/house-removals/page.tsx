@@ -189,7 +189,7 @@ export default function HouseRemovalsPage() {
       <CtaBand
         heading="Contact Us Now and Book Your House Moving Services Today"
         actions={[
-          { label: "Book a Service", href: "/book-a-service", variant: "navy" },
+          { label: "Book a Service", href: "/bookservice", variant: "navy" },
           { label: "Removal Calculator", href: "/removal-calculator", variant: "outline-light" },
         ]}
       />

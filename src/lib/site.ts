@@ -33,43 +33,46 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/about-us" },
   {
     label: "Services",
     href: "/services",
     children: services.map((s) => ({ label: s.title, href: s.href })),
   },
   { label: "Prices", href: "/prices" },
-  { label: "Why Us", href: "/about" },
+  { label: "Why Us", href: "/about-us" },
   { label: "Gallery", href: "/photos" },
   { label: "Areas", href: "/areas" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: "/contactus" },
 ];
 
 export const footerServices = [
-  { label: "House Removals", href: "/services/house-removals" },
-  { label: "Office Removals", href: "/services/office-removals" },
-  { label: "International Removals", href: "/services/international-removals" },
-  { label: "London Storage", href: "/services/london-storage" },
-  { label: "Packing Service", href: "/services/packing-service" },
-  { label: "Packaging Materials", href: "/services/packaging-materials" },
-  { label: "Crate Hire", href: "/services/crate-hire" },
-  { label: "Man and Van Services", href: "/services/man-and-van" },
-  { label: "Rubbish Disposal", href: "/services/rubbish-disposal" },
-  { label: "Single Item / E-bay Deliveries", href: "/services/single-item-deliveries" },
-  { label: "Cleaning Services", href: "/services/cleaning-services" },
+  { label: "House Removals", href: "/house-removals" },
+  { label: "Office Removals", href: "/office-removals" },
+  { label: "International Removals", href: "/international-removals" },
+  { label: "London Storage", href: "/storage" },
+  { label: "Packing Service", href: "/packing-service" },
+  { label: "Packaging Materials", href: "/packaging-materials" },
+  { label: "Crate Hire", href: "/crate-hire" },
+  { label: "Man and Van Services", href: "/man-and-van-london" },
+  { label: "Rubbish Disposal", href: "/rubbish-disposal" },
+  { label: "Single Item / E-bay Deliveries", href: "/single-item" },
+  { label: "Cleaning Services", href: "/cleaning-services" },
 ];
 
 export const footerCompany = [
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/about-us" },
   { label: "Moving News", href: "/news" },
   { label: "FAQ", href: "/faq" },
   { label: "Certificates", href: "/certificates" },
-  { label: "Our Fleet", href: "/fleet" },
+  { label: "Our Fleet", href: "/our-fleet" },
   { label: "Photos", href: "/photos" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: "/contactus" },
   { label: "Prices", href: "/prices" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Book a Service", href: "/book-a-service" },
-  { label: "Current Offers", href: "/offers" },
+  {
+    label: "Testimonials",
+    href: "https://uk.trustpilot.com/review/www.top-removals.co.uk",
+  },
+  { label: "Book a Service", href: "/bookservice" },
+  { label: "Current Offers", href: "/current-offers" },
 ];

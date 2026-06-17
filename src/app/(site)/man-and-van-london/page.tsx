@@ -105,10 +105,10 @@ export default function ManAndVanPage() {
             Get a Free Online Quote in Under 2 Minutes!
           </p>
           <div className="mt-4 flex flex-wrap gap-4">
-            <Button href="/book-a-service#quick-quote" variant="outline" size="lg">
+            <Button href="/bookservice#quick-quote" variant="outline" size="lg">
               Quick Quote
             </Button>
-            <Button href="/book-a-service" variant="orange" size="lg">
+            <Button href="/bookservice" variant="orange" size="lg">
               Book a Service
             </Button>
           </div>
@@ -228,7 +228,7 @@ export default function ManAndVanPage() {
       <CtaBand
         heading="Contact Us Now and Book Your Man and Van Moving Services Today"
         actions={[
-          { label: "Book a Service", href: "/book-a-service", variant: "navy" },
+          { label: "Book a Service", href: "/bookservice", variant: "navy" },
           { label: "Removal Calculator", href: "/removal-calculator", variant: "outline-light" },
         ]}
       />

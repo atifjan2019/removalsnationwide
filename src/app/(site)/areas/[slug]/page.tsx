@@ -72,8 +72,8 @@ export default async function AreaPage({
       <CtaBand
         heading={`Book Your Move in ${area.name} Today`}
         actions={[
-          { label: "Book a Service", href: "/book-a-service", variant: "navy" },
-          { label: "Quick Quote", href: "/book-a-service#quick-quote", variant: "outline-light" },
+          { label: "Book a Service", href: "/bookservice", variant: "navy" },
+          { label: "Quick Quote", href: "/bookservice#quick-quote", variant: "outline-light" },
         ]}
       />
 

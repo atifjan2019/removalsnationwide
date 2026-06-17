@@ -163,7 +163,7 @@ export default function SingleItemDeliveriesPage() {
       <CtaBand
         heading="Contact Us Now and Book Your Single Item Delivery Services Today"
         buttonLabel="Book a Service"
-        buttonHref="/book-a-service"
+        buttonHref="/bookservice"
       />
 
       <Testimonials />

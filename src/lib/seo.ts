@@ -49,7 +49,7 @@ export const META: Record<string, MetaEntry> = {
     title: "Top Removals London - Your Trusted Moving Partner | About Us",
     description:
       "No metter if you need us for house or office moving, we are here for you. It is important to know who will move your belongings so get to know us.",
-    path: "/about",
+    path: "/about-us",
   },
   services: {
     title: "Our Services - House, Office & International Removals | Top Removals London",
@@ -61,67 +61,67 @@ export const META: Record<string, MetaEntry> = {
     title: "House Moving Services in London by Top Home Removals",
     description:
       "Planning a house move to/from London? Top Removals can offer you competitive prices and immaculate services. Get your FREE quote today!",
-    path: "/services/house-removals",
+    path: "/house-removals",
   },
   "office-removals": {
     title: "Office Removals London & Office Relocation by Top Removals",
     description:
       "Relocating your business soon? Top Removals can offer you an employee and office removals throughout London and surrounding areas at competitive prices.",
-    path: "/services/office-removals",
+    path: "/office-removals",
   },
   "international-removals": {
     title: "International Moving Company in London - Top Removals",
     description:
       "Seeking an affordable and reliable international moving company in London? Top Removals has all the resources to handle your long distance move",
-    path: "/services/international-removals",
+    path: "/international-removals",
   },
   "london-storage": {
     title: "Storage Services in London - Convinient, Safe and Secure",
     description:
       "Enjoy a safe and secure storage facility in London with an easy access. We offer a domestic and commercial, short and long-term storage solution.",
-    path: "/services/london-storage",
+    path: "/storage",
   },
   "packing-service": {
     title: "Packing Services in London, Fragile pack, Full Pack, Exports Wrap",
     description:
       "Don't do everything by yourself, Top Removals is here to help you with the professional packing of all of your valuables and belongings. Trust the experts!",
-    path: "/services/packing-service",
+    path: "/packing-service",
   },
   "man-and-van": {
     title: "Man and Van London - The Reliable Man with a Van Services",
     description:
       "Searching for a trusthworty Man and Van Services in London and the surrounding area? Contact Top Removals today to recieve your FREE quote.",
-    path: "/services/man-and-van",
+    path: "/man-and-van-london",
   },
   "packaging-materials": {
     title: "Packaging Materials, Removal Boxes and Moving Supplies",
     description:
       "From study boxes, to bubble wrap, Top Removals can offer you all sorts of quality packing materials and moving supplies.Get your deal today!",
-    path: "/services/packaging-materials",
+    path: "/packaging-materials",
   },
   "crate-hire": {
     title: "Crate Hire, Plastic Lidded Crates, IT Crates, For Hire from Top Removals",
     description:
       "Get the eco-friendly option and hire a plastic lidded crate now. Top Removals has many different options and can offer you a big variety of crates for hire.",
-    path: "/services/crate-hire",
+    path: "/crate-hire",
   },
   "rubbish-disposal": {
     title: "Rubbish Disposal and House Clearance Offered by Top Removals",
     description:
       "Daily refuse collection, removal of rubbish and waste, office and house clearances, cleaning up after building work and rubbish disposal 7 days a week",
-    path: "/services/rubbish-disposal",
+    path: "/rubbish-disposal",
   },
   "single-item-deliveries": {
     title: "Reputable Single Item / E-bay Deliveries and Courier Service",
     description:
       "Now you can benefit from the single item collection and delivery services of Top Removals throughout the UK. The perfect courier service for eBay sellers.",
-    path: "/services/single-item-deliveries",
+    path: "/single-item",
   },
   "cleaning-services": {
     title: "The Move In or Out Cleaning Services in London You Deserve",
     description:
       "Moving soon and frantically searching for a good cleaning company in London? Top Cleaners is the one to call! Our skilled teams can brighten every property.",
-    path: "/services/cleaning-services",
+    path: "/cleaning-services",
   },
   prices: {
     title: "Check Out the Competitive Prices and Great Rates of Top Removals",
@@ -157,14 +157,14 @@ export const META: Record<string, MetaEntry> = {
     title: "Contact Us | Top Removals",
     description:
       "Contact Top Removals here by email or phone. Get a free no obligation quote for your move on 020 7205 2525",
-    path: "/contact",
+    path: "/contactus",
     noindex: true,
   },
   "book-a-service": {
     title: "Book a Service | Top Removals London",
     description:
       "Make an instant booking with Top Removals filling this form. Easy to use with ability to add many optional services throughout the process.",
-    path: "/book-a-service",
+    path: "/bookservice",
     noindex: true,
   },
   news: {
@@ -177,14 +177,14 @@ export const META: Record<string, MetaEntry> = {
     title: "Terms and Conditions - Top Removals",
     description:
       "The BAR Model Terms and Conditions in use by Top Removals Limited — our quotation, your responsibilities, liability, cancellation and claims terms.",
-    path: "/terms",
+    path: "/terms-and-conditions",
     noindex: true,
   },
   privacy: {
     title: "Privacy Policy - Top Removals",
     description:
       "How Top Removals collects, uses and protects your personal data in line with the GDPR — definitions, your rights, cookies and third-party services.",
-    path: "/privacy",
+    path: "/privacy-policy",
     noindex: true,
   },
   areas: {
