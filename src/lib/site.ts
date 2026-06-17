@@ -40,7 +40,7 @@ export const navItems: NavItem[] = [
     children: services.map((s) => ({ label: s.title, href: s.href })),
   },
   { label: "Prices", href: "/prices" },
-  { label: "Why Us", href: "/why-us" },
+  { label: "Why Us", href: "/about" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact Us", href: "/contact" },
 ];
