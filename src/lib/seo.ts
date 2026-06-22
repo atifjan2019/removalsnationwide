@@ -216,9 +216,69 @@ export function buildMetadata(id: keyof typeof META): Metadata {
 
 /* ----------------------------- JSON-LD graphs ----------------------------- */
 
+/** All 32 London boroughs + the wider regions the business serves. */
+const BUSINESS_AREA_SERVED = [
+  { "@type": "AdministrativeArea", name: "Greater London" },
+  { "@type": "AdministrativeArea", name: "Surrey" },
+  { "@type": "Country", name: "United Kingdom" },
+  // All 32 London boroughs
+  { "@type": "City", name: "Barking and Dagenham" },
+  { "@type": "City", name: "Barnet" },
+  { "@type": "City", name: "Bexley" },
+  { "@type": "City", name: "Brent" },
+  { "@type": "City", name: "Bromley" },
+  { "@type": "City", name: "Camden" },
+  { "@type": "City", name: "City of London" },
+  { "@type": "City", name: "Croydon" },
+  { "@type": "City", name: "Ealing" },
+  { "@type": "City", name: "Enfield" },
+  { "@type": "City", name: "Greenwich" },
+  { "@type": "City", name: "Hackney" },
+  { "@type": "City", name: "Hammersmith and Fulham" },
+  { "@type": "City", name: "Haringey" },
+  { "@type": "City", name: "Harrow" },
+  { "@type": "City", name: "Havering" },
+  { "@type": "City", name: "Hillingdon" },
+  { "@type": "City", name: "Hounslow" },
+  { "@type": "City", name: "Islington" },
+  { "@type": "City", name: "Kensington and Chelsea" },
+  { "@type": "City", name: "Kingston upon Thames" },
+  { "@type": "City", name: "Lambeth" },
+  { "@type": "City", name: "Lewisham" },
+  { "@type": "City", name: "Merton" },
+  { "@type": "City", name: "Newham" },
+  { "@type": "City", name: "Redbridge" },
+  { "@type": "City", name: "Richmond upon Thames" },
+  { "@type": "City", name: "Southwark" },
+  { "@type": "City", name: "Sutton" },
+  { "@type": "City", name: "Tower Hamlets" },
+  { "@type": "City", name: "Waltham Forest" },
+  { "@type": "City", name: "Wandsworth" },
+  { "@type": "City", name: "Westminster" },
+];
+
+/** CONFIRM: verify each accreditation is current before publishing. */
+const BUSINESS_CREDENTIALS = [
+  "British Association of Removers (BAR)",
+  "National Guild of Removers and Storers (NGRS)",
+  "Fleet Operator Recognition Scheme (FORS)",
+  "International Association of Movers (IAM)",
+  "Checkatrade",
+  "CTSI Trading Standards Approved Code",
+].map((name) => ({
+  "@type": "EducationalOccupationalCredential",
+  credentialCategory: "certification",
+  name,
+}));
+
+/**
+ * The single canonical #organization node, rendered site-wide via siteGraphLd().
+ * All other graphs (services, articles) reference it by @id rather than
+ * re-declaring it — so there is exactly one org entity per page.
+ */
 export function organizationLd() {
   return {
-    "@type": "MovingCompany",
+    "@type": ["MovingCompany", "LocalBusiness"],
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
     url: `${SITE.url}/`,
@@ -226,10 +286,29 @@ export function organizationLd() {
     image: SITE.logo,
     telephone: SITE.telephone,
     priceRange: "££",
+    // CONFIRM: add openingHoursSpecification once trading hours are verified
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+442072052525",
+        contactType: "customer service",
+        areaServed: "GB",
+        availableLanguage: "English",
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+448000467877",
+        contactType: "customer service",
+        contactOption: "TollFree",
+        areaServed: "GB",
+        availableLanguage: "English",
+      },
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
       addressLocality: SITE.address.locality,
+      addressRegion: SITE.address.region,
       postalCode: SITE.address.postalCode,
       addressCountry: SITE.address.country,
     },
@@ -238,7 +317,9 @@ export function organizationLd() {
       latitude: SITE.geo.lat,
       longitude: SITE.geo.lng,
     },
+    areaServed: BUSINESS_AREA_SERVED,
     sameAs: SITE.sameAs,
+    hasCredential: BUSINESS_CREDENTIALS,
   };
 }
 
@@ -362,7 +443,7 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "How much should I pay for removals in London?",
     answer:
-      "Removal costs in London in 2026 depend on property size, access conditions and move complexity. For a full breakdown of the factors that affect price, use the cost guide on the homepage, or book a free survey for an exact fixed quote.",
+      "Removal costs in London in 2026 depend on property size, access conditions and move complexity. For a full breakdown of the factors that affect price, see the cost guide on this page, or book a free survey for an exact fixed quote.",
   },
   {
     question: "Is it worth getting a removal company?",
@@ -444,122 +525,10 @@ export const HOME_HOWTO_STEPS: { name: string; text: string }[] = [
 
 export function homePageLd() {
   const url = SITE.url;
+  // The #organization node itself is emitted site-wide by organizationLd()
+  // (see siteGraphLd in the layout). Here we only reference it by @id so the
+  // homepage never re-declares a second, conflicting org entity.
   const orgId = `${url}/#organization`;
-
-  const org = {
-    "@type": ["MovingCompany", "LocalBusiness"],
-    "@id": orgId,
-    name: "Top Removals",
-    url: `${url}/`,
-    logo: SITE.logo,
-    image: SITE.logo,
-    telephone: "+442072052525",
-    // CONFIRM: add priceRange once verified, e.g. "priceRange": "££"
-    // CONFIRM: add openingHoursSpecification once verified
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: "+442072052525",
-        contactType: "customer service",
-        areaServed: "GB",
-        availableLanguage: "English",
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+448000467877",
-        contactType: "customer service",
-        contactOption: "TollFree",
-        areaServed: "GB",
-        availableLanguage: "English",
-      },
-    ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: SITE.address.street,
-      addressLocality: SITE.address.locality,
-      addressRegion: SITE.address.region,
-      postalCode: SITE.address.postalCode,
-      addressCountry: SITE.address.country,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: SITE.geo.lat,
-      longitude: SITE.geo.lng,
-    },
-    areaServed: [
-      { "@type": "AdministrativeArea", name: "Greater London" },
-      { "@type": "AdministrativeArea", name: "Surrey" },
-      { "@type": "Country", name: "United Kingdom" },
-      // All 32 London boroughs
-      { "@type": "City", name: "Barking and Dagenham" },
-      { "@type": "City", name: "Barnet" },
-      { "@type": "City", name: "Bexley" },
-      { "@type": "City", name: "Brent" },
-      { "@type": "City", name: "Bromley" },
-      { "@type": "City", name: "Camden" },
-      { "@type": "City", name: "City of London" },
-      { "@type": "City", name: "Croydon" },
-      { "@type": "City", name: "Ealing" },
-      { "@type": "City", name: "Enfield" },
-      { "@type": "City", name: "Greenwich" },
-      { "@type": "City", name: "Hackney" },
-      { "@type": "City", name: "Hammersmith and Fulham" },
-      { "@type": "City", name: "Haringey" },
-      { "@type": "City", name: "Harrow" },
-      { "@type": "City", name: "Havering" },
-      { "@type": "City", name: "Hillingdon" },
-      { "@type": "City", name: "Hounslow" },
-      { "@type": "City", name: "Islington" },
-      { "@type": "City", name: "Kensington and Chelsea" },
-      { "@type": "City", name: "Kingston upon Thames" },
-      { "@type": "City", name: "Lambeth" },
-      { "@type": "City", name: "Lewisham" },
-      { "@type": "City", name: "Merton" },
-      { "@type": "City", name: "Newham" },
-      { "@type": "City", name: "Redbridge" },
-      { "@type": "City", name: "Richmond upon Thames" },
-      { "@type": "City", name: "Southwark" },
-      { "@type": "City", name: "Sutton" },
-      { "@type": "City", name: "Tower Hamlets" },
-      { "@type": "City", name: "Waltham Forest" },
-      { "@type": "City", name: "Wandsworth" },
-      { "@type": "City", name: "Westminster" },
-    ],
-    sameAs: SITE.sameAs,
-    // CONFIRM: verify each accreditation is current before publishing
-    hasCredential: [
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "certification",
-        name: "British Association of Removers (BAR)",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "certification",
-        name: "National Guild of Removers and Storers (NGRS)",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "certification",
-        name: "Fleet Operator Recognition Scheme (FORS)",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "certification",
-        name: "International Association of Movers (IAM)",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "certification",
-        name: "Checkatrade",
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "certification",
-        name: "CTSI Trading Standards Approved Code",
-      },
-    ],
-  };
 
   const serviceItems = [
     {
@@ -648,6 +617,6 @@ export function homePageLd() {
 
   return {
     "@context": "https://schema.org",
-    "@graph": [org, ...serviceItems, breadcrumb, faq, howTo],
+    "@graph": [...serviceItems, breadcrumb, faq, howTo],
   };
 }
