@@ -8,7 +8,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
-import StepList from "@/components/services/StepList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -693,10 +692,31 @@ export default function OfficeRemovalsPage() {
             Every office move follows the same six-step process — from the first call to waste
             collection at the end of move day.
           </p>
-          <StepList
-            steps={processSteps.map((s) => `${s.name}: ${s.text}`)}
-            className="mt-10"
-          />
+          {/* Per-step data-reveal gives the sequential scroll-in effect the brief requires */}
+          <ol className="relative mt-10 space-y-8">
+            {processSteps.map((step, i) => (
+              <li
+                key={step.name}
+                data-reveal
+                data-delay={String(i + 1)}
+                className="relative flex gap-5 pl-2"
+              >
+                {i < processSteps.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-[1.75rem] top-12 h-[calc(100%-1rem)] w-0.5 bg-brand-orange/25"
+                  />
+                )}
+                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-navy text-lg font-bold text-white shadow-md">
+                  {i + 1}
+                </span>
+                <div className="pt-2">
+                  <p className="text-base font-semibold text-brand-navy">{step.name}</p>
+                  <p className="mt-1 text-base leading-relaxed text-brand-charcoal/90">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
           <div className="mt-10">
             <Button
               href="/bookservice"
@@ -765,7 +785,10 @@ export default function OfficeRemovalsPage() {
             eyebrow="Insured, accredited, licensed"
             title="Insured, Accredited and Fully Licensed Office Movers"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+          <p
+            className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85"
+            data-reveal
+          >
             Commercial buyers require more than a verbal assurance. The accreditations below are
             independently verified and renewed annually. Each one carries a real complaints or
             claims process. Insurance limits can be tailored to the value of the move.
@@ -793,7 +816,7 @@ export default function OfficeRemovalsPage() {
           </div>
 
           <div className="mt-10 mx-auto max-w-3xl grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-2xl bg-brand-navy p-6 text-white">
+            <div data-reveal data-delay="1" className="rounded-2xl bg-brand-navy p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Commercial goods-in-transit insurance
               </h3>
@@ -802,7 +825,7 @@ export default function OfficeRemovalsPage() {
                 Tailored increased limits are available for high-value IT or specialist equipment.
               </p>
             </div>
-            <div className="rounded-2xl bg-brand-navy p-6 text-white">
+            <div data-reveal data-delay="2" className="rounded-2xl bg-brand-navy p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Public liability insurance
               </h3>
@@ -811,7 +834,7 @@ export default function OfficeRemovalsPage() {
                 crew during the move. Active on every booking without exception.
               </p>
             </div>
-            <div className="rounded-2xl bg-brand-orange p-6 text-white">
+            <div data-reveal data-delay="3" className="rounded-2xl bg-brand-orange p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 UK Environment Agency — licensed waste carrier
               </h3>
