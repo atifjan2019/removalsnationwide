@@ -5,23 +5,20 @@ export default function OfficeRemovalsAnimations() {
   useEffect(() => {
     document.documentElement.classList.add("js");
 
-    const observer = new IntersectionObserver(
+    const revealObs = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            observer.unobserve(entry.target);
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            revealObs.unobserve(e.target);
           }
         });
       },
       { threshold: 0.08, rootMargin: "0px 0px -32px 0px" },
     );
+    document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => revealObs.observe(el));
 
-    document
-      .querySelectorAll<HTMLElement>("[data-reveal]")
-      .forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
+    return () => revealObs.disconnect();
   }, []);
 
   return null;

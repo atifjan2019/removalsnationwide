@@ -12,6 +12,14 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import OfficeRemovalsAnimations from "@/components/services/OfficeRemovalsAnimations";
+import {
+  IcoPhone,
+  IcoBuilding,
+  IcoDocument,
+  IcoComputer,
+  IcoLayout,
+  IcoRecycle,
+} from "@/components/services/ProcessStepIcons";
 
 export const metadata: Metadata = buildMetadata("office-removals");
 
@@ -116,6 +124,16 @@ const processSteps = [
     name: "Waste collected and recycled",
     text: "Packing materials are removed from both addresses. Decommissioned equipment is collected and recycled to WEEE standards under the company's UK Environment Agency waste carrier registration.",
   },
+];
+
+const processIcons = [IcoPhone, IcoBuilding, IcoDocument, IcoComputer, IcoLayout, IcoRecycle];
+
+/* Phase grouping for the project-plan desktop layout */
+const phases = [
+  { label: "Plan", sub: "Initial enquiry and survey", stepIndices: [0, 1] },
+  { label: "Survey and RAMS", sub: "Fixed quote and method statement", stepIndices: [2] },
+  { label: "The Move", sub: "Out-of-hours execution", stepIndices: [3] },
+  { label: "Setup and sign-off", sub: "Configure and complete", stepIndices: [4, 5] },
 ];
 
 const howToSchema = {
@@ -680,50 +698,107 @@ export default function OfficeRemovalsPage() {
         </div>
       </section>
 
-      {/* ── S7: How it works ── */}
+      {/* ── S7: How it works — project phases ── */}
       <section id="process" className="bg-white py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading
-            align="left"
-            eyebrow="From quote to completion"
-            title="How Your London Office Move Works, Step by Step"
-          />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            Every office move follows the same six-step process — from the first call to waste
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="From quote to completion"
+              title="How Your London Office Move Works, Step by Step"
+            />
+          </div>
+          <p data-reveal className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            Every office move follows the same six-step process, from the first call to waste
             collection at the end of move day.
           </p>
-          {/* Per-step data-reveal gives the sequential scroll-in effect the brief requires */}
-          <ol className="relative mt-10 space-y-8">
-            {processSteps.map((step, i) => (
-              <li
-                key={step.name}
-                data-reveal
-                data-delay={String(i + 1)}
-                className="relative flex gap-5 pl-2"
-              >
-                {i < processSteps.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-[1.75rem] top-12 h-[calc(100%-1rem)] w-0.5 bg-brand-orange/25"
-                  />
-                )}
-                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-navy text-lg font-bold text-white shadow-md">
-                  {i + 1}
-                </span>
-                <div className="pt-2">
-                  <p className="text-base font-semibold text-brand-navy">{step.name}</p>
-                  <p className="mt-1 text-base leading-relaxed text-brand-charcoal/90">{step.text}</p>
-                </div>
-              </li>
-            ))}
+
+          {/* Mobile: vertical stepper */}
+          <ol className="relative mx-auto mt-10 max-w-2xl space-y-6 lg:hidden">
+            {processSteps.map((step, i) => {
+              const Icon = processIcons[i];
+              return (
+                <li key={step.name} data-reveal data-delay={String(i + 1)} className="relative flex gap-4">
+                  {i < processSteps.length - 1 && (
+                    <span aria-hidden="true" className="absolute left-[1.3rem] top-10 h-[calc(100%-.5rem)] w-0.5 bg-brand-navy/15" />
+                  )}
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-white shadow-sm">
+                    {i + 1}
+                  </span>
+                  <div className="flex-1 pt-1">
+                    <div className="flex items-center gap-2">
+                      <p className="text-base font-bold text-brand-navy">{step.name}</p>
+                      <span aria-hidden="true" className="text-brand-orange/70"><Icon className="h-4 w-4" /></span>
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/80">{step.text}</p>
+                  </div>
+                </li>
+              );
+            })}
           </ol>
-          <div className="mt-10">
-            <Button
-              href="/bookservice"
-              variant="orange"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
+
+          {/* Desktop: project phase bands (lg+) */}
+          <div className="mt-10 hidden lg:grid lg:grid-cols-4 lg:gap-0">
+            {phases.map((phase, pi) => (
+              <div
+                key={phase.label}
+                data-reveal
+                data-delay={String(pi + 1)}
+                className={`border border-black/8 p-5 first:rounded-l-xl last:rounded-r-xl ${
+                  pi === 2
+                    ? "bg-brand-navy text-white"
+                    : pi === 0
+                      ? "bg-brand-grey"
+                      : "bg-white"
+                }`}
+              >
+                {/* Phase header */}
+                <div className={`pb-4 border-b ${pi === 2 ? "border-white/15" : "border-black/10"}`}>
+                  <p className={`text-[0.6rem] font-bold uppercase tracking-widest ${pi === 2 ? "text-brand-orange" : "text-brand-orange"}`}>
+                    Phase {pi + 1}
+                  </p>
+                  <p className={`mt-1 text-sm font-bold leading-snug ${pi === 2 ? "text-white" : "text-brand-navy"}`}>
+                    {phase.label}
+                  </p>
+                  <p className={`mt-0.5 text-xs leading-relaxed ${pi === 2 ? "text-white/60" : "text-brand-charcoal/55"}`}>
+                    {phase.sub}
+                  </p>
+                </div>
+
+                {/* Steps within this phase */}
+                <ol className="mt-4 space-y-4">
+                  {phase.stepIndices.map((si, idx) => {
+                    const step = processSteps[si];
+                    const Icon = processIcons[si];
+                    return (
+                      <li key={step.name} className={`relative flex gap-3 ${idx > 0 ? "mt-4 pt-4 border-t " + (pi === 2 ? "border-white/10" : "border-black/8") : ""}`}>
+                        <div className="flex flex-col items-center">
+                          <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ${pi === 2 ? "bg-white/15 text-white" : "bg-brand-navy text-white"}`}>
+                            {si + 1}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <p className={`text-xs font-bold leading-snug ${pi === 2 ? "text-white" : "text-brand-navy"}`}>
+                              {step.name}
+                            </p>
+                            <span aria-hidden="true" className={pi === 2 ? "text-brand-orange/80" : "text-brand-orange/70"}>
+                              <Icon className="h-3.5 w-3.5" />
+                            </span>
+                          </div>
+                          <p className={`mt-1 text-xs leading-relaxed ${pi === 2 ? "text-white/70" : "text-brand-charcoal/65"}`}>
+                            {step.text}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            ))}
+          </div>
+
+          <div data-reveal className="mt-10 flex justify-center">
+            <Button href="/bookservice" variant="orange" size="lg">
               Book a Free Survey
             </Button>
           </div>

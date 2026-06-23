@@ -11,6 +11,13 @@ import Faq, { type FaqItem } from "@/components/services/Faq";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import PackingServiceAnimations from "@/components/services/PackingServiceAnimations";
+import {
+  IcoPhone,
+  IcoClipboard,
+  IcoBox,
+  IcoCube,
+  IcoTruck,
+} from "@/components/services/ProcessStepIcons";
 
 export const metadata: Metadata = buildMetadata("packing-service");
 
@@ -19,23 +26,28 @@ export const metadata: Metadata = buildMetadata("packing-service");
 const processSteps = [
   {
     name: "Request a free quote",
-    text: "Contact us online, by phone, or WhatsApp. A coordinator responds within one hour during working hours to confirm scope, date, and access.",
+    text: "Contact us online, by phone, or WhatsApp. A coordinator responds quickly during working hours to confirm scope, date, and access.",
+    Icon: IcoPhone,
   },
   {
     name: "Pre-move survey",
     text: "A video or on-site survey confirms room volumes, fragile items, specialist pieces, and the exact materials needed. A fixed quote is issued before any work begins.",
+    Icon: IcoClipboard,
   },
   {
     name: "Materials confirmed",
-    text: "Box counts, bubble wrap grades, crate sizes, and cover types are finalised. All materials arrive with the packing team on packing day, and nothing is charged separately.",
+    text: "Box counts, wrapping, crate sizes and any add-ons are finalised. All included materials arrive with the packing team on packing day.",
+    Icon: IcoBox,
   },
   {
     name: "Packing day",
     text: "Teams arrive at the agreed time with all materials. Every box is packed, sealed, and labelled with its contents and destination room before loading begins.",
+    Icon: IcoCube,
   },
   {
     name: "Delivery and optional unpacking",
     text: "Boxes are placed in the correct rooms at the new address. If you have booked unpacking, contents are unpacked and all waste, including boxes, wrap and paper, is collected and recycled.",
+    Icon: IcoTruck,
   },
 ];
 
@@ -628,37 +640,74 @@ export default function PackingServicePage() {
         </div>
       </section>
 
-      {/* ── S10: Process ────────────────────────────────────────────────── */}
-      <section className="bg-white py-20">
+      {/* ── S10: Process — care timeline ─────────────────────────────── */}
+      <section id="process" className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading
-            eyebrow="How it works"
-            title="The Packing Process Step by Step"
-          />
-          <ol className="relative mx-auto mt-10 max-w-2xl space-y-8">
-            {processSteps.map((step, i) => (
-              <li
-                key={step.name}
-                data-reveal
-                data-delay={String(i + 1)}
-                className="relative flex gap-5 pl-2"
-              >
-                {i < processSteps.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-[1.75rem] top-12 h-[calc(100%-1rem)] w-0.5 bg-brand-orange/25"
-                  />
-                )}
-                <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-navy text-lg font-bold text-white shadow-md">
-                  {i + 1}
-                </span>
-                <div className="pt-2">
-                  <p className="text-base font-semibold text-brand-navy">{step.name}</p>
-                  <p className="mt-1 text-base leading-relaxed text-brand-charcoal/90">{step.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="How it works"
+              title="The Packing Process, Step by Step"
+            />
+          </div>
+
+          <div className="relative mx-auto mt-12 max-w-2xl">
+            {/* Vertical rail */}
+            <div
+              aria-hidden="true"
+              className="absolute left-[1.375rem] top-5 bottom-5 w-0.5 bg-brand-navy/10"
+            >
+              <span
+                id="ps-process-fill"
+                className="absolute top-0 left-0 w-full bg-brand-orange/60 transition-[height] duration-700 ease-out"
+                style={{ height: 0 }}
+              />
+            </div>
+
+            <ol className="space-y-5">
+              {processSteps.map((step, i) => {
+                const { Icon } = step;
+                return (
+                  <li
+                    key={step.name}
+                    data-reveal
+                    data-delay={String(i + 1)}
+                    data-ps-step={String(i + 1)}
+                    className="relative flex items-start gap-4"
+                  >
+                    {/* Number on the rail */}
+                    <span
+                      className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold shadow-sm ring-2 ${
+                        i === 0
+                          ? "bg-brand-orange text-white ring-brand-orange"
+                          : "bg-white text-brand-navy ring-brand-navy/20"
+                      }`}
+                    >
+                      {i + 1}
+                    </span>
+
+                    {/* Card */}
+                    <div className="flex-1 rounded-2xl bg-white px-5 py-4 shadow-sm ring-1 ring-black/5">
+                      <div className="flex items-start justify-between gap-3">
+                        <p className="text-base font-bold text-brand-navy">{step.name}</p>
+                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-orange/70">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">
+                        {step.text}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          <div data-reveal className="mt-10 flex justify-center">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+              Get a Free Quote
+            </Button>
+          </div>
         </div>
       </section>
 

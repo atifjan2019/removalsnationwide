@@ -8,8 +8,16 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
-import StepList from "@/components/services/StepList";
 import PricingTable from "@/components/services/PricingTable";
+import HouseRemovalsAnimations from "@/components/services/HouseRemovalsAnimations";
+import {
+  IcoPhone,
+  IcoDocument,
+  IcoCalendar,
+  IcoBox,
+  IcoTruck,
+  IcoHome,
+} from "@/components/services/ProcessStepIcons";
 import CardGrid from "@/components/services/CardGrid";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
@@ -89,6 +97,8 @@ const processSteps = [
     text: "At your new property items are unloaded, furniture is reassembled and, if unpacking is booked, contents are placed as directed. The job is complete when you are satisfied.",
   },
 ];
+
+const processIcons = [IcoPhone, IcoDocument, IcoCalendar, IcoBox, IcoTruck, IcoHome];
 
 const howToSchema = {
   "@context": "https://schema.org",
@@ -343,6 +353,7 @@ export default function HouseRemovalsPage() {
     <>
       <JsonLd data={serviceLdFor("house-removals")} />
       <JsonLd data={howToSchema} />
+      <HouseRemovalsAnimations />
 
       {/* ── S1: Hero ── */}
       <PageBanner
@@ -558,24 +569,142 @@ export default function HouseRemovalsPage() {
         </div>
       </section>
 
-      {/* ── S4: Process ── */}
+      {/* ── S4: Process — route timeline ── */}
       <section id="process" className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading
-            align="left"
-            eyebrow="Six steps from survey to delivery"
-            title="How Your London House Move Works, Step by Step"
-          />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Six steps from survey to delivery"
+              title="How Your London House Move Works, Step by Step"
+            />
+          </div>
+          <p data-reveal className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             The process is the same whether you are moving a flat in Hackney or a house in
-            Kingston. The survey is the first step: it takes around 20 minutes on-site or by video
-            and produces the fixed price.
+            Kingston. The survey is first: 20 minutes on-site or by video produces your fixed price.
           </p>
-          <StepList
-            steps={processSteps.map((s) => `${s.name}: ${s.text}`)}
-            className="mt-10"
-          />
-          <div className="mt-10">
+
+          {/* Mobile: vertical stepper */}
+          <ol className="relative mx-auto mt-10 max-w-2xl space-y-6 lg:hidden">
+            {processSteps.map((step, i) => {
+              const Icon = processIcons[i];
+              return (
+                <li key={step.name} data-reveal data-delay={String(i + 1)} className="relative flex gap-4">
+                  {i < processSteps.length - 1 && (
+                    <span aria-hidden="true" className="absolute left-[1.3rem] top-10 h-[calc(100%-.5rem)] w-0.5 bg-brand-navy/15" />
+                  )}
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-white shadow-sm">
+                    {i + 1}
+                  </span>
+                  <div className="flex-1 pt-1">
+                    <div className="flex items-center gap-2">
+                      <p className="text-base font-bold text-brand-navy">{step.name}</p>
+                      <span aria-hidden="true" className="text-brand-orange/70">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/80">{step.text}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+
+          {/* Desktop: horizontal route (lg+) */}
+          <div data-reveal className="mt-12 hidden lg:block">
+            <div
+              className="grid"
+              style={{
+                gridTemplateColumns: "2.75rem repeat(6, 1fr) 2.75rem",
+                gridTemplateRows: "1fr 4.5rem 1fr",
+              }}
+            >
+              {/* Fill line — spans all columns, row 2 */}
+              <div
+                aria-hidden="true"
+                style={{ gridColumn: "1 / -1", gridRow: 2 }}
+                className="relative flex items-center"
+              >
+                <div className="absolute inset-x-0 h-0.5 bg-brand-navy/12">
+                  <span
+                    id="hr-process-fill"
+                    className="absolute inset-y-0 left-0 bg-brand-orange/55 transition-[width] duration-700 ease-out"
+                    style={{ width: 0 }}
+                  />
+                </div>
+              </div>
+
+              {/* Origin marker — col 1, row 2 */}
+              <div
+                aria-hidden="true"
+                style={{ gridColumn: 1, gridRow: 2 }}
+                className="relative z-10 flex items-center justify-center"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-navy text-white shadow">
+                  <IcoHome className="h-4 w-4" />
+                </div>
+              </div>
+
+              {/* Destination marker — col 8, row 2 */}
+              <div
+                aria-hidden="true"
+                style={{ gridColumn: 8, gridRow: 2 }}
+                className="relative z-10 flex items-center justify-center"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange text-white shadow">
+                  <IcoHome className="h-4 w-4" />
+                </div>
+              </div>
+
+              {/* Step circles and cards */}
+              {processSteps.map((step, i) => {
+                const Icon = processIcons[i];
+                const isAbove = i % 2 === 0;
+                const col = i + 2;
+                return (
+                  <>
+                    {/* Circle — row 2 */}
+                    <div
+                      key={`c-${i}`}
+                      style={{ gridColumn: col, gridRow: 2 }}
+                      className="relative z-10 flex items-center justify-center"
+                      data-process-step={String(i + 1)}
+                    >
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand-navy/20 bg-white text-xs font-bold text-brand-navy shadow-sm">
+                        {i + 1}
+                      </div>
+                    </div>
+
+                    {/* Card — alternating rows 1 and 3 */}
+                    <div
+                      key={`d-${i}`}
+                      style={{ gridColumn: col, gridRow: isAbove ? 1 : 3 }}
+                      className={`px-1 ${isAbove ? "self-end pb-2" : "self-start pt-2"}`}
+                    >
+                      <div className={`mx-auto w-0.5 bg-brand-navy/10 ${isAbove ? "h-3 mb-0" : "h-3 mt-0"}`} aria-hidden="true" />
+                      <div className="rounded-xl bg-white p-2.5 shadow-sm ring-1 ring-black/5">
+                        <div className="flex items-start justify-between gap-1">
+                          <p className="text-xs font-bold leading-snug text-brand-navy">{step.name}</p>
+                          <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-orange/70">
+                            <Icon className="h-3.5 w-3.5" />
+                          </span>
+                        </div>
+                        <p className="mt-1 text-[0.68rem] leading-relaxed text-brand-charcoal/65 line-clamp-3">
+                          {step.text}
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+
+            <div className="mt-1 flex justify-between text-xs font-semibold">
+              <span className="text-brand-navy/40">Your current home</span>
+              <span className="text-brand-orange">Your new home</span>
+            </div>
+          </div>
+
+          <div data-reveal className="mt-10 flex justify-center lg:justify-start">
             <Button href="/bookservice#quick-quote" variant="orange" size="lg">
               Book Your Free Survey
             </Button>

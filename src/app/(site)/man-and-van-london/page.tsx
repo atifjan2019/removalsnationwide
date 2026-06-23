@@ -8,8 +8,15 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
-import StepList from "@/components/services/StepList";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
+import {
+  IcoPhone,
+  IcoDocument,
+  IcoCheck,
+  IcoWrench,
+  IcoTruck,
+  IcoHome,
+} from "@/components/services/ProcessStepIcons";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -166,6 +173,8 @@ const processSteps = [
     text: "Items are unloaded and placed where you direct. The job is finished when you are satisfied. Specialist items such as pianos are positioned and confirmed secure before the crew leaves.",
   },
 ];
+
+const processIcons = [IcoPhone, IcoDocument, IcoCheck, IcoWrench, IcoTruck, IcoHome];
 
 const howToSchema = {
   "@context": "https://schema.org",
@@ -739,29 +748,112 @@ export default function ManAndVanPage() {
         </div>
       </section>
 
-      {/* ── S7: How it works ── */}
+      {/* ── S7: How it works — speed cards ── */}
       <section id="process" className="bg-white py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading
-            align="left"
-            eyebrow="Six steps from quote to delivery"
-            title="How Your Man and Van Move Works, Step by Step"
-          />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            The process is the same for every booking, from a single sofa to a two-bedroom flat
-            move. The quote step is first and takes under 2 minutes.
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Six steps from quote to delivery"
+              title="How Your Man and Van Move Works"
+            />
+          </div>
+          <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            Same process for every booking, from a single sofa to a 2-bed flat. Quote takes under
+            2 minutes.
           </p>
-          <StepList
-            steps={processSteps.map((s) => `${s.name}: ${s.text}`)}
-            className="mt-10"
-          />
-          <div className="mt-10">
-            <Button
-              href="/bookservice#quick-quote"
-              variant="orange"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
+
+          {/* Mobile: vertical stepper */}
+          <ol className="relative mx-auto mt-10 max-w-2xl space-y-5 lg:hidden">
+            {processSteps.map((step, i) => {
+              const Icon = processIcons[i];
+              return (
+                <li key={step.name} data-reveal data-delay={String(i + 1)} className="relative flex gap-4">
+                  {i < processSteps.length - 1 && (
+                    <span aria-hidden="true" className="absolute left-[1.3rem] top-10 h-[calc(100%-.5rem)] w-0.5 bg-brand-navy/15" />
+                  )}
+                  <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-white shadow-sm">
+                    {i + 1}
+                  </span>
+                  <div className="flex-1 pt-1">
+                    <div className="flex items-center gap-2">
+                      <p className="text-base font-bold text-brand-navy">{step.name}</p>
+                      <span aria-hidden="true" className="text-brand-orange/70"><Icon className="h-4 w-4" /></span>
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/80">{step.text}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+
+          {/* Desktop: compact arrow-connected cards (lg+) */}
+          <div className="mt-10 hidden lg:block">
+            {/* Progress baseline */}
+            <div aria-hidden="true" className="relative mb-0 h-0.5 bg-brand-navy/10">
+              <span
+                id="mv-process-fill"
+                className="absolute inset-y-0 left-0 bg-brand-orange/55 transition-[width] duration-700 ease-out"
+                style={{ width: 0 }}
+              />
+            </div>
+
+            {/* Cards row */}
+            <div className="flex items-stretch gap-0">
+              {processSteps.map((step, i) => {
+                const Icon = processIcons[i];
+                return (
+                  <div key={step.name} className="flex flex-1 items-stretch">
+                    <div
+                      data-reveal
+                      data-delay={String(i + 1)}
+                      data-mv-step={String(i + 1)}
+                      className="flex flex-1 flex-col rounded-none border-t-2 border-brand-navy/10 bg-white px-4 pt-5 pb-4 first:rounded-l-xl last:rounded-r-xl"
+                    >
+                      {/* Big step number */}
+                      <span
+                        aria-hidden="true"
+                        className="text-5xl font-black leading-none text-brand-navy/[0.07]"
+                      >
+                        {i + 1}
+                      </span>
+                      <div className="mt-2 flex items-center gap-1.5">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-orange text-white">
+                          <Icon className="h-3.5 w-3.5" />
+                        </span>
+                        <span className="text-[0.65rem] font-bold uppercase tracking-widest text-brand-navy/40">
+                          Step {i + 1}
+                        </span>
+                      </div>
+                      <p className="mt-1.5 text-sm font-bold leading-snug text-brand-navy">
+                        {step.name}
+                      </p>
+                      <p className="mt-1.5 flex-1 text-xs leading-relaxed text-brand-charcoal/70">
+                        {step.text}
+                      </p>
+                    </div>
+
+                    {/* Arrow connector */}
+                    {i < processSteps.length - 1 && (
+                      <div aria-hidden="true" className="flex shrink-0 items-center self-stretch bg-white px-0">
+                        <svg
+                          viewBox="0 0 16 40"
+                          className="h-10 w-4 text-brand-navy/20"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                        >
+                          <path d="M0 20 L10 20 M6 14 L12 20 L6 26" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div data-reveal className="mt-10 flex justify-center">
+            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
               Book Your Move
             </Button>
           </div>

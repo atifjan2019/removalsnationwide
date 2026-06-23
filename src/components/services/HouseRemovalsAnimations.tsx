@@ -1,12 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-/**
- * Page-scoped scroll-reveal driver for /man-and-van-london.
- * Adds `.js` to <html> (activating hero-anim-* CSS) and wires up
- * IntersectionObserver for [data-reveal] elements on this page only.
- */
-export default function ManAndVanAnimations() {
+export default function HouseRemovalsAnimations() {
   useEffect(() => {
     document.documentElement.classList.add("js");
 
@@ -23,8 +18,8 @@ export default function ManAndVanAnimations() {
     );
     document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => revealObs.observe(el));
 
-    const fillEl = document.getElementById("mv-process-fill") as HTMLElement | null;
-    const stepEls = document.querySelectorAll<HTMLElement>("[data-mv-step]");
+    const fillEl = document.getElementById("hr-process-fill") as HTMLElement | null;
+    const stepEls = document.querySelectorAll<HTMLElement>("[data-process-step]");
     const total = stepEls.length;
     let stepObs: IntersectionObserver | null = null;
 
@@ -38,7 +33,7 @@ export default function ManAndVanAnimations() {
           (entries) => {
             entries.forEach((e) => {
               if (e.isIntersecting) {
-                const n = parseInt((e.target as HTMLElement).dataset.mvStep ?? "0");
+                const n = parseInt((e.target as HTMLElement).dataset.processStep ?? "0");
                 if (n > maxSeen) {
                   maxSeen = n;
                   fillEl.style.width = `${(n / total) * 100}%`;
