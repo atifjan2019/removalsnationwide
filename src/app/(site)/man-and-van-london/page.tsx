@@ -193,12 +193,12 @@ const accreditations = [
     signal: "Approved code scheme providing independent dispute resolution.",
   },
   {
-    name: "CTSI Trading Standards Approved Code",
-    signal: "Independent consumer protection standard, audited annually.",
+    name: "The Furniture Ombudsman",
+    signal: "Independent dispute resolution scheme for the furniture and removals sector.",
   },
   {
-    name: "Fleet Operator Recognition Scheme (FORS)",
-    signal: "Fleet management standards covering safety, efficiency and compliance.",
+    name: "QSS-DW Approved Mover",
+    signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
     name: "Checkatrade",

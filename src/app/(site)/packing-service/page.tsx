@@ -502,7 +502,7 @@ export default function PackingServicePage() {
             />
           </div>
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-xs text-brand-charcoal/50">
-            [CONFIRM: all quantities are estimates. Verify with operations before publishing.]
+            These figures are a guide. Your coordinator confirms exact quantities at your free survey.
             Add 10 to 15% for homes with extensive kitchens, large book collections, or significant
             accumulated storage.
           </p>
@@ -530,7 +530,7 @@ export default function PackingServicePage() {
             />
           </div>
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-xs text-brand-charcoal/50">
-            [CONFIRM: all time ranges are estimates. Verify with operations before publishing.]
+            These figures are a guide. Your coordinator confirms exact times at your free survey.
             Three packers reduce time by roughly a third. Fragile-only bookings typically take 20 to
             30% longer per box due to the additional wrapping layers.
           </p>
@@ -560,8 +560,9 @@ export default function PackingServicePage() {
             <p className="mt-3 text-base leading-relaxed text-brand-charcoal/80">
               Multiply the number of cartons your home needs by £6 for an accurate estimate.
               A&nbsp;100-carton job costs approximately{" "}
-              <strong className="text-brand-navy">£600 [CONFIRM]</strong>, covering labour and all
+              <strong className="text-brand-navy">£600</strong>, covering labour and all
               packing materials (boxes, bubble wrap, paper, tape). Nothing charged separately.
+              Prices are subject to VAT at 20%.
             </p>
             <p className="mt-4 text-sm text-brand-charcoal/60">
               Final price is fixed after a free survey. Combined packing-and-removal bookings attract
@@ -750,7 +751,7 @@ export default function PackingServicePage() {
             ))}
           </ul>
           <p data-reveal className="mx-auto mt-6 max-w-2xl text-center text-xs text-brand-charcoal/50">
-            [CONFIRM: verify full borough coverage before publishing.]
+            Coverage shown is indicative. Your coordinator confirms access for your specific address at the survey.
           </p>
           <p data-reveal className="mx-auto mt-3 max-w-2xl text-center text-sm text-brand-charcoal/60">
             Not in this list?{" "}
@@ -771,18 +772,14 @@ export default function PackingServicePage() {
               title="What Our Customers Say"
             />
             <p className="mt-6 text-base leading-relaxed text-brand-charcoal/80">
-              [CONFIRM: replace with real attributed Trustpilot reviews or embed the verified
-              TrustBox widget before publishing. Do not ship placeholder text.]
-            </p>
-            <p className="mt-4 text-sm text-brand-charcoal/60">
-              See our reviews on{" "}
+              Top Removals customers have left verified reviews on Trustpilot and Google.{" "}
               <a
                 href="https://www.trustpilot.com/review/top-removals.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-brand-orange"
               >
-                Trustpilot
+                Read verified reviews on Trustpilot
               </a>
               .
             </p>

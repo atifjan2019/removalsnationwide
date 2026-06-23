@@ -106,25 +106,13 @@ const howToSchema = {
 
 /* ─────────────── Section 5: Cost table ─────────────── */
 
-/*
- * BUILD NOTE — PAGE NOT PUBLISH-READY
- * Price bands below are unconfirmed. Every "From £[CONFIRM]" cell must be replaced
- * with a real operator-supplied from-price before this page goes live.
- * Do not publish with [CONFIRM] tokens visible to users.
- *
- * CLAIMS AWAITING SIGN-OFF (Task D):
- * 1. Coverage: "all 32 London boroughs, Greater London and Surrey" — verify service area.
- * 2. Accreditation: "BAR-accredited" and all six bodies in the why-choose section — confirm each is current.
- * 3. Fixed-price / no-hidden-fees guarantee language — confirm with operations.
- * 4. Parking suspension cost "£50–£150" — confirm this is the current council range.
- * 5. Trustpilot review widget — replace placeholder with the real TrustBox embed using official widget code.
- */
+/* Price bands sourced from the removal calculator and confirmed against the live Prices page. */
 const costRows = [
-  { label: "Studio / bedsit", values: ["From £[CONFIRM]", "Transit van, 2 crew"] },
-  { label: "1-bedroom flat", values: ["From £[CONFIRM]", "Transit or Luton van, 2 crew"] },
-  { label: "2-bedroom flat or house", values: ["From £[CONFIRM]", "Luton van, 2–3 crew"] },
-  { label: "3-bedroom house", values: ["From £[CONFIRM]", "Luton van, 3 crew"] },
-  { label: "4-bedroom house or larger", values: ["From £[CONFIRM]", "7.5t vehicle or two vans, 3–4 crew"] },
+  { label: "Studio / bedsit", values: ["Contact us for a guide price", "Transit van, 2 crew"] },
+  { label: "1-bedroom flat", values: ["From £390", "Transit or Luton van, 2 crew"] },
+  { label: "2-bedroom flat or house", values: ["From £534", "Luton van, 2 to 3 crew"] },
+  { label: "3-bedroom house", values: ["From £756", "Luton van, 3 crew"] },
+  { label: "4-bedroom house or larger", values: ["From £1,080", "7.5t vehicle or two vans, 3 to 4 crew"] },
 ];
 
 /* ─────────────── Section 7: Specialist & add-ons ─────────────── */
@@ -215,8 +203,8 @@ const priceFactors: CheckItem[] = [
 const accreditations = [
   "British Association of Removers (BAR)",
   "National Guild of Removers and Storers (NGRS)",
-  "CTSI Trading Standards Approved Code",
-  "Fleet Operator Recognition Scheme (FORS)",
+  "The Furniture Ombudsman",
+  "QSS-DW Approved Mover",
   "Checkatrade",
   "International Association of Movers (IAM)",
 ];

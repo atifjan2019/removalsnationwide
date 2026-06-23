@@ -183,12 +183,12 @@ const accreditations = [
     signal: "Approved code scheme providing independent dispute resolution.",
   },
   {
-    name: "CTSI Trading Standards Approved Code",
-    signal: "Independent consumer protection standard, audited annually.",
+    name: "The Furniture Ombudsman",
+    signal: "Independent dispute resolution scheme for the furniture and removals sector.",
   },
   {
-    name: "Fleet Operator Recognition Scheme (FORS)",
-    signal: "Fleet management standards covering safety, efficiency and compliance.",
+    name: "QSS-DW Approved Mover",
+    signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
     name: "Checkatrade",
@@ -838,10 +838,10 @@ export default function OfficeRemovalsPage() {
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 UK Environment Agency — licensed waste carrier
               </h3>
-              {/* CONFIRM: add the registration number once confirmed for public use */}
-              <p className="mt-2 text-sm leading-relaxed text-white/90">
-                Registered waste carrier status covers the legal disposal and WEEE-compliant
-                recycling of decommissioned IT, electrical equipment and office furniture.
+                <p className="mt-2 text-sm leading-relaxed text-white/90">
+                Registered waste carrier (reg. CBDL25630) covering the legal disposal and
+                WEEE-compliant recycling of decommissioned IT, electrical equipment and office
+                furniture.
               </p>
             </div>
           </div>
