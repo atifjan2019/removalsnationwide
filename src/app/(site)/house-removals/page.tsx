@@ -24,7 +24,7 @@ const standardIncludes: CheckItem[] = [
   },
   {
     lead: "Professional packing",
-    text: "Full or partial packing using quality materials — boxes, bubble wrap, wardrobe cartons and packing paper.",
+    text: "Full or partial packing using quality materials: boxes, bubble wrap, wardrobe cartons and packing paper.",
   },
   {
     lead: "Furniture dismantling and reassembly",
@@ -84,7 +84,7 @@ const processSteps = [
   },
   {
     name: "Unload, reassemble, unpack",
-    text: "At your new property items are unloaded, furniture is reassembled and — if unpacking is booked — contents are placed as directed. The job is complete when you are satisfied.",
+    text: "At your new property items are unloaded, furniture is reassembled and, if unpacking is booked, contents are placed as directed. The job is complete when you are satisfied.",
   },
 ];
 
@@ -104,13 +104,25 @@ const howToSchema = {
 
 /* ─────────────── Section 5: Cost table ─────────────── */
 
-/* CONFIRM: replace every "—" with the real price range once verified (e.g. "from £350") */
+/*
+ * BUILD NOTE — PAGE NOT PUBLISH-READY
+ * Price bands below are unconfirmed. Every "From £[CONFIRM]" cell must be replaced
+ * with a real operator-supplied from-price before this page goes live.
+ * Do not publish with [CONFIRM] tokens visible to users.
+ *
+ * CLAIMS AWAITING SIGN-OFF (Task D):
+ * 1. Coverage: "all 32 London boroughs, Greater London and Surrey" — verify service area.
+ * 2. Accreditation: "BAR-accredited" and all six bodies in the why-choose section — confirm each is current.
+ * 3. Fixed-price / no-hidden-fees guarantee language — confirm with operations.
+ * 4. Parking suspension cost "£50–£150" — confirm this is the current council range.
+ * 5. Trustpilot review widget — replace placeholder with the real TrustBox embed using official widget code.
+ */
 const costRows = [
-  { label: "Studio / bedsit", values: ["—", "Transit van, 2 crew"] },
-  { label: "1-bedroom flat", values: ["—", "Transit or Luton van, 2 crew"] },
-  { label: "2-bedroom flat or house", values: ["—", "Luton van, 2–3 crew"] },
-  { label: "3-bedroom house", values: ["—", "Luton van, 3 crew"] },
-  { label: "4-bedroom house or larger", values: ["—", "7.5t vehicle or two vans, 3–4 crew"] },
+  { label: "Studio / bedsit", values: ["From £[CONFIRM]", "Transit van, 2 crew"] },
+  { label: "1-bedroom flat", values: ["From £[CONFIRM]", "Transit or Luton van, 2 crew"] },
+  { label: "2-bedroom flat or house", values: ["From £[CONFIRM]", "Luton van, 2–3 crew"] },
+  { label: "3-bedroom house", values: ["From £[CONFIRM]", "Luton van, 3 crew"] },
+  { label: "4-bedroom house or larger", values: ["From £[CONFIRM]", "7.5t vehicle or two vans, 3–4 crew"] },
 ];
 
 /* ─────────────── Section 7: Specialist & add-ons ─────────────── */
@@ -303,10 +315,10 @@ const faqs: FaqItem[] = [
   {
     question: "What is the cheapest day to move house in London?",
     answer:
-      "Mid-week moves on Tuesday, Wednesday or Thursday are typically cheaper than Friday or weekend moves, which carry a premium due to higher demand. Moving in January, February or March — outside the peak summer and end-of-month rush — also reduces the quote. If your completion date is flexible, ask for mid-week pricing when you request your survey.",
+      "Mid-week moves on Tuesday, Wednesday or Thursday are typically cheaper than Friday or weekend moves, which carry a premium due to higher demand. Moving in January, February or March, outside the peak summer and end-of-month rush, also reduces the quote. If your completion date is flexible, ask for mid-week pricing when you request your survey.",
   },
   {
-    question: "Man and van or full house removals — which should I choose?",
+    question: "Man and van or full house removals: which should I choose?",
     answer:
       "Man and van is suited to studios, single rooms, student moves and small volumes of items. Full house removals are the right choice for 2-bedroom properties and above, for moves involving heavy or fragile items, or when packing is required. If you are unsure, our surveyor will recommend the appropriate service after assessing your property.",
   },
@@ -325,7 +337,7 @@ const faqs: FaqItem[] = [
   {
     question: "How far in advance should I book a house removal in London?",
     answer:
-      "For most moves, booking two to four weeks in advance is sufficient. Friday moves, end-of-month completions and moves in June, July and August book out earlier — six to eight weeks ahead is advisable in peak season. For short-notice moves, call us directly; we keep capacity for urgent bookings where availability allows.",
+      "For most moves, booking two to four weeks in advance is sufficient. Friday moves, end-of-month completions and moves in June, July and August book out earlier. Six to eight weeks ahead is advisable in peak season. For short-notice moves, call us directly; we keep capacity for urgent bookings where availability allows.",
   },
   {
     question: "Do you offer packing and storage alongside the removal?",
@@ -361,7 +373,7 @@ export default function HouseRemovalsPage() {
             Top Removals moves homes across London with a{" "}
             <strong>fully insured, BAR-accredited team</strong> operating seven days a week. Whether
             you are moving a studio flat or a five-bedroom house, every job comes with a free
-            pre-move survey, a written fixed-price quote and end-to-end management — packing,
+            pre-move survey, a written fixed-price quote and end-to-end management: packing,
             transport and unloading handled by trained professionals.
           </p>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-brand-charcoal/80">
@@ -400,13 +412,13 @@ export default function HouseRemovalsPage() {
             <p>
               A trained, insured removal team removes each of those risks. Parking permits are
               arranged in advance by our operations team. Crew size and vehicle type are matched to
-              your property after the survey. Fragile and heavy items — antiques, white goods,
-              flat-pack furniture — are packed, padded and loaded by people who do this every day.
+              your property after the survey. Fragile and heavy items including antiques, white goods and
+              flat-pack furniture are packed, padded and loaded by people who do this every day.
             </p>
             <p>
               Every job is covered by{" "}
               <strong>public liability insurance and goods-in-transit insurance</strong>. If
-              something goes wrong, there is a clear claims process with a financial remedy — not an
+              something goes wrong, there is a clear claims process with a financial remedy, not an
               unenforceable verbal assurance.
             </p>
             <p>
@@ -475,8 +487,8 @@ export default function HouseRemovalsPage() {
           />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             The process is the same whether you are moving a flat in Hackney or a house in
-            Kingston. The survey is the first step — it takes 20 minutes on-site or by video and
-            produces the fixed price.
+            Kingston. The survey is the first step: it takes around 20 minutes on-site or by video
+            and produces the fixed price.
           </p>
           <StepList
             steps={processSteps.map((s) => `${s.name}: ${s.text}`)}
@@ -500,7 +512,7 @@ export default function HouseRemovalsPage() {
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             House removal costs in London vary by property size, access conditions, packing
             requirements and distance. Indicative price bands by property size are shown below.
-            Every price is subject to a free pre-move survey — no two moves are identical.
+            Every price is subject to a free pre-move survey. No two moves are identical.
           </p>
 
           {/* CONFIRM: replace all "—" values with real from-prices once verified */}
@@ -568,7 +580,7 @@ export default function HouseRemovalsPage() {
               <ul className="mt-4 space-y-3">
                 {[
                   "A studio flat, bedsit or single room",
-                  "A small volume of items — few boxes, no large furniture",
+                  "A small volume of items: few boxes, no large furniture",
                   "A student or short-notice move",
                   "A tight budget and flexibility on timing",
                   "A short move within the same or adjacent borough",
@@ -605,7 +617,7 @@ export default function HouseRemovalsPage() {
                   "A 2-bedroom property or larger",
                   "A full house with furniture, white goods and boxes",
                   "Fragile, specialist or high-value items",
-                  "Packing requirements — full or partial",
+                  "Packing requirements: full or partial",
                   "A completion date with tight time pressure",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-white/90">
@@ -688,7 +700,7 @@ export default function HouseRemovalsPage() {
           />
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
             A house removal quote is built from several variables. Understanding them helps you
-            budget accurately and — where your dates are flexible — reduce the total cost.
+            budget accurately and, where your dates are flexible, reduce the total cost.
           </p>
           <CheckList items={priceFactors} className="mt-8 max-w-3xl" />
           <div className="mt-8 rounded-2xl bg-brand-grey p-6 max-w-3xl">
@@ -699,7 +711,7 @@ export default function HouseRemovalsPage() {
               Tuesday, Wednesday and Thursday moves are typically the most cost-effective days.
               Avoid Fridays, which carry a premium, and the last week of any month, when completion
               dates cluster. Moving in January, February or March is often cheaper than June,
-              July or August. Ask when you request your quote — if your date is flexible, we will
+              July or August. Ask when you request your quote: if your date is flexible, we will
               tell you the best available slot.
             </p>
           </div>
@@ -750,7 +762,7 @@ export default function HouseRemovalsPage() {
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/85">
                 Covers your belongings from loading to delivery. Damage in transit triggers a
-                clear financial claims process — not a verbal assurance.
+                clear financial claims process, not a verbal assurance.
               </p>
             </div>
             <div className="rounded-xl bg-brand-navy p-6 text-white">
@@ -758,7 +770,7 @@ export default function HouseRemovalsPage() {
                 Public liability insurance
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/85">
-                Covers damage caused to your property — walls, floors, door frames — by our crew
+                Covers damage caused to your property (walls, floors, door frames) by our crew
                 during the move. Active on every job without exception.
               </p>
             </div>
@@ -784,7 +796,7 @@ export default function HouseRemovalsPage() {
             title="Items We Cannot Move"
           />
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
-            The following items cannot travel in a removal vehicle — either for safety reasons or
+            The following items cannot travel in a removal vehicle, either for safety reasons or
             because they require specialist handling. Knowing this in advance prevents last-minute
             issues on move day.
           </p>
