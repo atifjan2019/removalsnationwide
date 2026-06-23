@@ -1,240 +1,1044 @@
 import type { Metadata } from "next";
-import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
-import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
+import Link from "next/link";
+import { buildMetadata, serviceH1, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
-import CheckList from "@/components/services/CheckList";
+import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import StepList from "@/components/services/StepList";
-import TipList, { type Tip } from "@/components/services/TipList";
-import Faq, { type FaqItem } from "@/components/services/Faq";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
-import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
+import Faq, { type FaqItem } from "@/components/services/Faq";
+import { CheckIcon } from "@/components/ui/icons";
+import StickyMobileBar from "@/components/services/StickyMobileBar";
 
 export const metadata: Metadata = buildMetadata("man-and-van");
 
-const whyChoose = [
-  "We maintain a fully renewed vehicle fleet ready to cater your needs",
-  "Suitable for small, partial, single-item and same-day removals",
-  "Moving insurance is included in the price of the service",
-  "Free online survey to make the booking procedure faster and easier",
-  "Additional discounts if you use our storage or cleaning services",
-];
+/* ─────────────────────────────────────────────────────────────
+   PAGE-LEVEL SCHEMA
+   ──────────────────────────────────────────────────────────── */
 
-const steps = [
-  "Decide what you want to move and where then contact us. You can easily call us or use the Top Removals' online form.",
-  "If needed we will arrange a site survey either in person or online, depending on your wishes.",
-  "Based on your requirement, we will provide you with a free quote. Here will be the time to ask all of your questions and discuss additional services.",
-  "Together with your assigned coordinator, you will set a moving date.",
-  "Our team will arrive at your place on moving day to load and transport your belongings. If packing is included in your order, they will do that first.",
-  "Once at your new home, we will unload and carry the boxes inside. We can also unpack them if that service was booked in advance.",
-];
+/*
+ * BUILD NOTE — PAGE NOT PUBLISH-READY
+ * CLAIMS AWAITING SIGN-OFF:
+ * 1. Prices: all rate bands (1 man £55/hr, 2 men from £70/hr, 3 men from £90/hr) match the
+ *    live WordPress page at time of rebuild. Verify with operations before publishing.
+ * 2. Coverage: "all 32 London boroughs" — confirm current service area.
+ * 3. Accreditations: all six bodies in the trust section — confirm each is current.
+ * 4. Insurance: goods-in-transit and public liability wording — confirm with operations.
+ * 5. Same-day availability: "same-day slots available" — confirm operational.
+ * 6. Reviews: replace the Trustpilot placeholder with the real TrustBox embed.
+ */
 
-const needToKnow = [
-  "We can dispose of or give for recycling your packing materials at the end of the move as Top Removals has the necessary certificates.",
-  "When from start to finish, including driving a job is likely to exceed 9 hours, it is viewed as a long-distance removal. In such cases we may advise the customer to split the activities over a period of days, offer more man to load/unload faster or agree on over-time working to complete the relocation within a day.",
-  "For the man with a van to work, you need to provide us with access to both your new and old place. If there are parking taxes, we can deal with your local council, there is no need for you to waste your time. Just inform us before the moving date.",
-];
+// CONFIRM: verify all price bands are current before publishing
+const manAndVanSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${SITE_URL}/man-and-van-london#service`,
+  name: "Man and Van London",
+  serviceType: "Man and Van Moving Service",
+  description:
+    "Professional man and van service across London from £55 per hour. 7 days a week, same-day and short-notice slots available. Fully insured, BAR-accredited.",
+  url: `${SITE_URL}/man-and-van-london`,
+  areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+  provider: { "@id": `${SITE_URL}/#organization` },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Man and Van Prices London 2026",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "1 Man and Van — Per Hour (min. 2 hours)",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "55",
+          priceCurrency: "GBP",
+          unitCode: "HUR",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "2 Men and Van — Per Hour (min. 2 hours)",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "70",
+          priceCurrency: "GBP",
+          unitCode: "HUR",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "3 Men and Van — Per Hour (min. 2 hours)",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "90",
+          priceCurrency: "GBP",
+          unitCode: "HUR",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "1 Man and Van — Half Day (up to 4 hours)",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "210",
+          priceCurrency: "GBP",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "1 Man and Van — Full Day (up to 8 hours)",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "420",
+          priceCurrency: "GBP",
+        },
+      },
+    ],
+  },
+};
 
-const pricingColumns = ["Price", "1 man", "2 men", "3 men"];
+/* ─────────────── Section 3: Prices ─────────────── */
+
+const pricingColumns = ["", "1 man", "2 men", "3 men"];
+// CONFIRM: verify these rates are current with operations before publishing
 const pricingRows: PricingRow[] = [
-  { label: "Per hour (Min 2h)", values: ["£55", "from £70", "from £90"] },
-  { label: "Per half day (Up to 4h)", values: ["£210", "from £260", "from £330"] },
-  { label: "Per day (Up to 8h)", values: ["£420", "from £500", "from £620"] },
+  { label: "Per hour (min. 2 hours)", values: ["£55", "from £70", "from £90"] },
+  { label: "Half day (up to 4 hours)", values: ["£210", "from £260", "from £330"] },
+  { label: "Full day (up to 8 hours)", values: ["£420", "from £500", "from £620"] },
 ];
+
+const priceFactors: CheckItem[] = [
+  {
+    lead: "Crew size",
+    text: "One mover suits light loads and studios. Two movers handle most 1 to 2-bedroom flats. Three movers reduce loading time in staircase buildings or top-floor flats.",
+  },
+  {
+    lead: "Van size",
+    text: "Small and medium vans suit single items and studios. A Luton van is needed for 1 to 2-bedroom flats and heavier loads. The right vehicle is confirmed at the survey.",
+  },
+  {
+    lead: "Hours needed",
+    text: "The minimum booking is 2 hours. Jobs are charged in full hours thereafter. A free survey or a description of the job size lets us give an accurate time estimate.",
+  },
+  {
+    lead: "Distance between addresses",
+    text: "Driving time between the pickup and delivery addresses is included in the hourly rate. Longer drives or cross-London moves take more time.",
+  },
+  {
+    lead: "Floor level and lift access",
+    text: "A fourth-floor flat without a lift takes more crew time than a ground-floor property. Lift reservations in managed buildings are arranged in advance.",
+  },
+  {
+    lead: "Parking and access",
+    text: "Permit zones and narrow streets can affect van placement. Borough parking suspensions are arranged by our operations team where needed.",
+  },
+];
+
+/* ─────────────── Section 7: Process ─────────────── */
+
+const processSteps = [
+  {
+    name: "Contact us for a quote",
+    text: "Call 020 7205 2525 or submit the quick quote form. Describe the pickup and delivery addresses, what needs moving and the preferred date. For same-day requests, calling is faster.",
+  },
+  {
+    name: "Receive a fixed written quote",
+    text: "We provide a written fixed-price quote by phone or email. The rate covers the crew, van, fuel and standard loading time. Congestion zone and tunnel charges are confirmed in the quote for your specific route.",
+  },
+  {
+    name: "Confirm your booking",
+    text: "Accept the quote and confirm the moving date. For permit-zone addresses, our operations team arranges the borough parking suspension at this stage so it is in place for move day.",
+  },
+  {
+    name: "Prepare for move day",
+    text: "Confirm parking access at both addresses. Label fragile boxes. Disassemble flat-pack furniture yourself if preferred, or ask us to do it on the day as part of the booking.",
+  },
+  {
+    name: "Move day: load and transport",
+    text: "The crew arrives at the agreed time with the van, removal blankets, heavy-duty straps and a sack trolley. Items are loaded, secured and driven to the delivery address.",
+  },
+  {
+    name: "Unload and complete",
+    text: "Items are unloaded and placed where you direct. The job is finished when you are satisfied. Specialist items such as pianos are positioned and confirmed secure before the crew leaves.",
+  },
+];
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How Your Man and Van Move in London Works, Step by Step",
+  description:
+    "The step-by-step process for booking and completing a man and van move with Top Removals in London.",
+  step: processSteps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: s.name,
+    text: s.text,
+  })),
+};
+
+/* ─────────────── Section 9: Trust ─────────────── */
+
+const accreditations = [
+  {
+    name: "British Association of Removers (BAR)",
+    signal: "Industry standards body with a formal complaints and arbitration process.",
+  },
+  {
+    name: "National Guild of Removers and Storers (NGRS)",
+    signal: "Approved code scheme providing independent dispute resolution.",
+  },
+  {
+    name: "CTSI Trading Standards Approved Code",
+    signal: "Independent consumer protection standard, audited annually.",
+  },
+  {
+    name: "Fleet Operator Recognition Scheme (FORS)",
+    signal: "Fleet management standards covering safety, efficiency and compliance.",
+  },
+  {
+    name: "Checkatrade",
+    signal: "Verified trading history and customer review platform.",
+  },
+  {
+    name: "International Association of Movers (IAM)",
+    signal: "International moving standards and professional network membership.",
+  },
+];
+
+/* ─────────────── Section 10: Areas ─────────────── */
+
+// CONFIRM: verify each borough and each area link resolves to a live page before publish
+const areaGroups = [
+  {
+    direction: "North London",
+    boroughs: [
+      { name: "Enfield", href: "/areas/enfield" },
+      { name: "Barnet", href: "/areas/barnet" },
+      { name: "Camden", href: "/areas/camden" },
+      { name: "Islington", href: "/areas/islington" },
+      { name: "Hackney", href: "/areas/hackney" },
+      { name: "Haringey", href: "/areas/haringey" },
+    ],
+  },
+  {
+    direction: "South London",
+    boroughs: [
+      { name: "Wandsworth", href: "/areas/wandsworth" },
+      { name: "Lambeth", href: "/areas/lambeth" },
+      { name: "Croydon", href: "/areas/croydon" },
+      { name: "Lewisham", href: "/areas/lewisham" },
+      { name: "Merton", href: "/areas/merton" },
+      { name: "Sutton", href: "/areas/sutton" },
+    ],
+  },
+  {
+    direction: "East London",
+    boroughs: [
+      { name: "Tower Hamlets", href: "/areas/tower-hamlets" },
+      { name: "Newham", href: "/areas/newham" },
+      { name: "Greenwich", href: "/areas/greenwich" },
+      { name: "Waltham Forest", href: "/areas/waltham-forest" },
+      { name: "Redbridge", href: "/areas/redbridge" },
+      { name: "Barking and Dagenham", href: "/areas/barking-and-dagenham" },
+    ],
+  },
+  {
+    direction: "West London",
+    boroughs: [
+      { name: "Kensington and Chelsea", href: "/areas/kensington-and-chelsea" },
+      { name: "Hammersmith and Fulham", href: "/areas/hammersmith-and-fulham" },
+      { name: "Ealing", href: "/areas/ealing" },
+      { name: "Hounslow", href: "/areas/hounslow" },
+      { name: "Richmond upon Thames", href: "/areas/richmond-upon-thames" },
+      { name: "Kingston upon Thames", href: "/areas/kingston-upon-thames" },
+    ],
+  },
+];
+
+/* ─────────────── Section 13: FAQs ─────────────── */
 
 const faqs: FaqItem[] = [
   {
-    question: "Can you take my cat inside of the van for a short-distance move?",
+    question: "How much does a man and van cost in London?",
     answer:
-      "Even if it is for a short distance, it is dangerous for your animals to travel in the back of a moving vehicle. Try to arrange a pet sitter and pick them up after your belongings arrive at your new home. The safest solution is to just take your animal in the car with you. This way you can keep an eye on them at all times. There are also a couple of specialised companies that are licenced exclusively for pet transportation.",
+      "A man and van in London starts from £55 per hour (minimum 2 hours) for one mover and a van. Two movers start from £70 per hour and three movers from £90 per hour. Half-day and full-day rates reduce the effective hourly cost. The final price depends on crew size, van size, hours needed, distance and access conditions at both addresses.",
+    answerAfter:
+      "Use the removal calculator for an instant estimate, or request a free survey for a fixed written quote.",
   },
   {
-    question: "I only need you to move my big wardrobe, can you do it?",
+    question: "Is there a minimum booking for a man and van in London?",
     answer:
-      "Yes, the man and van service is extremely suitable for people who wish to move just one large piece of furniture or for students moving from their dormitory that have no other way of transporting a big wardrobe. Our movers are experienced in relocating musical instruments as well. We can come and safely wrap your piano or drum set and deliver it to its new home. Note that in these cases we are talking about a specialist's service as certain types of skills are required to move your items to any part of the British capital. As such there may be an additional fee.",
+      "The minimum booking is 2 hours. This covers the journey to you, the loading, the drive and the delivery. For most single-item jobs and short local moves, 2 hours is the right allowance. If you are unsure, describe the job when you request the quote and we will advise the correct time to book.",
   },
   {
-    question: "How is the cost for the man and van service calculated?",
+    question: "Do man and van prices include fuel and mileage?",
     answer:
-      "The final price will reflect all the basic (loading, transportation and unloading) and additional (packing, dismantling, cleaning, etc.) services you've booked. Parking fees, toll taxes and moving insurance are also included in the cost.",
+      "The hourly rate includes the driver, the van and standard loading time. Fuel and mileage within Greater London are included in the quoted rate. Congestion zone charges and Dartford crossing tolls apply as they arise on the specific route and are always confirmed in writing before the booking date. There are no hidden fees added on the day.",
+  },
+  {
+    question: "What is the cheapest day to book a man and van in London?",
+    answer:
+      "Tuesday, Wednesday and Thursday are typically the most cost-effective days for a man and van booking. Fridays carry a premium due to high demand, and weekend rates may also be higher. End-of-month dates and the summer months from June to August book out early. If your date is flexible, ask when you request a quote and we will advise the best available slot.",
+  },
+  {
+    question: "Is a man and van cheaper than a removal company?",
+    answer:
+      "For studios, bedsits and 1 to 2-bedroom flats, a man and van is almost always cheaper than a full house removal service. For larger homes or moves that require professional packing, a full removal crew is better value because the crew size, vehicle and planning are matched to the scale of the job. Using a man and van for a job that needs full removals typically costs more in crew hours than the rate difference saves.",
+    answerAfter: "See the man and van versus full removals guide further down this page.",
+  },
+  {
+    question: "Are my belongings insured with a man and van service?",
+    answer:
+      "Yes. Goods-in-transit insurance is included in the quoted rate and covers your belongings from loading to delivery. Public liability insurance covers damage caused to your property during the move. Both policies are active on every booking without exception. If something is damaged, there is a clear claims process rather than an unenforceable verbal assurance.",
+  },
+  {
+    question: "Can you move a single item or a piano?",
+    answer:
+      "Yes. The man and van service is well suited to single-item moves: a sofa, a bed, a wardrobe, a fridge or a dining table. Pianos and musical instruments can also be moved; specialist crews using piano boards and skates are used for upright and grand pianos. Piano moves are quoted as a specialist service and may carry an additional fee. A free quote covers the full cost before you commit.",
+  },
+  {
+    question: "Can you come the same day?",
+    answer:
+      "Yes, subject to crew and vehicle availability. Same-day and short-notice slots are kept available each day for urgent bookings. To check same-day availability call 020 7205 2525 directly for the fastest response. The online quick quote form is also available and we aim to call back within the hour for short-notice requests.",
+  },
+  {
+    question: "What van size do I need?",
+    answer:
+      "A small or medium van covers single items, light loads and studios. A Luton van is the right choice for 1 to 2-bedroom flats and any job with larger furniture or a full property load. If you are unsure, describe the move when you request a quote: we will recommend the correct vehicle after reviewing the volume, access and distance for your specific job.",
+    answerAfter: "See the van size and crew guide further up this page for a move-type breakdown.",
+  },
+  {
+    question: "Do you arrange parking permits for a man and van?",
+    answer:
+      "Yes. If a permit zone or council-managed loading bay prevents the van from parking close to your property, our operations team arranges a borough parking suspension in advance. Council parking suspensions typically require 2 to 5 working days to arrange. Let us know about any access restrictions when you request your quote and we will handle it.",
   },
 ];
 
-const tips: Tip[] = [
-  {
-    title: "How to make furniture dissemble faster?",
-    body: "Simply find your furniture manuals. For more unusual or designer pieces, the user's instruction book will be essential, as it will save you a lot of time and stress. Make a mental note to put each manual in a zip-lock bag and label it. You can then collect all of them in a binder and use them to assemble the furniture, once it is unloaded at your new place.",
-  },
-  {
-    title: "Consider Renting a Storage",
-    body: "Hiring a unit is a great idea if you need to move out fast but you haven't already secured your new place. Top Removals can offer you transport to and from its London storage as a part of the Man and Van service, this way you don't have to extend the lease of your old place and lose money. Consider this possibility and discuss it with your moving coordinator prior to the booking of the Man and Van.",
-  },
-  {
-    title: "Organise your boxes and belongings",
-    body: "When packing, start from the things you rarely use and make your way towards your everyday essentials. If you own any antiques or valuable pieces inform your removals company. There is a right way to pack and transport such items in order to keep them undamaged. Furthermore, Top Removals can provide you with excellent rubbish disposal service for the items you no longer want or need like old furniture or electronics.",
-  },
-  {
-    title: "Leave the lifting and loading to professionals",
-    body: 'One of the biggest perks of the Man and Van services is you don\'t have to carry your boxes on your own. So leave this task to your movers and don\'t attempt to lift or load the van by yourself. There is a specific way of arranging the crates and on top of that, you can injure yourself if you don\'t use the proper gear. The thing you can do is label the boxes. Put signs stating "Fragile" to the crates containing your plates and glasses. Mark with "Heavy" the boxes which exceed 20 kg.',
-  },
-];
+/* ═══════════════════════════════════════════════════════════ */
 
 export default function ManAndVanPage() {
   return (
     <>
-      <JsonLd data={serviceLdFor("man-and-van")} />
+      <JsonLd data={manAndVanSchema} />
+      <JsonLd data={howToSchema} />
+
+      {/* ── S1: Hero ── */}
       <PageBanner
-        title="London Man and Van"
-        subtitle="7 Days a Week Service"
+        title="Man and Van London"
         h1={serviceH1["man-and-van"]}
+        subtitle="From £55/hr · 7 Days a Week · Same Day Available"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "Man and Van Services" },
+          { label: "Man and Van London" },
         ]}
       />
 
-      {/* Hero CTAs */}
-      <section className="bg-white pt-10">
+      {/* S1 continued: intro + above-fold CTAs */}
+      <section id="hero-intro" className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-[88rem] px-4">
-          <p className="text-lg font-bold uppercase tracking-wide text-brand-navy">
-            Get a Free Online Quote in Under 2 Minutes!
-          </p>
-          <div className="mt-4 flex flex-wrap gap-4">
-            <Button href="/bookservice#quick-quote" variant="outline" size="lg">
-              Quick Quote
-            </Button>
-            <Button href="/bookservice" variant="orange" size="lg">
-              Book a Service
-            </Button>
-          </div>
-        </div>
-      </section>
+          <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-16">
 
-      {/* What are man and van services */}
-      <section className="bg-white py-16">
-        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <SectionHeading
-              align="left"
-              eyebrow="Man and Van Services"
-              title="What Are Man and Van Services?"
-            />
-            <p className="mt-8 text-base leading-relaxed text-brand-charcoal/85">
-              This is a removals service designed to help you with smaller, faster relocations in
-              London or the surrounding areas. The man with a van usually involves one or two
-              professional movers and is suited for up to two-bedroom houses. For bigger properties
-              and longer moving distances, you should choose our house removal service.
-            </p>
-          </div>
-          <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
-              <Image
-                src="/services/man-and-van.svg"
-                alt="Top Removals man and van crew loading a small move"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
+            {/* Left: value prop + CTAs */}
+            <div>
+              <p className="max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
+                Top Removals provides man and van services across London from{" "}
+                <strong>£55 per hour</strong>, 7 days a week, with same-day and short-notice slots
+                available. One mover and a van suits a single item or studio flat; two movers handle
+                a 1 to 2-bedroom flat comfortably. Every booking is fully insured and fixed-price
+                from survey to delivery.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
+                Get a free quote in under 2 minutes, or book a service for a confirmed date.
+              </p>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button
+                  href="/bookservice#quick-quote"
+                  variant="orange"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Get a Free Quote
+                </Button>
+                <Button
+                  href="/bookservice"
+                  variant="navy"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Estimate My Move
+                </Button>
+                <Button
+                  href="tel:+442072052525"
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  020 7205 2525
+                </Button>
+              </div>
+
+              <p className="mt-3 text-xs font-medium text-brand-charcoal/55">
+                Free quote. Fixed price. No obligation.
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {[
+                  "Fully Insured",
+                  "BAR Accredited",
+                  "7 Days a Week",
+                  "Same Day Available",
+                ].map((label) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
+                  >
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
-            <span
-              aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
-            />
+
+            {/* Right: trust panel + van photo */}
+            <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+              <div className="relative aspect-[16/9] w-full">
+                <Image
+                  src="/about/package.webp"
+                  alt="Top Removals van ready for a London man and van move"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="bg-brand-grey p-6">
+                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
+                  Trusted and certified by
+                </p>
+                <ul className="space-y-2">
+                  {accreditations.map(({ name }) => (
+                    <li key={name} className="flex items-center gap-2">
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <span className="text-sm text-brand-navy/85">{name}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
+                  <Link
+                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    Trustpilot reviews →
+                  </Link>
+                  <Link
+                    href="/certificates"
+                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    View certificates →
+                  </Link>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Why choose */}
-      <section className="bg-brand-grey py-20">
+      {/* ── S2: What is a man and van service ── */}
+      <section id="what-is" className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="The benefits" title="Why Choose Our Man and Van Moving Services?" />
-          <CheckList items={whyChoose} columns={2} className="mx-auto mt-12 max-w-5xl" />
-        </div>
-      </section>
-
-      {/* How is everything organised */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading align="left" eyebrow="Step by step" title="How Is Everything Organised?" />
-          <StepList steps={steps} className="mt-10" />
-        </div>
-      </section>
-
-      {/* What you need to know */}
-      <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-5xl px-4">
           <SectionHeading
             align="left"
-            eyebrow="Good to know"
-            title="What You Need to Know About Top Removals' Man and Van Service"
+            eyebrow="Service definition"
+            title="What Is a Man and Van Service in London?"
+          />
+          <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+            <p>
+              A man and van service in London provides a professional driver, a fully equipped van
+              and optional loading and unloading help, billed by the hour. Crew size and van size are
+              matched to your move: a small or medium van with one mover suits a single item or
+              studio flat; a Luton van with two movers covers 1 and 2-bedroom flats comfortably.
+            </p>
+            <p>
+              In 2026, the typical London man and van booking covers furniture collections, student
+              moves, single-item deliveries, marketplace collections and part-loads that do not
+              justify a full removal crew. For properties of three bedrooms or more, or for moves
+              requiring professional packing, a{" "}
+              <Link
+                href="/house-removals"
+                className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              >
+                full house removal service
+              </Link>{" "}
+              is the recommended option.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S3: Prices ── */}
+      <section id="prices" className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Transparent rates 2026"
+            title="Man and Van Prices in London"
+          />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            The rate you are quoted is the rate you pay. Fuel and mileage within Greater London are
+            included. Congestion zone and tunnel charges are confirmed in writing before the booking
+            date, as they depend on the specific route.
+          </p>
+
+          <PricingTable
+            className="mx-auto mt-10 max-w-3xl"
+            columns={pricingColumns}
+            rows={pricingRows}
+          />
+
+          <p className="mx-auto mt-4 max-w-3xl text-center text-xs text-brand-charcoal/60">
+            Minimum 2 hours on all bookings. Additional hours charged at the hourly rate.
+            VAT included.
+          </p>
+
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl bg-brand-grey p-8">
+            <h3 className="text-base font-bold uppercase tracking-wide text-brand-navy">
+              What affects your man and van price?
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/85">
+              Six main factors determine the final cost. Understanding them helps you choose the
+              right crew size and book the most cost-effective slot.
+            </p>
+            <CheckList items={priceFactors} className="mt-6" />
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button href="/bookservice" variant="orange" size="md">
+                Estimate My Move
+              </Button>
+              <Button href="/prices" variant="navy" size="md">
+                Full Prices Page
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S4: Van size and crew guide ── */}
+      <section id="van-guide" className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Match your move"
+            title="Which Van Size and How Many Movers Do You Need?"
+          />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            The right van and crew combination depends on your property size, the volume of items
+            and the access conditions at both addresses. Use the guide below to pick a starting
+            point.
+          </p>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "Single item or light load",
+                body: "A single piece of furniture, a few boxes or a studio move with minimal belongings. Same-day and short-notice bookings are easiest to accommodate at this size.",
+                van: "Small or medium van",
+                crew: "1 mover",
+              },
+              {
+                title: "Studio or bedsit",
+                body: "A full studio or bedsit move typically completes in half a day. Floor level and lift access affect crew time and are noted at the survey or on the phone.",
+                van: "Medium or Luton van",
+                crew: "1–2 movers",
+              },
+              {
+                title: "1 to 2-bedroom flat",
+                body: "The most common man and van job. A Luton van with two movers handles a 1 or 2-bedroom flat in a full day. Parking suspension is arranged in advance for permit zones.",
+                van: "Luton van",
+                crew: "2 movers",
+              },
+              {
+                title: "Tight access or complex load",
+                body: "Staircase buildings, top-floor flats and narrow-street access benefit from three movers to keep loading time down. A survey confirms whether three crew is needed.",
+                van: "Luton van",
+                crew: "3 movers",
+              },
+            ].map(({ title, body, van, crew }) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm"
+              >
+                <h3 className="text-sm font-bold text-brand-navy">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/80">{body}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <span className="rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-white">
+                    {van}
+                  </span>
+                  <span className="rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+                    {crew}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
+            All Top Removals vans carry heavy-duty straps, removal blankets and a sack trolley as
+            standard. The exact vehicle and crew combination is confirmed after a free survey of
+            your property.{" "}
+            <Link href="/our-fleet" className="text-brand-orange underline underline-offset-2">
+              View our fleet →
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ── S5: Moves we cover ── */}
+      <section id="moves" className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Every type of London move"
+            title="Man and Van Moves We Cover Across London"
+          />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            The man and van service covers a wide range of move types. Marketplace collection and
+            single-item delivery are two of the most-requested jobs on the service.
+          </p>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "House and flat moves",
+                body: "Studios, bedsits and 1 to 2-bedroom flats moved across London. Packing materials and furniture dismantling available as add-ons. For 3-bedroom homes or larger, see full house removals.",
+                link: "/house-removals",
+                linkText: "House removals →",
+              },
+              {
+                title: "Single item and furniture",
+                body: "A sofa, bed, wardrobe, fridge or dining table collected and delivered anywhere in London. No minimum load, no wasted crew on a full removal booking. Pianos quoted separately.",
+                link: "/single-item",
+                linkText: "Single item deliveries →",
+              },
+              {
+                title: "Student moves",
+                body: "Dormitory to flat share, halls to home and every combination in between. Short-notice bookings accepted. Straps and trolleys are on every van for wardrobes and bookshelves.",
+                link: null,
+                linkText: null,
+              },
+              {
+                title: "Office and business moves",
+                body: "Small office relocations, desk-and-box moves and equipment transfers within London. Early morning and weekend arrival slots are available on request.",
+                link: "/office-removals",
+                linkText: "Office removals →",
+              },
+              {
+                title: "Marketplace collections",
+                body: "IKEA flat-pack pickups, Facebook Marketplace collections, Gumtree furniture, eBay deliveries. We collect from the seller or store and deliver to your address or storage unit.",
+                link: "/single-item",
+                linkText: "Collection and delivery →",
+              },
+              {
+                title: "Storage transfers",
+                body: "Moving items between addresses and storage, or clearing a storage unit. Short-term storage is available within the same booking if you need a gap between moving out and in.",
+                link: "/storage",
+                linkText: "Storage options →",
+              },
+            ].map(({ title, body, link, linkText }) => (
+              <div
+                key={title}
+                className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-6 shadow-sm"
+              >
+                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-navy">
+                  {title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-charcoal/80">
+                  {body}
+                </p>
+                {link && linkText && (
+                  <Link
+                    href={link}
+                    className="mt-4 text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  >
+                    {linkText}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── S6: Same-day and short-notice ── */}
+      <section id="same-day" className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            align="left"
+            eyebrow="Urgent and short-notice"
+            title="Same-Day and Short-Notice Man and Van London"
+          />
+          <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+            <p>
+              Top Removals operates 7 days a week and keeps same-day and short-notice slots
+              available for urgent bookings. Same-day capacity covers urgent flat moves, last-minute
+              marketplace pickups, emergency storage transfers and time-sensitive furniture
+              collections.
+            </p>
+            <p>
+              For the fastest response on a same-day or short-notice request:{" "}
+              <a
+                href="tel:+442072052525"
+                className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              >
+                call 020 7205 2525
+              </a>{" "}
+              directly. The quick quote form is also available for urgent requests and we aim to
+              call back within the hour. Planning ahead is ideal, but not always possible, and we
+              accommodate short-notice where we can.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <Button
+              href="/bookservice#quick-quote"
+              variant="orange"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
+              Get a Free Quote
+            </Button>
+            <p className="text-xs font-medium text-brand-charcoal/55">
+              Free quote. Fixed price. No obligation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S7: How it works ── */}
+      <section id="process" className="bg-white py-20">
+        <div className="mx-auto max-w-3xl px-4">
+          <SectionHeading
+            align="left"
+            eyebrow="Six steps from quote to delivery"
+            title="How Your Man and Van Move Works, Step by Step"
           />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            With years of experience and countless Man and Van jobs in the UK, our teams know London
-            like the palm of their hand. You can expect fast and adequate delivery of all booked
-            services. As accredited members of the National Guild of Removers and Storers&apos;
-            scheme, we know how to safely, securely and efficiently move your items on time and within
-            budget.
+            The process is the same for every booking, from a single sofa to a two-bedroom flat
+            move. The quote step is first and takes under 2 minutes.
           </p>
-          <ul className="mt-8 space-y-5">
-            {needToKnow.map((point, i) => (
-              <li
-                key={i}
-                className="flex gap-4 rounded-2xl border-l-4 border-brand-orange bg-white p-6 shadow-sm"
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-white">
-                  {i + 1}
-                </span>
-                <p className="text-base leading-relaxed text-brand-charcoal/85">{point}</p>
-              </li>
-            ))}
-          </ul>
+          <StepList
+            steps={processSteps.map((s) => `${s.name}: ${s.text}`)}
+            className="mt-10"
+          />
+          <div className="mt-10">
+            <Button
+              href="/bookservice#quick-quote"
+              variant="orange"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
+              Book Your Move
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Our prices */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
-          <SectionHeading eyebrow="Transparent rates" title="Our Prices" />
-          <PricingTable columns={pricingColumns} rows={pricingRows} className="mt-12" />
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-brand-grey py-20">
+      {/* ── S8: Man and van vs full removals ── */}
+      <section id="compare" className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Good to know" title="FAQ" />
-          <Faq items={faqs} className="mt-10" />
-        </div>
-      </section>
+          <SectionHeading
+            eyebrow="Choosing the right service"
+            title="Man and Van or Full Removals: Which One Fits Your Move?"
+          />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            Both services are fully insured and fixed-price. The difference is in crew size, vehicle
+            and the scope of the job. Use the guide below to decide.
+          </p>
 
-      {/* Man and van moving tips */}
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Helpful advice" title="Man and Van Moving Tips" />
-          <TipList tips={tips} numbered className="mt-12" />
-          <p className="mx-auto mt-10 max-w-4xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            Top Removals has created an ultimate house moving guide you can use to plan and organise
-            your home relocation. We are answering all of your questions and giving you professional
-            tips and valuable insight.
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {/* Man and van */}
+            <div className="rounded-2xl border-2 border-brand-navy/10 bg-white p-8">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-navy px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+                Man and Van
+              </div>
+              <p className="text-sm font-bold uppercase tracking-wide text-brand-navy">
+                The right choice when you have:
+              </p>
+              <ul className="mt-4 space-y-3">
+                {[
+                  "A studio, bedsit, 1 or 2-bedroom flat",
+                  "A single item, few boxes or a light load",
+                  "A student, short-notice or same-day move",
+                  "A short to medium distance within London",
+                  "Items already packed and ready to load",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
+                    <CheckIcon
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                      strokeWidth={2.5}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                  Get a Man and Van Quote
+                </Button>
+              </div>
+            </div>
+
+            {/* Full removals */}
+            <div className="rounded-2xl border-2 border-brand-orange bg-brand-navy p-8 text-white">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+                Full House Removals
+              </div>
+              <p className="text-sm font-bold uppercase tracking-wide text-white">
+                The right choice when you have:
+              </p>
+              <ul className="mt-4 space-y-3">
+                {[
+                  "A 3-bedroom home or larger",
+                  "A full house with furniture, appliances and boxes",
+                  "Fragile, specialist or high-value items",
+                  "Packing requirements: full or partial",
+                  "A completion date with tight timing",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-white/90">
+                    <CheckIcon
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                      strokeWidth={2.5}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <Link
+                  href="/house-removals"
+                  className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-white"
+                >
+                  House removal service →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-black/10 bg-white p-5">
+            <p className="text-sm font-semibold text-brand-navy">
+              Man and van vs self-drive van hire
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/85">
+              A man and van includes the professional driver and the lifting. Self-drive van hire
+              requires you to drive, load and unload yourself. When the cost of van hire, fuel,
+              insurance, a second driver and physical labour is added up, a man and van is often
+              cheaper, and removes all physical risk. This is especially true for any job involving
+              heavy furniture or stairs.
+            </p>
+          </div>
+
+          <p className="mt-6 text-center text-xs font-medium text-brand-charcoal/55">
+            Both services include a free quote, fixed price and full insurance. No obligation.
           </p>
         </div>
       </section>
 
+      {/* ── Mid-page CTA ── */}
       <CtaBand
-        heading="Contact Us Now and Book Your Man and Van Moving Services Today"
+        heading="Ready to Get Your Man and Van Quote?"
+        subtext="Free quote · fixed price · no hidden fees · 7 days a week"
         actions={[
-          { label: "Book a Service", href: "/bookservice", variant: "navy" },
-          { label: "Removal Calculator", href: "/removal-calculator", variant: "outline-light" },
+          { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
+          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 
-      <Testimonials />
-      <Accreditations />
+      {/* ── S9: Insurance and accreditations ── */}
+      <section id="trust" className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Verified, insured, accredited"
+            title="Insured, Accredited Man and Van Movers in London"
+          />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            Choosing a man and van company means trusting someone with your belongings and your home.
+            The accreditations below are independently verified and renewed annually. Each one
+            carries a real complaints or claims process, not just a badge.
+          </p>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {accreditations.map(({ name, signal }) => (
+              <div
+                key={name}
+                className="rounded-xl border border-black/5 bg-brand-grey p-5"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                    <CheckIcon className="h-4 w-4" strokeWidth={3} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-brand-navy">{name}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-brand-charcoal/70">{signal}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 mx-auto max-w-3xl">
+            <div className="rounded-xl bg-brand-navy p-6 text-white">
+              <h3 className="text-sm font-bold uppercase tracking-wide">
+                Goods-in-transit insurance
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/85">
+                Covers your belongings from the moment of loading to delivery. Damage in transit
+                triggers a clear financial claims process, not a verbal assurance.
+              </p>
+            </div>
+            <div className="rounded-xl bg-brand-navy p-6 text-white">
+              <h3 className="text-sm font-bold uppercase tracking-wide">
+                Public liability insurance
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/85">
+                Covers damage caused to your property (walls, floors, door frames) by our crew
+                during the move. Active on every booking without exception.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href="/certificates" variant="orange" size="md">
+              View Certificates
+            </Button>
+            <Button href="/about-us" variant="navy" size="md">
+              About Top Removals
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S10: London areas and access ── */}
+      <section id="areas" className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="London-wide coverage"
+            title="London Areas We Cover and How We Handle Access"
+          />
+          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+            <p>
+              Top Removals man and van crews cover all 32 London boroughs, Greater London and
+              surrounding areas including Surrey, Essex and Kent. Nationwide moves are also handled
+              with the same fixed-price process.{" "}
+              {/* CONFIRM: verify service area coverage before publishing */}
+            </p>
+            <p>
+              London access is rarely straightforward. Our operations team arranges borough council
+              parking suspensions where a permit zone prevents the van from stopping near the
+              property. Narrow Victorian streets, managed buildings with goods lifts and top-floor
+              flats without a lift are all assessed at the survey stage and factored into the crew
+              time estimate. ULEZ and congestion zone charges are flagged in the written quote for
+              the specific route.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {areaGroups.map((group) => (
+              <div key={group.direction}>
+                <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-navy">
+                  {group.direction}
+                </h3>
+                <ul className="space-y-2">
+                  {group.boroughs.map((b) => (
+                    <li key={b.name}>
+                      <Link
+                        href={b.href}
+                        className="text-sm text-brand-charcoal/85 underline-offset-2 hover:text-brand-orange hover:underline"
+                      >
+                        {b.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Button href="/areas" variant="navy" size="md">
+              View All Service Areas
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S11: Reviews ── */}
+      <section id="reviews" className="bg-white py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Trustpilot and Google Reviews"
+            title="What London Customers Say About Our Man and Van Service"
+          />
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+            Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
+            <Link
+              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-orange underline underline-offset-2"
+            >
+              Read verified reviews on Trustpilot
+            </Link>
+            .{" "}
+            {/* CONFIRM: replace this placeholder with the real Trustpilot TrustBox widget once the embed code is available */}
+          </p>
+
+          <div
+            className="mx-auto mt-8 max-w-xl rounded-2xl bg-brand-grey p-8 shadow-sm ring-1 ring-black/5 text-center"
+            data-reveal
+          >
+            <p className="text-sm font-semibold text-brand-navy">
+              Reviews powered by Trustpilot
+            </p>
+            <Link
+              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"
+            >
+              View all reviews on Trustpilot →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S12: Final CTA ── */}
+      <CtaBand
+        heading="Book Your Man and Van in London Today"
+        subtext="Free quote in under 2 minutes · same-day available · 7 days a week"
+        actions={[
+          { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
+          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
+        ]}
+      />
+
+      {/* ── S13: FAQs ── */}
+      <section id="faq" className="bg-brand-grey py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <SectionHeading
+            eyebrow="Common questions answered"
+            title="Man and Van London: Frequently Asked Questions"
+          />
+          <Faq items={faqs} defaultOpen={null} className="mt-10" />
+        </div>
+      </section>
+
+      {/* Mobile bottom spacer: prevents sticky bar from covering FAQ content */}
+      <div className="h-[72px] sm:hidden" aria-hidden="true" />
+
+      <StickyMobileBar sentinelId="hero-intro" />
     </>
   );
 }

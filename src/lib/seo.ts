@@ -89,9 +89,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/packing-service",
   },
   "man-and-van": {
-    title: "Man and Van London - The Reliable Man with a Van Services",
+    title: "Man and Van London | From £55/hr | Fully Insured | Top Removals",
     description:
-      "Searching for a trusthworty Man and Van Services in London and the surrounding area? Contact Top Removals today to recieve your FREE quote.",
+      "Man and van service in London from £55/hr. Fully insured, BAR-accredited, 7 days a week including same-day slots. Free quote in under 2 minutes.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {
@@ -375,7 +375,7 @@ export const serviceH1: Record<string, string> = {
   "international-removals": "International Removals",
   "london-storage": "London Storage",
   "packing-service": "Packing Service",
-  "man-and-van": "Man and Van Services",
+  "man-and-van": "Man and Van London",
   "packaging-materials": "Packaging Materials",
   "crate-hire": "Crate Hire",
   "rubbish-disposal": "Rubbish Disposal",
