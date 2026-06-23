@@ -59,9 +59,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/services",
   },
   "house-removals": {
-    title: "House Moving Services in London by Top Home Removals",
+    title: "House Removals London | Fully Insured, Free Quote | Top Removals",
     description:
-      "Planning a house move to/from London? Top Removals can offer you competitive prices and immaculate services. Get your FREE quote today!",
+      "Top Removals provides fully insured, BAR-accredited house removals across London and Surrey, 7 days a week. Free survey, fixed prices, packing and storage available. Get a quote today.",
     path: "/house-removals",
   },
   "office-removals": {
@@ -370,7 +370,7 @@ export function faqLd(items: { question: string; answer: string }[]) {
 
 /** Short H1 text per service page, matching the live site exactly. */
 export const serviceH1: Record<string, string> = {
-  "house-removals": "House Removals",
+  "house-removals": "House Removals London",
   "office-removals": "Office Removals",
   "international-removals": "International Removals",
   "london-storage": "London Storage",
