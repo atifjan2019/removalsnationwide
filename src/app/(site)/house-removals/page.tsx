@@ -888,6 +888,12 @@ export default function HouseRemovalsPage() {
             >
               Packing service →
             </Link>
+            <Link
+              href="/rubbish-disposal"
+              className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+            >
+              Rubbish disposal →
+            </Link>
           </div>
         </div>
       </section>

@@ -733,6 +733,13 @@ export default function LondonStoragePage() {
               >
                 packaging materials
               </Link>{" "}
+              and{" "}
+              <Link
+                href="/packing-service"
+                className="font-semibold text-brand-orange hover:text-brand-navy"
+              >
+                professional packing service
+              </Link>{" "}
               pages for options.
             </p>
           </div>

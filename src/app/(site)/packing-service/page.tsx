@@ -620,8 +620,11 @@ export default function PackingServicePage() {
               Prices are subject to VAT at 20%.
             </p>
             <p className="mt-4 text-sm text-brand-charcoal/60">
-              Final price is fixed after a free survey. Combined packing-and-removal bookings attract
-              a discount.{" "}
+              Final price is fixed after a free survey. Packing booked alongside a{" "}
+              <Link href="/house-removals" className="underline hover:text-brand-orange">
+                house removal in London
+              </Link>{" "}
+              attracts a combined discount.{" "}
               <Link href="/prices" className="underline hover:text-brand-orange">
                 See full prices
               </Link>
@@ -689,6 +692,13 @@ export default function PackingServicePage() {
               </ul>
             </div>
           </div>
+          <p data-reveal className="mx-auto mt-8 max-w-4xl text-center text-sm leading-relaxed text-brand-charcoal/60">
+            Packing is available with any removal — full house moves, smaller{" "}
+            <Link href="/man-and-van-london" className="underline hover:text-brand-orange">
+              man and van bookings
+            </Link>
+            {" "}and office relocations. Your coordinator confirms the right scope and price at the free survey.
+          </p>
         </div>
       </section>
 
