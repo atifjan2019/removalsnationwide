@@ -77,9 +77,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/international-removals",
   },
   "london-storage": {
-    title: "Storage Services in London - Convinient, Safe and Secure",
+    title: "Secure Storage London | Container and Furniture Storage | Top Removals",
     description:
-      "Enjoy a safe and secure storage facility in London with an easy access. We offer a domestic and commercial, short and long-term storage solution.",
+      "Managed, containerised storage in London from £10 per week. Top Removals collects from your address, seals your unit and stores it at our 24/7 staffed Purfleet compound. No minimum term.",
     path: "/storage",
   },
   "packing-service": {
@@ -385,7 +385,7 @@ export const serviceH1: Record<string, string> = {
   "house-removals": "House Removals London",
   "office-removals": "Office Removals London",
   "international-removals": "International Removals",
-  "london-storage": "London Storage",
+  "london-storage": "Secure Storage in London",
   "packing-service": "Packing Service London",
   "man-and-van": "Man and Van London",
   "packaging-materials": "Packaging Materials",
