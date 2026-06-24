@@ -468,7 +468,7 @@ export default function ManAndVanPage() {
       </section>
 
       {/* ── S2: What is a man and van service ── */}
-      <section id="what-is" className="bg-brand-grey py-20">
+      <section id="what-is" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -554,7 +554,7 @@ export default function ManAndVanPage() {
       </section>
 
       {/* ── S4: Van size and crew guide ── */}
-      <section id="van-guide" className="bg-brand-grey py-20">
+      <section id="van-guide" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Match your move"
@@ -702,7 +702,7 @@ export default function ManAndVanPage() {
       </section>
 
       {/* ── S6: Same-day and short-notice ── */}
-      <section id="same-day" className="bg-brand-grey py-20">
+      <section id="same-day" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -861,7 +861,7 @@ export default function ManAndVanPage() {
       </section>
 
       {/* ── S8: Man and van vs full removals ── */}
-      <section id="compare" className="bg-brand-grey py-20">
+      <section id="compare" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Choosing the right service"
@@ -982,13 +982,14 @@ export default function ManAndVanPage() {
       />
 
       {/* ── S9: Insurance and accreditations ── */}
-      <section id="trust" className="bg-white py-20">
+      <section id="trust" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
+            tone="light"
             eyebrow="Verified, insured, accredited"
             title="Insured, Accredited Man and Van Movers in London"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a man and van company means trusting someone with your belongings and your home.
             The accreditations below are independently verified and renewed annually. Each one
             carries a real complaints or claims process, not just a badge.
@@ -1000,15 +1001,15 @@ export default function ManAndVanPage() {
                 key={name}
                 data-reveal
                 data-delay={String(i + 1)}
-                className="rounded-2xl border border-black/5 bg-brand-grey p-6"
+                className="rounded-2xl border border-white/10 bg-white/8 p-6"
               >
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-brand-navy">{name}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-brand-charcoal/70">{signal}</p>
+                    <p className="text-sm font-semibold text-white">{name}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-white/60">{signal}</p>
                   </div>
                 </div>
               </div>
@@ -1016,20 +1017,20 @@ export default function ManAndVanPage() {
           </div>
 
           <div className="mt-10 mx-auto max-w-3xl grid gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl bg-brand-navy p-6 text-white">
+            <div className="rounded-2xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Goods-in-transit insurance
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Covers your belongings from the moment of loading to delivery. Damage in transit
                 triggers a clear financial claims process, not a verbal assurance.
               </p>
             </div>
-            <div className="rounded-2xl bg-brand-navy p-6 text-white">
+            <div className="rounded-2xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Public liability insurance
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Covers damage caused to your property (walls, floors, door frames) by our crew
                 during the move. Active on every booking without exception.
               </p>
@@ -1040,7 +1041,7 @@ export default function ManAndVanPage() {
             <Button href="/certificates" variant="orange" size="md">
               View Certificates
             </Button>
-            <Button href="/about-us" variant="navy" size="md">
+            <Button href="/about-us" variant="outline-light" size="md">
               About Top Removals
             </Button>
           </div>
@@ -1048,7 +1049,7 @@ export default function ManAndVanPage() {
       </section>
 
       {/* ── S10: London areas and access ── */}
-      <section id="areas" className="bg-brand-grey py-20">
+      <section id="areas" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="London-wide coverage"
@@ -1105,13 +1106,14 @@ export default function ManAndVanPage() {
       </section>
 
       {/* ── S11: Reviews ── */}
-      <section id="reviews" className="bg-white py-20">
+      <section id="reviews" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
+            tone="light"
             eyebrow="Trustpilot and Google Reviews"
             title="What London Customers Say About Our Man and Van Service"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
             <Link
               href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
@@ -1121,12 +1123,11 @@ export default function ManAndVanPage() {
             >
               Read verified reviews on Trustpilot
             </Link>
-            .{" "}
-            {/* CONFIRM: replace this placeholder with the real Trustpilot TrustBox widget once the embed code is available */}
+            .
           </p>
 
           <div
-            className="mx-auto mt-8 max-w-xl rounded-2xl bg-brand-grey p-8 shadow-sm ring-1 ring-black/5 text-center"
+            className="mx-auto mt-8 max-w-xl rounded-2xl bg-white p-8 text-center shadow-sm"
             data-reveal
           >
             <p className="text-sm font-semibold text-brand-navy">
@@ -1155,7 +1156,7 @@ export default function ManAndVanPage() {
       />
 
       {/* ── S13: FAQs ── */}
-      <section id="faq" className="bg-brand-grey py-20">
+      <section id="faq" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Common questions answered"

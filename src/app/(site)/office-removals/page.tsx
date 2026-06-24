@@ -469,7 +469,7 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S2: What are office removals ── */}
-      <section id="what-is" className="bg-brand-grey py-20">
+      <section id="what-is" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -558,7 +558,7 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S4: Minimal downtime and out-of-hours ── */}
-      <section id="downtime" className="bg-brand-grey py-20">
+      <section id="downtime" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -663,7 +663,7 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S6: Furniture dismantling and reassembly ── */}
-      <section id="furniture" className="bg-brand-grey py-20">
+      <section id="furniture" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -806,7 +806,7 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S8: Office removal costs ── */}
-      <section id="costs" className="bg-brand-grey py-20">
+      <section id="costs" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Transparent pricing"
@@ -854,14 +854,15 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S9: Insurance, accreditations and recycling ── */}
-      <section id="trust" className="bg-white py-20">
+      <section id="trust" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
+            tone="light"
             eyebrow="Insured, accredited, licensed"
             title="Insured, Accredited and Fully Licensed Office Movers"
           />
           <p
-            className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85"
+            className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80"
             data-reveal
           >
             Commercial buyers require more than a verbal assurance. The accreditations below are
@@ -875,15 +876,15 @@ export default function OfficeRemovalsPage() {
                 key={name}
                 data-reveal
                 data-delay={String(i + 1)}
-                className="rounded-2xl border border-black/5 bg-brand-grey p-6"
+                className="rounded-2xl border border-white/10 bg-white/8 p-6"
               >
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-brand-navy">{name}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-brand-charcoal/70">{signal}</p>
+                    <p className="text-sm font-semibold text-white">{name}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-white/60">{signal}</p>
                   </div>
                 </div>
               </div>
@@ -891,20 +892,20 @@ export default function OfficeRemovalsPage() {
           </div>
 
           <div className="mt-10 mx-auto max-w-3xl grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div data-reveal data-delay="1" className="rounded-2xl bg-brand-navy p-6 text-white">
+            <div data-reveal data-delay="1" className="rounded-2xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Commercial goods-in-transit insurance
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Covers business equipment and furniture from loading to delivery.
                 Tailored increased limits are available for high-value IT or specialist equipment.
               </p>
             </div>
-            <div data-reveal data-delay="2" className="rounded-2xl bg-brand-navy p-6 text-white">
+            <div data-reveal data-delay="2" className="rounded-2xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Public liability insurance
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Covers damage caused to your premises — floors, walls, lifts, door frames — by the
                 crew during the move. Active on every booking without exception.
               </p>
@@ -913,7 +914,7 @@ export default function OfficeRemovalsPage() {
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 UK Environment Agency — licensed waste carrier
               </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/90">
+              <p className="mt-2 text-sm leading-relaxed text-white/90">
                 Registered waste carrier (reg. CBDL25630) covering the legal disposal and
                 WEEE-compliant recycling of decommissioned IT, electrical equipment and office
                 furniture.
@@ -925,10 +926,10 @@ export default function OfficeRemovalsPage() {
             <Button href="/certificates" variant="orange" size="md">
               View Certificates
             </Button>
-            <Button href="/about-us" variant="navy" size="md">
+            <Button href="/about-us" variant="outline-light" size="md">
               About Top Removals
             </Button>
-            <Button href="/rubbish-disposal" variant="outline" size="md">
+            <Button href="/rubbish-disposal" variant="outline-light" size="md">
               WEEE Recycling
             </Button>
           </div>
@@ -936,7 +937,7 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S10: London boroughs and building access ── */}
-      <section id="areas" className="bg-brand-grey py-20">
+      <section id="areas" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="All London boroughs, plus the UK"
@@ -1085,13 +1086,14 @@ export default function OfficeRemovalsPage() {
       </section>
 
       {/* ── S12: Reviews ── */}
-      <section id="reviews" className="bg-brand-grey py-20">
+      <section id="reviews" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
+            tone="light"
             eyebrow="Trustpilot and Google Reviews"
             title="What London Businesses Say About Our Office Moves"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
             <Link
               href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
@@ -1101,12 +1103,11 @@ export default function OfficeRemovalsPage() {
             >
               Read verified reviews on Trustpilot
             </Link>
-            .{" "}
-            {/* CONFIRM: replace this block with the real Trustpilot TrustBox widget once the embed code is available */}
+            .
           </p>
 
           <div
-            className="mx-auto mt-8 max-w-xl rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 text-center"
+            className="mx-auto mt-8 max-w-xl rounded-2xl bg-white p-8 text-center shadow-sm"
             data-reveal
           >
             <p className="text-sm font-semibold text-brand-navy">Reviews powered by Trustpilot</p>
@@ -1133,7 +1134,7 @@ export default function OfficeRemovalsPage() {
       />
 
       {/* ── S14: FAQs ── */}
-      <section id="faq" className="bg-brand-grey py-20">
+      <section id="faq" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Common questions answered"

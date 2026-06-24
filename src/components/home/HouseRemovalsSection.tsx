@@ -16,7 +16,7 @@ export default function HouseRemovalsSection() {
   return (
     <section
       id="house-removals"
-      className="bg-brand-grey py-20"
+      className="bg-brand-sand py-20"
       aria-labelledby="house-removals-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">

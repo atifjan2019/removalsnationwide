@@ -15,7 +15,7 @@ export default function SpecialistSection() {
   return (
     <section
       id="specialist-removals"
-      className="bg-brand-grey py-20"
+      className="bg-brand-sand py-20"
       aria-labelledby="specialist-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">

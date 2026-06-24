@@ -9,7 +9,7 @@ export default function NewsSection() {
   const articles = getAllPosts().slice(0, 3);
 
   return (
-    <section className="bg-brand-grey py-20">
+    <section className="bg-brand-sand py-20">
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading eyebrow="From our blog" title="Top Moving News" />
 

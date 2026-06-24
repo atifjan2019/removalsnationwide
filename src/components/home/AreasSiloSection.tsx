@@ -68,7 +68,7 @@ export default function AreasSiloSection() {
   return (
     <section
       id="areas"
-      className="bg-brand-grey py-20"
+      className="bg-brand-sand py-20"
       aria-labelledby="areas-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">

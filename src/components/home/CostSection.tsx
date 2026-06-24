@@ -51,7 +51,7 @@ export default function CostSection() {
   return (
     <section
       id="cost"
-      className="bg-brand-grey py-20"
+      className="bg-brand-sand py-20"
       aria-labelledby="cost-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">

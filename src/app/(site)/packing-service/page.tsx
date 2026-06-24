@@ -18,6 +18,7 @@ import {
   IcoCube,
   IcoTruck,
 } from "@/components/services/ProcessStepIcons";
+import { CheckIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("packing-service");
 
@@ -49,6 +50,15 @@ const processSteps = [
     text: "Boxes are placed in the correct rooms at the new address. If you have booked unpacking, contents are unpacked and all waste, including boxes, wrap and paper, is collected and recycled.",
     Icon: IcoTruck,
   },
+];
+
+const heroAccreditations = [
+  "British Association of Removers (BAR)",
+  "National Guild of Removers and Storers (NGRS)",
+  "The Furniture Ombudsman",
+  "QSS-DW Approved Mover",
+  "Checkatrade",
+  "International Association of Movers (IAM)",
 ];
 
 const packingServiceSchema = {
@@ -327,9 +337,9 @@ export default function PackingServicePage() {
             </p>
           </div>
 
-          {/* Right: hero image */}
-          <div data-reveal data-delay="1" className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+          {/* Right: image + trust card */}
+          <div data-reveal data-delay="1" className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+            <div className="relative aspect-[4/3] w-full">
               <Image
                 src="https://www.top-removals.co.uk/wp-content/uploads/2025/05/packing-service.jpg"
                 alt="packing service London: Top Removals professional packer carefully wrapping belongings in bubble wrap"
@@ -339,10 +349,35 @@ export default function PackingServicePage() {
                 className="object-cover"
               />
             </div>
-            <span
-              aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
-            />
+            <div className="bg-brand-grey p-6">
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
+                Trusted and certified by
+              </p>
+              <ul className="space-y-2">
+                {heroAccreditations.map((name) => (
+                  <li key={name} className="flex items-center gap-2">
+                    <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                    <span className="text-sm text-brand-navy/85">{name}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
+                <Link
+                  href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                >
+                  Trustpilot reviews →
+                </Link>
+                <Link
+                  href="/certificates"
+                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                >
+                  View certificates →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -385,7 +420,7 @@ export default function PackingServicePage() {
       </section>
 
       {/* ── S3: Packing options ─────────────────────────────────────────── */}
-      <section className="bg-brand-grey py-20">
+      <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Choose your service"
@@ -442,7 +477,7 @@ export default function PackingServicePage() {
       </section>
 
       {/* ── S5: Materials ──────────────────────────────────────────────── */}
-      <section className="bg-brand-grey py-20">
+      <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
@@ -513,7 +548,7 @@ export default function PackingServicePage() {
       </section>
 
       {/* ── S7: How long packing takes ─────────────────────────────────── */}
-      <section className="bg-brand-grey py-20">
+      <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
@@ -597,7 +632,7 @@ export default function PackingServicePage() {
       </section>
 
       {/* ── S9: Professional vs DIY ─────────────────────────────────────── */}
-      <section className="bg-brand-grey py-20">
+      <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
@@ -711,59 +746,6 @@ export default function PackingServicePage() {
         </div>
       </section>
 
-      {/* ── S11: Insurance, accreditations, recycling ──────────────────── */}
-      <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <div data-reveal>
-            <SectionHeading
-              eyebrow="Why trust us"
-              title="Insurance, Accreditations and Responsible Disposal"
-            />
-            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
-              Three pillars that protect you before, during and after every packing job.
-            </p>
-          </div>
-          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
-            <div
-              data-reveal
-              data-delay="1"
-              className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-base font-bold text-brand-navy">Goods-in-Transit Insurance</h3>
-              <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
-                All items handled by Top Removals packers are covered by goods-in-transit insurance.
-                Insurance options vary by service type and destination. Speak with your coordinator
-                about tailored cover for high-value items or antiques.
-              </p>
-            </div>
-            <div
-              data-reveal
-              data-delay="2"
-              className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-base font-bold text-brand-navy">BAR Accredited Mover</h3>
-              <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
-                Top Removals is a British Association of Removers (BAR) accredited member, meaning
-                we meet independently audited standards for packing, handling and customer
-                protection on every job.
-              </p>
-            </div>
-            <div
-              data-reveal
-              data-delay="3"
-              className="flex flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
-            >
-              <h3 className="text-base font-bold text-brand-navy">EA Registered Waste Carrier</h3>
-              <p className="mt-3 flex-1 text-base leading-relaxed text-brand-charcoal/85">
-                We are a UK Environment Agency registered waste carrier. After unpacking, all
-                cardboard, bubble wrap and paper is collected and recycled. No landfill. Responsible
-                disposal is documented and standard on every booking.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── S12: Areas ──────────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
@@ -804,20 +786,21 @@ export default function PackingServicePage() {
       </section>
 
       {/* ── S13: Reviews ────────────────────────────────────────────────── */}
-      <section className="bg-brand-grey py-20">
+      <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="mx-auto max-w-2xl text-center">
             <SectionHeading
+              tone="light"
               eyebrow="Customer reviews"
               title="What Our Customers Say"
             />
-            <p className="mt-6 text-base leading-relaxed text-brand-charcoal/80">
+            <p className="mt-6 text-base leading-relaxed text-white/80">
               Top Removals customers have left verified reviews on Trustpilot and Google.{" "}
               <a
-                href="https://www.trustpilot.com/review/top-removals.co.uk"
+                href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-brand-orange"
+                className="text-brand-orange underline underline-offset-2 hover:text-white"
               >
                 Read verified reviews on Trustpilot
               </a>

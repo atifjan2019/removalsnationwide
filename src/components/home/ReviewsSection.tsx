@@ -30,7 +30,7 @@ export default function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="bg-brand-grey py-20"
+      className="bg-brand-sand py-20"
       aria-labelledby="reviews-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">

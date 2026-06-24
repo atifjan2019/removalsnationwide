@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 
@@ -9,10 +9,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const poppins = Poppins({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en-GB" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-screen bg-white text-brand-charcoal antialiased">
         {children}
       </body>

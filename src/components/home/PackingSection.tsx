@@ -15,7 +15,7 @@ export default function PackingSection() {
   return (
     <section
       id="packing"
-      className="bg-brand-grey py-20"
+      className="bg-brand-sand py-20"
       aria-labelledby="packing-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -478,7 +479,7 @@ export default function HouseRemovalsPage() {
       </section>
 
       {/* ── S2: Why professional ── */}
-      <section id="why-professional" className="bg-brand-grey py-20">
+      <section id="why-professional" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -570,7 +571,7 @@ export default function HouseRemovalsPage() {
       </section>
 
       {/* ── S4: Process — route timeline ── */}
-      <section id="process" className="bg-brand-grey py-20">
+      <section id="process" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
@@ -661,10 +662,9 @@ export default function HouseRemovalsPage() {
                 const isAbove = i % 2 === 0;
                 const col = i + 2;
                 return (
-                  <>
+                  <Fragment key={`step-${i}`}>
                     {/* Circle — row 2 */}
                     <div
-                      key={`c-${i}`}
                       style={{ gridColumn: col, gridRow: 2 }}
                       className="relative z-10 flex items-center justify-center"
                       data-process-step={String(i + 1)}
@@ -676,7 +676,6 @@ export default function HouseRemovalsPage() {
 
                     {/* Card — alternating rows 1 and 3 */}
                     <div
-                      key={`d-${i}`}
                       style={{ gridColumn: col, gridRow: isAbove ? 1 : 3 }}
                       className={`px-1 ${isAbove ? "self-end pb-2" : "self-start pt-2"}`}
                     >
@@ -693,7 +692,7 @@ export default function HouseRemovalsPage() {
                         </p>
                       </div>
                     </div>
-                  </>
+                  </Fragment>
                 );
               })}
             </div>
@@ -767,7 +766,7 @@ export default function HouseRemovalsPage() {
       </section>
 
       {/* ── S6: Man and van vs full removals ── */}
-      <section id="compare" className="bg-brand-grey py-20">
+      <section id="compare" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Choosing the right service"
@@ -883,7 +882,7 @@ export default function HouseRemovalsPage() {
       </section>
 
       {/* ── S8: Property size use cases ── */}
-      <section id="property-size" className="bg-brand-grey py-20">
+      <section id="property-size" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Sized for every home"
@@ -943,13 +942,14 @@ export default function HouseRemovalsPage() {
       />
 
       {/* ── S10: Why choose us ── */}
-      <section id="why-choose" className="bg-white py-20">
+      <section id="why-choose" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
+            tone="light"
             eyebrow="Verified, insured, accredited"
             title="Why London Trusts Top Removals"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a removal company means trusting someone with everything you own. The
             accreditations below are independently verified and renewed annually. Each one carries
             a real complaints or claims process.
@@ -959,31 +959,31 @@ export default function HouseRemovalsPage() {
             {accreditations.map((name) => (
               <div
                 key={name}
-                className="flex items-start gap-3 rounded-xl border border-black/5 bg-brand-grey p-5"
+                className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/8 p-5"
               >
                 <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
                   <CheckIcon className="h-4 w-4" strokeWidth={3} />
                 </span>
-                <span className="text-sm font-semibold text-brand-navy">{name}</span>
+                <span className="text-sm font-semibold text-white">{name}</span>
               </div>
             ))}
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
-            <div className="rounded-xl bg-brand-navy p-6 text-white">
+            <div className="rounded-xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Goods-in-transit insurance
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Covers your belongings from loading to delivery. Damage in transit triggers a
                 clear financial claims process, not a verbal assurance.
               </p>
             </div>
-            <div className="rounded-xl bg-brand-navy p-6 text-white">
+            <div className="rounded-xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Public liability insurance
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Covers damage caused to your property (walls, floors, door frames) by our crew
                 during the move. Active on every job without exception.
               </p>
@@ -994,7 +994,7 @@ export default function HouseRemovalsPage() {
             <Button href="/certificates" variant="orange" size="md">
               View Certificates
             </Button>
-            <Button href="/about-us" variant="navy" size="md">
+            <Button href="/about-us" variant="outline-light" size="md">
               About Top Removals
             </Button>
           </div>
@@ -1002,7 +1002,7 @@ export default function HouseRemovalsPage() {
       </section>
 
       {/* ── S11: What we will not move ── */}
-      <section id="restricted" className="bg-brand-grey py-20">
+      <section id="restricted" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
@@ -1070,13 +1070,14 @@ export default function HouseRemovalsPage() {
       </section>
 
       {/* ── S13: Reviews ── */}
-      <section id="reviews" className="bg-brand-grey py-20">
+      <section id="reviews" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
+            tone="light"
             eyebrow="Trustpilot and Google Reviews"
             title="What London Customers Say"
           />
-          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
             <Link
               href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
@@ -1086,12 +1087,11 @@ export default function HouseRemovalsPage() {
             >
               Read verified reviews on Trustpilot
             </Link>
-            .{" "}
-            {/* CONFIRM: replace this placeholder with the real Trustpilot TrustBox widget once the embed code is available. Use the official widget — do not hardcode a rating. */}
+            .
           </p>
 
           <div
-            className="mx-auto mt-8 max-w-xl rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5 text-center"
+            className="mx-auto mt-8 max-w-xl rounded-2xl bg-white p-8 text-center shadow-sm"
             data-reveal
           >
             <p className="text-sm font-semibold text-brand-navy">
@@ -1120,7 +1120,7 @@ export default function HouseRemovalsPage() {
       />
 
       {/* ── S15: FAQs ── */}
-      <section id="faq" className="bg-brand-grey py-20">
+      <section id="faq" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Common questions answered"
