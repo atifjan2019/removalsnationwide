@@ -1,21 +1,56 @@
+import Link from "next/link";
 import Image from "next/image";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { StarIcon } from "@/components/ui/icons";
 
 const badges = [
-  { src: "/badge-bar.svg", name: "British Association of Removers" },
-  { src: "/badge-ctsi.svg", name: "CTSI Approved Code / Trading Standards" },
-  { src: "/badge-ngrs.svg", name: "National Guild of Removers & Storers" },
-  { src: "/badge-fors.svg", name: "Fleet Operator Recognition Scheme" },
-  { src: "/badge-checkatrade.svg", name: "Checkatrade" },
-  { src: "/badge-iam.svg", name: "International Association of Movers" },
+  { src: "/memberof/advance-payment-guarantee.png", name: "BAR Advance Payment Guarantee" },
+  { src: "/memberof/ngrs.png", name: "National Guild of Removers and Storers" },
+  { src: "/memberof/removals-ombudsman.png", name: "Removals Industry Ombudsman Scheme" },
+  { src: "/memberof/checkatrade.webp", name: "Checkatrade" },
+  { src: "/memberof/IAM.png", name: "International Association of Movers" },
+  { src: "/memberof/quality-assured.png", name: "Quality Assured Service Standards" },
 ];
 
 export default function Accreditations() {
   return (
-    <section className="bg-brand-grey py-16">
+    <section className="bg-brand-sand py-14">
       <div className="mx-auto max-w-[88rem] px-4">
-        <SectionHeading eyebrow="Trusted & certified" title="We Are Proud Members Of" />
-        <ul className="mt-10 flex flex-wrap items-center justify-center gap-5">
+
+        {/* Trustpilot */}
+        <div className="flex flex-col items-center gap-2" data-reveal>
+          <div className="flex gap-1 text-brand-orange" aria-label="5 out of 5 stars">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <StarIcon key={i} className="h-7 w-7" />
+            ))}
+          </div>
+          <p className="text-xl font-bold text-brand-navy">Excellent</p>
+          <Link
+            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-brand-orange underline underline-offset-2 transition hover:text-brand-navy"
+          >
+            View all reviews on Trustpilot
+          </Link>
+        </div>
+
+        {/* Divider */}
+        <div className="my-8 flex items-center gap-4">
+          <span className="flex-1 border-t border-black/10" />
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/50">
+            Trusted and certified by &mdash;{" "}
+            <Link
+              href="/certificates"
+              className="normal-case text-brand-orange underline underline-offset-2 transition hover:text-brand-navy"
+            >
+              view all certificates
+            </Link>
+          </p>
+          <span className="flex-1 border-t border-black/10" />
+        </div>
+
+        {/* Badge row */}
+        <ul className="flex flex-wrap items-center justify-center gap-5" data-reveal>
           {badges.map((badge) => (
             <li
               key={badge.name}
@@ -26,11 +61,12 @@ export default function Accreditations() {
                 alt={`${badge.name} accreditation badge`}
                 width={180}
                 height={90}
-                className="h-[72px] w-auto"
+                className="h-[72px] w-auto object-contain"
               />
             </li>
           ))}
         </ul>
+
       </div>
     </section>
   );

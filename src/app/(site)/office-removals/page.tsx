@@ -7,6 +7,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
+import Accreditations from "@/components/home/Accreditations";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
@@ -1122,6 +1123,8 @@ export default function OfficeRemovalsPage() {
           </div>
         </div>
       </section>
+
+      <Accreditations />
 
       {/* ── S13: Final CTA ── */}
       <CtaBand

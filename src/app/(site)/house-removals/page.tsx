@@ -8,6 +8,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
+import Accreditations from "@/components/home/Accreditations";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import PricingTable from "@/components/services/PricingTable";
 import HouseRemovalsAnimations from "@/components/services/HouseRemovalsAnimations";
@@ -1108,6 +1109,8 @@ export default function HouseRemovalsPage() {
           </div>
         </div>
       </section>
+
+      <Accreditations />
 
       {/* ── S14: Quote CTA ── */}
       <CtaBand

@@ -7,6 +7,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
+import Accreditations from "@/components/home/Accreditations";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import {
@@ -1144,6 +1145,8 @@ export default function ManAndVanPage() {
           </div>
         </div>
       </section>
+
+      <Accreditations />
 
       {/* ── S12: Final CTA ── */}
       <CtaBand

@@ -7,6 +7,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
+import Accreditations from "@/components/home/Accreditations";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -809,6 +810,8 @@ export default function PackingServicePage() {
           </div>
         </div>
       </section>
+
+      <Accreditations />
 
       {/* ── S14: Final CTA ──────────────────────────────────────────────── */}
       <CtaBand
