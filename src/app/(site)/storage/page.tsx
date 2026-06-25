@@ -431,6 +431,12 @@ export default function LondonStoragePage() {
         </div>
       </section>
 
+      <CtaBand
+        heading="Get a Secure Storage Quote"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
+
       {/* ── S2: Security ─────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">

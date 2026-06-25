@@ -14,6 +14,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Accreditations from "@/components/home/Accreditations";
+import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import TipList, { type Tip } from "@/components/services/TipList";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
@@ -453,6 +454,12 @@ export default function PackagingMaterialsPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        heading="Order Packaging Materials and Boxes"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       {/* ── S2: Why Buy From Top Removals ────────────────────────────── */}
       <section className="bg-brand-grey py-20">

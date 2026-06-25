@@ -479,6 +479,12 @@ export default function HouseRemovalsPage() {
         </div>
       </section>
 
+      <CtaBand
+        heading="Ready to Get Your Fixed House Removal Quote?"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
+
       {/* ── S2: Why professional ── */}
       <section id="why-professional" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">

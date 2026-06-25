@@ -480,6 +480,12 @@ export default function ManAndVanPage() {
         </div>
       </section>
 
+      <CtaBand
+        heading="Ready to Get Your Man and Van Quote?"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
+
       {/* ── S2: What is a man and van service ── */}
       <section id="what-is" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">

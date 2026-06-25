@@ -14,6 +14,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Accreditations from "@/components/home/Accreditations";
+import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SingleItemAnimations from "@/components/services/SingleItemAnimations";
@@ -451,6 +452,12 @@ export default function SingleItemPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        heading="Book a Single Item Delivery"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       {/* ── S2: Single Item Delivery in the UK and Worldwide ─────────── */}
       <section className="bg-white py-20">

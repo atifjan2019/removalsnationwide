@@ -14,6 +14,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Accreditations from "@/components/home/Accreditations";
+import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -397,6 +398,12 @@ export default function CrateHirePage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        heading="Get Your Crate Hire Quote"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       {/* ── S2: Why Hire Plastic Crates ──────────────────────────────── */}
       <section className="bg-brand-grey py-20">

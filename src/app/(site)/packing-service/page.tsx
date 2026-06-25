@@ -407,6 +407,12 @@ export default function PackingServicePage() {
         </div>
       </section>
 
+      <CtaBand
+        heading="Ready to Book Your Packing Service in London?"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
+
       {/* ── S2: What is professional packing ───────────────────────────── */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-[88rem] px-4">

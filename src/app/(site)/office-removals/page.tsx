@@ -474,6 +474,12 @@ export default function OfficeRemovalsPage() {
         </div>
       </section>
 
+      <CtaBand
+        heading="Ready to Plan Your Office Relocation?"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
+
       {/* ── S2: What are office removals ── */}
       <section id="what-is" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">

@@ -14,6 +14,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Accreditations from "@/components/home/Accreditations";
+import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import TipList, { type Tip } from "@/components/services/TipList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
@@ -437,6 +438,12 @@ export default function InternationalRemovalsPage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        heading="Get Your International Removal Quote"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       {/* ── S2: Why Move Abroad With Top Removals ────────────────────── */}
       <section className="bg-white py-20">
