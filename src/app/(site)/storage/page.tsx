@@ -178,7 +178,7 @@ const faqs: FaqItem[] = [
   {
     question: "Can I add extra items to my storage after my first visit?",
     answer:
-      "Certainly, at any time. Storage is charged per volume, so any additional volume is quoted in advance. Contact your coordinator to arrange additional collection and we confirm the revised volume and cost before proceeding.",
+      "Yes, at any time. Storage is charged per volume, so any additional volume is quoted in advance. Contact your coordinator to arrange additional collection and we confirm the revised volume and cost before proceeding.",
   },
   {
     question: "Do I need to pay upfront or leave a deposit?",
@@ -305,7 +305,7 @@ export default function LondonStoragePage() {
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
         title="Secure Storage in London"
-        subtitle="Managed, containerised storage. We collect and store for you."
+        subtitle="From £10/week · Fully Insured · We Collect and Seal · No Minimum Term"
         h1={serviceH1["london-storage"]}
         crumbs={[
           { label: "Home", href: "/" },
@@ -338,7 +338,7 @@ export default function LondonStoragePage() {
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  Free Online Quote
+                  Quick Quote
                 </Button>
                 <Button
                   href="/bookservice"

@@ -79,7 +79,7 @@ export const META: Record<string, MetaEntry> = {
   "london-storage": {
     title: "Secure Storage in London | From £10/Week | Top Removals",
     description:
-      "Secure, fully insured storage in London from £10 a week. We collect, load and seal your goods, no minimum term. Containerised storage for homes and business.",
+      "Secure, fully insured storage in London from £10 a week. We collect, load and seal your goods, no minimum term. Managed containerised storage for homes and business.",
     path: "/storage",
   },
   "packing-service": {
