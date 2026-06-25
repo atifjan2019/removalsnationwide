@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   buildMetadata,
@@ -272,12 +273,22 @@ export default function DormitoryMoveStudentStoragePage() {
               </div>
             </div>
 
-            {/* Right: trusted-by card */}
+            {/* Right: image + trusted-by card */}
             <div
               className="overflow-hidden rounded-2xl border border-black/10 shadow-sm"
               data-reveal
               data-delay="1"
             >
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src="/gallery/move-29.jpg"
+                  alt="Top Removals crew packing a student dormitory room in London"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
                   Trusted and certified by
@@ -311,6 +322,12 @@ export default function DormitoryMoveStudentStoragePage() {
           </div>
         </div>
       </section>
+
+      <CtaBand
+        heading="Book Your Dormitory Move or Student Storage"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       {/* ── S2: Done for you (bold moment) ───────────────────────────── */}
       <section className="bg-white py-20">
@@ -730,12 +747,6 @@ export default function DormitoryMoveStudentStoragePage() {
           </p>
         </div>
       </section>
-
-      <CtaBand
-        heading="Book Your Dormitory Move or Student Storage"
-        buttonLabel="Quick Quote"
-        buttonHref="/bookservice#quick-quote"
-      />
 
       <Accreditations />
     </>
