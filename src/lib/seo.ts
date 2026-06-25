@@ -91,7 +91,7 @@ export const META: Record<string, MetaEntry> = {
   "man-and-van": {
     title: "Man and Van London | From £55/hr, Same Day | Top Removals",
     description:
-      "Man and van in London from £55 an hour, same day and 7 days a week. Fully insured, accredited movers for single items, small moves and house moves. Free quote.",
+      "Man and van in London from £55 an hour plus VAT, same day, 7 days a week. Accredited, insured movers for single items, small moves and house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { buildMetadata, serviceH1, SITE_URL } from "@/lib/seo";
+import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -46,7 +46,7 @@ const manAndVanSchema = {
     itemListElement: [
       {
         "@type": "Offer",
-        name: "1 Man and Van — Per Hour (min. 2 hours)",
+        name: "1 Man and Van, Per Hour (min. 2 hours)",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "55",
@@ -56,7 +56,7 @@ const manAndVanSchema = {
       },
       {
         "@type": "Offer",
-        name: "2 Men and Van — Per Hour (min. 2 hours)",
+        name: "2 Men and Van, Per Hour (min. 2 hours)",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "70",
@@ -66,7 +66,7 @@ const manAndVanSchema = {
       },
       {
         "@type": "Offer",
-        name: "3 Men and Van — Per Hour (min. 2 hours)",
+        name: "3 Men and Van, Per Hour (min. 2 hours)",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "90",
@@ -76,7 +76,7 @@ const manAndVanSchema = {
       },
       {
         "@type": "Offer",
-        name: "1 Man and Van — Half Day (up to 4 hours)",
+        name: "1 Man and Van, Half Day (up to 4 hours)",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "210",
@@ -85,7 +85,7 @@ const manAndVanSchema = {
       },
       {
         "@type": "Offer",
-        name: "1 Man and Van — Full Day (up to 8 hours)",
+        name: "1 Man and Van, Full Day (up to 8 hours)",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "420",
@@ -263,7 +263,7 @@ const faqs: FaqItem[] = [
     answer:
       "A man and van in London starts from £55 per hour (minimum 2 hours) for one mover and a van. Two movers start from £70 per hour and three movers from £90 per hour. Half-day and full-day rates reduce the effective hourly cost. The final price depends on crew size, van size, hours needed, distance and access conditions at both addresses.",
     answerAfter:
-      "Use the removal calculator for an instant estimate, or request a free survey for a fixed written quote.",
+      "Request a free survey or call 020 7205 2525 for a confirmed written quote.",
   },
   {
     question: "Is there a minimum booking for a man and van in London?",
@@ -314,6 +314,24 @@ const faqs: FaqItem[] = [
   },
 ];
 
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+const orgSchema = organizationLd();
+
+const manVanBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Man and Van London", href: "/man-and-van-london" },
+]);
+
 /* ═══════════════════════════════════════════════════════════ */
 
 export default function ManAndVanPage() {
@@ -321,6 +339,9 @@ export default function ManAndVanPage() {
     <>
       <JsonLd data={manAndVanSchema} />
       <JsonLd data={howToSchema} />
+      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...orgSchema }} />
+      <JsonLd data={manVanBreadcrumb} />
 
       {/* ── S1: Hero ── */}
       <PageBanner
@@ -360,7 +381,7 @@ export default function ManAndVanPage() {
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  Get a Free Quote
+                  Quick Quote
                 </Button>
                 <Button
                   href="/bookservice"
@@ -368,7 +389,7 @@ export default function ManAndVanPage() {
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  Estimate My Move
+                  Book a Service
                 </Button>
                 <Button
                   href="tel:+442072052525"
@@ -411,7 +432,7 @@ export default function ManAndVanPage() {
               <div className="relative aspect-[16/9] w-full">
                 <Image
                   src="https://www.top-removals.co.uk/wp-content/uploads/2025/05/man-and-van-service-London.jpg"
-                  alt="man and van service London — Top Removals professional mover loading a van"
+                  alt="Top Removals professional mover loading a van for a man and van move in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -572,7 +593,7 @@ export default function ManAndVanPage() {
                 title: "Studio or bedsit",
                 body: "A full studio or bedsit move typically completes in half a day. Floor level and lift access affect crew time and are noted at the survey or on the phone.",
                 van: "Medium or Luton van",
-                crew: "1–2 movers",
+                crew: "1 to 2 movers",
               },
               {
                 title: "1 to 2-bedroom flat",
@@ -722,8 +743,7 @@ export default function ManAndVanPage() {
                 call 020 7205 2525
               </a>{" "}
               directly. The quick quote form is also available for urgent requests and we aim to
-              call back within the hour. Planning ahead is ideal, but not always possible, and we
-              accommodate short-notice where we can.
+              call back within the hour. Planning ahead is ideal, but short-notice slots are held each day for urgent requests.
             </p>
           </div>
           <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
