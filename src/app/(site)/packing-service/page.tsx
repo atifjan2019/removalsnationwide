@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { buildMetadata, SITE_URL } from "@/lib/seo";
+import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
 import Link from "next/link";
@@ -197,7 +197,7 @@ const proPoints = [
 
 const diyPoints = [
   "Small load: studio or 1-bed with low-value general items",
-  "Flexible timeline. You can pack over several weeks.",
+  "Flexible timeline: pack over several weeks at your own pace.",
   "Budget is the primary constraint and no fragile items are involved",
   "Our materials-and-consultation option gives you the right boxes and guidance at lower cost",
 ];
@@ -229,7 +229,7 @@ const faqs: FaqItem[] = [
   {
     question: "How much does a packing service cost in London?",
     answer:
-      "As a rule of thumb, you can estimate the rate for the packing by multiplying the number of cartons needed by 6. So a 100-carton pack job will cost approximately £600. This includes labour and all packing and wrapping materials: boxes, wrapping paper, bubble wrap, tape. The exact total depends on scope, fragile content and any specialist handling. A free survey produces an accurate fixed quote.",
+      "Estimate the packing cost by multiplying the number of cartons by £6. A 100-carton job costs approximately £600, covering labour and all packing and wrapping materials: boxes, wrapping paper, bubble wrap, tape. The exact total depends on scope, fragile content and any specialist handling. A free survey produces an accurate fixed quote.",
   },
   {
     question: "What is included in the full packing service?",
@@ -244,7 +244,7 @@ const faqs: FaqItem[] = [
   {
     question: "Do you supply all packing materials?",
     answer:
-      "Yes. All boxes, bubble wrap, wrapping paper and tape are included in the quoted price for a full packing booking. Nothing is charged separately for these materials. Mattress covers and sofa covers are available as paid add-ons. If you prefer to pack yourself, materials can be ordered separately through our packaging materials service.",
+      "Yes. All boxes, bubble wrap, wrapping paper and tape are included in the quoted price for a full packing booking. Nothing is charged separately for these materials. Mattress covers and sofa covers are available as paid add-ons. If you prefer to pack yourself, materials are available separately through our packaging materials service.",
   },
   {
     question: "How many boxes do I need for my home?",
@@ -259,12 +259,12 @@ const faqs: FaqItem[] = [
   {
     question: "Do you pack fragile items and antiques?",
     answer:
-      "Yes. Fragile items, antiques, artwork and glassware are packed using acid-free paper, an extra layer of bubble wrap, and a strict crating procedure. Our crews are trained in specialist fragile packing. High-value pieces can be noted at the survey stage so the appropriate protection method and crate type is confirmed in advance.",
+      "Yes. Fragile items, antiques, artwork and glassware are packed using acid-free paper, an extra layer of bubble wrap, and a strict crating procedure. Our crews are trained in specialist fragile packing. High-value pieces are noted at the survey stage so the appropriate protection method and crate type is confirmed in advance.",
   },
   {
     question: "Can I choose partial packing for selected rooms only?",
     answer:
-      "Yes. Partial packing covers selected rooms, specific item types, or a single category such as kitchen glassware or bedroom wardrobes. You pack everything else yourself. Partial packing is quoted separately and can be booked as a standalone service or as an add-on to any removal.",
+      "Yes. Partial packing covers selected rooms, specific item types, or a single category such as kitchen glassware or bedroom wardrobes. You pack everything else yourself. Partial packing is quoted separately and is bookable as a standalone service or as an add-on to any removal.",
   },
   {
     question: "Do you offer an unpacking service?",
@@ -274,7 +274,7 @@ const faqs: FaqItem[] = [
   {
     question: "Is it worth hiring professional packers?",
     answer:
-      "Professional packing saves time and reduces the risk of breakage. It is worth it when you have fragile or high-value items, a large property, a tight moving timeline, or where your insurance policy requires professional packing for full liability cover. For small, low-value loads, a materials and consultation booking may be a better fit.",
+      "Professional packing saves time and reduces the risk of breakage. It is worth it when you have fragile or high-value items, a large property, a tight moving timeline, or where your insurance policy requires professional packing for full liability cover. For small, low-value loads, a materials and consultation booking is a better fit.",
   },
   {
     question: "Do you recycle packing waste after unpacking?",
@@ -283,6 +283,24 @@ const faqs: FaqItem[] = [
   },
 ];
 
+const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+const orgSchema = organizationLd();
+
+const packingBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Packing Service London", href: "/packing-service" },
+]);
+
 /* ── Page component ──────────────────────────────────────────────────────── */
 
 export default function PackingServicePage() {
@@ -290,12 +308,15 @@ export default function PackingServicePage() {
     <>
       <JsonLd data={packingServiceSchema} />
       <JsonLd data={howToSchema} />
+      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...orgSchema }} />
+      <JsonLd data={packingBreadcrumb} />
       <PackingServiceAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 
       <PageBanner
-        title="Packing Service London"
-        subtitle="Full, Partial and Fragile Packing Available"
+        title={serviceH1["packing-service"]}
+        subtitle="Cartons x £6 · Materials and Labour Included · Fully Insured · Fragile and Export Packing"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -305,7 +326,7 @@ export default function PackingServicePage() {
 
       {/* ── S1: Hero intro ─────────────────────────────────────────────── */}
       <section className="bg-white pt-12 pb-0" id="hero-intro">
-        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-2 lg:gap-16 lg:pb-16">
+        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
           {/* Left: copy */}
           <div>
             <p className="hero-anim-sub text-sm font-bold uppercase tracking-widest text-brand-orange">
@@ -322,12 +343,15 @@ export default function PackingServicePage() {
               online quote takes under 2 minutes.
             </p>
 
-            <div className="hero-anim-ctas mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="hero-anim-ctas mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/bookservice#quick-quote" variant="orange" size="lg">
-                Free Online Quote
+                Quick Quote
               </Button>
-              <Button href="/bookservice" variant="outline" size="lg">
+              <Button href="/bookservice" variant="navy" size="lg">
                 Book a Service
+              </Button>
+              <Button href="tel:02072052525" variant="outline" size="lg">
+                020 7205 2525
               </Button>
             </div>
 
@@ -645,7 +669,7 @@ export default function PackingServicePage() {
             </ul>
             <p className="mt-6 text-center">
               <Button href="/bookservice#quick-quote" variant="orange" size="md">
-                Get a fixed quote in 2 minutes
+                Quick Quote
               </Button>
             </p>
           </div>
@@ -694,7 +718,7 @@ export default function PackingServicePage() {
             </div>
           </div>
           <p data-reveal className="mx-auto mt-8 max-w-4xl text-center text-sm leading-relaxed text-brand-charcoal/60">
-            Packing is available with any removal — full house moves, smaller{" "}
+            Packing is available with any removal: full house moves, smaller{" "}
             <Link href="/man-and-van-london" className="underline hover:text-brand-orange">
               man and van bookings
             </Link>
@@ -768,8 +792,91 @@ export default function PackingServicePage() {
 
           <div data-reveal className="mt-10 flex justify-center">
             <Button href="/bookservice#quick-quote" variant="orange" size="lg">
-              Get a Free Quote
+              Quick Quote
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── S11: Insurance, Accreditations and Recycling ────────────────── */}
+      <section className="bg-brand-navy py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div data-reveal className="mx-auto max-w-3xl text-center">
+            <SectionHeading
+              tone="light"
+              eyebrow="Covered and certified"
+              title="Insurance, Accreditations and Recycling"
+            />
+            <p className="mt-6 text-base leading-relaxed text-white/80">
+              All items handled by Top Removals are covered by goods-in-transit and public liability
+              insurance. Speak to your moving coordinator about the insurance options available
+              depending on your service type and destination.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+            <div
+              data-reveal
+              data-delay="1"
+              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+            >
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+                Accreditations
+              </h3>
+              <ul className="mt-4 space-y-2">
+                {[
+                  "British Association of Removers (BAR)",
+                  "National Guild of Removers and Storers (NGRS)",
+                  "International Association of Movers (IAM)",
+                  "The Furniture Ombudsman",
+                  "QSS-DW Approved Mover",
+                  "Checkatrade",
+                ].map((name) => (
+                  <li key={name} className="flex items-start gap-2 text-sm leading-relaxed text-white/80">
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-orange">&#10003;</span>
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              data-reveal
+              data-delay="2"
+              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+            >
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+                Licensed Waste Carrier
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-white/80">
+                Top Removals is registered with the UK Environment Agency as a licensed waste
+                carrier, registration CBDL25630. All packing waste collected after unpacking is
+                recycled. Nothing goes to landfill.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-white/80">
+                We also collect and responsibly dispose of WEEE items (waste electrical and
+                electronic equipment) as part of any removal or unpacking booking.
+              </p>
+            </div>
+
+            <div
+              data-reveal
+              data-delay="3"
+              className="rounded-2xl border border-white/10 bg-white/5 p-6"
+            >
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+                Company Details
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-white/80">
+                Registered in England and Wales, Company No. 6874216.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-white/80">
+                Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-white/80">
+                020 7205 2525 &nbsp;·&nbsp; 0800 046 7877
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -843,7 +950,7 @@ export default function PackingServicePage() {
       {/* ── S14: Final CTA ──────────────────────────────────────────────── */}
       <CtaBand
         heading="Ready to Book Your Packing Service in London?"
-        buttonLabel="Get a Free Quote"
+        buttonLabel="Quick Quote"
         buttonHref="/bookservice#quick-quote"
       />
 
