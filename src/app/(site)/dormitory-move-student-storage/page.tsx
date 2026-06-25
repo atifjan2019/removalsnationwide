@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   buildMetadata,
@@ -13,6 +12,7 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Accreditations from "@/components/home/Accreditations";
+import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import DormitoryMoveAnimations from "@/components/services/DormitoryMoveAnimations";
@@ -272,22 +272,12 @@ export default function DormitoryMoveStudentStoragePage() {
               </div>
             </div>
 
-            {/* Right: image + trusted-by card */}
+            {/* Right: trusted-by card */}
             <div
               className="overflow-hidden rounded-2xl border border-black/10 shadow-sm"
               data-reveal
               data-delay="1"
             >
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="/gallery/move-29.jpg"
-                  alt="Top Removals crew packing a student dormitory room in London"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
                   Trusted and certified by
@@ -366,15 +356,6 @@ export default function DormitoryMoveStudentStoragePage() {
               data-reveal
               data-delay="1"
             >
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="/gallery/move-30.jpg"
-                  alt="Top Removals team wrapping and disassembling student furniture for storage"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 38vw"
-                  className="object-cover"
-                />
-              </div>
               <div className="bg-brand-sand p-6">
                 <p className="text-xs font-bold uppercase tracking-widest text-brand-navy">
                   What makes us different
@@ -749,6 +730,12 @@ export default function DormitoryMoveStudentStoragePage() {
           </p>
         </div>
       </section>
+
+      <CtaBand
+        heading="Book Your Dormitory Move or Student Storage"
+        buttonLabel="Quick Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       <Accreditations />
     </>
