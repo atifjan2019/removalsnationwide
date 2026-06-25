@@ -853,7 +853,7 @@ export default function CrateHirePage() {
             <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
-            <Button href="/bookservice" variant="outline" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
               Book a Service
             </Button>
           </div>
@@ -891,23 +891,6 @@ export default function CrateHirePage() {
             <SectionHeading eyebrow="Good to know" title="Crate Hire FAQs" />
           </div>
           <Faq items={faqs} className="mt-10" />
-          <p className="mt-8 text-center text-sm text-brand-charcoal/55">
-            More questions? Call{" "}
-            <a
-              href="tel:+442072052525"
-              className="font-semibold text-brand-orange hover:text-brand-navy"
-            >
-              020 7205 2525
-            </a>{" "}
-            or{" "}
-            <Link
-              href="/bookservice#quick-quote"
-              className="font-semibold text-brand-orange hover:text-brand-navy"
-            >
-              request a quote online
-            </Link>
-            .
-          </p>
         </div>
       </section>
 
@@ -932,7 +915,7 @@ export default function CrateHirePage() {
             </Button>
             <Button
               href="/bookservice"
-              variant="outline"
+              variant="outline-light"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -967,41 +950,6 @@ export default function CrateHirePage() {
 
       <Accreditations />
 
-      {/* ── Related services ─────────────────────────────────────────── */}
-      <section className="bg-brand-sand py-10">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <p className="text-center text-sm font-medium text-brand-charcoal/70">
-            Related services:{" "}
-            <Link href="/man-and-van-london" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              man and van
-            </Link>
-            ,{" "}
-            <Link href="/packaging-materials" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              packaging materials
-            </Link>
-            ,{" "}
-            <Link href="/house-removals" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              house removals
-            </Link>
-            ,{" "}
-            <Link href="/office-removals" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              office removals
-            </Link>
-            ,{" "}
-            <Link href="/packing-service" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              packing service
-            </Link>
-            ,{" "}
-            <Link href="/storage" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              secure storage
-            </Link>
-            ,{" "}
-            <Link href="/areas" className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy">
-              areas we cover
-            </Link>
-          </p>
-        </div>
-      </section>
     </>
   );
 }

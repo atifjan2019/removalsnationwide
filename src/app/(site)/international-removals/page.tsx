@@ -1039,48 +1039,6 @@ export default function InternationalRemovalsPage() {
 
       <Accreditations />
 
-      {/* ── Related services ─────────────────────────────────────────── */}
-      <section className="bg-brand-sand py-10">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <p className="text-center text-sm font-medium text-brand-charcoal/70">
-            Related services:{" "}
-            <Link
-              href="/removals-services-to-norway"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
-            >
-              Norway removals
-            </Link>
-            ,{" "}
-            <Link
-              href="/house-removals"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
-            >
-              house removals
-            </Link>
-            ,{" "}
-            <Link
-              href="/storage"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
-            >
-              secure storage
-            </Link>
-            ,{" "}
-            <Link
-              href="/packing-service"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
-            >
-              packing service
-            </Link>
-            ,{" "}
-            <Link
-              href="/crate-hire"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
-            >
-              crate hire
-            </Link>
-          </p>
-        </div>
-      </section>
     </>
   );
 }

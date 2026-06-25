@@ -1048,7 +1048,7 @@ export default function LondonStoragePage() {
             <Button href="/bookservice#quick-quote" variant="orange" size="lg">
               Free Online Quote
             </Button>
-            <Button href="/bookservice" variant="outline" size="lg">
+            <Button href="/bookservice" variant="outline-light" size="lg">
               Book a Service
             </Button>
           </div>

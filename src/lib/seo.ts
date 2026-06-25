@@ -107,33 +107,33 @@ export const META: Record<string, MetaEntry> = {
     path: "/crate-hire",
   },
   "rubbish-disposal": {
-    title: "Rubbish Disposal and House Clearance Offered by Top Removals",
+    title: "Rubbish Removal London from £50 | Licensed Clearance | Top Removals",
     description:
-      "Daily refuse collection, removal of rubbish and waste, office and house clearances, cleaning up after building work and rubbish disposal 7 days a week",
+      "Licensed rubbish removal and clearance in London. Transparent load prices from £50, we do all the loading, recycled where possible, 7 days a week. Combine with your move.",
     path: "/rubbish-disposal",
   },
   "single-item-deliveries": {
-    title: "Reputable Single Item / E-bay Deliveries and Courier Service",
+    title: "Single Item Delivery London | eBay & Furniture Courier | Top Removals",
     description:
-      "Now you can benefit from the single item collection and delivery services of Top Removals throughout the UK. The perfect courier service for eBay sellers.",
+      "Single item and eBay delivery in London by a real removals company. Own fleet, pickup-only collection, furniture assembly, proof of delivery, worldwide shipping. From £60 plus VAT.",
     path: "/single-item",
   },
   "cleaning-services": {
-    title: "The Move In or Out Cleaning Services in London You Deserve",
+    title: "End of Tenancy & Move In Out Cleaning London | Top Removals",
     description:
-      "Moving soon and frantically searching for a good cleaning company in London? Top Cleaners is the one to call! Our skilled teams can brighten every property.",
+      "Move in, move out and end of tenancy cleaning in London by sister company Top Cleaners, coordinated with your move. Vetted, trained, fully insured. All London. Free quote.",
     path: "/cleaning-services",
   },
   "removals-to-norway": {
-    title: "Removals to Norway - The Moving Experience You Won't Regret",
+    title: "Removals to Norway from the UK | Weekly Door-to-Door | Top Removals",
     description:
-      "Top Removals offers regular removals from London to Norway. Weekly departures to Oslo, door-to-door service, personal move coordinator and full customs support.",
+      "Weekly removals to Norway from the UK. Own road-trains, local teams across Norway, Oslo depot, inclusive customs and a personal move coordinator. From single items to a full truck.",
     path: "/removals-services-to-norway",
   },
   "dormitory-move-student-storage": {
-    title: "Dormitory Packing, Moving and Student Storage | Top Removals London",
+    title: "Dormitory Move and Student Storage | London, UK & Worldwide | Top Removals",
     description:
-      "Top Removals provides professional dormitory packing, UK and international delivery and secure 24/7 student storage. Perfect for university and campus relocations.",
+      "Full-service dormitory move and student storage. Our movers pack your room, disassemble furniture, then deliver across the UK, ship worldwide, or store securely. You need not be present.",
     path: "/dormitory-move-student-storage",
   },
   prices: {
@@ -390,11 +390,11 @@ export const serviceH1: Record<string, string> = {
   "man-and-van": "Man and Van London",
   "packaging-materials": "Packaging Materials and Removal Boxes in London",
   "crate-hire": "Crate Hire in London",
-  "rubbish-disposal": "Rubbish Disposal",
-  "single-item-deliveries": "Single Item / E-bay Deliveries",
-  "cleaning-services": "Cleaning Services",
-  "removals-to-norway": "Removals to Norway",
-  "dormitory-move-student-storage": "Dormitory Move and Student Storage",
+  "rubbish-disposal": "Rubbish Removal and Clearance in London",
+  "single-item-deliveries": "Single Item and eBay Delivery in London",
+  "cleaning-services": "Move In, Move Out and End of Tenancy Cleaning in London",
+  "removals-to-norway": "Removals to Norway from the UK",
+  "dormitory-move-student-storage": "Dormitory Move and Student Storage in London and the UK",
 };
 
 export function serviceLdFor(id: keyof typeof META) {
