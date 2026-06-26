@@ -110,9 +110,11 @@ export const islington: Borough = {
   knowIntro:
     "Islington is one of London's more demanding boroughs to move in, and the detail is where moves go wrong. Here is what our crews plan for.",
   knowBlocks: [
+    // Council parking (confirm current charges and the day 1 to 2 treatment on the
+    // Islington portal): among the more expensive London boroughs for a suspension.
     {
       label: "Parking and permits",
-      body: "Islington operates extensive controlled parking across the borough, so a removals vehicle usually cannot simply park outside on the day. Where access requires it, we arrange a suspended parking bay with the council in advance so the van can load and unload legally and close to the door. We factor this into the plan rather than leaving you to sort it on moving day.",
+      body: "Islington operates controlled parking across the whole borough and is one of the more expensive boroughs for a suspension, so we arrange a bay suspension with the council where a move needs it and build it into the plan. Islington needs at least 14 days notice for most bay types, or 10 days for pay by phone bays, with the advance warning notice itself provided free; applications at short notice carry a £100 administration fee and may be declined. The space charge rises to £85 per space per day from the third day, excluding Sundays and bank holidays, so we book only the days and bays the move needs. Suspensions on estate land are arranged through the local Area Housing Office. Near the Emirates Stadium, resident and shared bays carry additional match day restrictions, which we check against your move date. We arrange the suspension and factor it into your quote.",
     },
     {
       label: "Main roads and access",
@@ -123,8 +125,8 @@ export const islington: Borough = {
       body: "Much of Islington is Georgian and Victorian, so we move a lot of period townhouses around Canonbury and Barnsbury, terraced conversions and upper-floor flats with narrow original staircases, and mansion blocks with shared lifts and entrances. Around Angel and the City Road basin there are modern apartment blocks with concierge desks, loading bays and booking rules, which we coordinate in advance.",
     },
     {
-      label: "Emissions",
-      body: "All of Islington sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      label: "Emissions and charges",
+      body: "All of Islington sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. The southern EC1 edge near the City can fall inside the central Congestion Charge zone, so we confirm this by street and factor the £18 daily charge into the plan where it applies.",
     },
   ],
   nearby: [
@@ -182,9 +184,12 @@ export const camden: Borough = {
   knowIntro:
     "Camden is one of the harder central boroughs to move in, and the access varies sharply by neighbourhood. Here is what our crews plan for.",
   knowBlocks: [
+    // Council parking (indicative, confirm on the Camden portal): administration
+    // charge around £63 including the free first day, then around £52 per space per
+    // day from day two; among the longest notice periods in London.
     {
       label: "Parking and permits",
-      body: "Camden operates extensive controlled parking, and it is very restricted in Hampstead and Primrose Hill where the period streets are narrow. Where a move needs it we arrange a suspended parking bay with the council in advance, so the van can load legally and close to the door rather than leaving it to you on the day.",
+      body: "Camden has extensive controlled parking, most restricted in Hampstead and Primrose Hill, so we arrange a bay suspension with the council where a move needs it. Camden requires one of the longest notice periods in London, at least 17 working days before the suspension starts, so we apply as soon as your date is confirmed. There is a genuine benefit for home moves: Camden waives the space charge for the first day, up to three consecutive spaces, and does not apply the short notice charge for a move, although the administration charge still applies. Charges are then tiered by duration, to a maximum of six months. We arrange the suspension and factor it into your quote.",
     },
     {
       label: "Hills, roads and access",
@@ -196,7 +201,7 @@ export const camden: Borough = {
     },
     {
       label: "Emissions and charges",
-      body: "Camden sits within the Greater London Ultra Low Emission Zone, and the southern tip around Bloomsbury and Holborn falls inside the Congestion Charge zone, so we confirm this by street. Our fleet is compliant, so there is no emissions surcharge to worry about.",
+      body: "Camden sits within the Greater London Ultra Low Emission Zone, and the southern tip around Bloomsbury and Holborn falls inside the central Congestion Charge zone, so we confirm this by street. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. Where a move falls inside the zone, the £18 Congestion Charge, Monday to Friday 7am to 6pm and weekends and bank holidays 12pm to 6pm, is factored into the plan.",
     },
   ],
   nearby: [
@@ -261,7 +266,7 @@ export const hackney: Borough = {
   knowBlocks: [
     {
       label: "Parking and permits",
-      body: "Hackney operates extensive controlled parking with resident-only bays across the period streets of London Fields, Clapton and De Beauvoir. Where a move needs it we arrange a suspended parking bay with the council in advance, so the van can load legally and close to the door.",
+      body: "Hackney operates extensive controlled parking with resident-only bays across the period streets of London Fields, Clapton and De Beauvoir, and it is one of the higher-cost boroughs for a suspension. Most London boroughs need 10 to 14 working days notice for a bay suspension and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and book only the days and bays the move needs. We arrange the suspension, plan the loading point around Kingsland Road, Mare Street and Morning Lane, and factor it into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Lifts, loading bays and access",
@@ -273,7 +278,7 @@ export const hackney: Borough = {
     },
     {
       label: "Emissions",
-      body: "Hackney sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Hackney sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
@@ -339,7 +344,7 @@ export const wandsworth: Borough = {
   knowBlocks: [
     {
       label: "Parking and permits",
-      body: "Controlled parking applies across most of the borough. Around Between the Commons, Tooting and Earlsfield the long Victorian terraces have resident bays, so where a move needs it we arrange a suspended parking bay with the council in advance, close to the door.",
+      body: "Controlled parking applies across most of the borough, though Wandsworth is one of the more affordable inner boroughs for a suspension. Around Between the Commons, Tooting and Earlsfield the long Victorian terraces have resident bays. Most London boroughs need 10 to 14 working days notice for a bay suspension and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and book only the days and bays the move needs. We arrange the suspension, plan the loading point around Trinity Road, Garratt Lane and Putney High Street, and factor it into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads and access",
@@ -351,7 +356,7 @@ export const wandsworth: Borough = {
     },
     {
       label: "Emissions",
-      body: "Wandsworth sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Wandsworth sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
@@ -416,7 +421,7 @@ export const lambeth: Borough = {
   knowBlocks: [
     {
       label: "Parking and permits",
-      body: "Controlled parking is widespread across Lambeth. Clapham, Kennington and Herne Hill are period terraces with resident bays, so where a move needs it we arrange a suspended parking bay with the council in advance, close to the door.",
+      body: "Controlled parking is widespread across Lambeth, and it is one of the higher-cost boroughs for a suspension. Clapham, Kennington and Herne Hill are period terraces with resident bays. Most London boroughs need 10 to 14 working days notice for a bay suspension and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and book only the days and bays the move needs. We arrange the suspension, plan the loading point around Clapham High Street, Streatham High Road and Stockwell Road, and factor it into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads, estates and access",
@@ -428,7 +433,7 @@ export const lambeth: Borough = {
     },
     {
       label: "Emissions and charges",
-      body: "Lambeth sits within the Greater London Ultra Low Emission Zone, and the northern tip around Waterloo and Vauxhall falls inside the Congestion Charge zone, so we confirm this by street. Our fleet is compliant.",
+      body: "Lambeth sits within the Greater London Ultra Low Emission Zone, and the northern tip around Waterloo and Vauxhall falls inside the central Congestion Charge zone, so we confirm this by street. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. The £18 Congestion Charge is factored into the plan where a move falls inside the zone.",
     },
   ],
   nearby: [
@@ -497,7 +502,7 @@ export const towerHamlets: Borough = {
     },
     {
       label: "Parking and permits",
-      body: "Parking is controlled by council zones and, on the Isle of Dogs and at Canary Wharf, by private estate management rather than just the council. We arrange a suspended bay or the estate permit in advance so the van can load legally and close to the entrance.",
+      body: "Parking is controlled by council zones and, on the Isle of Dogs and at Canary Wharf, by private estate management rather than just the council. Most London boroughs need 10 to 14 working days notice for a council bay suspension and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed, and on the private estates we arrange the estate permit instead. We arrange whichever applies, plan the loading point around the A13, Commercial Road and Whitechapel Road, and factor it into your quote, confirming the exact current charge before we rely on it.",
     },
     {
       label: "Roads, wharves and property",
@@ -505,7 +510,7 @@ export const towerHamlets: Borough = {
     },
     {
       label: "Emissions and charges",
-      body: "Tower Hamlets sits within the Greater London Ultra Low Emission Zone, and the western edge near the City falls inside the Congestion Charge zone, so we confirm this by street. Our fleet is compliant.",
+      body: "Tower Hamlets sits within the Greater London Ultra Low Emission Zone, and the western edge near the City falls inside the central Congestion Charge zone, so we confirm this by street. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. The £18 Congestion Charge is factored into the plan where a move falls inside the zone.",
     },
   ],
   nearby: [
@@ -568,9 +573,12 @@ export const westminster: Borough = {
   knowIntro:
     "Westminster is the most access-restricted borough in London and the homes are often high-value, so careful planning and full insurance matter. Here is what our crews plan for.",
   knowBlocks: [
+    // Council parking (indicative, confirm on the Westminster portal): central
+    // space charge around £51 to £55 per bay per day; estate-land suspensions need
+    // a posted application, not the online form.
     {
-      label: "Congestion Charge and parking",
-      body: "Most of the borough sits inside the Congestion Charge zone as well as the ULEZ, and parking is the most controlled in the city, so a suspended parking bay arranged with the council in advance is usually essential. We plan this into every Westminster move so the van can load legally and close to the door.",
+      label: "Parking and bay suspensions",
+      body: "Westminster has the most controlled parking in London and most of the borough sits inside both the ULEZ and the Congestion Charge zone, so a bay suspension arranged with the council in advance is usually essential. Westminster needs at least 10 working days notice for a suspension; applications made within 10 calendar days of the start carry a £20 short notice administration fee and may be declined. Charges are tiered by duration and vary by location, with traffic sensitive streets costing more, although the council applies a concession for domestic removal vans on those streets, charging the lower standard rate. A suspended bay is counted as five metres unless individually marked, so we book the right number of bays for the van and ramp. We arrange all of this and factor the suspension into your quote.",
     },
     {
       label: "Roads and building access",
@@ -582,7 +590,7 @@ export const westminster: Borough = {
     },
     {
       label: "Emissions and charges",
-      body: "Westminster sits within both the Greater London Ultra Low Emission Zone and the Congestion Charge zone. Our fleet is compliant, so there is no emissions surcharge, and we factor any Congestion Charge into the plan.",
+      body: "Westminster sits within both the Greater London Ultra Low Emission Zone and the central Congestion Charge zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. The Congestion Charge is £18 a day, Monday to Friday 7am to 6pm and weekends and bank holidays 12pm to 6pm, which we factor into the plan.",
     },
   ],
   nearby: [
@@ -651,7 +659,7 @@ export const kensingtonAndChelsea: Borough = {
     },
     {
       label: "Parking and permits",
-      body: "Parking is among the most controlled in London, so a suspended bay arranged with the council in advance is usually essential. Main routes such as the King's Road, Fulham Road, Kensington High Street, Cromwell Road and Holland Park Avenue carry traffic and red-route sections we plan around.",
+      body: "Parking is among the most controlled and most expensive in London, and short notice express applications carry a large surcharge, so we apply as soon as your date is confirmed. Most London boroughs need 10 to 14 working days notice for a bay suspension and apply a daily space charge tiered by duration, and we book only the days and bays the move needs. We arrange the suspension, plan the loading point around the King's Road, Cromwell Road and Holland Park Avenue and their red-route sections, and factor it into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Prime and conserved property",
@@ -659,7 +667,7 @@ export const kensingtonAndChelsea: Borough = {
     },
     {
       label: "Emissions",
-      body: "Kensington and Chelsea sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Kensington and Chelsea sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
@@ -722,7 +730,7 @@ export const hammersmithAndFulham: Borough = {
   knowBlocks: [
     {
       label: "Parking and permits",
-      body: "Controlled parking applies in most areas. Fulham is street after street of Victorian terraces with resident bays, so where a move needs it we arrange a suspended parking bay with the council in advance, close to the door.",
+      body: "Controlled parking applies in most areas, and Fulham is street after street of Victorian terraces with resident bays. Most London boroughs need 10 to 14 working days notice for a bay suspension and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and book only the days and bays the move needs. We arrange the suspension, plan the loading point around Fulham Palace Road, Fulham Road and Wandsworth Bridge Road, and factor it into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads and access",
@@ -734,7 +742,7 @@ export const hammersmithAndFulham: Borough = {
     },
     {
       label: "Emissions",
-      body: "Hammersmith and Fulham sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Hammersmith and Fulham sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
@@ -804,7 +812,7 @@ export const southwark: Borough = {
     },
     {
       label: "Parking and permits",
-      body: "Controlled parking applies across the inner areas. East Dulwich, Camberwell and Peckham are Victorian terraces with resident bays, so where a move needs it we arrange a suspended parking bay with the council in advance, close to the door.",
+      body: "Controlled parking applies across the inner areas, and East Dulwich, Camberwell and Peckham are Victorian terraces with resident bays. Most London boroughs need 10 to 14 working days notice for a bay suspension and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and book only the days and bays the move needs. We arrange the suspension, plan the loading point around the Old Kent Road, Walworth Road and Lordship Lane, and factor it into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads, estates and property",
@@ -812,7 +820,7 @@ export const southwark: Borough = {
     },
     {
       label: "Emissions and charges",
-      body: "Southwark sits within the Greater London Ultra Low Emission Zone, and the northern tip around Bankside and Borough falls inside the Congestion Charge zone, so we confirm this by street. Our fleet is compliant.",
+      body: "Southwark sits within the Greater London Ultra Low Emission Zone, and the northern tip around Bankside and Borough falls inside the central Congestion Charge zone, so we confirm this by street. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move. The £18 Congestion Charge is factored into the plan where a move falls inside the zone.",
     },
   ],
   nearby: [
@@ -876,7 +884,7 @@ export const lewisham: Borough = {
   knowBlocks: [
     {
       label: "Parking varies by street",
-      body: "Inner areas such as New Cross, Deptford and Brockley have controlled parking zones, while outer areas around Grove Park and parts of Lee are less restricted, so we confirm parking per street rather than assume it, and arrange a suspended bay with the council only where needed.",
+      body: "Inner areas such as New Cross, Deptford and Brockley have controlled parking zones, while outer areas around Grove Park and parts of Lee are less restricted, so we confirm parking per street rather than assume it. Where a suspension is needed, most London boroughs require 10 to 14 working days notice and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and arrange a suspended bay only where the move needs one. We plan the loading point around Lewisham High Street, New Cross Road and Brockley Road and factor any suspension into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads and access",
@@ -888,7 +896,7 @@ export const lewisham: Borough = {
     },
     {
       label: "Emissions",
-      body: "Lewisham sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Lewisham sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
@@ -952,7 +960,7 @@ export const ealing: Borough = {
     },
     {
       label: "Parking varies by street",
-      body: "Controlled parking applies around Ealing Broadway, Acton and the stations, while many outer residential streets are unrestricted, so we confirm parking per street and arrange a suspended bay with the council only where needed.",
+      body: "Controlled parking applies around Ealing Broadway, Acton and the stations, while many outer residential streets are unrestricted, so we confirm parking per street, and Ealing sits at the more affordable end for a suspension. Where one is needed, most London boroughs require 10 to 14 working days notice and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and arrange a suspended bay only where the move needs one. We plan the loading point around the Uxbridge Road and Greenford Road and factor any suspension into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads and property",
@@ -960,7 +968,7 @@ export const ealing: Borough = {
     },
     {
       label: "Emissions",
-      body: "Ealing sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Ealing sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
@@ -1029,7 +1037,7 @@ export const barnet: Borough = {
     },
     {
       label: "Parking varies by street",
-      body: "Controlled parking applies around the stations and town centres such as Finchley and Golders Green, while many streets are unrestricted, so we confirm parking per street and arrange a suspended bay with the council only where needed.",
+      body: "Controlled parking applies around the stations and town centres such as Finchley and Golders Green, while many residential streets are unrestricted, so we confirm parking per street rather than assume it. Where a suspension is needed, most London boroughs require 10 to 14 working days notice and apply a daily space charge tiered by duration, so we apply as soon as your date is confirmed and arrange a suspended bay only where the move needs one. We plan the loading point around the A1, the North Circular and Finchley High Road and factor any suspension into your quote, confirming the exact current council charge before we rely on it.",
     },
     {
       label: "Roads and Colindale towers",
@@ -1037,7 +1045,7 @@ export const barnet: Borough = {
     },
     {
       label: "Emissions",
-      body: "Barnet sits within the Greater London Ultra Low Emission Zone. We run a modern, compliant fleet, so there is no emissions surcharge to worry about.",
+      body: "Barnet sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
     },
   ],
   nearby: [
