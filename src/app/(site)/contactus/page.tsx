@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -10,11 +11,26 @@ import { PhoneIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("contact");
 
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${SITE_URL}/contactus#contactpage`,
+  url: `${SITE_URL}/contactus`,
+  name: "Contact Top Removals",
+  description:
+    "Contact Top Removals by phone or enquiry form. Purfleet, RM15 4YA. Open 7 days a week.",
+  about: { "@id": `${SITE_URL}/#organization` },
+  mainEntity: { "@id": `${SITE_URL}/#organization` },
+};
+
+const contactBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Contact Us", href: "/contactus" },
+]);
+
 const phones = [
   { label: "020 7205 2525", href: "tel:+442072052525" },
   { label: "0800 046 7877", href: "tel:+448000467877" },
-  { label: "0845 017 0822", href: "tel:+448450170822" },
-  { label: "07506 503 073", href: "tel:+447506503073" },
 ];
 
 const address = "Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA";
@@ -22,6 +38,8 @@ const address = "Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactPageSchema} />
+      <JsonLd data={contactBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="Contact Us"
@@ -73,6 +91,16 @@ export default function ContactPage() {
                 </ul>
               </div>
 
+              <div className="mt-6">
+                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-orange">
+                  Opening Hours
+                </h3>
+                <p className="mt-2 leading-relaxed text-white/85">
+                  We are open 7 days a week. Call or send an enquiry any day and a move coordinator
+                  will respond.
+                </p>
+              </div>
+
               <div className="mt-8 border-t border-white/15 pt-6">
                 <p className="text-sm leading-relaxed text-white/80">
                   We adhere to the British Association of Removers Alternative Dispute Resolution
@@ -95,7 +123,7 @@ export default function ContactPage() {
         <div className="mx-auto mt-12 max-w-[88rem] px-4">
           <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
             <iframe
-              title="Top Removals location — Purfleet Industrial Park"
+              title="Top Removals location, Purfleet Industrial Park"
               src="https://www.google.com/maps?q=Kerry+Avenue+Purfleet+RM15+4YA&output=embed"
               width="100%"
               height="420"

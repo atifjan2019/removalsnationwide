@@ -172,9 +172,8 @@ export const META: Record<string, MetaEntry> = {
   contact: {
     title: "Contact Us | Top Removals",
     description:
-      "Contact Top Removals here by email or phone. Get a free no obligation quote for your move on 020 7205 2525",
+      "Contact Top Removals by email or phone. Call 020 7205 2525 or 0800 046 7877, or send an enquiry for a free no-obligation quote. Purfleet, RM15 4YA.",
     path: "/contactus",
-    noindex: true,
   },
   "book-a-service": {
     title: "Book a Service | Top Removals London",
