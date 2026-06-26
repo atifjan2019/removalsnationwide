@@ -45,7 +45,7 @@ const fleet: Vehicle[] = [
   {
     model: "Nissan NV400 Lo-loader",
     dimensions:
-      "The brand new van 850cu ft volume and can accommodate a load length of 4m with a payload of 1350kg. Permissible gross weight is 3.5t",
+      "The brand new van 850cu ft volume accommodates a load length of 4m with a payload of 1350kg. Permissible gross weight is 3.5t",
     use: "A very advanced and economic vehicle, used for local and UK wide moves.",
   },
   {
@@ -95,7 +95,7 @@ export default function OurFleetPage() {
               An essential part of the moving services is the vehicles, each year we change or add a
               couple. This makes it possible to renew our fleet entirely within 3 years. Which means
               we always run new, modern, environmentally friendly and advanced vehicles. In addition,
-              Top Removals has a contract with a couple of rental companies and can increase the fleet
+              Top Removals has a contract with a couple of rental companies and scales the fleet up
               in times of need, usually during the summer.
             </p>
             <p>Our fleet consists of the following types of vehicles:</p>
@@ -145,8 +145,8 @@ export default function OurFleetPage() {
               and reverse cameras. The large trucks are with dual sleeper cabs, offering the best
               possible environment for the long-haul drivers. Each van and truck is also equipped with
               all sorts of packing and cushioning materials. There is also lifting gear like straps,
-              bars, trolleys and skates and a wide range of tools and drills. This way our movers can
-              handle every unexpected situation they may run into adequately and efficiently.
+              bars, trolleys and skates and a wide range of tools and drills. This way our movers
+              handle every unexpected situation they run into adequately and efficiently.
             </p>
             <p>
               There is no limit for the number of boxes and goods as long as the vehicles do not

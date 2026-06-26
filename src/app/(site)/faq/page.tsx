@@ -133,7 +133,7 @@ export default function FaqPage() {
           <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             We believe the best way to support you is by offering a flexible removals service and
             tailoring each move to suit your needs. Questions will naturally arise and we are happy to
-            answer them, the selection below may help with some basics.
+            answer them, and the selection below covers the basics.
           </p>
 
           <Faq items={faqs} defaultOpen={null} className="mt-12" />

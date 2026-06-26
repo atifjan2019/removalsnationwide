@@ -71,9 +71,9 @@ export default function AboutPage() {
               <p>
                 Today the company is a proud member of BAR (British Association of Removers) and the
                 NGRS (the National Guild of Removers and Storers). Top Removals closely follows their
-                policies on customer service, insurance, safety and quality control. You can{" "}
+                policies on customer service, insurance, safety and quality control.{" "}
                 <Link href="/certificates" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
-                  view our certificates and accreditations
+                  View our certificates and accreditations
                 </Link>{" "}
                 in full.
               </p>
@@ -170,7 +170,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   We love to hear back from our customers and give them additional assistance if
-                  needed. You can find us at Trustpilot and write us a review. Transparency and
+                  needed. Find us on Trustpilot and write us a review. Transparency and
                   problem-solving are essential to maintain a high level of customer satisfaction.
                 </p>
               </div>

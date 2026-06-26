@@ -70,8 +70,8 @@ export default function CurrentOffersPage() {
           <SectionHeading eyebrow="Offers" title="No Time-Limited Promotions Right Now" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             We are not running a time-limited promotion at the moment. Rather than headline deals
-            that come and go, Top Removals focuses on fair, transparent pricing every day. You can
-            see real figures on our{" "}
+            that come and go, Top Removals focuses on fair, transparent pricing every day. See real
+            figures on our{" "}
             <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
               prices page
             </Link>{" "}

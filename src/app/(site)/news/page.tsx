@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
+import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import Testimonials from "@/components/home/Testimonials";
@@ -13,6 +14,22 @@ import { getDbPosts } from "@/lib/cms";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildMetadata("news");
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${SITE_URL}/news#blog`,
+  url: `${SITE_URL}/news`,
+  name: "Moving News and Guides",
+  description:
+    "Moving, packing, storage, office and international removals tips and guides from Top Removals London.",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
+const newsBreadcrumb = breadcrumbLd([
+  { label: "Home", href: "/" },
+  { label: "Moving News", href: "/news" },
+]);
 
 type Card = { slug: string; title: string; date: string; excerpt: string; cover: string };
 
@@ -55,6 +72,8 @@ export default async function NewsPage({
 
   return (
     <>
+      <JsonLd data={blogSchema} />
+      <JsonLd data={newsBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="Moving News"

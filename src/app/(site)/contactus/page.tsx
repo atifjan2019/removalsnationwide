@@ -49,7 +49,7 @@ export default function ContactPage() {
 
       <section className="bg-white py-20">
         <div className="mx-auto grid max-w-[88rem] grid-cols-1 gap-12 px-4 lg:grid-cols-2 lg:gap-16">
-          {/* Left — form */}
+          {/* Left: form */}
           <div>
             <SectionHeading align="left" eyebrow="Get in touch" title="Send Us a Message" />
             <p className="mt-4 text-base text-brand-charcoal/80">Contact us via e-mail here</p>
@@ -58,7 +58,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right — details */}
+          {/* Right: details */}
           <div>
             <div className="rounded-2xl bg-brand-navy p-8 text-white shadow-lg">
               <h2 className="text-xl font-bold uppercase tracking-wide">Contact Details</h2>

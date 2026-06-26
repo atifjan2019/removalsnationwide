@@ -24,6 +24,10 @@ const redirectPairs: [string, string][] = [
   ["/privacy", "/privacy-policy"],
   ["/fleet", "/our-fleet"],
   ["/gallery", "/photos"],
+  // Off-topic blog posts removed to keep the news cluster inside the topical
+  // border (property-price and destination-lifestyle were out of scope).
+  ["/news/manchester-housing-market-2026", "/news"],
+  ["/news/move-to-london-animal-attractions", "/news"],
 ];
 
 const nextConfig: NextConfig = {

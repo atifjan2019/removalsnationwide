@@ -27,7 +27,7 @@ const certificates: Certificate[] = [
   {
     title: "National Guild of Removers and Storers (NGRS)",
     paras: [
-      "One of the two main associations in the UK. Top Removals customers can be assured that the company is audited each year and offers industry-approved methods, materials and operational standards.",
+      "One of the two main associations in the UK. Top Removals customers are assured that the company is audited each year and offers industry-approved methods, materials and operational standards.",
     ],
   },
   {

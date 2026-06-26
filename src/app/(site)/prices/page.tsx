@@ -159,9 +159,9 @@ export default function PricesPage() {
               in a convenient day and time.
             </p>
             <p>
-              Alternatively, our customer support staff can only provide you with an estimated rate
-              based on similar size jobs completed in the past. Smaller jobs are rated as Man and Van
-              service. In the below table you can see what our charges are for this type of moves:
+              Alternatively, our customer support staff provide an estimated rate based on similar
+              size jobs completed in the past. Smaller jobs are rated as Man and Van service. The
+              table below shows our charges for this type of move:
             </p>
           </div>
 
