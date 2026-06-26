@@ -47,16 +47,6 @@ export default function PageBanner({
       <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/60" />
 
       <div className="relative mx-auto max-w-[88rem] px-4 py-16 md:py-24">
-        <div className="mb-6 inline-flex items-center rounded-xl bg-white px-3 py-2">
-          <Image
-            src="/logo.png"
-            alt="Top Removals"
-            width={142}
-            height={113}
-            className="h-10 w-auto"
-          />
-        </div>
-
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-1.5 text-sm text-white/70">
             {crumbs.map((crumb, i) => {

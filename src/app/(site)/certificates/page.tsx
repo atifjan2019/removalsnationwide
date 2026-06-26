@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
@@ -13,12 +14,18 @@ export const metadata: Metadata = buildMetadata("certificates");
 type Certificate = {
   title: string;
   paras: string[];
-  quote?: string;
+  /** Badge logo or scanned certificate image. */
+  image?: string;
+  imageAlt?: string;
+  /** Whether the image is a full scanned certificate (links to full size). */
+  isScan?: boolean;
 };
 
 const certificates: Certificate[] = [
   {
     title: "British Association of Removers (BAR)",
+    image: "/memberof/advance-payment-guarantee.png",
+    imageAlt: "British Association of Removers Advance Payment Guarantee badge",
     paras: [
       "BAR inspects and investigates all potential members and matches them against criteria for membership that cover premises, vehicles, staff, operational procedures and insurance arrangements. BAR also runs an ongoing inspection programme during membership to maintain standards. Through this programme and the Code of Practice Scheme, BAR works to raise standards in the industry so customers receive an efficient, trouble-free move.",
       "Every deposit and advance payment is fully protected by the BAR Advance Payment Guarantee, for your peace of mind.",
@@ -26,30 +33,43 @@ const certificates: Certificate[] = [
   },
   {
     title: "National Guild of Removers and Storers (NGRS)",
+    image: "/certificates/ngrs.jpg",
+    imageAlt: "National Guild of Removers and Storers certificate issued to Top Removals Ltd",
+    isScan: true,
     paras: [
       "One of the two main associations in the UK. Top Removals customers are assured that the company is audited each year and offers industry-approved methods, materials and operational standards.",
     ],
   },
   {
     title: "International Association of Movers (IAM)",
+    image: "/certificates/iam.jpg",
+    imageAlt: "International Association of Movers certificate issued to Top Removals",
+    isScan: true,
     paras: [
       "IAM is the largest independent international association for moving companies. Membership shows that the company is approved, vetted and checked both financially and operationally, so customers can be confident when moving abroad. The company also participates in the payment protection program.",
     ],
   },
   {
     title: "The Furniture Ombudsman",
+    image: "/memberof/removals-ombudsman.png",
+    imageAlt: "The Furniture Ombudsman and Removals Industry Ombudsman Scheme badge",
     paras: [
-      "Top Removals participates in an independent ombudsman scheme that provides consumer protection and dispute resolution. It gives customers an impartial route to resolve any dispute, so you can book with confidence.",
+      "Top Removals participates in an independent ombudsman scheme that provides consumer protection and dispute resolution. It gives customers an impartial route to resolve any dispute, so you book with confidence.",
     ],
   },
   {
     title: "QSS-DW Approved Mover",
+    image: "/memberof/quality-assured.png",
+    imageAlt: "QSS-DW Approved Mover quality assured service standards badge",
     paras: [
       "Top Removals holds QSS-DW Approved Mover status, an independent quality standard for removals companies covering service quality and operational standards across domestic and international moves.",
     ],
   },
   {
     title: "Checkatrade",
+    image: "/certificates/checkatrade.jpg",
+    imageAlt: "Checkatrade certificate issued to Top Removals",
+    isScan: true,
     paras: [
       "Checkatrade runs strict background checks on tradespeople before they can become members. Once they join, members agree to have feedback from their customers published online for all to see.",
     ],
@@ -117,17 +137,37 @@ export default function CertificatesPage() {
                   <h2 className="text-lg font-bold leading-snug text-brand-navy">{cert.title}</h2>
                 </div>
 
+                {cert.image && (
+                  <figure className="mb-5">
+                    <div className="relative h-48 w-full overflow-hidden rounded-xl border border-black/10 bg-brand-grey">
+                      <Image
+                        src={cert.image}
+                        alt={cert.imageAlt ?? `${cert.title} certificate`}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-contain p-4"
+                      />
+                    </div>
+                    {cert.isScan && (
+                      <figcaption className="mt-2 text-right">
+                        <a
+                          href={cert.image}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                        >
+                          View full certificate
+                        </a>
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
+
                 <div className="space-y-3 text-base leading-relaxed text-brand-charcoal/85">
                   {cert.paras.map((para, p) => (
                     <p key={p}>{para}</p>
                   ))}
                 </div>
-
-                {cert.quote && (
-                  <blockquote className="mt-4 rounded-r-lg border-l-4 border-brand-orange bg-brand-grey p-5 text-base italic leading-relaxed text-brand-charcoal/85">
-                    “{cert.quote}”
-                  </blockquote>
-                )}
               </article>
             ))}
           </div>
