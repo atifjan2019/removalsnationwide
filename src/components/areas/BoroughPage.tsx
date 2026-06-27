@@ -8,6 +8,7 @@ import StickyMobileBar from "@/components/services/StickyMobileBar";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import Faq from "@/components/services/Faq";
 import Accreditations from "@/components/home/Accreditations";
+import MidPageCTA from "@/components/areas/MidPageCTA";
 import { CheckIcon } from "@/components/ui/icons";
 import { SITE_URL, withTrailingSlash } from "@/lib/seo";
 import { boroughs, type Borough } from "@/lib/boroughs";
@@ -54,7 +55,7 @@ function boroughSchema(b: Borough) {
         areaServed: {
           "@type": "AdministrativeArea",
           name: `London Borough of ${b.name}`,
-          containsPlace: b.postcodes,
+          containsPlace: b.postcodes ?? [],
         },
         name: b.h1,
         url: `${SITE_URL}${withTrailingSlash(`/areas/${b.slug}`)}`,
@@ -195,7 +196,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
             title={`Your Local Removals and Man and Van Team in ${b.name}`}
           />
           <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
-            {b.localBody.map((p, i) => (
+            {(b.localBody ?? []).map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
@@ -228,7 +229,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
           />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.knowIntro}</p>
           <div className="mt-8 space-y-6">
-            {b.knowBlocks.map((blk) => (
+            {(b.knowBlocks ?? []).map((blk) => (
               <div key={blk.label} className="rounded-2xl border border-black/8 bg-brand-grey p-6">
                 <h3 className="text-base font-bold text-brand-navy">{blk.label}</h3>
                 <p className="mt-2 text-base leading-relaxed text-brand-charcoal/85">{blk.body}</p>
@@ -275,18 +276,21 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
         </div>
       </section>
 
+      {/* Mid-page CTA (bold moment) */}
+      <MidPageCTA borough={b.name} />
+
       {/* Accredited, insured, reviewed */}
-      <section className="bg-brand-navy py-16">
+      <section className="bg-brand-sand py-16">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <SectionHeading tone="light" eyebrow="Trust" title="Accredited, Insured and Reviewed" />
-          <p className="mt-6 text-base leading-relaxed text-white/80">
+          <SectionHeading eyebrow="Trust" title="Accredited, Insured and Reviewed" />
+          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             Top Removals is a fully accredited mover. We are members of the British Association of
             Removers and the National Guild of Removers and Storers, and we hold International
             Association of Movers, The Furniture Ombudsman, QSS-DW and Checkatrade accreditation.
             Every move includes goods-in-transit insurance in the price, and all of our crews are
             vetted and background-checked.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-white/80">
+          <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
             We have hundreds of independent reviews on Trustpilot from customers across London and
             beyond, with particular praise for our communication and the care our crews take. Read
             them on our live{" "}
@@ -294,7 +298,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               href={TRUSTPILOT}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-white"
+              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
             >
               Trustpilot profile
             </a>
@@ -336,7 +340,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
           <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             We also serve the boroughs that border {b.name}, including{" "}
-            {b.nearby.map((n, i) => {
+            {(b.nearby ?? []).map((n, i) => {
               const slug = n.href.replace("/areas/", "");
               const built = Boolean(boroughs[slug]);
               return (
@@ -422,7 +426,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Good to know" title={`${b.name} Removals FAQs`} />
-          <Faq items={b.faqs} className="mt-10" schema={false} />
+          <Faq items={b.faqs ?? []} className="mt-10" schema={false} />
         </div>
       </section>
 
