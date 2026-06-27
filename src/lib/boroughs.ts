@@ -1078,6 +1078,533 @@ export const barnet: Borough = {
   ],
 };
 
+/* ====================================================================== */
+/* TIER A BATCH (verified council/TfL/ONS data)                          */
+/* ====================================================================== */
+
+/* 13. BRENT */
+export const brent: Borough = {
+  slug: "brent",
+  name: "Brent",
+  h1: "Removals in Brent",
+  subhead:
+    "Accredited, insured man and van and removals in Brent, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across NW2, NW6, NW9, NW10, HA0 and HA9.",
+  metaTitle: "Removals in Brent | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Brent from £55/hr plus VAT. Local knowledge of Wembley event-day access, parking and property across NW London.",
+  postcodes: ["NW2", "NW6", "NW9", "NW10", "HA0", "HA9"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Brent"),
+  introLine: introLine("Brent"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Brent"),
+    "What sets a Top Removals move in Brent apart is that the borough splits between dense Victorian terraces in the east and Metroland semis in the west, with Wembley Park high-rise and event-day road closures in between. We work it constantly, plan the loading point and crew size for each, and check moves against the Wembley event calendar.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Brent, including the NW2, NW6, NW9, NW10, HA0 and HA9 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Wembley, Wembley Park, Kilburn, Willesden, Willesden Green, Harlesden, Kensal Green, Queen's Park, Neasden, Kingsbury, Kenton, Queensbury, Preston, Sudbury, Alperton, Dollis Hill, Brondesbury, Stonebridge and Park Royal.",
+  coverageOutro:
+    "If your street sits on the Brent border with Camden, Barnet, Ealing, Hammersmith and Fulham or Harrow, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Brent splits sharply between dense eastern terraces, western Metroland semis and the Wembley Park high-rise, and event days reshape access. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and event-day access",
+      body: "Brent runs extensive controlled parking and permit zones across the eastern terraces. Wembley Stadium and OVO Arena event days bring road closures and parking restrictions across the Wembley Park area, which can start in the early afternoon and run roughly 8am to midnight, with the exact times varying per event. We check your move against the event calendar and arrange a suspended parking bay with the council where a move needs it.",
+    },
+    {
+      label: "Roads and access",
+      body: "The A406 North Circular runs through the borough as a red route, where stopping and loading are not allowed, so we plan the loading point off it. Wembley Park is build-to-rent high-rise where towers require loading-bay slots and goods-lift booking, which we arrange in advance, applying for any suspension as soon as your date is confirmed.",
+    },
+    {
+      label: "Property types",
+      body: "East Brent is dense Victorian terrace in Kilburn, Willesden, Harlesden, Kensal Green, Queen's Park, Brondesbury and Dollis Hill, with narrow streets, no driveways and permit parking. West Brent is Metroland semis in Kingsbury, Kenton, Queensbury, Preston, Sudbury and Alperton, where driveways make loading easier. Wembley Park is concierge high-rise with goods lifts and loading bays.",
+    },
+    {
+      label: "Emissions",
+      body: "Brent sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Camden", href: "/areas/camden" },
+    { label: "Barnet", href: "/areas/barnet" },
+    { label: "Ealing", href: "/areas/ealing" },
+    { label: "Hammersmith and Fulham", href: "/areas/hammersmith-and-fulham" },
+    { label: "Harrow", href: "/areas/harrow" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Brent postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Brent, including NW2, NW6, NW9, NW10, HA0 and HA9, and every named neighbourhood from Kilburn to Wembley. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Brent"),
+    {
+      question: "Can you handle the parking and permits in Brent?",
+      answer:
+        "Yes. The eastern terraces sit in controlled parking and permit zones, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
+    },
+    faqInsured(),
+    faqSameDay("Brent"),
+    faqFullMove("Brent"),
+    {
+      question: "Can you move around a Wembley event day?",
+      answer:
+        "Yes. Wembley Stadium and OVO Arena event days bring road closures and parking restrictions across Wembley Park, often from the early afternoon and running roughly 8am to midnight. We check your move against the event calendar, plan the timing and loading point around the closures, and arrange a suspended bay where one is needed.",
+    },
+  ],
+};
+
+/* 14. CROYDON */
+export const croydon: Borough = {
+  slug: "croydon",
+  name: "Croydon",
+  h1: "Removals in Croydon",
+  subhead:
+    "Accredited, insured man and van and removals in Croydon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across CR0, CR2, CR4, CR5, CR7 and CR8.",
+  metaTitle: "Removals in Croydon | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Croydon from £55/hr plus VAT. Local knowledge of ULEZ, A23 access, parking and property across CR postcodes.",
+  postcodes: ["CR0", "CR2", "CR4", "CR5", "CR7", "CR8"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Croydon"),
+  introLine: introLine("Croydon"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Croydon"),
+    "What sets a Top Removals move in Croydon apart is that the borough runs from town-centre towers to affluent driveway suburbs in the south, all inside the ULEZ. We plan the loading point and crew size for each, and our compliant fleet means no emissions charge on your move.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Croydon, including the CR0, CR2, CR4, CR5, CR7 and CR8 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Croydon town centre, West Croydon, South Croydon, Addiscombe, Selhurst, South Norwood, Thornton Heath, Norbury, Waddon, Purley, Sanderstead, Selsdon, Coulsdon, Kenley, Shirley, New Addington and Upper Norwood.",
+  coverageOutro:
+    "If your street sits on the Croydon border with Lambeth, Bromley, Sutton or Merton, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Croydon runs from town-centre high-rise to affluent driveway suburbs, and the whole borough is inside the ULEZ. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and permits",
+      body: "Controlled parking zones operate around Croydon town centre and the stations, so we confirm the zone and its hours on the council list and arrange a suspended bay where a move needs it. Selhurst and South Norwood see match-day pressure around Selhurst Park, which we check against the fixture list.",
+    },
+    {
+      label: "Roads and access",
+      body: "Croydon is not in the Congestion Charge zone. The A23 Purley Way is a heavy congestion and retail corridor, so we allow extra time at weekends, and the town-centre towers require loading-bay and lift booking, which we arrange in advance.",
+    },
+    {
+      label: "Property types",
+      body: "Croydon runs from town-centre and West Croydon high-rise and towers to Victorian and Edwardian terraces in Addiscombe, South Norwood and Thornton Heath, and affluent semis and detached homes with driveways in Purley, Sanderstead, Selsdon, Coulsdon and Shirley. We bring the right crew and van size for each.",
+    },
+    {
+      label: "Emissions",
+      body: "Croydon is inside the Greater London Ultra Low Emission Zone, which expanded across the borough in August 2023. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Lambeth", href: "/areas/lambeth" },
+    { label: "Bromley", href: "/areas/bromley" },
+    { label: "Sutton", href: "/areas/sutton" },
+    { label: "Merton", href: "/areas/merton" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Croydon postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Croydon, including CR0, CR2, CR4, CR5, CR7 and CR8, and every named neighbourhood from Thornton Heath to Coulsdon. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Croydon"),
+    {
+      question: "Can you handle the parking and permits in Croydon?",
+      answer:
+        "Yes. Controlled parking zones operate around the town centre and stations, so where a move needs it we confirm the zone and hours and arrange a suspended parking bay with the council in advance, close to your door.",
+    },
+    faqInsured(),
+    faqSameDay("Croydon"),
+    faqFullMove("Croydon"),
+    {
+      question: "Does the ULEZ add a charge to my Croydon move?",
+      answer:
+        "No. Croydon is inside the ULEZ, which expanded across the borough in August 2023, but our fleet is fully compliant, so there is no emissions charge on your move. Croydon is not in the Congestion Charge zone.",
+    },
+  ],
+};
+
+/* 15. NEWHAM */
+export const newham: Borough = {
+  slug: "newham",
+  name: "Newham",
+  h1: "Removals in Newham",
+  subhead:
+    "Accredited, insured man and van and removals in Newham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E6, E7, E12, E13, E15, E16 and E20.",
+  metaTitle: "Removals in Newham | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Newham from £55/hr plus VAT. Local knowledge of London Stadium event-day parking, access and property in E postcodes.",
+  postcodes: ["E6", "E7", "E12", "E13", "E15", "E16", "E20"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Newham"),
+  introLine: introLine("Newham"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Newham"),
+    "What sets a Top Removals move in Newham apart is that the borough mixes high-rise concierge towers at Stratford and the Royal Docks with Victorian terraces in the east, and London Stadium and Olympic Park event days reshape parking. We book service lifts and loading bays in advance and check moves against the event calendar.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Newham, including the E6, E7, E12, E13, E15, E16 and E20 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Stratford, Maryland, Forest Gate, Manor Park, East Ham, West Ham, Plaistow, Canning Town, Custom House, the Royal Docks, Royal Victoria, Royal Albert, Beckton, Silvertown and Upton Park.",
+  coverageOutro:
+    "If your street sits on the Newham border with Tower Hamlets, Hackney, Waltham Forest, Redbridge or Greenwich, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Newham mixes high-rise concierge towers with Victorian terraces, and stadium event days reshape parking. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and event-day access",
+      body: "On London Stadium and Olympic Park event days, permit-only hours in some resident zones extend to 8am to 9pm, so we check your move against the event calendar. Controlled parking zones include Stratford, Royal Docks East, Upton Park, West Ham, Canning Town and Custom House, and we confirm the zone and hours and arrange a suspended bay where a move needs it.",
+    },
+    {
+      label: "Roads and access",
+      body: "The A13 is a major congestion corridor along the south of the borough, so we plan timing and the loading point around it. The Stratford and Royal Docks towers require goods-lift and loading-bay booking, which we arrange in advance.",
+    },
+    {
+      label: "Property types",
+      body: "Newham runs from high-rise concierge towers at Stratford, the Royal Docks, Canning Town and Royal Wharf, with goods-lift and loading-bay booking, to Victorian terraces in Forest Gate, East Ham, Manor Park and Plaistow, and mixed stock in Beckton and Custom House.",
+    },
+    {
+      label: "Emissions",
+      body: "Newham sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Tower Hamlets", href: "/areas/tower-hamlets" },
+    { label: "Hackney", href: "/areas/hackney" },
+    { label: "Waltham Forest", href: "/areas/waltham-forest" },
+    { label: "Redbridge", href: "/areas/redbridge" },
+    { label: "Greenwich", href: "/areas/greenwich" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Newham postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Newham, including E6, E7, E12, E13, E15, E16 and E20, and every named neighbourhood from Stratford to East Ham. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Newham"),
+    {
+      question: "Can you handle the parking and permits in Newham?",
+      answer:
+        "Yes. Controlled parking zones cover Stratford, the Royal Docks, Upton Park, West Ham, Canning Town and Custom House, and on stadium event days permit hours can extend to 8am to 9pm. We confirm the zone and hours and arrange a suspended bay where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Newham"),
+    faqFullMove("Newham"),
+    {
+      question: "Can you handle a Stratford or Royal Docks tower move?",
+      answer:
+        "Yes. The towers at Stratford, the Royal Docks, Canning Town and Royal Wharf use managed access, so we book the service lift and loading bay through the building management in advance and, on event days, plan the timing around the London Stadium and Olympic Park restrictions.",
+    },
+  ],
+};
+
+/* 16. HARINGEY */
+export const haringey: Borough = {
+  slug: "haringey",
+  name: "Haringey",
+  h1: "Removals in Haringey",
+  subhead:
+    "Accredited, insured man and van and removals in Haringey, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across N4, N8, N10, N15, N17 and N22.",
+  metaTitle: "Removals in Haringey | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Haringey from £55/hr plus VAT. Local knowledge of Spurs stadium event-day closures, parking and property in N postcodes.",
+  postcodes: ["N4", "N8", "N10", "N15", "N17", "N22"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Haringey"),
+  introLine: introLine("Haringey"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Haringey"),
+    "What sets a Top Removals move in Haringey apart is that the borough runs from large period houses in Crouch End and Muswell Hill to denser Tottenham terraces and estates, and Tottenham Hotspur Stadium event days close roads in phases. We plan N17 moves around the fixture list and bring the right crew for period stairs.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Haringey, including the N4, N8, N10, N15, N17 and N22 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Crouch End, Muswell Hill, Hornsey, Harringay, Stroud Green, Wood Green, Tottenham, Tottenham Hale, Seven Sisters, South Tottenham, Bruce Grove, Bounds Green, Alexandra Park, Noel Park, Northumberland Park and White Hart Lane.",
+  coverageOutro:
+    "If your street sits on the Haringey border with Islington, Camden, Barnet, Hackney, Waltham Forest or Enfield, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Haringey runs from large period houses to denser Tottenham terraces, and Spurs stadium event days close roads in phases. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and event-day access",
+      body: "On Tottenham Hotspur Stadium event days the council closes roads in phases: Worcester Avenue from 8am, Park Lane about three hours before, and the northern High Road from White Hart Lane to Bromley Road about two hours before, with bays suspended around the stadium. We plan N17 moves around the fixture list. CPZ hours vary by zone, commonly Monday to Saturday 8am to 6.30pm, with extended hours in the Tottenham event-day and Tottenham Hale North zones.",
+    },
+    {
+      label: "Roads and access",
+      body: "Green Lanes in Harringay is a heavy congestion corridor, so we plan timing and the loading point around it. We arrange a suspended parking bay with the council where a move needs it and apply as soon as your date is confirmed.",
+    },
+    {
+      label: "Property types",
+      body: "Haringey runs from large Victorian and Edwardian houses and conversions in Crouch End, Muswell Hill, Harringay and Stroud Green, with narrow streets, permit zones and no driveways, to denser terraces and estates in Tottenham, Seven Sisters and Wood Green, and new-build at Tottenham Hale. We bring the right crew and protection for period stairs and tight access.",
+    },
+    {
+      label: "Emissions",
+      body: "Haringey sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Islington", href: "/areas/islington" },
+    { label: "Camden", href: "/areas/camden" },
+    { label: "Barnet", href: "/areas/barnet" },
+    { label: "Hackney", href: "/areas/hackney" },
+    { label: "Waltham Forest", href: "/areas/waltham-forest" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Haringey postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Haringey, including N4, N8, N10, N15, N17 and N22, and every named neighbourhood from Crouch End to Tottenham. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Haringey"),
+    {
+      question: "Can you handle the parking and permits in Haringey?",
+      answer:
+        "Yes. Most of the borough is controlled parking, commonly Monday to Saturday 8am to 6.30pm with extended hours in the Tottenham zones, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door.",
+    },
+    faqInsured(),
+    faqSameDay("Haringey"),
+    faqFullMove("Haringey"),
+    {
+      question: "Can you move in N17 on a Tottenham match day?",
+      answer:
+        "Yes. On stadium event days the council closes roads in phases around the ground and suspends nearby bays, so we plan N17 moves around the fixture list, time the van to avoid the closures, and arrange a suspended bay where one is needed.",
+    },
+  ],
+};
+
+/* 17. GREENWICH */
+export const greenwich: Borough = {
+  slug: "greenwich",
+  name: "Greenwich",
+  h1: "Removals in Greenwich",
+  subhead:
+    "Accredited, insured man and van and removals in Greenwich, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SE3, SE7, SE8, SE9, SE10, SE18 and SE28.",
+  metaTitle: "Removals in Greenwich | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Greenwich from £55/hr plus VAT. Local knowledge of conservation-street access, parking and property in SE postcodes.",
+  postcodes: ["SE10", "SE3", "SE7", "SE8", "SE9", "SE18", "SE28"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Greenwich"),
+  introLine: introLine("Greenwich"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Greenwich"),
+    "What sets a Top Removals move in Greenwich, officially the Royal Borough of Greenwich, apart is that it runs from tight Georgian conservation streets and a World Heritage core to Peninsula and Kidbrooke new-build towers. We plan the loading point and crew for narrow period access and book service lifts in the towers in advance.",
+  ],
+  coverageIntro:
+    "We cover every part of the Royal Borough of Greenwich, including the SE10, SE3, SE7, SE8, SE9, SE18 and SE28 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Greenwich, West Greenwich, Greenwich Peninsula, Maze Hill, Blackheath, Charlton, Woolwich, Plumstead, Eltham, Kidbrooke, Creekside, Shooters Hill and parts of Thamesmead and Abbey Wood.",
+  coverageOutro:
+    "If your street sits on the Greenwich border with Lewisham, Tower Hamlets, Newham, Bexley or Bromley, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Greenwich runs from tight Georgian conservation streets and a World Heritage core to Peninsula new-build towers. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and conservation access",
+      body: "Controlled parking zones operate across the town centre and stations, so we confirm the zone and hours on the Royal Borough directory and arrange a suspended bay where a move needs it. The Greenwich town centre and World Heritage core around the Old Royal Naval College, the Cutty Sark and Greenwich Market carry heavy tourist traffic and tight conservation streets, so weekday mornings are easier for a van.",
+    },
+    {
+      label: "Roads, events and towers",
+      body: "Events at The O2 at North Greenwich and matches at The Valley in SE7 bring localised congestion, which we check against your move date. The Peninsula and Kidbrooke Village towers require goods-lift and loading-bay booking, which we arrange in advance.",
+    },
+    {
+      label: "Property types",
+      body: "Greenwich runs from Georgian and period housing in West Greenwich, Blackheath and the conservation areas, with narrow streets and tight access, to new-build high-rise on Greenwich Peninsula and at Kidbrooke Village, and terraces and estates in Charlton, Woolwich, Plumstead and Eltham.",
+    },
+    {
+      label: "Emissions",
+      body: "Greenwich sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Lewisham", href: "/areas/lewisham" },
+    { label: "Tower Hamlets", href: "/areas/tower-hamlets" },
+    { label: "Newham", href: "/areas/newham" },
+    { label: "Bexley", href: "/areas/bexley" },
+    { label: "Bromley", href: "/areas/bromley" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Greenwich postcode?",
+      answer:
+        "Yes. We cover the whole Royal Borough of Greenwich, including SE10, SE3, SE7, SE8, SE9, SE18 and SE28, and every named neighbourhood from Greenwich to Eltham. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Greenwich"),
+    {
+      question: "Can you handle the parking and permits in Greenwich?",
+      answer:
+        "Yes. Controlled parking zones operate across the town centre and stations, so where a move needs it we confirm the zone and hours and arrange a suspended parking bay with the council in advance, close to your door.",
+    },
+    faqInsured(),
+    faqSameDay("Greenwich"),
+    faqFullMove("Greenwich"),
+    {
+      question: "Can you move from a Greenwich conservation street or a Peninsula tower?",
+      answer:
+        "Yes. For the tight conservation streets of West Greenwich and Blackheath we plan the loading point and crew size and favour weekday mornings to avoid tourist traffic. For the Peninsula and Kidbrooke towers we book the service lift and loading bay with the building management in advance.",
+    },
+  ],
+};
+
+/* 18. WALTHAM FOREST */
+export const walthamForest: Borough = {
+  slug: "waltham-forest",
+  name: "Waltham Forest",
+  h1: "Removals in Waltham Forest",
+  subhead:
+    "Accredited, insured man and van and removals in Waltham Forest, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E4, E10, E11 and E17.",
+  metaTitle: "Removals in Waltham Forest | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Waltham Forest from £55/hr plus VAT. Local knowledge of Walthamstow permit zones, parking and property in E postcodes.",
+  postcodes: ["E4", "E10", "E11", "E17"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Waltham Forest"),
+  introLine: introLine("Waltham Forest"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Waltham Forest"),
+    "What sets a Top Removals move in Waltham Forest apart is that the borough runs from gentrifying Walthamstow and Leyton terraces in tight permit zones to suburban Chingford semis with driveways. We plan the loading point and crew for narrow terraced streets and arrange a suspension or dispensation where the permit bays need it.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Waltham Forest, including the E4, E10, E11 and E17 postcodes and part of E18. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Walthamstow, Walthamstow Village, Leyton, Leytonstone, Chingford, Highams Park, Wood Street and Upper Walthamstow.",
+  coverageOutro:
+    "If your street sits on the Waltham Forest border with Haringey, Redbridge, Newham, Hackney or Enfield, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Waltham Forest runs from gentrifying terraced permit zones to suburban driveway streets, so parking varies sharply. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and permits",
+      body: "Walthamstow and Leyton sit largely in controlled parking zones with permit-only bays and narrow terraced streets, so a parking suspension or dispensation may be needed for the van, which we arrange with the council where a move needs it. Chingford and Highams Park are more suburban, with driveways and lighter restrictions, so we confirm parking per street.",
+    },
+    {
+      label: "Roads and access",
+      body: "The North Circular (A406) runs along the south of the borough, so we plan timing and the loading point around it, and we apply for any suspension as soon as your date is confirmed.",
+    },
+    {
+      label: "Property types",
+      body: "Waltham Forest runs from Victorian terraces across Walthamstow and Leyton, gentrifying with narrow streets, permit zones and no driveways, to larger suburban semis with driveways in Chingford and Highams Park, where loading is easier.",
+    },
+    {
+      label: "Emissions",
+      body: "Waltham Forest sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Haringey", href: "/areas/haringey" },
+    { label: "Redbridge", href: "/areas/redbridge" },
+    { label: "Newham", href: "/areas/newham" },
+    { label: "Hackney", href: "/areas/hackney" },
+    { label: "Enfield", href: "/areas/enfield" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Waltham Forest postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Waltham Forest, including E4, E10, E11 and E17 and part of E18, and every named neighbourhood from Walthamstow to Chingford. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Waltham Forest"),
+    {
+      question: "Do I need a parking permit suspension for a Walthamstow terrace move?",
+      answer:
+        "Often yes. Walthamstow and Leyton are largely permit-only controlled parking with narrow terraced streets, so a parking suspension or dispensation is usually the safe way to load close to your door. We confirm the zone and arrange it with the council where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Waltham Forest"),
+    faqFullMove("Waltham Forest"),
+    {
+      question: "Is parking easier in Chingford than Walthamstow?",
+      answer:
+        "Usually. Chingford and Highams Park are more suburban, with driveways and lighter on-street restrictions, while Walthamstow and Leyton are tighter permit zones. We confirm parking per street and arrange a suspension only where the move needs one.",
+    },
+  ],
+};
+
+/* 19. REDBRIDGE */
+export const redbridge: Borough = {
+  slug: "redbridge",
+  name: "Redbridge",
+  h1: "Removals in Redbridge",
+  subhead:
+    "Accredited, insured man and van and removals in Redbridge, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG1, IG2, IG4, IG5, IG6, IG8, E11 and E18.",
+  metaTitle: "Removals in Redbridge | Man and Van from £55/hr",
+  metaDescription:
+    "Accredited, insured removals and man and van in Redbridge from £55/hr plus VAT. Local knowledge of Ilford access, A12 routes, parking and property in IG postcodes.",
+  postcodes: ["IG1", "IG2", "IG4", "IG5", "IG6", "IG8", "E11", "E18"],
+  heroImage: HERO_IMAGE,
+  heroImageAlt: heroAlt("Redbridge"),
+  introLine: introLine("Redbridge"),
+  valueLine: VALUE_LINE,
+  localBody: [
+    localPara1("Redbridge"),
+    "What sets a Top Removals move in Redbridge apart is that the borough runs from Ilford terraces and new-build regeneration to affluent driveway suburbs in Wanstead and Woodford. We plan the loading point and crew for each, route around the A12 and the Gants Hill gyratory, and book loading bays for the Ilford new-builds.",
+  ],
+  coverageIntro:
+    "We cover every part of the London Borough of Redbridge, including the IG1, IG2, IG4, IG5, IG6, IG8, E11 and E18 postcodes. Neighbourhoods we move people in and out of every week include:",
+  neighbourhoods:
+    "Ilford, Seven Kings, Goodmayes, Gants Hill, Newbury Park, Barkingside, Wanstead, Woodford, South Woodford, Hainault and Clayhall.",
+  coverageOutro:
+    "If your street sits on the Redbridge border with Waltham Forest, Newham, Barking and Dagenham or Havering, we cover that too. Tell us your postcode and we will confirm coverage and a price.",
+  knowIntro:
+    "Redbridge runs from Ilford terraces and regeneration new-build to affluent driveway suburbs, with the A12 and Gants Hill gyratory the main pressure points. Here is what our crews plan for.",
+  knowBlocks: [
+    {
+      label: "Parking and access",
+      body: "Ilford town centre has controlled parking and new-build loading-bay rules, so we confirm the zone before move day and arrange a suspended bay where a move needs it. Wanstead and Woodford are largely driveway properties with lighter on-street restrictions, so we confirm parking per street.",
+    },
+    {
+      label: "Roads and access",
+      body: "The Gants Hill gyratory and the A12 Eastern Avenue are the main congestion points, so we route around peak times and plan the loading point accordingly. New-build flats around Ilford use loading bays and lifts that we book in advance.",
+    },
+    {
+      label: "Property types",
+      body: "Redbridge runs from terraces and semis in Ilford, Seven Kings and Goodmayes to affluent semis and detached homes with driveways in Wanstead, Woodford, South Woodford and Barkingside, and new-build flats around Ilford from the Elizabeth line regeneration, with concierge and lift booking.",
+    },
+    {
+      label: "Emissions",
+      body: "Redbridge sits within the Greater London Ultra Low Emission Zone. The ULEZ charge is £12.50 a day for non-compliant vehicles, but our fleet is compliant, so there is no emissions charge on your move.",
+    },
+  ],
+  nearby: [
+    { label: "Waltham Forest", href: "/areas/waltham-forest" },
+    { label: "Newham", href: "/areas/newham" },
+    { label: "Barking and Dagenham", href: "/areas/barking-and-dagenham" },
+    { label: "Havering", href: "/areas/havering" },
+  ],
+  faqs: [
+    {
+      question: "Do you cover my Redbridge postcode?",
+      answer:
+        "Yes. We cover the whole London Borough of Redbridge, including IG1, IG2, IG4, IG5, IG6, IG8, E11 and E18, and every named neighbourhood from Ilford to Woodford. Send us your postcode and we will confirm coverage and a price.",
+    },
+    faqPrice("Redbridge"),
+    {
+      question: "Can you handle the parking and permits in Redbridge?",
+      answer:
+        "Yes. Ilford town centre has controlled parking and new-build loading-bay rules, while Wanstead and Woodford are largely driveway properties with lighter restrictions. We confirm parking per street and arrange a suspended bay where a move needs it.",
+    },
+    faqInsured(),
+    faqSameDay("Redbridge"),
+    faqFullMove("Redbridge"),
+    {
+      question: "Can you move a driveway house in Wanstead or a new-build flat in Ilford?",
+      answer:
+        "Yes. In Wanstead and Woodford a driveway usually gives direct loading access, which we confirm in advance. For the Ilford new-builds we book the loading bay and lift with the building management and route around the A12 and Gants Hill gyratory.",
+    },
+  ],
+};
+
 /** Registry of fully-built borough pages. Add each cloned borough here. */
 export const boroughs: Record<string, Borough> = {
   islington,
@@ -1093,4 +1620,11 @@ export const boroughs: Record<string, Borough> = {
   lewisham,
   ealing,
   barnet,
+  brent,
+  croydon,
+  newham,
+  haringey,
+  greenwich,
+  "waltham-forest": walthamForest,
+  redbridge,
 };
