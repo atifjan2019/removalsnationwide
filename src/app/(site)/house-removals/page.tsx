@@ -194,7 +194,7 @@ const priceFactors: CheckItem[] = [
   },
   {
     lead: "Access and parking",
-    text: "Narrow streets, restricted zones and permit requirements add cost. Borough parking suspensions typically cost £50–£150 and must be arranged in advance.",
+    text: "Narrow streets, restricted zones and permit requirements add cost. Where a borough parking suspension is needed we arrange it in advance and confirm the council charge in your quote.",
   },
   {
     lead: "Packing requirements",
@@ -437,7 +437,7 @@ export default function HouseRemovalsPage() {
               <div className="relative aspect-[16/9] w-full">
                 <Image
                   src="https://www.top-removals.co.uk/wp-content/uploads/2024/12/home-move-in-London.jpg"
-                  alt="house move in London — Top Removals fully insured house removal crew"
+                  alt="house move in London, Top Removals fully insured house removal crew"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

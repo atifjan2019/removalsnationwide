@@ -93,7 +93,7 @@ export default function ReviewsSection() {
         {/* Accreditation badges */}
         <div className="mt-10">
           <p className="mb-5 text-center text-xs font-semibold uppercase tracking-widest text-brand-charcoal/50">
-            Trusted and certified by —{" "}
+            Trusted and certified by{" "}
             <Link
               href="/certificates"
               className="normal-case text-brand-orange underline underline-offset-2 hover:text-brand-navy transition-colors"

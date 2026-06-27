@@ -90,7 +90,7 @@ export const services: ServiceDef[] = [
     href: "/crate-hire",
     Icon: CrateIcon,
     description:
-      "Durable, stackable plastic crates available for hire — the eco-friendly, secure way to move your home or office without endless cardboard boxes.",
+      "Durable, stackable plastic crates available for hire, the eco-friendly, secure way to move your home or office without endless cardboard boxes.",
   },
   {
     title: "Rubbish Disposal",

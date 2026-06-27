@@ -175,7 +175,7 @@ const garden = [
   "Office Chair",
   "Kitchen Bin",
   "Brooms/Mop",
-  "Wine – (box)",
+  "Wine (box)",
   "Storage Boxes (large plastic)",
   "Storage Boxes (small Plastic)",
 ];

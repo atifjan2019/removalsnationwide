@@ -32,7 +32,7 @@ export default function CheckList({ items, columns = 1, className = "" }: Props)
               item
             ) : (
               <>
-                <strong className="font-semibold text-brand-navy">{item.lead}</strong> –{" "}
+                <strong className="font-semibold text-brand-navy">{item.lead}</strong>:{" "}
                 {item.text}
               </>
             )}

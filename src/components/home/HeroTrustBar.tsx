@@ -21,7 +21,7 @@ const ITEMS: TrustItem[] = [
   },
   {
     icon: <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} aria-hidden="true" />,
-    label: <span className="text-brand-charcoal/70">BS EN 12522 Certified</span>,
+    label: <span className="text-brand-charcoal/70">NGRS Accredited</span>,
   },
   {
     icon: <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} aria-hidden="true" />,

@@ -11,7 +11,7 @@ const items = [
   "24/7 CCTV monitored storage facilities",
   "You don't have to be present at the site",
   "Easy online house removals booking",
-  "BS EN 12522 Certified",
+  "IAM and Checkatrade accredited",
   "Free collection of packing waste materials",
   "No hidden expenses, all fees are included in the price",
   "Set-Up of various appliances",

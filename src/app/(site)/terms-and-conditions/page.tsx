@@ -152,7 +152,7 @@ These Terms and Conditions explain the rights, obligations, and responsibilities
 
 ## 7. Charges if You postpone or cancel the services
 
-7.1 If You postpone or cancel this Agreement, We reserve the right to charge You a postponement or cancellation fee according to how much notice is given as set out below in clauses 7.1.1 – 7.1.5. We charge these fees based on an assessment of losses We have incurred as a result of You cancelling or postponing the services.
+7.1 If You postpone or cancel this Agreement, We reserve the right to charge You a postponement or cancellation fee according to how much notice is given as set out below in clauses 7.1.1 to 7.1.5. We charge these fees based on an assessment of losses We have incurred as a result of You cancelling or postponing the services.
 
 Examples of the types of loss We might incur are: administration/back office costs, being unable to re-fill a removal slot with another customer's work, or engaging employees to work for your booked removal.
 
@@ -310,7 +310,7 @@ In accordance with clause 23 We shall have a right to withhold and ultimately di
 
 ## 15. Disputes
 
-If there is a dispute arising from this Agreement which cannot be resolved, either party may refer it to the low–cost, independent Alternative Dispute Resolution (ADR) scheme provided by the British Association of Removers (BAR). Under this scheme, the case will be determined by an accredited independent ADR organisation. Recourse to the independent ADR scheme is subject to certain limits, current details of which are available upon request from BAR – Tel: 01923 699486, Email: . ADR does not prejudice Your right to commence court proceedings. The BAR ADR scheme does not extend to any insurance policy as that is separate to this Agreement and between You and the insurance company.
+If there is a dispute arising from this Agreement which cannot be resolved, either party may refer it to the low-cost, independent Alternative Dispute Resolution (ADR) scheme provided by the British Association of Removers (BAR). Under this scheme, the case will be determined by an accredited independent ADR organisation. Recourse to the independent ADR scheme is subject to certain limits, current details of which are available upon request from BAR, Tel: 01923 699486, Email: . ADR does not prejudice Your right to commence court proceedings. The BAR ADR scheme does not extend to any insurance policy as that is separate to this Agreement and between You and the insurance company.
 
 ## 16. Our right to sub-contract the work
 
@@ -336,9 +336,9 @@ Any dispute between Us will be governed by the non-exclusive law and jurisdictio
 
 20.1 If You instruct Us to store Your goods, You must provide a correct and up-to-date address, email address, and telephone number and notify Us if they change. All correspondence and notices will be considered to have been received by You:
 
-20.1.1 – 7 days after sending it by first class post to Your last address recorded by Us; or
+20.1.1: 7 days after sending it by first class post to Your last address recorded by Us; or
 
-20.1.2 – 2 days after sending by email to Your last email address recorded by Us.
+20.1.2: 2 days after sending by email to Your last email address recorded by Us.
 
 20.2 If You do not provide an address or email address and/or do not respond to Our correspondence or notices, We may publish such notices in a public newspaper in the area to or from which the goods were removed. Such notice will be considered to have been received by You seven days after the publication date of the newspaper.
 
@@ -362,7 +362,7 @@ If payments are up to date, We will not end this contract except by giving You 3
 
 ---
 
-_© Insurance Terms – Copyright of The British Association of Removers Limited 2025; these contract conditions for use only by firms having permission_
+_© Insurance Terms, Copyright of The British Association of Removers Limited 2025; these contract conditions for use only by firms having permission_
 
 _By ordering Top Removals' service by telephone, e-mail or Top Removals' website the customer agrees to be bound by Top Removals' Terms and Conditions._
 
