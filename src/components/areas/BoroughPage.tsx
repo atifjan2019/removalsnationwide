@@ -9,6 +9,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 import Faq from "@/components/services/Faq";
 import Accreditations from "@/components/home/Accreditations";
 import MidPageCTA from "@/components/areas/MidPageCTA";
+import CtaBand from "@/components/home/CtaBand";
 import { CheckIcon } from "@/components/ui/icons";
 import { SITE_URL, withTrailingSlash } from "@/lib/seo";
 import { boroughs, type Borough } from "@/lib/boroughs";
@@ -186,6 +187,14 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
           </div>
         </div>
       </section>
+
+      {/* Post-hero CTA band (matches the service pages) */}
+      <CtaBand
+        heading={`Ready to Move in ${b.name}?`}
+        subtext="Accredited, insured, 7 days a week. Get a fast, no-obligation quote."
+        buttonLabel="Get a Free Quote"
+        buttonHref="/bookservice#quick-quote"
+      />
 
       {/* Local team */}
       <section className="bg-white py-16">
