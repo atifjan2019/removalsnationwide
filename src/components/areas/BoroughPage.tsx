@@ -10,7 +10,20 @@ import Faq from "@/components/services/Faq";
 import Accreditations from "@/components/home/Accreditations";
 import MidPageCTA from "@/components/areas/MidPageCTA";
 import CtaBand from "@/components/home/CtaBand";
-import { CheckIcon } from "@/components/ui/icons";
+import type { ComponentType } from "react";
+import {
+  CheckIcon,
+  VanIcon,
+  HomeIcon,
+  BuildingIcon,
+  BoxIcon,
+  CrateIcon,
+  TrashIcon,
+  PackageIcon,
+  GlobeIcon,
+  StarIcon,
+  ArrowRight,
+} from "@/components/ui/icons";
 import { SITE_URL, withTrailingSlash } from "@/lib/seo";
 import { boroughs, type Borough } from "@/lib/boroughs";
 
@@ -31,16 +44,30 @@ const PRICE_ROWS: PricingRow[] = [
   { label: "3 movers and van", values: ["from £90", "from £330", "from £620"] },
 ];
 
-const SERVICES: { label: string; href: string; text: string }[] = [
-  { label: "Man and Van London", href: "/man-and-van-london", text: "Man and van, for single items, small and up to two-bedroom moves, same day and 7 days." },
-  { label: "House Removals", href: "/house-removals", text: "House removals, studio to large family homes, end to end." },
-  { label: "Office Removals", href: "/office-removals", text: "Office removals, with minimal downtime and out-of-hours options." },
-  { label: "Packing Service", href: "/packing-service", text: "Packing service, full or partial, fragile and export packing." },
-  { label: "Storage", href: "/storage", text: "Storage, managed and containerised, we collect and seal." },
-  { label: "Rubbish Disposal", href: "/rubbish-disposal", text: "Rubbish disposal, licensed waste removal and clearance." },
-  { label: "Single Item", href: "/single-item", text: "Single item and marketplace delivery." },
-  { label: "International Removals", href: "/international-removals", text: "International removals, with our own European fleet." },
+type IconType = ComponentType<{ className?: string; strokeWidth?: number }>;
+
+const SERVICES: { label: string; href: string; text: string; Icon: IconType }[] = [
+  { label: "Man and Van", href: "/man-and-van-london", text: "Single items, small and up to two-bedroom moves, same day and 7 days.", Icon: VanIcon },
+  { label: "House Removals", href: "/house-removals", text: "Studio to large family homes, packed, moved and unloaded end to end.", Icon: HomeIcon },
+  { label: "Office Removals", href: "/office-removals", text: "Minimal downtime, with out-of-hours and weekend options.", Icon: BuildingIcon },
+  { label: "Packing Service", href: "/packing-service", text: "Full or partial packing, including fragile and export packing.", Icon: BoxIcon },
+  { label: "Storage", href: "/storage", text: "Managed, containerised storage, we collect and seal.", Icon: CrateIcon },
+  { label: "Rubbish Disposal", href: "/rubbish-disposal", text: "Licensed waste removal and clearance, recycled where possible.", Icon: TrashIcon },
+  { label: "Single Item", href: "/single-item", text: "Single item and marketplace delivery, handled with care.", Icon: PackageIcon },
+  { label: "International", href: "/international-removals", text: "Door to door across Europe and worldwide, our own fleet.", Icon: GlobeIcon },
 ];
+
+/** Pick a relevant icon for a local-knowledge card from its heading. */
+function knowIcon(label: string): IconType {
+  const l = label.toLowerCase();
+  if (/propert|type/.test(l)) return HomeIcon;
+  if (/emission/.test(l)) return GlobeIcon;
+  if (/event|match|championship|rugby|stadium|wimbledon/.test(l)) return StarIcon;
+  if (/park|permit|driveway|suspension/.test(l)) return VanIcon;
+  if (/road|access|centre|gyratory|riverside|wharf|lift|tower|building|estate|concierge|congestion/.test(l))
+    return BuildingIcon;
+  return CheckIcon;
+}
 
 const PHONE_HREF = "tel:+442072052525";
 const TRUSTPILOT = "https://uk.trustpilot.com/review/www.top-removals.co.uk";
@@ -93,7 +120,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
 
       <PageBanner
         title={b.h1}
-        subtitle={b.subhead}
+        subtitle="Man and van from £55/hr plus VAT · 7 days a week · Fully insured and accredited"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Areas", href: "/areas" },
@@ -105,12 +132,31 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       <section id="borough-hero" className="bg-white pt-12 pb-0">
         <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
           <div>
-            <p className="text-lg font-semibold leading-relaxed text-brand-navy">{b.introLine}</p>
-            <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">{b.valueLine}</p>
+            <p className="text-xl font-bold leading-snug text-brand-navy sm:text-2xl">{b.introLine}</p>
+            <p className="mt-3 text-base leading-relaxed text-brand-charcoal/80">{b.valueLine}</p>
 
-            <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-navy/10 bg-brand-navy/5 px-5 py-3">
+            {/* Postcode coverage chips (concrete local signal) */}
+            {(b.postcodes ?? []).length > 0 && (
+              <div className="mt-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-brand-charcoal/45">
+                  Covering
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {(b.postcodes ?? []).map((pc) => (
+                    <span
+                      key={pc}
+                      className="inline-flex items-center rounded-md bg-brand-navy/5 px-2.5 py-1 text-xs font-bold text-brand-navy ring-1 ring-inset ring-brand-navy/10"
+                    >
+                      {pc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-orange/20 bg-brand-orange/5 px-5 py-3">
               <span className="text-2xl font-black text-brand-orange">From £55/hr</span>
-              <span aria-hidden="true" className="h-4 w-px bg-brand-charcoal/20" />
+              <span aria-hidden="true" className="h-5 w-px bg-brand-charcoal/20" />
               <span className="text-sm font-medium text-brand-charcoal/70">man and van, plus VAT</span>
             </div>
 
@@ -221,29 +267,59 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
             title={`Areas and Postcodes We Cover in ${b.name}`}
           />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.coverageIntro}</p>
-          <p className="mt-4 rounded-2xl border border-black/10 bg-white p-5 text-base font-medium leading-relaxed text-brand-navy">
-            {b.neighbourhoods}
-          </p>
+          {(b.postcodes ?? []).length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {(b.postcodes ?? []).map((pc) => (
+                <span
+                  key={pc}
+                  className="inline-flex items-center rounded-lg bg-brand-navy px-3 py-1.5 text-sm font-bold text-white"
+                >
+                  {pc}
+                </span>
+              ))}
+            </div>
+          )}
+          <div className="mt-5 rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+              Neighbourhoods we cover
+            </p>
+            <p className="mt-2 text-base font-medium leading-relaxed text-brand-navy">
+              {b.neighbourhoods}
+            </p>
+          </div>
           <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">{b.coverageOutro}</p>
         </div>
       </section>
 
       {/* What we know */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-4">
-          <SectionHeading
-            align="left"
-            eyebrow="Local knowledge"
-            title={`Moving in ${b.name}, What We Know`}
-          />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.knowIntro}</p>
-          <div className="mt-8 space-y-6">
-            {(b.knowBlocks ?? []).map((blk) => (
-              <div key={blk.label} className="rounded-2xl border border-black/8 bg-brand-grey p-6">
-                <h3 className="text-base font-bold text-brand-navy">{blk.label}</h3>
-                <p className="mt-2 text-base leading-relaxed text-brand-charcoal/85">{blk.body}</p>
-              </div>
-            ))}
+        <div className="mx-auto max-w-[88rem] px-4">
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading
+              align="left"
+              eyebrow="Local knowledge"
+              title={`Moving in ${b.name}, What We Know`}
+            />
+            <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.knowIntro}</p>
+          </div>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {(b.knowBlocks ?? []).map((blk) => {
+              const Icon = knowIcon(blk.label);
+              return (
+                <div
+                  key={blk.label}
+                  className="group flex gap-4 rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
+                    <Icon className="h-5 w-5" strokeWidth={2.5} />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-bold text-brand-navy">{blk.label}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-brand-charcoal/80">{blk.body}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -269,18 +345,31 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="One accredited company" title={`Our ${b.name} Services`} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES.map((s) => (
-              <div key={s.href} className="flex h-full flex-col rounded-2xl border border-black/8 bg-brand-grey p-6">
-                <p className="flex-1 text-sm leading-relaxed text-brand-charcoal/85">{s.text}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/75">
+            One accredited team for the whole move, from a single item to a full house or office
+            relocation.
+          </p>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {SERVICES.map((s) => {
+              const Icon = s.Icon;
+              return (
                 <Link
+                  key={s.href}
                   href={s.href}
-                  className="mt-4 text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+                  className="group flex h-full flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 >
-                  {s.label}
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-navy text-white transition-colors group-hover:bg-brand-orange">
+                    <Icon className="h-6 w-6" strokeWidth={2} />
+                  </span>
+                  <h3 className="mt-4 text-base font-bold text-brand-navy">{s.label}</h3>
+                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-brand-charcoal/75">{s.text}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-orange">
+                    Learn more
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
