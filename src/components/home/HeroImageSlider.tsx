@@ -2,20 +2,23 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 type Slide = { src: string; alt: string };
 
-// Real Removals Nationwide photos. Replace the CONFIRM slot once a crew/van action shot is available.
 const SLIDES: Slide[] = [
   {
-    src: "/about/package.webp",
-    alt: "Removals Nationwide staff with their removal vehicle",
+    src: REMOTE_IMAGES.movingVan,
+    alt: "Removal van ready for a London house move",
   },
   {
-    src: "/about/Top-Removals-Team.webp",
-    alt: "The Removals Nationwide team at their London office",
+    src: REMOTE_IMAGES.moversLoading,
+    alt: "Professional movers loading furniture for transport",
   },
-  /* CONFIRM: add real hero photo — crew loading a branded Luton van for a London house move */
+  {
+    src: REMOTE_IMAGES.homeMove,
+    alt: "Moving boxes being prepared inside a home",
+  },
 ];
 
 const INTERVAL_MS = 5500;

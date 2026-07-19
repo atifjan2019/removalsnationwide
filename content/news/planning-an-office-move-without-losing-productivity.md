@@ -3,7 +3,7 @@ title: "Planning an Office Move Without Losing Productivity"
 slug: "planning-an-office-move-without-losing-productivity"
 date: "29/05/2026"
 author: "Stephanie Cooper"
-coverImage: "/news/planning-an-office-move-without-losing-productivity.jpg"
+coverImage: "https://images.unsplash.com/photo-1730154838368-c37b1fdebcf6?auto=format&fit=crop&w=2400&q=82"
 excerpt: "An office relocation can be an exciting milestone for a business. Whether the company is expanding, relocating to a better-connected area, or moving into a workspace that better accommodates a hybrid..."
 ---
 

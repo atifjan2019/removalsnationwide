@@ -395,7 +395,7 @@ export default async function CleaningServicesPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/gallery/move-24.jpg"
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2400&q=82"
                   alt="Top Cleaners move in, move out and end of tenancy cleaning in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -475,7 +475,7 @@ export default async function CleaningServicesPage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/gallery/move-25.jpg"
+                src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=2400&q=82"
                 alt="Removals Nationwide and Top Cleaners working together on a London move"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -626,7 +626,7 @@ export default async function CleaningServicesPage() {
           <div data-reveal data-delay="1" className="relative order-2 lg:order-1">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/gallery/move-26.jpg"
+                src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=82"
                 alt="Top Cleaners after builders cleaning for a renovated London property"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

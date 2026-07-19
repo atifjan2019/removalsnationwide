@@ -4,47 +4,11 @@ import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import PhotoGallery, { type GalleryImage } from "@/components/gallery/PhotoGallery";
+import { REMOVALS_GALLERY } from "@/lib/remote-images";
 
 export const metadata: Metadata = buildMetadata("photos");
 
-// Placeholder gallery — swap these for the client's real photos in /public/gallery/.
-const altText = [
-  "Removals Nationwide movers wrapping furniture",
-  "Packed and labelled moving boxes",
-  "Furniture protected for transport",
-  "Movers loading the removal van",
-  "Sofa wrapped in protective blankets",
-  "Stacked plastic moving crates",
-  "Boxes arranged in the storage unit",
-  "Team carrying furniture into a property",
-  "Mattress in a protective cover",
-  "Fragile items packed with bubble wrap",
-  "Wardrobe boxes ready for the move",
-  "Loaded removal lorry on a London street",
-  "Office files packed in IT crates",
-  "Movers dismantling a large wardrobe",
-  "Secured load inside the moving truck",
-  "Kitchenware wrapped and boxed",
-  "Pictures and mirrors protected for transport",
-  "Crew unloading at the new home",
-  "Neatly stacked cartons in storage",
-  "Movers using straps and a trolley",
-  "Antique furniture carefully wrapped",
-  "Boxes labelled by room",
-  "Storage facility with stacked crates",
-  "Van interior packed for a house move",
-  "Two movers carrying a sofa",
-  "Packing materials laid out before a move",
-  "Protected dining table and chairs",
-  "Loading boxes onto the lift",
-  "Wrapped appliances ready to move",
-  "Completed move with happy customer",
-];
-
-const galleryImages: GalleryImage[] = altText.map((alt, i) => ({
-  src: `/gallery/move-${String(i + 1).padStart(2, "0")}.jpg`,
-  alt,
-}));
+const galleryImages: GalleryImage[] = [...REMOVALS_GALLERY];
 
 export default function PhotosPage() {
   return (

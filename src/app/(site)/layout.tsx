@@ -7,18 +7,20 @@ import { siteGraphLd } from "@/lib/seo";
 import { getResolvedSettings } from "@/lib/settings";
 
 /**
- * Pages under this layout are prerendered at build time, when the D1 binding is
- * not reachable — so they would bake in DEFAULT_SETTINGS and keep showing them
- * until something invalidated the cache. Saving in /admin/settings does call
- * revalidatePath, but a fresh deploy re-bakes the defaults, which made an
- * uploaded logo silently vanish from the public site while still showing in the
- * admin.
+ * Rendered per request, deliberately.
  *
- * Revalidating on an interval makes that self-healing without giving up static
- * rendering: pages stay cached and fast, and pick up settings changes within
- * the window even if no explicit revalidation fires.
+ * Prerendering happens at build time, where the D1 binding does not exist, so
+ * static pages baked in DEFAULT_SETTINGS: an uploaded logo and an edited phone
+ * number showed correctly in the admin (which is force-dynamic) while the
+ * public site kept the built-in wordmark and the old number. Time-based
+ * revalidation only narrowed that window instead of closing it — every deploy
+ * re-baked the defaults.
+ *
+ * Contact details and branding are the kind of thing that must be right the
+ * moment they are saved, so the chrome reads D1 on each request. Static assets
+ * still come from the CDN, and the D1 read is a single indexed row.
  */
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 /**
  * Reads the editable contact details once per request and passes them to the

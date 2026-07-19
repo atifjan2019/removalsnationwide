@@ -67,7 +67,7 @@ const crates = [
     badge: "Office and home",
     badgeClass: "bg-brand-red",
     use: "Files, documents, folders, books, reports and CDs. The standard choice for office moves and document-heavy relocations. Integral lid, waterproof, sealable with security locks.",
-    img: "/gallery/move-11.jpg",
+    img: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=2400&q=82",
     imgAlt: "LC3 lidded plastic crate for office and home moving, supplied by Removals Nationwide",
   },
   {
@@ -79,7 +79,7 @@ const crates = [
     badge: "IT and tech",
     badgeClass: "bg-brand-navy",
     use: "Desktop PCs, laptops, monitors, servers, keyboards, mice and headsets. Tough polypropylene construction provides extra protection in transit and during storage.",
-    img: "/gallery/move-12.jpg",
+    img: "https://images.unsplash.com/photo-1672552226380-486fe900b322?auto=format&fit=crop&w=2400&q=82",
     imgAlt: "IT plastic crate for moving computer equipment and tech, supplied by Removals Nationwide",
   },
 ];
@@ -357,7 +357,7 @@ export default async function CrateHirePage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/gallery/move-09.jpg"
+                  src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=2400&q=82"
                   alt="Plastic lidded LC3 and IT moving crates for hire from Removals Nationwide in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -470,7 +470,7 @@ export default async function CrateHirePage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/gallery/move-10.jpg"
+                src="https://images.unsplash.com/photo-1672552226380-486fe900b322?auto=format&fit=crop&w=2400&q=82"
                 alt="Removals Nationwide team preparing crates for a London office move"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

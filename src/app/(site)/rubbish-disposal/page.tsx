@@ -61,25 +61,25 @@ const servicesCleared = [
   {
     title: "General Household Refuse",
     body: "Black sack collections, general household waste and unwanted items. Sized from a single item up to a full vehicle load. The team does all the loading from inside the property.",
-    img: "/gallery/move-15.jpg",
+    img: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=2400&q=82",
     imgAlt: "Removals Nationwide team collecting household rubbish in London",
   },
   {
     title: "House and Loft Clearances",
     body: "Removals Nationwide handles full property and loft clear-outs: probate clearances, pre-sale clear-outs, end-of-tenancy emptying, and whole-property or single-room jobs. Everything is loaded by the team from inside the property, from attic boxes to basement furniture, with a waste transfer note for the whole job. The strongest single-intent term on this page and the natural future standalone route.",
-    img: "/gallery/move-16.jpg",
+    img: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=2400&q=82",
     imgAlt: "House and loft clearance by Removals Nationwide in London",
   },
   {
     title: "Office Clearances",
     body: "Office furniture, filing cabinets, equipment and general office waste. Combinable with an office removal booking so clearance and relocation happen in one managed visit.",
-    img: "/gallery/move-17.jpg",
+    img: "https://images.unsplash.com/photo-1714647211902-bb711d643a17?auto=format&fit=crop&w=2400&q=82",
     imgAlt: "Office clearance service by Removals Nationwide",
   },
   {
     title: "Furniture and Appliance Removal",
     body: "Sofas, wardrobes, white goods, TVs and fridges. Appliances disposed of under WEEE rules, with small handling fees for TVs and fridges as listed in the add-ons table.",
-    img: "/gallery/move-18.jpg",
+    img: "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=82",
     imgAlt: "Furniture and appliance clearance by Removals Nationwide",
   },
 ];
@@ -301,7 +301,7 @@ export default async function RubbishDisposalPage() {
             <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm" data-reveal data-delay="1">
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/gallery/move-13.jpg"
+                  src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=2400&q=82"
                   alt="Removals Nationwide licensed rubbish removal and clearance team in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -405,7 +405,7 @@ export default async function RubbishDisposalPage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/gallery/move-14.jpg"
+                src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=2400&q=82"
                 alt="Removals Nationwide clearance team at work in London"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

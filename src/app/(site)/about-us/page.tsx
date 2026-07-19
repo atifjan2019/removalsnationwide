@@ -101,7 +101,7 @@ export default async function AboutPage() {
           <div className="relative">
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl lg:aspect-[400/466]">
               <Image
-                src="/about/package.webp"
+                src="https://images.unsplash.com/photo-1710749093416-1e9cdde8d080?auto=format&fit=crop&w=2400&q=82"
                 alt="A Removals Nationwide mover carefully packing and wrapping items"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -177,7 +177,7 @@ export default async function AboutPage() {
             <div className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src="/about/Top-Removals-Team.webp"
+                  src="https://images.unsplash.com/photo-1698917414969-feade59e3343?auto=format&fit=crop&w=2400&q=82"
                   alt="The Removals Nationwide team in front of the company fleet"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

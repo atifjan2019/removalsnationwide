@@ -66,14 +66,6 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
         pathname: "/**",
       },
-      // The legacy WordPress host still serves several hero/section images that
-      // have not been migrated yet. Keep it allow-listed until those assets move
-      // to R2, otherwise next/image rejects them and the pages render blank.
-      {
-        protocol: "https",
-        hostname: "www.top-removals.co.uk",
-        pathname: "/wp-content/uploads/**",
-      },
       // R2 media bucket, served over its bound custom domain. Preferred over the
       // pub-*.r2.dev URL, which is rate-limited and not intended for production.
       {

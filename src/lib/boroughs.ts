@@ -1,3 +1,5 @@
+import { REMOTE_IMAGES } from "@/lib/remote-images";
+
 /**
  * Borough page data model and registry.
  *
@@ -45,8 +47,7 @@ export type Borough = {
 
 /* ---- Shared, confirmed company copy (identical for every borough) ---- */
 
-const HERO_IMAGE =
-  "https://www.top-removals.co.uk/wp-content/uploads/2025/05/man-and-van-service-London.jpg";
+const HERO_IMAGE = REMOTE_IMAGES.movingVan;
 
 const heroAlt = (n: string) => `Removals Nationwide man and van team loading a van in ${n}, London`;
 const introLine = (n: string) =>

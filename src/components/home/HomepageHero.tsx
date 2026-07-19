@@ -3,21 +3,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 type Slide = { src: string; alt: string };
 
 const SLIDES: Slide[] = [
   {
-    src: "/about/package.webp",
-    alt: "Removals Nationwide removal van loaded and ready for a London house move",
+    src: REMOTE_IMAGES.movingVan,
+    alt: "Removal van loaded and ready for a London house move",
   },
   {
-    src: "/about/Top-Removals-Team.webp",
-    alt: "Removals Nationwide team, fully insured, industry-experienced removal company London",
+    src: REMOTE_IMAGES.moversLoading,
+    alt: "Professional movers loading furniture for transport",
   },
   {
-    src: "https://www.top-removals.co.uk/wp-content/uploads/2023/03/moving-company.jpg",
-    alt: "Two Removals Nationwide professionals carrying boxes to a removal van in London",
+    src: REMOTE_IMAGES.homeMove,
+    alt: "Moving boxes being prepared inside a home",
   },
 ];
 
