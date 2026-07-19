@@ -70,13 +70,9 @@ export default async function AboutPage() {
                 trade magazines.
               </p>
               <p>
-                Today the company is a proud member of industry (moving industry) and the
-                professional (the professional moving teams). Removals Nationwide closely follows their
-                policies on customer service, insurance, safety and quality control.{" "}
-                <Link href="/about-us" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
-                  Read more about our company
-                </Link>{" "}
-                in full.
+                Today the company follows documented procedures for customer service, insurance,
+                safety and quality control. Crews receive regular operational and customer-service
+                training for residential and commercial moves.
               </p>
               <p>
                 We try to better ourselves and the services we provide with each year. There is no

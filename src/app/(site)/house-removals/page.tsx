@@ -1008,9 +1008,8 @@ export default async function HouseRemovalsPage() {
             title="Why London Trusts Removals Nationwide"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
-            Choosing a removal company means trusting someone with everything you own. The
-            service highlights below are independently verified and renewed annually. Each one carries
-            a real complaints or claims process.
+            Choosing a removal company means trusting someone with everything you own. These
+            practical safeguards explain how we plan, protect and complete each booked move.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

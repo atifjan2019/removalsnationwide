@@ -281,8 +281,8 @@ const faqs: FaqItem[] = [
   {
     question: "Are you insured and experienced for office moves?",
     answer:
-      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Removals Nationwide is a member of industry, professional, Independent dispute resolution, Clear written quotations, Customer-reviewed service and international moving. Company Information are available to view on the About Us page.",
-    answerAfter: "Request copies of any document before confirming your booking.",
+      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves.",
+    answerAfter: "Request the applicable insurance details before confirming your booking.",
   },
   {
     question: "Do you recycle old furniture and IT equipment?",
@@ -293,11 +293,11 @@ const faqs: FaqItem[] = [
   {
     question: "What are red flags when hiring an office mover?",
     answer:
-      "Red flags include: no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no industry or professional membership, no on-site survey offered before quoting, and no named move coordinator for your job. Request all policies and service approach company information before signing any booking.",
+      "Red flags include no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no on-site survey before quoting, and no named move coordinator. Request the applicable policies before booking.",
     bullets: [
       "No written fixed-price quote: verbal estimates are not binding",
       "No proof of goods-in-transit insurance",
-      "No industry, professional or equivalent service approach",
+      "No documented working process",
       "No on-site survey: quoting blind without seeing the IT or access",
       "No move coordinator named on your booking",
     ],
@@ -877,9 +877,9 @@ export default async function OfficeRemovalsPage() {
             className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80"
             data-reveal
           >
-            Commercial buyers require more than a verbal assurance. The service highlights below are
-            independently verified and renewed annually. Each one carries a real complaints or
-            claims process. Insurance limits are tailored to the value of the move on request.
+            Commercial buyers require more than a verbal assurance. These safeguards outline the
+            insurance, planning and operational controls used for office relocations. Insurance limits
+            can be tailored to the value of the move on request.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

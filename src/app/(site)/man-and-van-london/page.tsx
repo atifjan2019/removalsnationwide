@@ -1017,8 +1017,7 @@ export default async function ManAndVanPage() {
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a man and van company means trusting someone with your belongings and your home.
-            The service highlights below are independently verified and renewed annually. Each one
-            carries a real complaints or claims process, not just a badge.
+            These safeguards explain the insurance, planning and working practices used on each move.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

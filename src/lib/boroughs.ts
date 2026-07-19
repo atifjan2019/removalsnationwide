@@ -64,7 +64,7 @@ const faqPrice = (n: string): BoroughFaq => ({
 const faqInsured = (): BoroughFaq => ({
   question: "Are you insured and experienced?",
   answer:
-    "Yes. Every move includes goods-in-transit insurance in the price, and we are experienced by industry, professional, international moving, Independent dispute resolution, Clear written quotations and Customer-reviewed service. Our crews are vetted and background-checked.",
+    "Yes. Every move includes goods-in-transit insurance in the price. Our crews are trained, vetted and background-checked.",
 });
 const faqSameDay = (n: string): BoroughFaq => ({
   question: `Can you do a same-day move in ${n}?`,

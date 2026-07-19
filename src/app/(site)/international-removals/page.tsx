@@ -55,8 +55,8 @@ const trustTiles = [
     body: "Weekly departures to Scandinavia, Norway, Germany, Switzerland, Benelux and Austria. Bi-weekly to Poland, Lithuania, Latvia and Estonia.",
   },
   {
-    title: "international moving Experienced",
-    body: "Experienced with the international moving partners. The international moving sets the professional standards for international moving companies worldwide.",
+    title: "International Moving Experience",
+    body: "Experienced coordinators manage routes, documentation, packing requirements and destination delivery.",
   },
   {
     title: "Fully Insured, Open Cover Available",
@@ -493,10 +493,8 @@ export default async function InternationalRemovalsPage() {
                 logistics complexity all carry real risk when managed without professional oversight.
               </p>
               <p>
-                Removals Nationwide is a experienced with the International moving experience,
-                the international standard body for professional moving companies. Service Highlight
-                requires documented procedures, insurance and trained staff on every international
-                job. Our{" "}
+                Removals Nationwide uses documented procedures, appropriate insurance and trained
+                staff for international moves. Our{" "}
                 <Link
                   href="/packing-service"
                   className="text-brand-red underline underline-offset-2 hover:text-brand-navy"

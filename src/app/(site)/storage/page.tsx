@@ -50,7 +50,7 @@ const securityTiles = [
   },
   {
     title: "Experienced Storage and Moving Team",
-    body: "Removals Nationwide is a experienced with the professional moving teams and holds service approach with industry, international moving, Customer-reviewed service and Independent dispute resolution.",
+    body: "Trained crews collect, store and redeliver belongings using documented handling and inventory procedures.",
   },
 ];
 
@@ -490,8 +490,8 @@ export default async function LondonStoragePage() {
                 In 2026, more London customers book managed, collect-and-store storage than ever
                 before. The model is a genuine improvement over the traditional drive-up unit because
                 you do not arrange transport, navigate a storage park or carry furniture up a ramp.
-                We handle the physical work. As a experienced with the professional, we adhere to strict
-                procedures to ensure your goods are in qualified hands.
+                We handle the physical work and follow documented procedures to keep your goods in
+                qualified hands throughout collection, storage and redelivery.
               </p>
             </div>
           </div>

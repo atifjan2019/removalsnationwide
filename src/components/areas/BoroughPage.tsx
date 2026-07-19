@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getResolvedSettings } from "@/lib/settings";
 import Link from "next/link";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
@@ -111,7 +112,8 @@ function boroughSchema(b: Borough) {
   };
 }
 
-export default function BoroughPage({ borough: b }: { borough: Borough }) {
+export default async function BoroughPage({ borough: b }: { borough: Borough }) {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={boroughSchema(b)} />
@@ -166,8 +168,8 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
                 Book a Service
               </Button>
-              <Button href={PHONE_HREF} variant="outline" size="lg" className="w-full sm:w-auto">
-                Call 020 7205 2525
+              <Button href={phones.london.href} variant="outline" size="lg" className="w-full sm:w-auto">
+                Call {phones.london.label}
               </Button>
             </div>
 
@@ -381,11 +383,8 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <SectionHeading eyebrow="Trust" title="Experienced, Insured and Reviewed" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            Removals Nationwide is a fully experienced mover. We are members of the British Association of
-            Removers and the professional moving teams, and we hold International
-            Association of Movers, Independent dispute resolution, Clear written quotations and Customer-reviewed service service approach.
-            Every move includes goods-in-transit insurance in the price, and all of our crews are
-            vetted and background-checked.
+            Removals Nationwide is an experienced mover. Every move includes goods-in-transit
+            insurance in the price, and our crews are trained, vetted and background-checked.
           </p>
           <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
             We have hundreds of independent reviews on Trustpilot from customers across London and
@@ -486,10 +485,10 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               </Button>
             </div>
             <a
-              href={PHONE_HREF}
+              href={phones.london.href}
               className="mt-4 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/85 underline underline-offset-2 hover:text-brand-red"
             >
-              Or call 020 7205 2525
+              Or call {phones.london.label}
             </a>
           </div>
 
