@@ -145,12 +145,14 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
             <address className="mt-3 not-italic text-sm leading-relaxed text-white/60">
               {settings.addressLine}
             </address>
-            <a
-              href={settings.mailto}
-              className="mt-2 inline-flex min-h-[44px] items-center text-sm font-semibold text-white/80 transition hover:text-brand-red"
-            >
-              {settings.email}
-            </a>
+            {settings.email && (
+              <a
+                href={settings.mailto}
+                className="mt-2 inline-flex min-h-[44px] items-center text-sm font-semibold text-white/80 transition hover:text-brand-red"
+              >
+                {settings.email}
+              </a>
+            )}
 
             {/* Social icons */}
             <div className="mt-5 flex items-center gap-3">

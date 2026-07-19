@@ -20,13 +20,12 @@ export * from "@/lib/settings-shared";
 /**
  * Two different meanings of "empty", deliberately:
  *
- *  - Required fields (phones, email, address, company) fall back to the default
+ *  - Required fields (phones, address, company) fall back to the default
  *    when blank, because a blank phone number on a removals site is a bug, not
  *    an intention.
- *  - Social URLs and branding images are taken literally. Blank means "hide
- *    this link" / "use the built-in mark", which is what the admin form
- *    promises. Falling back here would make it impossible to remove a profile
- *    that does not exist yet.
+ *  - Email, social URLs and branding images are taken literally. Blank means
+ *    "hide this link" / "use the built-in mark", which is what the admin form
+ *    promises. Falling back here would make them impossible to remove.
  *
  * When there is no row at all, the caller returns DEFAULT_SETTINGS wholesale,
  * so a fresh database still shows the standard set of links.
@@ -43,7 +42,7 @@ function coalesce(row: Record<string, unknown>): SiteSettings {
   return {
     phoneFreephone: required("phone_freephone", d.phoneFreephone),
     phoneLondon: required("phone_london", d.phoneLondon),
-    email: required("email", d.email),
+    email: optional("email"),
     whatsappNumber: required("whatsapp_number", d.whatsappNumber),
     whatsappLabel: required("whatsapp_label", d.whatsappLabel),
     addressLine: required("address_line", d.addressLine),

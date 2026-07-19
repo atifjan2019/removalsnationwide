@@ -156,7 +156,13 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
             hint="The tel: link is generated automatically."
           />
           <Field label="London number" name="phoneLondon" defaultValue={settings.phoneLondon} />
-          <Field label="Email address" name="email" defaultValue={settings.email} type="email" />
+          <Field
+            label="Email address"
+            name="email"
+            defaultValue={settings.email}
+            type="email"
+            hint="Leave blank to hide the public email link."
+          />
           <Field
             label="Address"
             name="addressLine"
@@ -213,7 +219,7 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
       <div className="flex items-center gap-4 border-t border-black/5 pt-6">
         <SaveButton />
         <span className="text-xs text-brand-charcoal/60">
-          Blank fields fall back to the built-in default rather than saving empty.
+          Required fields fall back to built-in defaults. Email and social links can be left blank.
         </span>
       </div>
     </form>

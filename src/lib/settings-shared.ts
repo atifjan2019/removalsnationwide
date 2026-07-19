@@ -77,7 +77,7 @@ export function resolve(s: SiteSettings): ResolvedSettings {
       href: `https://wa.me/${(s.whatsappNumber ?? "").replace(/\D/g, "")}`,
       label: s.whatsappLabel,
     },
-    mailto: `mailto:${s.email}`,
+    mailto: s.email ? `mailto:${s.email}` : "",
   };
 }
 

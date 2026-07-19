@@ -5,10 +5,15 @@ import { requireDb } from "@/lib/cms";
 import { DEFAULT_SETTINGS, getSettings, type SiteSettings } from "@/lib/settings";
 import { uploadBranding } from "@/lib/r2";
 
-/** Trim, and fall back to the default when a field is left blank. */
+/** Trim a required value, falling back to its built-in default when blank. */
 function clean(value: FormDataEntryValue | null, fallback: string): string {
   const v = typeof value === "string" ? value.trim() : "";
   return v === "" ? fallback : v;
+}
+
+/** Trim an optional value. Blank deliberately means "hide it". */
+function cleanOptional(value: FormDataEntryValue | null): string {
+  return typeof value === "string" ? value.trim() : "";
 }
 
 /**
@@ -61,7 +66,7 @@ export async function saveSettings(
     faviconUrl,
     phoneFreephone: clean(formData.get("phoneFreephone"), d.phoneFreephone),
     phoneLondon: clean(formData.get("phoneLondon"), d.phoneLondon),
-    email: clean(formData.get("email"), d.email),
+    email: cleanOptional(formData.get("email")),
     // Store digits only so the wa.me link is always well formed.
     whatsappNumber: clean(formData.get("whatsappNumber"), d.whatsappNumber).replace(/\D/g, ""),
     whatsappLabel: clean(formData.get("whatsappLabel"), d.whatsappLabel),
