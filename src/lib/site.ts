@@ -73,7 +73,7 @@ export const footerServices = [
   { label: "House Removals", href: "/house-removals" },
   { label: "Office Removals", href: "/office-removals" },
   { label: "International Removals", href: "/international-removals" },
-  { label: "London Storage", href: "/storage" },
+  { label: "Secure Storage", href: "/storage" },
   { label: "Packing Service", href: "/packing-service" },
   { label: "Packaging Materials", href: "/packaging-materials" },
   { label: "Crate Hire", href: "/crate-hire" },

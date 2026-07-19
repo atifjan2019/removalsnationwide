@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const services = [
   { label: "House Removals", href: "/house-removals" },
-  { label: "Man and Van London", href: "/man-and-van-london" },
+  { label: "Nationwide Man and Van", href: "/man-and-van-london" },
   { label: "Office Removals", href: "/office-removals" },
   { label: "Packing Service", href: "/packing-service" },
   { label: "Storage", href: "/storage" },

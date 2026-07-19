@@ -298,7 +298,7 @@ const orgSchema = organizationLd();
 const packingBreadcrumb = breadcrumbLd([
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Packing Service London", href: "/packing-service" },
+  { label: "Nationwide Packing Service", href: "/packing-service" },
 ]);
 
 /* ── Page component ──────────────────────────────────────────────────────── */
@@ -321,7 +321,7 @@ export default async function PackingServicePage() {
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "Packing Service London" },
+          { label: "Nationwide Packing Service" },
         ]}
       />
 
@@ -409,7 +409,7 @@ export default async function PackingServicePage() {
       </section>
 
       <CtaBand
-        heading="Ready to Book Your Packing Service in London?"
+        heading="Ready to Book Your Nationwide Packing Service?"
         buttonLabel="Quick Quote"
         buttonHref="/bookservice#quick-quote"
       />
@@ -954,7 +954,7 @@ export default async function PackingServicePage() {
 
       {/* ── S14: Final CTA ──────────────────────────────────────────────── */}
       <CtaBand
-        heading="Ready to Book Your Packing Service in London?"
+        heading="Ready to Book Your Nationwide Packing Service?"
         buttonLabel="Quick Quote"
         buttonHref="/bookservice#quick-quote"
       />

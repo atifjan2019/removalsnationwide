@@ -75,7 +75,7 @@ const included = [
     body: "From limited to fully comprehensive, insurance is quoted separately depending on the cover required. We confirm the options with your quote.",
   },
   {
-    title: "Oslo and London Storage",
+    title: "UK and Oslo Storage",
     body: "A local storage facility in Oslo and a warehouse in London, available for staged delivery or when road conditions delay onward delivery to a remote address.",
   },
 ];
@@ -344,7 +344,7 @@ export default async function RemovalsToNorwayPage() {
               <SectionHeading
                 align="left"
                 eyebrow="The service"
-                title="Removals from London and Across the UK to Norway"
+                title="Removals from Across the UK to Norway"
               />
               <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
                 <p>
