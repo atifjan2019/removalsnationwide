@@ -7,7 +7,6 @@ import Button from "@/components/ui/Button";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import Faq from "@/components/services/Faq";
-import Accreditations from "@/components/home/Accreditations";
 import MidPageCTA from "@/components/areas/MidPageCTA";
 import CtaBand from "@/components/home/CtaBand";
 import type { ComponentType } from "react";
@@ -29,12 +28,12 @@ import { boroughs, type Borough } from "@/lib/boroughs";
 
 /* Confirmed company data, identical for every borough. */
 const ACCREDITATIONS = [
-  "British Association of Removers (BAR)",
-  "National Guild of Removers and Storers (NGRS)",
-  "International Association of Movers (IAM)",
-  "The Furniture Ombudsman",
-  "QSS-DW Approved Mover",
-  "Checkatrade",
+  "Fully insured removals",
+  "Vetted moving crews",
+  "International moving experience",
+  "Independent dispute resolution",
+  "Clear written quotations Approved Mover",
+  "Customer-reviewed service",
 ];
 
 const PRICE_COLUMNS = ["Crew", "Per hour", "Half day, up to 4 hours", "Full day, up to 8 hours"];
@@ -120,7 +119,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
 
       <PageBanner
         title={b.h1}
-        subtitle="Man and van from £55/hr plus VAT · 7 days a week · Fully insured and accredited"
+        subtitle="Man and van from £55/hr plus VAT · 7 days a week · Fully insured and experienced"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Areas", href: "/areas" },
@@ -223,10 +222,10 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                   Trustpilot reviews
                 </Link>
                 <Link
-                  href="/certificates"
+                  href="/company information"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
-                  View certificates
+                  View company information
                 </Link>
               </div>
             </div>
@@ -237,7 +236,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       {/* Post-hero CTA band (matches the service pages) */}
       <CtaBand
         heading={`Ready to Move in ${b.name}?`}
-        subtext="Accredited, insured, 7 days a week. Get a fast, no-obligation quote."
+        subtext="Experienced, insured, 7 days a week. Get a fast, no-obligation quote."
         buttonLabel="Get a Free Quote"
         buttonHref="/bookservice#quick-quote"
       />
@@ -344,9 +343,9 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       {/* Services */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="One accredited company" title={`Our ${b.name} Services`} />
+          <SectionHeading eyebrow="One experienced company" title={`Our ${b.name} Services`} />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/75">
-            One accredited team for the whole move, from a single item to a full house or office
+            One experienced team for the whole move, from a single item to a full house or office
             relocation.
           </p>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -377,14 +376,14 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
       {/* Mid-page CTA (bold moment) */}
       <MidPageCTA borough={b.name} />
 
-      {/* Accredited, insured, reviewed */}
+      {/* Experienced, insured, reviewed */}
       <section className="bg-brand-sand py-16">
         <div className="mx-auto max-w-3xl px-4 text-center">
-          <SectionHeading eyebrow="Trust" title="Accredited, Insured and Reviewed" />
+          <SectionHeading eyebrow="Trust" title="Experienced, Insured and Reviewed" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            Removals Nationwide is a fully accredited mover. We are members of the British Association of
+            Removals Nationwide is a fully experienced mover. We are members of the British Association of
             Removers and the National Guild of Removers and Storers, and we hold International
-            Association of Movers, The Furniture Ombudsman, QSS-DW and Checkatrade accreditation.
+            Association of Movers, Independent dispute resolution, Clear written quotations and Customer-reviewed service service standard.
             Every move includes goods-in-transit insurance in the price, and all of our crews are
             vetted and background-checked.
           </p>
@@ -476,7 +475,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                 your {b.name} move, man and van from £55 per hour plus VAT, or a fixed price after a
                 free survey for a larger home or office.
               </p>
-              <p>Accredited, insured and 7 days a week. Same-day moves are subject to availability.</p>
+              <p>Experienced, insured and 7 days a week. Same-day moves are subject to availability.</p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
@@ -527,8 +526,6 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
           <Faq items={b.faqs ?? []} className="mt-10" />
         </div>
       </section>
-
-      <Accreditations />
     </>
   );
 }

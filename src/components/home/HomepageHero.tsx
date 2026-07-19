@@ -13,7 +13,7 @@ const SLIDES: Slide[] = [
   },
   {
     src: "/about/Top-Removals-Team.webp",
-    alt: "Removals Nationwide team, fully insured, BAR-accredited removal company London",
+    alt: "Removals Nationwide team, fully insured, industry-experienced removal company London",
   },
   {
     src: "https://www.top-removals.co.uk/wp-content/uploads/2023/03/moving-company.jpg",

@@ -4,7 +4,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import ArticleBody from "@/components/news/ArticleBody";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 
 export const metadata: Metadata = buildMetadata("privacy");
 
@@ -322,7 +321,6 @@ export default function PrivacyPage() {
       </section>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

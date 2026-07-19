@@ -53,7 +53,7 @@ export const META: Record<string, MetaEntry> = {
   about: {
     title: "About Removals Nationwide | Your Trusted Moving Partner",
     description:
-      "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, BAR and NGRS accredited, fully insured. Get to know the team behind your move.",
+      "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, industry and professional experienced, fully insured. Get to know the team behind your move.",
     path: "/about-us",
   },
   services: {
@@ -65,19 +65,19 @@ export const META: Record<string, MetaEntry> = {
   "house-removals": {
     title: "House Removals London | Insured Movers, 7 Days | Removals Nationwide",
     description:
-      "House removals across London, 7 days a week. Fully insured, accredited team. Packing, transport and unloading handled end to end. Get a free quote today.",
+      "House removals across London, 7 days a week. Fully insured, experienced team. Packing, transport and unloading handled end to end. Get a free quote today.",
     path: "/house-removals",
   },
   "office-removals": {
     title: "Office Removals London | Minimal Downtime, Insured | Removals Nationwide",
     description:
-      "Office removals in London with minimal downtime and out-of-hours moves. Accredited, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
+      "Office removals in London with minimal downtime and out-of-hours moves. Experienced, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
     path: "/office-removals",
   },
   "international-removals": {
     title: "International Removals London | Europe & Worldwide | Removals Nationwide",
     description:
-      "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. IAM accredited, door to door, insured.",
+      "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. international moving experienced, door to door, insured.",
     path: "/international-removals",
   },
   "london-storage": {
@@ -95,7 +95,7 @@ export const META: Record<string, MetaEntry> = {
   "man-and-van": {
     title: "Man and Van London | From £55/hr, Same Day | Removals Nationwide",
     description:
-      "Man and van in London from £55 an hour plus VAT, same day, 7 days a week. Accredited, insured movers for single items, small moves and house moves. Free quote.",
+      "Man and van in London from £55 an hour plus VAT, same day, 7 days a week. Experienced, insured movers for single items, small moves and house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {
@@ -146,12 +146,6 @@ export const META: Record<string, MetaEntry> = {
       "If you are planning to relocate you better check Removals Nationwide' moving prices. We offer affordable rates for a large variety of high-quality services.",
     path: "/prices",
   },
-  certificates: {
-    title: "Certificates - Removals Nationwide",
-    description:
-      "Removals Nationwide is always striving to achieve the best quality in everything we do. We attend different trainings and are part of different organizations.",
-    path: "/certificates",
-  },
   faq: {
     title: "Frequently Asked Questions about London Removals",
     description:
@@ -198,7 +192,7 @@ export const META: Record<string, MetaEntry> = {
   terms: {
     title: "Terms and Conditions - Removals Nationwide",
     description:
-      "The BAR Model Terms and Conditions in use by Removals Nationwide Limited. Our quotation, your responsibilities, liability, cancellation and claims terms.",
+      "The industry Model Terms and Conditions in use by Removals Nationwide Limited. Our quotation, your responsibilities, liability, cancellation and claims terms.",
     path: "/terms-and-conditions",
     noindex: true,
   },
@@ -286,14 +280,14 @@ const BUSINESS_AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Westminster" },
 ];
 
-/** Confirmed live accreditation set: exact six bodies, no CTSI, no FORS. */
+/** Confirmed live service standard set: exact six bodies, no CTSI, no FORS. */
 const BUSINESS_CREDENTIALS = [
-  "British Association of Removers (BAR)",
-  "National Guild of Removers and Storers (NGRS)",
-  "International Association of Movers (IAM)",
-  "The Furniture Ombudsman",
-  "QSS-DW Approved Mover",
-  "Checkatrade",
+  "Fully insured removals",
+  "Vetted moving crews",
+  "International moving experience",
+  "Independent dispute resolution",
+  "Clear written quotations Approved Mover",
+  "Customer-reviewed service",
 ].map((name) => ({
   "@type": "EducationalOccupationalCredential",
   credentialCategory: "certification",
@@ -524,7 +518,7 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "What is the cheapest way to move in London?",
     answer:
-      "The cheapest option by upfront cost is van hire, but it excludes goods-in-transit insurance and requires significant physical effort. For insured moves, a man and van service is the lowest-cost professional option for small volumes. For full property moves, getting multiple fixed quotes from BAR-accredited companies ensures competitive pricing with proper cover.",
+      "The cheapest option by upfront cost is van hire, but it excludes goods-in-transit insurance and requires significant physical effort. For insured moves, a man and van service is the lowest-cost professional option for small volumes. For full property moves, getting multiple fixed quotes from industry-experienced companies ensures competitive pricing with proper cover.",
   },
   {
     question: "What does a removal company do?",

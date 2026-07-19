@@ -4,7 +4,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import PhotoGallery, { type GalleryImage } from "@/components/gallery/PhotoGallery";
-import Accreditations from "@/components/home/Accreditations";
 
 export const metadata: Metadata = buildMetadata("photos");
 
@@ -70,8 +69,6 @@ export default function PhotosPage() {
           { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
         ]}
       />
-
-      <Accreditations />
     </>
   );
 }

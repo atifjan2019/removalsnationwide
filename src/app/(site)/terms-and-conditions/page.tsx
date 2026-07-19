@@ -4,7 +4,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import ArticleBody from "@/components/news/ArticleBody";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 
 export const metadata: Metadata = buildMetadata("terms");
 
@@ -170,7 +169,7 @@ Examples of the types of loss We might incur are: administration/back office cos
 
 ## 8. Payment
 
-8.1 Unless otherwise agreed by Us in writing, payment is required in full by cleared funds at the time of booking the services. In default of such payment We reserve the right to refuse to commence services until such payment is received. Such advance payments are protected under the BAR Advanced Payment Guarantee Scheme, as detailed in the BAR Code of Practice (T&Cs apply, please see https://bar.co.uk/apg)
+8.1 Unless otherwise agreed by Us in writing, payment is required in full by cleared funds at the time of booking the services. In default of such payment We reserve the right to refuse to commence services until such payment is received. Such advance payments are protected under the industry Advanced Payment Guarantee Scheme, as detailed in the industry Code of Practice (T&Cs apply, please see https://bar.co.uk/apg)
 
 8.2 In respect of all sums which are overdue to Us, You will be charged an administrative fee on all overdue balances which will not exceed £50.
 
@@ -310,7 +309,7 @@ In accordance with clause 23 We shall have a right to withhold and ultimately di
 
 ## 15. Disputes
 
-If there is a dispute arising from this Agreement which cannot be resolved, either party may refer it to the low-cost, independent Alternative Dispute Resolution (ADR) scheme provided by the British Association of Removers (BAR). Under this scheme, the case will be determined by an accredited independent ADR organisation. Recourse to the independent ADR scheme is subject to certain limits, current details of which are available upon request from BAR, Tel: 01923 699486, Email: . ADR does not prejudice Your right to commence court proceedings. The BAR ADR scheme does not extend to any insurance policy as that is separate to this Agreement and between You and the insurance company.
+If there is a dispute arising from this Agreement which cannot be resolved, either party may refer it to the low-cost, independent Alternative Dispute Resolution (ADR) scheme provided by the Fully insured removals. Under this scheme, the case will be determined by an experienced independent ADR organisation. Recourse to the independent ADR scheme is subject to certain limits, current details of which are available upon request from industry, Tel: 01923 699486, Email: . ADR does not prejudice Your right to commence court proceedings. The industry ADR scheme does not extend to any insurance policy as that is separate to this Agreement and between You and the insurance company.
 
 ## 16. Our right to sub-contract the work
 
@@ -390,7 +389,7 @@ export default function TermsPage() {
       <StickyMobileBar />
       <PageBanner
         title="Terms and Conditions"
-        subtitle="BAR Model Terms and Conditions in use by Removals Nationwide Limited"
+        subtitle="industry Model Terms and Conditions in use by Removals Nationwide Limited"
         crumbs={[{ label: "Home", href: "/" }, { label: "Terms & Conditions" }]}
       />
 
@@ -401,7 +400,6 @@ export default function TermsPage() {
       </section>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

@@ -11,7 +11,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import { articleLd, breadcrumbLd, withTrailingSlash } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 import { getPostBySlug, getPostSlugs, AUTHOR_BIO } from "@/lib/news";
 import { getDbPostBySlug } from "@/lib/cms";
 
@@ -200,7 +199,6 @@ export default async function ArticlePage({
       </article>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

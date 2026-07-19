@@ -10,6 +10,7 @@ const nav = [
   { label: "Dashboard", href: "/admin" },
   { label: "Posts", href: "/admin/posts" },
   { label: "Areas", href: "/admin/areas" },
+  { label: "Media", href: "/admin/media" },
   { label: "Settings", href: "/admin/settings" },
 ];
 

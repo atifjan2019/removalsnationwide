@@ -9,7 +9,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Testimonials from "@/components/home/Testimonials";
 import NewsSection from "@/components/home/NewsSection";
-import Accreditations from "@/components/home/Accreditations";
 import { CheckIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("about");
@@ -23,7 +22,7 @@ const aboutPageSchema = {
   url: `${SITE_URL}/about-us`,
   name: "About Removals Nationwide",
   description:
-    "The story, founders, accreditations and people behind Removals Nationwide, a decade-established, BAR and NGRS accredited, fully insured London moving company.",
+    "The story, founders, service standards and people behind Removals Nationwide, a decade-established, industry and professional experienced, fully insured London moving company.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
@@ -52,11 +51,11 @@ export default function AboutPage() {
             <SectionHeading
               align="left"
               eyebrow="Who we are"
-              title="A Fully Accredited Moving Company"
+              title="A Fully Experienced Moving Company"
             />
 
             <p className="mt-8 text-lg font-medium leading-relaxed text-brand-navy">
-              Removals Nationwide is a fully accredited moving company. We provide our customers with
+              Removals Nationwide is a fully experienced moving company. We provide our customers with
               completely insured moving services that cater for any size removal.
             </p>
 
@@ -69,11 +68,11 @@ export default function AboutPage() {
                 trade magazines.
               </p>
               <p>
-                Today the company is a proud member of BAR (British Association of Removers) and the
-                NGRS (the National Guild of Removers and Storers). Removals Nationwide closely follows their
+                Today the company is a proud member of industry (British Association of Removers) and the
+                professional (the National Guild of Removers and Storers). Removals Nationwide closely follows their
                 policies on customer service, insurance, safety and quality control.{" "}
-                <Link href="/certificates" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
-                  View our certificates and accreditations
+                <Link href="/company information" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
+                  View our company information and service standards
                 </Link>{" "}
                 in full.
               </p>
@@ -215,7 +214,6 @@ export default function AboutPage() {
 
       <Testimonials />
       <NewsSection />
-      <Accreditations />
     </>
   );
 }

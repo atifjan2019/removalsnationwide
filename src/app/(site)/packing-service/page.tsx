@@ -7,7 +7,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
-import Accreditations from "@/components/home/Accreditations";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -53,13 +52,13 @@ const processSteps = [
   },
 ];
 
-const heroAccreditations = [
-  "British Association of Removers (BAR)",
-  "National Guild of Removers and Storers (NGRS)",
-  "The Furniture Ombudsman",
-  "QSS-DW Approved Mover",
-  "Checkatrade",
-  "International Association of Movers (IAM)",
+const heroService Standards = [
+  "Fully insured removals",
+  "Vetted moving crews",
+  "Independent dispute resolution",
+  "Clear written quotations Approved Mover",
+  "Customer-reviewed service",
+  "International moving experience",
 ];
 
 const packingServiceSchema = {
@@ -69,7 +68,7 @@ const packingServiceSchema = {
   name: "Packing Service London",
   serviceType: "Professional Packing Service",
   description:
-    "Full, partial and fragile packing service across London. All materials included. Fully insured, BAR-accredited.",
+    "Full, partial and fragile packing service across London. All materials included. Fully insured, industry-experienced.",
   url: `${SITE_URL}/packing-service`,
   areaServed: [
     { "@type": "AdministrativeArea", name: "Greater London" },
@@ -338,7 +337,7 @@ export default function PackingServicePage() {
               at no extra charge.
             </p>
             <p className="hero-anim-sub mt-4 text-base leading-relaxed text-brand-charcoal/85">
-              Fully insured and BAR-accredited, our crews are trained in fragile, antique, export and
+              Fully insured and industry-experienced, our crews are trained in fragile, antique, export and
               blanket-wrap packing to the same standards used for international shipments. A free
               online quote takes under 2 minutes.
             </p>
@@ -357,7 +356,7 @@ export default function PackingServicePage() {
 
             {/* Trust pills */}
             <p className="hero-anim-trust mt-6 text-sm font-medium text-brand-charcoal/70">
-              Fully insured &nbsp;·&nbsp; BAR accredited &nbsp;·&nbsp; All materials included
+              Fully insured &nbsp;·&nbsp; industry experienced &nbsp;·&nbsp; All materials included
               &nbsp;·&nbsp; EA waste carrier
             </p>
           </div>
@@ -379,7 +378,7 @@ export default function PackingServicePage() {
                 Trusted and certified by
               </p>
               <ul className="space-y-2">
-                {heroAccreditations.map((name) => (
+                {heroService Standards.map((name) => (
                   <li key={name} className="flex items-center gap-2">
                     <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                     <span className="text-sm text-brand-navy/85">{name}</span>
@@ -396,10 +395,10 @@ export default function PackingServicePage() {
                   Trustpilot reviews →
                 </Link>
                 <Link
-                  href="/certificates"
+                  href="/company information"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
-                  View certificates →
+                  View company information →
                 </Link>
               </div>
             </div>
@@ -804,14 +803,14 @@ export default function PackingServicePage() {
         </div>
       </section>
 
-      {/* ── S11: Insurance, Accreditations and Recycling ────────────────── */}
+      {/* ── S11: Insurance, Service Standards and Recycling ────────────────── */}
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="mx-auto max-w-3xl text-center">
             <SectionHeading
               tone="light"
               eyebrow="Covered and certified"
-              title="Insurance, Accreditations and Recycling"
+              title="Insurance, Service Standards and Recycling"
             />
             <p className="mt-6 text-base leading-relaxed text-white/80">
               All items handled by Removals Nationwide are covered by goods-in-transit and public liability
@@ -827,16 +826,16 @@ export default function PackingServicePage() {
               className="rounded-2xl border border-white/10 bg-white/5 p-6"
             >
               <h3 className="text-sm font-bold uppercase tracking-widest text-brand-red">
-                Accreditations
+                Service Standards
               </h3>
               <ul className="mt-4 space-y-2">
                 {[
-                  "British Association of Removers (BAR)",
-                  "National Guild of Removers and Storers (NGRS)",
-                  "International Association of Movers (IAM)",
-                  "The Furniture Ombudsman",
-                  "QSS-DW Approved Mover",
-                  "Checkatrade",
+                  "Fully insured removals",
+                  "Vetted moving crews",
+                  "International moving experience",
+                  "Independent dispute resolution",
+                  "Clear written quotations Approved Mover",
+                  "Customer-reviewed service",
                 ].map((name) => (
                   <li key={name} className="flex items-start gap-2 text-sm leading-relaxed text-white/80">
                     <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-red">&#10003;</span>
@@ -950,8 +949,6 @@ export default function PackingServicePage() {
           </div>
         </div>
       </section>
-
-      <Accreditations />
 
       {/* ── S14: Final CTA ──────────────────────────────────────────────── */}
       <CtaBand

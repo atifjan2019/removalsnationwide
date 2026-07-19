@@ -2,13 +2,13 @@
  * Borough page data model and registry.
  *
  * The BoroughPage template keeps the hero, price table, services list,
- * accreditation block, schema shape and FAQ shape identical for every borough.
+ * service standard block, schema shape and FAQ shape identical for every borough.
  * Only the researched local data below changes per borough. To clone a new
  * borough, copy one of these objects, replace every local fact with that
  * borough's real data, and add its slug to the `boroughs` registry. The
  * /areas/[slug] route, sitemap and areas hub pick it up automatically.
  *
- * Confirmed company data (rates, the six accreditations, NAP, services) is
+ * Confirmed company data (rates, the six service standards, NAP, services) is
  * identical everywhere and lives in the template, not here.
  */
 
@@ -50,11 +50,11 @@ const HERO_IMAGE =
 
 const heroAlt = (n: string) => `Removals Nationwide man and van team loading a van in ${n}, London`;
 const introLine = (n: string) =>
-  `A BAR and NGRS accredited removals company that genuinely serves and knows ${n}.`;
+  `A industry and professional experienced removals company that genuinely serves and knows ${n}.`;
 const VALUE_LINE =
   "Published hourly rates, insurance included, your own accountable crew, and the parking and access handled for you.";
 const localPara1 = (n: string) =>
-  `Removals Nationwide moves homes, offices and single items across the whole of ${n}, 7 days a week. We are a fully accredited and insured London removals company, not an unaccredited local operator and not a booking marketplace. The same team handles your man and van job, your full house or office move, your packing, your storage and your clearance, with one point of contact from quote to completion.`;
+  `Removals Nationwide moves homes, offices and single items across the whole of ${n}, 7 days a week. We are a fully experienced and insured London removals company, not an inexperienced local operator and not a booking marketplace. The same team handles your man and van job, your full house or office move, your packing, your storage and your clearance, with one point of contact from quote to completion.`;
 
 const faqPrice = (n: string): BoroughFaq => ({
   question: `How much is a man and van in ${n}?`,
@@ -62,9 +62,9 @@ const faqPrice = (n: string): BoroughFaq => ({
     "Our man and van starts at £55 per hour plus VAT for one mover and a van, from £70 for two movers and from £90 for three, with a two-hour minimum. Half-day and full-day rates are also published. The price includes loading, transport, unloading, parking, tolls and insurance.",
 });
 const faqInsured = (): BoroughFaq => ({
-  question: "Are you insured and accredited?",
+  question: "Are you insured and experienced?",
   answer:
-    "Yes. Every move includes goods-in-transit insurance in the price, and we are accredited by BAR, NGRS, IAM, The Furniture Ombudsman, QSS-DW and Checkatrade. Our crews are vetted and background-checked.",
+    "Yes. Every move includes goods-in-transit insurance in the price, and we are experienced by industry, professional, international moving, Independent dispute resolution, Clear written quotations and Customer-reviewed service. Our crews are vetted and background-checked.",
 });
 const faqSameDay = (n: string): BoroughFaq => ({
   question: `Can you do a same-day move in ${n}?`,
@@ -73,7 +73,7 @@ const faqSameDay = (n: string): BoroughFaq => ({
 });
 const faqFullMove = (n: string): BoroughFaq => ({
   question: "Do you do full house and office moves, not just man and van?",
-  answer: `Yes. We handle everything from a single item to a full house or office relocation in ${n}, plus packing, storage, clearance and international moves, all from one accredited team.`,
+  answer: `Yes. We handle everything from a single item to a full house or office relocation in ${n}, plus packing, storage, clearance and international moves, all from one experienced team.`,
 });
 const faqNearby = (n: string, neighbours: string): BoroughFaq => ({
   question: `Do you cover areas near ${n}?`,
@@ -81,7 +81,7 @@ const faqNearby = (n: string, neighbours: string): BoroughFaq => ({
 });
 
 const subhead = (n: string, codes: string) =>
-  `Accredited, insured man and van and removals in ${n}, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across ${codes}.`;
+  `Experienced, insured man and van and removals in ${n}, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across ${codes}.`;
 
 /* ====================================================================== */
 /* 0. ISLINGTON (model page)                                              */
@@ -94,7 +94,7 @@ export const islington: Borough = {
   subhead: subhead("Islington", "N1, N5, N7, N19 and EC1"),
   metaTitle: "Removals Islington | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Islington from £55/hr plus VAT. Local knowledge of N1, N5, N7, N19 and EC1 parking and property.",
+    "Experienced, insured removals and man and van in Islington from £55/hr plus VAT. Local knowledge of N1, N5, N7, N19 and EC1 parking and property.",
   postcodes: ["N1", "N5", "N7", "N19", "EC1"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Islington"),
@@ -168,7 +168,7 @@ export const camden: Borough = {
   subhead: subhead("Camden", "NW1, NW3, NW5 and WC1"),
   metaTitle: "Removals Camden | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Camden from £55/hr plus VAT. Local knowledge of Hampstead hills, parking and period access.",
+    "Experienced, insured removals and man and van in Camden from £55/hr plus VAT. Local knowledge of Hampstead hills, parking and period access.",
   postcodes: ["NW1", "NW3", "NW5", "WC1"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Camden"),
@@ -248,7 +248,7 @@ export const hackney: Borough = {
   subhead: subhead("Hackney", "E2, E5, E8, E9, N1 and N16"),
   metaTitle: "Removals Hackney | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Hackney from £55/hr plus VAT. Local knowledge of warehouse conversions, estates and parking.",
+    "Experienced, insured removals and man and van in Hackney from £55/hr plus VAT. Local knowledge of warehouse conversions, estates and parking.",
   postcodes: ["E2", "E5", "E8", "E9", "N1", "N16"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Hackney"),
@@ -326,7 +326,7 @@ export const wandsworth: Borough = {
   subhead: subhead("Wandsworth", "SW11, SW12, SW15, SW17 and SW18"),
   metaTitle: "Removals Wandsworth | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Wandsworth from £55/hr plus VAT. Local knowledge of terraces, riverside new-builds and parking.",
+    "Experienced, insured removals and man and van in Wandsworth from £55/hr plus VAT. Local knowledge of terraces, riverside new-builds and parking.",
   postcodes: ["SW11", "SW12", "SW15", "SW17", "SW18"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Wandsworth"),
@@ -403,7 +403,7 @@ export const lambeth: Borough = {
   subhead: subhead("Lambeth", "SW2, SW4, SW8, SW9, SW16 and SE11"),
   metaTitle: "Removals Lambeth | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Lambeth from £55/hr plus VAT. Local knowledge of Clapham, Brixton, estates and parking.",
+    "Experienced, insured removals and man and van in Lambeth from £55/hr plus VAT. Local knowledge of Clapham, Brixton, estates and parking.",
   postcodes: ["SW2", "SW4", "SW8", "SW9", "SW16", "SE11"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Lambeth"),
@@ -480,7 +480,7 @@ export const towerHamlets: Borough = {
   subhead: subhead("Tower Hamlets", "E1, E2, E3 and E14"),
   metaTitle: "Removals Tower Hamlets | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Tower Hamlets from £55/hr plus VAT. Canary Wharf high-rise moves, parking and access.",
+    "Experienced, insured removals and man and van in Tower Hamlets from £55/hr plus VAT. Canary Wharf high-rise moves, parking and access.",
   postcodes: ["E1", "E2", "E3", "E14"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Tower Hamlets"),
@@ -557,7 +557,7 @@ export const westminster: Borough = {
   subhead: subhead("Westminster", "W1, W2, SW1 and NW8"),
   metaTitle: "Removals Westminster | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Westminster from £55/hr plus VAT. Prime handling, Congestion Charge and parking managed.",
+    "Experienced, insured removals and man and van in Westminster from £55/hr plus VAT. Prime handling, Congestion Charge and parking managed.",
   postcodes: ["W1", "W2", "SW1", "NW8"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Westminster"),
@@ -589,7 +589,7 @@ export const westminster: Borough = {
     },
     {
       label: "Prime and listed property",
-      body: "Much of the borough is high-value: prime mansion blocks in Marylebone, Maida Vale and St John's Wood, grand stucco terraces in Belgravia and Pimlico, porter and concierge buildings, and listed buildings. We protect high-value and listed interiors and move with insured, accredited crews.",
+      body: "Much of the borough is high-value: prime mansion blocks in Marylebone, Maida Vale and St John's Wood, grand stucco terraces in Belgravia and Pimlico, porter and concierge buildings, and listed buildings. We protect high-value and listed interiors and move with insured, experienced crews.",
     },
     {
       label: "Emissions and charges",
@@ -637,7 +637,7 @@ export const kensingtonAndChelsea: Borough = {
   subhead: subhead("Kensington and Chelsea", "SW3, SW5, SW7, W8 and W11"),
   metaTitle: "Removals Kensington & Chelsea | Insured | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Kensington & Chelsea from £55/hr plus VAT. Prime and mews handling, parking and property.",
+    "Experienced, insured removals and man and van in Kensington & Chelsea from £55/hr plus VAT. Prime and mews handling, parking and property.",
   postcodes: ["SW3", "SW5", "SW7", "W8", "W11"],
   areaServedName: "Royal Borough of Kensington and Chelsea",
   heroImage: HERO_IMAGE,
@@ -713,7 +713,7 @@ export const hammersmithAndFulham: Borough = {
   subhead: subhead("Hammersmith and Fulham", "W6, W12, W14 and SW6"),
   metaTitle: "Removals Hammersmith & Fulham | Insured | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Hammersmith & Fulham from £55/hr plus VAT. Fulham terraces, riverside, parking and property.",
+    "Experienced, insured removals and man and van in Hammersmith & Fulham from £55/hr plus VAT. Fulham terraces, riverside, parking and property.",
   postcodes: ["W6", "W12", "W14", "SW6"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Hammersmith and Fulham"),
@@ -791,7 +791,7 @@ export const southwark: Borough = {
   subhead: subhead("Southwark", "SE1, SE5, SE15, SE16 and SE22"),
   metaTitle: "Removals Southwark | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Southwark from £55/hr plus VAT. Local knowledge of conversions, estates and parking.",
+    "Experienced, insured removals and man and van in Southwark from £55/hr plus VAT. Local knowledge of conversions, estates and parking.",
   postcodes: ["SE1", "SE5", "SE15", "SE16", "SE22"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Southwark"),
@@ -867,7 +867,7 @@ export const lewisham: Borough = {
   subhead: subhead("Lewisham", "SE4, SE6, SE8, SE13, SE14 and SE23"),
   metaTitle: "Removals Lewisham | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Lewisham from £55/hr plus VAT. Local knowledge of period terraces, parking and property.",
+    "Experienced, insured removals and man and van in Lewisham from £55/hr plus VAT. Local knowledge of period terraces, parking and property.",
   postcodes: ["SE4", "SE6", "SE8", "SE13", "SE14", "SE23"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Lewisham"),
@@ -939,7 +939,7 @@ export const ealing: Borough = {
   subhead: subhead("Ealing", "W3, W5, W7, W13, UB1 and UB6"),
   metaTitle: "Removals Ealing | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Ealing from £55/hr plus VAT. Local knowledge of suburban semis, driveways and parking.",
+    "Experienced, insured removals and man and van in Ealing from £55/hr plus VAT. Local knowledge of suburban semis, driveways and parking.",
   postcodes: ["W3", "W5", "W7", "W13", "UB1", "UB6"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Ealing"),
@@ -1016,7 +1016,7 @@ export const barnet: Borough = {
   subhead: subhead("Barnet", "N2, N3, N12, N20, NW4, NW7 and NW11"),
   metaTitle: "Removals Barnet | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited, insured removals and man and van in Barnet from £55/hr plus VAT. Local knowledge of suburban homes, driveways and parking.",
+    "Experienced, insured removals and man and van in Barnet from £55/hr plus VAT. Local knowledge of suburban homes, driveways and parking.",
   postcodes: ["N2", "N3", "N12", "N20", "NW4", "NW7", "NW11"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Barnet"),
@@ -1092,10 +1092,10 @@ export const brent: Borough = {
   name: "Brent",
   h1: "Removals in Brent",
   subhead:
-    "Accredited, insured man and van and removals in Brent, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across NW10, NW6, NW9, HA0 and HA9.",
+    "Experienced, insured man and van and removals in Brent, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across NW10, NW6, NW9, HA0 and HA9.",
   metaTitle: "Removals Brent | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Brent (NW10, NW6, HA9) from £55/hr plus VAT. Insured, 7 days, expert in Wembley event-day and high-rise moves.",
+    "Experienced man and van and removals in Brent (NW10, NW6, HA9) from £55/hr plus VAT. Insured, 7 days, expert in Wembley event-day and high-rise moves.",
   postcodes: ["NW10", "NW6", "NW9", "HA0", "HA9"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Brent"),
@@ -1167,10 +1167,10 @@ export const croydon: Borough = {
   name: "Croydon",
   h1: "Removals in Croydon",
   subhead:
-    "Accredited, insured man and van and removals in Croydon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across CR0, CR2, CR7, CR8 and SE25.",
+    "Experienced, insured man and van and removals in Croydon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across CR0, CR2, CR7, CR8 and SE25.",
   metaTitle: "Removals Croydon | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Croydon (CR0, CR2, CR7) from £55/hr plus VAT. Insured, 7 days, with real local parking and access knowledge.",
+    "Experienced man and van and removals in Croydon (CR0, CR2, CR7) from £55/hr plus VAT. Insured, 7 days, with real local parking and access knowledge.",
   postcodes: ["CR0", "CR2", "CR7", "CR8", "SE25"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Croydon"),
@@ -1241,10 +1241,10 @@ export const newham: Borough = {
   name: "Newham",
   h1: "Removals in Newham",
   subhead:
-    "Accredited, insured man and van and removals in Newham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E6, E7, E12, E13, E15 and E16.",
+    "Experienced, insured man and van and removals in Newham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E6, E7, E12, E13, E15 and E16.",
   metaTitle: "Removals Newham | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Newham (E6, E13, E16) from £55/hr plus VAT. Insured, 7 days, expert in Stratford and Royal Docks high-rise moves.",
+    "Experienced man and van and removals in Newham (E6, E13, E16) from £55/hr plus VAT. Insured, 7 days, expert in Stratford and Royal Docks high-rise moves.",
   postcodes: ["E6", "E7", "E12", "E13", "E15", "E16"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Newham"),
@@ -1316,10 +1316,10 @@ export const haringey: Borough = {
   name: "Haringey",
   h1: "Removals in Haringey",
   subhead:
-    "Accredited, insured man and van and removals in Haringey, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across N4, N8, N10, N15, N17 and N22.",
+    "Experienced, insured man and van and removals in Haringey, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across N4, N8, N10, N15, N17 and N22.",
   metaTitle: "Removals Haringey | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Haringey (N8, N15, N22) from £55/hr plus VAT. Insured, 7 days, with real hilly and Spurs match-day parking knowledge.",
+    "Experienced man and van and removals in Haringey (N8, N15, N22) from £55/hr plus VAT. Insured, 7 days, with real hilly and Spurs match-day parking knowledge.",
   postcodes: ["N4", "N8", "N10", "N15", "N17", "N22"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Haringey"),
@@ -1391,10 +1391,10 @@ export const greenwich: Borough = {
   name: "Greenwich",
   h1: "Removals in Greenwich",
   subhead:
-    "Accredited, insured man and van and removals in Greenwich, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SE3, SE7, SE9, SE10 and SE18.",
+    "Experienced, insured man and van and removals in Greenwich, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SE3, SE7, SE9, SE10 and SE18.",
   metaTitle: "Removals Greenwich | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Greenwich (SE3, SE10, SE18) from £55/hr plus VAT. Insured, 7 days, with real conservation and riverside knowledge.",
+    "Experienced man and van and removals in Greenwich (SE3, SE10, SE18) from £55/hr plus VAT. Insured, 7 days, with real conservation and riverside knowledge.",
   postcodes: ["SE3", "SE7", "SE9", "SE10", "SE18"],
   areaServedName: "Royal Borough of Greenwich",
   heroImage: HERO_IMAGE,
@@ -1466,10 +1466,10 @@ export const walthamForest: Borough = {
   name: "Waltham Forest",
   h1: "Removals in Waltham Forest",
   subhead:
-    "Accredited, insured man and van and removals in Waltham Forest, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E4, E10, E11 and E17.",
+    "Experienced, insured man and van and removals in Waltham Forest, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across E4, E10, E11 and E17.",
   metaTitle: "Removals Waltham Forest | Insured | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Waltham Forest (E17, E10, E11) from £55/hr plus VAT. Insured, 7 days, with real terrace and parking knowledge.",
+    "Experienced man and van and removals in Waltham Forest (E17, E10, E11) from £55/hr plus VAT. Insured, 7 days, with real terrace and parking knowledge.",
   postcodes: ["E4", "E10", "E11", "E17"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Waltham Forest"),
@@ -1541,10 +1541,10 @@ export const redbridge: Borough = {
   name: "Redbridge",
   h1: "Removals in Redbridge",
   subhead:
-    "Accredited, insured man and van and removals in Redbridge, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG1, IG2, IG4, IG5, IG6, IG8, E11 and E18.",
+    "Experienced, insured man and van and removals in Redbridge, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG1, IG2, IG4, IG5, IG6, IG8, E11 and E18.",
   metaTitle: "Removals Redbridge | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Redbridge (IG1, IG6, E18) from £55/hr plus VAT. Insured, 7 days, with real suburban parking and access knowledge.",
+    "Experienced man and van and removals in Redbridge (IG1, IG6, E18) from £55/hr plus VAT. Insured, 7 days, with real suburban parking and access knowledge.",
   postcodes: ["IG1", "IG2", "IG4", "IG5", "IG6", "IG8"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Redbridge"),
@@ -1619,10 +1619,10 @@ export const enfield: Borough = {
   name: "Enfield",
   h1: "Removals in Enfield",
   subhead:
-    "Accredited, insured man and van and removals in Enfield, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across EN1, EN2, EN3, N9, N13 and N21.",
+    "Experienced, insured man and van and removals in Enfield, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across EN1, EN2, EN3, N9, N13 and N21.",
   metaTitle: "Removals Enfield | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Enfield (EN1, N13, N21) from £55/hr plus VAT. Insured, 7 days, with real suburban parking and driveway knowledge.",
+    "Experienced man and van and removals in Enfield (EN1, N13, N21) from £55/hr plus VAT. Insured, 7 days, with real suburban parking and driveway knowledge.",
   postcodes: ["EN1", "EN2", "EN3", "N9", "N13", "N21"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Enfield"),
@@ -1691,10 +1691,10 @@ export const bromley: Borough = {
   name: "Bromley",
   h1: "Removals in Bromley",
   subhead:
-    "Accredited, insured man and van and removals in Bromley, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across BR1, BR2, BR3, BR4, BR5, BR6 and BR7.",
+    "Experienced, insured man and van and removals in Bromley, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across BR1, BR2, BR3, BR4, BR5, BR6 and BR7.",
   metaTitle: "Removals Bromley | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Bromley (BR1, BR2, BR3) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+    "Experienced man and van and removals in Bromley (BR1, BR2, BR3) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
   postcodes: ["BR1", "BR2", "BR3", "BR4", "BR5", "BR6", "BR7"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Bromley"),
@@ -1764,10 +1764,10 @@ export const merton: Borough = {
   name: "Merton",
   h1: "Removals in Merton",
   subhead:
-    "Accredited, insured man and van and removals in Merton, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SW19, SW20, CR4 and SM4.",
+    "Experienced, insured man and van and removals in Merton, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SW19, SW20, CR4 and SM4.",
   metaTitle: "Removals Merton | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Merton (SW19, SW20, CR4) from £55/hr plus VAT. Insured, 7 days, with real Wimbledon and suburban parking knowledge.",
+    "Experienced man and van and removals in Merton (SW19, SW20, CR4) from £55/hr plus VAT. Insured, 7 days, with real Wimbledon and suburban parking knowledge.",
   postcodes: ["SW19", "SW20", "CR4", "SM4"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Merton"),
@@ -1842,10 +1842,10 @@ export const hounslow: Borough = {
   name: "Hounslow",
   h1: "Removals in Hounslow",
   subhead:
-    "Accredited, insured man and van and removals in Hounslow, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across TW3, TW4, TW5, TW7, TW8 and W4.",
+    "Experienced, insured man and van and removals in Hounslow, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across TW3, TW4, TW5, TW7, TW8 and W4.",
   metaTitle: "Removals Hounslow | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Hounslow (TW3, W4, TW8) from £55/hr plus VAT. Insured, 7 days, with real Chiswick and riverside knowledge.",
+    "Experienced man and van and removals in Hounslow (TW3, W4, TW8) from £55/hr plus VAT. Insured, 7 days, with real Chiswick and riverside knowledge.",
   postcodes: ["TW3", "TW4", "TW5", "TW7", "TW8", "W4"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Hounslow"),
@@ -1919,10 +1919,10 @@ export const harrow: Borough = {
   name: "Harrow",
   h1: "Removals in Harrow",
   subhead:
-    "Accredited, insured man and van and removals in Harrow, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across HA1, HA2, HA3, HA5 and HA7.",
+    "Experienced, insured man and van and removals in Harrow, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across HA1, HA2, HA3, HA5 and HA7.",
   metaTitle: "Removals Harrow | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Harrow (HA1, HA2, HA5) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+    "Experienced man and van and removals in Harrow (HA1, HA2, HA5) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
   postcodes: ["HA1", "HA2", "HA3", "HA5", "HA7"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Harrow"),
@@ -1992,10 +1992,10 @@ export const barkingAndDagenham: Borough = {
   name: "Barking and Dagenham",
   h1: "Removals in Barking and Dagenham",
   subhead:
-    "Accredited, insured man and van and removals in Barking and Dagenham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG11, RM8, RM9 and RM10.",
+    "Experienced, insured man and van and removals in Barking and Dagenham, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across IG11, RM8, RM9 and RM10.",
   metaTitle: "Removals Barking and Dagenham | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Barking and Dagenham (IG11, RM8, RM10) from £55/hr plus VAT. Insured, 7 days, with real local parking knowledge.",
+    "Experienced man and van and removals in Barking and Dagenham (IG11, RM8, RM10) from £55/hr plus VAT. Insured, 7 days, with real local parking knowledge.",
   postcodes: ["IG11", "RM8", "RM9", "RM10"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Barking and Dagenham"),
@@ -2064,10 +2064,10 @@ export const bexley: Borough = {
   name: "Bexley",
   h1: "Removals in Bexley",
   subhead:
-    "Accredited, insured man and van and removals in Bexley, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across DA1, DA5, DA6, DA7, DA8 and DA15.",
+    "Experienced, insured man and van and removals in Bexley, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across DA1, DA5, DA6, DA7, DA8 and DA15.",
   metaTitle: "Removals Bexley | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Bexley (DA5, DA6, DA15) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+    "Experienced man and van and removals in Bexley (DA5, DA6, DA15) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
   postcodes: ["DA1", "DA5", "DA6", "DA7", "DA8", "DA15"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Bexley"),
@@ -2139,10 +2139,10 @@ export const kingstonUponThames: Borough = {
   name: "Kingston upon Thames",
   h1: "Removals in Kingston upon Thames",
   subhead:
-    "Accredited, insured man and van and removals in Kingston upon Thames, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across KT1, KT2, KT3, KT5, KT6 and KT9.",
+    "Experienced, insured man and van and removals in Kingston upon Thames, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across KT1, KT2, KT3, KT5, KT6 and KT9.",
   metaTitle: "Removals Kingston upon Thames | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Kingston upon Thames (KT1, KT3, KT6) from £55/hr plus VAT. Insured, 7 days, real riverside and parking knowledge.",
+    "Experienced man and van and removals in Kingston upon Thames (KT1, KT3, KT6) from £55/hr plus VAT. Insured, 7 days, real riverside and parking knowledge.",
   postcodes: ["KT1", "KT2", "KT3", "KT5", "KT6", "KT9"],
   areaServedName: "Royal Borough of Kingston upon Thames",
   heroImage: HERO_IMAGE,
@@ -2212,10 +2212,10 @@ export const richmondUponThames: Borough = {
   name: "Richmond upon Thames",
   h1: "Removals in Richmond upon Thames",
   subhead:
-    "Accredited, insured man and van and removals in Richmond upon Thames, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across TW9, TW10, TW1, TW2, TW11, SW13 and SW14.",
+    "Experienced, insured man and van and removals in Richmond upon Thames, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across TW9, TW10, TW1, TW2, TW11, SW13 and SW14.",
   metaTitle: "Removals Richmond upon Thames | Removals Nationwide",
   metaDescription:
-    "Accredited removals and man and van in Richmond upon Thames (TW9, TW1, SW13) from £55/hr plus VAT. Insured handling, conservation and parking managed.",
+    "Experienced removals and man and van in Richmond upon Thames (TW9, TW1, SW13) from £55/hr plus VAT. Insured handling, conservation and parking managed.",
   postcodes: ["TW9", "TW10", "TW1", "TW2", "TW11", "SW13", "SW14"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Richmond upon Thames"),
@@ -2285,10 +2285,10 @@ export const sutton: Borough = {
   name: "Sutton",
   h1: "Removals in Sutton",
   subhead:
-    "Accredited, insured man and van and removals in Sutton, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SM1, SM2, SM3, SM5 and SM6.",
+    "Experienced, insured man and van and removals in Sutton, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across SM1, SM2, SM3, SM5 and SM6.",
   metaTitle: "Removals Sutton | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Sutton (SM1, SM5, SM6) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+    "Experienced man and van and removals in Sutton (SM1, SM5, SM6) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
   postcodes: ["SM1", "SM2", "SM3", "SM5", "SM6"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Sutton"),
@@ -2357,10 +2357,10 @@ export const hillingdon: Borough = {
   name: "Hillingdon",
   h1: "Removals in Hillingdon",
   subhead:
-    "Accredited, insured man and van and removals in Hillingdon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across UB3, UB4, UB7, UB8, UB10 and HA4.",
+    "Experienced, insured man and van and removals in Hillingdon, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across UB3, UB4, UB7, UB8, UB10 and HA4.",
   metaTitle: "Removals Hillingdon | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Hillingdon (UB8, UB10, HA4) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+    "Experienced man and van and removals in Hillingdon (UB8, UB10, HA4) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
   postcodes: ["UB3", "UB4", "UB7", "UB8", "UB10", "HA4"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Hillingdon"),
@@ -2429,10 +2429,10 @@ export const havering: Borough = {
   name: "Havering",
   h1: "Removals in Havering",
   subhead:
-    "Accredited, insured man and van and removals in Havering, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across RM1, RM2, RM3, RM11, RM12 and RM14.",
+    "Experienced, insured man and van and removals in Havering, from £55 per hour plus VAT, 7 days a week, with real local knowledge of parking, access and property across RM1, RM2, RM3, RM11, RM12 and RM14.",
   metaTitle: "Removals Havering | Man and Van £55/hr | Removals Nationwide",
   metaDescription:
-    "Accredited man and van and removals in Havering (RM1, RM11, RM14) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
+    "Experienced man and van and removals in Havering (RM1, RM11, RM14) from £55/hr plus VAT. Insured, 7 days, with real suburban driveway and parking knowledge.",
   postcodes: ["RM1", "RM2", "RM3", "RM11", "RM12", "RM14"],
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("Havering"),
@@ -2500,19 +2500,19 @@ export const cityOfLondon: Borough = {
   name: "City of London",
   h1: "Removals in the City of London",
   subhead:
-    "Accredited, insured office and home removals in the City of London, from £55 per hour plus VAT, 7 days a week, with real knowledge of building access, out-of-hours moves and the Square Mile across EC1, EC2, EC3 and EC4.",
+    "Experienced, insured office and home removals in the City of London, from £55 per hour plus VAT, 7 days a week, with real knowledge of building access, out-of-hours moves and the Square Mile across EC1, EC2, EC3 and EC4.",
   metaTitle: "Removals City of London | Office Moves | Removals Nationwide",
   metaDescription:
-    "Accredited office and home removals in the City of London (EC1 to EC4) from £55/hr plus VAT. Insured, Barbican service-lift and Congestion Charge managed.",
+    "Experienced office and home removals in the City of London (EC1 to EC4) from £55/hr plus VAT. Insured, Barbican service-lift and Congestion Charge managed.",
   postcodes: ["EC1", "EC2", "EC3", "EC4"],
   areaServedName: "City of London",
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("the City of London"),
   introLine:
-    "A BAR and NGRS accredited removals company that genuinely serves and knows the City of London, for office relocations and the residential estates alike.",
+    "A industry and professional experienced removals company that genuinely serves and knows the City of London, for office relocations and the residential estates alike.",
   valueLine: VALUE_LINE,
   localBody: [
-    "Removals Nationwide runs office and home removals across the whole of the City of London, 7 days a week. We are a fully accredited and insured London removals company, not an unaccredited local operator and not a booking marketplace, and we plan City moves around building access, goods lifts and out-of-hours timing, with one point of contact from quote to completion.",
+    "Removals Nationwide runs office and home removals across the whole of the City of London, 7 days a week. We are a fully experienced and insured London removals company, not an inexperienced local operator and not a booking marketplace, and we plan City moves around building access, goods lifts and out-of-hours timing, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in the City apart is that the Square Mile is the financial district, so most moves are office relocations booked through building management and run in the evening or at the weekend. We also move Barbican and Golden Lane residents, handle high-value contents with insured crews, and manage the Congestion Charge.",
   ],
   coverageIntro:

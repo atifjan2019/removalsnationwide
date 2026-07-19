@@ -13,7 +13,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Accreditations from "@/components/home/Accreditations";
 import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import TipList, { type Tip } from "@/components/services/TipList";
@@ -24,23 +23,23 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("packaging-materials");
 
-/* ── Accreditations (hero trusted-by card) ─────────────────────────── */
+/* ── Service Standards (hero trusted-by card) ─────────────────────────── */
 
-const packagingAccreditations = [
-  { name: "British Association of Removers (BAR)" },
-  { name: "National Guild of Removers and Storers (NGRS)" },
-  { name: "International Association of Movers (IAM)" },
-  { name: "The Furniture Ombudsman" },
-  { name: "QSS-DW Approved Mover" },
-  { name: "Checkatrade" },
+const packagingService Standards = [
+  { name: "Fully insured removals" },
+  { name: "Vetted moving crews" },
+  { name: "International moving experience" },
+  { name: "Independent dispute resolution" },
+  { name: "Clear written quotations Approved Mover" },
+  { name: "Customer-reviewed service" },
 ];
 
 /* ── S2: Why buy tiles ─────────────────────────────────────────────── */
 
 const whyBuyTiles = [
   {
-    title: "BAR-Approved Quality",
-    body: "All materials are approved and recommended by the British Association of Removers. Double-wall removal boxes, perforated bubble wrap and strong sealing tape, sourced to BAR standard.",
+    title: "industry-Approved Quality",
+    body: "All materials are approved and recommended by the British Association of Removers. Double-wall removal boxes, perforated bubble wrap and strong sealing tape, sourced to industry standard.",
   },
   {
     title: "Delivered Across London",
@@ -350,7 +349,7 @@ export default function PackagingMaterialsPage() {
                 into one managed service.
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
-                All materials are BAR-approved, supplied new and flat-packed. Book alongside a
+                All materials are industry-approved, supplied new and flat-packed. Book alongside a
                 removal or packing service for deals and discounts. Free delivery on orders over
                 £120.
               </p>
@@ -383,12 +382,12 @@ export default function PackagingMaterialsPage() {
               </div>
 
               <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
-                Free delivery over £120. Delivered across London. BAR-approved materials.
+                Free delivery over £120. Delivered across London. industry-approved materials.
               </p>
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
-                  "BAR-approved",
+                  "industry-approved",
                   "Transparent prices",
                   "Delivered across London",
                   "Combine and save",
@@ -425,7 +424,7 @@ export default function PackagingMaterialsPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {packagingAccreditations.map(({ name }) => (
+                  {packagingService Standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -442,10 +441,10 @@ export default function PackagingMaterialsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -500,7 +499,7 @@ export default function PackagingMaterialsPage() {
               <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
                 <p>
                   Removals Nationwide supplies the full range of packing materials needed for a London house
-                  removal or commercial relocation. All materials meet NGRS standards and are sourced
+                  removal or commercial relocation. All materials meet professional standards and are sourced
                   to the specification used on our own professional removals jobs.
                 </p>
                 <p>
@@ -885,7 +884,7 @@ export default function PackagingMaterialsPage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-brand-charcoal/50">
-            BAR and NGRS accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; Registered in England No. 6874216
+            industry and professional experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; Registered in England No. 6874216
           </p>
           <p className="mt-2 text-xs text-brand-charcoal/40">
             Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA
@@ -905,8 +904,6 @@ export default function PackagingMaterialsPage() {
           <Faq items={faqs} className="mt-10" />
         </div>
       </section>
-
-      <Accreditations />
 
     </>
   );

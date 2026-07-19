@@ -7,7 +7,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
-import Accreditations from "@/components/home/Accreditations";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
@@ -35,7 +34,7 @@ const officeRemovalsSchema = {
   name: "Office Removals London",
   serviceType: "Commercial Relocation",
   description:
-    "Managed office relocation service across London from one desk to 500-plus staff. Fully insured, BAR-accredited, out-of-hours and weekend moves available, IT and server handling, furniture dismantling and reassembly, licensed waste carrier.",
+    "Managed office relocation service across London from one desk to 500-plus staff. Fully insured, industry-experienced, out-of-hours and weekend moves available, IT and server handling, furniture dismantling and reassembly, licensed waste carrier.",
   url: `${SITE_URL}/office-removals`,
   areaServed: [
     { "@type": "AdministrativeArea", name: "Greater London" },
@@ -177,29 +176,29 @@ const costFactors: CheckItem[] = [
 
 /* ─────────────── Section 9: Trust ─────────────── */
 
-const accreditations = [
+const service standards = [
   {
-    name: "British Association of Removers (BAR)",
+    name: "Fully insured removals",
     signal: "Industry standards body with a formal complaints and arbitration process.",
   },
   {
-    name: "National Guild of Removers and Storers (NGRS)",
+    name: "Vetted moving crews",
     signal: "Approved code scheme providing independent dispute resolution.",
   },
   {
-    name: "The Furniture Ombudsman",
+    name: "Independent dispute resolution",
     signal: "Independent dispute resolution scheme for the furniture and removals sector.",
   },
   {
-    name: "QSS-DW Approved Mover",
+    name: "Clear written quotations Approved Mover",
     signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
-    name: "Checkatrade",
+    name: "Customer-reviewed service",
     signal: "Verified trading history and customer review platform.",
   },
   {
-    name: "International Association of Movers (IAM)",
+    name: "International moving experience",
     signal: "International moving standards and professional network membership.",
   },
 ];
@@ -279,10 +278,10 @@ const faqs: FaqItem[] = [
       "Yes. Desks, workstations, system furniture, storage units and office pods are dismantled at the current address and reassembled to the new floor plan. The surveyor confirms what needs dismantling and documents the destination layout at the on-site survey stage.",
   },
   {
-    question: "Are you insured and accredited for office moves?",
+    question: "Are you insured and experienced for office moves?",
     answer:
-      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Removals Nationwide is a member of BAR, NGRS, The Furniture Ombudsman, QSS-DW, Checkatrade and IAM. Certificates are available to view on the certificates page.",
-    answerAfter: "Request copies of any certificate before confirming your booking.",
+      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Removals Nationwide is a member of industry, professional, Independent dispute resolution, Clear written quotations, Customer-reviewed service and international moving. Company Information are available to view on the company information page.",
+    answerAfter: "Request copies of any document before confirming your booking.",
   },
   {
     question: "Do you recycle old furniture and IT equipment?",
@@ -293,11 +292,11 @@ const faqs: FaqItem[] = [
   {
     question: "What are red flags when hiring an office mover?",
     answer:
-      "Red flags include: no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no BAR or NGRS membership, no on-site survey offered before quoting, and no named move coordinator for your job. Request all policies and accreditation certificates before signing any booking.",
+      "Red flags include: no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no industry or professional membership, no on-site survey offered before quoting, and no named move coordinator for your job. Request all policies and service standard company information before signing any booking.",
     bullets: [
       "No written fixed-price quote: verbal estimates are not binding",
       "No proof of goods-in-transit insurance",
-      "No BAR, NGRS or equivalent accreditation",
+      "No industry, professional or equivalent service standard",
       "No on-site survey: quoting blind without seeing the IT or access",
       "No move coordinator named on your booking",
     ],
@@ -348,7 +347,7 @@ export default function OfficeRemovalsPage() {
       <PageBanner
         title="Office Removals London"
         h1={serviceH1["office-removals"]}
-        subtitle="Minimal Downtime · Out-of-Hours Moves · IT and Server Relocation · Accredited and Insured"
+        subtitle="Minimal Downtime · Out-of-Hours Moves · IT and Server Relocation · Experienced and Insured"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -367,7 +366,7 @@ export default function OfficeRemovalsPage() {
                 Removals Nationwide manages London office relocations from <strong>one desk to
                 500-plus staff</strong>, with minimal business downtime. Evening and weekend
                 moves, IT and server handling, furniture dismantling and WEEE-licensed recycling
-                are all part of the same managed service, fully insured and BAR accredited.
+                are all part of the same managed service, fully insured and industry experienced.
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 Every booking starts with a free on-site survey and a fixed written quote. No
@@ -407,7 +406,7 @@ export default function OfficeRemovalsPage() {
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
-                  "BAR Accredited",
+                  "industry Experienced",
                   "Fully Insured",
                   "Licensed Waste Carrier",
                   "1 Desk to 500+ Staff",
@@ -423,7 +422,7 @@ export default function OfficeRemovalsPage() {
               </div>
             </div>
 
-            {/* Right: image + accreditations */}
+            {/* Right: image + service standards */}
             <div
               className="overflow-hidden rounded-2xl border border-black/10 shadow-sm"
               data-reveal
@@ -444,7 +443,7 @@ export default function OfficeRemovalsPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {accreditations.map(({ name }) => (
+                  {service standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -461,10 +460,10 @@ export default function OfficeRemovalsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -864,25 +863,25 @@ export default function OfficeRemovalsPage() {
         </div>
       </section>
 
-      {/* ── S9: Insurance, accreditations and recycling ── */}
+      {/* ── S9: Insurance, service standards and recycling ── */}
       <section id="trust" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             tone="light"
-            eyebrow="Insured, accredited, licensed"
-            title="Insured, Accredited and Fully Licensed Office Movers"
+            eyebrow="Insured, experienced, licensed"
+            title="Insured, Experienced and Fully Licensed Office Movers"
           />
           <p
             className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80"
             data-reveal
           >
-            Commercial buyers require more than a verbal assurance. The accreditations below are
+            Commercial buyers require more than a verbal assurance. The service standards below are
             independently verified and renewed annually. Each one carries a real complaints or
             claims process. Insurance limits are tailored to the value of the move on request.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {accreditations.map(({ name, signal }, i) => (
+            {service standards.map(({ name, signal }, i) => (
               <div
                 key={name}
                 data-reveal
@@ -934,8 +933,8 @@ export default function OfficeRemovalsPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/certificates" variant="red" size="md">
-              View Certificates
+            <Button href="/company information" variant="red" size="md">
+              View Company Information
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
               About Removals Nationwide
@@ -1131,8 +1130,6 @@ export default function OfficeRemovalsPage() {
           </div>
         </div>
       </section>
-
-      <Accreditations />
 
       {/* ── S13: Final CTA ── */}
       <CtaBand

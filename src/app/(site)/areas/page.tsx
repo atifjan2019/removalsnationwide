@@ -6,7 +6,6 @@ import { DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
-import Accreditations from "@/components/home/Accreditations";
 import { ArrowRight } from "@/components/ui/icons";
 import { getAreas } from "@/lib/cms";
 import { boroughs } from "@/lib/boroughs";
@@ -108,8 +107,6 @@ export default async function AreasPage() {
           { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
         ]}
       />
-
-      <Accreditations />
     </>
   );
 }

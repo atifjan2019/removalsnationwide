@@ -23,7 +23,7 @@ export default function FinalCtaSection({
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/85">
           Book your move today with a free, no-obligation removal quote. Use the instant
           calculator for a budget estimate or book a free on-site or video survey for a fixed
-          price. Removals Nationwide is fully insured and BAR accredited.
+          price. Removals Nationwide is fully insured and industry experienced.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -42,7 +42,7 @@ export default function FinalCtaSection({
           </span>
           <span className="flex items-center gap-1.5">
             <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />
-            BAR accredited
+            industry experienced
           </span>
           <span className="flex items-center gap-1.5">
             <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />

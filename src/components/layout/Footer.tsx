@@ -39,15 +39,6 @@ const servicesB = footerServices.slice(6);
 const companyA = footerCompany.slice(0, 6);
 const companyB = footerCompany.slice(6);
 
-const accreditations = [
-  "BAR",
-  "NGRS",
-  "The Furniture Ombudsman",
-  "QSS-DW",
-  "Checkatrade",
-  "IAM",
-];
-
 /** Built from settings so an emptied URL removes the icon instead of linking nowhere. */
 function socialLinks(s: ResolvedSettings) {
   return [
@@ -179,19 +170,6 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
           </div>
         </div>
 
-        {/* Trust line */}
-        <div className="mt-12 border-t border-white/10 pt-8">
-          <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/40">
-            Trusted and certified by
-          </p>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            {accreditations.map((name) => (
-              <li key={name} className="text-sm font-semibold text-white/60">
-                {name}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
 
       {/* Bottom bar */}

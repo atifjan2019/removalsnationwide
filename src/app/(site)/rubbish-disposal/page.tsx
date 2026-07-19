@@ -13,7 +13,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Accreditations from "@/components/home/Accreditations";
 import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
@@ -23,15 +22,15 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("rubbish-disposal");
 
-/* ── Accreditations ────────────────────────────────────────────────── */
+/* ── Service Standards ────────────────────────────────────────────────── */
 
-const rubbishAccreditations = [
-  { name: "British Association of Removers (BAR)" },
-  { name: "National Guild of Removers and Storers (NGRS)" },
-  { name: "International Association of Movers (IAM)" },
-  { name: "The Furniture Ombudsman" },
-  { name: "QSS-DW Approved Mover" },
-  { name: "Checkatrade" },
+const rubbishService Standards = [
+  { name: "Fully insured removals" },
+  { name: "Vetted moving crews" },
+  { name: "International moving experience" },
+  { name: "Independent dispute resolution" },
+  { name: "Clear written quotations Approved Mover" },
+  { name: "Customer-reviewed service" },
 ];
 
 /* ── S2: Why choose tiles ──────────────────────────────────────────── */
@@ -313,7 +312,7 @@ export default function RubbishDisposalPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {rubbishAccreditations.map(({ name }) => (
+                  {rubbishService Standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -330,10 +329,10 @@ export default function RubbishDisposalPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -921,7 +920,7 @@ export default function RubbishDisposalPage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-white/50">
-            BAR and NGRS accredited &nbsp;&middot;&nbsp; Licensed waste carrier &nbsp;&middot;&nbsp;
+            industry and professional experienced &nbsp;&middot;&nbsp; Licensed waste carrier &nbsp;&middot;&nbsp;
             Registered in England No. 6874216
           </p>
           <p className="mt-2 text-xs text-white/40">
@@ -929,8 +928,6 @@ export default function RubbishDisposalPage() {
           </p>
         </div>
       </section>
-
-      <Accreditations />
 
     </>
   );

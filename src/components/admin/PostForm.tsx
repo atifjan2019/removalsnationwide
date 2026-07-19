@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import QuillEditor from "@/components/admin/QuillEditor";
+import ImageField from "@/components/admin/ImageField";
 import { savePost, type PostInput } from "@/app/admin/actions";
 
 const DEFAULT_BIO =
@@ -89,15 +90,11 @@ export default function PostForm({ post }: Props) {
           <label className="text-sm font-semibold text-brand-navy">Author</label>
           <input className={input} value={f.author} onChange={(e) => set("author", e.target.value)} />
         </div>
-        <div>
-          <label className="text-sm font-semibold text-brand-navy">Cover image path / URL</label>
-          <input
-            className={input}
-            value={f.cover_image}
-            onChange={(e) => set("cover_image", e.target.value)}
-            placeholder="/news/my-post.jpg"
-          />
-        </div>
+        <ImageField
+          label="Cover image"
+          value={f.cover_image}
+          onChange={(url) => set("cover_image", url)}
+        />
       </div>
       <div>
         <label className="text-sm font-semibold text-brand-navy">Author bio</label>

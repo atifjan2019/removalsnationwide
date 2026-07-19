@@ -17,7 +17,6 @@ import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import TipList, { type Tip } from "@/components/services/TipList";
 import Faq, { type FaqItem } from "@/components/services/Faq";
-import Accreditations from "@/components/home/Accreditations";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import StorageAnimations from "@/components/services/StorageAnimations";
 import {
@@ -49,8 +48,8 @@ const securityTiles = [
     body: "Your belongings are fully insured throughout their time in our facility, from the moment we collect through to redelivery at your door.",
   },
   {
-    title: "NGRS Accredited, BAR and IAM Members",
-    body: "Removals Nationwide is a certified member of the National Guild of Removers and Storers and holds accreditation with BAR, IAM, Checkatrade and The Furniture Ombudsman.",
+    title: "professional Experienced, industry and international moving Members",
+    body: "Removals Nationwide is a certified member of the National Guild of Removers and Storers and holds service standard with industry, international moving, Customer-reviewed service and Independent dispute resolution.",
   },
 ];
 
@@ -141,7 +140,7 @@ const whyChoose: CheckItem[] = [
     text: "Our Purfleet facility is staffed around the clock with modern CCTV covering the entire compound.",
   },
   {
-    lead: "NGRS, BAR and IAM accredited",
+    lead: "professional, industry and international moving experienced",
     text: "Certified member of the National Guild of Removers and Storers, the British Association of Removers and the International Association of Movers.",
   },
   {
@@ -253,13 +252,13 @@ const londonBoroughs = [
   "Westminster",
 ];
 
-const storageAccreditations = [
-  { name: "British Association of Removers (BAR)" },
-  { name: "National Guild of Removers and Storers (NGRS)" },
-  { name: "International Association of Movers (IAM)" },
-  { name: "The Furniture Ombudsman" },
-  { name: "QSS-DW Approved Mover" },
-  { name: "Checkatrade" },
+const storageService Standards = [
+  { name: "Fully insured removals" },
+  { name: "Vetted moving crews" },
+  { name: "International moving experience" },
+  { name: "Independent dispute resolution" },
+  { name: "Clear written quotations Approved Mover" },
+  { name: "Customer-reviewed service" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -401,7 +400,7 @@ export default function LondonStoragePage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {storageAccreditations.map(({ name }) => (
+                  {storageService Standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -418,10 +417,10 @@ export default function LondonStoragePage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -489,7 +488,7 @@ export default function LondonStoragePage() {
                 In 2026, more London customers book managed, collect-and-store storage than ever
                 before. The model is a genuine improvement over the traditional drive-up unit because
                 you do not arrange transport, navigate a storage park or carry furniture up a ramp.
-                We handle the physical work. As a certified member of the NGRS, we adhere to strict
+                We handle the physical work. As a certified member of the professional, we adhere to strict
                 procedures to ensure your goods are in qualified hands.
               </p>
             </div>
@@ -1075,13 +1074,11 @@ export default function LondonStoragePage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-white/50">
-            NGRS accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
+            professional experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
             &nbsp;&middot;&nbsp; Company No. 6874216
           </p>
         </div>
       </section>
-
-      <Accreditations />
     </>
   );
 }

@@ -27,11 +27,11 @@ export const metadata: Metadata = {
   title:
     "Removals Nationwide | Removals & Storage Across London, the UK & Worldwide",
   description:
-    "London, national and international removals and storage. House & office removals, man and van, packing and secure storage. Fully insured, BAR & NGRS accredited. Get a quote today.",
+    "London, national and international removals and storage. House & office removals, man and van, packing and secure storage. Fully insured, industry & professional experienced. Get a quote today.",
   openGraph: {
     title: "Removals Nationwide | Removals & Storage",
     description:
-      "London, national and international removals and storage. Fully insured, BAR & NGRS accredited.",
+      "London, national and international removals and storage. Fully insured, industry & professional experienced.",
     type: "website",
   },
 };

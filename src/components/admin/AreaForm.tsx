@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import QuillEditor from "@/components/admin/QuillEditor";
+import ImageField from "@/components/admin/ImageField";
 import { saveArea, type AreaInput } from "@/app/admin/actions";
 
 const input =

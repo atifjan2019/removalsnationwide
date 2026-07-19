@@ -7,7 +7,6 @@ import StickyMobileBar from "@/components/services/StickyMobileBar";
 import Button from "@/components/ui/Button";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 
 export const metadata: Metadata = buildMetadata("faq");
 
@@ -72,7 +71,7 @@ const faqs: FaqItem[] = [
     question:
       "12. Do you have different terms and conditions for the different removal services you offer?",
     answer:
-      "The same set of terms and conditions apply for all the jobs we do, regardless of what it is. These are recommended and approved by BAR and checked and updated regularly. It is discriminatory to offer a different set of T&Cs and against our Code of Practice.",
+      "The same set of terms and conditions apply for all the jobs we do, regardless of what it is. These are recommended and approved by industry and checked and updated regularly. It is discriminatory to offer a different set of T&Cs and against our Code of Practice.",
   },
   {
     question: "13. Is there something you can't move?",
@@ -189,7 +188,6 @@ export default function FaqPage() {
       </section>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

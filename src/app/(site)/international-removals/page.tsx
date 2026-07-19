@@ -13,7 +13,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Accreditations from "@/components/home/Accreditations";
 import CtaBand from "@/components/home/CtaBand";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import TipList, { type Tip } from "@/components/services/TipList";
@@ -32,15 +31,15 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("international-removals");
 
-/* ── Hero accreditations ───────────────────────────────────────────── */
+/* ── Hero service standards ───────────────────────────────────────────── */
 
-const internationalAccreditations = [
-  { name: "British Association of Removers (BAR)" },
-  { name: "National Guild of Removers and Storers (NGRS)" },
-  { name: "International Association of Movers (IAM)" },
-  { name: "The Furniture Ombudsman" },
-  { name: "QSS-DW Approved Mover" },
-  { name: "Checkatrade" },
+const internationalService Standards = [
+  { name: "Fully insured removals" },
+  { name: "Vetted moving crews" },
+  { name: "International moving experience" },
+  { name: "Independent dispute resolution" },
+  { name: "Clear written quotations Approved Mover" },
+  { name: "Customer-reviewed service" },
 ];
 
 /* ── Data ──────────────────────────────────────────────────────────── */
@@ -55,8 +54,8 @@ const trustTiles = [
     body: "Weekly departures to Scandinavia, Norway, Germany, Switzerland, Benelux and Austria. Bi-weekly to Poland, Lithuania, Latvia and Estonia.",
   },
   {
-    title: "IAM Accredited",
-    body: "Certified member of the International Association of Movers. The IAM sets the professional standards for international moving companies worldwide.",
+    title: "international moving Experienced",
+    body: "Certified member of the International Association of Movers. The international moving sets the professional standards for international moving companies worldwide.",
   },
   {
     title: "Fully Insured, Open Cover Available",
@@ -189,7 +188,7 @@ const whyChoose: CheckItem[] = [
     text: "Bi-weekly service to Poland, Lithuania, Latvia and Estonia. Partnered with major Estonian movers for local support.",
   },
   {
-    lead: "IAM accredited",
+    lead: "international moving experienced",
     text: "Certified member of the International Association of Movers. The international standard for professional moving companies.",
   },
   {
@@ -335,7 +334,7 @@ export default function InternationalRemovalsPage() {
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 Weekly road routes to Scandinavia, Norway, Germany, Switzerland, the Benelux and
-                the Baltics. Worldwide by sea and air via our partner network. IAM accredited,
+                the Baltics. Worldwide by sea and air via our partner network. international moving experienced,
                 door to door, fully insured.
               </p>
 
@@ -374,7 +373,7 @@ export default function InternationalRemovalsPage() {
                 {[
                   "Weekly EU routes",
                   "Door to door",
-                  "IAM accredited",
+                  "international moving experienced",
                   "Fully insured",
                 ].map((label) => (
                   <span
@@ -409,7 +408,7 @@ export default function InternationalRemovalsPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {internationalAccreditations.map(({ name }) => (
+                  {internationalService Standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -426,10 +425,10 @@ export default function InternationalRemovalsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -492,8 +491,8 @@ export default function InternationalRemovalsPage() {
                 logistics complexity all carry real risk when managed without professional oversight.
               </p>
               <p>
-                Removals Nationwide is a certified member of the International Association of Movers (IAM),
-                the international standard body for professional moving companies. Accreditation
+                Removals Nationwide is a certified member of the International moving experience,
+                the international standard body for professional moving companies. Service Standard
                 requires documented procedures, insurance and trained staff on every international
                 job. Our{" "}
                 <Link
@@ -1029,7 +1028,7 @@ export default function InternationalRemovalsPage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-brand-charcoal/50">
-            IAM accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Registered in England No. 6874216
+            international moving experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Registered in England No. 6874216
           </p>
         </div>
       </section>
@@ -1043,8 +1042,6 @@ export default function InternationalRemovalsPage() {
           <Faq items={faqs} className="mt-10" />
         </div>
       </section>
-
-      <Accreditations />
 
     </>
   );

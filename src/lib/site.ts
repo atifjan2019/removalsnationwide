@@ -51,7 +51,6 @@ export const navItems: NavItem[] = [
     label: "Why Us",
     href: "/about-us",
     children: [
-      { label: "Certificates", href: "/certificates" },
       { label: "Testimonials", href: "https://uk.trustpilot.com/review/removalsnationwide.uk" },
       { label: "Current Offers", href: "/current-offers" },
       { label: "FAQ", href: "/faq" },
@@ -90,7 +89,6 @@ export const footerCompany = [
   { label: "About Us", href: "/about-us" },
   { label: "Moving News", href: "/news" },
   { label: "FAQ", href: "/faq" },
-  { label: "Certificates", href: "/certificates" },
   { label: "Our Fleet", href: "/our-fleet" },
   { label: "Photos", href: "/photos" },
   { label: "Contact Us", href: "/contactus" },

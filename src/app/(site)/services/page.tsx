@@ -7,7 +7,6 @@ import ServiceCard from "@/components/home/ServiceCard";
 import CtaBand from "@/components/home/CtaBand";
 import Testimonials from "@/components/home/Testimonials";
 import NewsSection from "@/components/home/NewsSection";
-import Accreditations from "@/components/home/Accreditations";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = buildMetadata("services");
@@ -58,7 +57,6 @@ export default function ServicesPage() {
 
       <Testimonials />
       <NewsSection />
-      <Accreditations />
     </>
   );
 }

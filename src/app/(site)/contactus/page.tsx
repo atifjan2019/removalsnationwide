@@ -7,7 +7,6 @@ import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ContactForm from "@/components/contact/ContactForm";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 import { PhoneIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("contact");
@@ -137,7 +136,6 @@ export default async function ContactPage() {
       </section>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

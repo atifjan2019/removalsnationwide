@@ -6,7 +6,6 @@ import StickyMobileBar from "@/components/services/StickyMobileBar";
 import HtmlContent from "@/components/news/HtmlContent";
 import CtaBand from "@/components/home/CtaBand";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 import BoroughPage from "@/components/areas/BoroughPage";
 import { boroughs } from "@/lib/boroughs";
 import { SITE, withTrailingSlash } from "@/lib/seo";
@@ -106,7 +105,6 @@ export default async function AreaPage({
       />
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

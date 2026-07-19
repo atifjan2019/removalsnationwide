@@ -6,7 +6,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Accreditations from "@/components/home/Accreditations";
 import { CheckIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("current-offers");
@@ -121,7 +120,7 @@ export default function CurrentOffersPage() {
             Get Your Free No-Obligation Quote
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
-            Tell us about your move for an exact, fair price. Accredited, insured, 7 days a week.
+            Tell us about your move for an exact, fair price. Experienced, insured, 7 days a week.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
             <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
@@ -136,8 +135,6 @@ export default function CurrentOffersPage() {
           </div>
         </div>
       </section>
-
-      <Accreditations />
     </>
   );
 }

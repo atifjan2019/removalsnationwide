@@ -8,7 +8,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import CtaBand from "@/components/home/CtaBand";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 
 export const metadata: Metadata = buildMetadata("prices");
 
@@ -295,7 +294,6 @@ export default function PricesPage() {
       />
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

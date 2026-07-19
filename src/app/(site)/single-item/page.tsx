@@ -13,7 +13,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Accreditations from "@/components/home/Accreditations";
 import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -22,15 +21,15 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("single-item-deliveries");
 
-/* ── Accreditations ────────────────────────────────────────────────── */
+/* ── Service Standards ────────────────────────────────────────────────── */
 
-const singleItemAccreditations = [
-  { name: "British Association of Removers (BAR)" },
-  { name: "National Guild of Removers and Storers (NGRS)" },
-  { name: "International Association of Movers (IAM)" },
-  { name: "The Furniture Ombudsman" },
-  { name: "QSS-DW Approved Mover" },
-  { name: "Checkatrade" },
+const singleItemService Standards = [
+  { name: "Fully insured removals" },
+  { name: "Vetted moving crews" },
+  { name: "International moving experience" },
+  { name: "Independent dispute resolution" },
+  { name: "Clear written quotations Approved Mover" },
+  { name: "Customer-reviewed service" },
 ];
 
 /* ── S3: Benefits ──────────────────────────────────────────────────── */
@@ -423,7 +422,7 @@ export default function SingleItemPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {singleItemAccreditations.map(({ name }) => (
+                  {singleItemService Standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -440,10 +439,10 @@ export default function SingleItemPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -1040,7 +1039,7 @@ export default function SingleItemPage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-white/50">
-            BAR and NGRS accredited &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp;
+            industry and professional experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp;
             Registered in England No. 6874216
           </p>
           <p className="mt-2 text-xs text-white/40">
@@ -1048,8 +1047,6 @@ export default function SingleItemPage() {
           </p>
         </div>
       </section>
-
-      <Accreditations />
     </>
   );
 }

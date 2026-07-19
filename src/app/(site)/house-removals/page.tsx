@@ -8,7 +8,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
-import Accreditations from "@/components/home/Accreditations";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import PricingTable from "@/components/services/PricingTable";
 import HouseRemovalsAnimations from "@/components/services/HouseRemovalsAnimations";
@@ -212,13 +211,13 @@ const priceFactors: CheckItem[] = [
 
 /* ─────────────── Section 10: Why choose ─────────────── */
 
-const accreditations = [
-  "British Association of Removers (BAR)",
-  "National Guild of Removers and Storers (NGRS)",
-  "The Furniture Ombudsman",
-  "QSS-DW Approved Mover",
-  "Checkatrade",
-  "International Association of Movers (IAM)",
+const service standards = [
+  "Fully insured removals",
+  "Vetted moving crews",
+  "Independent dispute resolution",
+  "Clear written quotations Approved Mover",
+  "Customer-reviewed service",
+  "International moving experience",
 ];
 
 /* ─────────────── Section 11: Restricted items ─────────────── */
@@ -246,7 +245,7 @@ const restrictedItems: CheckItem[] = [
   },
   {
     lead: "Valuables and important documents",
-    text: "Jewellery, cash, passports, birth certificates and irreplaceable items should travel with you rather than in the removal vehicle.",
+    text: "Jewellery, cash, passports, birth company information and irreplaceable items should travel with you rather than in the removal vehicle.",
   },
 ];
 
@@ -361,7 +360,7 @@ export default function HouseRemovalsPage() {
       <PageBanner
         title="House Removals London"
         h1={serviceH1["house-removals"]}
-        subtitle="Fully Insured · BAR Accredited · 7 Days a Week"
+        subtitle="Fully Insured · industry Experienced · 7 Days a Week"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -378,7 +377,7 @@ export default function HouseRemovalsPage() {
             <div>
               <p className="max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
                 Removals Nationwide moves homes across London with a{" "}
-                <strong>fully insured, BAR-accredited team</strong> operating seven days a week.
+                <strong>fully insured, industry-experienced team</strong> operating seven days a week.
                 Whether you are moving a studio flat or a five-bedroom house, every job comes with a
                 free pre-move survey, a written fixed-price quote and end-to-end management:
                 packing, transport and unloading handled by trained professionals.
@@ -420,7 +419,7 @@ export default function HouseRemovalsPage() {
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {["BAR Accredited", "Fully Insured", "7 Days a Week"].map((label) => (
+                {["industry Experienced", "Fully Insured", "7 Days a Week"].map((label) => (
                   <span
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
@@ -449,7 +448,7 @@ export default function HouseRemovalsPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {accreditations.map((name) => (
+                  {service standards.map((name) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -466,10 +465,10 @@ export default function HouseRemovalsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -1003,17 +1002,17 @@ export default function HouseRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             tone="light"
-            eyebrow="Verified, insured, accredited"
+            eyebrow="Verified, insured, experienced"
             title="Why London Trusts Removals Nationwide"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a removal company means trusting someone with everything you own. The
-            accreditations below are independently verified and renewed annually. Each one carries
+            service standards below are independently verified and renewed annually. Each one carries
             a real complaints or claims process.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {accreditations.map((name) => (
+            {service standards.map((name) => (
               <div
                 key={name}
                 className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/8 p-5"
@@ -1048,8 +1047,8 @@ export default function HouseRemovalsPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/certificates" variant="red" size="md">
-              View Certificates
+            <Button href="/company information" variant="red" size="md">
+              View Company Information
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
               About Removals Nationwide
@@ -1168,8 +1167,6 @@ export default function HouseRemovalsPage() {
           </div>
         </div>
       </section>
-
-      <Accreditations />
 
       {/* ── S14: Quote CTA ── */}
       <CtaBand

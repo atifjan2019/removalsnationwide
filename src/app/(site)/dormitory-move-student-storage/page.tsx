@@ -12,7 +12,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import Accreditations from "@/components/home/Accreditations";
 import CtaBand from "@/components/home/CtaBand";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -21,15 +20,15 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("dormitory-move-student-storage");
 
-/* ── Accreditations ────────────────────────────────────────────────── */
+/* ── Service Standards ────────────────────────────────────────────────── */
 
-const dormitoryAccreditations = [
-  { name: "British Association of Removers (BAR)" },
-  { name: "National Guild of Removers and Storers (NGRS)" },
-  { name: "International Association of Movers (IAM)" },
-  { name: "The Furniture Ombudsman" },
-  { name: "QSS-DW Approved Mover" },
-  { name: "Checkatrade" },
+const dormitoryService Standards = [
+  { name: "Fully insured removals" },
+  { name: "Vetted moving crews" },
+  { name: "International moving experience" },
+  { name: "Independent dispute resolution" },
+  { name: "Clear written quotations Approved Mover" },
+  { name: "Customer-reviewed service" },
 ];
 
 /* ── S3: UK delivery service items ────────────────────────────────── */
@@ -252,7 +251,7 @@ export default function DormitoryMoveStudentStoragePage() {
               </div>
 
               <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
-                No hidden fees. BAR-accredited remover. Insurance included on UK moves.
+                No hidden fees. industry-experienced remover. Insurance included on UK moves.
               </p>
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
@@ -294,7 +293,7 @@ export default function DormitoryMoveStudentStoragePage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {dormitoryAccreditations.map(({ name }) => (
+                  {dormitoryService Standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -382,7 +381,7 @@ export default function DormitoryMoveStudentStoragePage() {
                     "Not a self-serve or by-the-box brand",
                     "The crew packs the whole room",
                     "You need not be present",
-                    "BAR-accredited professional remover",
+                    "industry-experienced professional remover",
                     "One move coordinator manages every step",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
@@ -743,12 +742,10 @@ export default function DormitoryMoveStudentStoragePage() {
             </Button>
           </div>
           <p className="mt-6 text-sm text-white/50">
-            No hidden fees. BAR-accredited. Insurance included on UK dormitory moves.
+            No hidden fees. industry-experienced. Insurance included on UK dormitory moves.
           </p>
         </div>
       </section>
-
-      <Accreditations />
     </>
   );
 }

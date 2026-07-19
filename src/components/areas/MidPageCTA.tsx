@@ -18,7 +18,7 @@ export default function MidPageCTA({ borough }: { borough: string }) {
         Moving in {borough}? Get your free quote.
       </h2>
       <p className="mx-auto mt-2 max-w-xl text-base text-white/90">
-        Accredited, insured, 7 days a week. Same-day moves subject to availability.
+        Experienced, insured, 7 days a week. Same-day moves subject to availability.
       </p>
       <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <a

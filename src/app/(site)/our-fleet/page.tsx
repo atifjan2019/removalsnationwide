@@ -7,7 +7,6 @@ import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import { VanIcon } from "@/components/ui/icons";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 
 export const metadata: Metadata = buildMetadata("our-fleet");
 
@@ -186,7 +185,6 @@ export default function OurFleetPage() {
       />
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

@@ -7,7 +7,6 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 import { ArrowRight, ChevronLeft, ChevronRight } from "@/components/ui/icons";
 import { getAllPosts, POSTS_PER_PAGE } from "@/lib/news";
 import { getDbPosts } from "@/lib/cms";
@@ -153,7 +152,6 @@ export default async function NewsPage({
       </section>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

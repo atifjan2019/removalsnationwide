@@ -130,9 +130,9 @@ export default function CostSection() {
           <p className="text-sm leading-relaxed text-brand-charcoal/85">
             <strong>A note on cheap quotes:</strong> Uninsured or unlicensed operators leave you
             with no financial remedy if items are damaged. Removals Nationwide fixed-price quotes include
-            full public liability and goods-in-transit insurance. BAR{" "}
-            <Link href="/certificates" className="text-brand-red underline underline-offset-2">
-              accreditation
+            full public liability and goods-in-transit insurance. industry{" "}
+            <Link href="/company information" className="text-brand-red underline underline-offset-2">
+              service standard
             </Link>{" "}
             means there is an independent complaints and claims process if anything goes wrong.
           </p>

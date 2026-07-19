@@ -6,7 +6,6 @@ import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BookingForm from "@/components/booking/BookingForm";
 import Testimonials from "@/components/home/Testimonials";
-import Accreditations from "@/components/home/Accreditations";
 import { PhoneIcon, CheckIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("book-a-service");
@@ -27,7 +26,7 @@ const nextSteps = [
 ];
 
 const reassurance = [
-  "BAR and NGRS accredited",
+  "industry and professional experienced",
   "Fully insured, cover included",
   "7 days a week",
   "No hidden fees",
@@ -45,7 +44,7 @@ const bookPageSchema = {
   url: `${SITE_URL}/bookservice`,
   name: "Book Your Move",
   description:
-    "Start your booking or detailed quote with Removals Nationwide. Accredited, insured, 7 days a week.",
+    "Start your booking or detailed quote with Removals Nationwide. Experienced, insured, 7 days a week.",
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
@@ -142,7 +141,6 @@ export default function BookAServicePage() {
       </section>
 
       <Testimonials />
-      <Accreditations />
     </>
   );
 }

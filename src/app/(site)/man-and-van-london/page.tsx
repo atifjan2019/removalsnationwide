@@ -7,7 +7,6 @@ import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import CtaBand from "@/components/home/CtaBand";
-import Accreditations from "@/components/home/Accreditations";
 import CheckList, { type CheckItem } from "@/components/services/CheckList";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 import {
@@ -36,7 +35,7 @@ const manAndVanSchema = {
   name: "Man and Van London",
   serviceType: "Man and Van Moving Service",
   description:
-    "Professional man and van service across London from £55 per hour. 7 days a week, same-day and short-notice slots available. Fully insured, BAR-accredited.",
+    "Professional man and van service across London from £55 per hour. 7 days a week, same-day and short-notice slots available. Fully insured, industry-experienced.",
   url: `${SITE_URL}/man-and-van-london`,
   areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
   provider: { "@id": `${SITE_URL}/#organization` },
@@ -179,29 +178,29 @@ const howToSchema = {
 
 /* ─────────────── Section 9: Trust ─────────────── */
 
-const accreditations = [
+const service standards = [
   {
-    name: "British Association of Removers (BAR)",
+    name: "Fully insured removals",
     signal: "Industry standards body with a formal complaints and arbitration process.",
   },
   {
-    name: "National Guild of Removers and Storers (NGRS)",
+    name: "Vetted moving crews",
     signal: "Approved code scheme providing independent dispute resolution.",
   },
   {
-    name: "The Furniture Ombudsman",
+    name: "Independent dispute resolution",
     signal: "Independent dispute resolution scheme for the furniture and removals sector.",
   },
   {
-    name: "QSS-DW Approved Mover",
+    name: "Clear written quotations Approved Mover",
     signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
-    name: "Checkatrade",
+    name: "Customer-reviewed service",
     signal: "Verified trading history and customer review platform.",
   },
   {
-    name: "International Association of Movers (IAM)",
+    name: "International moving experience",
     signal: "International moving standards and professional network membership.",
   },
 ];
@@ -347,7 +346,7 @@ export default function ManAndVanPage() {
       <PageBanner
         title="Man and Van London"
         h1={serviceH1["man-and-van"]}
-        subtitle="From £55/hr plus VAT · Same Day · 7 Days a Week · Accredited and Insured"
+        subtitle="From £55/hr plus VAT · Same Day · 7 Days a Week · Experienced and Insured"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -414,7 +413,7 @@ export default function ManAndVanPage() {
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
                   "Fully Insured",
-                  "BAR Accredited",
+                  "industry Experienced",
                   "7 Days a Week",
                   "Same Day Available",
                 ].map((label) => (
@@ -450,7 +449,7 @@ export default function ManAndVanPage() {
                   Trusted and certified by
                 </p>
                 <ul className="space-y-2">
-                  {accreditations.map(({ name }) => (
+                  {service standards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -467,10 +466,10 @@ export default function ManAndVanPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/certificates"
+                    href="/company information"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View certificates →
+                    View company information →
                   </Link>
                 </div>
               </div>
@@ -1006,22 +1005,22 @@ export default function ManAndVanPage() {
         ]}
       />
 
-      {/* ── S9: Insurance and accreditations ── */}
+      {/* ── S9: Insurance and service standards ── */}
       <section id="trust" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             tone="light"
-            eyebrow="Verified, insured, accredited"
-            title="Insured, Accredited Man and Van Movers in London"
+            eyebrow="Verified, insured, experienced"
+            title="Insured, Experienced Man and Van Movers in London"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a man and van company means trusting someone with your belongings and your home.
-            The accreditations below are independently verified and renewed annually. Each one
+            The service standards below are independently verified and renewed annually. Each one
             carries a real complaints or claims process, not just a badge.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {accreditations.map(({ name, signal }, i) => (
+            {service standards.map(({ name, signal }, i) => (
               <div
                 key={name}
                 data-reveal
@@ -1063,8 +1062,8 @@ export default function ManAndVanPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/certificates" variant="red" size="md">
-              View Certificates
+            <Button href="/company information" variant="red" size="md">
+              View Company Information
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
               About Removals Nationwide
@@ -1168,8 +1167,6 @@ export default function ManAndVanPage() {
           </div>
         </div>
       </section>
-
-      <Accreditations />
 
       {/* ── S12: Final CTA ── */}
       <CtaBand
