@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const nav: NavItem[] = [
   { label: "Dashboard", href: "/admin" },
+  { label: "Bookings", href: "/admin/bookings" },
   { label: "Posts", href: "/admin/posts" },
   { label: "Areas", href: "/admin/areas" },
   { label: "Media", href: "/admin/media" },

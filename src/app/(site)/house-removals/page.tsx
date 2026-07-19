@@ -118,7 +118,7 @@ const howToSchema = {
 
 /* ─────────────── Section 5: Cost table ─────────────── */
 
-/* Price bands sourced from the removal calculator and confirmed against the live Prices page. */
+/* Starting price bands retained from the published Prices page. */
 const costRows = [
   { label: "Studio / bedsit", values: ["Contact us for a guide price", "Transit van, 2 crew"] },
   { label: "1-bedroom flat", values: ["From £390", "Transit or Luton van, 2 crew"] },
@@ -307,7 +307,7 @@ const faqs: FaqItem[] = [
     answer:
       "House removal costs depend on property size, distance, access and whether packing is included. The most accurate price comes from a free pre-move survey covering your volume, floor level, route and parking requirements.",
     answerAfter:
-      "Use the removal calculator for an instant estimate, or book a free survey for a fixed written quote with no hidden fees.",
+      "Send your move details through the booking form, or book a free survey for a fixed written quote with no hidden fees.",
   },
   {
     question: "What is included in a house removal service?",
@@ -385,8 +385,8 @@ export default async function HouseRemovalsPage() {
                 packing, transport and unloading handled by trained professionals.
               </p>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
-                Get an instant estimate, or book a free survey for an exact fixed price with no
-                hidden fees.
+                Send your move details online, or book a free survey for an exact fixed price with
+                no hidden fees.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -404,7 +404,7 @@ export default async function HouseRemovalsPage() {
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  Estimate My Move
+                  Start Booking Request
                 </Button>
                 <Button
                   href={phones.london.href}
@@ -775,7 +775,7 @@ export default async function HouseRemovalsPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/bookservice" variant="red" size="md">
-                Estimate My Move
+                Start Booking Request
               </Button>
               <Button href="/bookservice#quick-quote" variant="navy" size="md">
                 Get a Fixed Quote
@@ -995,7 +995,7 @@ export default async function HouseRemovalsPage() {
         subtext="Free survey · written fixed price · no hidden fees · 7 days a week"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
-          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
+          { label: "Start Booking Request", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 
@@ -1175,7 +1175,7 @@ export default async function HouseRemovalsPage() {
         subtext={`Free survey · fixed price · no obligation · call ${phones.london.label}`}
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
-          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
+          { label: "Start Booking Request", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 

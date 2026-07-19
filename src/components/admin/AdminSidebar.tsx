@@ -11,6 +11,9 @@ const ICONS: Record<string, React.ReactNode> = {
   "/admin": (
     <path d="M3 12l9-9 9 9M5 10v10h14V10" />
   ),
+  "/admin/bookings": (
+    <path d="M6 3h12v18H6zM9 3v3h6V3M9 10h6M9 14h6M9 18h4" />
+  ),
   "/admin/posts": (
     <path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5" />
   ),
@@ -41,8 +44,11 @@ export default function AdminSidebar({
   // Read the stored preference after mount. Rendering expanded first and
   // correcting on mount avoids a hydration mismatch against the server HTML.
   useEffect(() => {
-    setCollapsed(localStorage.getItem(STORAGE_KEY) === "1");
-    setReady(true);
+    const frame = requestAnimationFrame(() => {
+      setCollapsed(localStorage.getItem(STORAGE_KEY) === "1");
+      setReady(true);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   function toggle() {

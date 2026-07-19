@@ -5,7 +5,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import SectionHeading from "@/components/ui/SectionHeading";
-import BookingForm from "@/components/booking/BookingForm";
+import BookingFunnel from "@/components/booking/BookingFunnel";
 import Testimonials from "@/components/home/Testimonials";
 import { PhoneIcon, CheckIcon } from "@/components/ui/icons";
 
@@ -63,17 +63,7 @@ export default async function BookAServicePage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Book a Service" }]}
       />
 
-      <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <p className="mb-8 text-base leading-relaxed text-brand-charcoal/85">
-            Please fill the form below and a member of our sales team will contact you as soon as
-            possible. Fields marked with <span className="font-semibold text-brand-red">*</span>{" "}
-            are required fields.
-          </p>
-
-          <BookingForm />
-        </div>
-      </section>
+      <BookingFunnel />
 
       {/* What happens next */}
       <section className="bg-white py-20">

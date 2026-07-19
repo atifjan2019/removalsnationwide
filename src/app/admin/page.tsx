@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { getDbPosts, getAreas } from "@/lib/cms";
 import { getDb } from "@/lib/d1";
+import { getBookings } from "@/lib/bookings";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
   const configured = (await getDb()) !== null;
-  const [posts, areas] = await Promise.all([getDbPosts(true), getAreas(true)]);
+  const [posts, areas, bookings] = await Promise.all([
+    getDbPosts(true),
+    getAreas(true),
+    getBookings(),
+  ]);
 
   return (
     <div>
@@ -25,7 +30,15 @@ export default async function AdminDashboard() {
         </div>
       )}
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <Link
+          href="/admin/bookings"
+          className="rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition hover:shadow-md"
+        >
+          <p className="text-4xl font-extrabold text-brand-red">{bookings.length}</p>
+          <p className="mt-1 text-lg font-bold text-brand-navy">Bookings</p>
+          <p className="mt-1 text-sm text-brand-charcoal/60">Manage booking requests →</p>
+        </Link>
         <Link
           href="/admin/posts"
           className="rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition hover:shadow-md"

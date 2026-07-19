@@ -602,7 +602,7 @@ export default async function ManAndVanPage() {
             <CheckList items={priceFactors} className="mt-6" />
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/bookservice" variant="red" size="md">
-                Estimate My Move
+                Start Booking Request
               </Button>
               <Button href="/prices" variant="navy" size="md">
                 Full Prices Page
@@ -1035,7 +1035,7 @@ export default async function ManAndVanPage() {
         subtext="Free quote · fixed price · no hidden fees · 7 days a week"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
-          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
+          { label: "Start Booking Request", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 
@@ -1207,7 +1207,7 @@ export default async function ManAndVanPage() {
         subtext="Free quote in under 2 minutes · same-day available · 7 days a week"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
-          { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },
+          { label: "Start Booking Request", href: "/bookservice", variant: "outline-light" },
         ]}
       />
 

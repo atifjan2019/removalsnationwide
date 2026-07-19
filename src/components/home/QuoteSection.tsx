@@ -35,10 +35,9 @@ export default function QuoteSection() {
               Get an Instant Nationwide Removal Quote
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/90">
-              A free, no-obligation quote covers your full requirements. Two routes are available:
-              use the online removal calculator for an instant budget figure, or book a free
-              on-site or video survey for an exact fixed price. All quotes include VAT and fuel
-              with no hidden fees.
+              Send your details through our step-by-step booking form. We review the route, access,
+              volume and services required, then arrange a free on-site or video survey when needed
+              before providing an exact fixed price with no hidden fees.
             </p>
             <p className="mt-3 text-base leading-relaxed text-white/90">
               A surveyor visits your property or conducts a video walkthrough, assesses access

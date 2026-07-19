@@ -4,7 +4,7 @@ import Button from "@/components/ui/Button";
 import PricingTable, { type PricingRow } from "@/components/services/PricingTable";
 
 /*
- * CONFIRM: full-move base prices sourced from the removal calculator (last updated 2019).
+ * CONFIRM: full-move base prices were last updated in 2019.
  * Verify each figure is current for 2026 before publishing — or replace with updated figures
  * and remove this flag.
  *
@@ -15,7 +15,7 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
  * current for 2026. Drop the year from the heading if they are not confirmed.
  */
 
-/* ── Full-move starting prices (from removal calculator) ─────────────────── */
+/* ── Full-move starting prices ───────────────────────────────────────────── */
 const moveColumns = ["Property", "Volume guide", "Starting from"];
 const moveRows: PricingRow[] = [
   { label: "1 bedroom", values: ["up to 400 cu ft", "£390"] },
@@ -66,7 +66,7 @@ export default function CostSection() {
           <strong className="text-brand-navy">£390 for a 1-bedroom</strong> and from{" "}
           <strong className="text-brand-navy">£756 for a 3-bedroom</strong>, all prices
           excluding VAT. The final price is set by distance, access, packing and volume, and
-          confirmed by the removal calculator or a free survey.
+          confirmed after reviewing your booking request or completing a free survey.
         </p>
 
         {/* Full-move starting prices table */}
@@ -114,12 +114,12 @@ export default function CostSection() {
 
         {/* Honest exact-price statement */}
         <p data-reveal className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-brand-charcoal/70">
-          The figures above are starting prices. The exact cost is confirmed by the{" "}
+          The figures above are starting prices. Share your move through the{" "}
           <Link href="/bookservice" className="text-brand-red underline underline-offset-2">
-            removal calculator
-          </Link>{" "}
-          for an instant estimate, or by a free on-site or video survey for a written fixed price
-          that includes all add-ons.
+            booking form
+          </Link>
+          , then our team will review the details or arrange a free on-site or video survey before
+          providing a written fixed price that includes all agreed work.
         </p>
 
         {/* Note on cheap quotes */}

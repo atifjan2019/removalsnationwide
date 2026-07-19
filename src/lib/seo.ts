@@ -538,7 +538,7 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "How do I get a removal quote?",
     answer:
-      "Use the online removal calculator for an instant estimate, or book a free on-site or video survey for a fixed-price quote with no hidden fees. You can also call our team directly.",
+      "Use our online booking form to share your move details, or book a free on-site or video survey for a fixed-price quote with no hidden fees. You can also call our team directly.",
   },
 ];
 

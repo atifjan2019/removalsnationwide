@@ -127,8 +127,8 @@ export default function HomepageHero() {
             Removals Nationwide provides house removals, man and van services, office moves, professional
             packing and secure storage across the UK. Our fully insured crews handle local,
             nationwide and international
-            relocations. Book a free on-site or video survey for an exact fixed quote, or use the
-            removal calculator for an instant estimate.
+            relocations. Send your move details through our booking form, then arrange a free
+            on-site or video survey when needed for an exact fixed quote.
           </p>
           <div className="hero-anim-ctas mt-8 flex flex-wrap gap-4">
             <Button href="/bookservice#quick-quote" variant="red" size="lg">

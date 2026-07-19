@@ -21,9 +21,9 @@ export default function FinalCtaSection({
           Get Your Free Nationwide Removal Quote Today
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/85">
-          Book your move today with a free, no-obligation removal quote. Use the instant
-          calculator for a budget estimate or book a free on-site or video survey for a fixed
-          price. Removals Nationwide is fully insured and industry experienced.
+          Start your move with our step-by-step booking form. Our team reviews your details and
+          can arrange a free on-site or video survey before providing a fixed price. Removals
+          Nationwide is fully insured and experienced.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">

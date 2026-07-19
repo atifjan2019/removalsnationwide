@@ -40,9 +40,9 @@ const LINK_OVERRIDES: Record<string, React.ReactNode> = {
     <>
       Use the{" "}
       <Link href="/bookservice" className={lk}>
-        online removal calculator
+        online booking form
       </Link>{" "}
-      for an instant estimate, or{" "}
+      to share your move details, or{" "}
       <Link href="/bookservice#quick-quote" className={lk}>
         book a free on-site or video survey
       </Link>{" "}
