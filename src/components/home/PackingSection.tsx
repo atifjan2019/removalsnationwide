@@ -64,7 +64,7 @@ export default function PackingSection() {
             <ul className="mt-4 space-y-3">
               {materials.map((m) => (
                 <li key={m} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-brand-charcoal/90">{m}</span>
@@ -79,7 +79,7 @@ export default function PackingSection() {
               your address before move day.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button href="/packing-service" variant="orange" size="md">
+              <Button href="/packing-service" variant="red" size="md">
                 Packing Services London
               </Button>
               <Button href="/packaging-materials" variant="navy" size="md">

@@ -14,7 +14,7 @@ export default function QuoteSection() {
   return (
     <section
       id="quote"
-      className="relative overflow-hidden bg-brand-orange"
+      className="relative overflow-hidden bg-brand-red"
       aria-labelledby="quote-heading"
     >
       <div

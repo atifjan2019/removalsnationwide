@@ -21,7 +21,7 @@ export default function DeleteButton({
           startTransition(() => action(id));
         }
       }}
-      className="text-sm font-semibold text-brand-orange transition hover:text-black disabled:opacity-50"
+      className="text-sm font-semibold text-brand-red transition hover:text-black disabled:opacity-50"
     >
       {pending ? "Deleting…" : label}
     </button>

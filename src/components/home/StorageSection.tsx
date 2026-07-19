@@ -46,7 +46,7 @@ export default function StorageSection() {
               </p>
             </div>
             <div className="mt-8">
-              <Button href="/storage" variant="orange" size="md">
+              <Button href="/storage" variant="red" size="md">
                 London Storage
               </Button>
             </div>
@@ -59,7 +59,7 @@ export default function StorageSection() {
             <ul className="mt-5 space-y-4">
               {features.map((f) => (
                 <li key={f} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-brand-charcoal/90">{f}</span>

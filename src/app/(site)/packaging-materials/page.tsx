@@ -65,7 +65,7 @@ const products = [
     price: "£5.00 each",
     use: "Bedding, duvets, pillows and other light bulky items. Large enough for a full duvet set.",
     badge: "Most popular",
-    badgeClass: "bg-brand-orange",
+    badgeClass: "bg-brand-red",
   },
   {
     name: "Small Moving Box",
@@ -358,7 +358,7 @@ export default function PackagingMaterialsPage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -397,7 +397,7 @@ export default function PackagingMaterialsPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -427,7 +427,7 @@ export default function PackagingMaterialsPage() {
                 <ul className="space-y-2">
                   {packagingAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -437,13 +437,13 @@ export default function PackagingMaterialsPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -476,7 +476,7 @@ export default function PackagingMaterialsPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -512,7 +512,7 @@ export default function PackagingMaterialsPage() {
                   Materials are also available as part of a full{" "}
                   <Link
                     href="/packing-service"
-                    className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     professional packing service
                   </Link>
@@ -534,7 +534,7 @@ export default function PackagingMaterialsPage() {
               </div>
               <span
                 aria-hidden="true"
-                className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+                className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
               />
             </div>
           </div>
@@ -574,7 +574,7 @@ export default function PackagingMaterialsPage() {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-brand-charcoal/80">
                   {p.use}
                 </p>
-                <p className="mt-4 text-lg font-bold text-brand-orange">{p.price}</p>
+                <p className="mt-4 text-lg font-bold text-brand-red">{p.price}</p>
                 <p className="text-xs text-brand-charcoal/50">plus VAT</p>
               </div>
             ))}
@@ -613,7 +613,7 @@ export default function PackagingMaterialsPage() {
               For materials combined with a removal or{" "}
               <Link
                 href="/packing-service"
-                className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 packing service
               </Link>
@@ -644,7 +644,7 @@ export default function PackagingMaterialsPage() {
                 className="rounded-xl border border-black/8 bg-white p-5 shadow-sm"
               >
                 <p className="text-sm font-bold text-brand-navy">{r.room}</p>
-                <p className="mt-1 text-base font-semibold text-brand-orange">{r.boxes}</p>
+                <p className="mt-1 text-base font-semibold text-brand-red">{r.boxes}</p>
                 <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/75">{r.note}</p>
               </div>
             ))}
@@ -655,7 +655,7 @@ export default function PackagingMaterialsPage() {
             survey or through the packing service.
           </p>
           <div className="mt-6 flex justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="md">
+            <Button href="/bookservice#quick-quote" variant="red" size="md">
               Get a Confirmed Box Count
             </Button>
           </div>
@@ -694,7 +694,7 @@ export default function PackagingMaterialsPage() {
       {/* ── S8: Save by Combining ────────────────────────────────────── */}
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-4xl px-4 text-center" data-reveal>
-          <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+          <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
             Better together
           </span>
           <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -704,7 +704,7 @@ export default function PackagingMaterialsPage() {
             When you book a{" "}
             <Link
               href="/packing-service"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-white"
+              className="font-semibold text-brand-red underline underline-offset-2 hover:text-white"
             >
               professional packing service
             </Link>
@@ -717,7 +717,7 @@ export default function PackagingMaterialsPage() {
             discounts apply. Ask your coordinator at the survey stage.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button href="/packing-service" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/packing-service" variant="red" size="lg" className="w-full sm:w-auto">
               See the Packing Service
             </Button>
             <Button
@@ -747,7 +747,7 @@ export default function PackagingMaterialsPage() {
               For short London moves or anyone who wants to reduce single-use packaging,{" "}
               <Link
                 href="/crate-hire"
-                className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 plastic crate hire
               </Link>{" "}
@@ -793,7 +793,7 @@ export default function PackagingMaterialsPage() {
               If you would prefer to use reusable crates rather than single-use cardboard,{" "}
               <Link
                 href="/crate-hire"
-                className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 crate hire
               </Link>{" "}
@@ -817,7 +817,7 @@ export default function PackagingMaterialsPage() {
       <section className="bg-brand-navy py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -833,7 +833,7 @@ export default function PackagingMaterialsPage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -853,7 +853,7 @@ export default function PackagingMaterialsPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -871,16 +871,16 @@ export default function PackagingMaterialsPage() {
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
               href="tel:+442072052525"
-              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
             <a
               href="tel:+448000467877"
-              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

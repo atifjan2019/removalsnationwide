@@ -65,7 +65,7 @@ const crates = [
     weeklyPrice: "£2.00",
     capacity: "Up to ten lever arch files",
     badge: "Office and home",
-    badgeClass: "bg-brand-orange",
+    badgeClass: "bg-brand-red",
     use: "Files, documents, folders, books, reports and CDs. The standard choice for office moves and document-heavy relocations. Integral lid, waterproof, sealable with security locks.",
     img: "/gallery/move-11.jpg",
     imgAlt: "LC3 lidded plastic crate for office and home moving, supplied by Removals Nationwide",
@@ -302,7 +302,7 @@ export default function CrateHirePage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -341,7 +341,7 @@ export default function CrateHirePage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -371,7 +371,7 @@ export default function CrateHirePage() {
                 <ul className="space-y-2">
                   {crateAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -381,13 +381,13 @@ export default function CrateHirePage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -420,7 +420,7 @@ export default function CrateHirePage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -458,7 +458,7 @@ export default function CrateHirePage() {
                 For customers who do need cardboard, our{" "}
                 <Link
                   href="/packaging-materials"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   packaging materials page
                 </Link>{" "}
@@ -479,7 +479,7 @@ export default function CrateHirePage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
         </div>
@@ -519,7 +519,7 @@ export default function CrateHirePage() {
                 <div className="p-6">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="text-lg font-bold text-brand-navy">{c.name}</h3>
-                    <span className="shrink-0 text-2xl font-extrabold text-brand-orange">
+                    <span className="shrink-0 text-2xl font-extrabold text-brand-red">
                       {c.litres}
                     </span>
                   </div>
@@ -538,7 +538,7 @@ export default function CrateHirePage() {
                       <p className="text-xs font-semibold uppercase tracking-wide text-brand-charcoal/50">
                         Per week
                       </p>
-                      <p className="text-xl font-bold text-brand-orange">{c.weeklyPrice}</p>
+                      <p className="text-xl font-bold text-brand-red">{c.weeklyPrice}</p>
                       <p className="text-xs text-brand-charcoal/50">plus VAT</p>
                     </div>
                   </div>
@@ -580,14 +580,14 @@ export default function CrateHirePage() {
               Combining crate hire with a{" "}
               <Link
                 href="/man-and-van-london"
-                className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 man-and-van
               </Link>{" "}
               or{" "}
               <Link
                 href="/office-removals"
-                className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 office removal
               </Link>{" "}
@@ -610,8 +610,8 @@ export default function CrateHirePage() {
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2" data-reveal>
             {/* Plastic crates */}
-            <div className="rounded-2xl border-2 border-brand-orange bg-white p-8 shadow-md">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+            <div className="rounded-2xl border-2 border-brand-red bg-white p-8 shadow-md">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                 Plastic crates (hire)
               </div>
               <ul className="mt-2 space-y-3">
@@ -624,13 +624,13 @@ export default function CrateHirePage() {
                   "Greener for a local move: zero single-use waste",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
-                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={2.5} />
+                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={2.5} />
                     {item}
                   </li>
                 ))}
               </ul>
               <div className="mt-6">
-                <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                <Button href="/bookservice#quick-quote" variant="red" size="md">
                   Hire Crates
                 </Button>
               </div>
@@ -658,7 +658,7 @@ export default function CrateHirePage() {
               <div className="mt-6">
                 <Link
                   href="/packaging-materials"
-                  className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   See packaging materials and prices →
                 </Link>
@@ -672,7 +672,7 @@ export default function CrateHirePage() {
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
-            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Step by step
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -712,7 +712,7 @@ export default function CrateHirePage() {
                 data-delay={String(Math.min(i + 1, 7))}
                 className="flex flex-col rounded-2xl bg-white/8 p-6 ring-1 ring-white/10 transition-all duration-200 hover:bg-white/12 motion-reduce:transition-none"
               >
-                <span className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-orange">
+                <span className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-red">
                   Step {i + 1}
                 </span>
                 <p className="text-sm font-bold leading-snug text-white">{step}</p>
@@ -768,14 +768,14 @@ export default function CrateHirePage() {
                 data-delay={String((i % 3) + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-base font-bold text-brand-navy">
+                <h3 className="mb-3 border-l-4 border-brand-red pl-3 text-base font-bold text-brand-navy">
                   {uc.title}
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-brand-charcoal/85">{uc.body}</p>
                 {uc.link && (
                   <Link
                     href={uc.link.href}
-                    className="mt-4 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
+                    className="mt-4 text-sm font-semibold text-brand-red transition hover:text-brand-navy"
                   >
                     {uc.link.label} &rarr;
                   </Link>
@@ -807,7 +807,7 @@ export default function CrateHirePage() {
                 className="rounded-xl border border-black/8 bg-white p-5 shadow-sm"
               >
                 <p className="text-sm font-bold text-brand-navy">{r.room}</p>
-                <p className="mt-1 text-base font-semibold text-brand-orange">{r.crates}</p>
+                <p className="mt-1 text-base font-semibold text-brand-red">{r.crates}</p>
                 <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/75">{r.note}</p>
               </div>
             ))}
@@ -817,7 +817,7 @@ export default function CrateHirePage() {
             IT setups add crates quickly. Our team confirms the exact count at survey.
           </p>
           <div className="mt-6 flex justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="md">
+            <Button href="/bookservice#quick-quote" variant="red" size="md">
               Get a Confirmed Crate Count
             </Button>
           </div>
@@ -827,7 +827,7 @@ export default function CrateHirePage() {
       {/* ── S10: Combine With Your Move ──────────────────────────────── */}
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-4xl px-4 text-center" data-reveal>
-          <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+          <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
             Better together
           </span>
           <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -850,14 +850,14 @@ export default function CrateHirePage() {
               <Link
                 key={s.label}
                 href={s.href}
-                className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-orange hover:text-brand-orange"
+                className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-red hover:text-brand-red"
               >
                 {s.label}
               </Link>
             ))}
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
             <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
@@ -870,7 +870,7 @@ export default function CrateHirePage() {
       {/* ── S11: Reviews (Trustpilot only) ───────────────────────────── */}
       <section className="bg-brand-grey py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
-          <div className="flex justify-center gap-1 text-brand-orange" aria-label="5 out of 5 stars">
+          <div className="flex justify-center gap-1 text-brand-red" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map((_, i) => (
               <StarIcon key={i} className="h-7 w-7" />
             ))}
@@ -884,7 +884,7 @@ export default function CrateHirePage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -914,7 +914,7 @@ export default function CrateHirePage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -932,16 +932,16 @@ export default function CrateHirePage() {
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
               href="tel:+442072052525"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
             <a
               href="tel:+448000467877"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

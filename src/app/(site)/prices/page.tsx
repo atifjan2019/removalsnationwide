@@ -136,7 +136,7 @@ export default function PricesPage() {
               <li key={item} className="flex items-start gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-brand-orange"
+                  className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-brand-red"
                 />
                 <span className="text-base leading-relaxed text-brand-charcoal/85">{item}</span>
               </li>
@@ -169,7 +169,7 @@ export default function PricesPage() {
           <PricingTable columns={manAndVanColumns} rows={manAndVanRows} className="mt-10" />
           <p className="mt-4 text-sm leading-relaxed text-brand-charcoal/70">
             All rates are subject to VAT at 20%, minimum 2 hours. See the full{" "}
-            <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               man and van service
             </Link>{" "}
             for details.
@@ -185,7 +185,7 @@ export default function PricesPage() {
           <p className="mt-4 text-sm leading-relaxed text-brand-charcoal/70">
             All material prices are subject to VAT at 20%. Free delivery on orders over £120,
             otherwise a £20 delivery charge applies. Order through{" "}
-            <Link href="/packaging-materials" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/packaging-materials" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               packaging materials
             </Link>
             .
@@ -210,7 +210,7 @@ export default function PricesPage() {
             Deliveries for purchases over £120 are free of charge. A £20 delivery charge applies to
             all other deliveries, and a congestion charge applies on certain routes. All prices are
             subject to VAT at 20%. Hire crates through our{" "}
-            <Link href="/crate-hire" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/crate-hire" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               crate hire service
             </Link>
             .
@@ -226,50 +226,50 @@ export default function PricesPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl border border-black/10 bg-brand-grey p-6">
               <h3 className="text-base font-bold text-brand-navy">Professional packing</h3>
-              <p className="mt-2 text-2xl font-extrabold text-brand-orange">Cartons x £6</p>
+              <p className="mt-2 text-2xl font-extrabold text-brand-red">Cartons x £6</p>
               <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/80">
                 Materials and labour included, nothing charged separately. A 100-carton job is
                 approximately £600. Subject to VAT at 20%, fixed after a free survey. A materials
                 discount applies when packing is booked with your move.
               </p>
-              <Link href="/packing-service" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/packing-service" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 Packing service details
               </Link>
             </div>
 
             <div className="rounded-2xl border border-black/10 bg-brand-grey p-6">
               <h3 className="text-base font-bold text-brand-navy">Secure storage</h3>
-              <p className="mt-2 text-2xl font-extrabold text-brand-orange">From £10 / week</p>
+              <p className="mt-2 text-2xl font-extrabold text-brand-red">From £10 / week</p>
               <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/80">
                 Charged per volume, with no minimum or maximum term. We collect, load and seal your
                 goods. The exact price is confirmed by your move coordinator.
               </p>
-              <Link href="/storage" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/storage" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 Storage details
               </Link>
             </div>
 
             <div className="rounded-2xl border border-black/10 bg-brand-grey p-6">
               <h3 className="text-base font-bold text-brand-navy">House removals</h3>
-              <p className="mt-2 text-2xl font-extrabold text-brand-orange">Indicative</p>
+              <p className="mt-2 text-2xl font-extrabold text-brand-red">Indicative</p>
               <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/80">
                 As a guide, house moves range from about £200 plus VAT for the smallest jobs up to
                 £2,000 to £3,000 plus VAT for the largest. This is indicative only and confirmed at a
                 free survey, not a fixed table.
               </p>
-              <Link href="/house-removals" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/house-removals" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 House removals details
               </Link>
             </div>
 
             <div className="rounded-2xl border border-black/10 bg-brand-grey p-6">
               <h3 className="text-base font-bold text-brand-navy">Office removals</h3>
-              <p className="mt-2 text-2xl font-extrabold text-brand-orange">From about £100 / desk</p>
+              <p className="mt-2 text-2xl font-extrabold text-brand-red">From about £100 / desk</p>
               <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/80">
                 Office moves start from about £100 per workstation, plus VAT. The price is
                 survey-based and confirmed after we assess volume, access and timing.
               </p>
-              <Link href="/office-removals" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/office-removals" className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 Office removals details
               </Link>
             </div>
@@ -277,7 +277,7 @@ export default function PricesPage() {
 
           <p className="mt-8 text-center text-sm leading-relaxed text-brand-charcoal/60">
             Indicative ranges are confirmed at a free survey. For an exact figure, see our{" "}
-            <Link href="/faq" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/faq" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               FAQ
             </Link>{" "}
             or request a quote.

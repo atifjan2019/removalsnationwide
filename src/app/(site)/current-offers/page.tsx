@@ -72,7 +72,7 @@ export default function CurrentOffersPage() {
             We are not running a time-limited promotion at the moment. Rather than headline deals
             that come and go, Removals Nationwide focuses on fair, transparent pricing every day. See real
             figures on our{" "}
-            <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               prices page
             </Link>{" "}
             and get an exact figure from a free no-obligation survey.
@@ -97,14 +97,14 @@ export default function CurrentOffersPage() {
                 key={s.title}
                 className="flex h-full flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
               >
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-white">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-white">
                   <CheckIcon className="h-5 w-5" strokeWidth={3} />
                 </span>
                 <h3 className="mt-4 text-base font-bold text-brand-navy">{s.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-brand-charcoal/80">{s.body}</p>
                 <Link
                   href={s.href}
-                  className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+                  className="mt-3 inline-block text-sm font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
                 >
                   {s.linkLabel}
                 </Link>
@@ -124,7 +124,7 @@ export default function CurrentOffersPage() {
             Tell us about your move for an exact, fair price. Accredited, insured, 7 days a week.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
             <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">

@@ -44,7 +44,7 @@ export default function StickyMobileBar({ sentinelId }: Props) {
       <div className="flex gap-3 px-4 py-3">
         <Link
           href="/bookservice#quick-quote"
-          className="flex min-h-[44px] flex-1 items-center justify-center rounded-md bg-brand-orange text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-orange-dark active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="flex min-h-[44px] flex-1 items-center justify-center rounded-md bg-brand-red text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-red-dark active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Get a Free Quote
         </Link>

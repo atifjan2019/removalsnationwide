@@ -15,7 +15,7 @@ import {
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldClass =
-  "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-2.5 text-base text-brand-charcoal shadow-sm transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/30";
+  "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-2.5 text-base text-brand-charcoal shadow-sm transition focus:border-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red/30";
 
 /* ---------- Presentational field helpers ---------- */
 
@@ -23,7 +23,7 @@ function Label({ htmlFor, children, required }: { htmlFor: string; children: Rea
   return (
     <label htmlFor={htmlFor} className="text-sm font-semibold text-brand-navy">
       {children}
-      {required && <span className="text-brand-orange"> *</span>}
+      {required && <span className="text-brand-red"> *</span>}
     </label>
   );
 }
@@ -58,7 +58,7 @@ function TextInput({
         aria-invalid={!!error}
         className={fieldClass}
       />
-      {error && <p className="mt-1 text-sm text-brand-orange">{error}</p>}
+      {error && <p className="mt-1 text-sm text-brand-red">{error}</p>}
     </div>
   );
 }
@@ -101,7 +101,7 @@ function SelectInput({
           </option>
         ))}
       </select>
-      {error && <p className="mt-1 text-sm text-brand-orange">{error}</p>}
+      {error && <p className="mt-1 text-sm text-brand-red">{error}</p>}
     </div>
   );
 }
@@ -124,7 +124,7 @@ function CheckboxInput({
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-5 w-5 shrink-0 accent-brand-orange"
+        className="h-5 w-5 shrink-0 accent-brand-red"
       />
       {label}
     </label>
@@ -254,8 +254,8 @@ export default function BookingForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-orange/20 bg-brand-grey p-10 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange text-white">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-red/20 bg-brand-grey p-10 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white">
           <CheckIcon className="h-7 w-7" strokeWidth={3} />
         </span>
         <h3 className="mt-5 text-xl font-bold text-brand-navy">Thank you for your booking request</h3>
@@ -335,7 +335,7 @@ export default function BookingForm() {
             />
           ))}
         </div>
-        <p className="mt-6 rounded-xl border-l-4 border-brand-orange bg-brand-grey px-5 py-4 font-semibold text-brand-navy">
+        <p className="mt-6 rounded-xl border-l-4 border-brand-red bg-brand-grey px-5 py-4 font-semibold text-brand-navy">
           Cleaning company Get 10% OFF Your Cleaning
         </p>
       </Section>
@@ -378,19 +378,19 @@ export default function BookingForm() {
             checked={!!checks.acceptTerms}
             onChange={(e) => toggle("acceptTerms")(e.target.checked)}
             aria-invalid={!!errors.acceptTerms}
-            className="mt-1 h-5 w-5 shrink-0 accent-brand-orange"
+            className="mt-1 h-5 w-5 shrink-0 accent-brand-red"
           />
           <span className="text-sm leading-relaxed text-brand-charcoal/85">
-            <span className="text-brand-orange">*</span> By ticking this box you accept our{" "}
-            <Link href="/terms-and-conditions" className="font-semibold text-brand-orange hover:underline">
+            <span className="text-brand-red">*</span> By ticking this box you accept our{" "}
+            <Link href="/terms-and-conditions" className="font-semibold text-brand-red hover:underline">
               Terms and Conditions
             </Link>
           </span>
         </label>
-        {errors.acceptTerms && <p className="mt-1 text-sm text-brand-orange">{errors.acceptTerms}</p>}
+        {errors.acceptTerms && <p className="mt-1 text-sm text-brand-red">{errors.acceptTerms}</p>}
 
         <div className="mt-6">
-          <Button type="submit" variant="orange" size="lg" disabled={!checks.acceptTerms}>
+          <Button type="submit" variant="red" size="lg" disabled={!checks.acceptTerms}>
             Book Now
           </Button>
         </div>

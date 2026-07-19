@@ -18,7 +18,7 @@ const badges = [
 
 function Stars({ count }: { count: number }) {
   return (
-    <div className="flex gap-0.5 text-brand-orange" aria-label={`${count} out of 5 stars`}>
+    <div className="flex gap-0.5 text-brand-red" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <StarIcon key={i} className={`h-5 w-5 ${i < count ? "" : "opacity-25"}`} />
       ))}
@@ -45,7 +45,7 @@ export default function ReviewsSection() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-brand-orange underline underline-offset-2"
+            className="text-brand-red underline underline-offset-2"
           >
             Read verified reviews on Trustpilot
           </Link>
@@ -62,7 +62,7 @@ export default function ReviewsSection() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"
+            className="mt-4 inline-block text-sm font-semibold text-brand-red underline underline-offset-2"
           >
             View all reviews on Trustpilot
           </Link>
@@ -96,7 +96,7 @@ export default function ReviewsSection() {
             Trusted and certified by{" "}
             <Link
               href="/certificates"
-              className="normal-case text-brand-orange underline underline-offset-2 hover:text-brand-navy transition-colors"
+              className="normal-case text-brand-red underline underline-offset-2 hover:text-brand-navy transition-colors"
             >
               view all certificates
             </Link>

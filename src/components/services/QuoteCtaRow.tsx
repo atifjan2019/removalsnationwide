@@ -12,7 +12,7 @@ export default function QuoteCtaRow() {
           <Button href="/bookservice#quick-quote" variant="outline" size="lg">
             Quick Quote
           </Button>
-          <Button href="/bookservice" variant="orange" size="lg">
+          <Button href="/bookservice" variant="red" size="lg">
             Book a Service
           </Button>
         </div>

@@ -23,7 +23,7 @@ export default function FinalCtaSection() {
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+          <Button href="/bookservice#quick-quote" variant="red" size="lg">
             Get a Free Quote
           </Button>
           <Button href="/bookservice" variant="outline-light" size="lg">
@@ -33,19 +33,19 @@ export default function FinalCtaSection() {
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-white/70">
           <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />
             Fully insured
           </span>
           <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />
             BAR accredited
           </span>
           <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />
             No hidden fees
           </span>
           <span className="flex items-center gap-1.5">
-            <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} />
+            <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />
             Free survey
           </span>
         </div>
@@ -53,14 +53,14 @@ export default function FinalCtaSection() {
         <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3">
           <a
             href={phones.freephone.href}
-            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-orange"
+            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-red"
           >
             <PhoneIcon className="h-4 w-4" />
             {phones.freephone.label}
           </a>
           <a
             href={phones.london.href}
-            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-orange"
+            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-red"
           >
             <PhoneIcon className="h-4 w-4" />
             {phones.london.label}

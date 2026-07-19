@@ -98,14 +98,14 @@ export default async function NewsPage({
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {post.date && (
-                    <span className="absolute left-4 top-4 rounded-md bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+                    <span className="absolute left-4 top-4 rounded-md bg-brand-red px-3 py-1 text-xs font-semibold text-white">
                       {post.date}
                     </span>
                   )}
                 </Link>
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-lg font-bold leading-snug text-brand-navy">
-                    <Link href={`/news/${post.slug}`} className="transition hover:text-brand-orange">
+                    <Link href={`/news/${post.slug}`} className="transition hover:text-brand-red">
                       {post.title}
                     </Link>
                   </h2>
@@ -114,7 +114,7 @@ export default async function NewsPage({
                   </p>
                   <Link
                     href={`/news/${post.slug}`}
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-orange transition group-hover:gap-2.5"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-red transition group-hover:gap-2.5"
                   >
                     Read More
                     <ArrowRight className="h-4 w-4" />
@@ -136,7 +136,7 @@ export default async function NewsPage({
                   aria-current={n === current}
                   className={`flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition ${
                     n === current
-                      ? "bg-brand-orange text-white"
+                      ? "bg-brand-red text-white"
                       : "bg-brand-grey text-brand-navy hover:bg-brand-navy hover:text-white"
                   }`}
                 >

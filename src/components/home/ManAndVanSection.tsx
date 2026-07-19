@@ -42,14 +42,14 @@ export default function ManAndVanSection() {
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <div className="rounded-2xl border border-brand-orange/20 bg-brand-grey p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" data-reveal data-delay="1">
+          <div className="rounded-2xl border border-brand-red/20 bg-brand-grey p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" data-reveal data-delay="1">
             <h3 className="text-lg font-bold uppercase tracking-wide text-brand-navy">
               Man and van suits your move when:
             </h3>
             <ul className="mt-5 space-y-3">
               {manAndVanSuits.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-brand-charcoal/90">{item}</span>
@@ -65,7 +65,7 @@ export default function ManAndVanSection() {
             <ul className="mt-5 space-y-3">
               {fullRemovalSuits.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-white/90">{item}</span>
@@ -77,20 +77,20 @@ export default function ManAndVanSection() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           <div className="rounded-2xl border border-black/5 bg-brand-grey p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" data-reveal data-delay="1">
-            <p className="text-2xl font-extrabold text-brand-orange">Hourly</p>
+            <p className="text-2xl font-extrabold text-brand-red">Hourly</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">
               Billed per hour from collection to drop-off, with a minimum booking period.
               Ideal for local hops.
             </p>
           </div>
           <div className="rounded-2xl border border-black/5 bg-brand-grey p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" data-reveal data-delay="2">
-            <p className="text-2xl font-extrabold text-brand-orange">Fixed Price</p>
+            <p className="text-2xl font-extrabold text-brand-red">Fixed Price</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">
               One agreed price for the job, regardless of how long loading takes. No time pressure.
             </p>
           </div>
           <div className="rounded-2xl border border-black/5 bg-brand-grey p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" data-reveal data-delay="3">
-            <p className="text-2xl font-extrabold text-brand-orange">Same Day</p>
+            <p className="text-2xl font-extrabold text-brand-red">Same Day</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">
               Short-notice and same-day bookings accepted across all London boroughs, subject to
               availability.
@@ -104,7 +104,7 @@ export default function ManAndVanSection() {
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/man-and-van-london" variant="orange" size="lg">
+          <Button href="/man-and-van-london" variant="red" size="lg">
             Man and Van London
           </Button>
           <Button href="/single-item" variant="navy" size="lg">

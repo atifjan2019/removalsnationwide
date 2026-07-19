@@ -8,7 +8,7 @@ export const SITE_URL = (
 export const SITE = {
   name: "Removals Nationwide",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/logo-red.svg`,
   telephone: "+442072052525",
   phones: ["020 7205 2525", "0800 046 7877"],
   address: {

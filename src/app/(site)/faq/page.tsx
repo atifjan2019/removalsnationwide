@@ -140,23 +140,23 @@ export default function FaqPage() {
 
           <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
             For service-specific detail, see{" "}
-            <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               our prices
             </Link>
             ,{" "}
-            <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               house removals
             </Link>
             ,{" "}
-            <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               man and van
             </Link>
             ,{" "}
-            <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               storage
             </Link>{" "}
             and{" "}
-            <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               international removals
             </Link>
             .
@@ -175,7 +175,7 @@ export default function FaqPage() {
             your details for a free no-obligation quote.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
             <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">

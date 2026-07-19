@@ -3,7 +3,7 @@ import { PhoneIcon, StarIcon, StarHalfIcon } from "@/components/ui/icons";
 
 export default function TopBar() {
   return (
-    <div className="bg-brand-orange text-white">
+    <div className="bg-brand-red text-white">
       <div className="mx-auto flex max-w-[88rem] flex-col items-center gap-2 px-4 py-2 text-center text-[11px] font-medium tracking-wide sm:text-xs lg:flex-row lg:justify-between lg:text-left">
         <p className="uppercase tracking-[0.12em]">
           London, National and International Removals and Storage
@@ -13,7 +13,7 @@ export default function TopBar() {
           {/* Trustpilot-style rating badge */}
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1">
             <span className="font-semibold uppercase tracking-wide">Excellent</span>
-            <span className="flex items-center text-brand-orange" aria-hidden="true">
+            <span className="flex items-center text-white" aria-hidden="true">
               <StarIcon className="h-3.5 w-3.5" />
               <StarIcon className="h-3.5 w-3.5" />
               <StarIcon className="h-3.5 w-3.5" />

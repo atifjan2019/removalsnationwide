@@ -30,7 +30,7 @@ export default function WhatYouNeedToKnow() {
         <ul className="mx-auto mt-12 grid max-w-5xl gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <li key={item} className="flex items-start gap-3">
-              <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+              <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                 <CheckIcon className="h-4 w-4" strokeWidth={3} />
               </span>
               <span className="text-sm leading-relaxed text-brand-charcoal/90">{item}</span>

@@ -60,7 +60,7 @@ export default function StatsCounter() {
         <dl className="grid grid-cols-2 gap-y-10 gap-x-6 lg:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center text-center">
-              <dd className="text-4xl font-bold tracking-tight text-brand-orange sm:text-5xl">
+              <dd className="text-4xl font-bold tracking-tight text-brand-red sm:text-5xl">
                 {stat.numeric !== undefined ? (
                   <CountUp target={stat.numeric} suffix={stat.suffix} />
                 ) : (

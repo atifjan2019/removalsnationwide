@@ -31,14 +31,14 @@ export default function NewsSection() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-md bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+                  <span className="absolute left-4 top-4 rounded-md bg-brand-red px-3 py-1 text-xs font-semibold text-white">
                     {article.date}
                   </span>
                 </Link>
 
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-lg font-bold leading-snug text-brand-navy">
-                    <Link href={href} className="transition hover:text-brand-orange">
+                    <Link href={href} className="transition hover:text-brand-red">
                       {article.title}
                     </Link>
                   </h3>
@@ -47,7 +47,7 @@ export default function NewsSection() {
                   </p>
                   <Link
                     href={href}
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-orange transition group-hover:gap-2.5"
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-red transition group-hover:gap-2.5"
                   >
                     Read More
                     <ArrowRight className="h-4 w-4" />

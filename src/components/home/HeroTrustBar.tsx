@@ -7,7 +7,7 @@ type TrustItem = {
 
 const ITEMS: TrustItem[] = [
   {
-    icon: <StarIcon className="h-4 w-4 text-brand-orange" aria-hidden="true" />,
+    icon: <StarIcon className="h-4 w-4 text-brand-red" aria-hidden="true" />,
     label: (
       <>
         <strong className="font-semibold text-brand-navy">Excellent</strong>
@@ -16,20 +16,20 @@ const ITEMS: TrustItem[] = [
     ),
   },
   {
-    icon: <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} aria-hidden="true" />,
+    icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
     label: <span className="text-brand-charcoal/70">BAR Accredited</span>,
   },
   {
-    icon: <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} aria-hidden="true" />,
+    icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
     label: <span className="text-brand-charcoal/70">NGRS Accredited</span>,
   },
   {
-    icon: <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} aria-hidden="true" />,
+    icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
     label: <span className="text-brand-charcoal/70">Fully Insured</span>,
   },
   /* CONFIRM: add verified established year, then restore this item:
   {
-    icon: <CheckIcon className="h-4 w-4 text-brand-orange" strokeWidth={3} aria-hidden="true" />,
+    icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
     label: <span className="text-brand-charcoal/70">Established XXXX</span>,
   },
   */

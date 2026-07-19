@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Man and van service">
-  <defs><linearGradient id="mv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f3a5f"/><stop offset="1" stop-color="#e8541e"/></linearGradient></defs>
+  <defs><linearGradient id="mv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#000000"/><stop offset="1" stop-color="#e83145"/></linearGradient></defs>
   <rect width="900" height="700" fill="url(#mv)"/>
   <g opacity="0.18" fill="#fff">
     <rect x="200" y="300" width="320" height="180" rx="10"/>

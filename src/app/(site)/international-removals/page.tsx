@@ -67,7 +67,7 @@ const trustTiles = [
 const routes = [
   {
     freq: "Weekly",
-    freqStyle: "bg-brand-orange",
+    freqStyle: "bg-brand-red",
     destinations: "Scandinavia, Norway, Germany, Switzerland, Benelux and Austria",
     note: "Dedicated Norway service available.",
   },
@@ -91,7 +91,7 @@ const shippingMethods = [
     title: "European Road Freight",
     body: "Own-fleet, scheduled road removals from London to European destinations. Every vehicle is tracked from loading to delivery. The fastest and most cost-effective route for European moves.",
     badge: "Own fleet",
-    badgeClass: "bg-brand-orange",
+    badgeClass: "bg-brand-red",
   },
   {
     title: "Sea Freight",
@@ -342,7 +342,7 @@ export default function InternationalRemovalsPage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -381,7 +381,7 @@ export default function InternationalRemovalsPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -411,7 +411,7 @@ export default function InternationalRemovalsPage() {
                 <ul className="space-y-2">
                   {internationalAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -421,13 +421,13 @@ export default function InternationalRemovalsPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -460,7 +460,7 @@ export default function InternationalRemovalsPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -498,7 +498,7 @@ export default function InternationalRemovalsPage() {
                 job. Our{" "}
                 <Link
                   href="/packing-service"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   professional packing service
                 </Link>{" "}
@@ -519,7 +519,7 @@ export default function InternationalRemovalsPage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
         </div>
@@ -583,7 +583,7 @@ export default function InternationalRemovalsPage() {
             Removals Nationwide runs a dedicated weekly Norway service.{" "}
             <Link
               href="/removals-services-to-norway"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
               See the Norway removals page
             </Link>{" "}
@@ -644,7 +644,7 @@ export default function InternationalRemovalsPage() {
                       className="flex items-start gap-3 text-sm text-brand-charcoal/85"
                     >
                       <CheckIcon
-                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
                         strokeWidth={2.5}
                       />
                       {item}
@@ -652,7 +652,7 @@ export default function InternationalRemovalsPage() {
                   ))}
                 </ul>
               </div>
-              <div className="rounded-2xl border-2 border-brand-orange bg-brand-navy p-6 text-white">
+              <div className="rounded-2xl border-2 border-brand-red bg-brand-navy p-6 text-white">
                 <p className="text-sm font-bold uppercase tracking-wide text-white">
                   Full load (dedicated)
                 </p>
@@ -665,7 +665,7 @@ export default function InternationalRemovalsPage() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm text-white/90">
                       <CheckIcon
-                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
                         strokeWidth={2.5}
                       />
                       {item}
@@ -704,7 +704,7 @@ export default function InternationalRemovalsPage() {
                 key={d.region}
                 className="rounded-xl border border-black/8 bg-white p-4 text-center shadow-sm"
               >
-                <p className="text-xs font-bold uppercase tracking-wide text-brand-orange">
+                <p className="text-xs font-bold uppercase tracking-wide text-brand-red">
                   {d.region}
                 </p>
                 <p className="mt-1 text-sm text-brand-charcoal/85">{d.places}</p>
@@ -719,7 +719,7 @@ export default function InternationalRemovalsPage() {
             route used before any commitment is made.{" "}
             <Link
               href="/areas"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
               See our UK service areas
             </Link>
@@ -742,15 +742,15 @@ export default function InternationalRemovalsPage() {
           </div>
           <p data-reveal className="mx-auto mt-8 max-w-2xl text-center text-sm text-brand-charcoal/60">
             Storage is available before and after your move.{" "}
-            <Link href="/storage" className="underline hover:text-brand-orange">
+            <Link href="/storage" className="underline hover:text-brand-red">
               Secure storage in London
             </Link>
             . Packing materials and crates supplied separately:{" "}
-            <Link href="/crate-hire" className="underline hover:text-brand-orange">
+            <Link href="/crate-hire" className="underline hover:text-brand-red">
               crate hire
             </Link>{" "}
             and{" "}
-            <Link href="/packaging-materials" className="underline hover:text-brand-orange">
+            <Link href="/packaging-materials" className="underline hover:text-brand-red">
               packaging materials
             </Link>
             .
@@ -762,7 +762,7 @@ export default function InternationalRemovalsPage() {
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
-            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Step by step
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -782,10 +782,10 @@ export default function InternationalRemovalsPage() {
                 className="flex flex-col rounded-2xl bg-white/8 p-6 ring-1 ring-white/10 transition-all duration-200 hover:bg-white/12 motion-reduce:transition-none"
               >
                 <div className="mb-3 flex items-center gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-red">
                     Step {i + 1}
                   </span>
                 </div>
@@ -795,7 +795,7 @@ export default function InternationalRemovalsPage() {
             ))}
           </div>
           <div data-reveal className="mt-10 flex justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Start With a Free Quote
             </Button>
           </div>
@@ -962,7 +962,7 @@ export default function InternationalRemovalsPage() {
       <section className="bg-brand-navy py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -977,7 +977,7 @@ export default function InternationalRemovalsPage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -997,7 +997,7 @@ export default function InternationalRemovalsPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -1015,16 +1015,16 @@ export default function InternationalRemovalsPage() {
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
               href="tel:+442072052525"
-              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
             <a
               href="tel:+448000467877"
-              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

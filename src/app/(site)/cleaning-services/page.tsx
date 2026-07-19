@@ -340,7 +340,7 @@ export default function CleaningServicesPage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -379,7 +379,7 @@ export default function CleaningServicesPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -409,7 +409,7 @@ export default function CleaningServicesPage() {
                 <ul className="space-y-2">
                   {cleaningAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -419,13 +419,13 @@ export default function CleaningServicesPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -484,7 +484,7 @@ export default function CleaningServicesPage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
         </div>
@@ -506,12 +506,12 @@ export default function CleaningServicesPage() {
                 data-delay={String((i % 3) + 1)}
                 className={`flex flex-col rounded-2xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${
                   svc.highlight
-                    ? "border-2 border-brand-orange bg-white"
+                    ? "border-2 border-brand-red bg-white"
                     : "border border-black/5 bg-white"
                 }`}
               >
                 {svc.highlight && (
-                  <span className="mb-3 inline-flex w-fit rounded-full bg-brand-orange px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                  <span className="mb-3 inline-flex w-fit rounded-full bg-brand-red px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
                     Move essential
                   </span>
                 )}
@@ -532,7 +532,7 @@ export default function CleaningServicesPage() {
             eyebrow="Highest-intent service"
             title="End of Tenancy and Move-Out Cleaning"
           />
-          <div className="mt-10 rounded-2xl border-2 border-brand-orange bg-brand-sand p-8 shadow-md" data-reveal>
+          <div className="mt-10 rounded-2xl border-2 border-brand-red bg-brand-sand p-8 shadow-md" data-reveal>
             <div className="space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
                 A thorough end of tenancy clean leaves the property in good condition for the
@@ -553,7 +553,7 @@ export default function CleaningServicesPage() {
               </p>
             </div>
             <div className="mt-6">
-              <Button href="/bookservice#quick-quote" variant="orange" size="md">
+              <Button href="/bookservice#quick-quote" variant="red" size="md">
                 Quick Quote
               </Button>
             </div>
@@ -604,7 +604,7 @@ export default function CleaningServicesPage() {
                 ].map(({ title, desc }) => (
                   <li key={title} className="flex gap-4">
                     <CheckIcon
-                      className="mt-1 h-5 w-5 shrink-0 text-brand-orange"
+                      className="mt-1 h-5 w-5 shrink-0 text-brand-red"
                       strokeWidth={2.5}
                     />
                     <div>
@@ -635,7 +635,7 @@ export default function CleaningServicesPage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -left-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -left-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
           <div data-reveal className="order-1 lg:order-2">
@@ -683,14 +683,14 @@ export default function CleaningServicesPage() {
                 data-delay={String(i + 1)}
                 className="rounded-2xl border border-black/8 bg-white p-6 shadow-sm"
               >
-                <h3 className="mb-4 border-b border-brand-orange pb-2 text-sm font-bold text-brand-navy">
+                <h3 className="mb-4 border-b border-brand-red pb-2 text-sm font-bold text-brand-navy">
                   {col.room}
                 </h3>
                 <ul className="space-y-2">
                   {col.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
                       <CheckIcon
-                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
                         strokeWidth={2.5}
                       />
                       {item}
@@ -711,7 +711,7 @@ export default function CleaningServicesPage() {
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
-            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Better together
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -730,7 +730,7 @@ export default function CleaningServicesPage() {
                 data-delay={String(step)}
                 className="flex flex-col rounded-2xl bg-white/8 p-6 ring-1 ring-white/10 transition-all duration-200 hover:bg-white/12 motion-reduce:transition-none"
               >
-                <span className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-orange">
+                <span className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-red">
                   Step {step}
                 </span>
                 <p className="text-sm font-bold leading-snug text-white">{title}</p>
@@ -738,7 +738,7 @@ export default function CleaningServicesPage() {
                 {href && linkLabel && (
                   <Link
                     href={href}
-                    className="mt-4 text-xs font-semibold text-brand-orange transition hover:text-white"
+                    className="mt-4 text-xs font-semibold text-brand-red transition hover:text-white"
                   >
                     {linkLabel} →
                   </Link>
@@ -758,7 +758,7 @@ export default function CleaningServicesPage() {
               <Link
                 key={s.label}
                 href={s.href}
-                className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-orange hover:text-brand-orange"
+                className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-red hover:text-brand-red"
               >
                 {s.label}
               </Link>
@@ -767,7 +767,7 @@ export default function CleaningServicesPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -800,7 +800,7 @@ export default function CleaningServicesPage() {
                 data-delay={String((i % 2) + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{fact.title}</h3>
@@ -827,7 +827,7 @@ export default function CleaningServicesPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tip.title}</h3>
@@ -844,7 +844,7 @@ export default function CleaningServicesPage() {
       <section className="bg-brand-grey py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -860,7 +860,7 @@ export default function CleaningServicesPage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -890,7 +890,7 @@ export default function CleaningServicesPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -908,16 +908,16 @@ export default function CleaningServicesPage() {
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
               href="tel:+442072052525"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
             <a
               href="tel:+448000467877"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

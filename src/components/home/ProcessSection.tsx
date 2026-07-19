@@ -33,7 +33,7 @@ export default function ProcessSection() {
             >
               <span
                 aria-hidden="true"
-                className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-lg font-extrabold text-brand-orange"
+                className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-lg font-extrabold text-brand-red"
               >
                 {stepIcons[i]}
               </span>
@@ -46,7 +46,7 @@ export default function ProcessSection() {
         </ol>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+          <Button href="/bookservice#quick-quote" variant="red" size="lg">
             Book a Free Survey
           </Button>
           <Button href="#access" variant="navy" size="lg">

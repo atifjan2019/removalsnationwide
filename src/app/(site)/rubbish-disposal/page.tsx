@@ -269,7 +269,7 @@ export default function RubbishDisposalPage() {
               </p>
 
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+                <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
                   Quick Quote
                 </Button>
                 <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
@@ -290,7 +290,7 @@ export default function RubbishDisposalPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -315,7 +315,7 @@ export default function RubbishDisposalPage() {
                 <ul className="space-y-2">
                   {rubbishAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -325,13 +325,13 @@ export default function RubbishDisposalPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -361,7 +361,7 @@ export default function RubbishDisposalPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -412,7 +412,7 @@ export default function RubbishDisposalPage() {
                 loading="lazy"
               />
             </div>
-            <span aria-hidden="true" className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block" />
+            <span aria-hidden="true" className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block" />
           </div>
         </div>
       </section>
@@ -450,8 +450,8 @@ export default function RubbishDisposalPage() {
             ))}
           </div>
 
-          <div data-reveal className="mx-auto mt-10 max-w-3xl rounded-2xl border border-brand-orange bg-white p-6">
-            <p className="text-sm font-bold text-brand-orange">What we do not accept</p>
+          <div data-reveal className="mx-auto mt-10 max-w-3xl rounded-2xl border border-brand-red bg-white p-6">
+            <p className="text-sm font-bold text-brand-red">What we do not accept</p>
             <p className="mt-2 text-sm leading-relaxed text-black">
               Construction or builders waste, hazardous waste, food waste, and bulk or loose waste
               are outside the scope of this service. Contact us if you are unsure and we advise
@@ -494,7 +494,7 @@ export default function RubbishDisposalPage() {
                   </div>
                 </dl>
                 <div className="border-t border-black/8 px-5 py-4">
-                  <p className="text-3xl font-extrabold text-brand-orange">{p.price}</p>
+                  <p className="text-3xl font-extrabold text-brand-red">{p.price}</p>
                   <p className="mt-1 text-xs text-brand-charcoal/50">confirm VAT with us</p>
                 </div>
               </article>
@@ -512,7 +512,7 @@ export default function RubbishDisposalPage() {
             <ul className="mt-5 space-y-3">
               {collectionPrices.map((p) => (
                 <li key={p.title} className="flex items-start gap-4 text-sm">
-                  <span className="mt-0.5 shrink-0 rounded-full bg-brand-orange px-3 py-1 text-xs font-bold text-white">
+                  <span className="mt-0.5 shrink-0 rounded-full bg-brand-red px-3 py-1 text-xs font-bold text-white">
                     {p.price}
                   </span>
                   <span className="text-brand-charcoal/85">
@@ -524,7 +524,7 @@ export default function RubbishDisposalPage() {
           </div>
 
           <div className="mt-6 flex justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="md">
+            <Button href="/bookservice#quick-quote" variant="red" size="md">
               Get a Quote for Your Load
             </Button>
           </div>
@@ -606,8 +606,8 @@ export default function RubbishDisposalPage() {
             </div>
 
             {/* Our service */}
-            <div className="rounded-2xl border-2 border-brand-orange bg-white p-7 shadow-md">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+            <div className="rounded-2xl border-2 border-brand-red bg-white p-7 shadow-md">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                 Our man-and-van clearance
               </div>
               <ul className="space-y-3">
@@ -619,7 +619,7 @@ export default function RubbishDisposalPage() {
                   "Licensed waste carrier with a waste transfer note",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
-                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={2.5} />
+                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={2.5} />
                     {item}
                   </li>
                 ))}
@@ -628,7 +628,7 @@ export default function RubbishDisposalPage() {
                 Best for: a fast clear-out where you want all loading and licensed disposal handled for you.
               </p>
               <div className="mt-5">
-                <Button href="/bookservice#quick-quote" variant="orange" size="sm">
+                <Button href="/bookservice#quick-quote" variant="red" size="sm">
                   Get a Quote
                 </Button>
               </div>
@@ -648,7 +648,7 @@ export default function RubbishDisposalPage() {
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
-            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Licensed disposal
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -687,7 +687,7 @@ export default function RubbishDisposalPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl bg-white/8 p-7 ring-1 ring-white/10"
               >
-                <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange text-base font-extrabold text-white">
+                <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-red text-base font-extrabold text-white">
                   {n}
                 </span>
                 <p className="text-base font-bold text-white">{label}</p>
@@ -771,10 +771,10 @@ export default function RubbishDisposalPage() {
                 <Link
                   key={s.label}
                   href={s.href}
-                  className="flex min-h-[44px] items-center justify-between rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-brand-navy transition hover:border-brand-orange hover:text-brand-orange"
+                  className="flex min-h-[44px] items-center justify-between rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-brand-navy transition hover:border-brand-red hover:text-brand-red"
                 >
                   {s.label}
-                  <span aria-hidden="true" className="text-brand-orange">&rarr;</span>
+                  <span aria-hidden="true" className="text-brand-red">&rarr;</span>
                 </Link>
               ))}
             </div>
@@ -785,7 +785,7 @@ export default function RubbishDisposalPage() {
       {/* ── S11: Same-Day and Out-of-Hours ───────────────────────────── */}
       <section className="bg-brand-navy py-16">
         <div className="mx-auto max-w-4xl px-4 text-center" data-reveal>
-          <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+          <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
             Flexible scheduling
           </span>
           <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -802,7 +802,7 @@ export default function RubbishDisposalPage() {
             on your preferred date before booking.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
             <Button href="tel:+442072052525" variant="outline-light" size="lg" className="w-full sm:w-auto">
@@ -848,7 +848,7 @@ export default function RubbishDisposalPage() {
                 data-delay={String((i % 3) + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-base font-bold text-brand-navy">
+                <h3 className="mb-3 border-l-4 border-brand-red pl-3 text-base font-bold text-brand-navy">
                   {u.title}
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-brand-charcoal/85">{u.body}</p>
@@ -861,7 +861,7 @@ export default function RubbishDisposalPage() {
       {/* ── S13: Reviews ─────────────────────────────────────────────── */}
       <section className="bg-brand-grey py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
-          <div className="flex justify-center gap-1 text-brand-orange" aria-label="5 out of 5 stars">
+          <div className="flex justify-center gap-1 text-brand-red" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map((_, i) => (
               <StarIcon key={i} className="h-7 w-7" />
             ))}
@@ -875,7 +875,7 @@ export default function RubbishDisposalPage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -903,7 +903,7 @@ export default function RubbishDisposalPage() {
             7 days a week across London.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
             <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
@@ -911,12 +911,12 @@ export default function RubbishDisposalPage() {
             </Button>
           </div>
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
-            <a href="tel:+442072052525" className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange">
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+            <a href="tel:+442072052525" className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red">
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
-            <a href="tel:+448000467877" className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange">
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+            <a href="tel:+448000467877" className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red">
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

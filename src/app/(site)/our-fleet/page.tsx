@@ -109,7 +109,7 @@ export default function OurFleetPage() {
                 className="flex h-full flex-col rounded-2xl border border-black/5 bg-white shadow-sm transition-shadow duration-300 hover:shadow-md"
               >
                 <header className="flex items-center gap-3 rounded-t-2xl bg-brand-navy px-6 py-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-orange text-white">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-red text-white">
                     <VanIcon className="h-6 w-6" />
                   </span>
                   <h2 className="text-base font-bold uppercase tracking-wide text-white">
@@ -119,7 +119,7 @@ export default function OurFleetPage() {
 
                 <div className="flex flex-1 flex-col gap-4 p-6">
                   <div>
-                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-brand-orange">
+                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-brand-red">
                       Dimensions and loading capabilities
                     </h3>
                     <p className="text-sm leading-relaxed text-brand-charcoal/85">
@@ -127,7 +127,7 @@ export default function OurFleetPage() {
                     </p>
                   </div>
                   <div>
-                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-brand-orange">
+                    <h3 className="mb-1 text-xs font-bold uppercase tracking-wide text-brand-red">
                       General use
                     </h3>
                     <p className="text-sm leading-relaxed text-brand-charcoal/85">{vehicle.use}</p>
@@ -155,19 +155,19 @@ export default function OurFleetPage() {
             </p>
             <p>
               The right vehicle is matched to your move. Smaller vans suit a{" "}
-              <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/man-and-van-london" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 man and van
               </Link>{" "}
               booking or a single collection, mid-size trucks handle a full{" "}
-              <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 house removal
               </Link>
               , and our road-trains run the{" "}
-              <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 international service
               </Link>
               , including the weekly{" "}
-              <Link href="/removals-services-to-norway" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/removals-services-to-norway" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 removals to Norway
               </Link>
               .

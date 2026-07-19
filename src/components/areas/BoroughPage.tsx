@@ -154,14 +154,14 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               </div>
             )}
 
-            <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-orange/20 bg-brand-orange/5 px-5 py-3">
-              <span className="text-2xl font-black text-brand-orange">From £55/hr</span>
+            <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-red/20 bg-brand-red/5 px-5 py-3">
+              <span className="text-2xl font-black text-brand-red">From £55/hr</span>
               <span aria-hidden="true" className="h-5 w-px bg-brand-charcoal/20" />
               <span className="text-sm font-medium text-brand-charcoal/70">man and van, plus VAT</span>
             </div>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
                 Quick Quote
               </Button>
               <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
@@ -182,7 +182,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                   key={pill}
                   className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                 >
-                  <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                  <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                   {pill}
                 </span>
               ))}
@@ -208,7 +208,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               <ul className="space-y-2">
                 {ACCREDITATIONS.map((name) => (
                   <li key={name} className="flex items-center gap-2">
-                    <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                     <span className="text-sm text-brand-navy/85">{name}</span>
                   </li>
                 ))}
@@ -218,13 +218,13 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                   href={TRUSTPILOT}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   Trustpilot reviews
                 </Link>
                 <Link
                   href="/certificates"
-                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   View certificates
                 </Link>
@@ -280,7 +280,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
             </div>
           )}
           <div className="mt-5 rounded-2xl border border-black/10 bg-white p-6 shadow-sm">
-            <p className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-red">
               Neighbourhoods we cover
             </p>
             <p className="mt-2 text-base font-medium leading-relaxed text-brand-navy">
@@ -308,9 +308,9 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               return (
                 <div
                   key={blk.label}
-                  className="group flex gap-4 rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  className="group flex gap-4 rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-orange/10 text-brand-orange">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
                     <Icon className="h-5 w-5" strokeWidth={2.5} />
                   </span>
                   <div>
@@ -356,14 +356,14 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                 <Link
                   key={s.href}
                   href={s.href}
-                  className="group flex h-full flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-orange/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  className="group flex h-full flex-col rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-navy text-white transition-colors group-hover:bg-brand-orange">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-navy text-white transition-colors group-hover:bg-brand-red">
                     <Icon className="h-6 w-6" strokeWidth={2} />
                   </span>
                   <h3 className="mt-4 text-base font-bold text-brand-navy">{s.label}</h3>
                   <p className="mt-1.5 flex-1 text-sm leading-relaxed text-brand-charcoal/75">{s.text}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-orange">
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-red">
                     Learn more
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
@@ -396,7 +396,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               href={TRUSTPILOT}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
               Trustpilot profile
             </a>
@@ -422,7 +422,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               `We finish the job. Optional clearance of anything left behind, under our licensed waste carrier registration.`,
             ].map((step, i) => (
               <li key={i} className="flex items-start gap-4">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange font-heading text-sm font-bold text-white">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-red font-heading text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <p className="text-base leading-relaxed text-brand-charcoal/85">{step}</p>
@@ -444,7 +444,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               return (
                 <span key={n.href}>
                   {built ? (
-                    <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                    <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                       {n.label}
                     </Link>
                   ) : (
@@ -455,7 +455,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               );
             })}
             . View every area on our{" "}
-            <Link href="/areas" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/areas" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               coverage hub
             </Link>
             .
@@ -479,7 +479,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
               <p>Accredited, insured and 7 days a week. Same-day moves are subject to availability.</p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
                 Get a Free Quote
               </Button>
               <Button href="/prices" variant="outline-light" size="lg" className="w-full sm:w-auto">
@@ -488,14 +488,14 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
             </div>
             <a
               href={PHONE_HREF}
-              className="mt-4 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/85 underline underline-offset-2 hover:text-brand-orange"
+              className="mt-4 inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/85 underline underline-offset-2 hover:text-brand-red"
             >
               Or call 020 7205 2525
             </a>
           </div>
 
           <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
-            <p className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+            <p className="text-sm font-bold uppercase tracking-widest text-brand-red">
               What affects your removal cost
             </p>
             <ul className="mt-5 space-y-3">
@@ -508,7 +508,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                 "Crew size and day of the week",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={3} />
                   <span className="text-base leading-relaxed text-brand-charcoal/85">{item}</span>
                 </li>
               ))}

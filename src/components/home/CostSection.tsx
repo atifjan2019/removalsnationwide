@@ -103,7 +103,7 @@ export default function CostSection() {
                 key={driver}
                 className="flex items-start gap-2 rounded-xl bg-white px-4 py-3 text-sm leading-relaxed text-brand-charcoal/85 shadow-sm ring-1 ring-black/5"
               >
-                <span aria-hidden="true" className="mt-1 shrink-0 font-bold text-brand-orange">
+                <span aria-hidden="true" className="mt-1 shrink-0 font-bold text-brand-red">
                   ·
                 </span>
                 {driver}
@@ -115,7 +115,7 @@ export default function CostSection() {
         {/* Honest exact-price statement */}
         <p data-reveal className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-brand-charcoal/70">
           The figures above are starting prices. The exact cost is confirmed by the{" "}
-          <Link href="/bookservice" className="text-brand-orange underline underline-offset-2">
+          <Link href="/bookservice" className="text-brand-red underline underline-offset-2">
             removal calculator
           </Link>{" "}
           for an instant estimate, or by a free on-site or video survey for a written fixed price
@@ -131,7 +131,7 @@ export default function CostSection() {
             <strong>A note on cheap quotes:</strong> Uninsured or unlicensed operators leave you
             with no financial remedy if items are damaged. Removals Nationwide fixed-price quotes include
             full public liability and goods-in-transit insurance. BAR{" "}
-            <Link href="/certificates" className="text-brand-orange underline underline-offset-2">
+            <Link href="/certificates" className="text-brand-red underline underline-offset-2">
               accreditation
             </Link>{" "}
             means there is an independent complaints and claims process if anything goes wrong.
@@ -139,7 +139,7 @@ export default function CostSection() {
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/bookservice" variant="orange" size="lg">
+          <Button href="/bookservice" variant="red" size="lg">
             Removal Calculator
           </Button>
           <Button href="/bookservice#quick-quote" variant="navy" size="lg">

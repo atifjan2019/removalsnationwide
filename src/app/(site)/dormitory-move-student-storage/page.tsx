@@ -227,7 +227,7 @@ export default function DormitoryMoveStudentStoragePage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -266,7 +266,7 @@ export default function DormitoryMoveStudentStoragePage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -296,7 +296,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 <ul className="space-y-2">
                   {dormitoryAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -306,7 +306,7 @@ export default function DormitoryMoveStudentStoragePage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
@@ -359,7 +359,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 </p>
               </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                <Button href="/bookservice#quick-quote" variant="red" size="md">
                   Quick Quote
                 </Button>
                 <Button href="/packing-service" variant="navy" size="md">
@@ -386,7 +386,7 @@ export default function DormitoryMoveStudentStoragePage() {
                     "One move coordinator manages every step",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
-                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       {item}
                     </li>
                   ))}
@@ -429,7 +429,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 <ul className="mt-4 space-y-3">
                   {ukIncludes.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
-                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       {item}
                     </li>
                   ))}
@@ -475,7 +475,7 @@ export default function DormitoryMoveStudentStoragePage() {
             Customs clearance and documentation are handled through our{" "}
             <Link
               href="/international-removals"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               international removals service.
             </Link>
@@ -521,7 +521,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 data-reveal
                 className="rounded-2xl border border-black/10 bg-brand-grey p-6 transition hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <CheckIcon className="h-5 w-5 text-brand-orange" strokeWidth={3} />
+                <CheckIcon className="h-5 w-5 text-brand-red" strokeWidth={3} />
                 <p className="mt-3 font-semibold text-brand-navy">{title}</p>
                 <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/75">{body}</p>
               </div>
@@ -531,7 +531,7 @@ export default function DormitoryMoveStudentStoragePage() {
             For long-term storage solutions in London, see our{" "}
             <Link
               href="/storage"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               dedicated storage service.
             </Link>
@@ -557,7 +557,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 data-reveal
                 className={`rounded-2xl p-8 shadow-sm ${
                   highlight
-                    ? "border-2 border-brand-orange bg-white"
+                    ? "border-2 border-brand-red bg-white"
                     : dark
                       ? "bg-brand-navy text-white"
                       : "border border-black/10 bg-white"
@@ -566,7 +566,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 <span
                   className={`inline-flex h-10 w-10 items-center justify-center rounded-full font-heading text-sm font-bold ${
                     highlight
-                      ? "bg-brand-orange text-white"
+                      ? "bg-brand-red text-white"
                       : dark
                         ? "bg-white/10 text-white"
                         : "bg-brand-grey text-brand-navy"
@@ -581,7 +581,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 </h3>
                 <p
                   className={`mt-1 text-xs font-bold uppercase tracking-widest ${
-                    highlight ? "text-brand-orange" : dark ? "text-white/60" : "text-brand-charcoal/50"
+                    highlight ? "text-brand-red" : dark ? "text-white/60" : "text-brand-charcoal/50"
                   }`}
                 >
                   {tagline}
@@ -596,7 +596,7 @@ export default function DormitoryMoveStudentStoragePage() {
           </div>
 
           <div className="mt-8 text-center" data-reveal>
-            <Button href="/bookservice#quick-quote" variant="orange" size="md">
+            <Button href="/bookservice#quick-quote" variant="red" size="md">
               Get a Quote
             </Button>
           </div>
@@ -621,7 +621,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 data-reveal
                 className="rounded-2xl border border-black/10 bg-brand-grey p-6"
               >
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange font-heading text-sm font-bold text-white">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-red font-heading text-sm font-bold text-white">
                   {num}
                 </span>
                 <h3 className="mt-4 font-heading text-base font-bold text-brand-navy">{title}</h3>
@@ -654,14 +654,14 @@ export default function DormitoryMoveStudentStoragePage() {
             Moving a single item only?{" "}
             <Link
               href="/single-item"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               See our single item delivery service.
             </Link>{" "}
             Need eco crates for your books?{" "}
             <Link
               href="/crate-hire"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               See crate hire.
             </Link>
@@ -673,7 +673,7 @@ export default function DormitoryMoveStudentStoragePage() {
       <section className="bg-brand-grey py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -689,7 +689,7 @@ export default function DormitoryMoveStudentStoragePage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -719,7 +719,7 @@ export default function DormitoryMoveStudentStoragePage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >

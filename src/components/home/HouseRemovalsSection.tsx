@@ -61,7 +61,7 @@ export default function HouseRemovalsSection() {
             <ul className="mt-4 space-y-3">
               {propertyTypes.map((type) => (
                 <li key={type} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-brand-charcoal/90">{type}</span>
@@ -69,19 +69,19 @@ export default function HouseRemovalsSection() {
               ))}
             </ul>
             <div className="mt-8 space-y-3">
-              <Button href="/house-removals" variant="orange" size="md">
+              <Button href="/house-removals" variant="red" size="md">
                 House Removals London
               </Button>
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/areas"
-                  className="text-sm font-semibold text-brand-navy underline underline-offset-2 transition hover:text-brand-orange"
+                  className="text-sm font-semibold text-brand-navy underline underline-offset-2 transition hover:text-brand-red"
                 >
                   Areas we cover
                 </Link>
                 <Link
                   href="#cost"
-                  className="text-sm font-semibold text-brand-navy underline underline-offset-2 transition hover:text-brand-orange"
+                  className="text-sm font-semibold text-brand-navy underline underline-offset-2 transition hover:text-brand-red"
                 >
                   Removal costs 2026
                 </Link>

@@ -2,8 +2,8 @@
 
 @theme {
   /* Brand palette */
-  --color-brand-orange: #e83145;
-  --color-brand-orange-dark: #000000;
+  --color-brand-red: #e83145;
+  --color-brand-red-dark: #000000;
   --color-brand-navy: #000000;
   --color-brand-navy-dark: #e83145;
   --color-brand-grey: #ffffff;
@@ -41,7 +41,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-brand-orange);
+    outline: 3px solid var(--color-brand-red);
     outline-offset: 2px;
   }
 }

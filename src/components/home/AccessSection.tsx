@@ -56,7 +56,7 @@ export default function AccessSection() {
               data-reveal
               data-delay={String((i % 3) + 1)}
             >
-              <h3 className="text-base font-bold uppercase tracking-wide text-brand-orange">
+              <h3 className="text-base font-bold uppercase tracking-wide text-brand-red">
                 {point.heading}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-white/80">{point.body}</p>
@@ -70,7 +70,7 @@ export default function AccessSection() {
             bookings and access arrangements are confirmed before move day at no extra charge.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Book a Free Survey
             </Button>
             <Button href="/areas" variant="outline-light" size="lg">

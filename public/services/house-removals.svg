@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="House removals in progress">
-  <defs><linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f3a5f"/><stop offset="1" stop-color="#e8541e"/></linearGradient></defs>
+  <defs><linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#000000"/><stop offset="1" stop-color="#e83145"/></linearGradient></defs>
   <rect width="900" height="700" fill="url(#s)"/>
   <g opacity="0.16" fill="#fff">
     <path d="M250 430 450 280 650 430v210H250z"/>

@@ -21,7 +21,7 @@ export default function TipList({ tips, numbered = false, className = "" }: Prop
         >
           <div className="mb-3 flex items-center gap-3">
             {numbered && (
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                 {i + 1}
               </span>
             )}

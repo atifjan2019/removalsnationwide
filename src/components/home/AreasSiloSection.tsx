@@ -86,7 +86,7 @@ export default function AreasSiloSection() {
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5" data-reveal>
           {regions.map((region) => (
             <div key={region.label}>
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-brand-orange">
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-brand-red">
                 {region.label}
               </h3>
               <ul className="space-y-2">
@@ -94,7 +94,7 @@ export default function AreasSiloSection() {
                   <li key={b.slug}>
                     <Link
                       href={`/areas/${b.slug}`}
-                      className="block py-1.5 text-sm text-brand-charcoal/80 underline-offset-2 transition hover:text-brand-orange hover:underline"
+                      className="block py-1.5 text-sm text-brand-charcoal/80 underline-offset-2 transition hover:text-brand-red hover:underline"
                     >
                       {b.name}
                     </Link>
@@ -106,7 +106,7 @@ export default function AreasSiloSection() {
         </div>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Button href="/areas" variant="orange" size="lg">
+          <Button href="/areas" variant="red" size="lg">
             View All Service Areas
           </Button>
           <Button href="/bookservice#quick-quote" variant="navy" size="lg">

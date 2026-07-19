@@ -116,7 +116,7 @@ export default function HomepageHero() {
           <h1 className="text-4xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Removal Company London
           </h1>
-          <p className="hero-anim-sub mt-4 text-xl font-semibold uppercase tracking-wide text-brand-orange sm:text-2xl md:text-3xl">
+          <p className="hero-anim-sub mt-4 text-xl font-semibold uppercase tracking-wide text-brand-red sm:text-2xl md:text-3xl">
             House Removals, Man and Van, Office Moves, Packing and Storage Across London
           </p>
           <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
@@ -127,7 +127,7 @@ export default function HomepageHero() {
             removal calculator for an instant estimate.
           </p>
           <div className="hero-anim-ctas mt-8 flex flex-wrap gap-4">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Get a Free Quote
             </Button>
             <Button href="/bookservice" variant="outline-light" size="lg">
@@ -143,7 +143,7 @@ export default function HomepageHero() {
         type="button"
         onClick={prev}
         aria-label="Previous image"
-        className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
+        className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -151,7 +151,7 @@ export default function HomepageHero() {
         type="button"
         onClick={next}
         aria-label="Next image"
-        className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
+        className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
       >
         <ChevronRight className="h-5 w-5" />
       </button>

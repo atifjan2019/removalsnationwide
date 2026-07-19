@@ -18,7 +18,7 @@ export default function Accreditations() {
 
         {/* Trustpilot */}
         <div className="flex flex-col items-center gap-2" data-reveal>
-          <div className="flex gap-1 text-brand-orange" aria-label="5 out of 5 stars">
+          <div className="flex gap-1 text-brand-red" aria-label="5 out of 5 stars">
             {Array.from({ length: 5 }).map((_, i) => (
               <StarIcon key={i} className="h-7 w-7" />
             ))}
@@ -28,7 +28,7 @@ export default function Accreditations() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-brand-orange underline underline-offset-2 transition hover:text-brand-navy"
+            className="text-sm font-semibold text-brand-red underline underline-offset-2 transition hover:text-brand-navy"
           >
             View all reviews on Trustpilot
           </Link>
@@ -41,7 +41,7 @@ export default function Accreditations() {
             Trusted and certified by{" "}
             <Link
               href="/certificates"
-              className="normal-case text-brand-orange underline underline-offset-2 transition hover:text-brand-navy"
+              className="normal-case text-brand-red underline underline-offset-2 transition hover:text-brand-navy"
             >
               view all certificates
             </Link>

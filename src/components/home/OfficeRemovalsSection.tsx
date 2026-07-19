@@ -55,7 +55,7 @@ export default function OfficeRemovalsSection() {
             <ul className="mt-5 space-y-3">
               {features.map((f) => (
                 <li key={f} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-white/90">{f}</span>
@@ -63,12 +63,12 @@ export default function OfficeRemovalsSection() {
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/office-removals" variant="orange" size="md">
+              <Button href="/office-removals" variant="red" size="md">
                 Office Removals London
               </Button>
               <Link
                 href="/crate-hire"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-white transition hover:text-brand-orange"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-white transition hover:text-brand-red"
               >
                 Crate Hire
                 <ArrowRight className="h-4 w-4" />

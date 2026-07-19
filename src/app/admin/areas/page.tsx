@@ -14,7 +14,7 @@ export default async function AdminAreasPage() {
         <h1 className="text-2xl font-bold text-brand-navy">Service Areas</h1>
         <Link
           href="/admin/areas/new"
-          className="rounded-lg bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-orange-dark"
+          className="rounded-lg bg-brand-red px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-red-dark"
         >
           + New Area
         </Link>
@@ -44,7 +44,7 @@ export default async function AdminAreasPage() {
                   <td className="px-5 py-3">
                     <span
                       className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
-                        a.published ? "bg-black text-white" : "bg-brand-orange text-white"
+                        a.published ? "bg-black text-white" : "bg-brand-red text-white"
                       }`}
                     >
                       {a.published ? "Published" : "Draft"}
@@ -54,7 +54,7 @@ export default async function AdminAreasPage() {
                     <div className="flex items-center justify-end gap-4">
                       <Link
                         href={`/admin/areas/${a.id}`}
-                        className="text-sm font-semibold text-brand-orange hover:underline"
+                        className="text-sm font-semibold text-brand-red hover:underline"
                       >
                         Edit
                       </Link>

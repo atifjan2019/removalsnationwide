@@ -7,7 +7,7 @@ import { breadcrumbLd, type Crumb } from "@/lib/seo";
 type Props = {
   title: string;
   crumbs: Crumb[];
-  /** Optional orange sub-line shown beneath the heading. */
+  /** Optional red sub-line shown beneath the heading. */
   subtitle?: string;
   /**
    * Optional H1 override for SEO. When set, the visible title renders as a
@@ -54,11 +54,11 @@ export default function PageBanner({
               return (
                 <li key={crumb.label} className="flex items-center gap-1.5">
                   {crumb.href && !last ? (
-                    <Link href={crumb.href} className="transition hover:text-brand-orange">
+                    <Link href={crumb.href} className="transition hover:text-brand-red">
                       {crumb.label}
                     </Link>
                   ) : (
-                    <span className={last ? "font-medium text-brand-orange" : ""}>
+                    <span className={last ? "font-medium text-brand-red" : ""}>
                       {crumb.label}
                     </span>
                   )}
@@ -81,11 +81,11 @@ export default function PageBanner({
         )}
 
         {subtitle && (
-          <p className="mt-2 text-lg font-bold uppercase tracking-wide text-brand-orange sm:text-xl md:text-2xl">
+          <p className="mt-2 text-lg font-bold uppercase tracking-wide text-brand-red sm:text-xl md:text-2xl">
             {subtitle}
           </p>
         )}
-        <span className="mt-4 block h-1 w-20 rounded-full bg-brand-orange" aria-hidden="true" />
+        <span className="mt-4 block h-1 w-20 rounded-full bg-brand-red" aria-hidden="true" />
       </div>
     </section>
   );

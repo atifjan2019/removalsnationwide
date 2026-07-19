@@ -23,7 +23,7 @@ export default function Testimonials() {
 
         <div className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white p-8 text-center shadow-sm sm:p-12">
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="Rated on Trustpilot"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -58,7 +58,7 @@ export default function Testimonials() {
               href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange"
+              className="inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
             >
               Read verified reviews on Trustpilot
             </Link>

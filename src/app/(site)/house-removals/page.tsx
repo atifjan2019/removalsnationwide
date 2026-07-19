@@ -391,7 +391,7 @@ export default function HouseRemovalsPage() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -425,7 +425,7 @@ export default function HouseRemovalsPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -451,7 +451,7 @@ export default function HouseRemovalsPage() {
                 <ul className="space-y-2">
                   {accreditations.map((name) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -461,13 +461,13 @@ export default function HouseRemovalsPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -515,17 +515,17 @@ export default function HouseRemovalsPage() {
             <p>
               The result is a move that runs on time, with your belongings arriving intact and your
               energy spent on the things that matter on moving day.{" "}
-              <Link href="#process" className="text-brand-orange underline underline-offset-2">
+              <Link href="#process" className="text-brand-red underline underline-offset-2">
                 See how the process works.
               </Link>
             </p>
             <p className="text-sm text-brand-charcoal/60">
               Moving a business instead?{" "}
-              <Link href="/office-removals" className="underline hover:text-brand-orange">
+              <Link href="/office-removals" className="underline hover:text-brand-red">
                 Office removals London
               </Link>
               . Moving overseas?{" "}
-              <Link href="/international-removals" className="underline hover:text-brand-orange">
+              <Link href="/international-removals" className="underline hover:text-brand-red">
                 International removals
               </Link>
               .
@@ -563,13 +563,13 @@ export default function HouseRemovalsPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/packing-service"
-                  className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   Packing service details →
                 </Link>
                 <Link
                   href="/storage"
-                  className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   Storage options →
                 </Link>
@@ -578,7 +578,7 @@ export default function HouseRemovalsPage() {
           </div>
 
           <div className="mt-10 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Get a Free Quote
             </Button>
             <p className="text-xs font-medium text-brand-charcoal/55">
@@ -617,7 +617,7 @@ export default function HouseRemovalsPage() {
                   <div className="flex-1 pt-1">
                     <div className="flex items-center gap-2">
                       <p className="text-base font-bold text-brand-navy">{step.name}</p>
-                      <span aria-hidden="true" className="text-brand-orange/70">
+                      <span aria-hidden="true" className="text-brand-red/70">
                         <Icon className="h-4 w-4" />
                       </span>
                     </div>
@@ -646,7 +646,7 @@ export default function HouseRemovalsPage() {
                 <div className="absolute inset-x-0 h-0.5 bg-brand-navy/12">
                   <span
                     id="hr-process-fill"
-                    className="absolute inset-y-0 left-0 bg-brand-orange/55 transition-[width] duration-700 ease-out"
+                    className="absolute inset-y-0 left-0 bg-brand-red/55 transition-[width] duration-700 ease-out"
                     style={{ width: 0 }}
                   />
                 </div>
@@ -669,7 +669,7 @@ export default function HouseRemovalsPage() {
                 style={{ gridColumn: 8, gridRow: 2 }}
                 className="relative z-10 flex items-center justify-center"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange text-white shadow">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-red text-white shadow">
                   <IcoHome className="h-4 w-4" />
                 </div>
               </div>
@@ -701,7 +701,7 @@ export default function HouseRemovalsPage() {
                       <div className="rounded-xl bg-white p-2.5 shadow-sm ring-1 ring-black/5">
                         <div className="flex items-start justify-between gap-1">
                           <p className="text-xs font-bold leading-snug text-brand-navy">{step.name}</p>
-                          <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-orange/70">
+                          <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-red/70">
                             <Icon className="h-3.5 w-3.5" />
                           </span>
                         </div>
@@ -717,12 +717,12 @@ export default function HouseRemovalsPage() {
 
             <div className="mt-1 flex justify-between text-xs font-semibold">
               <span className="text-brand-navy/40">Your current home</span>
-              <span className="text-brand-orange">Your new home</span>
+              <span className="text-brand-red">Your new home</span>
             </div>
           </div>
 
           <div data-reveal className="mt-10 flex justify-center lg:justify-start">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Book Your Free Survey
             </Button>
           </div>
@@ -767,13 +767,13 @@ export default function HouseRemovalsPage() {
               January can cost noticeably less than a Friday move at the end of June.{" "}
               <Link
                 href="#price-factors"
-                className="text-brand-orange underline underline-offset-2"
+                className="text-brand-red underline underline-offset-2"
               >
                 Full breakdown of price factors below.
               </Link>
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/bookservice" variant="orange" size="md">
+              <Button href="/bookservice" variant="red" size="md">
                 Estimate My Move
               </Button>
               <Button href="/bookservice#quick-quote" variant="navy" size="md">
@@ -815,7 +815,7 @@ export default function HouseRemovalsPage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
                     <CheckIcon
-                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-red"
                       strokeWidth={2.5}
                     />
                     {item}
@@ -825,7 +825,7 @@ export default function HouseRemovalsPage() {
               <div className="mt-6">
                 <Link
                   href="/man-and-van-london"
-                  className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   Man and van service →
                 </Link>
@@ -833,8 +833,8 @@ export default function HouseRemovalsPage() {
             </div>
 
             {/* Full removals card */}
-            <div className="rounded-2xl border-2 border-brand-orange bg-brand-navy p-8 text-white">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+            <div className="rounded-2xl border-2 border-brand-red bg-brand-navy p-8 text-white">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                 Full House Removals
               </div>
               <p className="text-sm font-bold uppercase tracking-wide text-white">
@@ -850,7 +850,7 @@ export default function HouseRemovalsPage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-white/90">
                     <CheckIcon
-                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-red"
                       strokeWidth={2.5}
                     />
                     {item}
@@ -858,7 +858,7 @@ export default function HouseRemovalsPage() {
                 ))}
               </ul>
               <div className="mt-6">
-                <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                <Button href="/bookservice#quick-quote" variant="red" size="md">
                   Get a Fixed Quote
                 </Button>
               </div>
@@ -918,19 +918,19 @@ export default function HouseRemovalsPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/storage"
-              className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
               Storage options →
             </Link>
             <Link
               href="/packing-service"
-              className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
               Packing service →
             </Link>
             <Link
               href="/rubbish-disposal"
-              className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+              className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
               Rubbish disposal →
             </Link>
@@ -953,7 +953,7 @@ export default function HouseRemovalsPage() {
           <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-brand-charcoal/70">
             All sizes are assessed during the free pre-move survey. Vehicle and crew are confirmed
             once volume and access have been checked.{" "}
-            <Link href="#cost" className="text-brand-orange underline underline-offset-2">
+            <Link href="#cost" className="text-brand-red underline underline-offset-2">
               See the cost table.
             </Link>
           </p>
@@ -1018,7 +1018,7 @@ export default function HouseRemovalsPage() {
                 key={name}
                 className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/8 p-5"
               >
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                   <CheckIcon className="h-4 w-4" strokeWidth={3} />
                 </span>
                 <span className="text-sm font-semibold text-white">{name}</span>
@@ -1048,7 +1048,7 @@ export default function HouseRemovalsPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/certificates" variant="orange" size="md">
+            <Button href="/certificates" variant="red" size="md">
               View Certificates
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
@@ -1072,7 +1072,7 @@ export default function HouseRemovalsPage() {
             issues on move day.
           </p>
           <CheckList items={restrictedItems} className="mt-8 max-w-3xl" />
-          <div className="mt-6 max-w-3xl rounded-xl border-l-4 border-brand-orange bg-white p-5">
+          <div className="mt-6 max-w-3xl rounded-xl border-l-4 border-brand-red bg-white p-5">
             <p className="text-sm leading-relaxed text-brand-charcoal/85">
               <strong className="text-brand-navy">Gas appliances:</strong> We disconnect and
               reconnect all standard appliances (washing machines, dishwashers, tumble dryers). Gas
@@ -1093,7 +1093,7 @@ export default function HouseRemovalsPage() {
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             Our removal crews cover all 32 London boroughs, Greater London and Surrey as standard.
             Nationwide and{" "}
-            <Link href="/international-removals" className="text-brand-orange underline underline-offset-2 hover:text-brand-navy">
+            <Link href="/international-removals" className="text-brand-red underline underline-offset-2 hover:text-brand-navy">
               international moves
             </Link>
             {" "}are also handled with the same fixed-price process.
@@ -1110,7 +1110,7 @@ export default function HouseRemovalsPage() {
                     <li key={b.name}>
                       <Link
                         href={b.href}
-                        className="text-sm text-brand-charcoal/85 underline-offset-2 hover:text-brand-orange hover:underline"
+                        className="text-sm text-brand-charcoal/85 underline-offset-2 hover:text-brand-red hover:underline"
                       >
                         {b.name}
                       </Link>
@@ -1143,7 +1143,7 @@ export default function HouseRemovalsPage() {
               href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-brand-orange underline underline-offset-2"
+              className="text-brand-red underline underline-offset-2"
             >
               Read verified reviews on Trustpilot
             </Link>
@@ -1161,7 +1161,7 @@ export default function HouseRemovalsPage() {
               href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"
+              className="mt-4 inline-block text-sm font-semibold text-brand-red underline underline-offset-2"
             >
               View all reviews on Trustpilot →
             </Link>

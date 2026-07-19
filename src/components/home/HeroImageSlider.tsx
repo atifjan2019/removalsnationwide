@@ -91,7 +91,7 @@ export default function HeroImageSlider() {
         type="button"
         onClick={prev}
         aria-label="Previous image"
-        className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
+        className="absolute left-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -99,7 +99,7 @@ export default function HeroImageSlider() {
         type="button"
         onClick={next}
         aria-label="Next image"
-        className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-orange focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
+        className="absolute right-2 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
       >
         <ChevronRight className="h-5 w-5" />
       </button>

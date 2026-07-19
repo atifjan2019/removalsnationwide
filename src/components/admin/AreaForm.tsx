@@ -5,7 +5,7 @@ import QuillEditor from "@/components/admin/QuillEditor";
 import { saveArea, type AreaInput } from "@/app/admin/actions";
 
 const input =
-  "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-2.5 text-base shadow-sm focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/30";
+  "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-2.5 text-base shadow-sm focus:border-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red/30";
 
 type Props = { area?: Partial<AreaInput> & { id?: string } };
 
@@ -71,14 +71,14 @@ export default function AreaForm({ area }: Props) {
           type="checkbox"
           checked={f.published}
           onChange={(e) => set("published", e.target.checked)}
-          className="h-5 w-5 accent-brand-orange"
+          className="h-5 w-5 accent-brand-red"
         />
         Published
       </label>
       <button
         type="submit"
         disabled={pending}
-        className="rounded-lg bg-brand-orange px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-brand-orange-dark disabled:opacity-60"
+        className="rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-brand-red-dark disabled:opacity-60"
       >
         {pending ? "Saving…" : "Save Area"}
       </button>

@@ -30,7 +30,7 @@ export default async function AreasPage() {
       {boroughList.length > 0 && (
         <section className="bg-brand-grey py-16">
           <div className="mx-auto max-w-[88rem] px-4">
-            <h2 className="text-center text-sm font-bold uppercase tracking-widest text-brand-orange">
+            <h2 className="text-center text-sm font-bold uppercase tracking-widest text-brand-red">
               Borough removal guides
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
@@ -41,10 +41,10 @@ export default async function AreasPage() {
                 <Link
                   key={b.slug}
                   href={`/areas/${b.slug}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-brand-navy shadow-sm transition hover:border-brand-orange hover:text-brand-orange"
+                  className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-brand-navy shadow-sm transition hover:border-brand-red hover:text-brand-red"
                 >
                   Removals in {b.name}
-                  <ArrowRight className="h-4 w-4 text-brand-orange" />
+                  <ArrowRight className="h-4 w-4 text-brand-red" />
                 </Link>
               ))}
             </div>
@@ -76,7 +76,7 @@ export default async function AreasPage() {
                   </Link>
                   <div className="flex flex-1 flex-col p-6">
                     <h2 className="text-lg font-bold text-brand-navy">
-                      <Link href={`/areas/${area.slug}`} className="transition hover:text-brand-orange">
+                      <Link href={`/areas/${area.slug}`} className="transition hover:text-brand-red">
                         {area.name}
                       </Link>
                     </h2>
@@ -87,7 +87,7 @@ export default async function AreasPage() {
                     )}
                     <Link
                       href={`/areas/${area.slug}`}
-                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-orange transition group-hover:gap-2.5"
+                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-red transition group-hover:gap-2.5"
                     >
                       View Area
                       <ArrowRight className="h-4 w-4" />

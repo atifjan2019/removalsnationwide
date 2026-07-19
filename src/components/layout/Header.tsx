@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Button from "@/components/ui/Button";
+import BrandLogo from "@/components/layout/BrandLogo";
 import { navItems } from "@/lib/site";
 import { ChevronDown, MenuIcon, CloseIcon } from "@/components/ui/icons";
 
@@ -35,14 +35,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex items-center" aria-label="Removals Nationwide home">
-          <Image
-            src="/logo.png"
-            alt="Removals Nationwide"
-            width={142}
-            height={113}
-            priority
-            className="h-12 w-auto md:h-14"
-          />
+          <BrandLogo />
         </Link>
 
         {/* Desktop nav */}
@@ -54,7 +47,7 @@ export default function Header() {
                   <>
                     <Link
                       href={item.href}
-                      className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide text-brand-navy transition hover:text-brand-orange"
+                      className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide text-brand-navy transition hover:text-brand-red"
                     >
                       {item.label}
                       <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
@@ -64,7 +57,7 @@ export default function Header() {
                         <li key={child.label}>
                           <Link
                             href={child.href}
-                            className="block rounded-md px-3 py-2 text-sm font-medium text-brand-charcoal transition hover:bg-brand-grey hover:text-brand-orange"
+                            className="block rounded-md px-3 py-2 text-sm font-medium text-brand-charcoal transition hover:bg-brand-grey hover:text-brand-red"
                           >
                             {child.label}
                           </Link>
@@ -75,7 +68,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide text-brand-navy transition hover:text-brand-orange"
+                    className="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide text-brand-navy transition hover:text-brand-red"
                   >
                     {item.label}
                   </Link>
@@ -90,7 +83,7 @@ export default function Header() {
           <Button href="/bookservice#quick-quote" variant="outline" size="sm">
             Quick Quote
           </Button>
-          <Button href="/bookservice" variant="orange" size="sm">
+          <Button href="/bookservice" variant="red" size="sm">
             Book a Service
           </Button>
         </div>
@@ -125,7 +118,7 @@ export default function Header() {
           }`}
         >
           <div className="flex items-center justify-between border-b border-black/5 px-5 py-4">
-            <Image src="/logo.png" alt="Removals Nationwide" width={142} height={113} className="h-10 w-auto" />
+            <BrandLogo />
             <button
               type="button"
               aria-label="Close menu"
@@ -158,7 +151,7 @@ export default function Header() {
                           <li key={child.label}>
                             <Link
                               href={child.href}
-                              className="block py-2 text-sm font-medium text-brand-charcoal transition hover:text-brand-orange"
+                              className="block py-2 text-sm font-medium text-brand-charcoal transition hover:text-brand-red"
                               onClick={() => setMobileOpen(false)}
                             >
                               {child.label}
@@ -171,7 +164,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="block py-3 text-sm font-semibold uppercase tracking-wide text-brand-navy transition hover:text-brand-orange"
+                    className="block py-3 text-sm font-semibold uppercase tracking-wide text-brand-navy transition hover:text-brand-red"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
@@ -185,7 +178,7 @@ export default function Header() {
             <Button href="/bookservice#quick-quote" variant="outline" size="md" onClick={() => setMobileOpen(false)}>
               Quick Quote
             </Button>
-            <Button href="/bookservice" variant="orange" size="md" onClick={() => setMobileOpen(false)}>
+            <Button href="/bookservice" variant="red" size="md" onClick={() => setMobileOpen(false)}>
               Book a Service
             </Button>
           </div>

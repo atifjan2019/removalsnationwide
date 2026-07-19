@@ -154,7 +154,7 @@ export default function CertificatesPage() {
                           href={cert.image}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                          className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                         >
                           View full certificate
                         </a>
@@ -174,30 +174,30 @@ export default function CertificatesPage() {
 
           <p className="mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
             Learn more{" "}
-            <Link href="/about-us" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/about-us" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               about Removals Nationwide
             </Link>
             , explore our{" "}
-            <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               house
             </Link>
             ,{" "}
-            <Link href="/office-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/office-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               office
             </Link>{" "}
             and{" "}
-            <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/international-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               international
             </Link>{" "}
             removals, or{" "}
-            <Link href="/contactus" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+            <Link href="/contactus" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
               get in touch
             </Link>
             .
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
             <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">

@@ -18,7 +18,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="flex w-60 shrink-0 flex-col bg-brand-navy text-white">
         <div className="border-b border-white/10 px-6 py-5">
           <Link href="/admin" className="text-lg font-bold">
-            Top <span className="text-brand-orange">Removals</span>
+            Top <span className="text-brand-red">Removals</span>
           </Link>
           <p className="mt-0.5 text-xs uppercase tracking-wide text-white/50">Admin</p>
         </div>

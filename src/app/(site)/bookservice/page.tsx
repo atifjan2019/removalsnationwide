@@ -66,7 +66,7 @@ export default function BookAServicePage() {
         <div className="mx-auto max-w-4xl px-4">
           <p className="mb-8 text-base leading-relaxed text-brand-charcoal/85">
             Please fill the form below and a member of our sales team will contact you as soon as
-            possible. Fields marked with <span className="font-semibold text-brand-orange">*</span>{" "}
+            possible. Fields marked with <span className="font-semibold text-brand-red">*</span>{" "}
             are required fields.
           </p>
 
@@ -81,7 +81,7 @@ export default function BookAServicePage() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {nextSteps.map((step, i) => (
               <div key={step.title} className="rounded-2xl border border-black/8 bg-brand-grey p-6">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange font-heading text-sm font-bold text-white">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-red font-heading text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="mt-4 text-base font-bold text-brand-navy">{step.title}</h3>
@@ -105,7 +105,7 @@ export default function BookAServicePage() {
                 key={item}
                 className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand-navy shadow-sm"
               >
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-orange text-white">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-red text-white">
                   <CheckIcon className="h-3.5 w-3.5" strokeWidth={3} />
                 </span>
                 {item}
@@ -125,7 +125,7 @@ export default function BookAServicePage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="tel:+442072052525"
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-brand-orange px-6 py-3 text-base font-bold text-white transition hover:bg-white hover:text-brand-navy"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-brand-red px-6 py-3 text-base font-bold text-white transition hover:bg-white hover:text-brand-navy"
             >
               <PhoneIcon className="h-5 w-5" />
               020 7205 2525

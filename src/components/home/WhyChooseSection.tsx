@@ -60,7 +60,7 @@ export default function WhyChooseSection() {
             accreditation is independently verified and displayed on our{" "}
             <Link
               href="/certificates"
-              className="text-brand-orange underline underline-offset-2"
+              className="text-brand-red underline underline-offset-2"
             >
               certificates page
             </Link>
@@ -91,13 +91,13 @@ export default function WhyChooseSection() {
           <ul className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {accreditations.map((a) => (
               <li key={a} className="flex items-start gap-2">
-                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                 <span className="text-sm text-white/85">{a}</span>
               </li>
             ))}
           </ul>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Button href="/certificates" variant="orange" size="md">
+            <Button href="/certificates" variant="red" size="md">
               View Certificates
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">

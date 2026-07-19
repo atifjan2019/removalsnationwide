@@ -72,7 +72,7 @@ export default function AboutPage() {
                 Today the company is a proud member of BAR (British Association of Removers) and the
                 NGRS (the National Guild of Removers and Storers). Removals Nationwide closely follows their
                 policies on customer service, insurance, safety and quality control.{" "}
-                <Link href="/certificates" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                <Link href="/certificates" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                   View our certificates and accreditations
                 </Link>{" "}
                 in full.
@@ -91,7 +91,7 @@ export default function AboutPage() {
                   key={item}
                   className="inline-flex items-center gap-2 rounded-full bg-brand-grey px-4 py-2 text-sm font-semibold text-brand-navy"
                 >
-                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-3.5 w-3.5" strokeWidth={3} />
                   </span>
                   {item}
@@ -114,7 +114,7 @@ export default function AboutPage() {
             {/* Decorative accent */}
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -left-5 -z-10 hidden h-40 w-40 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -left-5 -z-10 hidden h-40 w-40 rounded-2xl bg-brand-red/15 lg:block"
             />
             <span
               aria-hidden="true"
@@ -147,23 +147,23 @@ export default function AboutPage() {
                 <p>
                   With a solid network of international partners and storage facilities, Removals Nationwide
                   is a trusted service provider. Our{" "}
-                  <Link href="/our-fleet" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  <Link href="/our-fleet" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                     modern fleet
                   </Link>
                   , reasonable prices and additional services like{" "}
-                  <Link href="/packing-service" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  <Link href="/packing-service" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                     packing
                   </Link>
                   ,{" "}
-                  <Link href="/crate-hire" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  <Link href="/crate-hire" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                     crate hire
                   </Link>
                   ,{" "}
-                  <Link href="/single-item" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  <Link href="/single-item" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                     single item delivery
                   </Link>{" "}
                   and{" "}
-                  <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+                  <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                     secure storage
                   </Link>{" "}
                   let us handle a relocation from start to finish.
@@ -189,17 +189,17 @@ export default function AboutPage() {
               </div>
               <span
                 aria-hidden="true"
-                className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+                className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
               />
             </div>
           </div>
 
-          <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-brand-orange/20 bg-white p-8 text-center shadow-sm">
+          <div className="mx-auto mt-12 max-w-4xl rounded-2xl border border-brand-red/20 bg-white p-8 text-center shadow-sm">
             <p className="text-lg font-semibold text-brand-navy sm:text-xl">
               Talk to us for friendly, professional advice and a no-obligation quote.
             </p>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-              <Button href="/bookservice#quick-quote" variant="orange" size="lg" className="w-full sm:w-auto">
+              <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
                 Quick Quote
               </Button>
               <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">

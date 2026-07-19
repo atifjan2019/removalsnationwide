@@ -87,11 +87,11 @@ export default function HeroSlider() {
               <h2 className="text-3xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 {slide.heading}
               </h2>
-              <p className="mt-3 text-2xl font-bold uppercase tracking-wide text-brand-orange sm:text-3xl md:text-4xl">
+              <p className="mt-3 text-2xl font-bold uppercase tracking-wide text-brand-red sm:text-3xl md:text-4xl">
                 {slide.subheading}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+                <Button href="/bookservice#quick-quote" variant="red" size="lg">
                   Get a Free Quote
                 </Button>
                 <Button href="/bookservice" variant="outline-light" size="lg">
@@ -108,7 +108,7 @@ export default function HeroSlider() {
         type="button"
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2.5 text-white backdrop-blur-sm transition hover:bg-brand-orange md:left-6 md:p-3"
+        className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2.5 text-white backdrop-blur-sm transition hover:bg-brand-red md:left-6 md:p-3"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
@@ -116,7 +116,7 @@ export default function HeroSlider() {
         type="button"
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2.5 text-white backdrop-blur-sm transition hover:bg-brand-orange md:right-6 md:p-3"
+        className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2.5 text-white backdrop-blur-sm transition hover:bg-brand-red md:right-6 md:p-3"
       >
         <ChevronRight className="h-6 w-6" />
       </button>
@@ -131,7 +131,7 @@ export default function HeroSlider() {
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === current}
             className={`h-2.5 rounded-full transition-all duration-300 ${
-              i === current ? "w-8 bg-brand-orange" : "w-2.5 bg-white/50 hover:bg-white/80"
+              i === current ? "w-8 bg-brand-red" : "w-2.5 bg-white/50 hover:bg-white/80"
             }`}
           />
         ))}

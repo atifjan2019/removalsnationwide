@@ -28,7 +28,7 @@ export default function StickyQuoteBar() {
       <div className="flex items-center gap-2 px-4 py-2.5">
         <Link
           href="/bookservice#quick-quote"
-          className="flex-1 rounded-lg bg-brand-orange py-3 text-center text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-orange-dark active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="flex-1 rounded-lg bg-brand-red py-3 text-center text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-red-dark active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Get a Free Quote
         </Link>

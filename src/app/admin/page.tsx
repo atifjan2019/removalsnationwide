@@ -16,7 +16,7 @@ export default async function AdminDashboard() {
       </p>
 
       {!configured && (
-        <div className="mt-6 rounded-xl border border-brand-orange bg-white p-4 text-sm text-black">
+        <div className="mt-6 rounded-xl border border-brand-red bg-white p-4 text-sm text-black">
           The D1 database is not available in this environment. Check the{" "}
           <code className="font-mono">DB</code> binding in{" "}
           <code className="font-mono">wrangler.jsonc</code>, and apply{" "}
@@ -30,7 +30,7 @@ export default async function AdminDashboard() {
           href="/admin/posts"
           className="rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition hover:shadow-md"
         >
-          <p className="text-4xl font-extrabold text-brand-orange">{posts.length}</p>
+          <p className="text-4xl font-extrabold text-brand-red">{posts.length}</p>
           <p className="mt-1 text-lg font-bold text-brand-navy">Blog Posts</p>
           <p className="mt-1 text-sm text-brand-charcoal/60">Manage Moving News articles →</p>
         </Link>
@@ -38,7 +38,7 @@ export default async function AdminDashboard() {
           href="/admin/areas"
           className="rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition hover:shadow-md"
         >
-          <p className="text-4xl font-extrabold text-brand-orange">{areas.length}</p>
+          <p className="text-4xl font-extrabold text-brand-red">{areas.length}</p>
           <p className="mt-1 text-lg font-bold text-brand-navy">Service Areas</p>
           <p className="mt-1 text-sm text-brand-charcoal/60">Manage area pages →</p>
         </Link>
@@ -47,7 +47,7 @@ export default async function AdminDashboard() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
           href="/admin/posts/new"
-          className="rounded-lg bg-brand-orange px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-orange-dark"
+          className="rounded-lg bg-brand-red px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-red-dark"
         >
           + New Post
         </Link>

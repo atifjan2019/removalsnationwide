@@ -329,7 +329,7 @@ export default function PackingServicePage() {
         <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
           {/* Left: copy */}
           <div>
-            <p className="hero-anim-sub text-sm font-bold uppercase tracking-widest text-brand-orange">
+            <p className="hero-anim-sub text-sm font-bold uppercase tracking-widest text-brand-red">
               Professional Packing · London &amp; Nationwide
             </p>
             <p className="hero-anim-sub mt-3 text-lg font-semibold leading-relaxed text-brand-navy">
@@ -344,7 +344,7 @@ export default function PackingServicePage() {
             </p>
 
             <div className="hero-anim-ctas mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+              <Button href="/bookservice#quick-quote" variant="red" size="lg">
                 Quick Quote
               </Button>
               <Button href="/bookservice" variant="navy" size="lg">
@@ -381,7 +381,7 @@ export default function PackingServicePage() {
               <ul className="space-y-2">
                 {heroAccreditations.map((name) => (
                   <li key={name} className="flex items-center gap-2">
-                    <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                     <span className="text-sm text-brand-navy/85">{name}</span>
                   </li>
                 ))}
@@ -391,13 +391,13 @@ export default function PackingServicePage() {
                   href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   Trustpilot reviews →
                 </Link>
                 <Link
                   href="/certificates"
-                  className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   View certificates →
                 </Link>
@@ -438,27 +438,27 @@ export default function PackingServicePage() {
             </p>
             <p className="mt-4 text-sm text-brand-charcoal/60">
               See also:{" "}
-              <Link href="/packaging-materials" className="underline hover:text-brand-orange">
+              <Link href="/packaging-materials" className="underline hover:text-brand-red">
                 Packaging Materials
               </Link>{" "}
               &middot;{" "}
-              <Link href="/crate-hire" className="underline hover:text-brand-orange">
+              <Link href="/crate-hire" className="underline hover:text-brand-red">
                 Crate Hire
               </Link>{" "}
               &middot;{" "}
-              <Link href="/house-removals" className="underline hover:text-brand-orange">
+              <Link href="/house-removals" className="underline hover:text-brand-red">
                 House Removals
               </Link>{" "}
               &middot;{" "}
-              <Link href="/man-and-van-london" className="underline hover:text-brand-orange">
+              <Link href="/man-and-van-london" className="underline hover:text-brand-red">
                 Man and Van
               </Link>{" "}
               &middot;{" "}
-              <Link href="/storage" className="underline hover:text-brand-orange">
+              <Link href="/storage" className="underline hover:text-brand-red">
                 Storage
               </Link>{" "}
               &middot;{" "}
-              <Link href="/areas" className="underline hover:text-brand-orange">
+              <Link href="/areas" className="underline hover:text-brand-red">
                 Service Areas
               </Link>
             </p>
@@ -544,7 +544,7 @@ export default function PackingServicePage() {
                 key={item}
                 className="flex items-start gap-3 rounded-xl border border-black/8 bg-white px-5 py-4 shadow-sm"
               >
-                <span aria-hidden="true" className="mt-0.5 text-brand-orange">&#10003;</span>
+                <span aria-hidden="true" className="mt-0.5 text-brand-red">&#10003;</span>
                 <span className="text-base leading-relaxed text-brand-charcoal/85">{item}</span>
               </li>
             ))}
@@ -555,11 +555,11 @@ export default function PackingServicePage() {
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-sm text-brand-charcoal/60">
             Need materials without a packing crew? Individual prices when ordered separately: boxes
             £5 each, wardrobe box £14, bubble wrap £10 per roll, tape £2, mattress cover £8.{" "}
-            <Link href="/packaging-materials" className="underline hover:text-brand-orange">
+            <Link href="/packaging-materials" className="underline hover:text-brand-red">
               Order packaging materials separately
             </Link>{" "}
             or{" "}
-            <Link href="/crate-hire" className="underline hover:text-brand-orange">
+            <Link href="/crate-hire" className="underline hover:text-brand-red">
               hire specialist crates
             </Link>
             .
@@ -635,9 +635,9 @@ export default function PackingServicePage() {
           <div
             data-reveal
             data-delay="1"
-            className="mx-auto mt-10 max-w-2xl rounded-2xl border border-brand-orange/30 bg-brand-orange/5 px-8 py-8 text-center shadow-sm"
+            className="mx-auto mt-10 max-w-2xl rounded-2xl border border-brand-red/30 bg-brand-red/5 px-8 py-8 text-center shadow-sm"
           >
-            <p className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+            <p className="text-sm font-bold uppercase tracking-widest text-brand-red">
               The per-carton rule
             </p>
             <p className="mt-4 text-4xl font-extrabold text-brand-navy">
@@ -652,11 +652,11 @@ export default function PackingServicePage() {
             </p>
             <p className="mt-4 text-sm text-brand-charcoal/60">
               Final price is fixed after a free survey. Packing booked alongside a{" "}
-              <Link href="/house-removals" className="underline hover:text-brand-orange">
+              <Link href="/house-removals" className="underline hover:text-brand-red">
                 house removal in London
               </Link>{" "}
               attracts a combined discount.{" "}
-              <Link href="/prices" className="underline hover:text-brand-orange">
+              <Link href="/prices" className="underline hover:text-brand-red">
                 See full prices
               </Link>
             </p>
@@ -668,13 +668,13 @@ export default function PackingServicePage() {
             <ul className="mt-4 space-y-2">
               {costFactors.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-base leading-relaxed text-brand-charcoal/85">
-                  <span aria-hidden="true" className="mt-1 text-brand-orange">·</span>
+                  <span aria-hidden="true" className="mt-1 text-brand-red">·</span>
                   {f}
                 </li>
               ))}
             </ul>
             <p className="mt-6 text-center">
-              <Button href="/bookservice#quick-quote" variant="orange" size="md">
+              <Button href="/bookservice#quick-quote" variant="red" size="md">
                 Quick Quote
               </Button>
             </p>
@@ -701,7 +701,7 @@ export default function PackingServicePage() {
               <ul className="mt-4 space-y-3">
                 {proPoints.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-base leading-relaxed text-brand-charcoal/85">
-                    <span aria-hidden="true" className="mt-1 shrink-0 text-brand-orange">&#10003;</span>
+                    <span aria-hidden="true" className="mt-1 shrink-0 text-brand-red">&#10003;</span>
                     {p}
                   </li>
                 ))}
@@ -725,7 +725,7 @@ export default function PackingServicePage() {
           </div>
           <p data-reveal className="mx-auto mt-8 max-w-4xl text-center text-sm leading-relaxed text-brand-charcoal/60">
             Packing is available with any removal: full house moves, smaller{" "}
-            <Link href="/man-and-van-london" className="underline hover:text-brand-orange">
+            <Link href="/man-and-van-london" className="underline hover:text-brand-red">
               man and van bookings
             </Link>
             {" "}and office relocations. Your coordinator confirms the right scope and price at the free survey.
@@ -751,7 +751,7 @@ export default function PackingServicePage() {
             >
               <span
                 id="ps-process-fill"
-                className="absolute top-0 left-0 w-full bg-brand-orange/60 transition-[height] duration-700 ease-out"
+                className="absolute top-0 left-0 w-full bg-brand-red/60 transition-[height] duration-700 ease-out"
                 style={{ height: 0 }}
               />
             </div>
@@ -771,7 +771,7 @@ export default function PackingServicePage() {
                     <span
                       className={`relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold shadow-sm ring-2 ${
                         i === 0
-                          ? "bg-brand-orange text-white ring-brand-orange"
+                          ? "bg-brand-red text-white ring-brand-red"
                           : "bg-white text-brand-navy ring-brand-navy/20"
                       }`}
                     >
@@ -782,7 +782,7 @@ export default function PackingServicePage() {
                     <div className="flex-1 rounded-2xl bg-white px-5 py-4 shadow-sm ring-1 ring-black/5">
                       <div className="flex items-start justify-between gap-3">
                         <p className="text-base font-bold text-brand-navy">{step.name}</p>
-                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-orange/70">
+                        <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-red/70">
                           <Icon className="h-5 w-5" />
                         </span>
                       </div>
@@ -797,7 +797,7 @@ export default function PackingServicePage() {
           </div>
 
           <div data-reveal className="mt-10 flex justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Quick Quote
             </Button>
           </div>
@@ -826,7 +826,7 @@ export default function PackingServicePage() {
               data-delay="1"
               className="rounded-2xl border border-white/10 bg-white/5 p-6"
             >
-              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-red">
                 Accreditations
               </h3>
               <ul className="mt-4 space-y-2">
@@ -839,7 +839,7 @@ export default function PackingServicePage() {
                   "Checkatrade",
                 ].map((name) => (
                   <li key={name} className="flex items-start gap-2 text-sm leading-relaxed text-white/80">
-                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-orange">&#10003;</span>
+                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-red">&#10003;</span>
                     {name}
                   </li>
                 ))}
@@ -851,7 +851,7 @@ export default function PackingServicePage() {
               data-delay="2"
               className="rounded-2xl border border-white/10 bg-white/5 p-6"
             >
-              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-red">
                 Licensed Waste Carrier
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-white/80">
@@ -870,7 +870,7 @@ export default function PackingServicePage() {
               data-delay="3"
               className="rounded-2xl border border-white/10 bg-white/5 p-6"
             >
-              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-brand-red">
                 Company Details
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-white/80">
@@ -918,7 +918,7 @@ export default function PackingServicePage() {
           </p>
           <p data-reveal className="mx-auto mt-3 max-w-2xl text-center text-sm text-brand-charcoal/60">
             Not in this list?{" "}
-            <Link href="/bookservice#quick-quote" className="underline hover:text-brand-orange">
+            <Link href="/bookservice#quick-quote" className="underline hover:text-brand-red">
               Get a quote
             </Link>
             . We cover the full Greater London area and travel nationwide for large jobs.
@@ -941,7 +941,7 @@ export default function PackingServicePage() {
                 href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand-orange underline underline-offset-2 hover:text-white"
+                className="text-brand-red underline underline-offset-2 hover:text-white"
               >
                 Read verified reviews on Trustpilot
               </a>

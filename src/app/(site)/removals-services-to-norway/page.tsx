@@ -233,7 +233,7 @@ export default function RemovalsToNorwayPage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -272,7 +272,7 @@ export default function RemovalsToNorwayPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -302,7 +302,7 @@ export default function RemovalsToNorwayPage() {
                 <ul className="space-y-2">
                   {norwayAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -312,7 +312,7 @@ export default function RemovalsToNorwayPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
@@ -365,7 +365,7 @@ export default function RemovalsToNorwayPage() {
                 </p>
               </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                <Button href="/bookservice#quick-quote" variant="red" size="md">
                   Get a Quote
                 </Button>
                 <Button href="/international-removals" variant="navy" size="md">
@@ -398,9 +398,9 @@ export default function RemovalsToNorwayPage() {
         <div className="mx-auto max-w-4xl px-4">
           <div
             data-reveal
-            className="rounded-2xl border-2 border-brand-orange bg-white px-8 py-10 text-center shadow-sm sm:px-12 sm:py-14"
+            className="rounded-2xl border-2 border-brand-red bg-white px-8 py-10 text-center shadow-sm sm:px-12 sm:py-14"
           >
-            <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Trusted by the trade
             </span>
             <h2 className="mx-auto mt-6 max-w-2xl font-heading text-3xl font-bold text-brand-navy sm:text-4xl">
@@ -416,7 +416,7 @@ export default function RemovalsToNorwayPage() {
               intermediary. Nearly a decade on the route. Own fleet. Local teams at both ends.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <Button href="/bookservice#quick-quote" variant="orange" size="md">
+              <Button href="/bookservice#quick-quote" variant="red" size="md">
                 Quick Quote
               </Button>
               <Button href="tel:+442072052525" variant="navy" size="md">
@@ -446,7 +446,7 @@ export default function RemovalsToNorwayPage() {
                 data-reveal
                 className={`rounded-2xl p-6 text-center shadow-sm transition motion-reduce:transition-none ${
                   highlight
-                    ? "border-2 border-brand-orange bg-brand-navy text-white"
+                    ? "border-2 border-brand-red bg-brand-navy text-white"
                     : "border border-black/10 bg-white text-brand-charcoal"
                 }`}
               >
@@ -459,7 +459,7 @@ export default function RemovalsToNorwayPage() {
                 </p>
                 <p
                   className={`mt-2 text-sm font-bold uppercase tracking-widest ${
-                    highlight ? "text-brand-orange" : "text-brand-orange"
+                    highlight ? "text-brand-red" : "text-brand-red"
                   }`}
                 >
                   {freq}
@@ -494,7 +494,7 @@ export default function RemovalsToNorwayPage() {
               >
                 <div className="flex items-start gap-3">
                   <CheckIcon
-                    className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-brand-red"
                     strokeWidth={3}
                   />
                   <div>
@@ -509,7 +509,7 @@ export default function RemovalsToNorwayPage() {
             Need long-term storage in London before or after your Norway move?{" "}
             <Link
               href="/storage"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               See our storage service.
             </Link>
@@ -528,9 +528,9 @@ export default function RemovalsToNorwayPage() {
             {/* Door-to-door */}
             <div
               data-reveal
-              className="rounded-2xl border-2 border-brand-orange bg-white p-8 shadow-sm"
+              className="rounded-2xl border-2 border-brand-red bg-white p-8 shadow-sm"
             >
-              <span className="inline-block rounded-full bg-brand-orange/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+              <span className="inline-block rounded-full bg-brand-red/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
                 Dedicated service
               </span>
               <h3 className="mt-4 font-heading text-xl font-bold text-brand-navy">
@@ -548,7 +548,7 @@ export default function RemovalsToNorwayPage() {
                   "Delivery to the door at the Norwegian address",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
-                    <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                     {item}
                   </li>
                 ))}
@@ -590,7 +590,7 @@ export default function RemovalsToNorwayPage() {
             Moving a single item within the UK only?{" "}
             <Link
               href="/single-item"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               See our single item delivery service.
             </Link>
@@ -642,7 +642,7 @@ export default function RemovalsToNorwayPage() {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
                       <CheckIcon
-                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-brand-red"
                         strokeWidth={3}
                       />
                       {item}
@@ -671,9 +671,9 @@ export default function RemovalsToNorwayPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:max-w-3xl lg:mx-auto">
             <div
               data-reveal
-              className="rounded-2xl border-2 border-brand-orange bg-white p-8 text-center shadow-sm"
+              className="rounded-2xl border-2 border-brand-red bg-white p-8 text-center shadow-sm"
             >
-              <p className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+              <p className="text-xs font-bold uppercase tracking-widest text-brand-red">
                 Single item
               </p>
               <p className="mt-3 font-heading text-4xl font-extrabold text-brand-navy">
@@ -732,7 +732,7 @@ export default function RemovalsToNorwayPage() {
             Same-day quote by phone or email.{" "}
             <Link
               href="/bookservice#quick-quote"
-              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange"
+              className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red"
             >
               Get your quote here.
             </Link>
@@ -753,7 +753,7 @@ export default function RemovalsToNorwayPage() {
                 data-reveal
                 className="rounded-2xl border border-black/10 bg-brand-grey p-6"
               >
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange font-heading text-sm font-bold text-white">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-red font-heading text-sm font-bold text-white">
                   {num}
                 </span>
                 <h3 className="mt-4 font-heading text-base font-bold text-brand-navy">{title}</h3>
@@ -768,7 +768,7 @@ export default function RemovalsToNorwayPage() {
       <section className="bg-brand-grey py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -784,7 +784,7 @@ export default function RemovalsToNorwayPage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -814,7 +814,7 @@ export default function RemovalsToNorwayPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >

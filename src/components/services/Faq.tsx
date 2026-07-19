@@ -53,7 +53,7 @@ export default function Faq({ items, defaultOpen = 0, className = "", schema = t
                 </span>
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${
-                    expanded ? "bg-brand-orange text-white" : "bg-brand-grey text-brand-navy"
+                    expanded ? "bg-brand-red text-white" : "bg-brand-grey text-brand-navy"
                   }`}
                 >
                   <ChevronDown
@@ -78,7 +78,7 @@ export default function Faq({ items, defaultOpen = 0, className = "", schema = t
                     <li key={bullet} className="flex items-start gap-2.5">
                       <span
                         aria-hidden="true"
-                        className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-orange"
+                        className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red"
                       />
                       <span className="text-base leading-relaxed text-brand-charcoal/85">
                         {bullet}

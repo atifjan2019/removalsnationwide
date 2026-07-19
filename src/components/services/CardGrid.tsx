@@ -24,7 +24,7 @@ export default function CardGrid({ cards, columns = 3, className = "" }: Props) 
           key={card.title}
           className="flex h-full flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-shadow duration-300 hover:shadow-md"
         >
-          <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-lg font-bold text-brand-navy">
+          <h3 className="mb-3 border-l-4 border-brand-red pl-3 text-lg font-bold text-brand-navy">
             {card.title}
           </h3>
           <p className="text-base leading-relaxed text-brand-charcoal/85">{card.body}</p>

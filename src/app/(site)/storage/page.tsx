@@ -334,7 +334,7 @@ export default function LondonStoragePage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -373,7 +373,7 @@ export default function LondonStoragePage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -403,7 +403,7 @@ export default function LondonStoragePage() {
                 <ul className="space-y-2">
                   {storageAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -413,13 +413,13 @@ export default function LondonStoragePage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -452,7 +452,7 @@ export default function LondonStoragePage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -507,7 +507,7 @@ export default function LondonStoragePage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
         </div>
@@ -517,7 +517,7 @@ export default function LondonStoragePage() {
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
-            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Step by step
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -548,10 +548,10 @@ export default function LondonStoragePage() {
                 className="relative flex flex-col rounded-2xl bg-white/8 p-6 ring-1 ring-white/10 transition-all duration-200 hover:bg-white/12 motion-reduce:transition-none"
               >
                 <div className="mb-3 flex items-center gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-widest text-brand-orange">
+                  <span className="text-xs font-bold uppercase tracking-widest text-brand-red">
                     Step {i + 1}
                   </span>
                 </div>
@@ -576,31 +576,31 @@ export default function LondonStoragePage() {
             <div
               data-reveal
               data-delay="1"
-              className="flex flex-col rounded-2xl border-2 border-brand-orange bg-white p-8 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0"
+              className="flex flex-col rounded-2xl border-2 border-brand-red bg-white p-8 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:hover:translate-y-0"
             >
-              <div className="mb-1 text-5xl font-extrabold leading-none text-brand-orange">250</div>
+              <div className="mb-1 text-5xl font-extrabold leading-none text-brand-red">250</div>
               <div className="text-sm font-bold uppercase tracking-widest text-brand-charcoal/50">
                 cubic feet
               </div>
               <h3 className="mt-4 text-xl font-bold text-brand-navy">250 cu ft Unit</h3>
-              <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-orange">
+              <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-red">
                 Flats, small houses and archives
               </p>
               <ul className="mt-6 flex-1 space-y-3 text-base text-brand-charcoal/85">
                 <li className="flex items-start gap-2">
-                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={3} />
                   Custom-made wooden construction
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={3} />
                   Holds approximately 70 to 80 cartons, or over 100 archive boxes
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={3} />
                   Best for a one or two-bedroom flat, or document and archive storage
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" strokeWidth={3} />
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" strokeWidth={3} />
                   Suitable for short and long-term storage
                 </li>
               </ul>
@@ -619,7 +619,7 @@ export default function LondonStoragePage() {
                 cubic feet
               </div>
               <h3 className="mt-4 text-xl font-bold text-brand-navy">20ft Container</h3>
-              <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-orange">
+              <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-red">
                 Large homes, full offices and long-term
               </p>
               <ul className="mt-6 flex-1 space-y-3 text-base text-brand-charcoal/85">
@@ -659,14 +659,14 @@ export default function LondonStoragePage() {
                 data-delay={String(Math.min((i % 3) + 1, 7))}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-base font-bold text-brand-navy">
+                <h3 className="mb-3 border-l-4 border-brand-red pl-3 text-base font-bold text-brand-navy">
                   {item.title}
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-brand-charcoal/85">{item.body}</p>
                 {item.href && (
                   <Link
                     href={item.href}
-                    className="mt-4 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
+                    className="mt-4 text-sm font-semibold text-brand-red transition hover:text-brand-navy"
                   >
                     Learn more &rarr;
                   </Link>
@@ -716,7 +716,7 @@ export default function LondonStoragePage() {
                 </p>
                 <Link
                   href={type.link.href}
-                  className="mt-6 text-sm font-semibold text-brand-orange transition hover:text-brand-navy"
+                  className="mt-6 text-sm font-semibold text-brand-red transition hover:text-brand-navy"
                 >
                   {type.link.label} &rarr;
                 </Link>
@@ -750,7 +750,7 @@ export default function LondonStoragePage() {
               {
                 label: "Containerised Storage",
                 badge: "What Removals Nationwide offers",
-                badgeColor: "bg-brand-orange text-white",
+                badgeColor: "bg-brand-red text-white",
                 body: "A provider collects from your address, loads your goods, locks and seals a dedicated unit, and stores it at a staffed compound. You access your unit by appointment. This is managed storage. Removals Nationwide operates this model. It suits people who want the physical work done for them and do not need to visit their unit frequently. No van hire, no heavy lifting, no access headaches.",
               },
               {
@@ -814,21 +814,21 @@ export default function LondonStoragePage() {
               storage. Better packing reduces the volume you store and lowers your bill. See our{" "}
               <Link
                 href="/crate-hire"
-                className="font-semibold text-brand-orange hover:text-brand-navy"
+                className="font-semibold text-brand-red hover:text-brand-navy"
               >
                 crate hire
               </Link>{" "}
               and{" "}
               <Link
                 href="/packaging-materials"
-                className="font-semibold text-brand-orange hover:text-brand-navy"
+                className="font-semibold text-brand-red hover:text-brand-navy"
               >
                 packaging materials
               </Link>{" "}
               and{" "}
               <Link
                 href="/packing-service"
-                className="font-semibold text-brand-orange hover:text-brand-navy"
+                className="font-semibold text-brand-red hover:text-brand-navy"
               >
                 professional packing service
               </Link>{" "}
@@ -885,14 +885,14 @@ export default function LondonStoragePage() {
                 <strong className="text-brand-navy">0800 046 7877</strong>.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
-                <Button href="/bookservice" variant="orange" size="md">
+                <Button href="/bookservice" variant="red" size="md">
                   Book Storage
                 </Button>
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=Unit+C1A+Purfleet+Industrial+Park+Kerry+Avenue+Purfleet+RM15+4YA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-[44px] items-center rounded-xl border-2 border-brand-navy px-5 py-3 text-sm font-bold text-brand-navy transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+                  className="inline-flex min-h-[44px] items-center rounded-xl border-2 border-brand-navy px-5 py-3 text-sm font-bold text-brand-navy transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
                 >
                   Get Directions
                 </a>
@@ -960,7 +960,7 @@ export default function LondonStoragePage() {
             <SectionHeading eyebrow="Where we collect" title="Areas We Cover" />
             <p className="mx-auto mt-4 max-w-2xl text-center text-base text-brand-charcoal/70">
               We collect from every London borough. See our{" "}
-              <Link href="/areas" className="font-semibold text-brand-orange hover:text-brand-navy">
+              <Link href="/areas" className="font-semibold text-brand-red hover:text-brand-navy">
                 full areas page
               </Link>{" "}
               for detailed coverage information.
@@ -984,7 +984,7 @@ export default function LondonStoragePage() {
             counties.{" "}
             <Link
               href="/bookservice#quick-quote"
-              className="underline hover:text-brand-orange"
+              className="underline hover:text-brand-red"
             >
               Get a quote
             </Link>{" "}
@@ -1009,7 +1009,7 @@ export default function LondonStoragePage() {
       <section className="bg-brand-navy py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -1024,7 +1024,7 @@ export default function LondonStoragePage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -1051,7 +1051,7 @@ export default function LondonStoragePage() {
             Get a free online quote in under 2 minutes, or speak to a coordinator now.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Free Online Quote
             </Button>
             <Button href="/bookservice" variant="outline-light" size="lg">
@@ -1061,16 +1061,16 @@ export default function LondonStoragePage() {
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
               href="tel:+442072052525"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
             <a
               href="tel:+448000467877"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

@@ -19,7 +19,7 @@ export default function SectionHeading({
 }: Props) {
   const alignment = align === "center" ? "items-center text-center" : "items-start text-left";
   const titleColor = tone === "light" ? "text-white" : "text-brand-navy";
-  const eyebrowColor = tone === "light" ? "text-brand-orange" : "text-brand-orange";
+  const eyebrowColor = tone === "light" ? "text-brand-red" : "text-brand-red";
 
   return (
     <div className={`flex flex-col gap-3 ${alignment} ${className}`}>
@@ -34,7 +34,7 @@ export default function SectionHeading({
         {title}
       </Tag>
       <span
-        className={`mt-1 h-1 w-16 rounded-full bg-brand-orange ${
+        className={`mt-1 h-1 w-16 rounded-full bg-brand-red ${
           align === "center" ? "self-center" : ""
         }`}
         aria-hidden="true"

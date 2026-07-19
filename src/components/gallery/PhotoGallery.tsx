@@ -48,7 +48,7 @@ export default function PhotoGallery({ images }: Props) {
             <button
               type="button"
               onClick={() => setActive(i)}
-              className="group relative block aspect-square w-full overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+              className="group relative block aspect-square w-full overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2"
               aria-label={`View image: ${image.alt}`}
             >
               <Image
@@ -76,7 +76,7 @@ export default function PhotoGallery({ images }: Props) {
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand-orange"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand-red"
           >
             <CloseIcon className="h-6 w-6" />
           </button>
@@ -88,7 +88,7 @@ export default function PhotoGallery({ images }: Props) {
               show(active - 1);
             }}
             aria-label="Previous image"
-            className="absolute left-3 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand-orange md:left-6"
+            className="absolute left-3 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand-red md:left-6"
           >
             <ChevronLeft className="h-7 w-7" />
           </button>
@@ -119,7 +119,7 @@ export default function PhotoGallery({ images }: Props) {
               show(active + 1);
             }}
             aria-label="Next image"
-            className="absolute right-3 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand-orange md:right-6"
+            className="absolute right-3 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-brand-red md:right-6"
           >
             <ChevronRight className="h-7 w-7" />
           </button>

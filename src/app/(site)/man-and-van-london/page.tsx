@@ -375,7 +375,7 @@ export default function ManAndVanPage() {
               </p>
 
               <div className="hero-anim-sub mt-5 inline-flex items-center gap-3 rounded-xl border border-brand-navy/10 bg-brand-navy/5 px-5 py-3">
-                <span className="text-2xl font-black text-brand-orange">From £55/hr</span>
+                <span className="text-2xl font-black text-brand-red">From £55/hr</span>
                 <span aria-hidden="true" className="h-4 w-px bg-brand-charcoal/20" />
                 <span className="text-sm font-medium text-brand-charcoal/70">plus VAT · min. 2 hrs</span>
               </div>
@@ -383,7 +383,7 @@ export default function ManAndVanPage() {
               <div className="hero-anim-ctas mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -422,7 +422,7 @@ export default function ManAndVanPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -452,7 +452,7 @@ export default function ManAndVanPage() {
                 <ul className="space-y-2">
                   {accreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -462,13 +462,13 @@ export default function ManAndVanPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -511,14 +511,14 @@ export default function ManAndVanPage() {
               requiring{" "}
               <Link
                 href="/packing-service"
-                className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 professional packing
               </Link>
               , a{" "}
               <Link
                 href="/house-removals"
-                className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 full house removal service
               </Link>{" "}
@@ -568,7 +568,7 @@ export default function ManAndVanPage() {
             </p>
             <CheckList items={priceFactors} className="mt-6" />
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/bookservice" variant="orange" size="md">
+              <Button href="/bookservice" variant="red" size="md">
                 Estimate My Move
               </Button>
               <Button href="/prices" variant="navy" size="md">
@@ -631,7 +631,7 @@ export default function ManAndVanPage() {
                   <span className="rounded-full bg-brand-navy px-3 py-1 text-xs font-semibold text-white">
                     {van}
                   </span>
-                  <span className="rounded-full bg-brand-orange px-3 py-1 text-xs font-semibold text-white">
+                  <span className="rounded-full bg-brand-red px-3 py-1 text-xs font-semibold text-white">
                     {crew}
                   </span>
                 </div>
@@ -643,7 +643,7 @@ export default function ManAndVanPage() {
             All Removals Nationwide vans carry heavy-duty straps, removal blankets and a sack trolley as
             standard. The exact vehicle and crew combination is confirmed after a free survey of
             your property.{" "}
-            <Link href="/our-fleet" className="text-brand-orange underline underline-offset-2">
+            <Link href="/our-fleet" className="text-brand-red underline underline-offset-2">
               View our fleet →
             </Link>
           </p>
@@ -716,7 +716,7 @@ export default function ManAndVanPage() {
                 {link && linkText && (
                   <Link
                     href={link}
-                    className="mt-4 text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="mt-4 text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     {linkText}
                   </Link>
@@ -749,7 +749,7 @@ export default function ManAndVanPage() {
               For the fastest response on a same-day or short-notice request:{" "}
               <a
                 href="tel:+442072052525"
-                className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
                 call 020 7205 2525
               </a>{" "}
@@ -760,7 +760,7 @@ export default function ManAndVanPage() {
           <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -802,7 +802,7 @@ export default function ManAndVanPage() {
                   <div className="flex-1 pt-1">
                     <div className="flex items-center gap-2">
                       <p className="text-base font-bold text-brand-navy">{step.name}</p>
-                      <span aria-hidden="true" className="text-brand-orange/70"><Icon className="h-4 w-4" /></span>
+                      <span aria-hidden="true" className="text-brand-red/70"><Icon className="h-4 w-4" /></span>
                     </div>
                     <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/80">{step.text}</p>
                   </div>
@@ -817,7 +817,7 @@ export default function ManAndVanPage() {
             <div aria-hidden="true" className="relative mb-0 h-0.5 bg-brand-navy/10">
               <span
                 id="mv-process-fill"
-                className="absolute inset-y-0 left-0 bg-brand-orange/55 transition-[width] duration-700 ease-out"
+                className="absolute inset-y-0 left-0 bg-brand-red/55 transition-[width] duration-700 ease-out"
                 style={{ width: 0 }}
               />
             </div>
@@ -842,7 +842,7 @@ export default function ManAndVanPage() {
                         {i + 1}
                       </span>
                       <div className="mt-2 flex items-center gap-1.5">
-                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-orange text-white">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-red text-white">
                           <Icon className="h-3.5 w-3.5" />
                         </span>
                         <span className="text-[0.65rem] font-bold uppercase tracking-widest text-brand-navy/40">
@@ -878,7 +878,7 @@ export default function ManAndVanPage() {
           </div>
 
           <div data-reveal className="mt-10 flex justify-center">
-            <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+            <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Book Your Move
             </Button>
           </div>
@@ -920,7 +920,7 @@ export default function ManAndVanPage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/85">
                     <CheckIcon
-                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-red"
                       strokeWidth={2.5}
                     />
                     {item}
@@ -928,7 +928,7 @@ export default function ManAndVanPage() {
                 ))}
               </ul>
               <div className="mt-6">
-                <Button href="/bookservice#quick-quote" variant="orange" size="md">
+                <Button href="/bookservice#quick-quote" variant="red" size="md">
                   Get a Man and Van Quote
                 </Button>
               </div>
@@ -936,11 +936,11 @@ export default function ManAndVanPage() {
 
             {/* Full removals */}
             <div
-              className="rounded-2xl border-2 border-brand-orange bg-brand-navy p-8 text-white"
+              className="rounded-2xl border-2 border-brand-red bg-brand-navy p-8 text-white"
               data-reveal
               data-delay="2"
             >
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-orange px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white">
                 Full House Removals
               </div>
               <p className="text-sm font-bold uppercase tracking-wide text-white">
@@ -956,7 +956,7 @@ export default function ManAndVanPage() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-white/90">
                     <CheckIcon
-                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange"
+                      className="mt-0.5 h-5 w-5 shrink-0 text-brand-red"
                       strokeWidth={2.5}
                     />
                     {item}
@@ -966,7 +966,7 @@ export default function ManAndVanPage() {
               <div className="mt-6">
                 <Link
                   href="/house-removals"
-                  className="text-sm font-semibold text-brand-orange underline underline-offset-2 hover:text-white"
+                  className="text-sm font-semibold text-brand-red underline underline-offset-2 hover:text-white"
                 >
                   House removal service →
                 </Link>
@@ -1029,7 +1029,7 @@ export default function ManAndVanPage() {
                 className="rounded-2xl border border-white/10 bg-white/8 p-6"
               >
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <div>
@@ -1063,7 +1063,7 @@ export default function ManAndVanPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/certificates" variant="orange" size="md">
+            <Button href="/certificates" variant="red" size="md">
               View Certificates
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
@@ -1110,7 +1110,7 @@ export default function ManAndVanPage() {
                     <li key={b.name}>
                       <Link
                         href={b.href}
-                        className="text-sm text-brand-charcoal/85 underline-offset-2 hover:text-brand-orange hover:underline"
+                        className="text-sm text-brand-charcoal/85 underline-offset-2 hover:text-brand-red hover:underline"
                       >
                         {b.name}
                       </Link>
@@ -1143,7 +1143,7 @@ export default function ManAndVanPage() {
               href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-brand-orange underline underline-offset-2"
+              className="text-brand-red underline underline-offset-2"
             >
               Read verified reviews on Trustpilot
             </Link>
@@ -1161,7 +1161,7 @@ export default function ManAndVanPage() {
               href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"
+              className="mt-4 inline-block text-sm font-semibold text-brand-red underline underline-offset-2"
             >
               View all reviews on Trustpilot →
             </Link>

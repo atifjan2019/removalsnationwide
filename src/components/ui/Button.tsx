@@ -1,15 +1,15 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "orange" | "navy" | "outline" | "outline-light";
+type Variant = "red" | "navy" | "outline" | "outline-light";
 type Size = "sm" | "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-md font-semibold uppercase tracking-wide transition-all duration-200 focus-visible:outline-none disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
-  orange:
-    "bg-brand-orange text-white shadow-md shadow-brand-orange/25 hover:bg-brand-orange-dark hover:shadow-lg hover:-translate-y-0.5",
+  red:
+    "bg-brand-red text-white shadow-md shadow-brand-red/25 hover:bg-brand-red-dark hover:shadow-lg hover:-translate-y-0.5",
   navy: "bg-brand-navy text-white hover:bg-brand-navy-dark hover:-translate-y-0.5",
   outline:
     "border-2 border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white",
@@ -40,7 +40,7 @@ type ButtonAsButton = BaseProps & { href?: undefined } & Omit<
   >;
 
 export default function Button(props: ButtonAsLink | ButtonAsButton) {
-  const { variant = "orange", size = "md", className = "", children } = props;
+  const { variant = "red", size = "md", className = "", children } = props;
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (props.href !== undefined) {

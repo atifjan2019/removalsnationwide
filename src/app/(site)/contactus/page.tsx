@@ -64,7 +64,7 @@ export default function ContactPage() {
               <h2 className="text-xl font-bold uppercase tracking-wide">Contact Details</h2>
 
               <div className="mt-6">
-                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-orange">
+                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-red">
                   Address
                 </h3>
                 <address className="mt-2 not-italic leading-relaxed text-white/85">
@@ -73,7 +73,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-6">
-                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-orange">
+                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-red">
                   Phones
                 </h3>
                 <ul className="mt-2 space-y-2.5">
@@ -81,9 +81,9 @@ export default function ContactPage() {
                     <li key={phone.href}>
                       <a
                         href={phone.href}
-                        className="inline-flex items-center gap-2.5 text-white/85 transition hover:text-brand-orange"
+                        className="inline-flex items-center gap-2.5 text-white/85 transition hover:text-brand-red"
                       >
-                        <PhoneIcon className="h-4 w-4 text-brand-orange" />
+                        <PhoneIcon className="h-4 w-4 text-brand-red" />
                         {phone.label}
                       </a>
                     </li>
@@ -92,7 +92,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-6">
-                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-orange">
+                <h3 className="text-sm font-bold uppercase tracking-wide text-brand-red">
                   Opening Hours
                 </h3>
                 <p className="mt-2 leading-relaxed text-white/85">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                   href="https://www.fhio.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-2 inline-block font-semibold text-brand-orange transition hover:underline"
+                  className="mt-2 inline-block font-semibold text-brand-red transition hover:underline"
                 >
                   www.fhio.org
                 </a>

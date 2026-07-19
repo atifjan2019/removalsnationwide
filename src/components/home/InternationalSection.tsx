@@ -31,7 +31,7 @@ export default function InternationalSection() {
 
             {/* Route signature — surfaces the confirmed weekly Scandinavia run */}
             <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm font-semibold text-white">
-              <span className="h-2 w-2 rounded-full bg-brand-orange" aria-hidden="true" />
+              <span className="h-2 w-2 rounded-full bg-brand-red" aria-hidden="true" />
               London to Oslo &nbsp;&mdash;&nbsp; regular road freight, weekly
             </div>
 
@@ -54,7 +54,7 @@ export default function InternationalSection() {
               </p>
             </div>
             <div className="mt-8">
-              <Button href="/international-removals" variant="orange" size="md">
+              <Button href="/international-removals" variant="red" size="md">
                 International Removals
               </Button>
             </div>
@@ -67,7 +67,7 @@ export default function InternationalSection() {
             <ul className="mt-5 space-y-3">
               {services.map((s) => (
                 <li key={s} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-white/85">{s}</span>

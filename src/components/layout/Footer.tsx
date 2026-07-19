@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { SVGProps, ReactNode } from "react";
 import Button from "@/components/ui/Button";
+import BrandLogo from "@/components/layout/BrandLogo";
 import { PhoneIcon, ArrowRight } from "@/components/ui/icons";
 import {
   phones,
@@ -75,9 +75,9 @@ function LinkList({ links }: { links: { label: string; href: string }[] }) {
         <li key={link.label}>
           <Link
             href={link.href}
-            className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm text-white/60 transition hover:text-brand-orange"
+            className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm text-white/60 transition hover:text-brand-red"
           >
-            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-brand-orange opacity-0 transition group-hover:opacity-100" />
+            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-brand-red opacity-0 transition group-hover:opacity-100" />
             {link.label}
           </Link>
         </li>
@@ -98,20 +98,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
-              <Image
-                src="/logo.png"
-                alt="Removals Nationwide"
-                width={142}
-                height={113}
-                className="h-14 w-auto"
-                priority
-              />
+              <BrandLogo />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/70">
               London, national and international removals and storage.
             </p>
             <div className="mt-6">
-              <Button href="/bookservice#quick-quote" variant="orange" size="md">
+              <Button href="/bookservice#quick-quote" variant="red" size="md">
                 Get a free quote
               </Button>
             </div>
@@ -142,18 +135,18 @@ export default function Footer() {
               <li>
                 <a
                   href={phones.london.href}
-                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-orange"
+                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-red"
                 >
-                  <PhoneIcon className="h-4 w-4 shrink-0 text-brand-orange" />
+                  <PhoneIcon className="h-4 w-4 shrink-0 text-brand-red" />
                   {phones.london.label}
                 </a>
               </li>
               <li>
                 <a
                   href={phones.freephone.href}
-                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-orange"
+                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-red"
                 >
-                  <PhoneIcon className="h-4 w-4 shrink-0 text-brand-orange" />
+                  <PhoneIcon className="h-4 w-4 shrink-0 text-brand-red" />
                   {phones.freephone.label}
                 </a>
               </li>
@@ -171,7 +164,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Removals Nationwide on ${name}`}
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/70 transition hover:bg-brand-orange hover:text-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/70 transition hover:bg-brand-red hover:text-white"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -200,10 +193,10 @@ export default function Footer() {
         <div className="mx-auto flex max-w-[88rem] flex-col items-center justify-between gap-3 px-4 py-5 text-center text-xs text-white/50 sm:flex-row sm:text-left">
           <p>{company.registration}</p>
           <div className="flex items-center gap-4">
-            <Link href="/terms-and-conditions" className="transition hover:text-brand-orange">
+            <Link href="/terms-and-conditions" className="transition hover:text-brand-red">
               Terms and Conditions
             </Link>
-            <Link href="/privacy-policy" className="transition hover:text-brand-orange">
+            <Link href="/privacy-policy" className="transition hover:text-brand-red">
               Privacy Policy
             </Link>
           </div>

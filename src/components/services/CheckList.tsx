@@ -18,13 +18,13 @@ const colClass: Record<number, string> = {
 
 const keyOf = (item: CheckItem) => (typeof item === "string" ? item : item.lead);
 
-/** Reusable orange-check bullet list, used across service detail pages. */
+/** Reusable red-check bullet list, used across service detail pages. */
 export default function CheckList({ items, columns = 1, className = "" }: Props) {
   return (
     <ul className={`grid gap-x-8 gap-y-4 ${colClass[columns]} ${className}`}>
       {items.map((item) => (
         <li key={keyOf(item)} className="flex items-start gap-3">
-          <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+          <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
             <CheckIcon className="h-4 w-4" strokeWidth={3} />
           </span>
           <span className="text-base leading-relaxed text-brand-charcoal/90">

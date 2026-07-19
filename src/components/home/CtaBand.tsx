@@ -3,7 +3,7 @@ import Button from "@/components/ui/Button";
 type Action = {
   label: string;
   href: string;
-  variant?: "orange" | "navy" | "outline" | "outline-light";
+  variant?: "red" | "navy" | "outline" | "outline-light";
 };
 
 type Props = {
@@ -28,7 +28,7 @@ export default function CtaBand({
       ? [{ label: buttonLabel, href: buttonHref, variant: "navy" }]
       : []);
   return (
-    <section className="relative overflow-hidden bg-brand-orange">
+    <section className="relative overflow-hidden bg-brand-red">
       {/* subtle diagonal texture */}
       <div
         className="pointer-events-none absolute inset-0 opacity-10"

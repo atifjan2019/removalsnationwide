@@ -356,7 +356,7 @@ export default function SingleItemPage() {
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button
                   href="/bookservice#quick-quote"
-                  variant="orange"
+                  variant="red"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
@@ -395,7 +395,7 @@ export default function SingleItemPage() {
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
                   >
-                    <CheckIcon className="h-3.5 w-3.5 text-brand-orange" strokeWidth={3} />
+                    <CheckIcon className="h-3.5 w-3.5 text-brand-red" strokeWidth={3} />
                     {label}
                   </span>
                 ))}
@@ -425,7 +425,7 @@ export default function SingleItemPage() {
                 <ul className="space-y-2">
                   {singleItemAccreditations.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-orange" strokeWidth={3} />
+                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
                     </li>
                   ))}
@@ -435,13 +435,13 @@ export default function SingleItemPage() {
                     href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     Trustpilot reviews →
                   </Link>
                   <Link
                     href="/certificates"
-                    className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
                     View certificates →
                   </Link>
@@ -481,7 +481,7 @@ export default function SingleItemPage() {
                 Items also ship internationally on a part-load basis through our{" "}
                 <Link
                   href="/international-removals"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   international removal service
                 </Link>
@@ -493,7 +493,7 @@ export default function SingleItemPage() {
                 large item needs transporting: a wardrobe, a bed, or a desk. See our{" "}
                 <Link
                   href="/dormitory-move-student-storage"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   dormitory move and student storage page
                 </Link>{" "}
@@ -514,7 +514,7 @@ export default function SingleItemPage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -right-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
         </div>
@@ -532,7 +532,7 @@ export default function SingleItemPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-brand-red text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <h3 className="text-base font-bold text-brand-navy">{tile.title}</h3>
@@ -594,11 +594,11 @@ export default function SingleItemPage() {
         <div className="mx-auto max-w-4xl px-4">
           <SectionHeading eyebrow="Transparent pricing" title="Single Item Delivery Prices" />
           <div
-            className="mt-10 rounded-2xl border-2 border-brand-orange bg-brand-sand p-8 shadow-md"
+            className="mt-10 rounded-2xl border-2 border-brand-red bg-brand-sand p-8 shadow-md"
             data-reveal
           >
             <div className="text-center">
-              <p className="text-sm font-bold uppercase tracking-widest text-brand-orange">
+              <p className="text-sm font-bold uppercase tracking-widest text-brand-red">
                 Single item delivery from
               </p>
               <p className="mt-2 font-heading text-5xl font-extrabold text-brand-navy">£60</p>
@@ -609,14 +609,14 @@ export default function SingleItemPage() {
               </p>
             </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-brand-orange/30 bg-white p-5">
+              <div className="rounded-xl border border-brand-red/30 bg-white p-5">
                 <p className="text-sm font-bold text-brand-navy">Specialist items</p>
                 <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/75">
                   Items such as a piano require specialist handling and are priced individually.
                   Contact us with the item details for an accurate quote before booking.
                 </p>
               </div>
-              <div className="rounded-xl border border-brand-orange/30 bg-white p-5">
+              <div className="rounded-xl border border-brand-red/30 bg-white p-5">
                 <p className="text-sm font-bold text-brand-navy">Worldwide single item delivery</p>
                 <p className="mt-1 text-sm leading-relaxed text-brand-charcoal/75">
                   International single item delivery is priced per job on a part-load basis.
@@ -625,7 +625,7 @@ export default function SingleItemPage() {
               </div>
             </div>
             <div className="mt-8 flex justify-center">
-              <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+              <Button href="/bookservice#quick-quote" variant="red" size="lg">
                 Quick Quote
               </Button>
             </div>
@@ -658,7 +658,7 @@ export default function SingleItemPage() {
                 our{" "}
                 <Link
                   href="/packing-service"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   packing service
                 </Link>{" "}
@@ -679,7 +679,7 @@ export default function SingleItemPage() {
                   "Whole London area covered",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-brand-charcoal/85">
-                    <CheckIcon className="h-5 w-5 shrink-0 text-brand-orange" strokeWidth={2.5} />
+                    <CheckIcon className="h-5 w-5 shrink-0 text-brand-red" strokeWidth={2.5} />
                     {item}
                   </li>
                 ))}
@@ -705,7 +705,7 @@ export default function SingleItemPage() {
             </div>
             <span
               aria-hidden="true"
-              className="absolute -bottom-5 -left-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-orange/15 lg:block"
+              className="absolute -bottom-5 -left-5 -z-10 hidden h-36 w-36 rounded-2xl bg-brand-red/15 lg:block"
             />
           </div>
           <div data-reveal className="order-1 lg:order-2">
@@ -726,7 +726,7 @@ export default function SingleItemPage() {
                 our regular eBay collection runs for a complete seller logistics service. See our{" "}
                 <Link
                   href="/storage"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   storage service page
                 </Link>{" "}
@@ -742,7 +742,7 @@ export default function SingleItemPage() {
                 "Combine with regular eBay collection runs",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-sm text-brand-charcoal/85">
-                  <CheckIcon className="h-5 w-5 shrink-0 text-brand-orange" strokeWidth={2.5} />
+                  <CheckIcon className="h-5 w-5 shrink-0 text-brand-red" strokeWidth={2.5} />
                   {item}
                 </li>
               ))}
@@ -755,7 +755,7 @@ export default function SingleItemPage() {
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="text-center">
-            <span className="inline-block rounded-full bg-brand-orange/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-orange">
+            <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
               Step by step
             </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -770,7 +770,7 @@ export default function SingleItemPage() {
                 data-delay={String(i + 1)}
                 className="flex flex-col rounded-2xl bg-white/8 p-6 ring-1 ring-white/10 transition-all duration-200 hover:bg-white/12 motion-reduce:transition-none"
               >
-                <span className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-orange">
+                <span className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-red">
                   Step {i + 1}
                 </span>
                 <p className="text-sm font-bold leading-snug text-white">{step}</p>
@@ -794,19 +794,19 @@ export default function SingleItemPage() {
                 key={col.title}
                 className={`flex flex-col rounded-2xl p-8 ${
                   col.highlight
-                    ? "border-2 border-brand-orange bg-white shadow-md"
+                    ? "border-2 border-brand-red bg-white shadow-md"
                     : "border border-black/8 bg-white shadow-sm"
                 }`}
               >
                 <div
                   className={`mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white ${
-                    col.highlight ? "bg-brand-orange" : "bg-brand-charcoal/60"
+                    col.highlight ? "bg-brand-red" : "bg-brand-charcoal/60"
                   }`}
                 >
                   {col.title}
                 </div>
                 {col.subtitle && (
-                  <p className="mb-3 text-xs font-semibold text-brand-orange">{col.subtitle}</p>
+                  <p className="mb-3 text-xs font-semibold text-brand-red">{col.subtitle}</p>
                 )}
                 <ul className="flex-1 space-y-3">
                   {col.points.map((point) => (
@@ -816,7 +816,7 @@ export default function SingleItemPage() {
                     >
                       <CheckIcon
                         className={`mt-0.5 h-4 w-4 shrink-0 ${
-                          col.highlight ? "text-brand-orange" : "text-brand-charcoal/30"
+                          col.highlight ? "text-brand-red" : "text-brand-charcoal/30"
                         }`}
                         strokeWidth={2.5}
                       />
@@ -826,7 +826,7 @@ export default function SingleItemPage() {
                 </ul>
                 <div
                   className={`mt-6 rounded-lg p-4 ${
-                    col.highlight ? "bg-brand-orange/10" : "bg-brand-grey"
+                    col.highlight ? "bg-brand-red/10" : "bg-brand-grey"
                   }`}
                 >
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand-charcoal/60">
@@ -843,7 +843,7 @@ export default function SingleItemPage() {
             not a bidding marketplace. For small flat moves with multiple items, our{" "}
             <Link
               href="/man-and-van-london"
-              className="font-semibold text-brand-orange hover:text-brand-navy"
+              className="font-semibold text-brand-red hover:text-brand-navy"
             >
               man-and-van service
             </Link>{" "}
@@ -876,7 +876,7 @@ export default function SingleItemPage() {
                 We run a{" "}
                 <Link
                   href="/removals-services-to-norway"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   weekly service to Norway
                 </Link>
@@ -884,7 +884,7 @@ export default function SingleItemPage() {
                 international routes. For the full international network, see the{" "}
                 <Link
                   href="/international-removals"
-                  className="text-brand-orange underline underline-offset-2 hover:text-brand-navy"
+                  className="text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   international removals page
                 </Link>
@@ -896,7 +896,7 @@ export default function SingleItemPage() {
               </p>
             </div>
             <div data-reveal data-delay="1">
-              <div className="rounded-2xl border border-brand-orange/30 bg-white p-8 shadow-sm">
+              <div className="rounded-2xl border border-brand-red/30 bg-white p-8 shadow-sm">
                 <h3 className="mb-6 text-base font-bold text-brand-navy">
                   International single item delivery: how it works
                 </h3>
@@ -921,7 +921,7 @@ export default function SingleItemPage() {
                   ].map(({ label, desc }) => (
                     <li key={label} className="flex gap-4">
                       <CheckIcon
-                        className="mt-1 h-5 w-5 shrink-0 text-brand-orange"
+                        className="mt-1 h-5 w-5 shrink-0 text-brand-red"
                         strokeWidth={2.5}
                       />
                       <div>
@@ -948,7 +948,7 @@ export default function SingleItemPage() {
                 data-delay={String((i % 3) + 1)}
                 className="flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <h3 className="mb-3 border-l-4 border-brand-orange pl-3 text-base font-bold text-brand-navy">
+                <h3 className="mb-3 border-l-4 border-brand-red pl-3 text-base font-bold text-brand-navy">
                   {item.title}
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-brand-charcoal/85">{item.desc}</p>
@@ -962,7 +962,7 @@ export default function SingleItemPage() {
       <section className="bg-brand-grey py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
-            className="flex justify-center gap-1 text-brand-orange"
+            className="flex justify-center gap-1 text-brand-red"
             aria-label="5 out of 5 stars"
           >
             {Array.from({ length: 5 }).map((_, i) => (
@@ -978,7 +978,7 @@ export default function SingleItemPage() {
             href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
+            className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
             View Reviews on Trustpilot
           </Link>
@@ -1008,7 +1008,7 @@ export default function SingleItemPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               href="/bookservice#quick-quote"
-              variant="orange"
+              variant="red"
               size="lg"
               className="w-full sm:w-auto"
             >
@@ -1026,16 +1026,16 @@ export default function SingleItemPage() {
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
               href="tel:+442072052525"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               020 7205 2525
             </a>
             <a
               href="tel:+448000467877"
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-orange"
+              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
-              <span aria-hidden="true" className="text-brand-orange">&#9742;</span>
+              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
               0800 046 7877 (freephone)
             </a>
           </div>

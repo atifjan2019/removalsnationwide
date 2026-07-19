@@ -9,7 +9,7 @@ type Errors = Partial<Record<"name" | "phone" | "email" | "enquiry" | "agree", s
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldClass =
-  "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-base text-brand-charcoal shadow-sm transition focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/30";
+  "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-base text-brand-charcoal shadow-sm transition focus:border-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red/30";
 
 export default function ContactForm() {
   const [values, setValues] = useState({ name: "", phone: "", email: "", enquiry: "" });
@@ -43,8 +43,8 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-orange/20 bg-brand-grey p-10 text-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-orange text-white">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-red/20 bg-brand-grey p-10 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white">
           <CheckIcon className="h-7 w-7" strokeWidth={3} />
         </span>
         <h3 className="mt-5 text-xl font-bold text-brand-navy">Thank you, we&apos;ll be in touch</h3>
@@ -70,7 +70,7 @@ export default function ContactForm() {
           aria-invalid={!!errors.name}
           className={fieldClass}
         />
-        {errors.name && <p className="mt-1 text-sm text-brand-orange">{errors.name}</p>}
+        {errors.name && <p className="mt-1 text-sm text-brand-red">{errors.name}</p>}
       </div>
 
       <div>
@@ -86,7 +86,7 @@ export default function ContactForm() {
           aria-invalid={!!errors.phone}
           className={fieldClass}
         />
-        {errors.phone && <p className="mt-1 text-sm text-brand-orange">{errors.phone}</p>}
+        {errors.phone && <p className="mt-1 text-sm text-brand-red">{errors.phone}</p>}
       </div>
 
       <div>
@@ -102,7 +102,7 @@ export default function ContactForm() {
           aria-invalid={!!errors.email}
           className={fieldClass}
         />
-        {errors.email && <p className="mt-1 text-sm text-brand-orange">{errors.email}</p>}
+        {errors.email && <p className="mt-1 text-sm text-brand-red">{errors.email}</p>}
       </div>
 
       <div>
@@ -118,7 +118,7 @@ export default function ContactForm() {
           aria-invalid={!!errors.enquiry}
           className={`${fieldClass} resize-y`}
         />
-        {errors.enquiry && <p className="mt-1 text-sm text-brand-orange">{errors.enquiry}</p>}
+        {errors.enquiry && <p className="mt-1 text-sm text-brand-red">{errors.enquiry}</p>}
       </div>
 
       <div className="rounded-xl bg-brand-grey p-5">
@@ -133,17 +133,17 @@ export default function ContactForm() {
             checked={agree}
             onChange={(e) => setAgree(e.target.checked)}
             aria-invalid={!!errors.agree}
-            className="mt-1 h-5 w-5 shrink-0 accent-brand-orange"
+            className="mt-1 h-5 w-5 shrink-0 accent-brand-red"
           />
           <span className="text-sm leading-relaxed text-brand-charcoal/80">
             If you consent to us using your personal data for that purpose please tick to confirm{" "}
             <span className="font-semibold text-brand-navy">I Agree</span>
           </span>
         </label>
-        {errors.agree && <p className="mt-1 text-sm text-brand-orange">{errors.agree}</p>}
+        {errors.agree && <p className="mt-1 text-sm text-brand-red">{errors.agree}</p>}
       </div>
 
-      <Button type="submit" variant="orange" size="lg" disabled={!agree}>
+      <Button type="submit" variant="red" size="lg" disabled={!agree}>
         Send
       </Button>
     </form>

@@ -45,7 +45,7 @@ export default function VsVanHireSection() {
             <ul className="mt-5 space-y-3">
               {vanHireSuits.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange/20 text-brand-orange">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-brand-charcoal/90">{item}</span>
@@ -54,14 +54,14 @@ export default function VsVanHireSection() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-brand-orange/20 bg-brand-navy p-8 text-white" data-reveal data-delay="2">
+          <div className="rounded-2xl border border-brand-red/20 bg-brand-navy p-8 text-white" data-reveal data-delay="2">
             <h3 className="text-lg font-bold uppercase tracking-wide text-white">
               Professional movers suit you when:
             </h3>
             <ul className="mt-5 space-y-3">
               {professionalSuits.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-orange text-white">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
                     <CheckIcon className="h-4 w-4" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-white/90">{item}</span>
@@ -95,7 +95,7 @@ export default function VsVanHireSection() {
               For small single-item moves,{" "}
               <Link
                 href="#man-and-van"
-                className="text-brand-orange underline underline-offset-2"
+                className="text-brand-red underline underline-offset-2"
               >
                 our man and van service
               </Link>{" "}
@@ -105,7 +105,7 @@ export default function VsVanHireSection() {
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/bookservice#quick-quote" variant="orange" size="lg">
+          <Button href="/bookservice#quick-quote" variant="red" size="lg">
             Get a Quote
           </Button>
           <Button href="#man-and-van" variant="navy" size="lg">

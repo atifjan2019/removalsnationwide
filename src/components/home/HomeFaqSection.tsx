@@ -8,7 +8,7 @@ import { HOME_FAQ_ITEMS } from "@/lib/seo";
 
 // Link-enriched overrides for answers that reference a specific on-page destination.
 // Only three answers need this — the rest render as plain text (HOME_FAQ_ITEMS strings).
-const lk = "text-brand-orange underline underline-offset-2 hover:text-brand-navy transition-colors";
+const lk = "text-brand-red underline underline-offset-2 hover:text-brand-navy transition-colors";
 const LINK_OVERRIDES: Record<string, React.ReactNode> = {
   "How much should I pay for removals in London?": (
     <>
@@ -72,7 +72,7 @@ function FaqItem({
       >
         <span className="text-base font-semibold text-brand-navy">{question}</span>
         <ChevronDown
-          className={`mt-0.5 h-5 w-5 shrink-0 text-brand-orange transition-transform duration-200 ${
+          className={`mt-0.5 h-5 w-5 shrink-0 text-brand-red transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         />

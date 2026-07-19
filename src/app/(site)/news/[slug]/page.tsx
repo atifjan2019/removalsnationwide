@@ -122,7 +122,7 @@ export default async function ArticlePage({
       <article className="bg-white py-16">
         <div className="mx-auto max-w-3xl px-4">
           {post.date && (
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-red">
               posted: {post.date}
             </p>
           )}
@@ -159,35 +159,35 @@ export default async function ArticlePage({
           </aside>
 
           {/* Related services and quote: keeps every article linked to the core */}
-          <div className="mt-10 rounded-2xl border border-brand-orange/20 bg-white p-7 text-center shadow-sm">
+          <div className="mt-10 rounded-2xl border border-brand-red/20 bg-white p-7 text-center shadow-sm">
             <p className="text-base font-semibold text-brand-navy">
               Planning a move? Talk to Removals Nationwide.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/75">
               Explore{" "}
-              <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 house removals
               </Link>
               ,{" "}
-              <Link href="/office-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/office-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 office removals
               </Link>
               ,{" "}
-              <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/storage" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 storage
               </Link>{" "}
               and{" "}
-              <Link href="/packing-service" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/packing-service" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 packing
               </Link>
               , or see our{" "}
-              <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
+              <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
                 prices
               </Link>
               .
             </p>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/bookservice#quick-quote" variant="orange" size="md" className="w-full sm:w-auto">
+              <Button href="/bookservice#quick-quote" variant="red" size="md" className="w-full sm:w-auto">
                 Quick Quote
               </Button>
               <Button href="/bookservice" variant="navy" size="md" className="w-full sm:w-auto">

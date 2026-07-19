@@ -26,7 +26,7 @@ export default function ServicesSection() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-orange transition hover:gap-3"
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-red transition hover:gap-3"
           >
             View All Services
             <ArrowRight className="h-4 w-4" />
