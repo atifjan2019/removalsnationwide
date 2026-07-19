@@ -177,9 +177,9 @@ const faqs: FaqItem[] = [
       "Yes. A two-man team does all the loading within the time slot for that load tier: 15 minutes for a small collection up to 120 minutes for a full load. Extra 10-minute labour increments are available at £10 each if loading runs over the allocated time.",
   },
   {
-    question: "Do you cover all of London?",
+    question: "Do you provide rubbish clearance across the UK?",
     answer:
-      "Yes, the service covers London and the surrounding areas. An extra travel charge of £2 per mile each way applies for collections more than 20 miles from E6 6LS. Contact us with your postcode and we confirm whether your address is within the standard service area.",
+      "Yes, nationwide clearance is available subject to postcode and scheduling. Contact us with the collection postcode and load details, and we will confirm coverage and any travel charge in writing.",
   },
   {
     question: "Is same-day rubbish collection available?",
@@ -258,7 +258,7 @@ export default async function RubbishDisposalPage() {
 
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide runs a licensed rubbish removal and clearance service across London,
+                Removals Nationwide runs a licensed rubbish removal and clearance service across the UK,
                 7 days a week. In 2026, the company publishes its full load-based price ladder
                 openly: five tiers from £50 for a small collection to £250 for a full vehicle
                 load, with every add-on charge listed alongside.
@@ -302,7 +302,7 @@ export default async function RubbishDisposalPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=2400&q=82"
-                  alt="Removals Nationwide licensed rubbish removal and clearance team in London"
+                  alt="Removals Nationwide licensed rubbish removal and clearance team"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -406,7 +406,7 @@ export default async function RubbishDisposalPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=2400&q=82"
-                alt="Removals Nationwide clearance team at work in London"
+                alt="Removals Nationwide clearance team at work"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

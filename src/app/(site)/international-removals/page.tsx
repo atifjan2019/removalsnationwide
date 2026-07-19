@@ -330,7 +330,7 @@ export default async function InternationalRemovalsPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide provides managed international removals from London with an active
+                Removals Nationwide provides managed international removals from across the UK with an active
                 company fleet across Europe and full shipment tracking from loading to delivery.
                 No broker chain. Your goods travel on our own vehicles.
               </p>
@@ -398,7 +398,7 @@ export default async function InternationalRemovalsPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1710749093416-1e9cdde8d080?auto=format&fit=crop&w=2400&q=82"
-                  alt="Removals Nationwide international removals fleet serving Europe from London"
+                  alt="Removals Nationwide international removals fleet serving Europe from the UK"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

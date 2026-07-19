@@ -171,7 +171,7 @@ const tips: Tip[] = [
 
 const faqs: FaqItem[] = [
   {
-    question: "Can I access my things while in your London storage facility?",
+    question: "Can I access my things while they are in storage?",
     answer:
       "Yes, by appointment. We are managed storage, not a self-access facility, so we ask for at least 48 hours notice. A member of staff is present to assist you. An access fee applies if staff assistance is required during your visit.",
   },
@@ -201,7 +201,7 @@ const faqs: FaqItem[] = [
       "Yes. We collect from your property anywhere in London and the surrounding areas. Alternatively, you deliver your goods directly to our Purfleet facility. Delivering to the facility costs slightly less than a full collection.",
   },
   {
-    question: "How much does storage in London cost?",
+    question: "How much does removals storage cost?",
     answer:
       "Storage starts at £10 per week. The exact price depends on the volume of goods you store, the length of time and whether we collect from your property or you deliver to the facility. Your coordinator confirms the price before work starts.",
   },
@@ -323,7 +323,7 @@ export default async function LondonStoragePage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide provides managed, containerised storage across London, collected from
+                Removals Nationwide provides managed, containerised storage for moves across the UK, collected from
                 your door and stored at our staffed Purfleet compound. From{" "}
                 <strong>£10 per week</strong>, no minimum term, fully insured.
               </p>
@@ -390,7 +390,7 @@ export default async function LondonStoragePage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1672552226380-486fe900b322?auto=format&fit=crop&w=2400&q=82"
-                  alt="Secure containerised storage facility in London operated by Removals Nationwide"
+                  alt="Secure containerised storage facility operated by Removals Nationwide"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

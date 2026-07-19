@@ -250,9 +250,9 @@ const faqs: FaqItem[] = [
       "Yes. Removals Nationwide supplies quality removal boxes and packing materials in London with transparent prices. Materials and labour are included in a full packing service booking. Ordering materials separately is available with delivery across London. A discount applies when combining materials with a removal or packing service.",
   },
   {
-    question: "Do you deliver packing materials across London?",
+    question: "Do you deliver packing materials across the UK?",
     answer:
-      "Yes. We deliver packing materials across London. Delivery is free on orders over £120, and a £20 charge applies below that threshold. A congestion charge fee applies on certain routes. Flat-packed materials are sent to UK customers outside London who use our removal service. All prices plus VAT.",
+      "Yes. We deliver packing materials across the UK. Delivery is free on qualifying orders over £120, while charges for smaller orders or special routes are confirmed before checkout. All prices are plus VAT.",
   },
 ];
 
@@ -346,7 +346,7 @@ export default async function PackagingMaterialsPage() {
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
                 Removals Nationwide supplies quality removal boxes, bubble wrap, wardrobe boxes and packing
-                tape in London with fully transparent prices. In 2026, more London movers buy
+                tape across the UK with fully transparent prices. More customers buy
                 their materials from their removal company, combining delivery, labour and recycling
                 into one managed service.
               </p>
@@ -384,14 +384,14 @@ export default async function PackagingMaterialsPage() {
               </div>
 
               <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
-                Free delivery over £120. Delivered across London. industry-approved materials.
+                Free delivery over £120. Delivered across the UK. Industry-approved materials.
               </p>
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
                   "industry-approved",
                   "Transparent prices",
-                  "Delivered across London",
+                  "Delivered across the UK",
                   "Combine and save",
                 ].map((label) => (
                   <span
@@ -414,7 +414,7 @@ export default async function PackagingMaterialsPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1730154838368-c37b1fdebcf6?auto=format&fit=crop&w=2400&q=82"
-                  alt="Removal boxes and packing materials supplied by Removals Nationwide in London"
+                  alt="Removal boxes and packing materials supplied across the UK"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

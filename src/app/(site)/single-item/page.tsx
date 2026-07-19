@@ -247,7 +247,7 @@ const faqs: FaqItem[] = [
       "Yes. We deliver single furniture items and offer assembly and disassembly as part of the service. Packing and cushioning materials are available if the item needs extra protection in transit. Specialist and delicate items such as antiques are handled with care and quoted individually.",
   },
   {
-    question: "How much does it cost to deliver one item in London?",
+    question: "How much does nationwide single-item delivery cost?",
     answer:
       "From £60 plus VAT, with the exact price set by the item size and the distance. Specialist items such as a piano are priced individually. International single item delivery is priced per job on a part-load basis. Get a confirmed figure with a quick quote.",
   },
@@ -257,9 +257,9 @@ const faqs: FaqItem[] = [
       "In London, same or next day delivery is available as requested. Longer-distance UK deliveries and worldwide single item shipments are scheduled and confirmed in advance, not same-day. Contact us with your collection and delivery addresses to confirm what is available for your date and item type.",
   },
   {
-    question: "Do you cover the whole of London?",
+    question: "Do you cover the whole of the UK?",
     answer:
-      "Yes, every London postcode for single item delivery, eBay and Gumtree collections, and furniture assembly. Single item deliveries to the rest of the UK are also available. Worldwide single item delivery runs on a part-load basis through our international removal service. Contact us with your address for confirmation.",
+      "Yes. Single-item delivery, marketplace collections and furniture assembly are available across the UK. Worldwide single-item delivery runs on a part-load basis through our international removals service. Contact us with both postcodes for confirmation.",
   },
 ];
 
@@ -284,9 +284,9 @@ const orgSchema = {
 const serviceOfferSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Single Item Delivery and eBay Courier London",
+  name: "Nationwide Single Item and Marketplace Delivery",
   serviceType: "Single Item Delivery",
-  areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+  areaServed: { "@type": "Country", name: "United Kingdom" },
   provider: { "@id": `${SITE_URL}/#organization` },
   offers: {
     "@type": "Offer",
@@ -299,7 +299,7 @@ const serviceOfferSchema = {
       valueAddedTaxIncluded: false,
     },
     availability: "https://schema.org/InStock",
-    areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+    areaServed: { "@type": "Country", name: "United Kingdom" },
   },
 };
 
@@ -343,7 +343,7 @@ export default async function SingleItemPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide runs a single item and eBay delivery service across London with its
+                Removals Nationwide runs a nationwide single-item and marketplace delivery service with its
                 own fleet and its own movers. In 2026, it remains the only option that combines
                 real from-price transparency, pickup-only eBay collection, furniture assembly,
                 and worldwide single item delivery under one booking.
@@ -412,7 +412,7 @@ export default async function SingleItemPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=2400&q=82"
-                  alt="Removals Nationwide single item and eBay delivery in London"
+                  alt="Removals Nationwide single-item and marketplace delivery"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

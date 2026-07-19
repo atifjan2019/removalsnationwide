@@ -214,7 +214,7 @@ export default async function DormitoryMoveStudentStoragePage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide runs full-service dormitory moves and student storage in London
+                Removals Nationwide runs full-service dormitory moves and student storage across the UK
                 and across the UK. Our movers pack your entire room, disassemble the furniture,
                 and transport everything in 2026, and you need not be present at any step.
               </p>

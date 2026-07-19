@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingContact from "@/components/layout/FloatingContact";
 import JsonLd from "@/components/seo/JsonLd";
+import { SettingsProvider } from "@/components/providers/SettingsProvider";
 import { siteGraphLd } from "@/lib/seo";
 import { getResolvedSettings } from "@/lib/settings";
 
@@ -36,13 +37,16 @@ export default async function SiteLayout({
   const settings = await getResolvedSettings();
 
   return (
-    <>
+    // The provider covers client components rendered deep inside pages — the
+    // sticky mobile CTA in particular, which appears on ~29 pages and would
+    // otherwise need the phone threaded through every one of them.
+    <SettingsProvider settings={settings}>
       <JsonLd data={siteGraphLd(settings)} />
       <TopBar settings={settings} />
       <Header logoUrl={settings.logoUrl} />
       <main>{children}</main>
       <Footer settings={settings} />
       <FloatingContact whatsapp={settings.whatsapp} />
-    </>
+    </SettingsProvider>
   );
 }

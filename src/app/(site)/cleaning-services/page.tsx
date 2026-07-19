@@ -246,9 +246,9 @@ const faqs: FaqItem[] = [
       "Yes, Top Cleaners offers professional carpet steam cleaning and upholstery cleaning. For a move, it is best to clean carpets and soft furniture before they are packed and before furniture is placed in the new home. Tell the coordinator and they include it in the scope.",
   },
   {
-    question: "Do you cover the whole of London?",
+    question: "Do you provide cleaning services across the UK?",
     answer:
-      "Yes. Top Cleaners covers all London boroughs for move-in, move-out, end of tenancy and all other cleaning services. The removals service also covers all London boroughs and the surrounding areas. One coordinator covers both the cleaning and the move for addresses across London.",
+      "Cleaning can be coordinated with removals across the UK, subject to postcode availability. Share both addresses and the services required, and one coordinator will confirm the cleaning team and moving schedule.",
   },
 ];
 
@@ -273,7 +273,7 @@ const orgSchema = {
 const cleaningServiceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Move In, Move Out and End of Tenancy Cleaning in London",
+  name: "Move In, Move Out and End of Tenancy Cleaning",
   serviceType: [
     "End of Tenancy Cleaning",
     "Move-Out Cleaning",
@@ -284,7 +284,7 @@ const cleaningServiceSchema = {
     "Regular Domestic Cleaning",
     "Office and Commercial Cleaning",
   ],
-  areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+  areaServed: { "@type": "Country", name: "United Kingdom" },
   provider: { "@id": `${SITE_URL}/#organization` },
 };
 
@@ -329,13 +329,13 @@ export default async function CleaningServicesPage() {
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
                 Removals Nationwide and its sister company Top Cleaners deliver a joined-up moving and
-                cleaning service across London. In 2026, one move coordinator runs the movers,
+                cleaning service alongside moves across the UK. One move coordinator runs the movers,
                 the cleaners and the rubbish clearance together so the handover is clean, on
                 time and free of the delays that come when you book a separate cleaner.
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 Thoroughly vetted, regularly trained and fully insured cleaning teams. All
-                London covered. A discounted rate when the move and the clean are booked together.
+                Postcode availability confirmed. A discounted rate applies when the move and clean are booked together.
               </p>
 
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -366,14 +366,14 @@ export default async function CleaningServicesPage() {
               </div>
 
               <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
-                Free quote. Vetted and insured. All London covered.
+                Free quote. Vetted and insured. UK postcode coverage confirmed before booking.
               </p>
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
                   "Coordinated with your move",
                   "Vetted and insured",
-                  "All London covered",
+                  "Nationwide availability",
                   "Free quote",
                 ].map((label) => (
                   <span
@@ -396,7 +396,7 @@ export default async function CleaningServicesPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2400&q=82"
-                  alt="Top Cleaners move in, move out and end of tenancy cleaning in London"
+                  alt="Move-in, move-out and end-of-tenancy cleaning service"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

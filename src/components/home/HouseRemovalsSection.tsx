@@ -42,11 +42,11 @@ export default function HouseRemovalsSection() {
               chain timelines and short-notice requirements.
             </p>
             <p>
-              London house moves regularly present access challenges that a standard quote
-              ignores. Top-floor flats without a lift require a furniture hoist or a stair-carry
+              House moves in busy cities and older properties regularly present access challenges
+              that a standard quote ignores. Top-floor flats without a lift require a furniture hoist or a stair-carry
               crew with assessed route planning. Narrow Victorian staircases in period properties
               need careful dismantling and measured access work. Parking suspensions are needed
-              on most residential streets, and our operations team arranges the borough permit
+              on many controlled residential streets, and our operations team arranges the local permit
               as part of move planning.
             </p>
             <p>

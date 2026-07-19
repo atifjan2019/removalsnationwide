@@ -157,9 +157,9 @@ const faqs: FaqItem[] = [
       "Yes. Crates are available for international moves. Your coordinator advises on the right type and quantity for the job. Delivery and collection are arranged around the move schedule, with delivery and collection notes to keep the inventory accurate throughout.",
   },
   {
-    question: "Can I hire crates if I live outside London?",
+    question: "Can I hire crates anywhere in the UK?",
     answer:
-      "Crate hire is focused on London and the surrounding area. Delivery and collection are priced by the congestion-zone tiers shown on this page. Contact us with your postcode and we confirm whether your address is within our service area and quote the delivery cost.",
+      "Crate hire is available across the UK subject to postcode and quantity. Contact us with your delivery address and we will confirm availability, delivery and collection costs.",
   },
   {
     question: "How much does crate hire cost?",
@@ -221,7 +221,7 @@ const crateProductSchema = {
           valueAddedTaxIncluded: false,
         },
         availability: "https://schema.org/InStock",
-        areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+        areaServed: { "@type": "Country", name: "United Kingdom" },
         seller: { "@id": `${SITE_URL}/#organization` },
       },
     },
@@ -242,7 +242,7 @@ const crateProductSchema = {
           valueAddedTaxIncluded: false,
         },
         availability: "https://schema.org/InStock",
-        areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+        areaServed: { "@type": "Country", name: "United Kingdom" },
         seller: { "@id": `${SITE_URL}/#organization` },
       },
     },
@@ -289,15 +289,15 @@ export default async function CrateHirePage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide hires reusable plastic LC3 and IT crates across London, delivered to
-                your door and collected when you are done. In 2026, more London movers choose
+                Removals Nationwide hires reusable plastic LC3 and IT crates across the UK, delivered to
+                your door and collected when you are done. More home and office movers choose
                 crates over cardboard for local moves: faster to pack, lidded, sealable and
                 collected at no extra fuss.
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 LC3 crates from <strong>£2.00 per week</strong>, IT crates from{" "}
                 <strong>£3.80 per week</strong>, all prices plus VAT. Delivery and collection
-                priced by crate quantity and London congestion zone.
+                priced by crate quantity and delivery location.
               </p>
 
               <div className="hero-anim-ctas mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -328,7 +328,7 @@ export default async function CrateHirePage() {
               </div>
 
               <p className="hero-anim-trust mt-3 text-xs font-medium text-brand-charcoal/55">
-                Free quote in under 2 minutes. London delivery and collection. Fully insured.
+                Free quote in under 2 minutes. UK delivery and collection. Fully insured.
               </p>
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
@@ -358,7 +358,7 @@ export default async function CrateHirePage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=2400&q=82"
-                  alt="Plastic lidded LC3 and IT moving crates for hire from Removals Nationwide in London"
+                  alt="Plastic lidded LC3 and IT moving crates for nationwide hire"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"

@@ -38,8 +38,8 @@ export default function AccessSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           tone="light"
-          eyebrow="Borough Parking, Red Routes, Access Intelligence"
-          title="Moving in London: Parking, Access and Borough Rules"
+          eyebrow="Parking, Loading and Access Intelligence"
+          title="Local Parking, Access and Council Rules"
         />
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">

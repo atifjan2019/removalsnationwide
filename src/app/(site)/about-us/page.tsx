@@ -23,7 +23,7 @@ const aboutPageSchema = {
   url: `${SITE_URL}/about-us`,
   name: "About Removals Nationwide",
   description:
-    "The story, founders, service highlights and people behind Removals Nationwide, a decade-established, experienced and fully insured, fully insured London moving company.",
+    "The story, founders, service highlights and people behind Removals Nationwide, an established, experienced and fully insured UK moving company.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
@@ -65,7 +65,7 @@ export default async function AboutPage() {
               <p>
                 Removals Nationwide was created a decade ago by two friends, Emil Perushanov and Dimitar
                 Dimitrov. From the start, the goal was to become one of the best and most trusted
-                moving companies in London. Their hard work has paid off, and the business has grown
+                moving companies in the UK. Their hard work has paid off, and the business has grown
                 steadily since. Removals Nationwide was featured in The Mover, one of the leading removals
                 trade magazines.
               </p>

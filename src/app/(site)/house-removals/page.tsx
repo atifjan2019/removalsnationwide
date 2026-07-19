@@ -105,9 +105,9 @@ const processIcons = [IcoPhone, IcoDocument, IcoCalendar, IcoBox, IcoTruck, IcoH
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How Your London House Move Works, Step by Step",
+  name: "How Your Nationwide House Move Works, Step by Step",
   description:
-    "The step-by-step process for booking and completing a house removal with Removals Nationwide in London.",
+    "The step-by-step process for booking and completing a UK house removal with Removals Nationwide.",
   step: processSteps.map((s, i) => ({
     "@type": "HowToStep",
     position: i + 1,
@@ -303,9 +303,9 @@ const areaGroups = [
 
 const faqs: FaqItem[] = [
   {
-    question: "How much does a house removal cost in London?",
+    question: "How much does a nationwide house removal cost?",
     answer:
-      "House removal costs in London depend on property size, distance, access and whether packing is included. A studio or 1-bedroom move typically starts from a lower base than a 3 or 4-bedroom house. The most accurate price comes from a free pre-move survey, which accounts for your exact volume, floor level and any parking requirements.",
+      "House removal costs depend on property size, distance, access and whether packing is included. The most accurate price comes from a free pre-move survey covering your volume, floor level, route and parking requirements.",
     answerAfter:
       "Use the removal calculator for an instant estimate, or book a free survey for a fixed written quote with no hidden fees.",
   },
@@ -315,7 +315,7 @@ const faqs: FaqItem[] = [
       "A full house removal service includes a pre-move survey, packing (if selected), furniture dismantling, loading, transport, unloading and reassembly at the new address. Parking suspension, appliance disconnection and reconnection are also handled. Optional add-ons include full unpacking, storage and licensed waste disposal.",
   },
   {
-    question: "What is the cheapest day to move house in London?",
+    question: "What is the cheapest day to move house?",
     answer:
       "Mid-week moves on Tuesday, Wednesday or Thursday are typically cheaper than Friday or weekend moves, which carry a premium due to higher demand. Moving in January, February or March, outside the peak summer and end-of-month rush, also reduces the quote. If your completion date is flexible, ask for mid-week pricing when you request your survey.",
   },
@@ -337,7 +337,7 @@ const faqs: FaqItem[] = [
       "Your move coordinator will provide a full restricted-items list when you confirm your booking.",
   },
   {
-    question: "How far in advance should I book a house removal in London?",
+    question: "How far in advance should I book a house removal?",
     answer:
       "For most moves, booking two to four weeks in advance is sufficient. Friday moves, end-of-month completions and moves in June, July and August book out earlier. Six to eight weeks ahead is advisable in peak season. For short-notice moves, call us directly; we keep capacity for urgent bookings where availability allows.",
   },
@@ -378,7 +378,7 @@ export default async function HouseRemovalsPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide moves homes across London with a{" "}
+                Removals Nationwide moves homes across the UK with a{" "}
                 <strong>fully insured, industry-experienced team</strong> operating seven days a week.
                 Whether you are moving a studio flat or a five-bedroom house, every job comes with a
                 free pre-move survey, a written fixed-price quote and end-to-end management:

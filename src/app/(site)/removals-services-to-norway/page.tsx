@@ -104,9 +104,9 @@ const tips = [
 
 const faqs: FaqItem[] = [
   {
-    question: "How long does the transit from London to Norway take?",
+    question: "How long does transit from the UK to Norway take?",
     answer:
-      "Truck transit from London to Norway takes 3 to 4 days. A full door-to-door move runs roughly 6 to 9 days: 2 to 3 days for packing and loading, 3 to 4 days in transit, and 1 to 2 days for unloading and delivery. A part-load takes up to 2 weeks while loads consolidate.",
+      "Truck transit from the UK to Norway typically takes 3 to 4 days. A full door-to-door move runs roughly 6 to 9 days depending on collection location, packing, loading, customs and final delivery. Part-loads can take up to 2 weeks while loads consolidate.",
   },
   {
     question: "How much does it cost to move to Norway?",

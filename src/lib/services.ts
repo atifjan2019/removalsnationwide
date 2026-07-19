@@ -36,7 +36,7 @@ export const services: ServiceDef[] = [
     Icon: HomeIcon,
     featured: true,
     description:
-      "Full house removals across London, Greater London and Surrey. Our fully insured crews handle every property type, from studio flats to detached houses, including survey, packing, transport and reassembly.",
+      "Full house removals across the UK. Our fully insured crews handle every property type, from studio flats to detached houses, including survey, packing, transport and reassembly.",
   },
   {
     title: "Man and Van Services",
@@ -44,7 +44,7 @@ export const services: ServiceDef[] = [
     Icon: VanIcon,
     featured: true,
     description:
-      "Flexible man and van services across all London boroughs. Ideal for small moves, single-item collections, student relocations and short-distance hops. Hourly and fixed-price options available with goods-in-transit insurance included.",
+      "Flexible man and van services across the UK. Ideal for small moves, single-item collections, student relocations and short-distance moves, with hourly and fixed-price options.",
   },
   {
     title: "Office Removals",
@@ -52,7 +52,7 @@ export const services: ServiceDef[] = [
     Icon: BuildingIcon,
     featured: true,
     description:
-      "Commercial and office relocations across London with minimal downtime. Weekend and out-of-hours moves, crate hire, IT equipment transport and business continuity planning included.",
+      "Commercial and office relocations across the UK with minimal downtime. Weekend and out-of-hours moves, crate hire, IT equipment transport and business continuity planning included.",
   },
   {
     title: "Packing Services",
@@ -68,7 +68,7 @@ export const services: ServiceDef[] = [
     Icon: BoxIcon,
     featured: true,
     description:
-      "24/7 CCTV-monitored, fully insured storage in London for short-term and long-term needs. Combine storage directly with your removal as one managed service.",
+      "24/7 CCTV-monitored, fully insured storage for short-term and long-term needs. Combine storage directly with your nationwide removal as one managed service.",
   },
   {
     title: "International Services",
@@ -76,7 +76,7 @@ export const services: ServiceDef[] = [
     Icon: GlobeIcon,
     featured: true,
     description:
-      "European and overseas removals from London. Export-standard packing, shipping logistics, customs documentation and destination delivery across Europe and worldwide.",
+      "European and overseas removals from across the UK. Export-standard packing, shipping logistics, customs documentation and destination delivery across Europe and worldwide.",
   },
   {
     title: "Packaging Materials",
@@ -104,7 +104,7 @@ export const services: ServiceDef[] = [
     href: "/single-item",
     Icon: TagIcon,
     description:
-      "Need to move just one item or deliver an eBay purchase? Affordable single-item and same-day delivery across London and the UK.",
+      "Need to move just one item or deliver an online purchase? Affordable single-item delivery across the UK.",
   },
   {
     title: "Cleaning Services",
@@ -118,7 +118,7 @@ export const services: ServiceDef[] = [
     href: "/removals-services-to-norway",
     Icon: GlobeIcon,
     description:
-      "Regular door-to-door removals from London to Norway. Weekly departures to Oslo, bi-weekly to Bergen and Stavanger, with full customs clearance and personal move coordinator.",
+      "Regular door-to-door removals from across the UK to Norway. Weekly departures to Oslo, bi-weekly to Bergen and Stavanger, with customs clearance and a personal move coordinator.",
   },
   {
     title: "Dormitory Move & Student Storage",

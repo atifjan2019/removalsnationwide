@@ -66,13 +66,13 @@ const packingServiceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}/packing-service#service`,
-  name: "Packing Service London",
+  name: "Nationwide Packing Service",
   serviceType: "Professional Packing Service",
   description:
-    "Full, partial and fragile packing service across London. All materials included. Fully insured, industry-experienced.",
+    "Full, partial and fragile packing services across the UK. All materials included and fully insured.",
   url: `${SITE_URL}/packing-service`,
   areaServed: [
-    { "@type": "AdministrativeArea", name: "Greater London" },
+    { "@type": "Country", name: "United Kingdom" },
     { "@type": "Country", name: "United Kingdom" },
   ],
   provider: { "@id": `${SITE_URL}/#organization` },
@@ -227,7 +227,7 @@ const londonAreas = [
 
 const faqs: FaqItem[] = [
   {
-    question: "How much does a packing service cost in London?",
+    question: "How much does a nationwide packing service cost?",
     answer:
       "Estimate the packing cost by multiplying the number of cartons by £6. A 100-carton job costs approximately £600, covering labour and all packing and wrapping materials: boxes, wrapping paper, bubble wrap, tape. The exact total depends on scope, fragile content and any specialist handling. A free survey produces an accurate fixed quote.",
   },
@@ -331,11 +331,11 @@ export default async function PackingServicePage() {
           {/* Left: copy */}
           <div>
             <p className="hero-anim-sub text-sm font-bold uppercase tracking-widest text-brand-red">
-              Professional Packing · London &amp; Nationwide
+              Professional Packing · Nationwide
             </p>
             <p className="hero-anim-sub mt-3 text-lg font-semibold leading-relaxed text-brand-navy">
               Removals Nationwide provides a professional packing service for homes and offices across
-              London. Every booking includes all materials: boxes, bubble wrap, paper and tape,
+              the UK. Every booking includes all materials: boxes, bubble wrap, paper and tape,
               at no extra charge.
             </p>
             <p className="hero-anim-sub mt-4 text-base leading-relaxed text-brand-charcoal/85">
@@ -368,7 +368,7 @@ export default async function PackingServicePage() {
             <div className="relative aspect-[4/3] w-full">
               <Image
                 src="https://images.unsplash.com/photo-1600725935160-f67ee4f6084a?auto=format&fit=crop&w=2400&q=82"
-                alt="packing service London: Removals Nationwide professional packer carefully wrapping belongings in bubble wrap"
+                alt="Removals Nationwide professional packer carefully wrapping belongings in bubble wrap"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"

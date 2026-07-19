@@ -33,16 +33,16 @@ const manAndVanSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}/man-and-van-london#service`,
-  name: "Man and Van London",
+  name: "Nationwide Man and Van",
   serviceType: "Man and Van Moving Service",
   description:
-    "Professional man and van service across London from £55 per hour. 7 days a week, same-day and short-notice slots available. Fully insured, industry-experienced.",
+    "Professional man and van service across the UK from £55 per hour. Seven-day availability, fully insured crews and local or long-distance moves.",
   url: `${SITE_URL}/man-and-van-london`,
-  areaServed: { "@type": "AdministrativeArea", name: "Greater London" },
+  areaServed: { "@type": "Country", name: "United Kingdom" },
   provider: { "@id": `${SITE_URL}/#organization` },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Man and Van Prices London 2026",
+    name: "Nationwide Man and Van Prices",
     itemListElement: [
       {
         "@type": "Offer",
@@ -166,7 +166,7 @@ const processIcons = [IcoPhone, IcoDocument, IcoCheck, IcoWrench, IcoTruck, IcoH
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How Your Man and Van Move in London Works, Step by Step",
+  name: "How Your Nationwide Man and Van Move Works, Step by Step",
   description:
     "The step-by-step process for booking and completing a man and van move with Removals Nationwide in London.",
   step: processSteps.map((s, i) => ({
@@ -259,14 +259,14 @@ const areaGroups = [
 
 const faqs: FaqItem[] = [
   {
-    question: "How much does a man and van cost in London?",
+    question: "How much does a nationwide man and van cost?",
     answer:
-      "A man and van in London starts from £55 per hour (minimum 2 hours) for one mover and a van. Two movers start from £70 per hour and three movers from £90 per hour. Half-day and full-day rates reduce the effective hourly cost. The final price depends on crew size, van size, hours needed, distance and access conditions at both addresses.",
+      "Our man and van service starts from £55 per hour with a minimum two-hour booking. The final price depends on crew size, vehicle size, distance, duration and access at both addresses.",
     answerAfter:
       "Request a free survey or call 020 7205 2525 for a confirmed written quote.",
   },
   {
-    question: "Is there a minimum booking for a man and van in London?",
+    question: "Is there a minimum booking for a man and van?",
     answer:
       "The minimum booking is 2 hours. This covers the journey to you, the loading, the drive and the delivery. For most single-item jobs and short local moves, 2 hours is the right allowance. If you are unsure, describe the job when you request the quote and we will advise the correct time to book.",
   },
@@ -276,7 +276,7 @@ const faqs: FaqItem[] = [
       "The hourly rate includes the driver, the van and standard loading time. Fuel and mileage within Greater London are included in the quoted rate. Congestion zone charges and Dartford crossing tolls apply as they arise on the specific route and are always confirmed in writing before the booking date. There are no hidden fees added on the day.",
   },
   {
-    question: "What is the cheapest day to book a man and van in London?",
+    question: "What is the cheapest day to book a man and van?",
     answer:
       "Tuesday, Wednesday and Thursday are typically the most cost-effective days for a man and van booking. Fridays carry a premium due to high demand, and weekend rates are also higher. End-of-month dates and the summer months from June to August book out early. If your date is flexible, ask when you request a quote and we will advise the best available slot.",
   },
@@ -340,16 +340,39 @@ export default async function ManAndVanPage() {
   // Prose in the step/FAQ copy names the phone number inline. Rewriting it here
   // keeps that text in step with the configured number instead of going stale.
   const steps = processSteps.map((s) => ({ ...s, text: withContacts(s.text, settings) }));
+  // The HowTo/FAQ schemas are built at module scope from the same copy, so they
+  // embed the default number too. Rebuild them from the localized text, keeping
+  // structured data and visible text in agreement.
+  const howToSchemaLive = {
+    ...howToSchema,
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
   const faqItems = faqs.map((q) => ({
     ...q,
     answer: withContacts(q.answer, settings),
     ...(q.answerAfter ? { answerAfter: withContacts(q.answerAfter, settings) } : {}),
   }));
+  const faqPageSchemaLive = {
+    ...faqPageSchema,
+    mainEntity: faqItems.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: [q.answer, q.answerAfter].filter(Boolean).join(" "),
+      },
+    })),
+  };
   return (
     <>
       <JsonLd data={manAndVanSchema} />
-      <JsonLd data={howToSchema} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={howToSchemaLive} />
+      <JsonLd data={faqPageSchemaLive} />
       <JsonLd data={{ ...orgSchema }} />
       <JsonLd data={manVanBreadcrumb} />
 
@@ -374,7 +397,7 @@ export default async function ManAndVanPage() {
             <div>
               {/* hero-anim-sub: fade-slides in once .js is on <html> (see ManAndVanAnimations) */}
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide provides man and van services across London from{" "}
+                Removals Nationwide provides man and van services across the UK from{" "}
                 <strong>£55 per hour</strong>, 7 days a week, with same-day and short-notice slots
                 available. One mover and a van suits a single item or studio flat; two movers handle
                 a 1 to 2-bedroom flat comfortably. Every booking is fully insured and fixed-price

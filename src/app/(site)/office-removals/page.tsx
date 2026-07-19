@@ -32,13 +32,13 @@ const officeRemovalsSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}/office-removals#service`,
-  name: "Office Removals London",
+  name: "Nationwide Office Removals",
   serviceType: "Commercial Relocation",
   description:
-    "Managed office relocation service across London from one desk to 500-plus staff. Fully insured, industry-experienced, out-of-hours and weekend moves available, IT and server handling, furniture dismantling and reassembly, licensed waste carrier.",
+    "Managed office relocation service across the UK from one desk to 500-plus staff. Fully insured, with out-of-hours moves, IT handling and furniture reassembly available.",
   url: `${SITE_URL}/office-removals`,
   areaServed: [
-    { "@type": "AdministrativeArea", name: "Greater London" },
+    { "@type": "Country", name: "United Kingdom" },
     { "@type": "Country", name: "United Kingdom" },
   ],
   provider: { "@id": `${SITE_URL}/#organization` },
@@ -127,9 +127,9 @@ const phases = [
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How Your London Office Move Works, Step by Step",
+  name: "How Your Nationwide Office Move Works, Step by Step",
   description:
-    "The step-by-step process for planning and completing an office relocation with Removals Nationwide in London.",
+    "The step-by-step process for planning and completing a UK office relocation with Removals Nationwide.",
   step: processSteps.map((s, i) => ({
     "@type": "HowToStep",
     position: i + 1,
@@ -253,9 +253,9 @@ const areaGroups = [
 
 const faqs: FaqItem[] = [
   {
-    question: "How much does an office move cost in London?",
+    question: "How much does a nationwide office move cost?",
     answer:
-      "Office moves in London start from around £100 per workstation for a full-scale move with furniture, files and IT. This is a generic guide figure. The total depends on crew size, IT complexity, furniture requirements, building access and any out-of-hours booking. A free on-site survey produces an accurate fixed-price quote with no hidden fees.",
+      "Office moves start from around £100 per workstation as a general guide. The total depends on distance, crew size, IT complexity, furniture, building access and out-of-hours requirements. A free survey produces an accurate fixed-price quote.",
   },
   {
     question: "Can you move at the weekend or out of hours?",
@@ -341,16 +341,39 @@ export default async function OfficeRemovalsPage() {
   // Prose in the step/FAQ copy names the phone number inline. Rewriting it here
   // keeps that text in step with the configured number instead of going stale.
   const steps = processSteps.map((s) => ({ ...s, text: withContacts(s.text, settings) }));
+  // The HowTo/FAQ schemas are built at module scope from the same copy, so they
+  // embed the default number too. Rebuild them from the localized text, keeping
+  // structured data and visible text in agreement.
+  const howToSchemaLive = {
+    ...howToSchema,
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
   const faqItems = faqs.map((q) => ({
     ...q,
     answer: withContacts(q.answer, settings),
     ...(q.answerAfter ? { answerAfter: withContacts(q.answerAfter, settings) } : {}),
   }));
+  const faqPageSchemaLive = {
+    ...faqPageSchema,
+    mainEntity: faqItems.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: [q.answer, q.answerAfter].filter(Boolean).join(" "),
+      },
+    })),
+  };
   return (
     <>
       <JsonLd data={officeRemovalsSchema} />
-      <JsonLd data={howToSchema} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={howToSchemaLive} />
+      <JsonLd data={faqPageSchemaLive} />
       <JsonLd data={{ ...orgSchema }} />
       <JsonLd data={officeBreadcrumb} />
 
@@ -374,7 +397,7 @@ export default async function OfficeRemovalsPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Removals Nationwide manages London office relocations from <strong>one desk to
+                Removals Nationwide manages nationwide office relocations from <strong>one desk to
                 500-plus staff</strong>, with minimal business downtime. Evening and weekend
                 moves, IT and server handling, furniture dismantling and WEEE-licensed recycling
                 are all part of the same managed service, fully insured and industry experienced.

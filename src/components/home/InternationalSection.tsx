@@ -32,7 +32,7 @@ export default function InternationalSection() {
             {/* Route signature — surfaces the confirmed weekly Scandinavia run */}
             <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm font-semibold text-white">
               <span className="h-2 w-2 rounded-full bg-brand-red" aria-hidden="true" />
-              London to Oslo &nbsp;&mdash;&nbsp; regular road freight, weekly
+              UK to Oslo &nbsp;&mdash;&nbsp; regular road freight, weekly
             </div>
 
             <div className="mt-6 space-y-5 text-base leading-relaxed text-white/80">

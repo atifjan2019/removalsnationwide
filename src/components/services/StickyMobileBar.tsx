@@ -2,11 +2,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PhoneIcon } from "@/components/ui/icons";
-import { DEFAULT_RESOLVED, type Phone } from "@/lib/settings-shared";
+import { useSettings } from "@/components/providers/SettingsProvider";
 
 interface Props {
-  /** Configurable phone; defaults keep existing call sites working. */
-  phone?: Phone;
   /** ID of the element to observe. Bar slides up when this element leaves the viewport.
    *  When omitted the bar is always visible. */
   sentinelId?: string;
@@ -18,7 +16,10 @@ interface Props {
  * When sentinelId is omitted the bar is always visible.
  * Respects prefers-reduced-motion.
  */
-export default function StickyMobileBar({ sentinelId, phone = DEFAULT_RESOLVED.phones.london }: Props) {
+export default function StickyMobileBar({ sentinelId }: Props) {
+  // From context rather than a prop: this renders on ~29 pages and a missed
+  // prop would silently show the old hardcoded number.
+  const phone = useSettings().phones.london;
   const [visible, setVisible] = useState(!sentinelId);
 
   useEffect(() => {
