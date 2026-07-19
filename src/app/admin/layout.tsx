@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Admin Dashboard | Removals Nationwide",
@@ -14,15 +15,32 @@ const nav = [
   { label: "Settings", href: "/admin/settings" },
 ];
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  // Shows the uploaded logo once one is set, falling back to the wordmark so a
+  // fresh install still has a branded sidebar.
+  const { logoUrl } = await getSettings();
+
   return (
     <div className="flex min-h-screen bg-brand-grey">
       <aside className="flex w-60 shrink-0 flex-col bg-brand-navy text-white">
         <div className="border-b border-white/10 px-6 py-5">
-          <Link href="/admin" className="text-lg font-bold">
-            Removals <span className="text-brand-red">Nationwide</span>
+          <Link href="/admin" className="block">
+            {logoUrl ? (
+              // White plate behind it: uploaded logos are usually dark-on-white
+              // and would disappear against the navy sidebar.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={logoUrl}
+                alt="Removals Nationwide"
+                className="h-11 w-auto max-w-full rounded-md bg-white object-contain p-1.5"
+              />
+            ) : (
+              <span className="text-lg font-bold">
+                Removals <span className="text-brand-red">Nationwide</span>
+              </span>
+            )}
           </Link>
-          <p className="mt-0.5 text-xs uppercase tracking-wide text-white/50">Admin</p>
+          <p className="mt-1.5 text-xs uppercase tracking-wide text-white/50">Admin</p>
         </div>
         <nav className="flex-1 p-3">
           <ul className="space-y-1">
