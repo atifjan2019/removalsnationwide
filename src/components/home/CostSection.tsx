@@ -62,7 +62,7 @@ export default function CostSection() {
 
         {/* Snippet-friendly direct answer */}
         <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-          A London house move with Top Removals starts from{" "}
+          A London house move with Removals Nationwide starts from{" "}
           <strong className="text-brand-navy">£390 for a 1-bedroom</strong> and from{" "}
           <strong className="text-brand-navy">£756 for a 3-bedroom</strong>, all prices
           excluding VAT. The final price is set by distance, access, packing and volume, and
@@ -129,7 +129,7 @@ export default function CostSection() {
         >
           <p className="text-sm leading-relaxed text-brand-charcoal/85">
             <strong>A note on cheap quotes:</strong> Uninsured or unlicensed operators leave you
-            with no financial remedy if items are damaged. Top Removals fixed-price quotes include
+            with no financial remedy if items are damaged. Removals Nationwide fixed-price quotes include
             full public liability and goods-in-transit insurance. BAR{" "}
             <Link href="/certificates" className="text-brand-orange underline underline-offset-2">
               accreditation

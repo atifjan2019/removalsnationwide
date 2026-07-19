@@ -67,7 +67,7 @@ const pricesSchema = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
   "@id": `${SITE_URL}/prices#pricelist`,
-  name: "Top Removals price list",
+  name: "Removals Nationwide price list",
   provider: { "@id": `${SITE_URL}/#organization` },
   itemListElement: [
     {

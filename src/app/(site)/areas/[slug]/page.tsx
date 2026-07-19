@@ -40,10 +40,10 @@ export async function generateMetadata({
   }
 
   const area = await getAreaBySlug(slug);
-  if (!area) return { title: "Area Not Found | Top Removals" };
+  if (!area) return { title: "Area Not Found | Removals Nationwide" };
   return {
-    title: `Removals in ${area.name} | Top Removals`,
-    description: area.intro || `Top Removals services in ${area.name}.`,
+    title: `Removals in ${area.name} | Removals Nationwide`,
+    description: area.intro || `Removals Nationwide services in ${area.name}.`,
     alternates: { canonical: withTrailingSlash(`/areas/${slug}`) },
   };
 }

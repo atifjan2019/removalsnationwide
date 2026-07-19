@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "removals-nationwide",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-09-23",
+  // nodejs_compat is required by the OpenNext adapter; global_fetch_strictly_public
+  // makes fetches to our own domain go out to the internet rather than looping
+  // back into the Worker, which is what next/image and RSC fetches expect.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  "observability": {
+    "enabled": true
+  },
+
+  // CMS content. Region WEUR — the audience is UK, so keep the primary near them.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "removals-nationwide",
+      "database_id": "3b69f53f-2e42-417f-a3fa-03d9d9ddab13"
+    }
+  ],
+
+  // Media (images). MEDIA is the app's own bucket; NEXT_INC_CACHE_R2_BUCKET is
+  // the incremental-cache bucket OpenNext uses for ISR/revalidation.
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "removals-nationwide-media"
+    },
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "removals-nationwide-cache"
+    }
+  ]
+}

@@ -5,15 +5,15 @@ import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
 
 type Slide = { src: string; alt: string };
 
-// Real Top Removals photos. Replace the CONFIRM slot once a crew/van action shot is available.
+// Real Removals Nationwide photos. Replace the CONFIRM slot once a crew/van action shot is available.
 const SLIDES: Slide[] = [
   {
     src: "/about/package.webp",
-    alt: "Top Removals staff with their removal vehicle",
+    alt: "Removals Nationwide staff with their removal vehicle",
   },
   {
     src: "/about/Top-Removals-Team.webp",
-    alt: "The Top Removals team at their London office",
+    alt: "The Removals Nationwide team at their London office",
   },
   /* CONFIRM: add real hero photo — crew loading a branded Luton van for a London house move */
 ];

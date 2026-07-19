@@ -59,7 +59,7 @@ const fleet: Vehicle[] = [
 const fleetSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Top Removals vehicle fleet",
+  name: "Removals Nationwide vehicle fleet",
   itemListElement: fleet.map((v, i) => ({
     "@type": "ListItem",
     position: i + 1,
@@ -95,7 +95,7 @@ export default function OurFleetPage() {
               An essential part of the moving services is the vehicles, each year we change or add a
               couple. This makes it possible to renew our fleet entirely within 3 years. Which means
               we always run new, modern, environmentally friendly and advanced vehicles. In addition,
-              Top Removals has a contract with a couple of rental companies and scales the fleet up
+              Removals Nationwide has a contract with a couple of rental companies and scales the fleet up
               in times of need, usually during the summer.
             </p>
             <p>Our fleet consists of the following types of vehicles:</p>

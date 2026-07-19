@@ -5,7 +5,7 @@ import QuillEditor from "@/components/admin/QuillEditor";
 import { savePost, type PostInput } from "@/app/admin/actions";
 
 const DEFAULT_BIO =
-  "Stephanie is a content marketing specialist for Top Removals for the past several years. She has extensive experience working with moving companies and knows her audience. Stephanie creates engaging and useful content helping the customers of Top Removals with their struggles and providing them with the most accurate insight.";
+  "Stephanie is a content marketing specialist for Removals Nationwide for the past several years. She has extensive experience working with moving companies and knows her audience. Stephanie creates engaging and useful content helping the customers of Removals Nationwide with their struggles and providing them with the most accurate insight.";
 
 const input =
   "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-2.5 text-base shadow-sm focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange/30";

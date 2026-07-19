@@ -1,12 +1,20 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
+import newsData from "@/generated/news.json";
 
-const NEWS_DIR = path.join(process.cwd(), "content", "news");
+/**
+ * File-based Moving News articles.
+ *
+ * The markdown in content/news/ is precompiled to src/generated/news.json by
+ * scripts/build-news.mjs (see the `prebuild` script). Reading it as a bundled
+ * JSON module rather than with fs is what lets /news and the sitemap render on
+ * Cloudflare Workers, which has no filesystem at request time.
+ *
+ * To add or edit an article, change the markdown — the JSON regenerates on the
+ * next build. Do not edit src/generated/news.json by hand.
+ */
 
 /** Shared author bio used on every article (identical across posts). */
 export const AUTHOR_BIO =
-  "Stephanie is a content marketing specialist for Top Removals for the past several years. She has extensive experience working with moving companies and knows her audience. Stephanie creates engaging and useful content helping the customers of Top Removals with their struggles and providing them with the most accurate insight.";
+  "Stephanie is a content marketing specialist for Removals Nationwide for the past several years. She has extensive experience working with moving companies and knows her audience. Stephanie creates engaging and useful content helping the customers of Removals Nationwide with their struggles and providing them with the most accurate insight.";
 
 /** Posts shown per page on the /news listing. */
 export const POSTS_PER_PAGE = 9;
@@ -22,45 +30,18 @@ export type NewsPost = {
   body: string;
 };
 
-/** DD/MM/YYYY -> sortable timestamp. */
-function parseDate(d: string): number {
-  const [day, month, year] = d.split("/").map(Number);
-  return new Date(year, (month ?? 1) - 1, day ?? 1).getTime();
-}
-
-function readPost(slug: string): NewsPost {
-  const raw = fs.readFileSync(path.join(NEWS_DIR, `${slug}.md`), "utf8");
-  const { data, content } = matter(raw);
-  return {
-    slug: data.slug ?? slug,
-    title: data.title ?? "",
-    date: data.date ?? "",
-    excerpt: data.excerpt ?? "",
-    author: data.author ?? "Stephanie Cooper",
-    authorBio: data.authorBio ?? AUTHOR_BIO,
-    coverImage: data.coverImage ?? `/news/${slug}.jpg`,
-    body: content.trim(),
-  };
-}
+/** Already sorted newest-first by the generator. */
+const posts = newsData as NewsPost[];
 
 export function getPostSlugs(): string[] {
-  return fs
-    .readdirSync(NEWS_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => f.replace(/\.md$/, ""));
+  return posts.map((p) => p.slug);
 }
 
 /** All posts, newest first. */
 export function getAllPosts(): NewsPost[] {
-  return getPostSlugs()
-    .map(readPost)
-    .sort((a, b) => parseDate(b.date) - parseDate(a.date));
+  return posts;
 }
 
 export function getPostBySlug(slug: string): NewsPost | null {
-  try {
-    return readPost(slug);
-  } catch {
-    return null;
-  }
+  return posts.find((p) => p.slug === slug) ?? null;
 }

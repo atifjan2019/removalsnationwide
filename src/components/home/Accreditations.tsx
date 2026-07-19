@@ -25,7 +25,7 @@ export default function Accreditations() {
           </div>
           <p className="text-xl font-bold text-brand-navy">Excellent</p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-semibold text-brand-orange underline underline-offset-2 transition hover:text-brand-navy"

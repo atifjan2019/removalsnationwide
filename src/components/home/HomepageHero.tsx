@@ -9,15 +9,15 @@ type Slide = { src: string; alt: string };
 const SLIDES: Slide[] = [
   {
     src: "/about/package.webp",
-    alt: "Top Removals removal van loaded and ready for a London house move",
+    alt: "Removals Nationwide removal van loaded and ready for a London house move",
   },
   {
     src: "/about/Top-Removals-Team.webp",
-    alt: "Top Removals team, fully insured, BAR-accredited removal company London",
+    alt: "Removals Nationwide team, fully insured, BAR-accredited removal company London",
   },
   {
     src: "https://www.top-removals.co.uk/wp-content/uploads/2023/03/moving-company.jpg",
-    alt: "Two Top Removals professionals carrying boxes to a removal van in London",
+    alt: "Two Removals Nationwide professionals carrying boxes to a removal van in London",
   },
 ];
 
@@ -120,7 +120,7 @@ export default function HomepageHero() {
             House Removals, Man and Van, Office Moves, Packing and Storage Across London
           </p>
           <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
-            Top Removals provides house removals, man and van services, office moves, professional
+            Removals Nationwide provides house removals, man and van services, office moves, professional
             packing and secure storage across all 32 London boroughs, Greater London, Surrey and
             nationwide. Our fully insured crews handle local, national and international
             relocations. Book a free on-site or video survey for an exact fixed quote, or use the

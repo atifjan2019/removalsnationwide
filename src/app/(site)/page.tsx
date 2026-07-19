@@ -75,7 +75,7 @@ export default function HomePage() {
       {/* 14. London Areas We Cover — silo hub */}
       <AreasSiloSection />
 
-      {/* 15. Why Choose Top Removals — E-E-A-T */}
+      {/* 15. Why Choose Removals Nationwide — E-E-A-T */}
       <WhyChooseSection />
 
       {/* Stats — social proof */}

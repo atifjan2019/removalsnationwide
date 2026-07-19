@@ -1,4 +1,10 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+
+// Makes the Cloudflare bindings (D1 `DB`, R2 `MEDIA`) available under `next dev`
+// via the wrangler platform proxy, so local dev hits the same code path as the
+// deployed Worker instead of silently falling back to "no database".
+initOpenNextCloudflareForDev();
 
 /** 301 redirects from our earlier route names to the live-matching slugs. */
 const redirectPairs: [string, string][] = [
@@ -47,11 +53,38 @@ const nextConfig: NextConfig = {
     }));
   },
   images: {
+    // Cloudflare Workers has no Vercel image optimizer, and Cloudflare's own
+    // Image Resizing is a paid zone feature. Serving images as-is is the option
+    // that works on the current plan. The source assets are already sized and
+    // in modern formats, so the practical cost is low. If Image Resizing is
+    // enabled on the zone later, drop this and add a custom loader pointing at
+    // /cdn-cgi/image/ to get resizing and AVIF/WebP negotiation back.
+    unoptimized: true,
     remotePatterns: [
+      // The legacy WordPress host still serves several hero/section images that
+      // have not been migrated yet. Keep it allow-listed until those assets move
+      // to R2, otherwise next/image rejects them and the pages render blank.
       {
         protocol: "https",
         hostname: "www.top-removals.co.uk",
         pathname: "/wp-content/uploads/**",
+      },
+      // R2 media bucket, served over its bound custom domain. Preferred over the
+      // pub-*.r2.dev URL, which is rate-limited and not intended for production.
+      {
+        protocol: "https",
+        hostname: "media.removalsnationwide.uk",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "removalsnationwide.uk",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.removalsnationwide.uk",
+        pathname: "/**",
       },
     ],
   },

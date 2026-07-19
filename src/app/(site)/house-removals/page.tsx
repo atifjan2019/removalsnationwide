@@ -60,7 +60,7 @@ const standardIncludes: CheckItem[] = [
   },
   {
     lead: "Licensed waste disposal",
-    text: "Top Removals is a licensed waste carrier. Items you no longer need can be cleared before or after the move.",
+    text: "Removals Nationwide is a licensed waste carrier. Items you no longer need can be cleared before or after the move.",
   },
 ];
 
@@ -107,7 +107,7 @@ const howToSchema = {
   "@type": "HowTo",
   name: "How Your London House Move Works, Step by Step",
   description:
-    "The step-by-step process for booking and completing a house removal with Top Removals in London.",
+    "The step-by-step process for booking and completing a house removal with Removals Nationwide in London.",
   step: processSteps.map((s, i) => ({
     "@type": "HowToStep",
     position: i + 1,
@@ -152,7 +152,7 @@ const addOnCards = [
   },
   {
     title: "Licensed waste disposal",
-    body: "Top Removals holds waste carrier licence CBDL25630. Pre-move decluttering, single-item disposal or end-of-tenancy clearances arranged as part of the removal or separately.",
+    body: "Removals Nationwide holds waste carrier licence CBDL25630. Pre-move decluttering, single-item disposal or end-of-tenancy clearances arranged as part of the removal or separately.",
   },
 ];
 
@@ -377,7 +377,7 @@ export default function HouseRemovalsPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals moves homes across London with a{" "}
+                Removals Nationwide moves homes across London with a{" "}
                 <strong>fully insured, BAR-accredited team</strong> operating seven days a week.
                 Whether you are moving a studio flat or a five-bedroom house, every job comes with a
                 free pre-move survey, a written fixed-price quote and end-to-end management:
@@ -437,7 +437,7 @@ export default function HouseRemovalsPage() {
               <div className="relative aspect-[16/9] w-full">
                 <Image
                   src="https://www.top-removals.co.uk/wp-content/uploads/2024/12/home-move-in-London.jpg"
-                  alt="house move in London, Top Removals fully insured house removal crew"
+                  alt="house move in London, Removals Nationwide fully insured house removal crew"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -458,7 +458,7 @@ export default function HouseRemovalsPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -543,7 +543,7 @@ export default function HouseRemovalsPage() {
             title="What a House Removal Service in London Includes"
           />
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
-            A house removal with Top Removals covers the full move end to end. The services below
+            A house removal with Removals Nationwide covers the full move end to end. The services below
             are split into what is standard on every job and what can be added as an optional
             extra.
           </p>
@@ -1004,7 +1004,7 @@ export default function HouseRemovalsPage() {
           <SectionHeading
             tone="light"
             eyebrow="Verified, insured, accredited"
-            title="Why London Trusts Top Removals"
+            title="Why London Trusts Removals Nationwide"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a removal company means trusting someone with everything you own. The
@@ -1052,7 +1052,7 @@ export default function HouseRemovalsPage() {
               View Certificates
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
-              About Top Removals
+              About Removals Nationwide
             </Button>
           </div>
         </div>
@@ -1138,9 +1138,9 @@ export default function HouseRemovalsPage() {
             title="What London Customers Say"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
-            Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
+            Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-orange underline underline-offset-2"
@@ -1158,7 +1158,7 @@ export default function HouseRemovalsPage() {
               Reviews powered by Trustpilot
             </p>
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { getDbPosts, getAreas } from "@/lib/cms";
-import { getServiceClient } from "@/lib/supabase";
+import { getDb } from "@/lib/d1";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
-  const configured = getServiceClient() !== null;
+  const configured = (await getDb()) !== null;
   const [posts, areas] = await Promise.all([getDbPosts(true), getAreas(true)]);
 
   return (
@@ -17,10 +17,11 @@ export default async function AdminDashboard() {
 
       {!configured && (
         <div className="mt-6 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-800">
-          Supabase is not configured in this environment. Set{" "}
-          <code className="font-mono">NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
-          <code className="font-mono">SUPABASE_SERVICE_ROLE_KEY</code>, and run{" "}
-          <code className="font-mono">supabase/schema.sql</code> in your Supabase project.
+          The D1 database is not available in this environment. Check the{" "}
+          <code className="font-mono">DB</code> binding in{" "}
+          <code className="font-mono">wrangler.jsonc</code>, and apply{" "}
+          <code className="font-mono">d1/schema.sql</code> with{" "}
+          <code className="font-mono">wrangler d1 execute</code>.
         </div>
       )}
 

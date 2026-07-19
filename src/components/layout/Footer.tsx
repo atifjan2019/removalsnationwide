@@ -54,9 +54,9 @@ const accreditations = [
 ];
 
 const socials = [
-  { name: "Facebook", href: "https://www.facebook.com/topremovalsltd", Icon: FacebookIcon },
-  { name: "Twitter / X", href: "https://x.com/topremovalsltd", Icon: XIcon },
-  { name: "LinkedIn", href: "https://www.linkedin.com/company/top-removals", Icon: LinkedInIcon },
+  { name: "Facebook", href: "https://www.facebook.com/removalsnationwide", Icon: FacebookIcon },
+  { name: "Twitter / X", href: "https://x.com/removalsnationwide", Icon: XIcon },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/removals-nationwide", Icon: LinkedInIcon },
 ];
 
 /* ── Sub-components ───────────────────────────────── */
@@ -100,7 +100,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
               <Image
                 src="/logo.png"
-                alt="Top Removals"
+                alt="Removals Nationwide"
                 width={142}
                 height={113}
                 className="h-14 w-auto"
@@ -170,7 +170,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Top Removals on ${name}`}
+                  aria-label={`Removals Nationwide on ${name}`}
                   className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white/70 transition hover:bg-brand-orange hover:text-white"
                 >
                   <Icon className="h-5 w-5" />

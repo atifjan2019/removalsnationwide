@@ -68,7 +68,7 @@ const crates = [
     badgeClass: "bg-brand-orange",
     use: "Files, documents, folders, books, reports and CDs. The standard choice for office moves and document-heavy relocations. Integral lid, waterproof, sealable with security locks.",
     img: "/gallery/move-11.jpg",
-    imgAlt: "LC3 lidded plastic crate for office and home moving, supplied by Top Removals",
+    imgAlt: "LC3 lidded plastic crate for office and home moving, supplied by Removals Nationwide",
   },
   {
     name: "IT Computer Crate",
@@ -80,7 +80,7 @@ const crates = [
     badgeClass: "bg-brand-navy",
     use: "Desktop PCs, laptops, monitors, servers, keyboards, mice and headsets. Tough polypropylene construction provides extra protection in transit and during storage.",
     img: "/gallery/move-12.jpg",
-    imgAlt: "IT plastic crate for moving computer equipment and tech, supplied by Top Removals",
+    imgAlt: "IT plastic crate for moving computer equipment and tech, supplied by Removals Nationwide",
   },
 ];
 
@@ -209,7 +209,7 @@ const crateProductSchema = {
       name: "LC3 Plastic Lidded Crate Hire (80 litre)",
       description:
         "Reusable 80-litre lidded plastic LC3 crate for hire in London. Holds up to ten lever arch files. Waterproof, sealable with security locks. Disinfected after every use.",
-      brand: { "@type": "Brand", name: "Top Removals" },
+      brand: { "@type": "Brand", name: "Removals Nationwide" },
       offers: {
         "@type": "Offer",
         priceCurrency: "GBP",
@@ -230,7 +230,7 @@ const crateProductSchema = {
       name: "IT Computer Crate Hire (165 litre)",
       description:
         "Reusable 165-litre IT plastic crate for hire in London. Holds up to a 21-inch monitor plus PC and peripherals. Tough polypropylene, lidded and sealable.",
-      brand: { "@type": "Brand", name: "Top Removals" },
+      brand: { "@type": "Brand", name: "Removals Nationwide" },
       offers: {
         "@type": "Offer",
         priceCurrency: "GBP",
@@ -288,7 +288,7 @@ export default function CrateHirePage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals hires reusable plastic LC3 and IT crates across London, delivered to
+                Removals Nationwide hires reusable plastic LC3 and IT crates across London, delivered to
                 your door and collected when you are done. In 2026, more London movers choose
                 crates over cardboard for local moves: faster to pack, lidded, sealable and
                 collected at no extra fuss.
@@ -357,7 +357,7 @@ export default function CrateHirePage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-09.jpg"
-                  alt="Plastic lidded LC3 and IT moving crates for hire from Top Removals in London"
+                  alt="Plastic lidded LC3 and IT moving crates for hire from Removals Nationwide in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -378,7 +378,7 @@ export default function CrateHirePage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -449,7 +449,7 @@ export default function CrateHirePage() {
                 the destination.
               </p>
               <p>
-                Top Removals hires LC3 and IT crates for London home and office moves,
+                Removals Nationwide hires LC3 and IT crates for London home and office moves,
                 delivered to your address before the move and collected from the new address
                 when you are ready. The service is available as a standalone hire or combined
                 with any of our removal services.
@@ -470,7 +470,7 @@ export default function CrateHirePage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/gallery/move-10.jpg"
-                alt="Top Removals team preparing crates for a London office move"
+                alt="Removals Nationwide team preparing crates for a London office move"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -834,7 +834,7 @@ export default function CrateHirePage() {
             Combine Crate Hire With Your Move
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80">
-            Crate hire is combinable with every Top Removals service. One coordinator manages
+            Crate hire is combinable with every Removals Nationwide service. One coordinator manages
             the full job: crates delivered before, the move handled on the day, crates collected
             after. No separate phone calls, no separate logistics.
           </p>
@@ -877,11 +877,11 @@ export default function CrateHirePage() {
           </div>
           <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-brand-charcoal/70">
-            Read genuine reviews from customers who have used Top Removals for crate hire and
+            Read genuine reviews from customers who have used Removals Nationwide for crate hire and
             removal services across London.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

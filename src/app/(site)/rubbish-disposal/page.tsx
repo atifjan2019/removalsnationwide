@@ -39,7 +39,7 @@ const rubbishAccreditations = [
 const whyTiles = [
   {
     title: "Licensed Waste Carrier",
-    body: "Top Removals is a licensed waste carrier. Every job includes a waste transfer note and disposal only at registered recycling centres. All government licensing fees are included in the price.",
+    body: "Removals Nationwide is a licensed waste carrier. Every job includes a waste transfer note and disposal only at registered recycling centres. All government licensing fees are included in the price.",
   },
   {
     title: "CRB-Checked, Uniformed Teams",
@@ -62,25 +62,25 @@ const servicesCleared = [
     title: "General Household Refuse",
     body: "Black sack collections, general household waste and unwanted items. Sized from a single item up to a full vehicle load. The team does all the loading from inside the property.",
     img: "/gallery/move-15.jpg",
-    imgAlt: "Top Removals team collecting household rubbish in London",
+    imgAlt: "Removals Nationwide team collecting household rubbish in London",
   },
   {
     title: "House and Loft Clearances",
-    body: "Top Removals handles full property and loft clear-outs: probate clearances, pre-sale clear-outs, end-of-tenancy emptying, and whole-property or single-room jobs. Everything is loaded by the team from inside the property, from attic boxes to basement furniture, with a waste transfer note for the whole job. The strongest single-intent term on this page and the natural future standalone route.",
+    body: "Removals Nationwide handles full property and loft clear-outs: probate clearances, pre-sale clear-outs, end-of-tenancy emptying, and whole-property or single-room jobs. Everything is loaded by the team from inside the property, from attic boxes to basement furniture, with a waste transfer note for the whole job. The strongest single-intent term on this page and the natural future standalone route.",
     img: "/gallery/move-16.jpg",
-    imgAlt: "House and loft clearance by Top Removals in London",
+    imgAlt: "House and loft clearance by Removals Nationwide in London",
   },
   {
     title: "Office Clearances",
     body: "Office furniture, filing cabinets, equipment and general office waste. Combinable with an office removal booking so clearance and relocation happen in one managed visit.",
     img: "/gallery/move-17.jpg",
-    imgAlt: "Office clearance service by Top Removals London",
+    imgAlt: "Office clearance service by Removals Nationwide",
   },
   {
     title: "Furniture and Appliance Removal",
     body: "Sofas, wardrobes, white goods, TVs and fridges. Appliances disposed of under WEEE rules, with small handling fees for TVs and fridges as listed in the add-ons table.",
     img: "/gallery/move-18.jpg",
-    imgAlt: "Furniture and appliance clearance by Top Removals London",
+    imgAlt: "Furniture and appliance clearance by Removals Nationwide",
   },
 ];
 
@@ -189,7 +189,7 @@ const faqs: FaqItem[] = [
   {
     question: "Is the waste disposed of legally?",
     answer:
-      "Yes. Top Removals is a licensed waste carrier. All collected materials are taken to registered recycling centres and recycled where possible. A waste transfer note is provided for every job, protecting you from fly-tipping liability. All government licensing fees are included in the quoted price.",
+      "Yes. Removals Nationwide is a licensed waste carrier. All collected materials are taken to registered recycling centres and recycled where possible. A waste transfer note is provided for every job, protecting you from fly-tipping liability. All government licensing fees are included in the quoted price.",
   },
   {
     question: "What is the cheapest way to get rid of rubbish?",
@@ -257,7 +257,7 @@ export default function RubbishDisposalPage() {
 
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals runs a licensed rubbish removal and clearance service across London,
+                Removals Nationwide runs a licensed rubbish removal and clearance service across London,
                 7 days a week. In 2026, the company publishes its full load-based price ladder
                 openly: five tiers from £50 for a small collection to £250 for a full vehicle
                 load, with every add-on charge listed alongside.
@@ -301,7 +301,7 @@ export default function RubbishDisposalPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-13.jpg"
-                  alt="Top Removals licensed rubbish removal and clearance team in London"
+                  alt="Removals Nationwide licensed rubbish removal and clearance team in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -322,7 +322,7 @@ export default function RubbishDisposalPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -383,7 +383,7 @@ export default function RubbishDisposalPage() {
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Top Removals is a licensed waste carrier registered with the Environment Agency.
+                Removals Nationwide is a licensed waste carrier registered with the Environment Agency.
                 Every clearance job is carried out by a CRB-checked two-man team with the right
                 equipment for the property type. From a single-item collection to a full vehicle
                 load, the team does all the loading from inside the property.
@@ -405,7 +405,7 @@ export default function RubbishDisposalPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/gallery/move-14.jpg"
-                alt="Top Removals clearance team at work in London"
+                alt="Removals Nationwide clearance team at work in London"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -742,7 +742,7 @@ export default function RubbishDisposalPage() {
               />
               <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
                 <p>
-                  Rubbish disposal is combinable with any Top Removals removal service. On move day
+                  Rubbish disposal is combinable with any Removals Nationwide removal service. On move day
                   the clearance team collects the items for disposal and the removal crew loads the
                   furniture and boxes. One company, one coordinator, one managed day.
                 </p>
@@ -868,11 +868,11 @@ export default function RubbishDisposalPage() {
           </div>
           <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-brand-charcoal/70">
-            Read genuine reviews from customers who have used Top Removals for rubbish removal,
+            Read genuine reviews from customers who have used Removals Nationwide for rubbish removal,
             house clearances and removal services across London.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

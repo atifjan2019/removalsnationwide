@@ -30,7 +30,7 @@ const faqs: FaqItem[] = [
   {
     question: "4. Is insurance included?",
     answer:
-      "Top Removals adds in its prices a standard limited liability cover. This means our customers don't have to pay for additional insurance if they don't want to. If there are proven damages, the compensation offered is £40 per item. Top Removals also offers tailor-made plans for the customers that wish to have extra protection. If you are preparing an international removal, we strongly suggest you add open cover insurance to your policy. This way your claims will go directly to the insurance company. It is especially useful if you wish to move valuables, antiques, expensive pieces of art, etc.",
+      "Removals Nationwide adds in its prices a standard limited liability cover. This means our customers don't have to pay for additional insurance if they don't want to. If there are proven damages, the compensation offered is £40 per item. Removals Nationwide also offers tailor-made plans for the customers that wish to have extra protection. If you are preparing an international removal, we strongly suggest you add open cover insurance to your policy. This way your claims will go directly to the insurance company. It is especially useful if you wish to move valuables, antiques, expensive pieces of art, etc.",
   },
   {
     question: "5. Will you place our furniture at our new home?",
@@ -40,7 +40,7 @@ const faqs: FaqItem[] = [
   {
     question: "6. Upon moving in, can you plug in all my appliances?",
     answer:
-      "We can connect and disconnect any appliances for you except gas ones. We do not drill walls though and cannot hook your paintings unless this is pre-arranged with us. In such cases, we will arrange a handyman to do this professionally. Top Removals can also assist with arranging a gas safe engineer to connect your gas appliances.",
+      "We can connect and disconnect any appliances for you except gas ones. We do not drill walls though and cannot hook your paintings unless this is pre-arranged with us. In such cases, we will arrange a handyman to do this professionally. Removals Nationwide can also assist with arranging a gas safe engineer to connect your gas appliances.",
   },
   {
     question: "7. What access is required for your removal lorry?",

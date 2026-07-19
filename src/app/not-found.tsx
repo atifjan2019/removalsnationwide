@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Page Not Found | Top Removals",
+  title: "Page Not Found | Removals Nationwide",
   robots: { index: false, follow: true },
 };
 
@@ -20,7 +20,7 @@ export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-brand-navy px-4 py-16 text-center text-white">
       <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
-        <Image src="/logo.png" alt="Top Removals" width={142} height={113} className="h-12 w-auto" priority />
+        <Image src="/logo.png" alt="Removals Nationwide" width={142} height={113} className="h-12 w-auto" priority />
       </Link>
 
       <p className="mt-10 text-sm font-bold uppercase tracking-widest text-brand-orange">Error 404</p>

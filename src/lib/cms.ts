@@ -1,5 +1,5 @@
 import "server-only";
-import { getServiceClient } from "@/lib/supabase";
+import { getDb, requireDb, toBool } from "@/lib/d1";
 
 export type DbPost = {
   id: string;
@@ -26,64 +26,101 @@ export type Area = {
   created_at: string;
 };
 
+/**
+ * D1 hands `published` back as INTEGER 0/1. Normalise it at the boundary so no
+ * caller ever has to know the storage representation.
+ */
+function mapRow<T extends { published: boolean }>(row: Record<string, unknown>): T {
+  return { ...row, published: toBool(row.published) } as T;
+}
+
 /* ---------------- Posts ---------------- */
 
 export async function getDbPosts(includeUnpublished = false): Promise<DbPost[]> {
-  const db = getServiceClient();
+  const db = await getDb();
   if (!db) return [];
-  let query = db.from("posts").select("*").order("created_at", { ascending: false });
-  if (!includeUnpublished) query = query.eq("published", true);
-  const { data, error } = await query;
-  if (error) return [];
-  return (data ?? []) as DbPost[];
+  try {
+    const sql = includeUnpublished
+      ? "select * from posts order by created_at desc"
+      : "select * from posts where published = 1 order by created_at desc";
+    const { results } = await db.prepare(sql).all<Record<string, unknown>>();
+    return (results ?? []).map((r) => mapRow<DbPost>(r));
+  } catch {
+    return [];
+  }
 }
 
 export async function getDbPostBySlug(slug: string): Promise<DbPost | null> {
-  const db = getServiceClient();
+  const db = await getDb();
   if (!db) return null;
-  const { data } = await db.from("posts").select("*").eq("slug", slug).maybeSingle();
-  return (data as DbPost) ?? null;
+  try {
+    const row = await db
+      .prepare("select * from posts where slug = ? limit 1")
+      .bind(slug)
+      .first();
+    return row ? mapRow<DbPost>(row as Record<string, unknown>) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function getDbPostById(id: string): Promise<DbPost | null> {
-  const db = getServiceClient();
+  const db = await getDb();
   if (!db) return null;
-  const { data } = await db.from("posts").select("*").eq("id", id).maybeSingle();
-  return (data as DbPost) ?? null;
+  try {
+    const row = await db
+      .prepare("select * from posts where id = ? limit 1")
+      .bind(id)
+      .first();
+    return row ? mapRow<DbPost>(row as Record<string, unknown>) : null;
+  } catch {
+    return null;
+  }
 }
 
 /* ---------------- Areas ---------------- */
 
 export async function getAreas(includeUnpublished = false): Promise<Area[]> {
-  const db = getServiceClient();
+  const db = await getDb();
   if (!db) return [];
-  let query = db.from("areas").select("*").order("name", { ascending: true });
-  if (!includeUnpublished) query = query.eq("published", true);
-  const { data, error } = await query;
-  if (error) return [];
-  return (data ?? []) as Area[];
+  try {
+    const sql = includeUnpublished
+      ? "select * from areas order by name asc"
+      : "select * from areas where published = 1 order by name asc";
+    const { results } = await db.prepare(sql).all<Record<string, unknown>>();
+    return (results ?? []).map((r) => mapRow<Area>(r));
+  } catch {
+    return [];
+  }
 }
 
 export async function getAreaBySlug(slug: string): Promise<Area | null> {
-  const db = getServiceClient();
+  const db = await getDb();
   if (!db) return null;
-  const { data } = await db.from("areas").select("*").eq("slug", slug).maybeSingle();
-  return (data as Area) ?? null;
+  try {
+    const row = await db
+      .prepare("select * from areas where slug = ? limit 1")
+      .bind(slug)
+      .first();
+    return row ? mapRow<Area>(row as Record<string, unknown>) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function getAreaById(id: string): Promise<Area | null> {
-  const db = getServiceClient();
+  const db = await getDb();
   if (!db) return null;
-  const { data } = await db.from("areas").select("*").eq("id", id).maybeSingle();
-  return (data as Area) ?? null;
+  try {
+    const row = await db
+      .prepare("select * from areas where id = ? limit 1")
+      .bind(id)
+      .first();
+    return row ? mapRow<Area>(row as Record<string, unknown>) : null;
+  } catch {
+    return null;
+  }
 }
 
-/** Thrown to the caller (server action) so the UI can surface a message. */
-export function requireClient() {
-  const db = getServiceClient();
-  if (!db)
-    throw new Error(
-      "Supabase is not configured. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.",
-    );
-  return db;
-}
+/** Re-exported so server actions keep a single import site for write access. */
+export { requireDb };

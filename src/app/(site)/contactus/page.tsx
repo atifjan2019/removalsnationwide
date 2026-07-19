@@ -16,9 +16,9 @@ const contactPageSchema = {
   "@type": "ContactPage",
   "@id": `${SITE_URL}/contactus#contactpage`,
   url: `${SITE_URL}/contactus`,
-  name: "Contact Top Removals",
+  name: "Contact Removals Nationwide",
   description:
-    "Contact Top Removals by phone or enquiry form. Purfleet, RM15 4YA. Open 7 days a week.",
+    "Contact Removals Nationwide by phone or enquiry form. Purfleet, RM15 4YA. Open 7 days a week.",
   about: { "@id": `${SITE_URL}/#organization` },
   mainEntity: { "@id": `${SITE_URL}/#organization` },
 };
@@ -123,7 +123,7 @@ export default function ContactPage() {
         <div className="mx-auto mt-12 max-w-[88rem] px-4">
           <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
             <iframe
-              title="Top Removals location, Purfleet Industrial Park"
+              title="Removals Nationwide location, Purfleet Industrial Park"
               src="https://www.google.com/maps?q=Kerry+Avenue+Purfleet+RM15+4YA&output=embed"
               width="100%"
               height="420"

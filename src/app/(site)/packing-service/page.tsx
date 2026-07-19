@@ -95,7 +95,7 @@ const packingServiceSchema = {
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How the Top Removals Packing Service Works",
+  name: "How the Removals Nationwide Packing Service Works",
   description: "A five-step process from free quote to delivery and optional unpacking.",
   step: processSteps.map((s, i) => ({
     "@type": "HowToStep",
@@ -122,7 +122,7 @@ const packingOptions = [
   },
   {
     title: "Unpacking with Waste Removal",
-    body: "We unpack at the destination, place contents in the correct rooms, and remove all boxes, bubble wrap and paper. Top Removals is a UK Environment Agency registered waste carrier. All materials are recycled, nothing goes to landfill.",
+    body: "We unpack at the destination, place contents in the correct rooms, and remove all boxes, bubble wrap and paper. Removals Nationwide is a UK Environment Agency registered waste carrier. All materials are recycled, nothing goes to landfill.",
   },
   {
     title: "Materials and Consultation",
@@ -269,7 +269,7 @@ const faqs: FaqItem[] = [
   {
     question: "Do you offer an unpacking service?",
     answer:
-      "Yes. The unpacking service places contents in the correct rooms, removes all packing waste and disposes of it responsibly. Top Removals is a registered UK Environment Agency waste carrier, so all cardboard, bubble wrap and paper is collected and recycled. Unpacking is quoted as an add-on to any packing booking.",
+      "Yes. The unpacking service places contents in the correct rooms, removes all packing waste and disposes of it responsibly. Removals Nationwide is a registered UK Environment Agency waste carrier, so all cardboard, bubble wrap and paper is collected and recycled. Unpacking is quoted as an add-on to any packing booking.",
   },
   {
     question: "Is it worth hiring professional packers?",
@@ -279,7 +279,7 @@ const faqs: FaqItem[] = [
   {
     question: "Do you recycle packing waste after unpacking?",
     answer:
-      "Yes. All packing materials, including cardboard boxes, bubble wrap, paper and tape, are collected after unpacking and recycled under Top Removals' UK Environment Agency waste carrier registration. No landfill. All waste is documented and disposed of responsibly.",
+      "Yes. All packing materials, including cardboard boxes, bubble wrap, paper and tape, are collected after unpacking and recycled under Removals Nationwide' UK Environment Agency waste carrier registration. No landfill. All waste is documented and disposed of responsibly.",
   },
 ];
 
@@ -333,7 +333,7 @@ export default function PackingServicePage() {
               Professional Packing · London &amp; Nationwide
             </p>
             <p className="hero-anim-sub mt-3 text-lg font-semibold leading-relaxed text-brand-navy">
-              Top Removals provides a professional packing service for homes and offices across
+              Removals Nationwide provides a professional packing service for homes and offices across
               London. Every booking includes all materials: boxes, bubble wrap, paper and tape,
               at no extra charge.
             </p>
@@ -367,7 +367,7 @@ export default function PackingServicePage() {
             <div className="relative aspect-[4/3] w-full">
               <Image
                 src="https://www.top-removals.co.uk/wp-content/uploads/2025/05/packing-service.jpg"
-                alt="packing service London: Top Removals professional packer carefully wrapping belongings in bubble wrap"
+                alt="packing service London: Removals Nationwide professional packer carefully wrapping belongings in bubble wrap"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -388,7 +388,7 @@ export default function PackingServicePage() {
               </ul>
               <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                 <Link
-                  href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                  href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -431,7 +431,7 @@ export default function PackingServicePage() {
               to unpack.
             </p>
             <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
-              The difference from DIY is speed, materials quality, and insurance: Top Removals crews
+              The difference from DIY is speed, materials quality, and insurance: Removals Nationwide crews
               pack faster because it is their daily trade, use quality boxes and specialist crating,
               and all items they handle are covered under goods-in-transit insurance. For fragile, antique, or high-value items the gap in
               protection is significant.
@@ -814,7 +814,7 @@ export default function PackingServicePage() {
               title="Insurance, Accreditations and Recycling"
             />
             <p className="mt-6 text-base leading-relaxed text-white/80">
-              All items handled by Top Removals are covered by goods-in-transit and public liability
+              All items handled by Removals Nationwide are covered by goods-in-transit and public liability
               insurance. Speak to your moving coordinator about the insurance options available
               depending on your service type and destination.
             </p>
@@ -855,7 +855,7 @@ export default function PackingServicePage() {
                 Licensed Waste Carrier
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-white/80">
-                Top Removals is registered with the UK Environment Agency as a licensed waste
+                Removals Nationwide is registered with the UK Environment Agency as a licensed waste
                 carrier, registration CBDL25630. All packing waste collected after unpacking is
                 recycled. Nothing goes to landfill.
               </p>
@@ -936,9 +936,9 @@ export default function PackingServicePage() {
               title="What Our Customers Say"
             />
             <p className="mt-6 text-base leading-relaxed text-white/80">
-              Top Removals customers have left verified reviews on Trustpilot and Google.{" "}
+              Removals Nationwide customers have left verified reviews on Trustpilot and Google.{" "}
               <a
-                href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-orange underline underline-offset-2 hover:text-white"

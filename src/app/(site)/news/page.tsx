@@ -22,7 +22,7 @@ const blogSchema = {
   url: `${SITE_URL}/news`,
   name: "Moving News and Guides",
   description:
-    "Moving, packing, storage, office and international removals tips and guides from Top Removals London.",
+    "Moving, packing, storage, office and international removals tips and guides from Removals Nationwide.",
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 

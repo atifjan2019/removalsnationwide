@@ -10,7 +10,7 @@ export const metadata: Metadata = buildMetadata("photos");
 
 // Placeholder gallery — swap these for the client's real photos in /public/gallery/.
 const altText = [
-  "Top Removals movers wrapping furniture",
+  "Removals Nationwide movers wrapping furniture",
   "Packed and labelled moving boxes",
   "Furniture protected for transport",
   "Movers loading the removal van",

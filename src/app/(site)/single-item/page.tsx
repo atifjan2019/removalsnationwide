@@ -69,56 +69,56 @@ const itemTypes = [
     title: "Sofas and Armchairs",
     desc: "Full two-man carry, wrapped and protected in transit. From £60 plus VAT.",
     img: "/gallery/move-15.jpg",
-    alt: "Top Removals team delivering a sofa in London",
+    alt: "Removals Nationwide team delivering a sofa in London",
     specialist: false,
   },
   {
     title: "Beds and Mattresses",
     desc: "Bed frames dismantled and reassembled at the destination. Mattresses wrapped.",
     img: "/gallery/move-16.jpg",
-    alt: "Top Removals team carrying a bed for single item delivery in London",
+    alt: "Removals Nationwide team carrying a bed for single item delivery in London",
     specialist: false,
   },
   {
     title: "Wardrobes and Cabinets",
     desc: "Large wardrobes dismantled if needed, transported safely, reassembled at the new address.",
     img: "/gallery/move-17.jpg",
-    alt: "Top Removals moving a large wardrobe in London",
+    alt: "Removals Nationwide moving a large wardrobe in London",
     specialist: false,
   },
   {
     title: "White Goods and Appliances",
     desc: "Washing machines, fridges, dryers and dishwashers. Two-man team, transit protection included.",
     img: "/gallery/move-18.jpg",
-    alt: "Top Removals delivering a white goods appliance in London",
+    alt: "Removals Nationwide delivering a white goods appliance in London",
     specialist: false,
   },
   {
     title: "Pianos and Specialist Items",
     desc: "Specialist handling required. Contact us with the item details for an accurate quote.",
     img: "/gallery/move-19.jpg",
-    alt: "Top Removals handling a specialist item for single item delivery",
+    alt: "Removals Nationwide handling a specialist item for single item delivery",
     specialist: true,
   },
   {
     title: "Antiques and Fragile Items",
     desc: "Packing and cushioning used throughout. Handled with extra care from collection to delivery.",
     img: "/gallery/move-20.jpg",
-    alt: "Top Removals packing a fragile item for single item delivery in London",
+    alt: "Removals Nationwide packing a fragile item for single item delivery in London",
     specialist: false,
   },
   {
     title: "IKEA and Flat-Pack Furniture",
     desc: "We collect from any retailer and assemble at the destination. Item must be bought in advance.",
     img: "/gallery/move-21.jpg",
-    alt: "Top Removals collecting flat-pack furniture for delivery in London",
+    alt: "Removals Nationwide collecting flat-pack furniture for delivery in London",
     specialist: false,
   },
   {
     title: "eBay and Gumtree Pickup-Only",
     desc: "We collect pickup-only buys across London and deliver same or next day with proof of delivery.",
     img: "/gallery/move-22.jpg",
-    alt: "Top Removals collecting an eBay pickup-only item in London",
+    alt: "Removals Nationwide collecting an eBay pickup-only item in London",
     specialist: false,
   },
 ];
@@ -153,7 +153,7 @@ const steps = [
 const comparison = [
   {
     title: "Single Item Courier",
-    subtitle: "Top Removals",
+    subtitle: "Removals Nationwide",
     highlight: true,
     points: [
       "One item or a few bulky or awkward items",
@@ -342,7 +342,7 @@ export default function SingleItemPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals runs a single item and eBay delivery service across London with its
+                Removals Nationwide runs a single item and eBay delivery service across London with its
                 own fleet and its own movers. In 2026, it remains the only option that combines
                 real from-price transparency, pickup-only eBay collection, furniture assembly,
                 and worldwide single item delivery under one booking.
@@ -411,7 +411,7 @@ export default function SingleItemPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-13.jpg"
-                  alt="Top Removals single item and eBay delivery in London"
+                  alt="Removals Nationwide single item and eBay delivery in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -432,7 +432,7 @@ export default function SingleItemPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -471,7 +471,7 @@ export default function SingleItemPage() {
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
                 Sometimes you need help to move one item: a large wardrobe, an antique piano,
-                a bulky sofa, a bed, or an appliance. Top Removals runs this service with its
+                a bulky sofa, a bed, or an appliance. Removals Nationwide runs this service with its
                 own fleet and its own team. We come, help with packing if wanted, load the item,
                 and transport it where needed.
               </p>
@@ -505,7 +505,7 @@ export default function SingleItemPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/gallery/move-14.jpg"
-                alt="Top Removals team loading a single item onto a removal van in London"
+                alt="Removals Nationwide team loading a single item onto a removal van in London"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -643,7 +643,7 @@ export default function SingleItemPage() {
           <div className="mt-10 grid gap-10 lg:grid-cols-2">
             <div data-reveal className="space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Bought something on eBay or Gumtree marked Pickup Only? Top Removals runs a
+                Bought something on eBay or Gumtree marked Pickup Only? Removals Nationwide runs a
                 comprehensive, friendly courier service across the London area. We collect your
                 item from the seller and deliver it to your doorstep, same day or next day as
                 requested.
@@ -667,7 +667,7 @@ export default function SingleItemPage() {
             </div>
             <div data-reveal data-delay="1">
               <p className="mb-4 text-sm font-bold uppercase tracking-wide text-brand-navy">
-                With Top Removals you get:
+                With Removals Nationwide you get:
               </p>
               <ul className="space-y-3">
                 {[
@@ -696,7 +696,7 @@ export default function SingleItemPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/gallery/move-23.jpg"
-                alt="Top Removals secure warehouse for online sellers in London"
+                alt="Removals Nationwide secure warehouse for online sellers in London"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -891,7 +891,7 @@ export default function SingleItemPage() {
                 .
               </p>
               <p className="text-sm text-brand-charcoal/70">
-                All items must be bought and paid for in advance by the customer. Top Removals is
+                All items must be bought and paid for in advance by the customer. Removals Nationwide is
                 a transport provider and does not purchase items on your behalf.
               </p>
             </div>
@@ -971,11 +971,11 @@ export default function SingleItemPage() {
           </div>
           <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-brand-charcoal/70">
-            Read genuine reviews from customers who have used Top Removals for single item
+            Read genuine reviews from customers who have used Removals Nationwide for single item
             deliveries and courier services across London.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

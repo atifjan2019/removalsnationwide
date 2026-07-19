@@ -18,7 +18,7 @@ export default function ProcessSection() {
         />
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          The Top Removals move process runs from your first enquiry to settled in across
+          The Removals Nationwide move process runs from your first enquiry to settled in across
           seven steps. Parking, access and permits are handled as part of the process, not
           added on at the end.
         </p>

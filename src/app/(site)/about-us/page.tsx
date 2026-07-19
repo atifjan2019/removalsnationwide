@@ -21,9 +21,9 @@ const aboutPageSchema = {
   "@type": "AboutPage",
   "@id": `${SITE_URL}/about-us#aboutpage`,
   url: `${SITE_URL}/about-us`,
-  name: "About Top Removals London",
+  name: "About Removals Nationwide",
   description:
-    "The story, founders, accreditations and people behind Top Removals, a decade-established, BAR and NGRS accredited, fully insured London moving company.",
+    "The story, founders, accreditations and people behind Removals Nationwide, a decade-established, BAR and NGRS accredited, fully insured London moving company.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
@@ -56,21 +56,21 @@ export default function AboutPage() {
             />
 
             <p className="mt-8 text-lg font-medium leading-relaxed text-brand-navy">
-              Top Removals is a fully accredited moving company. We provide our customers with
+              Removals Nationwide is a fully accredited moving company. We provide our customers with
               completely insured moving services that cater for any size removal.
             </p>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Top Removals was created a decade ago by two friends, Emil Perushanov and Dimitar
+                Removals Nationwide was created a decade ago by two friends, Emil Perushanov and Dimitar
                 Dimitrov. From the start, the goal was to become one of the best and most trusted
                 moving companies in London. Their hard work has paid off, and the business has grown
-                steadily since. Top Removals was featured in The Mover, one of the leading removals
+                steadily since. Removals Nationwide was featured in The Mover, one of the leading removals
                 trade magazines.
               </p>
               <p>
                 Today the company is a proud member of BAR (British Association of Removers) and the
-                NGRS (the National Guild of Removers and Storers). Top Removals closely follows their
+                NGRS (the National Guild of Removers and Storers). Removals Nationwide closely follows their
                 policies on customer service, insurance, safety and quality control.{" "}
                 <Link href="/certificates" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
                   View our certificates and accreditations
@@ -105,7 +105,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl lg:aspect-[400/466]">
               <Image
                 src="/about/package.webp"
-                alt="A Top Removals mover carefully packing and wrapping items"
+                alt="A Removals Nationwide mover carefully packing and wrapping items"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -141,11 +141,11 @@ export default function AboutPage() {
                 </p>
                 <p>
                   All of our employees are vetted and have undergone a background check. We are
-                  serious about the safety and comfort of our customers, so Top Removals does not hire
+                  serious about the safety and comfort of our customers, so Removals Nationwide does not hire
                   employees at random.
                 </p>
                 <p>
-                  With a solid network of international partners and storage facilities, Top Removals
+                  With a solid network of international partners and storage facilities, Removals Nationwide
                   is a trusted service provider. Our{" "}
                   <Link href="/our-fleet" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
                     modern fleet
@@ -181,7 +181,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
                   src="/about/Top-Removals-Team.webp"
-                  alt="The Top Removals team in front of the company fleet"
+                  alt="The Removals Nationwide team in front of the company fleet"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"

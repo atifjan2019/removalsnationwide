@@ -13,7 +13,7 @@ export default function ServicesSection() {
           title="Our London Removal Services"
         />
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          Top Removals covers the full range of London removal services, listed in order of demand.
+          Removals Nationwide covers the full range of London removal services, listed in order of demand.
           Every service includes fully insured crews and a free survey or instant quote.
         </p>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

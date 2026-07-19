@@ -19,11 +19,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title:
-    "Top Removals London | Removals & Storage Across London, the UK & Worldwide",
+    "Removals Nationwide | Removals & Storage Across London, the UK & Worldwide",
   description:
     "London, national and international removals and storage. House & office removals, man and van, packing and secure storage. Fully insured, BAR & NGRS accredited. Get a quote today.",
   openGraph: {
-    title: "Top Removals London | Removals & Storage",
+    title: "Removals Nationwide | Removals & Storage",
     description:
       "London, national and international removals and storage. Fully insured, BAR & NGRS accredited.",
     type: "website",

@@ -79,7 +79,7 @@ const serviceItems = [
   },
   {
     title: "Office clearance and WEEE recycling",
-    body: "Decommissioned IT, redundant furniture and packing waste are collected and disposed of responsibly. Top Removals is a registered UK Environment Agency waste carrier and recycles electrical equipment to WEEE standards.",
+    body: "Decommissioned IT, redundant furniture and packing waste are collected and disposed of responsibly. Removals Nationwide is a registered UK Environment Agency waste carrier and recycles electrical equipment to WEEE standards.",
     link: "/rubbish-disposal",
     linkText: "Rubbish disposal →",
   },
@@ -129,7 +129,7 @@ const howToSchema = {
   "@type": "HowTo",
   name: "How Your London Office Move Works, Step by Step",
   description:
-    "The step-by-step process for planning and completing an office relocation with Top Removals in London.",
+    "The step-by-step process for planning and completing an office relocation with Removals Nationwide in London.",
   step: processSteps.map((s, i) => ({
     "@type": "HowToStep",
     position: i + 1,
@@ -281,13 +281,13 @@ const faqs: FaqItem[] = [
   {
     question: "Are you insured and accredited for office moves?",
     answer:
-      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Top Removals is a member of BAR, NGRS, The Furniture Ombudsman, QSS-DW, Checkatrade and IAM. Certificates are available to view on the certificates page.",
+      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Removals Nationwide is a member of BAR, NGRS, The Furniture Ombudsman, QSS-DW, Checkatrade and IAM. Certificates are available to view on the certificates page.",
     answerAfter: "Request copies of any certificate before confirming your booking.",
   },
   {
     question: "Do you recycle old furniture and IT equipment?",
     answer:
-      "Yes. Top Removals is a registered UK Environment Agency waste carrier. Decommissioned IT and electrical equipment is recycled to WEEE (Waste Electrical and Electronic Equipment) standards. Office furniture clearance is available as part of the move or as a standalone service.",
+      "Yes. Removals Nationwide is a registered UK Environment Agency waste carrier. Decommissioned IT and electrical equipment is recycled to WEEE (Waste Electrical and Electronic Equipment) standards. Office furniture clearance is available as part of the move or as a standalone service.",
     answerAfter: "See the rubbish disposal and office clearance page for more detail.",
   },
   {
@@ -364,7 +364,7 @@ export default function OfficeRemovalsPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals manages London office relocations from <strong>one desk to
+                Removals Nationwide manages London office relocations from <strong>one desk to
                 500-plus staff</strong>, with minimal business downtime. Evening and weekend
                 moves, IT and server handling, furniture dismantling and WEEE-licensed recycling
                 are all part of the same managed service, fully insured and BAR accredited.
@@ -432,7 +432,7 @@ export default function OfficeRemovalsPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://www.top-removals.co.uk/wp-content/uploads/2026/04/office-move-in-London.jpg"
-                  alt="Top Removals crew managing an office move in London with crates and IT equipment"
+                  alt="Removals Nationwide crew managing an office move in London with crates and IT equipment"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -453,7 +453,7 @@ export default function OfficeRemovalsPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -588,7 +588,7 @@ export default function OfficeRemovalsPage() {
               a coordinator who owns the plan.
             </p>
             <p>
-              Top Removals operates out-of-hours and weekend office moves so your team is not
+              Removals Nationwide operates out-of-hours and weekend office moves so your team is not
               disrupted during working hours. Evening and weekend crews complete the physical move
               while the office is empty, so staff arrive at a functional new address on the next
               working day. IT equipment is prioritised throughout: it is packed first, loaded first
@@ -646,7 +646,7 @@ export default function OfficeRemovalsPage() {
             data-reveal
           >
             <p>
-              IT and server handling is the highest-risk element of any office move. Top Removals
+              IT and server handling is the highest-risk element of any office move. Removals Nationwide
               crews are trained to handle workstations, monitors, servers, UPS units, comms room
               hardware and specialist equipment. All items are moved in 165L anti-static IT crates.
               Cable bundles are labelled and secured before packing. Crates are available to hire
@@ -662,7 +662,7 @@ export default function OfficeRemovalsPage() {
             <p>
               Decommissioned IT equipment including obsolete servers, monitors, printers and
               electrical devices is collected and recycled to WEEE (Waste Electrical and Electronic
-              Equipment) standards. Top Removals is a registered UK Environment Agency waste
+              Equipment) standards. Removals Nationwide is a registered UK Environment Agency waste
               carrier, so disposal is documented and compliant.{" "}
               <Link
                 href="/rubbish-disposal"
@@ -689,7 +689,7 @@ export default function OfficeRemovalsPage() {
           >
             <p>
               Office furniture ranges from standard desks and storage to bespoke system furniture,
-              height-adjustable workstations and acoustic office pods. Top Removals crews dismantle,
+              height-adjustable workstations and acoustic office pods. Removals Nationwide crews dismantle,
               wrap and transport all of these, then reassemble to the new floor plan at the
               destination.{" "}
               <Link
@@ -938,7 +938,7 @@ export default function OfficeRemovalsPage() {
               View Certificates
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
-              About Top Removals
+              About Removals Nationwide
             </Button>
             <Button href="/rubbish-disposal" variant="outline-light" size="md">
               WEEE Recycling
@@ -960,7 +960,7 @@ export default function OfficeRemovalsPage() {
             data-reveal
           >
             <p>
-              Top Removals office removal crews cover all 32 London boroughs, Greater London and
+              Removals Nationwide office removal crews cover all 32 London boroughs, Greater London and
               the UK. Commercial business districts served include the City of London, Canary Wharf,
               Mayfair, Shoreditch and Tech City, Victoria, Paddington Basin, Vauxhall, London
               Bridge and Hammersmith.
@@ -975,7 +975,7 @@ export default function OfficeRemovalsPage() {
             </p>
             <p>
               Where a building management company or freeholder requires a method statement and risk
-              assessment (RAMS) before granting access, Top Removals produces these as part of the
+              assessment (RAMS) before granting access, Removals Nationwide produces these as part of the
               pre-move planning process. Note this requirement at the survey stage and it will be
               included in the quote.
             </p>
@@ -1023,7 +1023,7 @@ export default function OfficeRemovalsPage() {
             {/* Business types */}
             <div data-reveal className="space-y-5 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Top Removals moves offices of every scale. Small offices and startups receive the
+                Removals Nationwide moves offices of every scale. Small offices and startups receive the
                 same managed care as multi-floor corporate relocations: a named coordinator, a
                 written plan and a fixed price. The process does not change because the headcount
                 is small.
@@ -1103,9 +1103,9 @@ export default function OfficeRemovalsPage() {
             title="What London Businesses Say About Our Office Moves"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
-            Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
+            Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-orange underline underline-offset-2"
@@ -1121,7 +1121,7 @@ export default function OfficeRemovalsPage() {
           >
             <p className="text-sm font-semibold text-brand-navy">Reviews powered by Trustpilot</p>
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"

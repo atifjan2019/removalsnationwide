@@ -37,7 +37,7 @@ export default function Testimonials() {
           <div id="trustpilot-trustbox" />
 
           <p className="mt-5 text-base leading-relaxed text-brand-charcoal/80">
-            Top Removals customers leave verified reviews on Trustpilot. Movers most often praise our
+            Removals Nationwide customers leave verified reviews on Trustpilot. Movers most often praise our
             international and Scandinavia moves, clear communication, careful handling, and the named
             coordinators and crews who manage each job.
           </p>
@@ -55,7 +55,7 @@ export default function Testimonials() {
 
           <div className="mt-8">
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange"

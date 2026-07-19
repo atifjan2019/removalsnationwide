@@ -65,10 +65,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await resolvePost(slug);
-  if (!post) return { title: "Article Not Found | Top Removals" };
+  if (!post) return { title: "Article Not Found | Removals Nationwide" };
   const canonical = withTrailingSlash(`/news/${slug}`);
   return {
-    title: `${post.title} | Top Removals`,
+    title: `${post.title} | Removals Nationwide`,
     description: post.excerpt,
     alternates: { canonical },
     openGraph: {
@@ -161,7 +161,7 @@ export default async function ArticlePage({
           {/* Related services and quote: keeps every article linked to the core */}
           <div className="mt-10 rounded-2xl border border-brand-orange/20 bg-white p-7 text-center shadow-sm">
             <p className="text-base font-semibold text-brand-navy">
-              Planning a move? Talk to Top Removals.
+              Planning a move? Talk to Removals Nationwide.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-brand-charcoal/75">
               Explore{" "}

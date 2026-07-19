@@ -18,7 +18,7 @@ const offersPageSchema = {
   url: `${SITE_URL}/current-offers`,
   name: "Current Offers",
   description:
-    "Current offers from Top Removals. We focus on fair, transparent pricing every day, with savings when you combine services.",
+    "Current offers from Removals Nationwide. We focus on fair, transparent pricing every day, with savings when you combine services.",
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
@@ -70,7 +70,7 @@ export default function CurrentOffersPage() {
           <SectionHeading eyebrow="Offers" title="No Time-Limited Promotions Right Now" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             We are not running a time-limited promotion at the moment. Rather than headline deals
-            that come and go, Top Removals focuses on fair, transparent pricing every day. See real
+            that come and go, Removals Nationwide focuses on fair, transparent pricing every day. See real
             figures on our{" "}
             <Link href="/prices" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
               prices page

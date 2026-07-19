@@ -70,7 +70,7 @@ function knowIcon(label: string): IconType {
 }
 
 const PHONE_HREF = "tel:+442072052525";
-const TRUSTPILOT = "https://uk.trustpilot.com/review/www.top-removals.co.uk";
+const TRUSTPILOT = "https://uk.trustpilot.com/review/removalsnationwide.uk";
 
 function boroughSchema(b: Borough) {
   return {
@@ -382,7 +382,7 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
         <div className="mx-auto max-w-3xl px-4 text-center">
           <SectionHeading eyebrow="Trust" title="Accredited, Insured and Reviewed" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            Top Removals is a fully accredited mover. We are members of the British Association of
+            Removals Nationwide is a fully accredited mover. We are members of the British Association of
             Removers and the National Guild of Removers and Storers, and we hold International
             Association of Movers, The Furniture Ombudsman, QSS-DW and Checkatrade accreditation.
             Every move includes goods-in-transit insurance in the price, and all of our crews are

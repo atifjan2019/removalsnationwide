@@ -48,7 +48,7 @@ const internationalAccreditations = [
 const trustTiles = [
   {
     title: "Own European Fleet with Tracking",
-    body: "Top Removals runs its own fleet of vehicles throughout Europe. Every shipment is trackable from the moment your goods are loaded. No broker handoff.",
+    body: "Removals Nationwide runs its own fleet of vehicles throughout Europe. Every shipment is trackable from the moment your goods are loaded. No broker handoff.",
   },
   {
     title: "Weekly Scheduled Routes",
@@ -182,7 +182,7 @@ const whyChoose: CheckItem[] = [
   },
   {
     lead: "Own fleet, not a broker",
-    text: "Top Removals runs its own European fleet. Your goods do not pass through unknown hands. Every shipment is trackable.",
+    text: "Removals Nationwide runs its own European fleet. Your goods do not pass through unknown hands. Every shipment is trackable.",
   },
   {
     lead: "Baltic coverage via Estonian partner",
@@ -329,7 +329,7 @@ export default function InternationalRemovalsPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals provides managed international removals from London with an active
+                Removals Nationwide provides managed international removals from London with an active
                 company fleet across Europe and full shipment tracking from loading to delivery.
                 No broker chain. Your goods travel on our own vehicles.
               </p>
@@ -397,7 +397,7 @@ export default function InternationalRemovalsPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-04.jpg"
-                  alt="Top Removals international removals fleet serving Europe from London"
+                  alt="Removals Nationwide international removals fleet serving Europe from London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -418,7 +418,7 @@ export default function InternationalRemovalsPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -445,12 +445,12 @@ export default function InternationalRemovalsPage() {
         buttonHref="/bookservice#quick-quote"
       />
 
-      {/* ── S2: Why Move Abroad With Top Removals ────────────────────── */}
+      {/* ── S2: Why Move Abroad With Removals Nationwide ────────────────────── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="The right international mover"
-            title="Why Move Abroad With Top Removals"
+            title="Why Move Abroad With Removals Nationwide"
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {trustTiles.map((tile, i) => (
@@ -482,7 +482,7 @@ export default function InternationalRemovalsPage() {
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Top Removals has maintained an active fleet of vehicles throughout Europe since the
+                Removals Nationwide has maintained an active fleet of vehicles throughout Europe since the
                 company was established. Your goods travel on our own vehicles, not through a broker
                 chain, and every shipment is trackable from the moment it leaves your London address.
               </p>
@@ -492,7 +492,7 @@ export default function InternationalRemovalsPage() {
                 logistics complexity all carry real risk when managed without professional oversight.
               </p>
               <p>
-                Top Removals is a certified member of the International Association of Movers (IAM),
+                Removals Nationwide is a certified member of the International Association of Movers (IAM),
                 the international standard body for professional moving companies. Accreditation
                 requires documented procedures, insurance and trained staff on every international
                 job. Our{" "}
@@ -510,7 +510,7 @@ export default function InternationalRemovalsPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/gallery/move-01.jpg"
-                alt="Top Removals crew managing a London international removal with tracked shipment"
+                alt="Removals Nationwide crew managing a London international removal with tracked shipment"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -580,7 +580,7 @@ export default function InternationalRemovalsPage() {
           </div>
 
           <p data-reveal className="mx-auto mt-6 max-w-2xl text-center text-sm text-brand-charcoal/60">
-            Top Removals runs a dedicated weekly Norway service.{" "}
+            Removals Nationwide runs a dedicated weekly Norway service.{" "}
             <Link
               href="/removals-services-to-norway"
               className="font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -819,7 +819,7 @@ export default function InternationalRemovalsPage() {
           >
             <p>
               Every international move involves customs documentation, inventory lists, destination
-              country requirements and, in some cases, import duty declarations. Top Removals assigns
+              country requirements and, in some cases, import duty declarations. Removals Nationwide assigns
               a dedicated moving coordinator to manage all of this on your behalf.
             </p>
             <p>
@@ -943,13 +943,13 @@ export default function InternationalRemovalsPage() {
         </div>
       </section>
 
-      {/* ── S13: Why Choose Top Removals ─────────────────────────────── */}
+      {/* ── S13: Why Choose Removals Nationwide ─────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               eyebrow="The reasons"
-              title="Why Choose Top Removals for Your International Move"
+              title="Why Choose Removals Nationwide for Your International Move"
             />
           </div>
           <div data-reveal data-delay="1">
@@ -974,7 +974,7 @@ export default function InternationalRemovalsPage() {
             Read genuine reviews from customers who have used our international removal service.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 
 /** Production/canonical origin. Override per-environment with NEXT_PUBLIC_SITE_URL. */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.top-removals.co.uk"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://removalsnationwide.uk"
 ).replace(/\/$/, "");
 
 export const SITE = {
-  name: "Top Removals London",
+  name: "Removals Nationwide",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
   telephone: "+442072052525",
@@ -24,10 +24,10 @@ export const SITE = {
   // Social/citation set, kept byte-identical to the footer links so the
   // entity's sameAs and the visible footer never diverge.
   sameAs: [
-    "https://www.facebook.com/topremovalsltd",
-    "https://x.com/topremovalsltd",
-    "https://www.linkedin.com/company/top-removals",
-    "https://uk.trustpilot.com/review/www.top-removals.co.uk",
+    "https://www.facebook.com/removalsnationwide",
+    "https://x.com/removalsnationwide",
+    "https://www.linkedin.com/company/removals-nationwide",
+    "https://uk.trustpilot.com/review/removalsnationwide.uk",
   ],
 };
 
@@ -47,172 +47,172 @@ export const META: Record<string, MetaEntry> = {
   home: {
     title: "Removal Company London | House, Office & Storage Moves",
     description:
-      "Top Removals is a trusted, fully insured removal company in London. House removals, man and van, office moves, packing and storage. Get a free quote today.",
+      "Removals Nationwide is a trusted, fully insured removal company in London. House removals, man and van, office moves, packing and storage. Get a free quote today.",
     path: "/",
   },
   about: {
-    title: "About Top Removals London | Your Trusted Moving Partner",
+    title: "About Removals Nationwide | Your Trusted Moving Partner",
     description:
       "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, BAR and NGRS accredited, fully insured. Get to know the team behind your move.",
     path: "/about-us",
   },
   services: {
-    title: "Our Services - House, Office & International Removals | Top Removals London",
+    title: "Our Services - House, Office & International Removals | Removals Nationwide",
     description:
-      "Explore the full range of Top Removals services: house, office and international removals, man and van, packing, storage, crate hire, rubbish disposal, single-item deliveries and cleaning across London and the UK.",
+      "Explore the full range of Removals Nationwide services: house, office and international removals, man and van, packing, storage, crate hire, rubbish disposal, single-item deliveries and cleaning across London and the UK.",
     path: "/services",
   },
   "house-removals": {
-    title: "House Removals London | Insured Movers, 7 Days | Top Removals",
+    title: "House Removals London | Insured Movers, 7 Days | Removals Nationwide",
     description:
       "House removals across London, 7 days a week. Fully insured, accredited team. Packing, transport and unloading handled end to end. Get a free quote today.",
     path: "/house-removals",
   },
   "office-removals": {
-    title: "Office Removals London | Minimal Downtime, Insured | Top Removals",
+    title: "Office Removals London | Minimal Downtime, Insured | Removals Nationwide",
     description:
       "Office removals in London with minimal downtime and out-of-hours moves. Accredited, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
     path: "/office-removals",
   },
   "international-removals": {
-    title: "International Removals London | Europe & Worldwide | Top Removals",
+    title: "International Removals London | Europe & Worldwide | Removals Nationwide",
     description:
       "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. IAM accredited, door to door, insured.",
     path: "/international-removals",
   },
   "london-storage": {
-    title: "Secure Storage in London | From £10/Week | Top Removals",
+    title: "Secure Storage in London | From £10/Week | Removals Nationwide",
     description:
       "Secure, fully insured storage in London from £10 a week. We collect, load and seal your goods, no minimum term. Managed containerised storage for homes and business.",
     path: "/storage",
   },
   "packing-service": {
-    title: "Packing Service London | Cartons x £6, Insured | Top Removals",
+    title: "Packing Service London | Cartons x £6, Insured | Removals Nationwide",
     description:
       "Professional packing service in London. Cartons multiplied by £6, materials and labour included, fully insured. Full or partial packing, book together with your move.",
     path: "/packing-service",
   },
   "man-and-van": {
-    title: "Man and Van London | From £55/hr, Same Day | Top Removals",
+    title: "Man and Van London | From £55/hr, Same Day | Removals Nationwide",
     description:
       "Man and van in London from £55 an hour plus VAT, same day, 7 days a week. Accredited, insured movers for single items, small moves and house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {
-    title: "Packing Materials London | Removal Boxes & Bubble Wrap | Top Removals",
+    title: "Packing Materials London | Removal Boxes & Bubble Wrap | Removals Nationwide",
     description:
       "Quality packing materials and removal boxes in London. Boxes, bubble wrap, tape, wardrobe and mattress covers with transparent prices. Free delivery over £120.",
     path: "/packaging-materials",
   },
   "crate-hire": {
-    title: "Crate Hire London | Plastic Moving & IT Crates | Top Removals",
+    title: "Crate Hire London | Plastic Moving & IT Crates | Removals Nationwide",
     description:
       "Plastic crate hire in London. Reusable lidded LC3 and IT crates from £2 a week, delivered and collected. Greener than cardboard, easy to combine with your move.",
     path: "/crate-hire",
   },
   "rubbish-disposal": {
-    title: "Rubbish Removal London from £50 | Licensed Clearance | Top Removals",
+    title: "Rubbish Removal London from £50 | Licensed Clearance | Removals Nationwide",
     description:
       "Licensed rubbish removal and clearance in London. Transparent load prices from £50, we do all the loading, recycled where possible, 7 days a week. Combine with your move.",
     path: "/rubbish-disposal",
   },
   "single-item-deliveries": {
-    title: "Single Item Delivery London | eBay & Furniture Courier | Top Removals",
+    title: "Single Item Delivery London | eBay & Furniture Courier | Removals Nationwide",
     description:
       "Single item and eBay delivery in London by a real removals company. Own fleet, pickup-only collection, furniture assembly, proof of delivery, worldwide shipping. From £60 plus VAT.",
     path: "/single-item",
   },
   "cleaning-services": {
-    title: "End of Tenancy & Move In Out Cleaning London | Top Removals",
+    title: "End of Tenancy & Move In Out Cleaning London | Removals Nationwide",
     description:
       "Move in, move out and end of tenancy cleaning in London by sister company Top Cleaners, coordinated with your move. Vetted, trained, fully insured. All London. Free quote.",
     path: "/cleaning-services",
   },
   "removals-to-norway": {
-    title: "Removals to Norway from the UK | Weekly Door-to-Door | Top Removals",
+    title: "Removals to Norway from the UK | Weekly Door-to-Door | Removals Nationwide",
     description:
       "Weekly removals to Norway from the UK. Own road-trains, local teams across Norway, Oslo depot, inclusive customs and a personal move coordinator. From single items to a full truck.",
     path: "/removals-services-to-norway",
   },
   "dormitory-move-student-storage": {
-    title: "Dormitory Move and Student Storage | London, UK & Worldwide | Top Removals",
+    title: "Dormitory Move and Student Storage | London, UK & Worldwide | Removals Nationwide",
     description:
       "Full-service dormitory move and student storage. Our movers pack your room, disassemble furniture, then deliver across the UK, ship worldwide, or store securely. You need not be present.",
     path: "/dormitory-move-student-storage",
   },
   prices: {
-    title: "Check Out the Competitive Prices and Great Rates of Top Removals",
+    title: "Check Out the Competitive Prices and Great Rates of Removals Nationwide",
     description:
-      "If you are planning to relocate you better check Top Removals' moving prices. We offer affordable rates for a large variety of high-quality services.",
+      "If you are planning to relocate you better check Removals Nationwide' moving prices. We offer affordable rates for a large variety of high-quality services.",
     path: "/prices",
   },
   certificates: {
-    title: "Certificates - Top Removals",
+    title: "Certificates - Removals Nationwide",
     description:
-      "Top Removals is always striving to achieve the best quality in everything we do. We attend different trainings and are part of different organizations.",
+      "Removals Nationwide is always striving to achieve the best quality in everything we do. We attend different trainings and are part of different organizations.",
     path: "/certificates",
   },
   faq: {
     title: "Frequently Asked Questions about London Removals",
     description:
-      "Frequently Asked Questions about house or office moving, answered by Top Removals London - insurance, cancellation, required access and more...",
+      "Frequently Asked Questions about house or office moving, answered by Removals Nationwide - insurance, cancellation, required access and more...",
     path: "/faq",
   },
   "our-fleet": {
-    title: "Top Removals London Is Proud to Present Its Vehicle Fleet",
+    title: "Removals Nationwide Is Proud to Present Its Vehicle Fleet",
     description:
-      "Top Removals is pleased to have modern and new moving vehicles, equipped for every type of situation. Your belongings are safe with us.",
+      "Removals Nationwide is pleased to have modern and new moving vehicles, equipped for every type of situation. Your belongings are safe with us.",
     path: "/our-fleet",
   },
   photos: {
-    title: "Moving Photos from Top Removals",
+    title: "Moving Photos from Removals Nationwide",
     description: "Photos, Removal Men, Removal Photos, Pictures of removal company",
     path: "/photos",
     noindex: true,
   },
   contact: {
-    title: "Contact Us | Top Removals",
+    title: "Contact Us | Removals Nationwide",
     description:
-      "Contact Top Removals by email or phone. Call 020 7205 2525 or 0800 046 7877, or send an enquiry for a free no-obligation quote. Purfleet, RM15 4YA.",
+      "Contact Removals Nationwide by email or phone. Call 020 7205 2525 or 0800 046 7877, or send an enquiry for a free no-obligation quote. Purfleet, RM15 4YA.",
     path: "/contactus",
   },
   "book-a-service": {
-    title: "Book a Service | Top Removals London",
+    title: "Book a Service | Removals Nationwide",
     description:
-      "Make an instant booking with Top Removals filling this form. Easy to use with ability to add many optional services throughout the process.",
+      "Make an instant booking with Removals Nationwide filling this form. Easy to use with ability to add many optional services throughout the process.",
     path: "/bookservice",
     noindex: true,
   },
   news: {
-    title: "Moving tips and tricks you need to know | Top Removals London",
+    title: "Moving tips and tricks you need to know | Removals Nationwide",
     description:
       "Are you about to move your house or office? Read the tips and tricks you may use while your house or office removal. Be prepared.",
     path: "/news",
   },
   "current-offers": {
-    title: "Current Offers | Top Removals London",
+    title: "Current Offers | Removals Nationwide",
     description:
-      "Current offers from Top Removals. We focus on fair, transparent pricing every day, with savings when you combine services. Get a free no-obligation quote.",
+      "Current offers from Removals Nationwide. We focus on fair, transparent pricing every day, with savings when you combine services. Get a free no-obligation quote.",
     path: "/current-offers",
   },
   terms: {
-    title: "Terms and Conditions - Top Removals",
+    title: "Terms and Conditions - Removals Nationwide",
     description:
-      "The BAR Model Terms and Conditions in use by Top Removals Limited. Our quotation, your responsibilities, liability, cancellation and claims terms.",
+      "The BAR Model Terms and Conditions in use by Removals Nationwide Limited. Our quotation, your responsibilities, liability, cancellation and claims terms.",
     path: "/terms-and-conditions",
     noindex: true,
   },
   privacy: {
-    title: "Privacy Policy - Top Removals",
+    title: "Privacy Policy - Removals Nationwide",
     description:
-      "How Top Removals collects, uses and protects your personal data in line with the GDPR. Definitions, your rights, cookies and third-party services.",
+      "How Removals Nationwide collects, uses and protects your personal data in line with the GDPR. Definitions, your rights, cookies and third-party services.",
     path: "/privacy-policy",
     noindex: true,
   },
   areas: {
-    title: "Areas We Cover | Top Removals London",
+    title: "Areas We Cover | Removals Nationwide",
     description:
-      "Top Removals provides house, office and international removals and storage across London and the surrounding areas. Find your local service area.",
+      "Removals Nationwide provides house, office and international removals and storage across London and the surrounding areas. Find your local service area.",
     path: "/areas",
   },
 };
@@ -307,11 +307,11 @@ const BUSINESS_CREDENTIALS = [
  */
 export function organizationLd() {
   return {
-    // CONFIRM: legal/brand name, reviews and footer suggest "Top Removals Ltd", Company No. 6874216; use the registered name
+    // CONFIRM: legal/brand name, reviews and footer suggest "Removals Nationwide Ltd", Company No. 6874216; use the registered name
     "@type": "MovingCompany", // inherits LocalBusiness and Organization; no type array needed
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
-    legalName: "Top Removals Ltd",
+    legalName: "Removals Nationwide Ltd",
     url: `${SITE.url}/`,
     logo: SITE.logo,
     // Founded a decade ago by two friends; exact foundingDate omitted until confirmed.

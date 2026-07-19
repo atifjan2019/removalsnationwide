@@ -364,13 +364,13 @@ If payments are up to date, We will not end this contract except by giving You 3
 
 _© Insurance Terms, Copyright of The British Association of Removers Limited 2025; these contract conditions for use only by firms having permission_
 
-_By ordering Top Removals' service by telephone, e-mail or Top Removals' website the customer agrees to be bound by Top Removals' Terms and Conditions._
+_By ordering Removals Nationwide' service by telephone, e-mail or Removals Nationwide' website the customer agrees to be bound by Removals Nationwide' Terms and Conditions._
 
-_Top Removals reserves the right to make any changes to any part of these terms and conditions without giving any prior notice. Please check this website for updates._
+_Removals Nationwide reserves the right to make any changes to any part of these terms and conditions without giving any prior notice. Please check this website for updates._
 
-_Copyright © Top Removals. All rights reserved_
+_Copyright © Removals Nationwide. All rights reserved_
 
-_Top Removals Ltd t/a Top Removals_
+_Removals Nationwide Ltd t/a Removals Nationwide_
 
 _Registered in England and Wales No. 6874216_
 
@@ -390,7 +390,7 @@ export default function TermsPage() {
       <StickyMobileBar />
       <PageBanner
         title="Terms and Conditions"
-        subtitle="BAR Model Terms and Conditions in use by Top Removals Limited"
+        subtitle="BAR Model Terms and Conditions in use by Removals Nationwide Limited"
         crumbs={[{ label: "Home", href: "/" }, { label: "Terms & Conditions" }]}
       />
 

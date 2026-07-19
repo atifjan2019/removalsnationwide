@@ -222,7 +222,7 @@ const faqs: FaqItem[] = [
   {
     question: "Do you use biodegradable or recyclable packing materials?",
     answer:
-      "All materials are approved and recommended by the British Association of Removers, and most are made from recyclable materials. Top Removals offers free collection of packing waste after your move and recycles everything collected. Ask your coordinator about recycling at the survey stage.",
+      "All materials are approved and recommended by the British Association of Removers, and most are made from recyclable materials. Removals Nationwide offers free collection of packing waste after your move and recycles everything collected. Ask your coordinator about recycling at the survey stage.",
   },
   {
     question: "I am not sure what I will need. Can you help?",
@@ -247,7 +247,7 @@ const faqs: FaqItem[] = [
   {
     question: "Do removal companies provide packing boxes?",
     answer:
-      "Yes. Top Removals supplies quality removal boxes and packing materials in London with transparent prices. Materials and labour are included in a full packing service booking. Ordering materials separately is available with delivery across London. A discount applies when combining materials with a removal or packing service.",
+      "Yes. Removals Nationwide supplies quality removal boxes and packing materials in London with transparent prices. Materials and labour are included in a full packing service booking. Ordering materials separately is available with delivery across London. A discount applies when combining materials with a removal or packing service.",
   },
   {
     question: "Do you deliver packing materials across London?",
@@ -289,7 +289,7 @@ const productGraphSchema = {
     "@type": "Product",
     name: p.name,
     description: p.description,
-    brand: { "@type": "Brand", name: "Top Removals" },
+    brand: { "@type": "Brand", name: "Removals Nationwide" },
     offers: {
       "@type": "Offer",
       priceCurrency: "GBP",
@@ -344,7 +344,7 @@ export default function PackagingMaterialsPage() {
             {/* Left: intro + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals supplies quality removal boxes, bubble wrap, wardrobe boxes and packing
+                Removals Nationwide supplies quality removal boxes, bubble wrap, wardrobe boxes and packing
                 tape in London with fully transparent prices. In 2026, more London movers buy
                 their materials from their removal company, combining delivery, labour and recycling
                 into one managed service.
@@ -413,7 +413,7 @@ export default function PackagingMaterialsPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-05.jpg"
-                  alt="Removal boxes and packing materials supplied by Top Removals in London"
+                  alt="Removal boxes and packing materials supplied by Removals Nationwide in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -434,7 +434,7 @@ export default function PackagingMaterialsPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -461,12 +461,12 @@ export default function PackagingMaterialsPage() {
         buttonHref="/bookservice#quick-quote"
       />
 
-      {/* ── S2: Why Buy From Top Removals ────────────────────────────── */}
+      {/* ── S2: Why Buy From Removals Nationwide ────────────────────────────── */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="The benefits"
-            title="Why Buy Your Packing Materials From Top Removals"
+            title="Why Buy Your Packing Materials From Removals Nationwide"
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {whyBuyTiles.map((tile, i) => (
@@ -499,7 +499,7 @@ export default function PackagingMaterialsPage() {
               />
               <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
                 <p>
-                  Top Removals supplies the full range of packing materials needed for a London house
+                  Removals Nationwide supplies the full range of packing materials needed for a London house
                   removal or commercial relocation. All materials meet NGRS standards and are sourced
                   to the specification used on our own professional removals jobs.
                 </p>
@@ -525,7 +525,7 @@ export default function PackagingMaterialsPage() {
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
                   src="/gallery/move-08.jpg"
-                  alt="Top Removals crew preparing packing materials for a London house move"
+                  alt="Removals Nationwide crew preparing packing materials for a London house move"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -781,7 +781,7 @@ export default function PackagingMaterialsPage() {
           </div>
           <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85" data-reveal data-delay="1">
             <p>
-              All materials supplied by Top Removals are approved and recommended by the British
+              All materials supplied by Removals Nationwide are approved and recommended by the British
               Association of Removers. Most are made from recyclable materials.
             </p>
             <p>
@@ -826,11 +826,11 @@ export default function PackagingMaterialsPage() {
           </div>
           <p className="mt-3 text-xl font-bold text-white">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-white/70">
-            Read genuine reviews from customers who have used Top Removals for packing materials
+            Read genuine reviews from customers who have used Removals Nationwide for packing materials
             and removal services across London.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

@@ -34,16 +34,16 @@ const certificates: Certificate[] = [
   {
     title: "National Guild of Removers and Storers (NGRS)",
     image: "/certificates/ngrs.jpg",
-    imageAlt: "National Guild of Removers and Storers certificate issued to Top Removals Ltd",
+    imageAlt: "National Guild of Removers and Storers certificate issued to Removals Nationwide Ltd",
     isScan: true,
     paras: [
-      "One of the two main associations in the UK. Top Removals customers are assured that the company is audited each year and offers industry-approved methods, materials and operational standards.",
+      "One of the two main associations in the UK. Removals Nationwide customers are assured that the company is audited each year and offers industry-approved methods, materials and operational standards.",
     ],
   },
   {
     title: "International Association of Movers (IAM)",
     image: "/certificates/iam.jpg",
-    imageAlt: "International Association of Movers certificate issued to Top Removals",
+    imageAlt: "International Association of Movers certificate issued to Removals Nationwide",
     isScan: true,
     paras: [
       "IAM is the largest independent international association for moving companies. Membership shows that the company is approved, vetted and checked both financially and operationally, so customers can be confident when moving abroad. The company also participates in the payment protection program.",
@@ -54,7 +54,7 @@ const certificates: Certificate[] = [
     image: "/memberof/removals-ombudsman.png",
     imageAlt: "The Furniture Ombudsman and Removals Industry Ombudsman Scheme badge",
     paras: [
-      "Top Removals participates in an independent ombudsman scheme that provides consumer protection and dispute resolution. It gives customers an impartial route to resolve any dispute, so you book with confidence.",
+      "Removals Nationwide participates in an independent ombudsman scheme that provides consumer protection and dispute resolution. It gives customers an impartial route to resolve any dispute, so you book with confidence.",
     ],
   },
   {
@@ -62,13 +62,13 @@ const certificates: Certificate[] = [
     image: "/memberof/quality-assured.png",
     imageAlt: "QSS-DW Approved Mover quality assured service standards badge",
     paras: [
-      "Top Removals holds QSS-DW Approved Mover status, an independent quality standard for removals companies covering service quality and operational standards across domestic and international moves.",
+      "Removals Nationwide holds QSS-DW Approved Mover status, an independent quality standard for removals companies covering service quality and operational standards across domestic and international moves.",
     ],
   },
   {
     title: "Checkatrade",
     image: "/certificates/checkatrade.jpg",
-    imageAlt: "Checkatrade certificate issued to Top Removals",
+    imageAlt: "Checkatrade certificate issued to Removals Nationwide",
     isScan: true,
     paras: [
       "Checkatrade runs strict background checks on tradespeople before they can become members. Once they join, members agree to have feedback from their customers published online for all to see.",
@@ -77,7 +77,7 @@ const certificates: Certificate[] = [
   {
     title: "Licensed Waste Carrier (Environment Agency CBDL25630)",
     paras: [
-      "Top Removals is a registered waste carrier with the Environment Agency, registration CBDL25630. This lets us offer disposal services while we recycle waste where possible and limit the environmental impact. Waste electrical and electronic equipment (WEEE) is handled in line with the regulations.",
+      "Removals Nationwide is a registered waste carrier with the Environment Agency, registration CBDL25630. This lets us offer disposal services while we recycle waste where possible and limit the environmental impact. Waste electrical and electronic equipment (WEEE) is handled in line with the regulations.",
     ],
   },
   {
@@ -118,7 +118,7 @@ export default function CertificatesPage() {
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <p className="mx-auto max-w-4xl text-center text-base leading-relaxed text-brand-charcoal/85">
-            Top Removals is always striving to achieve the best quality in everything we do. In order
+            Removals Nationwide is always striving to achieve the best quality in everything we do. In order
             to do so, we attend different trainings and we are part of different organizations. We are
             full BAR members, which is our most valuable membership. Here are some of the certificates
             we are proud of.
@@ -175,7 +175,7 @@ export default function CertificatesPage() {
           <p className="mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
             Learn more{" "}
             <Link href="/about-us" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">
-              about Top Removals
+              about Removals Nationwide
             </Link>
             , explore our{" "}
             <Link href="/house-removals" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-orange">

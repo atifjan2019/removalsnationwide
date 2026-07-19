@@ -166,7 +166,7 @@ const norwayOfferSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Removals to Norway from the UK",
-  provider: { "@type": "LocalBusiness", name: "Top Removals" },
+  provider: { "@type": "LocalBusiness", name: "Removals Nationwide" },
   offers: {
     "@type": "Offer",
     priceSpecification: {
@@ -219,7 +219,7 @@ export default function RemovalsToNorwayPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals runs weekly scheduled removals to Norway from the UK, operating on
+                Removals Nationwide runs weekly scheduled removals to Norway from the UK, operating on
                 this route for nearly a decade. In 2026, the service covers the whole UK with
                 free collection from any address, delivering to any town in Norway through a
                 network of local teams positioned across the country.
@@ -288,7 +288,7 @@ export default function RemovalsToNorwayPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-27.jpg"
-                  alt="Top Removals road-train for weekly removals to Norway from the UK"
+                  alt="Removals Nationwide road-train for weekly removals to Norway from the UK"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -309,7 +309,7 @@ export default function RemovalsToNorwayPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -360,7 +360,7 @@ export default function RemovalsToNorwayPage() {
                 </p>
                 <p>
                   Most UK removal companies moving domestic and corporate clients to Norway use
-                  Top Removals to carry their customers' goods. That trade trust reflects nearly
+                  Removals Nationwide to carry their customers' goods. That trade trust reflects nearly
                   a decade on the route and a team that knows Norway end to end.
                 </p>
               </div>
@@ -382,7 +382,7 @@ export default function RemovalsToNorwayPage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-28.jpg"
-                  alt="Top Removals team loading a truck for international removal to Norway"
+                  alt="Removals Nationwide team loading a truck for international removal to Norway"
                   fill
                   sizes="(max-width: 1024px) 100vw, 38vw"
                   className="object-cover"
@@ -777,11 +777,11 @@ export default function RemovalsToNorwayPage() {
           </div>
           <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-brand-charcoal/70">
-            Read genuine reviews from customers who have used Top Removals for international
+            Read genuine reviews from customers who have used Removals Nationwide for international
             removals and Norway moves.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

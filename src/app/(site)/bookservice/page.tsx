@@ -45,7 +45,7 @@ const bookPageSchema = {
   url: `${SITE_URL}/bookservice`,
   name: "Book Your Move",
   description:
-    "Start your booking or detailed quote with Top Removals. Accredited, insured, 7 days a week.",
+    "Start your booking or detailed quote with Removals Nationwide. Accredited, insured, 7 days a week.",
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
 };

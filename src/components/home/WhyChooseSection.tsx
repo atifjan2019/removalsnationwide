@@ -49,12 +49,12 @@ export default function WhyChooseSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           align="left"
-          title="Why Choose Top Removals"
+          title="Why Choose Removals Nationwide"
         />
 
         <div className="mt-6">
           <p className="max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
-            Top Removals holds accreditation from the British Association of Removers (BAR),
+            Removals Nationwide holds accreditation from the British Association of Removers (BAR),
             the National Guild of Removers and Storers (NGRS), The Furniture Ombudsman,
             QSS-DW, Checkatrade and the International Association of Movers (IAM). Each
             accreditation is independently verified and displayed on our{" "}

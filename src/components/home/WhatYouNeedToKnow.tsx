@@ -25,7 +25,7 @@ export default function WhatYouNeedToKnow() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Good to know"
-          title="What Do You Need To Know About Top Removals"
+          title="What Do You Need To Know About Removals Nationwide"
         />
         <ul className="mx-auto mt-12 grid max-w-5xl gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (

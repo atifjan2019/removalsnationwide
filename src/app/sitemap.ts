@@ -4,6 +4,11 @@ import { getPostSlugs } from "@/lib/news";
 import { getDbPosts, getAreas } from "@/lib/cms";
 import { boroughs } from "@/lib/boroughs";
 
+// The DB-backed entries below need the D1 binding, which only exists at request
+// time inside the Worker. Prerendering this at build time would silently bake in
+// a sitemap with no posts or areas.
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 

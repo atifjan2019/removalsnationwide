@@ -29,7 +29,7 @@ export default function ServicesPage() {
             title="Full-Service Moving & Storage Solutions"
           />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            From single-item deliveries to full international relocations, Top Removals offers a
+            From single-item deliveries to full international relocations, Removals Nationwide offers a
             complete range of moving, packing and storage services across London, the UK and
             worldwide. Whatever you need to move, we handle it from start to finish.
           </p>

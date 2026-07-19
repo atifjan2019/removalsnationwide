@@ -34,10 +34,10 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center" aria-label="Top Removals London home">
+        <Link href="/" className="flex items-center" aria-label="Removals Nationwide home">
           <Image
             src="/logo.png"
-            alt="Top Removals London"
+            alt="Removals Nationwide"
             width={142}
             height={113}
             priority
@@ -125,7 +125,7 @@ export default function Header() {
           }`}
         >
           <div className="flex items-center justify-between border-b border-black/5 px-5 py-4">
-            <Image src="/logo.png" alt="Top Removals London" width={142} height={113} className="h-10 w-auto" />
+            <Image src="/logo.png" alt="Removals Nationwide" width={142} height={113} className="h-10 w-auto" />
             <button
               type="button"
               aria-label="Close menu"

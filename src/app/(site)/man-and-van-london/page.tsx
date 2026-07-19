@@ -168,7 +168,7 @@ const howToSchema = {
   "@type": "HowTo",
   name: "How Your Man and Van Move in London Works, Step by Step",
   description:
-    "The step-by-step process for booking and completing a man and van move with Top Removals in London.",
+    "The step-by-step process for booking and completing a man and van move with Removals Nationwide in London.",
   step: processSteps.map((s, i) => ({
     "@type": "HowToStep",
     position: i + 1,
@@ -364,7 +364,7 @@ export default function ManAndVanPage() {
             <div>
               {/* hero-anim-sub: fade-slides in once .js is on <html> (see ManAndVanAnimations) */}
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals provides man and van services across London from{" "}
+                Removals Nationwide provides man and van services across London from{" "}
                 <strong>£55 per hour</strong>, 7 days a week, with same-day and short-notice slots
                 available. One mover and a van suits a single item or studio flat; two movers handle
                 a 1 to 2-bedroom flat comfortably. Every booking is fully insured and fixed-price
@@ -438,7 +438,7 @@ export default function ManAndVanPage() {
               <div className="relative aspect-[16/9] w-full">
                 <Image
                   src="https://www.top-removals.co.uk/wp-content/uploads/2025/05/man-and-van-service-London.jpg"
-                  alt="Top Removals professional mover loading a van for a man and van move in London"
+                  alt="Removals Nationwide professional mover loading a van for a man and van move in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -459,7 +459,7 @@ export default function ManAndVanPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -640,7 +640,7 @@ export default function ManAndVanPage() {
           </div>
 
           <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
-            All Top Removals vans carry heavy-duty straps, removal blankets and a sack trolley as
+            All Removals Nationwide vans carry heavy-duty straps, removal blankets and a sack trolley as
             standard. The exact vehicle and crew combination is confirmed after a free survey of
             your property.{" "}
             <Link href="/our-fleet" className="text-brand-orange underline underline-offset-2">
@@ -740,7 +740,7 @@ export default function ManAndVanPage() {
             data-reveal
           >
             <p>
-              Top Removals operates 7 days a week and keeps same-day and short-notice slots
+              Removals Nationwide operates 7 days a week and keeps same-day and short-notice slots
               available for urgent bookings. Same-day capacity covers urgent flat moves, last-minute
               marketplace pickups, emergency storage transfers and time-sensitive furniture
               collections.
@@ -1067,7 +1067,7 @@ export default function ManAndVanPage() {
               View Certificates
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
-              About Top Removals
+              About Removals Nationwide
             </Button>
           </div>
         </div>
@@ -1085,7 +1085,7 @@ export default function ManAndVanPage() {
             data-reveal
           >
             <p>
-              Top Removals man and van crews cover all 32 London boroughs, Greater London and
+              Removals Nationwide man and van crews cover all 32 London boroughs, Greater London and
               surrounding areas including Surrey, Essex and Kent. Nationwide moves are also handled
               with the same fixed-price process.
             </p>
@@ -1138,9 +1138,9 @@ export default function ManAndVanPage() {
             title="What London Customers Say About Our Man and Van Service"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
-            Top Removals customers have left verified reviews across Trustpilot and Google.{" "}
+            Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-orange underline underline-offset-2"
@@ -1158,7 +1158,7 @@ export default function ManAndVanPage() {
               Reviews powered by Trustpilot
             </p>
             <Link
-              href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"

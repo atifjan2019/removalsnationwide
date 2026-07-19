@@ -327,7 +327,7 @@ export default function CleaningServicesPage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals and its sister company Top Cleaners deliver a joined-up moving and
+                Removals Nationwide and its sister company Top Cleaners deliver a joined-up moving and
                 cleaning service across London. In 2026, one move coordinator runs the movers,
                 the cleaners and the rubbish clearance together so the handover is clean, on
                 time and free of the delays that come when you book a separate cleaner.
@@ -416,7 +416,7 @@ export default function CleaningServicesPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -454,7 +454,7 @@ export default function CleaningServicesPage() {
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Top Removals and sister company Top Cleaners work as one on move day. The
+                Removals Nationwide and sister company Top Cleaners work as one on move day. The
                 removals team packs, loads and transports. The cleaning team follows on to
                 clean the vacated property and prep the new one. Both are run by a single move
                 coordinator who sequences the teams, handles any changes on the day, and keeps
@@ -475,7 +475,7 @@ export default function CleaningServicesPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/gallery/move-25.jpg"
-                alt="Top Removals and Top Cleaners working together on a London move"
+                alt="Removals Nationwide and Top Cleaners working together on a London move"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -853,11 +853,11 @@ export default function CleaningServicesPage() {
           </div>
           <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-brand-charcoal/70">
-            Read genuine reviews from customers who have used Top Removals and Top Cleaners for
+            Read genuine reviews from customers who have used Removals Nationwide and Top Cleaners for
             moves and cleaning services across London.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

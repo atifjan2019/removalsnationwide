@@ -123,7 +123,7 @@ export default function ContactForm() {
 
       <div className="rounded-xl bg-brand-grey p-5">
         <p className="text-sm leading-relaxed text-brand-charcoal/80">
-          Here at Top Removals we take your privacy seriously and will only use your personal
+          Here at Removals Nationwide we take your privacy seriously and will only use your personal
           information to administer your account and to provide the products and services you have
           requested from us.
         </p>

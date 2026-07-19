@@ -213,7 +213,7 @@ export default function DormitoryMoveStudentStoragePage() {
             {/* Left: value prop + CTAs */}
             <div>
               <p className="hero-anim-sub max-w-2xl text-lg leading-relaxed text-brand-charcoal/90">
-                Top Removals runs full-service dormitory moves and student storage in London
+                Removals Nationwide runs full-service dormitory moves and student storage in London
                 and across the UK. Our movers pack your entire room, disassemble the furniture,
                 and transport everything in 2026, and you need not be present at any step.
               </p>
@@ -282,7 +282,7 @@ export default function DormitoryMoveStudentStoragePage() {
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="/gallery/move-29.jpg"
-                  alt="Top Removals crew packing a student dormitory room in London"
+                  alt="Removals Nationwide crew packing a student dormitory room in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
@@ -303,7 +303,7 @@ export default function DormitoryMoveStudentStoragePage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-orange underline underline-offset-2 hover:text-brand-navy"
@@ -682,11 +682,11 @@ export default function DormitoryMoveStudentStoragePage() {
           </div>
           <p className="mt-3 text-xl font-bold text-brand-navy">Rated Excellent on Trustpilot</p>
           <p className="mt-2 text-base text-brand-charcoal/70">
-            Read genuine reviews from students and families who have used Top Removals for
+            Read genuine reviews from students and families who have used Removals Nationwide for
             dormitory moves, student storage and international relocations.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"

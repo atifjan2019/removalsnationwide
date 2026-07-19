@@ -2,8 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import DOMPurify from "isomorphic-dompurify";
-import { requireClient } from "@/lib/cms";
+import { requireDb } from "@/lib/cms";
+import { fromBool } from "@/lib/d1";
+import { sanitize } from "@/lib/sanitize";
 
 function slugify(input: string): string {
   return input
@@ -14,7 +15,7 @@ function slugify(input: string): string {
     .replace(/-+/g, "-");
 }
 
-const clean = (html: string) => DOMPurify.sanitize(html ?? "");
+const clean = (html: string) => sanitize(html);
 
 export type PostInput = {
   id?: string;
@@ -30,24 +31,40 @@ export type PostInput = {
 };
 
 export async function savePost(input: PostInput) {
-  const db = requireClient();
+  const db = await requireDb();
   const slug = slugify(input.slug || input.title);
-  const row = {
+  const values = [
     slug,
-    title: input.title,
-    excerpt: input.excerpt,
-    date: input.date,
-    author: input.author || "Stephanie Cooper",
-    author_bio: input.author_bio,
-    cover_image: input.cover_image,
-    body_html: clean(input.body_html),
-    published: input.published,
-  };
+    input.title,
+    input.excerpt,
+    input.date,
+    input.author || "Stephanie Cooper",
+    input.author_bio,
+    input.cover_image,
+    clean(input.body_html),
+    fromBool(input.published),
+  ];
 
   if (input.id) {
-    await db.from("posts").update(row).eq("id", input.id);
+    await db
+      .prepare(
+        `update posts set
+           slug = ?, title = ?, excerpt = ?, date = ?, author = ?,
+           author_bio = ?, cover_image = ?, body_html = ?, published = ?
+         where id = ?`,
+      )
+      .bind(...values, input.id)
+      .run();
   } else {
-    await db.from("posts").insert(row);
+    // SQLite has no gen_random_uuid(), so the id is generated here.
+    await db
+      .prepare(
+        `insert into posts
+           (id, slug, title, excerpt, date, author, author_bio, cover_image, body_html, published)
+         values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .bind(crypto.randomUUID(), ...values)
+      .run();
   }
 
   revalidatePath("/news");
@@ -56,8 +73,8 @@ export async function savePost(input: PostInput) {
 }
 
 export async function deletePost(id: string) {
-  const db = requireClient();
-  await db.from("posts").delete().eq("id", id);
+  const db = await requireDb();
+  await db.prepare("delete from posts where id = ?").bind(id).run();
   revalidatePath("/news");
   revalidatePath("/admin/posts");
 }
@@ -73,21 +90,35 @@ export type AreaInput = {
 };
 
 export async function saveArea(input: AreaInput) {
-  const db = requireClient();
+  const db = await requireDb();
   const slug = slugify(input.slug || input.name);
-  const row = {
+  const values = [
     slug,
-    name: input.name,
-    intro: input.intro,
-    body_html: clean(input.body_html),
-    cover_image: input.cover_image,
-    published: input.published,
-  };
+    input.name,
+    input.intro,
+    clean(input.body_html),
+    input.cover_image,
+    fromBool(input.published),
+  ];
 
   if (input.id) {
-    await db.from("areas").update(row).eq("id", input.id);
+    await db
+      .prepare(
+        `update areas set
+           slug = ?, name = ?, intro = ?, body_html = ?, cover_image = ?, published = ?
+         where id = ?`,
+      )
+      .bind(...values, input.id)
+      .run();
   } else {
-    await db.from("areas").insert(row);
+    await db
+      .prepare(
+        `insert into areas
+           (id, slug, name, intro, body_html, cover_image, published)
+         values (?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .bind(crypto.randomUUID(), ...values)
+      .run();
   }
 
   revalidatePath("/areas");
@@ -96,8 +127,8 @@ export async function saveArea(input: AreaInput) {
 }
 
 export async function deleteArea(id: string) {
-  const db = requireClient();
-  await db.from("areas").delete().eq("id", id);
+  const db = await requireDb();
+  await db.prepare("delete from areas where id = ?").bind(id).run();
   revalidatePath("/areas");
   revalidatePath("/admin/areas");
 }

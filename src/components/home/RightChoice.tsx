@@ -7,8 +7,8 @@ export default function RightChoice() {
       <div className="mx-auto max-w-4xl px-4">
         <SectionHeading
           align="left"
-          eyebrow="Why Top Removals"
-          title="Top Removals London - The Right Choice For You"
+          eyebrow="Why Removals Nationwide"
+          title="Removals Nationwide - The Right Choice For You"
         />
 
         <p className="mt-8 text-lg font-medium text-brand-navy">
@@ -18,7 +18,7 @@ export default function RightChoice() {
 
         <div className="mt-5 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
           <p>
-            We know what you are looking for when you search for a moving company. Top Removals
+            We know what you are looking for when you search for a moving company. Removals Nationwide
             can handle everything from start to finish, so you don&apos;t have to waste your time.
           </p>
           <p>
@@ -31,7 +31,7 @@ export default function RightChoice() {
           <div>
             <h3 className="text-xl font-bold text-brand-navy">Our Clients Come First</h3>
             <p className="mt-3 text-base leading-relaxed text-brand-charcoal/85">
-              We put customer satisfaction first. That is precisely why Top Removals offers such a
+              We put customer satisfaction first. That is precisely why Removals Nationwide offers such a
               variety of moving deals, tailored to our clients&apos; budget and individual
               requirements. With an easy booking process, free on-site surveys and full insurance
               coverage, it comes to no surprise, we are amongst the best moving companies in London
@@ -44,9 +44,9 @@ export default function RightChoice() {
             <h3 className="text-xl font-bold text-brand-navy">On Top of Our Game</h3>
             <p className="mt-3 text-base leading-relaxed text-brand-charcoal/85">
               We constantly try to better our company policies and the way of delivering the
-              services. That is why Top Removals undergoes periodic checks and certification
+              services. That is why Removals Nationwide undergoes periodic checks and certification
               procedures. All of our movers attend briefings and customer services training. We are
-              recognised as a safe and reliable operator by BAR, NGRS and Checkatrade. Top Removals
+              recognised as a safe and reliable operator by BAR, NGRS and Checkatrade. Removals Nationwide
               is also a member of the IAM (International Association of Movers) and The Furniture
               Ombudsman, and a registered Environment Agency waste carrier. See the full list on our
               Certificates page.

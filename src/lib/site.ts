@@ -21,7 +21,7 @@ export const address = {
 };
 
 export const company = {
-  name: "Top Removals",
+  name: "Removals Nationwide",
   registration:
     "© All rights reserved. Registered in England and Wales Company No. 6874216",
 };
@@ -52,7 +52,7 @@ export const navItems: NavItem[] = [
     href: "/about-us",
     children: [
       { label: "Certificates", href: "/certificates" },
-      { label: "Testimonials", href: "https://uk.trustpilot.com/review/www.top-removals.co.uk" },
+      { label: "Testimonials", href: "https://uk.trustpilot.com/review/removalsnationwide.uk" },
       { label: "Current Offers", href: "/current-offers" },
       { label: "FAQ", href: "/faq" },
       { label: "Our Fleet", href: "/our-fleet" },
@@ -97,7 +97,7 @@ export const footerCompany = [
   { label: "Prices", href: "/prices" },
   {
     label: "Testimonials",
-    href: "https://uk.trustpilot.com/review/www.top-removals.co.uk",
+    href: "https://uk.trustpilot.com/review/removalsnationwide.uk",
   },
   { label: "Book a Service", href: "/bookservice" },
   { label: "Current Offers", href: "/current-offers" },

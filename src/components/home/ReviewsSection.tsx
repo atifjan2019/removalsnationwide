@@ -40,9 +40,9 @@ export default function ReviewsSection() {
         />
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          Top Removals customers have left verified reviews across Google and Trustpilot.{" "}
+          Removals Nationwide customers have left verified reviews across Google and Trustpilot.{" "}
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="text-brand-orange underline underline-offset-2"
@@ -59,7 +59,7 @@ export default function ReviewsSection() {
             <span className="text-base font-bold text-brand-navy">Excellent</span>
           </div>
           <Link
-            href="https://uk.trustpilot.com/review/www.top-removals.co.uk"
+            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-block text-sm font-semibold text-brand-orange underline underline-offset-2"
