@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getResolvedSettings } from "@/lib/settings";
+import { getResolvedSettings, withContacts } from "@/lib/settings";
 import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
@@ -335,7 +335,16 @@ const manVanBreadcrumb = breadcrumbLd([
 /* ═══════════════════════════════════════════════════════════ */
 
 export default async function ManAndVanPage() {
-  const { phones } = await getResolvedSettings();
+  const settings = await getResolvedSettings();
+  const { phones } = settings;
+  // Prose in the step/FAQ copy names the phone number inline. Rewriting it here
+  // keeps that text in step with the configured number instead of going stale.
+  const steps = processSteps.map((s) => ({ ...s, text: withContacts(s.text, settings) }));
+  const faqItems = faqs.map((q) => ({
+    ...q,
+    answer: withContacts(q.answer, settings),
+    ...(q.answerAfter ? { answerAfter: withContacts(q.answerAfter, settings) } : {}),
+  }));
   return (
     <>
       <JsonLd data={manAndVanSchema} />
@@ -790,11 +799,11 @@ export default async function ManAndVanPage() {
 
           {/* Mobile: vertical stepper */}
           <ol className="relative mx-auto mt-10 max-w-2xl space-y-5 lg:hidden">
-            {processSteps.map((step, i) => {
+            {steps.map((step, i) => {
               const Icon = processIcons[i];
               return (
                 <li key={step.name} data-reveal data-delay={String(i + 1)} className="relative flex gap-4">
-                  {i < processSteps.length - 1 && (
+                  {i < steps.length - 1 && (
                     <span aria-hidden="true" className="absolute left-[1.3rem] top-10 h-[calc(100%-.5rem)] w-0.5 bg-brand-navy/15" />
                   )}
                   <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-white shadow-sm">
@@ -825,7 +834,7 @@ export default async function ManAndVanPage() {
 
             {/* Cards row */}
             <div className="flex items-stretch gap-0">
-              {processSteps.map((step, i) => {
+              {steps.map((step, i) => {
                 const Icon = processIcons[i];
                 return (
                   <div key={step.name} className="flex flex-1 items-stretch">
@@ -859,7 +868,7 @@ export default async function ManAndVanPage() {
                     </div>
 
                     {/* Arrow connector */}
-                    {i < processSteps.length - 1 && (
+                    {i < steps.length - 1 && (
                       <div aria-hidden="true" className="flex shrink-0 items-center self-stretch bg-white px-0">
                         <svg
                           viewBox="0 0 16 40"
@@ -1186,7 +1195,7 @@ export default async function ManAndVanPage() {
             eyebrow="Common questions answered"
             title="Man and Van London: Frequently Asked Questions"
           />
-          <Faq items={faqs} defaultOpen={null} className="mt-10" />
+          <Faq items={faqItems} defaultOpen={null} className="mt-10" />
         </div>
       </section>
 

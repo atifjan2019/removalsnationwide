@@ -15,10 +15,12 @@ export default function BrandLogo({ className = "", src = "" }: BrandLogoProps) 
         {/* Plain <img>: the source is an operator-supplied R2 URL, and
             next/image runs unoptimized on Workers anyway. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
+        {/* h-13 (3.25rem) is the previous h-11 (2.75rem) plus ~20%, with the
+            max-width scaled to match so wide logos are not clipped. */}
         <img
           src={src}
           alt="Removals Nationwide"
-          className="h-11 w-auto max-w-[220px] object-contain"
+          className="h-[3.25rem] w-auto max-w-[264px] object-contain"
         />
       </span>
     );

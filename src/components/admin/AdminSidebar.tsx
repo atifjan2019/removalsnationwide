@@ -80,17 +80,18 @@ export default function AdminSidebar({
         </svg>
       </button>
 
-      <div className={`border-b border-white/10 ${collapsed ? "px-3 py-4" : "px-5 py-5"}`}>
+      <div className={`border-b border-white/10 ${collapsed ? "px-2 py-3" : "px-4 py-3"}`}>
         <Link href="/admin" className="block">
           {logoUrl ? (
             // White plate: uploaded logos are usually dark-on-white and would
-            // disappear against the navy sidebar.
+            // disappear against the navy sidebar. Kept tight to the artwork —
+            // a taller box just reads as a slab of white.
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={logoUrl}
               alt="Removals Nationwide"
-              className={`w-full rounded-lg bg-white object-contain transition-all duration-200 ${
-                collapsed ? "h-12 p-1" : "h-20 p-2.5"
+              className={`mx-auto block w-full rounded-md bg-white object-contain transition-all duration-200 ${
+                collapsed ? "h-10 p-1" : "h-12 p-1.5"
               }`}
             />
           ) : collapsed ? (

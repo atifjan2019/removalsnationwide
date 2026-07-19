@@ -882,8 +882,8 @@ export default async function LondonStoragePage() {
               </p>
               <p>
                 To arrange collection, redelivery or an access visit, contact your coordinator on{" "}
-                <strong className="text-brand-navy">020 7205 2525</strong> or{" "}
-                <strong className="text-brand-navy">0800 046 7877</strong>.
+                <strong className="text-brand-navy">{phones.london.label}</strong> or{" "}
+                <strong className="text-brand-navy">{phones.freephone.label}</strong>.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Button href="/bookservice" variant="red" size="md">

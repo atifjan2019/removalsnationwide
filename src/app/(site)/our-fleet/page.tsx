@@ -182,7 +182,7 @@ export default async function OurFleetPage() {
         actions={[
           { label: "Quick Quote", href: "/bookservice#quick-quote", variant: "navy" },
           { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
-          { label: "020 7205 2525", href: "tel:+442072052525", variant: "outline-light" },
+          { label: phones.london.label, href: phones.london.href, variant: "outline-light" },
         ]}
       />
 

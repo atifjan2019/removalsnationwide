@@ -1172,7 +1172,7 @@ export default async function HouseRemovalsPage() {
       {/* ── S14: Quote CTA ── */}
       <CtaBand
         heading="Get Your House Removal Quote Today"
-        subtext="Free survey · fixed price · no obligation · call 020 7205 2525"
+        subtext={`Free survey · fixed price · no obligation · call ${phones.london.label}`}
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
           { label: "Estimate My Move", href: "/bookservice", variant: "outline-light" },

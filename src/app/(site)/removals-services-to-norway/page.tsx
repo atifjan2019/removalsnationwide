@@ -361,7 +361,7 @@ export default async function RemovalsToNorwayPage() {
                 </p>
                 <p>
                   Most UK removal companies moving domestic and corporate clients to Norway use
-                  Removals Nationwide to carry their customers' goods. That trade trust reflects nearly
+                  Removals Nationwide to carry their customers&apos; goods. That trade trust reflects nearly
                   a decade on the route and a team that knows Norway end to end.
                 </p>
               </div>
@@ -408,9 +408,9 @@ export default async function RemovalsToNorwayPage() {
               Most UK Removal Companies Book Their Norway Moves Through Us
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-brand-charcoal/85">
-              When a UK removal company books a client's Norway move, they book through Top
+              When a UK removal company books a client&apos;s Norway move, they book through Top
               Removals. We are the road-freight specialist on this route, and our competitors
-              trust us to carry their customers' goods to Oslo, Bergen, Stavanger and beyond.
+              trust us to carry their customers&apos; goods to Oslo, Bergen, Stavanger and beyond.
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/70">
               When you book directly, you are choosing the same trade carrier without the
