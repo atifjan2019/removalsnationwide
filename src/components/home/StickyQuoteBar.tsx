@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PhoneIcon } from "@/components/ui/icons";
-import { phones } from "@/lib/site";
+import type { Phone } from "@/lib/settings";
 
-export default function StickyQuoteBar() {
+export default function StickyQuoteBar({ phones }: { phones: { london: Phone } }) {
   const [hiddenByCta, setHiddenByCta] = useState(false);
 
   useEffect(() => {

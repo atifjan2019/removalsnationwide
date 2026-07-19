@@ -1,8 +1,12 @@
 import Button from "@/components/ui/Button";
 import { PhoneIcon, CheckIcon } from "@/components/ui/icons";
-import { phones } from "@/lib/site";
+import type { Phone } from "@/lib/settings";
 
-export default function FinalCtaSection() {
+export default function FinalCtaSection({
+  phones,
+}: {
+  phones: { freephone: Phone; london: Phone };
+}) {
   return (
     <section
       id="final-cta"

@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { whatsapp } from "@/lib/site";
 import { WhatsAppIcon, ArrowUp } from "@/components/ui/icons";
 
-export default function FloatingContact() {
+/** Client component, so the WhatsApp details arrive as props from the layout. */
+export default function FloatingContact({
+  whatsapp,
+}: {
+  whatsapp: { href: string; label: string };
+}) {
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {

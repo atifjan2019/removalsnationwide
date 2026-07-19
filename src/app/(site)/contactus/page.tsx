@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import { getResolvedSettings } from "@/lib/settings";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -28,14 +29,14 @@ const contactBreadcrumb = breadcrumbLd([
   { label: "Contact Us", href: "/contactus" },
 ]);
 
-const phones = [
-  { label: "020 7205 2525", href: "tel:+442072052525" },
-  { label: "0800 046 7877", href: "tel:+448000467877" },
-];
+export default async function ContactPage() {
+  // These were hardcoded duplicates of the site-wide details. Reading them from
+  // settings means the admin Settings page updates the contact page too, rather
+  // than leaving it silently stale.
+  const settings = await getResolvedSettings();
+  const phones = [settings.phones.london, settings.phones.freephone];
+  const address = settings.addressLine;
 
-const address = "Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA";
-
-export default function ContactPage() {
   return (
     <>
       <JsonLd data={contactPageSchema} />

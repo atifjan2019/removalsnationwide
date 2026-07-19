@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import { buildMetadata } from "@/lib/seo";
 
 import HomepageHero from "@/components/home/HomepageHero";
@@ -29,7 +30,11 @@ import BackToTop from "@/components/home/BackToTop";
 
 export const metadata: Metadata = buildMetadata("home");
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Phone numbers are editable from /admin/settings. Both consumers below are
+  // client components, so the values are resolved here and passed down.
+  const { phones } = await getResolvedSettings();
+
   return (
     <>
       {/* 1. Hero */}
@@ -91,14 +96,14 @@ export default function HomePage() {
       <HomeFaqSection />
 
       {/* 19. Final Quote CTA */}
-      <FinalCtaSection />
+      <FinalCtaSection phones={phones} />
 
       {/* Moving News blog — house/man-and-van content preferred */}
       <NewsSection />
 
       {/* Homepage-only UX enhancements */}
       <ClientAnimations />
-      <StickyQuoteBar />
+      <StickyQuoteBar phones={phones} />
       <BackToTop />
     </>
   );

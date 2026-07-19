@@ -305,7 +305,39 @@ const BUSINESS_CREDENTIALS = [
  * All other graphs (services, articles) reference it by @id rather than
  * re-declaring it, so there is exactly one org entity per page.
  */
-export function organizationLd() {
+/**
+ * Contact fields that the admin Settings page can change. Passed in rather than
+ * read from the SITE constant so the structured data cannot drift from what the
+ * footer and top bar actually display.
+ */
+export type LdSettings = {
+  phones: { freephone: { label: string }; london: { label: string } };
+  email: string;
+  addressLine: string;
+  urlFacebook: string;
+  urlX: string;
+  urlLinkedin: string;
+  urlTrustpilot: string;
+};
+
+/** E.164 for schema.org, which wants a dialable international number. */
+function e164(label: string): string {
+  const digits = (label ?? "").replace(/[^\d+]/g, "");
+  if (!digits) return "";
+  if (digits.startsWith("+")) return digits;
+  if (digits.startsWith("0")) return `+44${digits.slice(1)}`;
+  return digits;
+}
+
+export function organizationLd(settings?: LdSettings) {
+  const london = settings ? e164(settings.phones.london.label) : SITE.telephone;
+  const freephone = settings ? e164(settings.phones.freephone.label) : "+448000467877";
+  const sameAs = settings
+    ? [settings.urlFacebook, settings.urlX, settings.urlLinkedin, settings.urlTrustpilot].filter(
+        (u) => u && u.trim() !== "",
+      )
+    : SITE.sameAs;
+
   return {
     // CONFIRM: legal/brand name, reviews and footer suggest "Removals Nationwide Ltd", Company No. 6874216; use the registered name
     "@type": "MovingCompany", // inherits LocalBusiness and Organization; no type array needed
@@ -319,7 +351,7 @@ export function organizationLd() {
       { "@type": "Person", name: "Emil Perushanov" },
       { "@type": "Person", name: "Dimitar Dimitrov" },
     ],
-    telephone: SITE.telephone,
+    telephone: london,
     priceRange: "££", // CONFIRM this reflects reality
     // CONFIRM: add openingHoursSpecification once trading hours are verified; omit rather than guess
     // AggregateRating intentionally omitted: self-serving review markup is not eligible for LocalBusiness.
@@ -327,14 +359,14 @@ export function organizationLd() {
     contactPoint: [
       {
         "@type": "ContactPoint",
-        telephone: "+442072052525",
+        telephone: london,
         contactType: "customer service",
         areaServed: "GB",
         availableLanguage: "English",
       },
       {
         "@type": "ContactPoint",
-        telephone: "+448000467877",
+        telephone: freephone,
         contactType: "customer service",
         contactOption: "TollFree",
         areaServed: "GB",
@@ -355,7 +387,7 @@ export function organizationLd() {
       longitude: SITE.geo.lng,
     },
     areaServed: BUSINESS_AREA_SERVED,
-    sameAs: SITE.sameAs,
+    sameAs,
     hasCredential: BUSINESS_CREDENTIALS,
   };
 }
@@ -370,8 +402,8 @@ export function websiteLd() {
   };
 }
 
-export function siteGraphLd() {
-  return { "@context": "https://schema.org", "@graph": [organizationLd(), websiteLd()] };
+export function siteGraphLd(settings?: LdSettings) {
+  return { "@context": "https://schema.org", "@graph": [organizationLd(settings), websiteLd()] };
 }
 
 export type Crumb = { label: string; href?: string };

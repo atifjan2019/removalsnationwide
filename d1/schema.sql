@@ -45,6 +45,28 @@ create table if not exists areas (
   created_at  text    not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
+-- Site settings ---------------------------------------------
+-- Single row, id fixed to 'site'. A one-row table rather than a key/value
+-- store so each field is typed and the read is a single query with no
+-- reassembly. Missing rows fall back to DEFAULT_SETTINGS in src/lib/settings.ts,
+-- so the site still renders correct contact details before anything is saved.
+create table if not exists settings (
+  id                text primary key default 'site',
+  phone_freephone   text not null default '',
+  phone_london      text not null default '',
+  email             text not null default '',
+  whatsapp_number   text not null default '',   -- digits only, e.g. 442072052525
+  whatsapp_label    text not null default '',
+  address_line      text not null default '',
+  company_name      text not null default '',
+  company_reg       text not null default '',
+  url_facebook      text not null default '',
+  url_x             text not null default '',
+  url_linkedin      text not null default '',
+  url_trustpilot    text not null default '',
+  updated_at        text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
 create index if not exists posts_created_at_idx on posts (created_at desc);
 create index if not exists areas_name_idx       on areas (name asc);
 

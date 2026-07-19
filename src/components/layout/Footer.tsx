@@ -3,13 +3,8 @@ import type { SVGProps, ReactNode } from "react";
 import Button from "@/components/ui/Button";
 import BrandLogo from "@/components/layout/BrandLogo";
 import { PhoneIcon, ArrowRight } from "@/components/ui/icons";
-import {
-  phones,
-  address,
-  company,
-  footerServices,
-  footerCompany,
-} from "@/lib/site";
+import { footerServices, footerCompany } from "@/lib/site";
+import type { ResolvedSettings } from "@/lib/settings";
 
 /* ── Social icons ─────────────────────────────────── */
 function FacebookIcon(p: SVGProps<SVGSVGElement>) {
@@ -53,11 +48,14 @@ const accreditations = [
   "IAM",
 ];
 
-const socials = [
-  { name: "Facebook", href: "https://www.facebook.com/removalsnationwide", Icon: FacebookIcon },
-  { name: "Twitter / X", href: "https://x.com/removalsnationwide", Icon: XIcon },
-  { name: "LinkedIn", href: "https://www.linkedin.com/company/removals-nationwide", Icon: LinkedInIcon },
-];
+/** Built from settings so an emptied URL removes the icon instead of linking nowhere. */
+function socialLinks(s: ResolvedSettings) {
+  return [
+    { name: "Facebook", href: s.urlFacebook, Icon: FacebookIcon },
+    { name: "Twitter / X", href: s.urlX, Icon: XIcon },
+    { name: "LinkedIn", href: s.urlLinkedin, Icon: LinkedInIcon },
+  ].filter((l) => l.href.trim() !== "");
+}
 
 /* ── Sub-components ───────────────────────────────── */
 function ColHeading({ children }: { children: ReactNode }) {
@@ -87,7 +85,9 @@ function LinkList({ links }: { links: { label: string; href: string }[] }) {
 }
 
 /* ── Footer ───────────────────────────────────────── */
-export default function Footer() {
+export default function Footer({ settings }: { settings: ResolvedSettings }) {
+  const { phones } = settings;
+  const socials = socialLinks(settings);
   return (
     <footer className="bg-brand-navy text-white">
       <div className="mx-auto max-w-[88rem] px-4 py-14">
@@ -152,8 +152,14 @@ export default function Footer() {
               </li>
             </ul>
             <address className="mt-3 not-italic text-sm leading-relaxed text-white/60">
-              {address.line}
+              {settings.addressLine}
             </address>
+            <a
+              href={settings.mailto}
+              className="mt-2 inline-flex min-h-[44px] items-center text-sm font-semibold text-white/80 transition hover:text-brand-red"
+            >
+              {settings.email}
+            </a>
 
             {/* Social icons */}
             <div className="mt-5 flex items-center gap-3">
@@ -191,7 +197,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-[88rem] flex-col items-center justify-between gap-3 px-4 py-5 text-center text-xs text-white/50 sm:flex-row sm:text-left">
-          <p>{company.registration}</p>
+          <p>{settings.companyReg}</p>
           <div className="flex items-center gap-4">
             <Link href="/terms-and-conditions" className="transition hover:text-brand-red">
               Terms and Conditions
