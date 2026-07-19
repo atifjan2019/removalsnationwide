@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 import { notFound } from "next/navigation";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -51,7 +52,7 @@ async function resolvePost(slug: string): Promise<Resolved | null> {
       excerpt: db.excerpt,
       author: db.author,
       authorBio: db.author_bio || AUTHOR_BIO,
-      coverImage: db.cover_image || "/banner-bg.svg",
+      coverImage: db.cover_image || DEFAULT_BANNER_IMAGE,
       html: db.body_html,
     };
   }

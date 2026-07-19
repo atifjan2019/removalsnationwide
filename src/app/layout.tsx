@@ -18,6 +18,12 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  // Fixed path that redirects to the uploaded icon, or the bundled one when
+  // nothing is set. Keeping this constant is what lets this metadata stay
+  // static — reading D1 here would make every page dynamic.
+  // Trailing slash matters: next.config sets trailingSlash, so "/brand-icon"
+  // would 308 to "/brand-icon/" on every single favicon request.
+  icons: { icon: "/brand-icon/", shortcut: "/brand-icon/", apple: "/brand-icon/" },
   title:
     "Removals Nationwide | Removals & Storage Across London, the UK & Worldwide",
   description:

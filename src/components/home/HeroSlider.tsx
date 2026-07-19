@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 type Slide = {
   image: string;
@@ -12,19 +13,19 @@ type Slide = {
 };
 
 const slides: Slide[] = [
-  { image: "/hero-1.svg", heading: "LONDON MAN AND VAN", subheading: "7 DAYS A WEEK SERVICE" },
-  { image: "/hero-2.svg", heading: "SAFE AND SECURE STORAGE FACILITY", subheading: "WITH EASY ACCESS" },
+  { image: REMOTE_IMAGES.movingVan, heading: "LONDON MAN AND VAN", subheading: "7 DAYS A WEEK SERVICE" },
+  { image: REMOTE_IMAGES.storage, heading: "SAFE AND SECURE STORAGE FACILITY", subheading: "WITH EASY ACCESS" },
   {
-    image: "/hero-3.svg",
+    image: REMOTE_IMAGES.smartphoneSurvey,
     heading: "MAKE A VIDEO SURVEY VIA YOUR SMARTPHONE",
     subheading: "AT A TIME THAT'S CONVENIENT TO YOU",
   },
   {
-    image: "/hero-4.svg",
+    image: REMOTE_IMAGES.london,
     heading: "LONDON, NATIONAL AND INTERNATIONAL",
     subheading: "REMOVALS AND STORAGE",
   },
-  { image: "/hero-5.svg", heading: "WE DO OFFICE MOVES AND", subheading: "CRATE HIRE" },
+  { image: REMOTE_IMAGES.officeMove, heading: "WE DO OFFICE MOVES AND", subheading: "CRATE HIRE" },
 ];
 
 const ROTATE_MS = 6000;

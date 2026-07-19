@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ChevronRight } from "@/components/ui/icons";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbLd, type Crumb } from "@/lib/seo";
+import { DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 
 type Props = {
   title: string;
@@ -15,7 +16,7 @@ type Props = {
    * match the live site's H1 while keeping the marketing hero headline visible.
    */
   h1?: string;
-  /** Optional background image placeholder layered behind the navy gradient. */
+  /** Optional background image layered behind the dark gradient. */
   image?: string;
 };
 
@@ -28,7 +29,7 @@ export default function PageBanner({
   crumbs,
   subtitle,
   h1,
-  image = "/banner-bg.svg",
+  image = DEFAULT_BANNER_IMAGE,
 }: Props) {
   const titleClasses =
     "mt-4 text-3xl font-extrabold uppercase tracking-wide text-white sm:text-4xl md:text-5xl";

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
+import { DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -57,7 +58,7 @@ export default async function NewsPage({
     title: p.title,
     date: p.date,
     excerpt: p.excerpt,
-    cover: p.cover_image || "/banner-bg.svg",
+    cover: p.cover_image || DEFAULT_BANNER_IMAGE,
   }));
 
   // Merge, prefer DB on slug clash, sort newest first.

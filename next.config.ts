@@ -61,6 +61,11 @@ const nextConfig: NextConfig = {
     // /cdn-cgi/image/ to get resizing and AVIF/WebP negotiation back.
     unoptimized: true,
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
       // The legacy WordPress host still serves several hero/section images that
       // have not been migrated yet. Keep it allow-listed until those assets move
       // to R2, otherwise next/image rejects them and the pages render blank.

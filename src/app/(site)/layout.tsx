@@ -23,7 +23,7 @@ export default async function SiteLayout({
     <>
       <JsonLd data={siteGraphLd(settings)} />
       <TopBar settings={settings} />
-      <Header />
+      <Header logoUrl={settings.logoUrl} />
       <main>{children}</main>
       <Footer settings={settings} />
       <FloatingContact whatsapp={settings.whatsapp} />

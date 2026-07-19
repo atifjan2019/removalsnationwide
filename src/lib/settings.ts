@@ -23,6 +23,10 @@ export type SiteSettings = {
   urlX: string;
   urlLinkedin: string;
   urlTrustpilot: string;
+  /** Public R2 URL of the uploaded logo. Empty means use the built-in mark. */
+  logoUrl: string;
+  /** Public R2 URL of the uploaded favicon. Empty means use the bundled icon. */
+  faviconUrl: string;
 };
 
 export const DEFAULT_SETTINGS: SiteSettings = {
@@ -40,6 +44,8 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   urlX: "https://x.com/removalsnationwide",
   urlLinkedin: "https://www.linkedin.com/company/removals-nationwide",
   urlTrustpilot: "https://uk.trustpilot.com/review/removalsnationwide.uk",
+  logoUrl: "",
+  faviconUrl: "",
 };
 
 /** A phone number as the UI needs it: display label plus a tel: href. */
@@ -114,6 +120,8 @@ function coalesce(row: Record<string, unknown>): SiteSettings {
     urlX: optional("url_x"),
     urlLinkedin: optional("url_linkedin"),
     urlTrustpilot: optional("url_trustpilot"),
+    logoUrl: optional("logo_url"),
+    faviconUrl: optional("favicon_url"),
   };
 }
 

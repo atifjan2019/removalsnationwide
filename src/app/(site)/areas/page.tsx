@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
+import { DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
@@ -67,7 +68,7 @@ export default async function AreasPage() {
                 >
                   <Link href={`/areas/${area.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-brand-navy">
                     <Image
-                      src={area.cover_image || "/banner-bg.svg"}
+                      src={area.cover_image || DEFAULT_BANNER_IMAGE}
                       alt={area.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"

@@ -64,8 +64,18 @@ create table if not exists settings (
   url_x             text not null default '',
   url_linkedin      text not null default '',
   url_trustpilot    text not null default '',
+  -- Branding. Uploads go to R2 under fixed keys; these hold the public URLs.
+  -- Empty means "not uploaded", and the built-in mark/icon is used instead.
+  logo_url          text not null default '',
+  favicon_url       text not null default '',
   updated_at        text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
+
+-- Existing databases predate the branding columns. SQLite has no
+-- "add column if not exists", so these are expected to fail harmlessly on a
+-- database that already has them; run them once when upgrading.
+-- alter table settings add column logo_url    text not null default '';
+-- alter table settings add column favicon_url text not null default '';
 
 create index if not exists posts_created_at_idx on posts (created_at desc);
 create index if not exists areas_name_idx       on areas (name asc);

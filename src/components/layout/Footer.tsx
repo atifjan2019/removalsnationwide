@@ -98,7 +98,7 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
-              <BrandLogo />
+              <BrandLogo src={settings.logoUrl} />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/70">
               London, national and international removals and storage.

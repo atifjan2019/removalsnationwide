@@ -32,6 +32,62 @@ function Field({
   );
 }
 
+/**
+ * File input plus a preview of whatever is currently set. The "remove" checkbox
+ * is the only way to clear an image, since an empty file input has to mean
+ * "leave it alone" — otherwise saving a phone number would wipe the logo.
+ */
+function BrandingUpload({
+  label,
+  field,
+  current,
+  hint,
+}: {
+  label: string;
+  field: "logo" | "favicon";
+  current: string;
+  hint: string;
+}) {
+  return (
+    <div className="rounded-xl border border-black/10 p-4">
+      <span className="text-sm font-semibold text-brand-navy">{label}</span>
+
+      <div className="mt-3 flex h-16 items-center justify-center rounded-lg bg-brand-grey">
+        {current ? (
+          // Plain <img>: the source is a user-supplied R2 URL, and next/image
+          // runs unoptimized here anyway.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={current}
+            alt={`Current ${label.toLowerCase()}`}
+            className="max-h-14 max-w-full object-contain"
+          />
+        ) : (
+          <span className="text-xs text-brand-charcoal/50">
+            Nothing uploaded — using the built-in {label.toLowerCase()}
+          </span>
+        )}
+      </div>
+
+      <input
+        type="file"
+        name={`${field}File`}
+        accept="image/png,image/jpeg,image/svg+xml,image/webp,image/x-icon,.ico"
+        className="mt-3 block w-full text-xs file:mr-3 file:rounded-md file:border-0 file:bg-brand-navy file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-black"
+      />
+
+      {current && (
+        <label className="mt-2 flex items-center gap-2 text-xs text-brand-charcoal/70">
+          <input type="checkbox" name={`${field}Clear`} className="rounded" />
+          Remove and go back to the built-in {label.toLowerCase()}
+        </label>
+      )}
+
+      <span className="mt-2 block text-xs text-brand-charcoal/60">{hint}</span>
+    </div>
+  );
+}
+
 function SaveButton() {
   const { pending } = useFormStatus();
   return (
@@ -64,6 +120,28 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
           {state.message}
         </div>
       )}
+
+      <section>
+        <h2 className="text-lg font-bold text-brand-navy">Branding</h2>
+        <p className="mt-1 text-sm text-brand-charcoal/60">
+          Uploaded to R2 and served from the media domain. Leave a file empty to
+          keep the current image. Max 2&nbsp;MB; PNG, JPEG, SVG, WebP or ICO.
+        </p>
+        <div className="mt-4 grid gap-6 sm:grid-cols-2">
+          <BrandingUpload
+            label="Logo"
+            field="logo"
+            current={settings.logoUrl}
+            hint="Replaces the built-in RN wordmark in the header and footer."
+          />
+          <BrandingUpload
+            label="Favicon"
+            field="favicon"
+            current={settings.faviconUrl}
+            hint="Browser tab icon. A square PNG or ICO works best."
+          />
+        </div>
+      </section>
 
       <section>
         <h2 className="text-lg font-bold text-brand-navy">Contact</h2>

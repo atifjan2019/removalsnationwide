@@ -7,7 +7,7 @@ import BrandLogo from "@/components/layout/BrandLogo";
 import { navItems } from "@/lib/site";
 import { ChevronDown, MenuIcon, CloseIcon } from "@/components/ui/icons";
 
-export default function Header() {
+export default function Header({ logoUrl = "" }: { logoUrl?: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openItem, setOpenItem] = useState<string | null>(null);
@@ -35,7 +35,7 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-[88rem] items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex items-center" aria-label="Removals Nationwide home">
-          <BrandLogo />
+          <BrandLogo src={logoUrl} />
         </Link>
 
         {/* Desktop nav */}
@@ -118,7 +118,7 @@ export default function Header() {
           }`}
         >
           <div className="flex items-center justify-between border-b border-black/5 px-5 py-4">
-            <BrandLogo />
+            <BrandLogo src={logoUrl} />
             <button
               type="button"
               aria-label="Close menu"
