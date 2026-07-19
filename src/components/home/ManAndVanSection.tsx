@@ -7,7 +7,7 @@ const manAndVanSuits = [
   "Collecting or delivering a single item",
   "Student accommodation moves",
   "Boxes already packed and ready to load",
-  "Short hops within the same London borough",
+  "Short local moves within the same town or city",
   "Same-day and short-notice collections",
 ];
 
@@ -30,14 +30,14 @@ export default function ManAndVanSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Small Moves, Single Items, Student Moves"
-          title="Man and Van Services in London"
+          title="Nationwide Man and Van Services"
         />
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
           A man and van service combines a driver, one or two movers and a Luton van, billed by
           the hour or at a fixed rate depending on the job. The format suits small moves,
           single-item collections, student accommodation moves, eBay and marketplace deliveries,
-          and short-distance hops within London where a full removal crew is excessive and
+          and short-distance local moves where a full removal crew is excessive and
           unnecessary.
         </p>
 
@@ -92,20 +92,20 @@ export default function ManAndVanSection() {
           <div className="rounded-2xl border border-black/5 bg-brand-grey p-6 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" data-reveal data-delay="3">
             <p className="text-2xl font-extrabold text-brand-red">Same Day</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">
-              Short-notice and same-day bookings accepted across all London boroughs, subject to
+              Short-notice and same-day bookings are accepted in many UK areas, subject to
               availability.
             </p>
           </div>
         </div>
 
         <p className="mt-8 text-center text-sm leading-relaxed text-brand-charcoal/70">
-          Our man and van crews cover North London, South London, East London and West London.
+          Our man and van crews handle local and long-distance moves across the UK.
           Goods-in-transit insurance is included as standard on every booking.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button href="/man-and-van-london" variant="red" size="lg">
-            Man and Van London
+            Nationwide Man and Van
           </Button>
           <Button href="/single-item" variant="navy" size="lg">
             Single Item Delivery

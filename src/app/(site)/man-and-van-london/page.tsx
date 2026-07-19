@@ -329,7 +329,7 @@ const orgSchema = organizationLd();
 const manVanBreadcrumb = breadcrumbLd([
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Man and Van London", href: "/man-and-van-london" },
+  { label: "Nationwide Man and Van", href: "/man-and-van-london" },
 ]);
 
 /* ═══════════════════════════════════════════════════════════ */
@@ -355,13 +355,13 @@ export default async function ManAndVanPage() {
 
       {/* ── S1: Hero ── */}
       <PageBanner
-        title="Man and Van London"
+        title="Nationwide Man and Van"
         h1={serviceH1["man-and-van"]}
         subtitle="From £55/hr plus VAT · Same Day · 7 Days a Week · Experienced and Insured"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "Man and Van London" },
+          { label: "Nationwide Man and Van" },
         ]}
       />
 
@@ -502,7 +502,7 @@ export default async function ManAndVanPage() {
           <SectionHeading
             align="left"
             eyebrow="Service definition"
-            title="What Is a Man and Van Service in London?"
+            title="What Is a Nationwide Man and Van Service?"
           />
           <div
             className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
@@ -543,7 +543,7 @@ export default async function ManAndVanPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Transparent rates 2026"
-            title="Man and Van Prices in London"
+            title="Nationwide Man and Van Prices"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             The rate you are quoted is the rate you pay. Each booking includes the driver, van,
@@ -664,8 +664,8 @@ export default async function ManAndVanPage() {
       <section id="moves" className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
-            eyebrow="Every type of London move"
-            title="Man and Van Moves We Cover Across London"
+            eyebrow="Every type of move"
+            title="Man and Van Moves We Cover Across the UK"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             The man and van service covers a wide range of move types. Marketplace collection and
@@ -743,7 +743,7 @@ export default async function ManAndVanPage() {
           <SectionHeading
             align="left"
             eyebrow="Urgent and short-notice"
-            title="Same-Day and Short-Notice Man and Van London"
+            title="Same-Day and Short-Notice Man and Van"
           />
           <div
             className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
@@ -1022,7 +1022,7 @@ export default async function ManAndVanPage() {
           <SectionHeading
             tone="light"
             eyebrow="Verified, insured, experienced"
-            title="Insured, Experienced Man and Van Movers in London"
+            title="Insured, Experienced Man and Van Movers"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a man and van company means trusting someone with your belongings and your home.
@@ -1086,7 +1086,7 @@ export default async function ManAndVanPage() {
       <section id="areas" className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
-            eyebrow="London-wide coverage"
+            eyebrow="Nationwide coverage"
             title="London Areas We Cover and How We Handle Access"
           />
           <div
@@ -1144,7 +1144,7 @@ export default async function ManAndVanPage() {
           <SectionHeading
             tone="light"
             eyebrow="Trustpilot and Google Reviews"
-            title="What London Customers Say About Our Man and Van Service"
+            title="What Customers Say About Our Man and Van Service"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
@@ -1180,7 +1180,7 @@ export default async function ManAndVanPage() {
 
       {/* ── S12: Final CTA ── */}
       <CtaBand
-        heading="Book Your Man and Van in London Today"
+        heading="Book Your Nationwide Man and Van Today"
         subtext="Free quote in under 2 minutes · same-day available · 7 days a week"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
@@ -1193,7 +1193,7 @@ export default async function ManAndVanPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Common questions answered"
-            title="Man and Van London: Frequently Asked Questions"
+            title="Nationwide Man and Van: Frequently Asked Questions"
           />
           <Faq items={faqItems} defaultOpen={null} className="mt-10" />
         </div>

@@ -11,7 +11,7 @@ const reasons = [
   },
   {
     heading: "Established and experienced",
-    body: "Our trained crews complete residential and commercial moves across London, the UK and internationally.",
+    body: "Our trained crews complete residential and commercial moves across the UK and internationally.",
   },
   {
     heading: "Secure storage",
@@ -23,7 +23,7 @@ const reasons = [
   },
   {
     heading: "Wide service coverage",
-    body: "London, nationwide and international relocations use the same surveyed, planned moving process.",
+    body: "Local, nationwide and international relocations use the same surveyed, planned moving process.",
   },
 ];
 

@@ -21,7 +21,7 @@ export default function PackingSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Full and Partial Packing"
-          title="Professional Packing Services in London"
+          title="Professional Packing Services Across the UK"
         />
 
         <div className="mt-10 grid gap-8 md:grid-cols-3">
@@ -80,7 +80,7 @@ export default function PackingSection() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Button href="/packing-service" variant="red" size="md">
-                Packing Services London
+                Nationwide Packing Services
               </Button>
               <Button href="/packaging-materials" variant="navy" size="md">
                 Packaging Materials

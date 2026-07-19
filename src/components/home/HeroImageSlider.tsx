@@ -9,7 +9,7 @@ type Slide = { src: string; alt: string };
 const SLIDES: Slide[] = [
   {
     src: REMOTE_IMAGES.movingVan,
-    alt: "Removal van ready for a London house move",
+    alt: "Removal van ready for a nationwide house move",
   },
   {
     src: REMOTE_IMAGES.moversLoading,

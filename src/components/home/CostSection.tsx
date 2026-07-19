@@ -57,12 +57,12 @@ export default function CostSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Removal Prices 2026"
-          title="How Much Do Removals Cost in London in 2026?"
+          title="How Much Do Removals Cost Across the UK?"
         />
 
         {/* Snippet-friendly direct answer */}
         <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
-          A London house move with Removals Nationwide starts from{" "}
+          A house move with Removals Nationwide starts from{" "}
           <strong className="text-brand-navy">£390 for a 1-bedroom</strong> and from{" "}
           <strong className="text-brand-navy">£756 for a 3-bedroom</strong>, all prices
           excluding VAT. The final price is set by distance, access, packing and volume, and

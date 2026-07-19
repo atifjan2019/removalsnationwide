@@ -7,7 +7,7 @@ export default function TopBar({ settings }: { settings: ResolvedSettings }) {
     <div className="bg-brand-red text-white">
       <div className="mx-auto flex max-w-[88rem] flex-col items-center gap-2 px-4 py-2 text-center text-[11px] font-medium tracking-wide sm:text-xs lg:flex-row lg:justify-between lg:text-left">
         <p className="uppercase tracking-[0.12em]">
-          London, National and International Removals and Storage
+          Nationwide and International Removals and Storage
         </p>
 
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">

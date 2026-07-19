@@ -21,14 +21,14 @@ export default function SpecialistSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Pianos, Antiques, Fine Art"
-          title="Piano, Antique and Fragile Item Removals in London"
+          title="Nationwide Piano, Antique and Fragile Item Removals"
         />
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2" data-reveal>
           <div className="space-y-8">
             <div>
               <h3 className="text-lg font-bold uppercase tracking-wide text-brand-navy">
-                Piano removals in London
+                Nationwide piano removals
               </h3>
               <p className="mt-3 text-base leading-relaxed text-brand-charcoal/85">
                 Upright pianos, grand pianos and digital pianos all require specialist moving

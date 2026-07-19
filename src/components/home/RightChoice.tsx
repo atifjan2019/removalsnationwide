@@ -34,8 +34,8 @@ export default function RightChoice() {
               We put customer satisfaction first. That is precisely why Removals Nationwide offers such a
               variety of moving deals, tailored to our clients&apos; budget and individual
               requirements. With an easy booking process, free on-site surveys and full insurance
-              coverage, it comes to no surprise, we are amongst the best moving companies in London
-              and the UK. For close to a decade, we have not only succeeded in building an immaculate
+              coverage, it comes as no surprise that we are among the trusted moving companies in
+              the UK. For close to a decade, we have not only succeeded in building an excellent
               reputation but also possess the necessary tools to back it up.
             </p>
           </div>

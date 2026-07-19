@@ -43,7 +43,7 @@ const whyBuyTiles = [
     body: "All materials are approved and recommended by the moving industry. Double-wall removal boxes, perforated bubble wrap and strong sealing tape, sourced to industry standard.",
   },
   {
-    title: "Delivered Across London",
+    title: "Delivered Across the UK",
     body: "Free delivery on orders over £120. A £20 delivery charge applies below that, and a congestion charge fee applies on certain routes. All prices plus VAT at 20%.",
   },
   {
@@ -327,8 +327,8 @@ export default async function PackagingMaterialsPage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="Packaging Materials and Removal Boxes in London"
-        subtitle="Quality removal boxes and packing materials, delivered across London."
+        title="Packing Materials and Removal Boxes UK"
+        subtitle="Quality removal boxes and packing materials delivered across the UK."
         h1={serviceH1["packaging-materials"]}
         crumbs={[
           { label: "Home", href: "/" },

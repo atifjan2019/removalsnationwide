@@ -197,7 +197,7 @@ export default async function PricesPage() {
       {/* Crate hire options */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Crate hire" title="London Crate Hire Options" />
+          <SectionHeading eyebrow="Crate hire" title="Nationwide Crate Hire Options" />
           <PricingTable columns={crateHireColumns} rows={crateHireRows} className="mt-12" />
         </div>
       </section>
@@ -205,7 +205,7 @@ export default async function PricesPage() {
       {/* Crate hire per delivery / collection */}
       <section className="bg-brand-grey py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Crate hire" title="London Crate Hire Per Delivery or Collection" />
+          <SectionHeading eyebrow="Crate hire" title="Crate Hire Per Delivery or Collection" />
           <PricingTable columns={crateDeliveryColumns} rows={crateDeliveryRows} className="mt-12" />
           <p className="mt-6 text-sm leading-relaxed text-brand-charcoal/70">
             Deliveries for purchases over £120 are free of charge. A £20 delivery charge applies to

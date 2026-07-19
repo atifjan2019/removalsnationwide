@@ -12,7 +12,7 @@ type Stat = {
 
 const stats: Stat[] = [
   { value: "290+", numeric: 290, suffix: "+", label: "Trustpilot Reviews", sublabel: "Rated Excellent" },
-  { value: "32", numeric: 32, suffix: "", label: "London Boroughs", sublabel: "Full coverage" },
+  { value: "UK", label: "Nationwide Coverage", sublabel: "Local and long-distance" },
   { value: "7", numeric: 7, suffix: "", label: "Days a Week", sublabel: "Including weekends" },
   { value: "24/7", label: "Storage Monitored", sublabel: "CCTV-secured" },
 ];

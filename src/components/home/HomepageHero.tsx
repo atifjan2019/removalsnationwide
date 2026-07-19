@@ -10,7 +10,7 @@ type Slide = { src: string; alt: string };
 const SLIDES: Slide[] = [
   {
     src: REMOTE_IMAGES.movingVan,
-    alt: "Removal van loaded and ready for a London house move",
+    alt: "Removal van loaded and ready for a nationwide house move",
   },
   {
     src: REMOTE_IMAGES.moversLoading,
@@ -60,7 +60,7 @@ export default function HomepageHero() {
     <section
       id="hero"
       className="relative flex min-h-[80vh] flex-col justify-center overflow-hidden bg-brand-navy text-white sm:min-h-[82vh]"
-      aria-label="Removal Company London"
+      aria-label="Nationwide removal company"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -118,15 +118,15 @@ export default function HomepageHero() {
         <div className="max-w-lg sm:max-w-xl lg:max-w-2xl">
           {/* H1 — no animation class, LCP-safe */}
           <h1 className="text-4xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Removal Company London
+            Nationwide Removal Company
           </h1>
           <p className="hero-anim-sub mt-4 text-xl font-semibold uppercase tracking-wide text-brand-red sm:text-2xl md:text-3xl">
-            House Removals, Man and Van, Office Moves, Packing and Storage Across London
+            House Removals, Man and Van, Office Moves, Packing and Storage Across the UK
           </p>
           <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
             Removals Nationwide provides house removals, man and van services, office moves, professional
-            packing and secure storage across all 32 London boroughs, Greater London, Surrey and
-            nationwide. Our fully insured crews handle local, national and international
+            packing and secure storage across the UK. Our fully insured crews handle local,
+            nationwide and international
             relocations. Book a free on-site or video survey for an exact fixed quote, or use the
             removal calculator for an instant estimate.
           </p>

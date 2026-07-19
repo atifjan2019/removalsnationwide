@@ -13,7 +13,7 @@ type Slide = {
 };
 
 const slides: Slide[] = [
-  { image: REMOTE_IMAGES.movingVan, heading: "LONDON MAN AND VAN", subheading: "7 DAYS A WEEK SERVICE" },
+  { image: REMOTE_IMAGES.movingVan, heading: "NATIONWIDE MAN AND VAN", subheading: "7 DAYS A WEEK SERVICE" },
   { image: REMOTE_IMAGES.storage, heading: "SAFE AND SECURE STORAGE FACILITY", subheading: "WITH EASY ACCESS" },
   {
     image: REMOTE_IMAGES.smartphoneSurvey,
@@ -22,7 +22,7 @@ const slides: Slide[] = [
   },
   {
     image: REMOTE_IMAGES.london,
-    heading: "LONDON, NATIONAL AND INTERNATIONAL",
+    heading: "NATIONWIDE AND INTERNATIONAL",
     subheading: "REMOVALS AND STORAGE",
   },
   { image: REMOTE_IMAGES.officeMove, heading: "WE DO OFFICE MOVES AND", subheading: "CRATE HIRE" },

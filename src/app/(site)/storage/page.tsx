@@ -305,7 +305,7 @@ export default async function LondonStoragePage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="Secure Storage in London"
+        title="Secure Removals Storage"
         subtitle="From £10/week · Fully Insured · We Collect and Seal · No Minimum Term"
         h1={serviceH1["london-storage"]}
         crumbs={[
@@ -443,7 +443,7 @@ export default async function LondonStoragePage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Your goods are safe here"
-            title="Why Our London Storage Is Secure"
+            title="Why Our Removals Storage Is Secure"
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {securityTiles.map((tile, i) => (
@@ -470,8 +470,8 @@ export default async function LondonStoragePage() {
           <div data-reveal>
             <SectionHeading
               align="left"
-              eyebrow="Why Londoners need storage"
-              title="Storage for London Homes and Businesses"
+              eyebrow="Flexible storage solutions"
+              title="Storage for Homes and Businesses"
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
@@ -789,7 +789,7 @@ export default async function LondonStoragePage() {
             <SectionHeading
               align="left"
               eyebrow="Transparent pricing"
-              title="How Much Does Storage Cost in London?"
+              title="How Much Does Removals Storage Cost?"
             />
           </div>
           <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
@@ -860,7 +860,7 @@ export default async function LondonStoragePage() {
           <div data-reveal>
             <SectionHeading
               eyebrow="The Purfleet compound"
-              title="Our London Storage Facility and Access"
+              title="Our Storage Facility and Access"
             />
           </div>
           <div className="mt-12 grid gap-12 lg:grid-cols-2">

@@ -26,7 +26,7 @@ export default function InternationalSection() {
               align="left"
               tone="light"
               eyebrow="Europe and Worldwide"
-              title="International and European Removals from London"
+              title="International and European Removals from the UK"
             />
 
             {/* Route signature — surfaces the confirmed weekly Scandinavia run */}
@@ -37,7 +37,7 @@ export default function InternationalSection() {
 
             <div className="mt-6 space-y-5 text-base leading-relaxed text-white/80">
               <p>
-                International removals from London require export-standard packing, specialist
+                International removals from the UK require export-standard packing, specialist
                 shipping logistics, customs documentation and destination delivery. Our
                 international removal service covers moves across Europe and to destinations
                 worldwide.

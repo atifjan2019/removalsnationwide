@@ -23,12 +23,12 @@ export default function StorageSection() {
           <div>
             <SectionHeading
               align="left"
-              eyebrow="Secure London Storage"
-              title="Removals and Storage in London"
+              eyebrow="Secure Removals Storage"
+              title="Removals and Storage Across the UK"
             />
             <div className="mt-8 space-y-5 text-base leading-relaxed text-brand-charcoal/85">
               <p>
-                Removals Nationwide operates 24/7 CCTV-monitored, fully insured storage in London for
+                Removals Nationwide operates 24/7 CCTV-monitored, fully insured storage for
                 short-term and long-term requirements. The facility protects your belongings
                 during the gap between moving out and moving in, whether that results from a
                 completion delay, a chain break, a renovation or a downsizing situation.
@@ -47,7 +47,7 @@ export default function StorageSection() {
             </div>
             <div className="mt-8">
               <Button href="/storage" variant="red" size="md">
-                London Storage
+                Secure Storage
               </Button>
             </div>
           </div>

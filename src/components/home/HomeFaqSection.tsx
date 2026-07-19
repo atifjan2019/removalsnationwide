@@ -10,9 +10,9 @@ import { HOME_FAQ_ITEMS } from "@/lib/seo";
 // Only three answers need this — the rest render as plain text (HOME_FAQ_ITEMS strings).
 const lk = "text-brand-red underline underline-offset-2 hover:text-brand-navy transition-colors";
 const LINK_OVERRIDES: Record<string, React.ReactNode> = {
-  "How much should I pay for removals in London?": (
+  "How much should I pay for removals in the UK?": (
     <>
-      Removal costs in London in 2026 depend on property size, access conditions and move
+      Removal costs in the UK depend on property size, access conditions, distance and move
       complexity. For a full breakdown of the factors that affect price, see the{" "}
       <Link href="#cost" className={lk}>
         cost guide on this page
@@ -25,10 +25,10 @@ const LINK_OVERRIDES: Record<string, React.ReactNode> = {
     </>
   ),
 
-  "What London areas do you cover?": (
+  "What areas do you cover?": (
     <>
-      Our removal crews cover all 32 London boroughs, Greater London and Surrey as standard.
-      Nationwide and international moves are also covered. Find your local area on our{" "}
+      Our removal crews provide nationwide coverage across the UK, as well as international
+      moves. Find local coverage information on our{" "}
       <Link href="/areas" className={lk}>
         areas page
       </Link>
@@ -98,7 +98,7 @@ export default function HomeFaqSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Common Questions Answered"
-          title="London Removals FAQs"
+          title="Nationwide Removals FAQs"
         />
 
         <div

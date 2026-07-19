@@ -14,7 +14,7 @@ export default function ProcessSection() {
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Survey to Settled-In"
-          title="How Our London Removals Process Works"
+          title="How Our Nationwide Removals Process Works"
         />
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">

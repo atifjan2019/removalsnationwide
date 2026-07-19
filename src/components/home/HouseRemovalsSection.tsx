@@ -23,7 +23,7 @@ export default function HouseRemovalsSection() {
         <SectionHeading
           align="left"
           eyebrow="Domestic Removals"
-          title="House Removals Across London and Greater London"
+          title="House Removals Across the UK"
         />
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2" data-reveal>
@@ -36,8 +36,8 @@ export default function HouseRemovalsSection() {
               after the move at no extra charge.
             </p>
             <p>
-              Coverage extends across all 32 London boroughs, Greater London and Surrey as
-              standard. Nationwide relocations follow the same survey-to-settle-in process.
+              Coverage extends across the UK, with the same survey-to-settle-in process for
+              local and long-distance relocations.
               In 2026 our teams operate seven days a week to fit around completion dates,
               chain timelines and short-notice requirements.
             </p>
@@ -70,7 +70,7 @@ export default function HouseRemovalsSection() {
             </ul>
             <div className="mt-8 space-y-3">
               <Button href="/house-removals" variant="red" size="md">
-                House Removals London
+                Nationwide House Removals
               </Button>
               <div className="flex flex-wrap gap-3">
                 <Link

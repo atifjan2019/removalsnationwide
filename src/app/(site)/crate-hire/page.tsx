@@ -271,8 +271,8 @@ export default async function CrateHirePage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="Crate Hire in London"
-        subtitle="Reusable plastic crates delivered and collected across London."
+        title="Nationwide Crate Hire"
+        subtitle="Reusable plastic crates delivered and collected across the UK."
         h1={serviceH1["crate-hire"]}
         crumbs={[
           { label: "Home", href: "/" },
@@ -439,7 +439,7 @@ export default async function CrateHirePage() {
             <SectionHeading
               align="left"
               eyebrow="The eco-friendly way to move"
-              title="Crate Hire in London, the Greener Way to Move"
+              title="Nationwide Crate Hire, the Greener Way to Move"
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>

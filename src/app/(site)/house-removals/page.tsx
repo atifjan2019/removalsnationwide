@@ -360,13 +360,13 @@ export default async function HouseRemovalsPage() {
 
       {/* ── S1: Hero ── */}
       <PageBanner
-        title="House Removals London"
+        title="Nationwide House Removals"
         h1={serviceH1["house-removals"]}
         subtitle="Fully Insured · industry Experienced · 7 Days a Week"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "House Removals London" },
+          { label: "Nationwide House Removals" },
         ]}
       />
 
@@ -491,8 +491,8 @@ export default async function HouseRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
-            eyebrow="London moving challenges"
-            title="Moving House in London Without the Stress"
+            eyebrow="Moving challenges handled"
+            title="Moving House Anywhere in the UK Without the Stress"
           />
           <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
             <p>
@@ -541,7 +541,7 @@ export default async function HouseRemovalsPage() {
           <SectionHeading
             align="left"
             eyebrow="Full-service removals"
-            title="What a House Removal Service in London Includes"
+            title="What Our Nationwide House Removal Service Includes"
           />
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
             A house removal with Removals Nationwide covers the full move end to end. The services below
@@ -595,7 +595,7 @@ export default async function HouseRemovalsPage() {
           <div data-reveal>
             <SectionHeading
               eyebrow="Six steps from survey to delivery"
-              title="How Your London House Move Works, Step by Step"
+              title="How Your House Move Works, Step by Step"
             />
           </div>
           <p data-reveal className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
@@ -735,7 +735,7 @@ export default async function HouseRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Removal prices 2026"
-            title="How Much House Removals Cost in London"
+            title="How Much House Removals Cost"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             House removal costs in London vary by property size, access conditions, packing
@@ -944,7 +944,7 @@ export default async function HouseRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Sized for every home"
-            title="House Removals for Every Property Size in London"
+            title="House Removals for Every Property Size"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             Every property size has different requirements. Below is what to expect for each type
@@ -1005,7 +1005,7 @@ export default async function HouseRemovalsPage() {
           <SectionHeading
             tone="light"
             eyebrow="Verified, insured, experienced"
-            title="Why London Trusts Removals Nationwide"
+            title="Why Customers Trust Removals Nationwide"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a removal company means trusting someone with everything you own. These
@@ -1087,8 +1087,8 @@ export default async function HouseRemovalsPage() {
       <section id="areas" className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
-            eyebrow="London-wide coverage"
-            title="House Removals Across London"
+            eyebrow="Nationwide coverage"
+            title="House Removals Across the UK"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             Our removal crews cover all 32 London boroughs, Greater London and Surrey as standard.
@@ -1135,7 +1135,7 @@ export default async function HouseRemovalsPage() {
           <SectionHeading
             tone="light"
             eyebrow="Trustpilot and Google Reviews"
-            title="What London Customers Say"
+            title="What Our Customers Say"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
@@ -1184,7 +1184,7 @@ export default async function HouseRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Common questions answered"
-            title="House Removals London: Frequently Asked Questions"
+            title="Nationwide House Removals: Frequently Asked Questions"
           />
           <Faq items={faqs} defaultOpen={null} className="mt-10" />
         </div>

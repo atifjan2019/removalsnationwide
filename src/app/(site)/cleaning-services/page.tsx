@@ -310,7 +310,7 @@ export default async function CleaningServicesPage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="Move In, Move Out and End of Tenancy Cleaning in London"
+        title="Move In, Move Out and End of Tenancy Cleaning"
         subtitle="Cleaning delivered by sister company Top Cleaners, coordinated with your move."
         h1={serviceH1["cleaning-services"]}
         crumbs={[

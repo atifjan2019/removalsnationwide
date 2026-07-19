@@ -312,7 +312,7 @@ export default async function InternationalRemovalsPage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="International Removals from London"
+        title="International Removals from the UK"
         subtitle="Weekly own-fleet routes across Europe, door to door, plus worldwide by sea and air."
         h1={serviceH1["international-removals"]}
         crumbs={[
@@ -479,7 +479,7 @@ export default async function InternationalRemovalsPage() {
             <SectionHeading
               align="left"
               eyebrow="International removals 2026"
-              title="International Removals From London to Europe and Beyond"
+              title="International Removals From the UK to Europe and Beyond"
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>

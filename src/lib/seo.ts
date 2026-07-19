@@ -45,9 +45,9 @@ type MetaEntry = {
  */
 export const META: Record<string, MetaEntry> = {
   home: {
-    title: "Removal Company London | House, Office & Storage Moves",
+    title: "Nationwide Removal Company | House, Office & Storage Moves",
     description:
-      "Removals Nationwide is a trusted, fully insured removal company in London. House removals, man and van, office moves, packing and storage. Get a free quote today.",
+      "Removals Nationwide is a trusted, fully insured UK removal company. House removals, man and van, office moves, packing and storage nationwide. Get a free quote today.",
     path: "/",
   },
   about: {
@@ -59,73 +59,73 @@ export const META: Record<string, MetaEntry> = {
   services: {
     title: "Our Services - House, Office & International Removals | Removals Nationwide",
     description:
-      "Explore the full range of Removals Nationwide services: house, office and international removals, man and van, packing, storage, crate hire, rubbish disposal, single-item deliveries and cleaning across London and the UK.",
+      "Explore the full range of Removals Nationwide services: house, office and international removals, man and van, packing, storage, crate hire, rubbish disposal, single-item deliveries and cleaning across the UK.",
     path: "/services",
   },
   "house-removals": {
-    title: "House Removals London | Insured Movers, 7 Days | Removals Nationwide",
+    title: "Nationwide House Removals | Insured Movers, 7 Days | Removals Nationwide",
     description:
-      "House removals across London, 7 days a week. Fully insured, experienced team. Packing, transport and unloading handled end to end. Get a free quote today.",
+      "House removals across the UK, 7 days a week. Fully insured, experienced team. Packing, transport and unloading handled end to end. Get a free quote today.",
     path: "/house-removals",
   },
   "office-removals": {
-    title: "Office Removals London | Minimal Downtime, Insured | Removals Nationwide",
+    title: "Nationwide Office Removals | Minimal Downtime, Insured | Removals Nationwide",
     description:
-      "Office removals in London with minimal downtime and out-of-hours moves. Experienced, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
+      "Office removals across the UK with minimal downtime and out-of-hours moves. Experienced, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
     path: "/office-removals",
   },
   "international-removals": {
-    title: "International Removals London | Europe & Worldwide | Removals Nationwide",
+    title: "International Removals UK | Europe & Worldwide | Removals Nationwide",
     description:
-      "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. experienced in international moving, door to door, insured.",
+      "International removals from anywhere in the UK to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. Door-to-door and insured.",
     path: "/international-removals",
   },
   "london-storage": {
-    title: "Secure Storage in London | From £10/Week | Removals Nationwide",
+    title: "Secure Removals Storage | From £10/Week | Removals Nationwide",
     description:
-      "Secure, fully insured storage in London from £10 a week. We collect, load and seal your goods, no minimum term. Managed containerised storage for homes and business.",
+      "Secure, fully insured removals storage from £10 a week. We collect, load and seal your goods, with no minimum term. Managed storage for homes and businesses across the UK.",
     path: "/storage",
   },
   "packing-service": {
-    title: "Packing Service London | Cartons x £6, Insured | Removals Nationwide",
+    title: "Nationwide Packing Service | Fully Insured | Removals Nationwide",
     description:
-      "Professional packing service in London. Cartons multiplied by £6, materials and labour included, fully insured. Full or partial packing, book together with your move.",
+      "Professional packing services across the UK. Materials and labour included, fully insured. Full or partial packing is available with your move.",
     path: "/packing-service",
   },
   "man-and-van": {
-    title: "Man and Van London | From £55/hr, Same Day | Removals Nationwide",
+    title: "Nationwide Man and Van | From £55/hr | Removals Nationwide",
     description:
-      "Man and van in London from £55 an hour plus VAT, same day, 7 days a week. Experienced, insured movers for single items, small moves and house moves. Free quote.",
+      "Nationwide man and van service from £55 an hour plus VAT, 7 days a week. Experienced, insured movers for single items, small moves and house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {
-    title: "Packing Materials London | Removal Boxes & Bubble Wrap | Removals Nationwide",
+    title: "Packing Materials UK | Removal Boxes & Bubble Wrap | Removals Nationwide",
     description:
-      "Quality packing materials and removal boxes in London. Boxes, bubble wrap, tape, wardrobe and mattress covers with transparent prices. Free delivery over £120.",
+      "Quality packing materials and removal boxes delivered across the UK. Boxes, bubble wrap, tape, wardrobe and mattress covers with transparent prices.",
     path: "/packaging-materials",
   },
   "crate-hire": {
-    title: "Crate Hire London | Plastic Moving & IT Crates | Removals Nationwide",
+    title: "Crate Hire UK | Plastic Moving & IT Crates | Removals Nationwide",
     description:
-      "Plastic crate hire in London. Reusable lidded LC3 and IT crates from £2 a week, delivered and collected. Greener than cardboard, easy to combine with your move.",
+      "Plastic crate hire across the UK. Reusable lidded LC3 and IT crates from £2 a week, delivered and collected. Greener than cardboard and easy to combine with your move.",
     path: "/crate-hire",
   },
   "rubbish-disposal": {
-    title: "Rubbish Removal London from £50 | Licensed Clearance | Removals Nationwide",
+    title: "Nationwide Rubbish Removal | Licensed Clearance | Removals Nationwide",
     description:
-      "Licensed rubbish removal and clearance in London. Transparent load prices from £50, we do all the loading, recycled where possible, 7 days a week. Combine with your move.",
+      "Licensed rubbish removal and clearance across the UK. Transparent load prices, all loading included and recycling where possible. Combine clearance with your move.",
     path: "/rubbish-disposal",
   },
   "single-item-deliveries": {
-    title: "Single Item Delivery London | eBay & Furniture Courier | Removals Nationwide",
+    title: "Nationwide Single Item Delivery | Furniture Courier | Removals Nationwide",
     description:
-      "Single item and eBay delivery in London by a real removals company. Own fleet, pickup-only collection, furniture assembly, proof of delivery, worldwide shipping. From £60 plus VAT.",
+      "Nationwide single-item and marketplace delivery by a real removals company. Own fleet, collection, furniture assembly, proof of delivery and worldwide shipping.",
     path: "/single-item",
   },
   "cleaning-services": {
-    title: "End of Tenancy & Move In Out Cleaning London | Removals Nationwide",
+    title: "Move In, Move Out & End of Tenancy Cleaning UK | Removals Nationwide",
     description:
-      "Move in, move out and end of tenancy cleaning in London by sister company Top Cleaners, coordinated with your move. Vetted, trained, fully insured. All London. Free quote.",
+      "Move-in, move-out and end-of-tenancy cleaning coordinated with your removal. Vetted, trained and fully insured teams. Ask about availability in your area.",
     path: "/cleaning-services",
   },
   "removals-to-norway": {
@@ -135,7 +135,7 @@ export const META: Record<string, MetaEntry> = {
     path: "/removals-services-to-norway",
   },
   "dormitory-move-student-storage": {
-    title: "Dormitory Move and Student Storage | London, UK & Worldwide | Removals Nationwide",
+    title: "Dormitory Move and Student Storage | UK & Worldwide | Removals Nationwide",
     description:
       "Full-service dormitory move and student storage. Our movers pack your room, disassemble furniture, then deliver across the UK, ship worldwide, or store securely. You need not be present.",
     path: "/dormitory-move-student-storage",
@@ -147,7 +147,7 @@ export const META: Record<string, MetaEntry> = {
     path: "/prices",
   },
   faq: {
-    title: "Frequently Asked Questions about London Removals",
+    title: "Frequently Asked Questions About Nationwide Removals",
     description:
       "Frequently Asked Questions about house or office moving, answered by Removals Nationwide - insurance, cancellation, required access and more...",
     path: "/faq",
@@ -206,7 +206,7 @@ export const META: Record<string, MetaEntry> = {
   areas: {
     title: "Areas We Cover | Removals Nationwide",
     description:
-      "Removals Nationwide provides house, office and international removals and storage across London and the surrounding areas. Find your local service area.",
+      "Removals Nationwide provides house, office and international removals and storage across the UK. Find your local service area.",
     path: "/areas",
   },
 };
@@ -412,21 +412,21 @@ export function faqLd(items: { question: string; answer: string }[]) {
   };
 }
 
-/** Short H1 text per service page, matching the live site exactly. */
+/** Short H1 text per service page, aligned with nationwide positioning. */
 export const serviceH1: Record<string, string> = {
-  "house-removals": "House Removals London",
-  "office-removals": "Office Removals London",
-  "international-removals": "International Removals from London",
-  "london-storage": "Secure Storage in London",
-  "packing-service": "Packing Service London",
-  "man-and-van": "Man and Van London",
-  "packaging-materials": "Packaging Materials and Removal Boxes in London",
-  "crate-hire": "Crate Hire in London",
-  "rubbish-disposal": "Rubbish Removal and Clearance in London",
-  "single-item-deliveries": "Single Item and eBay Delivery in London",
-  "cleaning-services": "Move In, Move Out and End of Tenancy Cleaning in London",
+  "house-removals": "Nationwide House Removals",
+  "office-removals": "Nationwide Office Removals",
+  "international-removals": "International Removals from the UK",
+  "london-storage": "Secure Removals Storage",
+  "packing-service": "Nationwide Packing Service",
+  "man-and-van": "Nationwide Man and Van",
+  "packaging-materials": "Packing Materials and Removal Boxes UK",
+  "crate-hire": "Nationwide Crate Hire",
+  "rubbish-disposal": "Nationwide Rubbish Removal and Clearance",
+  "single-item-deliveries": "Nationwide Single Item and Marketplace Delivery",
+  "cleaning-services": "Move In, Move Out and End of Tenancy Cleaning",
   "removals-to-norway": "Removals to Norway from the UK",
-  "dormitory-move-student-storage": "Dormitory Move and Student Storage in London and the UK",
+  "dormitory-move-student-storage": "Dormitory Move and Student Storage Across the UK",
 };
 
 export function serviceLdFor(id: keyof typeof META) {
@@ -450,7 +450,7 @@ export function serviceLd({
     description,
     serviceType: name,
     url: `${SITE.url}${withTrailingSlash(path)}`,
-    areaServed: "London, United Kingdom",
+    areaServed: "United Kingdom",
     provider: { "@id": `${SITE.url}/#organization` },
   };
 }
@@ -491,9 +491,9 @@ export function articleLd({
 
 export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
   {
-    question: "How much should I pay for removals in London?",
+    question: "How much should I pay for removals in the UK?",
     answer:
-      "Removal costs in London in 2026 depend on property size, access conditions and move complexity. For a full breakdown of the factors that affect price, see the cost guide on this page, or book a free survey for an exact fixed quote.",
+      "Removal costs in the UK depend on property size, access conditions, distance and move complexity. For an exact fixed quote, use the cost guide or book a free survey.",
   },
   {
     question: "Is it worth getting a removal company?",
@@ -501,7 +501,7 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
       "For full property moves, hiring a professional removal company saves time, reduces the risk of injury and provides insurance cover for your belongings. Van hire is cheaper upfront but places the entire physical and financial risk on you. For smaller single-item moves, a man and van service offers professional-grade cover at a lower cost than a full crew.",
   },
   {
-    question: "What is the cheapest way to move in London?",
+    question: "What is the cheapest way to move in the UK?",
     answer:
       "The cheapest option by upfront cost is van hire, but it excludes goods-in-transit insurance and requires significant physical effort. For insured moves, a man and van service is the lowest-cost professional option for small volumes. For full property moves, getting multiple fixed quotes from industry-experienced companies ensures competitive pricing with proper cover.",
   },
@@ -513,7 +513,7 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "Do you provide man and van services?",
     answer:
-      "Yes. Our man and van service is available across all London boroughs for small moves, single-item collections, student relocations and short-distance moves. Hourly and fixed-price options are available. Goods-in-transit insurance is included as standard.",
+      "Yes. Our man and van service is available nationwide for small moves, single-item collections, student relocations and short-distance moves. Hourly and fixed-price options are available. Goods-in-transit insurance is included as standard.",
   },
   {
     question: "Do you offer packing and storage?",
@@ -526,9 +526,9 @@ export const HOME_FAQ_ITEMS: { question: string; answer: string }[] = [
       "Yes. Public liability insurance and goods-in-transit insurance are included on every job. If any item is damaged during the move, there is a clear claims process with a financial remedy.",
   },
   {
-    question: "What London areas do you cover?",
+    question: "What areas do you cover?",
     answer:
-      "Our removal crews cover all 32 London boroughs, Greater London and Surrey as standard. Nationwide and international moves are also covered. Find your local area on our areas page.",
+      "Our removal crews provide nationwide coverage across the UK, as well as international moves. Find local coverage information on our areas page or ask us about your postcode.",
   },
   {
     question: "Do you handle parking suspensions and permits?",

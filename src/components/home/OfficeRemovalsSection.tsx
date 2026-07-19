@@ -24,13 +24,13 @@ export default function OfficeRemovalsSection() {
           align="left"
           tone="light"
           eyebrow="Business Relocation"
-          title="Office and Commercial Removals in London"
+          title="Nationwide Office and Commercial Removals"
         />
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2" data-reveal>
           <div className="space-y-5 text-base leading-relaxed text-white/85">
             <p>
-              Business relocations in London require planning that protects trading continuity.
+              Business relocations require planning that protects trading continuity.
               Our commercial removal service covers the full scope: pre-move planning, crate hire
               for sensitive documents and IT equipment, furniture dismantling and reassembly,
               server and desktop computer transport, and out-of-hours or weekend moves that keep
@@ -64,7 +64,7 @@ export default function OfficeRemovalsSection() {
             </ul>
             <div className="mt-8 flex flex-wrap gap-4">
               <Button href="/office-removals" variant="red" size="md">
-                Office Removals London
+                Nationwide Office Removals
               </Button>
               <Link
                 href="/crate-hire"

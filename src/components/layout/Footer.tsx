@@ -92,7 +92,7 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
               <BrandLogo src={settings.logoUrl} />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/70">
-              London, national and international removals and storage.
+              Nationwide and international removals and storage.
             </p>
             <div className="mt-6">
               <Button href="/bookservice#quick-quote" variant="red" size="md">

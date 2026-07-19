@@ -325,7 +325,7 @@ export default async function SingleItemPage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="Single Item and eBay Delivery in London"
+        title="Nationwide Single Item and Marketplace Delivery"
         subtitle="One item moved by a real removals company. Own fleet, pickup-only collection, furniture assembly, proof of delivery."
         h1={serviceH1["single-item-deliveries"]}
         crumbs={[
@@ -547,7 +547,7 @@ export default async function SingleItemPage() {
       {/* ── S4: Any Item, Any London Address ─────────────────────────── */}
       <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading eyebrow="Items we move" title="Any Item, Any London Address" />
+          <SectionHeading eyebrow="Items we move" title="Any Item, Any UK Address" />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-brand-charcoal/70">
             Standard items from £60 plus VAT. Specialist items are quoted individually.
           </p>
@@ -639,7 +639,7 @@ export default async function SingleItemPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="For online shoppers"
-            title="eBay and Online Shopping Deliveries in London"
+            title="eBay and Online Shopping Deliveries Across the UK"
           />
           <div className="mt-10 grid gap-10 lg:grid-cols-2">
             <div data-reveal className="space-y-4 text-base leading-relaxed text-brand-charcoal/85">
@@ -857,7 +857,7 @@ export default async function SingleItemPage() {
       <section className="bg-brand-sand py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
-            eyebrow="Beyond London and the UK"
+            eyebrow="Beyond the UK"
             title="Worldwide and International Single Item Delivery"
           />
           <div className="mt-10 grid gap-8 lg:grid-cols-2">

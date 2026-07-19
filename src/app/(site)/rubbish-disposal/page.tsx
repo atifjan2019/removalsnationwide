@@ -242,7 +242,7 @@ export default async function RubbishDisposalPage() {
 
       {/* ── S1: Hero ─────────────────────────────────────────────────── */}
       <PageBanner
-        title="Rubbish Removal and Clearance in London"
+        title="Nationwide Rubbish Removal and Clearance"
         subtitle="Licensed man-and-van rubbish clearance, transparent load-based prices, 7 days a week."
         h1={serviceH1["rubbish-disposal"]}
         crumbs={[
@@ -380,7 +380,7 @@ export default async function RubbishDisposalPage() {
             <SectionHeading
               align="left"
               eyebrow="Licensed and local"
-              title="Licensed Rubbish Clearance Across London"
+              title="Licensed Rubbish Clearance Across the UK"
             />
             <div className="mt-8 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
               <p>
