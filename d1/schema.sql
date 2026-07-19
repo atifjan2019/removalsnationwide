@@ -84,6 +84,29 @@ create index if not exists areas_name_idx       on areas (name asc);
 create index if not exists posts_published_idx on posts (published, created_at desc);
 create index if not exists areas_published_idx on areas (published, name asc);
 
+-- Booking requests -----------------------------------------
+-- Created by the public multi-step booking funnel and managed from /admin/bookings.
+create table if not exists bookings (
+  id             text primary key,
+  full_name      text not null,
+  phone          text not null,
+  email          text not null,
+  move_type      text not null,
+  bedrooms       integer not null default 0,
+  from_postcode  text not null,
+  to_postcode    text not null,
+  move_date      text not null default '',
+  flexible_dates integer not null default 0,
+  notes          text not null default '',
+  status         text not null default 'New'
+                 check (status in ('New', 'Contacted', 'Quoted', 'Booked', 'Completed', 'Cancelled')),
+  created_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+  updated_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+create index if not exists bookings_created_at_idx on bookings (created_at desc);
+create index if not exists bookings_status_idx on bookings (status, created_at desc);
+
 -- Seed one example area so /areas isn't empty before real content is added.
 insert or ignore into areas (id, slug, name, intro, body_html, cover_image, published)
 values (
