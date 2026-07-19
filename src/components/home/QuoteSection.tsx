@@ -49,9 +49,6 @@ export default function QuoteSection() {
               <Button href="/bookservice#quick-quote" variant="navy" size="lg">
                 Get a Free Quote
               </Button>
-              <Button href="/bookservice" variant="outline-light" size="lg">
-                Removal Calculator
-              </Button>
             </div>
           </div>
 

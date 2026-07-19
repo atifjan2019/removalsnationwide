@@ -592,7 +592,7 @@ export default async function PackagingMaterialsPage() {
 
       {/* ── S5: Price List ───────────────────────────────────────────── */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Transparent pricing"
             title="Packing Materials Price List"
@@ -694,7 +694,7 @@ export default async function PackagingMaterialsPage() {
 
       {/* ── S8: Save by Combining ────────────────────────────────────── */}
       <section className="bg-brand-navy py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center" data-reveal>
+        <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
             Better together
           </span>
@@ -735,7 +735,7 @@ export default async function PackagingMaterialsPage() {
 
       {/* ── S9: Crate Hire Alternative ───────────────────────────────── */}
       <section className="bg-brand-sand py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               align="left"
@@ -772,7 +772,7 @@ export default async function PackagingMaterialsPage() {
 
       {/* ── S10: Recycling ───────────────────────────────────────────── */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               align="left"

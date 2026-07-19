@@ -803,7 +803,7 @@ export default async function InternationalRemovalsPage() {
 
       {/* ── S9: Customs, Documentation and Relocation Support ─────────── */}
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               align="left"
@@ -897,7 +897,7 @@ export default async function InternationalRemovalsPage() {
 
       {/* ── S11: Insurance and Protecting Your Belongings ────────────── */}
       <section className="bg-brand-sand py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               align="left"

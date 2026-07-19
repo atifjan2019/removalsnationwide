@@ -134,9 +134,6 @@ export default function HomepageHero() {
             <Button href="/bookservice#quick-quote" variant="red" size="lg">
               Get a Free Quote
             </Button>
-            <Button href="/bookservice" variant="outline-light" size="lg">
-              Removal Calculator
-            </Button>
           </div>
         </div>
 

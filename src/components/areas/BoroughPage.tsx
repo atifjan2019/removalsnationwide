@@ -327,7 +327,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Prices */}
       <section className="bg-brand-grey py-16">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Transparent pricing" title={`Man and Van Prices in ${b.name}`} />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
             Our man and van rates are published in full, charged by the hour with a two-hour minimum,

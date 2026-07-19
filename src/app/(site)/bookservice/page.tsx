@@ -64,7 +64,7 @@ export default async function BookAServicePage() {
       />
 
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <p className="mb-8 text-base leading-relaxed text-brand-charcoal/85">
             Please fill the form below and a member of our sales team will contact you as soon as
             possible. Fields marked with <span className="font-semibold text-brand-red">*</span>{" "}

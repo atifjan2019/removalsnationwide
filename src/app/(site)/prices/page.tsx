@@ -123,7 +123,7 @@ export default async function PricesPage() {
 
       {/* Intro */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div className="space-y-4 text-base leading-relaxed text-brand-charcoal/85">
             <p>
               Every removal is different and no two moves are the same. That is why pricing a removal
@@ -180,7 +180,7 @@ export default async function PricesPage() {
 
       {/* Packing materials */}
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Supplies" title="Price List for Packing Materials" />
           <PricingTable columns={packingColumns} rows={packingRows} className="mt-12" />
           <p className="mt-4 text-sm leading-relaxed text-brand-charcoal/70">
@@ -196,7 +196,7 @@ export default async function PricesPage() {
 
       {/* Crate hire options */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Crate hire" title="London Crate Hire Options" />
           <PricingTable columns={crateHireColumns} rows={crateHireRows} className="mt-12" />
         </div>
@@ -204,7 +204,7 @@ export default async function PricesPage() {
 
       {/* Crate hire per delivery / collection */}
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Crate hire" title="London Crate Hire Per Delivery or Collection" />
           <PricingTable columns={crateDeliveryColumns} rows={crateDeliveryRows} className="mt-12" />
           <p className="mt-6 text-sm leading-relaxed text-brand-charcoal/70">
@@ -221,7 +221,7 @@ export default async function PricesPage() {
 
       {/* Packing, storage and full-move prices */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="More services" title="Packing, Storage and Full Moves" />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">

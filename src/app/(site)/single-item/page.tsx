@@ -592,7 +592,7 @@ export default async function SingleItemPage() {
 
       {/* ── S5: Single Item Delivery Prices ──────────────────────────── */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Transparent pricing" title="Single Item Delivery Prices" />
           <div
             className="mt-10 rounded-2xl border-2 border-brand-red bg-brand-sand p-8 shadow-md"

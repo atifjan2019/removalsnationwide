@@ -784,7 +784,7 @@ export default async function LondonStoragePage() {
 
       {/* ── S9: Cost ─────────────────────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal>
             <SectionHeading
               align="left"

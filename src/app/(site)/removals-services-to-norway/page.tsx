@@ -396,7 +396,7 @@ export default async function RemovalsToNorwayPage() {
 
       {/* ── S3: Trade carrier signal ──────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <div
             data-reveal
             className="rounded-2xl border-2 border-brand-red bg-white px-8 py-10 text-center shadow-sm sm:px-12 sm:py-14"

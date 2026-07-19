@@ -4,7 +4,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export default function RightChoice() {
   return (
     <section className="bg-white py-20">
-      <div className="mx-auto max-w-4xl px-4">
+      <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           align="left"
           eyebrow="Why Removals Nationwide"

@@ -139,9 +139,6 @@ export default function CostSection() {
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/bookservice" variant="red" size="lg">
-            Removal Calculator
-          </Button>
           <Button href="/bookservice#quick-quote" variant="navy" size="lg">
             Get a Free Survey Quote
           </Button>

@@ -528,7 +528,7 @@ export default async function CleaningServicesPage() {
 
       {/* ── S4: End of Tenancy and Move-Out Cleaning ─────────────────── */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Highest-intent service"
             title="End of Tenancy and Move-Out Cleaning"

@@ -552,7 +552,7 @@ export default async function CrateHirePage() {
 
       {/* ── S5: Crate Hire Prices ────────────────────────────────────── */}
       <section className="bg-white py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Transparent pricing" title="Crate Hire Prices" />
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-brand-charcoal/70">
             All prices are plus VAT at 20%. Prices were confirmed on the live site and are subject to
@@ -827,7 +827,7 @@ export default async function CrateHirePage() {
 
       {/* ── S10: Combine With Your Move ──────────────────────────────── */}
       <section className="bg-brand-navy py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center" data-reveal>
+        <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
             Better together
           </span>

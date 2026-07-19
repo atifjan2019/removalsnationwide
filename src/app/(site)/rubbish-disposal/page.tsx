@@ -534,7 +534,7 @@ export default async function RubbishDisposalPage() {
 
       {/* ── S6: Additional Charges ───────────────────────────────────── */}
       <section className="bg-brand-grey py-20">
-        <div className="mx-auto max-w-4xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Add-ons" title="Additional Charges" />
           <div data-reveal className="mt-10">
             <PricingTable columns={chargeColumns} rows={chargeRows} />
@@ -785,7 +785,7 @@ export default async function RubbishDisposalPage() {
 
       {/* ── S11: Same-Day and Out-of-Hours ───────────────────────────── */}
       <section className="bg-brand-navy py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center" data-reveal>
+        <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <span className="inline-block rounded-full bg-brand-red/20 px-4 py-1 text-xs font-bold uppercase tracking-widest text-brand-red">
             Flexible scheduling
           </span>

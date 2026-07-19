@@ -30,9 +30,6 @@ export default function FinalCtaSection({
           <Button href="/bookservice#quick-quote" variant="red" size="lg">
             Get a Free Quote
           </Button>
-          <Button href="/bookservice" variant="outline-light" size="lg">
-            Removal Calculator
-          </Button>
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-white/70">
