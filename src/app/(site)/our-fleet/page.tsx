@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Link from "next/link";
 import { buildMetadata, breadcrumbLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -75,7 +76,8 @@ const fleetBreadcrumb = breadcrumbLd([
   { label: "Our Fleet", href: "/our-fleet" },
 ]);
 
-export default function OurFleetPage() {
+export default async function OurFleetPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={fleetSchema} />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -20,14 +21,14 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("removals-to-norway");
 
-/* ── Service Standards ────────────────────────────────────────────────── */
+/* ── Service Highlights ────────────────────────────────────────────────── */
 
-const norwayService Standards = [
+const norwayServiceStandards = [
   { name: "Fully insured removals" },
   { name: "Vetted moving crews" },
   { name: "International moving experience" },
   { name: "Independent dispute resolution" },
-  { name: "Clear written quotations Approved Mover" },
+  { name: "Clear written quotations" },
   { name: "Customer-reviewed service" },
 ];
 
@@ -181,7 +182,8 @@ const norwayOfferSchema = {
 
 /* ── Page ────────────────────────────────────────────────────────────── */
 
-export default function RemovalsToNorwayPage() {
+export default async function RemovalsToNorwayPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("removals-to-norway")} />
@@ -247,12 +249,12 @@ export default function RemovalsToNorwayPage() {
                   Book a Service
                 </Button>
                 <Button
-                  href="tel:+442072052525"
+                  href={phones.london.href}
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  020 7205 2525
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -296,10 +298,10 @@ export default function RemovalsToNorwayPage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {norwayService Standards.map(({ name }) => (
+                  {norwayServiceStandards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -418,8 +420,8 @@ export default function RemovalsToNorwayPage() {
               <Button href="/bookservice#quick-quote" variant="red" size="md">
                 Quick Quote
               </Button>
-              <Button href="tel:+442072052525" variant="navy" size="md">
-                020 7205 2525
+              <Button href={phones.london.href} variant="navy" size="md">
+                {phones.london.label}
               </Button>
             </div>
           </div>
@@ -828,12 +830,12 @@ export default function RemovalsToNorwayPage() {
               Book a Service
             </Button>
             <Button
-              href="tel:+442072052525"
+              href={phones.london.href}
               variant="outline-light"
               size="lg"
               className="w-full sm:w-auto"
             >
-              020 7205 2525
+              {phones.london.label}
             </Button>
           </div>
           <p className="mt-6 text-sm text-white/50">

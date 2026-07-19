@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
@@ -178,7 +179,7 @@ const howToSchema = {
 
 /* ─────────────── Section 9: Trust ─────────────── */
 
-const service standards = [
+const serviceStandards = [
   {
     name: "Fully insured removals",
     signal: "Industry standards body with a formal complaints and arbitration process.",
@@ -192,7 +193,7 @@ const service standards = [
     signal: "Independent dispute resolution scheme for the furniture and removals sector.",
   },
   {
-    name: "Clear written quotations Approved Mover",
+    name: "Clear written quotations",
     signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
@@ -333,7 +334,8 @@ const manVanBreadcrumb = breadcrumbLd([
 
 /* ═══════════════════════════════════════════════════════════ */
 
-export default function ManAndVanPage() {
+export default async function ManAndVanPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={manAndVanSchema} />
@@ -397,12 +399,12 @@ export default function ManAndVanPage() {
                   Book a Service
                 </Button>
                 <Button
-                  href="tel:+442072052525"
+                  href={phones.london.href}
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  020 7205 2525
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -446,10 +448,10 @@ export default function ManAndVanPage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {service standards.map(({ name }) => (
+                  {serviceStandards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -466,10 +468,10 @@ export default function ManAndVanPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/company information"
+                    href="/about-us"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View company information →
+                    About us →
                   </Link>
                 </div>
               </div>
@@ -747,10 +749,10 @@ export default function ManAndVanPage() {
             <p>
               For the fastest response on a same-day or short-notice request:{" "}
               <a
-                href="tel:+442072052525"
+                href={phones.london.href}
                 className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
               >
-                call 020 7205 2525
+                call {phones.london.label}
               </a>{" "}
               directly. The quick quote form is also available for urgent requests and we aim to
               call back within the hour. Planning ahead is ideal, but short-notice slots are held each day for urgent requests.
@@ -1005,7 +1007,7 @@ export default function ManAndVanPage() {
         ]}
       />
 
-      {/* ── S9: Insurance and service standards ── */}
+      {/* ── S9: Insurance and service highlights ── */}
       <section id="trust" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
@@ -1015,12 +1017,12 @@ export default function ManAndVanPage() {
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a man and van company means trusting someone with your belongings and your home.
-            The service standards below are independently verified and renewed annually. Each one
+            The service highlights below are independently verified and renewed annually. Each one
             carries a real complaints or claims process, not just a badge.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {service standards.map(({ name, signal }, i) => (
+            {serviceStandards.map(({ name, signal }, i) => (
               <div
                 key={name}
                 data-reveal
@@ -1062,8 +1064,8 @@ export default function ManAndVanPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/company information" variant="red" size="md">
-              View Company Information
+            <Button href="/about-us" variant="red" size="md">
+              About Us
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
               About Removals Nationwide

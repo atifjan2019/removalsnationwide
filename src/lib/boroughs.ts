@@ -2,13 +2,13 @@
  * Borough page data model and registry.
  *
  * The BoroughPage template keeps the hero, price table, services list,
- * service standard block, schema shape and FAQ shape identical for every borough.
+ * service approach block, schema shape and FAQ shape identical for every borough.
  * Only the researched local data below changes per borough. To clone a new
  * borough, copy one of these objects, replace every local fact with that
  * borough's real data, and add its slug to the `boroughs` registry. The
  * /areas/[slug] route, sitemap and areas hub pick it up automatically.
  *
- * Confirmed company data (rates, the six service standards, NAP, services) is
+ * Confirmed company data (rates, the six service highlights, NAP, services) is
  * identical everywhere and lives in the template, not here.
  */
 
@@ -50,7 +50,7 @@ const HERO_IMAGE =
 
 const heroAlt = (n: string) => `Removals Nationwide man and van team loading a van in ${n}, London`;
 const introLine = (n: string) =>
-  `A industry and professional experienced removals company that genuinely serves and knows ${n}.`;
+  `A experienced and fully insured removals company that genuinely serves and knows ${n}.`;
 const VALUE_LINE =
   "Published hourly rates, insurance included, your own accountable crew, and the parking and access handled for you.";
 const localPara1 = (n: string) =>
@@ -2509,7 +2509,7 @@ export const cityOfLondon: Borough = {
   heroImage: HERO_IMAGE,
   heroImageAlt: heroAlt("the City of London"),
   introLine:
-    "A industry and professional experienced removals company that genuinely serves and knows the City of London, for office relocations and the residential estates alike.",
+    "A experienced and fully insured removals company that genuinely serves and knows the City of London, for office relocations and the residential estates alike.",
   valueLine: VALUE_LINE,
   localBody: [
     "Removals Nationwide runs office and home removals across the whole of the City of London, 7 days a week. We are a fully experienced and insured London removals company, not an inexperienced local operator and not a booking marketplace, and we plan City moves around building access, goods lifts and out-of-hours timing, with one point of contact from quote to completion.",

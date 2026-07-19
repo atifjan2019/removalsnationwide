@@ -1,4 +1,5 @@
 import { PhoneIcon } from "@/components/ui/icons";
+import { DEFAULT_RESOLVED, type Phone } from "@/lib/settings-shared";
 
 /**
  * Mid-page conversion band. One of the three bold moments.
@@ -8,7 +9,13 @@ import { PhoneIcon } from "@/components/ui/icons";
  * black hover state, keeping the site's three-colour palette consistent. Focus
  * outline for keyboard users.
  */
-export default function MidPageCTA({ borough }: { borough: string }) {
+export default function MidPageCTA({
+  borough,
+  phone = DEFAULT_RESOLVED.phones.london,
+}: {
+  borough: string;
+  phone?: Phone;
+}) {
   return (
     <section
       aria-label={`Get a free removals quote in ${borough}`}
@@ -28,11 +35,11 @@ export default function MidPageCTA({ borough }: { borough: string }) {
           Get a Free Quote
         </a>
         <a
-          href="tel:+442072052525"
+          href={phone.href}
           className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-white/70 px-8 font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
         >
           <PhoneIcon className="h-4 w-4" />
-          Call 020 7205 2525
+          Call {phone.label}
         </a>
       </div>
     </section>

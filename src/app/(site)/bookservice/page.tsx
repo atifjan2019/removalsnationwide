@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
@@ -26,7 +27,7 @@ const nextSteps = [
 ];
 
 const reassurance = [
-  "industry and professional experienced",
+  "experienced and fully insured",
   "Fully insured, cover included",
   "7 days a week",
   "No hidden fees",
@@ -49,7 +50,8 @@ const bookPageSchema = {
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
-export default function BookAServicePage() {
+export default async function BookAServicePage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={bookPageSchema} />
@@ -123,18 +125,18 @@ export default function BookAServicePage() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="tel:+442072052525"
+              href={phones.london.href}
               className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-brand-red px-6 py-3 text-base font-bold text-white transition hover:bg-white hover:text-brand-navy"
             >
               <PhoneIcon className="h-5 w-5" />
-              020 7205 2525
+              {phones.london.label}
             </a>
             <a
-              href="tel:+448000467877"
+              href={phones.freephone.href}
               className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-white/30 px-6 py-3 text-base font-bold text-white transition hover:bg-white/10"
             >
               <PhoneIcon className="h-5 w-5" />
-              0800 046 7877
+              {phones.freephone.label}
             </a>
           </div>
         </div>

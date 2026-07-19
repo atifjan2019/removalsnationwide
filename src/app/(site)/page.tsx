@@ -86,7 +86,7 @@ export default async function HomePage() {
       {/* Stats — social proof */}
       <StatsCounter />
 
-      {/* 16. Reviews, Insurance and Service Standards */}
+      {/* 16. Reviews, Insurance and Service Highlights */}
       <ReviewsSection />
 
       {/* 17. Our Removals Process */}

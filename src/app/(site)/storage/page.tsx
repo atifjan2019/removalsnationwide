@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import {
   buildMetadata,
   serviceH1,
@@ -48,8 +49,8 @@ const securityTiles = [
     body: "Your belongings are fully insured throughout their time in our facility, from the moment we collect through to redelivery at your door.",
   },
   {
-    title: "professional Experienced, industry and international moving Members",
-    body: "Removals Nationwide is a certified member of the National Guild of Removers and Storers and holds service standard with industry, international moving, Customer-reviewed service and Independent dispute resolution.",
+    title: "Experienced Storage and Moving Team",
+    body: "Removals Nationwide is a experienced with the professional moving teams and holds service approach with industry, international moving, Customer-reviewed service and Independent dispute resolution.",
   },
 ];
 
@@ -140,8 +141,8 @@ const whyChoose: CheckItem[] = [
     text: "Our Purfleet facility is staffed around the clock with modern CCTV covering the entire compound.",
   },
   {
-    lead: "professional, industry and international moving experienced",
-    text: "Certified member of the National Guild of Removers and Storers, the British Association of Removers and the International Association of Movers.",
+    lead: "experienced in storage and removals",
+    text: "Experienced with the professional moving teams, the moving industry and the international moving partners.",
   },
   {
     lead: "Combine removals and storage in one booking",
@@ -252,12 +253,12 @@ const londonBoroughs = [
   "Westminster",
 ];
 
-const storageService Standards = [
+const storageServiceStandards = [
   { name: "Fully insured removals" },
   { name: "Vetted moving crews" },
   { name: "International moving experience" },
   { name: "Independent dispute resolution" },
-  { name: "Clear written quotations Approved Mover" },
+  { name: "Clear written quotations" },
   { name: "Customer-reviewed service" },
 ];
 
@@ -285,7 +286,8 @@ const orgSchema = {
 /* Page                                                                 */
 /* ------------------------------------------------------------------ */
 
-export default function LondonStoragePage() {
+export default async function LondonStoragePage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("london-storage")} />
@@ -348,12 +350,12 @@ export default function LondonStoragePage() {
                   Book a Service
                 </Button>
                 <Button
-                  href="tel:+442072052525"
+                  href={phones.london.href}
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  020 7205 2525
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -397,10 +399,10 @@ export default function LondonStoragePage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {storageService Standards.map(({ name }) => (
+                  {storageServiceStandards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -417,10 +419,10 @@ export default function LondonStoragePage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/company information"
+                    href="/about-us"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View company information →
+                    About us →
                   </Link>
                 </div>
               </div>
@@ -488,7 +490,7 @@ export default function LondonStoragePage() {
                 In 2026, more London customers book managed, collect-and-store storage than ever
                 before. The model is a genuine improvement over the traditional drive-up unit because
                 you do not arrange transport, navigate a storage park or carry furniture up a ramp.
-                We handle the physical work. As a certified member of the professional, we adhere to strict
+                We handle the physical work. As a experienced with the professional, we adhere to strict
                 procedures to ensure your goods are in qualified hands.
               </p>
             </div>
@@ -935,7 +937,7 @@ export default function LondonStoragePage() {
                     Phone
                   </dt>
                   <dd className="mt-1 text-brand-charcoal">
-                    020 7205 2525 &nbsp;&middot;&nbsp; 0800 046 7877
+                    {phones.london.label} &nbsp;&middot;&nbsp; {phones.freephone.label}
                   </dd>
                 </div>
                 <div>
@@ -1059,18 +1061,18 @@ export default function LondonStoragePage() {
           </div>
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
-              href="tel:+442072052525"
+              href={phones.london.href}
               className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
               <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              020 7205 2525
+              {phones.london.label}
             </a>
             <a
-              href="tel:+448000467877"
+              href={phones.freephone.href}
               className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
             >
               <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              0800 046 7877 (freephone)
+              {phones.freephone.label} (freephone)
             </a>
           </div>
           <p className="mt-6 text-sm text-white/50">

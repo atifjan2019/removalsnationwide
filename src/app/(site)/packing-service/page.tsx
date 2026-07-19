@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
@@ -52,11 +53,11 @@ const processSteps = [
   },
 ];
 
-const heroService Standards = [
+const heroServiceStandards = [
   "Fully insured removals",
   "Vetted moving crews",
   "Independent dispute resolution",
-  "Clear written quotations Approved Mover",
+  "Clear written quotations",
   "Customer-reviewed service",
   "International moving experience",
 ];
@@ -302,7 +303,8 @@ const packingBreadcrumb = breadcrumbLd([
 
 /* ── Page component ──────────────────────────────────────────────────────── */
 
-export default function PackingServicePage() {
+export default async function PackingServicePage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={packingServiceSchema} />
@@ -350,7 +352,7 @@ export default function PackingServicePage() {
                 Book a Service
               </Button>
               <Button href="tel:02072052525" variant="outline" size="lg">
-                020 7205 2525
+                {phones.london.label}
               </Button>
             </div>
 
@@ -375,10 +377,10 @@ export default function PackingServicePage() {
             </div>
             <div className="bg-brand-grey p-6">
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                Trusted and certified by
+                Service highlights
               </p>
               <ul className="space-y-2">
-                {heroService Standards.map((name) => (
+                {heroServiceStandards.map((name) => (
                   <li key={name} className="flex items-center gap-2">
                     <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                     <span className="text-sm text-brand-navy/85">{name}</span>
@@ -395,10 +397,10 @@ export default function PackingServicePage() {
                   Trustpilot reviews →
                 </Link>
                 <Link
-                  href="/company information"
+                  href="/about-us"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
-                  View company information →
+                  About us →
                 </Link>
               </div>
             </div>
@@ -803,14 +805,14 @@ export default function PackingServicePage() {
         </div>
       </section>
 
-      {/* ── S11: Insurance, Service Standards and Recycling ────────────────── */}
+      {/* ── S11: Insurance, Service Highlights and Recycling ────────────────── */}
       <section className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <div data-reveal className="mx-auto max-w-3xl text-center">
             <SectionHeading
               tone="light"
-              eyebrow="Covered and certified"
-              title="Insurance, Service Standards and Recycling"
+              eyebrow="Covered and trained"
+              title="Insurance, Service Highlights and Recycling"
             />
             <p className="mt-6 text-base leading-relaxed text-white/80">
               All items handled by Removals Nationwide are covered by goods-in-transit and public liability
@@ -826,7 +828,7 @@ export default function PackingServicePage() {
               className="rounded-2xl border border-white/10 bg-white/5 p-6"
             >
               <h3 className="text-sm font-bold uppercase tracking-widest text-brand-red">
-                Service Standards
+                Service Highlights
               </h3>
               <ul className="mt-4 space-y-2">
                 {[
@@ -834,7 +836,7 @@ export default function PackingServicePage() {
                   "Vetted moving crews",
                   "International moving experience",
                   "Independent dispute resolution",
-                  "Clear written quotations Approved Mover",
+                  "Clear written quotations",
                   "Customer-reviewed service",
                 ].map((name) => (
                   <li key={name} className="flex items-start gap-2 text-sm leading-relaxed text-white/80">
@@ -879,7 +881,7 @@ export default function PackingServicePage() {
                 Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/80">
-                020 7205 2525 &nbsp;·&nbsp; 0800 046 7877
+                {phones.london.label} &nbsp;·&nbsp; {phones.freephone.label}
               </p>
             </div>
           </div>

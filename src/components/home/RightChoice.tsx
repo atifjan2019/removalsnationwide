@@ -44,12 +44,12 @@ export default function RightChoice() {
             <h3 className="text-xl font-bold text-brand-navy">On Top of Our Game</h3>
             <p className="mt-3 text-base leading-relaxed text-brand-charcoal/85">
               We constantly try to better our company policies and the way of delivering the
-              services. That is why Removals Nationwide undergoes periodic checks and certification
+              services. That is why Removals Nationwide undergoes periodic checks and training
               procedures. All of our movers attend briefings and customer services training. We are
               recognised as a safe and reliable operator by industry, professional and Customer-reviewed service. Removals Nationwide
-              is also a member of the international moving (International Association of Movers) and The Furniture
+              is also a member of the international moving (international moving partners) and The Furniture
               independent review, and a registered Environment Agency waste carrier. See the full list on our
-              Company Information page.
+              About Us page.
             </p>
           </div>
         </div>

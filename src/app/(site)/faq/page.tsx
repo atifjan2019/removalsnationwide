@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Link from "next/link";
 import { buildMetadata, breadcrumbLd, faqLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -115,7 +116,8 @@ const faqBreadcrumb = breadcrumbLd([
   { label: "FAQ", href: "/faq" },
 ]);
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={faqSchema} />
@@ -170,7 +172,7 @@ export default function FaqPage() {
             Still Have a Question?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
-            Speak to a move coordinator 7 days a week. Call 020 7205 2525 or 0800 046 7877, or send
+            Speak to a move coordinator 7 days a week. Call {phones.london.label} or {phones.freephone.label}, or send
             your details for a free no-obligation quote.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
@@ -180,8 +182,8 @@ export default function FaqPage() {
             <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
               Book a Service
             </Button>
-            <Button href="tel:+442072052525" variant="outline-light" size="lg" className="w-full sm:w-auto">
-              020 7205 2525
+            <Button href={phones.london.href} variant="outline-light" size="lg" className="w-full sm:w-auto">
+              {phones.london.label}
             </Button>
           </div>
         </div>

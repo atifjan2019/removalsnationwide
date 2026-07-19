@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Link from "next/link";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -107,7 +108,8 @@ const pricesBreadcrumb = breadcrumbLd([
   { label: "Prices", href: "/prices" },
 ]);
 
-export default function PricesPage() {
+export default async function PricesPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={pricesSchema} />
@@ -153,7 +155,7 @@ export default function PricesPage() {
               and reassembled.
             </p>
             <p>
-              If you are planning on moving everything then we suggest sending one of our certified
+              If you are planning on moving everything then we suggest sending one of our trained
               and experienced surveyors for a free no obligation quotation at your property or office
               in a convenient day and time.
             </p>

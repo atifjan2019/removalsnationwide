@@ -2,8 +2,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PhoneIcon } from "@/components/ui/icons";
+import { DEFAULT_RESOLVED, type Phone } from "@/lib/settings-shared";
 
 interface Props {
+  /** Configurable phone; defaults keep existing call sites working. */
+  phone?: Phone;
   /** ID of the element to observe. Bar slides up when this element leaves the viewport.
    *  When omitted the bar is always visible. */
   sentinelId?: string;
@@ -15,7 +18,7 @@ interface Props {
  * When sentinelId is omitted the bar is always visible.
  * Respects prefers-reduced-motion.
  */
-export default function StickyMobileBar({ sentinelId }: Props) {
+export default function StickyMobileBar({ sentinelId, phone = DEFAULT_RESOLVED.phones.london }: Props) {
   const [visible, setVisible] = useState(!sentinelId);
 
   useEffect(() => {
@@ -49,8 +52,8 @@ export default function StickyMobileBar({ sentinelId }: Props) {
           Get a Free Quote
         </Link>
         <a
-          href="tel:+442072052525"
-          aria-label="Call 020 7205 2525"
+          href={phone.href}
+          aria-label={`Call ${phone.label}`}
           className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-md border border-white/30 text-white transition hover:bg-white/10 active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <PhoneIcon className="h-5 w-5" />

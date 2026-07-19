@@ -39,7 +39,7 @@ export default function HeroTrustBar() {
   return (
     <div
       className="border-b border-black/6 bg-white py-3 sm:py-4"
-      aria-label="Trust and service standard highlights"
+      aria-label="Trust and service approach highlights"
     >
       <div className="mx-auto max-w-[88rem] px-6">
         <ul className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 md:gap-x-10">

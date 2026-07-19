@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,14 +23,14 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("rubbish-disposal");
 
-/* ── Service Standards ────────────────────────────────────────────────── */
+/* ── Service Highlights ────────────────────────────────────────────────── */
 
-const rubbishService Standards = [
+const rubbishServiceStandards = [
   { name: "Fully insured removals" },
   { name: "Vetted moving crews" },
   { name: "International moving experience" },
   { name: "Independent dispute resolution" },
-  { name: "Clear written quotations Approved Mover" },
+  { name: "Clear written quotations" },
   { name: "Customer-reviewed service" },
 ];
 
@@ -222,7 +223,8 @@ const orgSchema = {
 
 /* ── Page ───────────────────────────────────────────────────────────── */
 
-export default function RubbishDisposalPage() {
+export default async function RubbishDisposalPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("rubbish-disposal")} />
@@ -274,8 +276,8 @@ export default function RubbishDisposalPage() {
                 <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
                   Book a Service
                 </Button>
-                <Button href="tel:+442072052525" variant="outline" size="lg" className="w-full sm:w-auto">
-                  020 7205 2525
+                <Button href={phones.london.href} variant="outline" size="lg" className="w-full sm:w-auto">
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -309,10 +311,10 @@ export default function RubbishDisposalPage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {rubbishService Standards.map(({ name }) => (
+                  {rubbishServiceStandards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -329,10 +331,10 @@ export default function RubbishDisposalPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/company information"
+                    href="/about-us"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View company information →
+                    About us →
                   </Link>
                 </div>
               </div>
@@ -804,8 +806,8 @@ export default function RubbishDisposalPage() {
             <Button href="/bookservice#quick-quote" variant="red" size="lg" className="w-full sm:w-auto">
               Quick Quote
             </Button>
-            <Button href="tel:+442072052525" variant="outline-light" size="lg" className="w-full sm:w-auto">
-              020 7205 2525
+            <Button href={phones.london.href} variant="outline-light" size="lg" className="w-full sm:w-auto">
+              {phones.london.label}
             </Button>
           </div>
         </div>
@@ -910,17 +912,17 @@ export default function RubbishDisposalPage() {
             </Button>
           </div>
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
-            <a href="tel:+442072052525" className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red">
+            <a href={phones.london.href} className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red">
               <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              020 7205 2525
+              {phones.london.label}
             </a>
-            <a href="tel:+448000467877" className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red">
+            <a href={phones.freephone.href} className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red">
               <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              0800 046 7877 (freephone)
+              {phones.freephone.label} (freephone)
             </a>
           </div>
           <p className="mt-6 text-sm text-white/50">
-            industry and professional experienced &nbsp;&middot;&nbsp; Licensed waste carrier &nbsp;&middot;&nbsp;
+            experienced and fully insured &nbsp;&middot;&nbsp; Licensed waste carrier &nbsp;&middot;&nbsp;
             Registered in England No. 6874216
           </p>
           <p className="mt-2 text-xs text-white/40">

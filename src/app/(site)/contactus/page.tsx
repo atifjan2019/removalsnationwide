@@ -103,7 +103,7 @@ export default async function ContactPage() {
 
               <div className="mt-8 border-t border-white/15 pt-6">
                 <p className="text-sm leading-relaxed text-white/80">
-                  We adhere to the British Association of Removers Alternative Dispute Resolution
+                  We adhere to the moving industry Alternative Dispute Resolution
                   Scheme which is independently operated by:
                 </p>
                 <a

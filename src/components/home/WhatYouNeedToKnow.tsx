@@ -6,7 +6,7 @@ const items = [
   "Full Nationwide Coverage",
   "Affordable Rates",
   "Fully insured removal services",
-  "industry and professional experienced, independent review approved",
+  "experienced and fully insured, independent review approved",
   "Free on-site property surveys",
   "24/7 CCTV monitored storage facilities",
   "You don't have to be present at the site",

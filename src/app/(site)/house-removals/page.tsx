@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { getResolvedSettings } from "@/lib/settings";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -211,11 +212,11 @@ const priceFactors: CheckItem[] = [
 
 /* ─────────────── Section 10: Why choose ─────────────── */
 
-const service standards = [
+const serviceStandards = [
   "Fully insured removals",
   "Vetted moving crews",
   "Independent dispute resolution",
-  "Clear written quotations Approved Mover",
+  "Clear written quotations",
   "Customer-reviewed service",
   "International moving experience",
 ];
@@ -245,7 +246,7 @@ const restrictedItems: CheckItem[] = [
   },
   {
     lead: "Valuables and important documents",
-    text: "Jewellery, cash, passports, birth company information and irreplaceable items should travel with you rather than in the removal vehicle.",
+    text: "Jewellery, cash, passports, birth records and irreplaceable items should travel with you rather than in the removal vehicle.",
   },
 ];
 
@@ -349,7 +350,8 @@ const faqs: FaqItem[] = [
 
 /* ═══════════════════════════════════════════════════════════ */
 
-export default function HouseRemovalsPage() {
+export default async function HouseRemovalsPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("house-removals")} />
@@ -405,12 +407,12 @@ export default function HouseRemovalsPage() {
                   Estimate My Move
                 </Button>
                 <Button
-                  href="tel:+442072052525"
+                  href={phones.london.href}
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  020 7205 2525
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -445,10 +447,10 @@ export default function HouseRemovalsPage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {service standards.map((name) => (
+                  {serviceStandards.map((name) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -465,10 +467,10 @@ export default function HouseRemovalsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/company information"
+                    href="/about-us"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View company information →
+                    About us →
                   </Link>
                 </div>
               </div>
@@ -1007,12 +1009,12 @@ export default function HouseRemovalsPage() {
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
             Choosing a removal company means trusting someone with everything you own. The
-            service standards below are independently verified and renewed annually. Each one carries
+            service highlights below are independently verified and renewed annually. Each one carries
             a real complaints or claims process.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {service standards.map((name) => (
+            {serviceStandards.map((name) => (
               <div
                 key={name}
                 className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/8 p-5"
@@ -1047,8 +1049,8 @@ export default function HouseRemovalsPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/company information" variant="red" size="md">
-              View Company Information
+            <Button href="/about-us" variant="red" size="md">
+              About Us
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
               About Removals Nationwide

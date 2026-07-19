@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -31,14 +32,14 @@ import { CheckIcon, StarIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("international-removals");
 
-/* ── Hero service standards ───────────────────────────────────────────── */
+/* ── Hero service highlights ───────────────────────────────────────────── */
 
-const internationalService Standards = [
+const internationalServiceStandards = [
   { name: "Fully insured removals" },
   { name: "Vetted moving crews" },
   { name: "International moving experience" },
   { name: "Independent dispute resolution" },
-  { name: "Clear written quotations Approved Mover" },
+  { name: "Clear written quotations" },
   { name: "Customer-reviewed service" },
 ];
 
@@ -55,7 +56,7 @@ const trustTiles = [
   },
   {
     title: "international moving Experienced",
-    body: "Certified member of the International Association of Movers. The international moving sets the professional standards for international moving companies worldwide.",
+    body: "Experienced with the international moving partners. The international moving sets the professional standards for international moving companies worldwide.",
   },
   {
     title: "Fully Insured, Open Cover Available",
@@ -188,8 +189,8 @@ const whyChoose: CheckItem[] = [
     text: "Bi-weekly service to Poland, Lithuania, Latvia and Estonia. Partnered with major Estonian movers for local support.",
   },
   {
-    lead: "international moving experienced",
-    text: "Certified member of the International Association of Movers. The international standard for professional moving companies.",
+    lead: "experienced in international moving",
+    text: "Experienced with the international moving partners. The international standard for professional moving companies.",
   },
   {
     lead: "Assigned coordinator from day one",
@@ -292,7 +293,8 @@ const orgSchema = {
 
 /* ── Page ──────────────────────────────────────────────────────────── */
 
-export default function InternationalRemovalsPage() {
+export default async function InternationalRemovalsPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("international-removals")} />
@@ -334,7 +336,7 @@ export default function InternationalRemovalsPage() {
               </p>
               <p className="hero-anim-sub mt-4 max-w-2xl text-base leading-relaxed text-brand-charcoal/80">
                 Weekly road routes to Scandinavia, Norway, Germany, Switzerland, the Benelux and
-                the Baltics. Worldwide by sea and air via our partner network. international moving experienced,
+                the Baltics. Worldwide by sea and air via our partner network. experienced in international moving,
                 door to door, fully insured.
               </p>
 
@@ -356,12 +358,12 @@ export default function InternationalRemovalsPage() {
                   Book a Service
                 </Button>
                 <Button
-                  href="tel:+442072052525"
+                  href={phones.london.href}
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  020 7205 2525
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -373,7 +375,7 @@ export default function InternationalRemovalsPage() {
                 {[
                   "Weekly EU routes",
                   "Door to door",
-                  "international moving experienced",
+                  "experienced in international moving",
                   "Fully insured",
                 ].map((label) => (
                   <span
@@ -405,10 +407,10 @@ export default function InternationalRemovalsPage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {internationalService Standards.map(({ name }) => (
+                  {internationalServiceStandards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -425,10 +427,10 @@ export default function InternationalRemovalsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/company information"
+                    href="/about-us"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View company information →
+                    About us →
                   </Link>
                 </div>
               </div>
@@ -491,8 +493,8 @@ export default function InternationalRemovalsPage() {
                 logistics complexity all carry real risk when managed without professional oversight.
               </p>
               <p>
-                Removals Nationwide is a certified member of the International moving experience,
-                the international standard body for professional moving companies. Service Standard
+                Removals Nationwide is a experienced with the International moving experience,
+                the international standard body for professional moving companies. Service Highlight
                 requires documented procedures, insurance and trained staff on every international
                 job. Our{" "}
                 <Link
@@ -1013,22 +1015,22 @@ export default function InternationalRemovalsPage() {
           </div>
           <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
             <a
-              href="tel:+442072052525"
+              href={phones.london.href}
               className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-red"
             >
               <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              020 7205 2525
+              {phones.london.label}
             </a>
             <a
-              href="tel:+448000467877"
+              href={phones.freephone.href}
               className="flex items-center gap-2 text-base font-bold text-brand-navy transition hover:text-brand-red"
             >
               <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              0800 046 7877 (freephone)
+              {phones.freephone.label} (freephone)
             </a>
           </div>
           <p className="mt-6 text-sm text-brand-charcoal/50">
-            international moving experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Registered in England No. 6874216
+            experienced in international moving &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Registered in England No. 6874216
           </p>
         </div>
       </section>

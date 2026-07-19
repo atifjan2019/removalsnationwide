@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Link from "next/link";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -51,7 +52,8 @@ const savings = [
   },
 ];
 
-export default function CurrentOffersPage() {
+export default async function CurrentOffersPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={offersPageSchema} />
@@ -129,8 +131,8 @@ export default function CurrentOffersPage() {
             <Button href="/bookservice" variant="outline-light" size="lg" className="w-full sm:w-auto">
               Book a Service
             </Button>
-            <Button href="tel:+442072052525" variant="outline-light" size="lg" className="w-full sm:w-auto">
-              020 7205 2525
+            <Button href={phones.london.href} variant="outline-light" size="lg" className="w-full sm:w-auto">
+              {phones.london.label}
             </Button>
           </div>
         </div>

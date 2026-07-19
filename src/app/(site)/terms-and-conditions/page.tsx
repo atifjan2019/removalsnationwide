@@ -169,7 +169,7 @@ Examples of the types of loss We might incur are: administration/back office cos
 
 ## 8. Payment
 
-8.1 Unless otherwise agreed by Us in writing, payment is required in full by cleared funds at the time of booking the services. In default of such payment We reserve the right to refuse to commence services until such payment is received. Such advance payments are protected under the industry Advanced Payment Guarantee Scheme, as detailed in the industry Code of Practice (T&Cs apply, please see https://bar.co.uk/apg)
+8.1 Unless otherwise agreed by Us in writing, payment is required in full by cleared funds at the time of booking the services. In default of such payment We reserve the right to refuse to commence services until such payment is received. Such advance payments are protected under the industry Advanced Payment Guarantee Scheme, as detailed in the industry Code of Practice (T&Cs apply, please see our written booking terms)
 
 8.2 In respect of all sums which are overdue to Us, You will be charged an administrative fee on all overdue balances which will not exceed £50.
 
@@ -361,7 +361,7 @@ If payments are up to date, We will not end this contract except by giving You 3
 
 ---
 
-_© Insurance Terms, Copyright of The British Association of Removers Limited 2025; these contract conditions for use only by firms having permission_
+_© Insurance Terms, Copyright of The moving industry Limited 2025; these contract conditions for use only by firms having permission_
 
 _By ordering Removals Nationwide' service by telephone, e-mail or Removals Nationwide' website the customer agrees to be bound by Removals Nationwide' Terms and Conditions._
 

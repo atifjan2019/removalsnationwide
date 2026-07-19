@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Link from "next/link";
 import BrandLogo from "@/components/layout/BrandLogo";
 
@@ -16,7 +17,8 @@ const services = [
   { label: "Areas We Cover", href: "/areas" },
 ];
 
-export default function NotFound() {
+export default async function NotFound() {
+  const { phones } = await getResolvedSettings();
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-brand-navy px-4 py-16 text-center text-white">
       <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
@@ -44,10 +46,10 @@ export default function NotFound() {
           Back to Home
         </Link>
         <a
-          href="tel:+442072052525"
+          href={phones.london.href}
           className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-white/30 px-6 py-3 text-sm font-bold text-white transition hover:bg-white/10"
         >
-          020 7205 2525
+          {phones.london.label}
         </a>
       </div>
 

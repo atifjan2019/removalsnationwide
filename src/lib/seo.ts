@@ -53,7 +53,7 @@ export const META: Record<string, MetaEntry> = {
   about: {
     title: "About Removals Nationwide | Your Trusted Moving Partner",
     description:
-      "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, industry and professional experienced, fully insured. Get to know the team behind your move.",
+      "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, experienced and fully insured, fully insured. Get to know the team behind your move.",
     path: "/about-us",
   },
   services: {
@@ -77,7 +77,7 @@ export const META: Record<string, MetaEntry> = {
   "international-removals": {
     title: "International Removals London | Europe & Worldwide | Removals Nationwide",
     description:
-      "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. international moving experienced, door to door, insured.",
+      "International removals from London to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. experienced in international moving, door to door, insured.",
     path: "/international-removals",
   },
   "london-storage": {
@@ -280,20 +280,6 @@ const BUSINESS_AREA_SERVED = [
   { "@type": "AdministrativeArea", name: "Westminster" },
 ];
 
-/** Confirmed live service standard set: exact six bodies, no CTSI, no FORS. */
-const BUSINESS_CREDENTIALS = [
-  "Fully insured removals",
-  "Vetted moving crews",
-  "International moving experience",
-  "Independent dispute resolution",
-  "Clear written quotations Approved Mover",
-  "Customer-reviewed service",
-].map((name) => ({
-  "@type": "EducationalOccupationalCredential",
-  credentialCategory: "certification",
-  name,
-}));
-
 /**
  * The single canonical #organization node, rendered site-wide via siteGraphLd().
  * All other graphs (services, articles) reference it by @id rather than
@@ -382,7 +368,6 @@ export function organizationLd(settings?: LdSettings) {
     },
     areaServed: BUSINESS_AREA_SERVED,
     sameAs,
-    hasCredential: BUSINESS_CREDENTIALS,
   };
 }
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +23,7 @@ const aboutPageSchema = {
   url: `${SITE_URL}/about-us`,
   name: "About Removals Nationwide",
   description:
-    "The story, founders, service standards and people behind Removals Nationwide, a decade-established, industry and professional experienced, fully insured London moving company.",
+    "The story, founders, service highlights and people behind Removals Nationwide, a decade-established, experienced and fully insured, fully insured London moving company.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   about: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
@@ -33,7 +34,8 @@ const aboutBreadcrumb = breadcrumbLd([
   { label: "About Us", href: "/about-us" },
 ]);
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={aboutPageSchema} />
@@ -68,11 +70,11 @@ export default function AboutPage() {
                 trade magazines.
               </p>
               <p>
-                Today the company is a proud member of industry (British Association of Removers) and the
-                professional (the National Guild of Removers and Storers). Removals Nationwide closely follows their
+                Today the company is a proud member of industry (moving industry) and the
+                professional (the professional moving teams). Removals Nationwide closely follows their
                 policies on customer service, insurance, safety and quality control.{" "}
-                <Link href="/company information" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
-                  View our company information and service standards
+                <Link href="/about-us" className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
+                  Read more about our company
                 </Link>{" "}
                 in full.
               </p>
@@ -204,8 +206,8 @@ export default function AboutPage() {
               <Button href="/bookservice" variant="navy" size="lg" className="w-full sm:w-auto">
                 Book a Service
               </Button>
-              <Button href="tel:+442072052525" variant="outline" size="lg" className="w-full sm:w-auto">
-                020 7205 2525
+              <Button href={phones.london.href} variant="outline" size="lg" className="w-full sm:w-auto">
+                {phones.london.label}
               </Button>
             </div>
           </div>

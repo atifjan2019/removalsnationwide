@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
 import Link from "next/link";
 import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
@@ -176,7 +177,7 @@ const costFactors: CheckItem[] = [
 
 /* ─────────────── Section 9: Trust ─────────────── */
 
-const service standards = [
+const serviceStandards = [
   {
     name: "Fully insured removals",
     signal: "Industry standards body with a formal complaints and arbitration process.",
@@ -190,7 +191,7 @@ const service standards = [
     signal: "Independent dispute resolution scheme for the furniture and removals sector.",
   },
   {
-    name: "Clear written quotations Approved Mover",
+    name: "Clear written quotations",
     signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
@@ -280,7 +281,7 @@ const faqs: FaqItem[] = [
   {
     question: "Are you insured and experienced for office moves?",
     answer:
-      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Removals Nationwide is a member of industry, professional, Independent dispute resolution, Clear written quotations, Customer-reviewed service and international moving. Company Information are available to view on the company information page.",
+      "Yes. Full commercial goods-in-transit insurance and public liability cover are included on every booking, with tailored increased limits available for high-value moves. Removals Nationwide is a member of industry, professional, Independent dispute resolution, Clear written quotations, Customer-reviewed service and international moving. Company Information are available to view on the About Us page.",
     answerAfter: "Request copies of any document before confirming your booking.",
   },
   {
@@ -292,11 +293,11 @@ const faqs: FaqItem[] = [
   {
     question: "What are red flags when hiring an office mover?",
     answer:
-      "Red flags include: no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no industry or professional membership, no on-site survey offered before quoting, and no named move coordinator for your job. Request all policies and service standard company information before signing any booking.",
+      "Red flags include: no written fixed-price quote, no goods-in-transit insurance confirmed in writing, no industry or professional membership, no on-site survey offered before quoting, and no named move coordinator for your job. Request all policies and service approach company information before signing any booking.",
     bullets: [
       "No written fixed-price quote: verbal estimates are not binding",
       "No proof of goods-in-transit insurance",
-      "No industry, professional or equivalent service standard",
+      "No industry, professional or equivalent service approach",
       "No on-site survey: quoting blind without seeing the IT or access",
       "No move coordinator named on your booking",
     ],
@@ -334,7 +335,8 @@ const officeBreadcrumb = breadcrumbLd([
 
 /* ═══════════════════════════════════════════════════════════ */
 
-export default function OfficeRemovalsPage() {
+export default async function OfficeRemovalsPage() {
+  const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={officeRemovalsSchema} />
@@ -391,12 +393,12 @@ export default function OfficeRemovalsPage() {
                   Book a Service
                 </Button>
                 <Button
-                  href="tel:+442072052525"
+                  href={phones.london.href}
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto"
                 >
-                  020 7205 2525
+                  {phones.london.label}
                 </Button>
               </div>
 
@@ -422,7 +424,7 @@ export default function OfficeRemovalsPage() {
               </div>
             </div>
 
-            {/* Right: image + service standards */}
+            {/* Right: image + service highlights */}
             <div
               className="overflow-hidden rounded-2xl border border-black/10 shadow-sm"
               data-reveal
@@ -440,10 +442,10 @@ export default function OfficeRemovalsPage() {
               </div>
               <div className="bg-brand-grey p-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Trusted and certified by
+                  Service highlights
                 </p>
                 <ul className="space-y-2">
-                  {service standards.map(({ name }) => (
+                  {serviceStandards.map(({ name }) => (
                     <li key={name} className="flex items-center gap-2">
                       <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                       <span className="text-sm text-brand-navy/85">{name}</span>
@@ -460,10 +462,10 @@ export default function OfficeRemovalsPage() {
                     Trustpilot reviews →
                   </Link>
                   <Link
-                    href="/company information"
+                    href="/about-us"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    View company information →
+                    About us →
                   </Link>
                 </div>
               </div>
@@ -863,7 +865,7 @@ export default function OfficeRemovalsPage() {
         </div>
       </section>
 
-      {/* ── S9: Insurance, service standards and recycling ── */}
+      {/* ── S9: Insurance, service highlights and recycling ── */}
       <section id="trust" className="bg-brand-navy py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
@@ -875,13 +877,13 @@ export default function OfficeRemovalsPage() {
             className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80"
             data-reveal
           >
-            Commercial buyers require more than a verbal assurance. The service standards below are
+            Commercial buyers require more than a verbal assurance. The service highlights below are
             independently verified and renewed annually. Each one carries a real complaints or
             claims process. Insurance limits are tailored to the value of the move on request.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {service standards.map(({ name, signal }, i) => (
+            {serviceStandards.map(({ name, signal }, i) => (
               <div
                 key={name}
                 data-reveal
@@ -933,8 +935,8 @@ export default function OfficeRemovalsPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/company information" variant="red" size="md">
-              View Company Information
+            <Button href="/about-us" variant="red" size="md">
+              About Us
             </Button>
             <Button href="/about-us" variant="outline-light" size="md">
               About Removals Nationwide

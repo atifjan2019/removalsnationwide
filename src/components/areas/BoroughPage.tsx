@@ -27,12 +27,12 @@ import { SITE_URL, withTrailingSlash } from "@/lib/seo";
 import { boroughs, type Borough } from "@/lib/boroughs";
 
 /* Confirmed company data, identical for every borough. */
-const ACCREDITATIONS = [
+const SERVICE_STANDARDS = [
   "Fully insured removals",
   "Vetted moving crews",
   "International moving experience",
   "Independent dispute resolution",
-  "Clear written quotations Approved Mover",
+  "Clear written quotations",
   "Customer-reviewed service",
 ];
 
@@ -202,10 +202,10 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
             </div>
             <div className="bg-brand-grey p-6">
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                Trusted and certified by
+                Service highlights
               </p>
               <ul className="space-y-2">
-                {ACCREDITATIONS.map((name) => (
+                {SERVICE_STANDARDS.map((name) => (
                   <li key={name} className="flex items-center gap-2">
                     <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
                     <span className="text-sm text-brand-navy/85">{name}</span>
@@ -222,10 +222,10 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
                   Trustpilot reviews
                 </Link>
                 <Link
-                  href="/company information"
+                  href="/about-us"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
-                  View company information
+                  About us
                 </Link>
               </div>
             </div>
@@ -382,8 +382,8 @@ export default function BoroughPage({ borough: b }: { borough: Borough }) {
           <SectionHeading eyebrow="Trust" title="Experienced, Insured and Reviewed" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             Removals Nationwide is a fully experienced mover. We are members of the British Association of
-            Removers and the National Guild of Removers and Storers, and we hold International
-            Association of Movers, Independent dispute resolution, Clear written quotations and Customer-reviewed service service standard.
+            Removers and the professional moving teams, and we hold International
+            Association of Movers, Independent dispute resolution, Clear written quotations and Customer-reviewed service service approach.
             Every move includes goods-in-transit insurance in the price, and all of our crews are
             vetted and background-checked.
           </p>
