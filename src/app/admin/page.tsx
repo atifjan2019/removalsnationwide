@@ -16,7 +16,7 @@ export default async function AdminDashboard() {
       </p>
 
       {!configured && (
-        <div className="mt-6 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-800">
+        <div className="mt-6 rounded-xl border border-brand-orange bg-white p-4 text-sm text-black">
           The D1 database is not available in this environment. Check the{" "}
           <code className="font-mono">DB</code> binding in{" "}
           <code className="font-mono">wrangler.jsonc</code>, and apply{" "}

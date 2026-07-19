@@ -31,7 +31,7 @@ export default function FloatingContact() {
         href={whatsapp.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-2 rounded-full bg-[#25D366] py-3 pl-3 pr-4 text-white shadow-lg shadow-black/20 transition hover:bg-[#1ebe57]"
+        className="group flex items-center gap-2 rounded-full bg-brand-orange py-3 pl-3 pr-4 text-white shadow-lg shadow-black/20 transition hover:bg-black"
         aria-label="Chat with us on WhatsApp"
       >
         <WhatsAppIcon className="h-7 w-7" />

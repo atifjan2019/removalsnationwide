@@ -4,9 +4,8 @@ import { PhoneIcon } from "@/components/ui/icons";
  * Mid-page conversion band. One of the three bold moments.
  *
  * The band uses the site navy (bg-brand-navy, the hero navy) so the orange
- * button pops. The primary button uses a deep orange (#c2410c) with white text:
- * the standard brand orange (#e8541e) reaches only 3.67:1 with white, below the
- * WCAG AA 4.5:1 threshold, while #c2410c clears it. Hover #9a3412, visible focus
+ * button pops. The primary button uses the brand red with white text and a
+ * black hover state, keeping the site's three-colour palette consistent. Focus
  * outline for keyboard users.
  */
 export default function MidPageCTA({ borough }: { borough: string }) {
@@ -24,7 +23,7 @@ export default function MidPageCTA({ borough }: { borough: string }) {
       <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <a
           href="/bookservice#quick-quote"
-          className="inline-flex min-h-[44px] w-full items-center justify-center rounded-lg bg-[#c2410c] px-8 font-semibold text-white transition-colors hover:bg-[#9a3412] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
+          className="inline-flex min-h-[44px] w-full items-center justify-center rounded-lg bg-brand-orange px-8 font-semibold text-white transition-colors hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
         >
           Get a Free Quote
         </a>

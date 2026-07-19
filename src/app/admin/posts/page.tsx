@@ -46,7 +46,7 @@ export default async function AdminPostsPage() {
                   <td className="px-5 py-3">
                     <span
                       className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
-                        p.published ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
+                        p.published ? "bg-black text-white" : "bg-brand-orange text-white"
                       }`}
                     >
                       {p.published ? "Published" : "Draft"}

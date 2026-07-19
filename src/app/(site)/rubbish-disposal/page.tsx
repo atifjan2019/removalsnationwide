@@ -450,9 +450,9 @@ export default function RubbishDisposalPage() {
             ))}
           </div>
 
-          <div data-reveal className="mx-auto mt-10 max-w-3xl rounded-2xl border border-amber-200 bg-amber-50 p-6">
-            <p className="text-sm font-bold text-amber-800">What we do not accept</p>
-            <p className="mt-2 text-sm leading-relaxed text-amber-700">
+          <div data-reveal className="mx-auto mt-10 max-w-3xl rounded-2xl border border-brand-orange bg-white p-6">
+            <p className="text-sm font-bold text-brand-orange">What we do not accept</p>
+            <p className="mt-2 text-sm leading-relaxed text-black">
               Construction or builders waste, hazardous waste, food waste, and bulk or loose waste
               are outside the scope of this service. Contact us if you are unsure and we advise
               on the right route.

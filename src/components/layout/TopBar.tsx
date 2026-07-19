@@ -13,7 +13,7 @@ export default function TopBar() {
           {/* Trustpilot-style rating badge */}
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1">
             <span className="font-semibold uppercase tracking-wide">Excellent</span>
-            <span className="flex items-center text-yellow-300" aria-hidden="true">
+            <span className="flex items-center text-brand-orange" aria-hidden="true">
               <StarIcon className="h-3.5 w-3.5" />
               <StarIcon className="h-3.5 w-3.5" />
               <StarIcon className="h-3.5 w-3.5" />

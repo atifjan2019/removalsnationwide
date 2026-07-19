@@ -104,7 +104,7 @@ export default function HomepageHero() {
         className="absolute inset-0 hidden lg:block"
         style={{
           background:
-            "linear-gradient(to right, rgba(31,58,95,0.92) 0%, rgba(31,58,95,0.92) 42%, rgba(31,58,95,0.52) 65%, rgba(31,58,95,0.12) 100%)",
+            "linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.92) 42%, rgba(0,0,0,0.52) 65%, rgba(0,0,0,0.12) 100%)",
         }}
         aria-hidden="true"
       />

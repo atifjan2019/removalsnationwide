@@ -44,7 +44,7 @@ export default async function AdminAreasPage() {
                   <td className="px-5 py-3">
                     <span
                       className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
-                        a.published ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
+                        a.published ? "bg-black text-white" : "bg-brand-orange text-white"
                       }`}
                     >
                       {a.published ? "Published" : "Draft"}

@@ -7,7 +7,7 @@ type TrustItem = {
 
 const ITEMS: TrustItem[] = [
   {
-    icon: <StarIcon className="h-4 w-4 text-yellow-400" aria-hidden="true" />,
+    icon: <StarIcon className="h-4 w-4 text-brand-orange" aria-hidden="true" />,
     label: (
       <>
         <strong className="font-semibold text-brand-navy">Excellent</strong>

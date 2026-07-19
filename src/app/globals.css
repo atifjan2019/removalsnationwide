@@ -2,13 +2,13 @@
 
 @theme {
   /* Brand palette */
-  --color-brand-orange: #e8541e;
-  --color-brand-orange-dark: #c8430f;
-  --color-brand-navy: #1f3a5f;
-  --color-brand-navy-dark: #16293f;
-  --color-brand-grey: #f0efed;
-  --color-brand-sand: #f7f5f2;
-  --color-brand-charcoal: #333333;
+  --color-brand-orange: #e83145;
+  --color-brand-orange-dark: #000000;
+  --color-brand-navy: #000000;
+  --color-brand-navy-dark: #e83145;
+  --color-brand-grey: #ffffff;
+  --color-brand-sand: #ffffff;
+  --color-brand-charcoal: #000000;
 
   /* Fonts (wired up via next/font in layout.tsx) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
