@@ -590,7 +590,7 @@ export default async function ManAndVanPage() {
           </p>
 
           <div
-            className="mx-auto mt-10 max-w-3xl rounded-2xl bg-brand-grey p-8"
+            className="mt-10 rounded-2xl bg-brand-grey p-8"
             data-reveal
           >
             <h3 className="text-base font-bold uppercase tracking-wide text-brand-navy">
@@ -1008,7 +1008,7 @@ export default async function ManAndVanPage() {
           </div>
 
           <div
-            className="mx-auto mt-8 max-w-3xl rounded-2xl border border-black/10 bg-white p-5"
+            className="mt-8 rounded-2xl border border-black/10 bg-white p-5"
             data-reveal
           >
             <p className="text-sm font-semibold text-brand-navy">

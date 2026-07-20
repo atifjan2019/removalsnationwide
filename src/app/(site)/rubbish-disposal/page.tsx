@@ -451,7 +451,7 @@ export default async function RubbishDisposalPage() {
             ))}
           </div>
 
-          <div data-reveal className="mx-auto mt-10 max-w-3xl rounded-2xl border border-brand-red bg-white p-6">
+          <div data-reveal className="mt-10 rounded-2xl border border-brand-red bg-white p-6">
             <p className="text-sm font-bold text-brand-red">What we do not accept</p>
             <p className="mt-2 text-sm leading-relaxed text-black">
               Construction or builders waste, hazardous waste, food waste, and bulk or loose waste
@@ -503,7 +503,7 @@ export default async function RubbishDisposalPage() {
           </div>
 
           {/* Which load size do I need */}
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-black/8 bg-brand-grey p-7" data-reveal>
+          <div className="mt-10 rounded-2xl border border-black/8 bg-brand-grey p-7" data-reveal>
             <h3 className="text-base font-bold text-brand-navy">Which Load Size Do I Need?</h3>
             <p className="mt-2 text-sm text-brand-charcoal/70">
               A rough guide based on the confirmed volumes and weights above. Every load is

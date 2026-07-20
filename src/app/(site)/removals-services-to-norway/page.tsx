@@ -710,7 +710,7 @@ export default async function RemovalsToNorwayPage() {
 
           <div
             data-reveal
-            className="mx-auto mt-8 max-w-3xl rounded-2xl border border-black/10 bg-white p-6"
+            className="mt-8 rounded-2xl border border-black/10 bg-white p-6"
           >
             <p className="mb-5 text-center text-xs font-bold uppercase tracking-widest text-brand-navy">
               Transit times

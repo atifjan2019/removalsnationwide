@@ -872,7 +872,7 @@ export default async function OfficeRemovalsPage() {
           </div>
 
           <div
-            className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5"
+            className="mt-10 rounded-2xl bg-white p-8 shadow-sm ring-1 ring-black/5"
             data-reveal
           >
             <h3 className="text-base font-bold uppercase tracking-wide text-brand-navy">
