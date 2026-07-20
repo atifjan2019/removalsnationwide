@@ -1,4 +1,4 @@
-import type { MoveStatus } from "@/lib/bookings";
+import type { MoveStatus } from "@/lib/bookings-shared";
 
 export const money = (value: number) =>
   new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(value || 0);

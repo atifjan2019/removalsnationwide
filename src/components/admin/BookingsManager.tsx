@@ -14,7 +14,7 @@ import {
   MOVE_STATUSES,
   type Booking,
   type MoveStatus,
-} from "@/lib/bookings";
+} from "@/lib/bookings-shared";
 
 const moveLabels: Record<string, string> = {
   house: "House move",
