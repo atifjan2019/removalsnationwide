@@ -17,6 +17,7 @@
     "db:remote": "wrangler d1 execute removals-nationwide --remote --file=./d1/schema.sql"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^2.1.1",
     "gray-matter": "^4.0.3",
     "next": "16.2.9",
     "quill": "^2.0.3",

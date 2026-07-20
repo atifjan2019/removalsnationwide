@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { requireDb } from "@/lib/d1";
+import { sendBookingNotification } from "@/lib/booking-email";
 
 const MOVE_TYPES = ["house", "office", "flat", "items"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -10,8 +11,14 @@ const UK_POSTCODE_RE = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i;
 export type BookingInput = {
   moveType: string;
   bedrooms: number;
+  fromAddress: string;
+  fromPlaceId: string;
   fromPostcode: string;
+  toAddress: string;
+  toPlaceId: string;
   toPostcode: string;
+  routeDistance: string;
+  routeDuration: string;
   moveDate: string;
   flexibleDates: boolean;
   fullName: string;
@@ -34,6 +41,10 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
   const email = clean(input.email, 160).toLowerCase();
   const fromPostcode = clean(input.fromPostcode, 12).toUpperCase();
   const toPostcode = clean(input.toPostcode, 12).toUpperCase();
+  const fromAddress = clean(input.fromAddress, 500);
+  const toAddress = clean(input.toAddress, 500);
+  const routeDistance = clean(input.routeDistance, 80);
+  const routeDuration = clean(input.routeDuration, 80);
   const moveDate = clean(input.moveDate, 10);
   const notes = clean(input.notes, 2000);
   const bedrooms = Number.isFinite(input.bedrooms)
@@ -79,6 +90,24 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
         notes,
       )
       .run();
+
+    await sendBookingNotification({
+      bookingId,
+      fullName,
+      phone,
+      email,
+      moveType,
+      bedrooms,
+      fromAddress,
+      fromPostcode,
+      toAddress,
+      toPostcode,
+      routeDistance,
+      routeDuration,
+      moveDate,
+      flexibleDates: input.flexibleDates,
+      notes,
+    });
 
     revalidatePath("/admin");
     revalidatePath("/admin/bookings");

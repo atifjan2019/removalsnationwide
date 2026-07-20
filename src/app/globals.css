@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+.booking-place-autocomplete {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgb(0 0 0 / 15%);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color-scheme: light;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.booking-place-autocomplete:focus-within {
+  border-color: #e83145;
+  box-shadow: 0 0 0 2px rgb(232 49 69 / 20%);
+}
+
 @theme {
   /* Brand palette */
   --color-brand-red: #e83145;

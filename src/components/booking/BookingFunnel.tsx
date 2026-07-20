@@ -1,16 +1,19 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { createBooking, type BookingInput } from "@/app/(site)/bookservice/actions";
+import { createBooking, type BookingInput } from "@/app/(booking)/bookservice/actions";
+import GoogleAddressField from "@/components/booking/GoogleAddressField";
+import BookingDistanceCalculator from "@/components/booking/BookingDistanceCalculator";
+import { BoxIcon, BuildingIcon, HomeIcon, VanIcon } from "@/components/ui/icons";
 
 type Step = "type" | "bedrooms" | "from" | "to" | "date" | "contact" | "success";
 type Errors = Partial<Record<keyof BookingInput | "submit", string>>;
 
 const MOVE_TYPES = [
-  { id: "house", label: "House move", detail: "A complete home relocation" },
-  { id: "flat", label: "Flat or studio", detail: "Apartments, studios and bedsits" },
-  { id: "office", label: "Office move", detail: "Commercial and workplace relocation" },
-  { id: "items", label: "Single items", detail: "Furniture and marketplace collections" },
+  { id: "house", label: "House move", detail: "A complete home relocation", icon: HomeIcon },
+  { id: "flat", label: "Flat or studio", detail: "Apartments, studios and bedsits", icon: BuildingIcon },
+  { id: "office", label: "Office move", detail: "Commercial and workplace relocation", icon: VanIcon },
+  { id: "items", label: "Single items", detail: "Furniture and marketplace collections", icon: BoxIcon },
 ] as const;
 
 const UK_POSTCODE_RE = /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i;
@@ -19,8 +22,14 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const initialData: BookingInput = {
   moveType: "",
   bedrooms: 1,
+  fromAddress: "",
+  fromPlaceId: "",
   fromPostcode: "",
+  toAddress: "",
+  toPlaceId: "",
   toPostcode: "",
+  routeDistance: "",
+  routeDuration: "",
   moveDate: "",
   flexibleDates: false,
   fullName: "",
@@ -56,12 +65,18 @@ function ContinueButton({ onClick, label = "Continue" }: { onClick: () => void; 
   );
 }
 
-export default function BookingFunnel() {
+export default function BookingFunnel({ mapsApiKey }: { mapsApiKey: string }) {
   const [data, setData] = useState<BookingInput>(initialData);
   const [step, setStep] = useState<Step>("type");
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [bookingId, setBookingId] = useState("");
+  const [googlePlacesAvailable, setGooglePlacesAvailable] = useState<boolean | null>(
+    mapsApiKey ? null : false,
+  );
+  const [routeDistanceStatus, setRouteDistanceStatus] = useState<
+    "idle" | "loading" | "ready" | "error"
+  >("idle");
 
   const needsBedrooms = data.moveType === "house" || data.moveType === "flat";
   const steps = useMemo<Step[]>(
@@ -81,8 +96,73 @@ export default function BookingFunnel() {
     setStep(next);
   };
 
-  const validatePostcode = (key: "fromPostcode" | "toPostcode", next: Step) => {
+  const clearSelectedAddress = (prefix: "from" | "to") => {
+    const postcodeKey = `${prefix}Postcode` as "fromPostcode" | "toPostcode";
+    const addressKey = `${prefix}Address` as "fromAddress" | "toAddress";
+    const placeIdKey = `${prefix}PlaceId` as "fromPlaceId" | "toPlaceId";
+    setData((current) => ({
+      ...current,
+      [postcodeKey]: "",
+      [addressKey]: "",
+      [placeIdKey]: "",
+      routeDistance: "",
+      routeDuration: "",
+    }));
+    setRouteDistanceStatus("idle");
+    setErrors((current) => ({ ...current, [postcodeKey]: undefined, submit: undefined }));
+  };
+
+  const selectAddress = (
+    prefix: "from" | "to",
+    selection: { address: string; postcode: string; placeId: string },
+  ) => {
+    const postcodeKey = `${prefix}Postcode` as "fromPostcode" | "toPostcode";
+    const addressKey = `${prefix}Address` as "fromAddress" | "toAddress";
+    const placeIdKey = `${prefix}PlaceId` as "fromPlaceId" | "toPlaceId";
+    setData((current) => ({
+      ...current,
+      [postcodeKey]: selection.postcode,
+      [addressKey]: selection.address,
+      [placeIdKey]: selection.placeId,
+      routeDistance: "",
+      routeDuration: "",
+    }));
+    setRouteDistanceStatus("loading");
+    setErrors((current) => ({ ...current, [postcodeKey]: undefined, submit: undefined }));
+  };
+
+  const updateFallbackPostcode = (prefix: "from" | "to", value: string) => {
+    const postcodeKey = `${prefix}Postcode` as "fromPostcode" | "toPostcode";
+    const addressKey = `${prefix}Address` as "fromAddress" | "toAddress";
+    const placeIdKey = `${prefix}PlaceId` as "fromPlaceId" | "toPlaceId";
+    setData((current) => ({
+      ...current,
+      [postcodeKey]: value,
+      [addressKey]: "",
+      [placeIdKey]: "",
+      routeDistance: "",
+      routeDuration: "",
+    }));
+    setRouteDistanceStatus("idle");
+    setErrors((current) => ({ ...current, [postcodeKey]: undefined, submit: undefined }));
+  };
+
+  const validateLocation = (prefix: "from" | "to", next: Step) => {
+    const key = `${prefix}Postcode` as "fromPostcode" | "toPostcode";
+    const addressKey = `${prefix}Address` as "fromAddress" | "toAddress";
+    const placeIdKey = `${prefix}PlaceId` as "fromPlaceId" | "toPlaceId";
     const value = data[key].trim().toUpperCase();
+
+    if (googlePlacesAvailable === null) {
+      setErrors({ [key]: "Address search is loading. Please wait a moment." });
+      return;
+    }
+
+    if (googlePlacesAvailable && (!data[addressKey] || !data[placeIdKey])) {
+      setErrors({ [key]: "Select the correct address from the Google suggestions." });
+      return;
+    }
+
     if (!UK_POSTCODE_RE.test(value)) {
       setErrors({ [key]: "Enter a valid UK postcode, for example B15 3DH." });
       return;
@@ -123,6 +203,22 @@ export default function BookingFunnel() {
 
   return (
     <section id="quick-quote" className="scroll-mt-28 bg-brand-grey py-16 sm:py-20">
+      {data.fromPlaceId && data.toPlaceId && (
+        <BookingDistanceCalculator
+          key={`${data.fromPlaceId}:${data.toPlaceId}`}
+          fromPlaceId={data.fromPlaceId}
+          toPlaceId={data.toPlaceId}
+          onCalculated={({ distance, duration }) => {
+            setData((current) => ({
+              ...current,
+              routeDistance: distance,
+              routeDuration: duration,
+            }));
+            setRouteDistanceStatus("ready");
+          }}
+          onError={() => setRouteDistanceStatus("error")}
+        />
+      )}
       <div className="mx-auto max-w-3xl px-4">
         <div className="overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl">
           {step !== "success" && (
@@ -148,6 +244,7 @@ export default function BookingFunnel() {
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
                   {MOVE_TYPES.map((type) => {
                     const selected = data.moveType === type.id;
+                    const Icon = type.icon;
                     return (
                       <button
                         key={type.id}
@@ -159,10 +256,21 @@ export default function BookingFunnel() {
                             : "border-black/10 bg-white hover:border-brand-red/50"
                         }`}
                       >
-                        <span className={`block font-bold ${selected ? "text-brand-red" : "text-black"}`}>
-                          {type.label}
+                        <span className="flex items-start gap-4">
+                          <span
+                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition ${
+                              selected ? "bg-brand-red text-white" : "bg-black/5 text-black"
+                            }`}
+                          >
+                            <Icon className="h-6 w-6" />
+                          </span>
+                          <span className="min-w-0 pt-0.5">
+                            <span className={`block font-bold ${selected ? "text-brand-red" : "text-black"}`}>
+                              {type.label}
+                            </span>
+                            <span className="mt-1 block text-sm text-black/55">{type.detail}</span>
+                          </span>
                         </span>
-                        <span className="mt-1 block text-sm text-black/55">{type.detail}</span>
                       </button>
                     );
                   })}
@@ -212,21 +320,24 @@ export default function BookingFunnel() {
             {step === "from" && (
               <div>
                 <h2 className="text-2xl font-bold text-black sm:text-3xl">Where are you moving from?</h2>
-                <p className="mt-2 text-sm text-black/60">Enter the collection postcode.</p>
-                <input
-                  autoFocus
-                  value={data.fromPostcode}
-                  onChange={(event) => update("fromPostcode", event.target.value.toUpperCase())}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") validatePostcode("fromPostcode", "to");
-                  }}
-                  placeholder="e.g. B15 3DH"
-                  className={`${inputClass} mt-8 text-lg uppercase`}
-                />
+                <p className="mt-2 text-sm text-black/60">Find and confirm the collection address.</p>
+                <div className="mt-8">
+                  <GoogleAddressField
+                    apiKey={mapsApiKey}
+                    fallbackPostcode={data.fromPostcode}
+                    initialValue={data.fromAddress || data.fromPostcode}
+                    label="Collection address"
+                    placeholder="Start typing the collection address"
+                    onAvailabilityChange={setGooglePlacesAvailable}
+                    onFallbackChange={(value) => updateFallbackPostcode("from", value)}
+                    onInput={() => clearSelectedAddress("from")}
+                    onSelect={(selection) => selectAddress("from", selection)}
+                  />
+                </div>
                 {errors.fromPostcode && <p className="mt-2 text-sm text-brand-red">{errors.fromPostcode}</p>}
                 <div className="mt-8 flex items-center justify-between">
                   <BackButton onClick={() => go(needsBedrooms ? "bedrooms" : "type")} />
-                  <ContinueButton onClick={() => validatePostcode("fromPostcode", "to")} />
+                  <ContinueButton onClick={() => validateLocation("from", "to")} />
                 </div>
               </div>
             )}
@@ -234,21 +345,24 @@ export default function BookingFunnel() {
             {step === "to" && (
               <div>
                 <h2 className="text-2xl font-bold text-black sm:text-3xl">Where are you moving to?</h2>
-                <p className="mt-2 text-sm text-black/60">Enter the destination postcode.</p>
-                <input
-                  autoFocus
-                  value={data.toPostcode}
-                  onChange={(event) => update("toPostcode", event.target.value.toUpperCase())}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter") validatePostcode("toPostcode", "date");
-                  }}
-                  placeholder="e.g. M1 1AE"
-                  className={`${inputClass} mt-8 text-lg uppercase`}
-                />
+                <p className="mt-2 text-sm text-black/60">Find and confirm the drop-off address.</p>
+                <div className="mt-8">
+                  <GoogleAddressField
+                    apiKey={mapsApiKey}
+                    fallbackPostcode={data.toPostcode}
+                    initialValue={data.toAddress || data.toPostcode}
+                    label="Drop-off address"
+                    placeholder="Start typing the drop-off address"
+                    onAvailabilityChange={setGooglePlacesAvailable}
+                    onFallbackChange={(value) => updateFallbackPostcode("to", value)}
+                    onInput={() => clearSelectedAddress("to")}
+                    onSelect={(selection) => selectAddress("to", selection)}
+                  />
+                </div>
                 {errors.toPostcode && <p className="mt-2 text-sm text-brand-red">{errors.toPostcode}</p>}
                 <div className="mt-8 flex items-center justify-between">
                   <BackButton onClick={() => go("from")} />
-                  <ContinueButton onClick={() => validatePostcode("toPostcode", "date")} />
+                  <ContinueButton onClick={() => validateLocation("to", "date")} />
                 </div>
               </div>
             )}
@@ -342,11 +456,18 @@ export default function BookingFunnel() {
                   <BackButton onClick={() => go("date")} />
                   <button
                     type="button"
-                    onClick={submit}
-                    disabled={submitting}
+                    onClick={() => {
+                      if (routeDistanceStatus === "loading") return;
+                      void submit();
+                    }}
+                    disabled={submitting || routeDistanceStatus === "loading"}
                     className="min-h-11 rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-black disabled:cursor-wait disabled:opacity-60"
                   >
-                    {submitting ? "Saving request…" : "Send Booking Request"}
+                    {submitting
+                      ? "Saving request…"
+                      : routeDistanceStatus === "loading"
+                        ? "Checking route…"
+                        : "Send Booking Request"}
                   </button>
                 </div>
               </div>
@@ -357,7 +478,7 @@ export default function BookingFunnel() {
                 <span className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-red text-4xl font-bold text-white">✓</span>
                 <h2 className="mt-6 text-3xl font-bold text-black">Booking request received</h2>
                 <p className="mt-3 max-w-md text-black/65">
-                  Thank you, {data.fullName.split(" ")[0] || "there"}. Our team will review your move from {data.fromPostcode} to {data.toPostcode} and contact you shortly.
+                  Thank you, {data.fullName.split(" ")[0] || "there"}. Our team will review your move from {data.fromAddress || data.fromPostcode} to {data.toAddress || data.toPostcode} and contact you shortly.
                 </p>
                 <p className="mt-4 text-xs text-black/45">Reference: {bookingId}</p>
               </div>

@@ -18,5 +18,7 @@ declare global {
     DB: D1Database;
     /** R2 bucket holding site media (images). */
     MEDIA: R2Bucket;
+    /** Transactional booking notification email sender. */
+    EMAIL: SendEmail;
   }
 }
