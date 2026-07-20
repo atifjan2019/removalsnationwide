@@ -295,7 +295,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
       {/* What we know */}
       {((b.knowBlocks ?? []).length > 0 || b.knowIntro) && (
         <section className="bg-white py-16">
-          <div className="mx-auto max-w-[88rem] px-4">
+          <div className="mx-auto max-w-7xl px-4">
             <div className="mx-auto max-w-3xl">
               <SectionHeading
                 align="left"
@@ -329,7 +329,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Prices */}
       <section className="bg-brand-grey py-16">
-        <div className="mx-auto max-w-[88rem] px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="Transparent pricing" title={`Man and Van Prices in ${b.name}`} />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
             Our man and van rates are published in full, charged by the hour with a two-hour minimum,
@@ -346,7 +346,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Services */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-[88rem] px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="One experienced company" title={`Our ${b.name} Services`} />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/75">
             One experienced team for the whole move, from a single item to a full house or office
@@ -452,7 +452,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Quote band (solid navy, readability first) */}
       <section className="bg-brand-navy py-16">
-        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
               Get Your {b.name} Removal Quote
@@ -509,7 +509,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* FAQs */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-[88rem] px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading eyebrow="Good to know" title={`${b.name} Removals FAQs`} />
           <Faq items={b.faqs ?? []} className="mt-10" />
         </div>
