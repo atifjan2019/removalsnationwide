@@ -32,7 +32,7 @@ export default function QuoteSection() {
               id="quote-heading"
               className="text-2xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-3xl md:text-4xl"
             >
-              Get an Instant Nationwide Removal Quote
+              Get Your Free Removal Quote
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/90">
               Send your details through our step-by-step booking form. We review the route, access,
@@ -66,7 +66,7 @@ export default function QuoteSection() {
               ))}
             </ul>
             <p className="mt-5 text-xs text-white/70">
-              All prices include VAT and fuel. No hidden fees.
+              Published prices exclude VAT and are subject to VAT at 20%.
             </p>
           </div>
         </div>

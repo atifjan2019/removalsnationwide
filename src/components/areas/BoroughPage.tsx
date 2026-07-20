@@ -25,16 +25,16 @@ import {
   ArrowRight,
 } from "@/components/ui/icons";
 import { SITE_URL, withTrailingSlash } from "@/lib/seo";
-import { boroughs, type Borough } from "@/lib/boroughs";
+import type { Borough } from "@/lib/boroughs";
 
 /* Confirmed company data, identical for every borough. */
 const SERVICE_STANDARDS = [
   "Fully insured removals",
   "Vetted moving crews",
   "International moving experience",
-  "Independent dispute resolution",
+  "Documented claims process",
   "Clear written quotations",
-  "Customer-reviewed service",
+  "Written service terms",
 ];
 
 const PRICE_COLUMNS = ["Crew", "Per hour", "Half day, up to 4 hours", "Full day, up to 8 hours"];
@@ -69,8 +69,7 @@ function knowIcon(label: string): IconType {
   return CheckIcon;
 }
 
-const PHONE_HREF = "tel:+442072052525";
-const TRUSTPILOT = "https://uk.trustpilot.com/review/removalsnationwide.uk";
+const SERVICE_STANDARDS_URL = "/about-us";
 
 function boroughSchema(b: Borough) {
   return {
@@ -79,6 +78,7 @@ function boroughSchema(b: Borough) {
       {
         "@type": "Service",
         serviceType: "Removals and man and van",
+        description: b.subhead,
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: {
           "@type": "AdministrativeArea",
@@ -178,7 +178,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              {["Fully insured", "7 days a week", "Hundreds of Trustpilot reviews"].map((pill) => (
+              {["Fully insured", "7 days a week", "Written fixed quotations"].map((pill) => (
                 <span
                   key={pill}
                   className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
@@ -197,7 +197,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
                 src={b.heroImage}
                 alt={b.heroImageAlt}
                 fill
-                priority
+                preload
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
               />
@@ -216,12 +216,12 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
               </ul>
               <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                 <Link
-                  href={TRUSTPILOT}
+                  href={SERVICE_STANDARDS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
-                  Trustpilot reviews
+                  Service standards
                 </Link>
                 <Link
                   href="/about-us"
@@ -293,37 +293,39 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
       </section>
 
       {/* What we know */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-[88rem] px-4">
-          <div className="mx-auto max-w-3xl">
-            <SectionHeading
-              align="left"
-              eyebrow="Local knowledge"
-              title={`Moving in ${b.name}, What We Know`}
-            />
-            <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.knowIntro}</p>
-          </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {(b.knowBlocks ?? []).map((blk) => {
-              const Icon = knowIcon(blk.label);
-              return (
-                <div
-                  key={blk.label}
-                  className="group flex gap-4 rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
-                    <Icon className="h-5 w-5" strokeWidth={2.5} />
-                  </span>
-                  <div>
-                    <h3 className="text-base font-bold text-brand-navy">{blk.label}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-brand-charcoal/80">{blk.body}</p>
+      {((b.knowBlocks ?? []).length > 0 || b.knowIntro) && (
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-[88rem] px-4">
+            <div className="mx-auto max-w-3xl">
+              <SectionHeading
+                align="left"
+                eyebrow="Local knowledge"
+                title={`Moving in ${b.name}, What We Know`}
+              />
+              {b.knowIntro && <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.knowIntro}</p>}
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {(b.knowBlocks ?? []).map((blk) => {
+                const Icon = knowIcon(blk.label);
+                return (
+                  <div
+                    key={blk.label}
+                    className="group flex gap-4 rounded-2xl border border-black/8 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
+                      <Icon className="h-5 w-5" strokeWidth={2.5} />
+                    </span>
+                    <div>
+                      <h3 className="text-base font-bold text-brand-navy">{blk.label}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-brand-charcoal/80">{blk.body}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Prices */}
       <section className="bg-brand-grey py-16">
@@ -387,23 +389,16 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
             insurance in the price, and our crews are trained, vetted and background-checked.
           </p>
           <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
-            We have hundreds of independent reviews on Trustpilot from customers across London and
-            beyond, with particular praise for our communication and the care our crews take. Read
-            them on our live{" "}
+            Written quotations set out the agreed work, price and insurance terms before booking.
+            Read more about our{" "}
             <a
-              href={TRUSTPILOT}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={SERVICE_STANDARDS_URL}
               className="font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
             >
-              Trustpilot profile
+              service standards
             </a>
             .
           </p>
-          {/* TrustBox mount point: add the official Trustpilot embed here once the
-              business unit id is available, so the live rating and review count
-              display and update automatically. No reviews are fabricated. */}
-          <div id="trustpilot-trustbox" className="mt-6" />
         </div>
       </section>
 
@@ -431,23 +426,17 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
       </section>
 
       {/* Nearby areas */}
-      <section className="bg-brand-sand py-16">
+      {(b.nearby ?? []).length > 0 && <section className="bg-brand-sand py-16">
         <div className="mx-auto max-w-3xl px-4">
           <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             We also serve the boroughs that border {b.name}, including{" "}
             {(b.nearby ?? []).map((n, i) => {
-              const slug = n.href.replace("/areas/", "");
-              const built = Boolean(boroughs[slug]);
               return (
                 <span key={n.href}>
-                  {built ? (
-                    <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
-                      {n.label}
-                    </Link>
-                  ) : (
-                    <span className="font-medium text-brand-navy">{n.label}</span>
-                  )}
+                  <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
+                    {n.label}
+                  </Link>
                   {i < b.nearby.length - 2 ? ", " : i === b.nearby.length - 2 ? " and " : ""}
                 </span>
               );
@@ -459,7 +448,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
             .
           </p>
         </div>
-      </section>
+      </section>}
 
       {/* Quote band (solid navy, readability first) */}
       <section className="bg-brand-navy py-16">

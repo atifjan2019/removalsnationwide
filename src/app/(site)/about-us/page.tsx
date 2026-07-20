@@ -167,8 +167,8 @@ export default async function AboutPage() {
                 </p>
                 <p>
                   We love to hear back from our customers and give them additional assistance if
-                  needed. Find us on Trustpilot and write us a review. Transparency and
-                  problem-solving are essential to maintain a high level of customer satisfaction.
+                  needed. Customer feedback is reviewed directly by our team. Transparency and
+                  problem-solving remain central to the service process.
                 </p>
               </div>
             </div>

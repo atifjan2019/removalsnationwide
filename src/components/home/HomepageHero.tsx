@@ -34,7 +34,7 @@ export default function HomepageHero() {
   const prev = useCallback(() => setCurrent((c) => (c - 1 + COUNT) % COUNT), []);
   const goTo = useCallback((i: number) => setCurrent(i), []);
 
-  // Auto-advance — skips entirely when prefers-reduced-motion is set
+  // Auto-advance stops when prefers-reduced-motion is set.
   useEffect(() => {
     if (paused) return;
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -102,7 +102,7 @@ export default function HomepageHero() {
 
       {/* ── Gradient overlay ──
            Mobile/tablet: solid so white text stays readable over any image crop.
-           lg+: left-heavy gradient — dark left for text, photo visible on right. */}
+           lg+: left-heavy gradient, dark left for text and photo visible on right. */}
       <div className="absolute inset-0 bg-brand-navy/80 lg:hidden" aria-hidden="true" />
       <div
         className="absolute inset-0 hidden lg:block"
@@ -113,22 +113,21 @@ export default function HomepageHero() {
         aria-hidden="true"
       />
 
-      {/* ── Fixed text — H1 / subhead / body / CTAs / trust bar (never rotate) ── */}
+      {/* Fixed text: H1, subhead, body and CTA never rotate. */}
       <div className="relative z-10 mx-auto w-full max-w-[88rem] px-6 py-16 pb-16 md:py-24 lg:py-28">
         <div className="max-w-lg sm:max-w-xl lg:max-w-2xl">
-          {/* H1 — no animation class, LCP-safe */}
+          {/* H1 has no animation class and remains LCP-safe. */}
           <h1 className="text-4xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Nationwide Removal Company
+            London Removals Company
           </h1>
           <p className="hero-anim-sub mt-4 text-xl font-semibold uppercase tracking-wide text-brand-red sm:text-2xl md:text-3xl">
-            House Removals, Man and Van, Office Moves, Packing and Storage Across the UK
+            London Based, with Nationwide and International Reach
           </p>
           <p className="mt-6 text-base leading-relaxed text-white/90 sm:text-lg">
-            Removals Nationwide provides house removals, man and van services, office moves, professional
-            packing and secure storage across the UK. Our fully insured crews handle local,
-            nationwide and international
-            relocations. Send your move details through our booking form, then arrange a free
-            on-site or video survey when needed for an exact fixed quote.
+            Based in London, our fully insured crews provide house removals, man and van services,
+            office moves, professional packing and secure storage. London moves are our core service,
+            with nationwide and international relocations arranged from the same base. Send your move
+            details through our booking form for review and a written quotation.
           </p>
           <div className="hero-anim-ctas mt-8 flex flex-wrap gap-4">
             <Button href="/bookservice#quick-quote" variant="red" size="lg">
@@ -139,7 +138,7 @@ export default function HomepageHero() {
 
       </div>
 
-      {/* ── Prev / Next arrows — 44×44px tap targets, vertically centered ── */}
+      {/* Previous and next controls use 44 by 44 pixel tap targets. */}
       <button
         type="button"
         onClick={prev}

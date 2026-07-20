@@ -41,6 +41,7 @@ create table if not exists areas (
   intro       text    not null default '',
   body_html   text    not null default '',            -- Quill HTML (sanitised on save)
   cover_image text    not null default '',
+  template_data text  not null default '{}',           -- structured BoroughPage content as JSON
   published   integer not null default 1,
   created_at  text    not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );

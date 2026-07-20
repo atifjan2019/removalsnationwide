@@ -29,10 +29,10 @@ export default function InternationalSection() {
               title="International and European Removals from the UK"
             />
 
-            {/* Route signature — surfaces the confirmed weekly Scandinavia run */}
+            {/* Route signature for the confirmed weekly Scandinavia run. */}
             <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm font-semibold text-white">
               <span className="h-2 w-2 rounded-full bg-brand-red" aria-hidden="true" />
-              UK to Oslo &nbsp;&mdash;&nbsp; regular road freight, weekly
+              UK to Oslo: regular road freight, weekly
             </div>
 
             <div className="mt-6 space-y-5 text-base leading-relaxed text-white/80">

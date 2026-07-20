@@ -7,6 +7,12 @@ import { fromBool } from "@/lib/d1";
 import { sanitize } from "@/lib/sanitize";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
+import type {
+  AreaFaq,
+  AreaKnowledgeBlock,
+  AreaNearbyLink,
+  AreaTemplateData,
+} from "@/lib/area-template";
 
 function slugify(input: string): string {
   return input
@@ -89,22 +95,81 @@ export type AreaInput = {
   id?: string;
   slug: string;
   name: string;
-  intro: string;
-  body_html: string;
-  cover_image: string;
   published: boolean;
+  template: AreaTemplateData;
 };
+
+const plain = (value: unknown, max = 2000) =>
+  typeof value === "string" ? value.trim().slice(0, max) : "";
+
+function cleanAreaTemplate(value: AreaTemplateData): AreaTemplateData {
+  const stringList = (items: unknown, maxItems: number, maxLength: number) =>
+    Array.isArray(items)
+      ? items.map((item) => plain(item, maxLength)).filter(Boolean).slice(0, maxItems)
+      : [];
+  const pairs = <T,>(
+    items: unknown,
+    make: (item: Record<string, unknown>) => T,
+    keep: (item: T) => boolean,
+    maxItems: number,
+  ) =>
+    Array.isArray(items)
+      ? items
+          .filter((item): item is Record<string, unknown> => Boolean(item) && typeof item === "object")
+          .map(make)
+          .filter(keep)
+          .slice(0, maxItems)
+      : [];
+
+  return {
+    h1: plain(value.h1, 140),
+    subhead: plain(value.subhead, 500),
+    metaTitle: plain(value.metaTitle, 180),
+    metaDescription: plain(value.metaDescription, 320),
+    areaServedName: plain(value.areaServedName, 160),
+    postcodes: [...new Set(stringList(value.postcodes, 30, 16).map((item) => item.toUpperCase()))],
+    heroImage: plain(value.heroImage, 1000),
+    heroImageAlt: plain(value.heroImageAlt, 240),
+    introLine: plain(value.introLine, 700),
+    valueLine: plain(value.valueLine, 700),
+    localBody: stringList(value.localBody, 8, 3000),
+    coverageIntro: plain(value.coverageIntro, 3000),
+    neighbourhoods: plain(value.neighbourhoods, 5000),
+    coverageOutro: plain(value.coverageOutro, 3000),
+    knowIntro: plain(value.knowIntro, 3000),
+    knowBlocks: pairs<AreaKnowledgeBlock>(
+      value.knowBlocks,
+      (item) => ({ label: plain(item.label, 120), body: plain(item.body, 4000) }),
+      (item) => Boolean(item.label && item.body),
+      8,
+    ),
+    nearby: pairs<AreaNearbyLink>(
+      value.nearby,
+      (item) => ({ label: plain(item.label, 120), href: plain(item.href, 300) }),
+      (item) => Boolean(item.label && item.href),
+      12,
+    ),
+    faqs: pairs<AreaFaq>(
+      value.faqs,
+      (item) => ({ question: plain(item.question, 300), answer: plain(item.answer, 5000) }),
+      (item) => Boolean(item.question && item.answer),
+      12,
+    ),
+  };
+}
 
 export async function saveArea(input: AreaInput) {
   await assertAdmin();
   const db = await requireDb();
   const slug = slugify(input.slug || input.name);
+  const name = plain(input.name, 160);
+  const template = cleanAreaTemplate(input.template);
   const values = [
     slug,
-    input.name,
-    input.intro,
-    clean(input.body_html),
-    input.cover_image,
+    name,
+    template.introLine,
+    template.heroImage,
+    JSON.stringify(template),
     fromBool(input.published),
   ];
 
@@ -112,7 +177,7 @@ export async function saveArea(input: AreaInput) {
     await db
       .prepare(
         `update areas set
-           slug = ?, name = ?, intro = ?, body_html = ?, cover_image = ?, published = ?
+           slug = ?, name = ?, intro = ?, cover_image = ?, template_data = ?, published = ?
          where id = ?`,
       )
       .bind(...values, input.id)
@@ -121,14 +186,14 @@ export async function saveArea(input: AreaInput) {
     await db
       .prepare(
         `insert into areas
-           (id, slug, name, intro, body_html, cover_image, published)
+           (id, slug, name, intro, cover_image, template_data, published)
          values (?, ?, ?, ?, ?, ?, ?)`,
       )
       .bind(crypto.randomUUID(), ...values)
       .run();
   }
 
-  await logActivity("Updated", `${input.id ? "Area updated" : "Area created"}: ${input.name}`, input.id || slug);
+  await logActivity("Updated", `${input.id ? "Area updated" : "Area created"}: ${name}`, input.id || slug);
   revalidatePath("/areas");
   revalidatePath(`/areas/${slug}`);
   redirect("/admin/areas");

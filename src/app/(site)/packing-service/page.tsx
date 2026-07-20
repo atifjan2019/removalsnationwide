@@ -56,9 +56,9 @@ const processSteps = [
 const heroServiceStandards = [
   "Fully insured removals",
   "Vetted moving crews",
-  "Independent dispute resolution",
+  "Documented claims process",
   "Clear written quotations",
-  "Customer-reviewed service",
+  "Written service terms",
   "International moving experience",
 ];
 
@@ -389,12 +389,12 @@ export default async function PackingServicePage() {
               </ul>
               <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                 <Link
-                  href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+                  href="/about-us"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
-                  Trustpilot reviews →
+                  Service standards →
                 </Link>
                 <Link
                   href="/about-us"
@@ -835,9 +835,9 @@ export default async function PackingServicePage() {
                   "Fully insured removals",
                   "Vetted moving crews",
                   "International moving experience",
-                  "Independent dispute resolution",
+                  "Documented claims process",
                   "Clear written quotations",
-                  "Customer-reviewed service",
+                  "Written service terms",
                 ].map((name) => (
                   <li key={name} className="flex items-start gap-2 text-sm leading-relaxed text-white/80">
                     <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-red">&#10003;</span>
@@ -933,18 +933,18 @@ export default async function PackingServicePage() {
           <div data-reveal className="mx-auto max-w-2xl text-center">
             <SectionHeading
               tone="light"
-              eyebrow="Customer reviews"
-              title="What Our Customers Say"
+              eyebrow="Service standards"
+              title="How We Define Our Service"
             />
             <p className="mt-6 text-base leading-relaxed text-white/80">
-              Removals Nationwide customers have left verified reviews on Trustpilot and Google.{" "}
+              Our written quotations and insurance documents set out the agreed service before booking.{" "}
               <a
-                href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+                href="/about-us"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-red underline underline-offset-2 hover:text-white"
               >
-                Read verified reviews on Trustpilot
+                Read our service standards
               </a>
               .
             </p>

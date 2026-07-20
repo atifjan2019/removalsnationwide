@@ -25,13 +25,13 @@ export const metadata: Metadata = {
   // would 308 to "/brand-icon/" on every single favicon request.
   icons: { icon: "/brand-icon/", shortcut: "/brand-icon/", apple: "/brand-icon/" },
   title:
-    "Removals Nationwide | Removals & Storage Across London, the UK & Worldwide",
+    "Removals Nationwide | London, UK and International Moves",
   description:
-    "London, national and international removals and storage. House & office removals, man and van, packing and secure storage. Fully insured, industry & professional experienced. Get a quote today.",
+    "London-based house and office removals, man and van, packing and secure storage, with nationwide and international moves arranged from London.",
   openGraph: {
-    title: "Removals Nationwide | Removals & Storage",
+    title: "Removals Nationwide | London, UK and International Moves",
     description:
-      "London, national and international removals and storage. Fully insured, industry & professional experienced.",
+      "London-based removals and storage with nationwide and international reach.",
     type: "website",
   },
 };

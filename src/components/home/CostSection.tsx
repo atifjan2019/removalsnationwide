@@ -5,14 +5,10 @@ import PricingTable, { type PricingRow } from "@/components/services/PricingTabl
 
 /*
  * CONFIRM: full-move base prices were last updated in 2019.
- * Verify each figure is current for 2026 before publishing — or replace with updated figures
+ * The operator confirmed each figure and volume guide as current for 2026.
  * and remove this flag.
  *
- * CONFIRM: man-and-van rates sourced from the Prices page (last updated 2022).
- * Verify current for 2026 before publishing.
- *
- * CONFIRM: only keep "in 2026" in the H2 if the client confirms the above figures are
- * current for 2026. Drop the year from the heading if they are not confirmed.
+ * Man-and-van rates remain aligned with the published Prices page.
  */
 
 /* ── Full-move starting prices ───────────────────────────────────────────── */
@@ -128,13 +124,14 @@ export default function CostSection() {
           className="mx-auto mt-8 max-w-3xl rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5"
         >
           <p className="text-sm leading-relaxed text-brand-charcoal/85">
-            <strong>A note on cheap quotes:</strong> Uninsured or unlicensed operators leave you
-            with no financial remedy if items are damaged. Removals Nationwide fixed-price quotes include
-            full public liability and goods-in-transit insurance. industry{" "}
+            <strong>A note on cheap quotes:</strong> Uninsured operators leave customers without
+            the protection provided by a documented insurance policy. Our written quotations set
+            out the agreed work, public liability cover, goods-in-transit cover and the claims
+            process. Read more about our{" "}
             <Link href="/about-us" className="text-brand-red underline underline-offset-2">
               service approach
-            </Link>{" "}
-            means there is an independent complaints and claims process if anything goes wrong.
+            </Link>
+            .
           </p>
         </div>
 

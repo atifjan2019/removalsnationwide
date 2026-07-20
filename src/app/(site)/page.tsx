@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import { buildMetadata } from "@/lib/seo";
+import { SITE, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
 
 import HomepageHero from "@/components/home/HomepageHero";
 import HeroTrustBar from "@/components/home/HeroTrustBar";
@@ -28,7 +29,20 @@ import ClientAnimations from "@/components/home/ClientAnimations";
 import StickyQuoteBar from "@/components/home/StickyQuoteBar";
 import BackToTop from "@/components/home/BackToTop";
 
-export const metadata: Metadata = buildMetadata("home");
+export const metadata: Metadata = {
+  title: "London Removals Company | Nationwide & International Reach",
+  description:
+    "London removals company providing house, office, man and van, packing and storage services, with nationwide and international moves arranged from London.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "London Removals Company | Nationwide & International Reach",
+    description:
+      "London-based removals, packing and storage with nationwide and international reach.",
+    url: "/",
+    siteName: SITE.name,
+    type: "website",
+  },
+};
 
 export default async function HomePage() {
   // Phone numbers are editable from /admin/settings. Both consumers below are
@@ -37,11 +51,24 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `${SITE_URL}/#homepage`,
+          url: `${SITE_URL}/`,
+          name: "London Removals Company with Nationwide and International Reach",
+          description:
+            "London-based removals, packing and storage with nationwide and international reach.",
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          about: { "@id": `${SITE_URL}/#organization` },
+        }}
+      />
       {/* 1. Hero */}
       <HomepageHero />
       <HeroTrustBar />
 
-      {/* 2. Get an Instant Removal Quote */}
+      {/* 2. Get a removal quote */}
       <QuoteSection />
 
       {/* 3. London Removal Services Overview */}
@@ -50,40 +77,40 @@ export default async function HomePage() {
       {/* 4. House Removals London */}
       <HouseRemovalsSection />
 
-      {/* 5. Man and Van London — highest priority */}
+      {/* 5. Man and van London */}
       <ManAndVanSection />
 
-      {/* 6. Office and Commercial Removals — supporting */}
+      {/* 6. Office and commercial removals */}
       <OfficeRemovalsSection />
 
-      {/* 7. Removals and Storage — supporting */}
+      {/* 7. Removals and storage */}
       <StorageSection />
 
-      {/* 8. Packing Services — supporting */}
+      {/* 8. Packing services */}
       <PackingSection />
 
-      {/* 9. International Removals — supporting */}
+      {/* 9. International removals */}
       <InternationalSection />
 
-      {/* 10. How Much Do Removals Cost — featured snippet */}
+      {/* 10. Removal costs */}
       <CostSection />
 
-      {/* 11. Professional Removals vs Van Hire — open lane */}
+      {/* 11. Professional removals compared with van hire */}
       <VsVanHireSection />
 
-      {/* 12. Specialist and Fragile Items — open lane */}
+      {/* 12. Specialist and fragile items */}
       <SpecialistSection />
 
-      {/* 13. Moving in London: Access Intelligence — experience moat */}
+      {/* 13. Moving in London: access planning */}
       <AccessSection />
 
-      {/* 14. London Areas We Cover — silo hub */}
+      {/* 14. London areas */}
       <AreasSiloSection />
 
-      {/* 15. Why Choose Removals Nationwide — E-E-A-T */}
+      {/* 15. Service standards */}
       <WhyChooseSection />
 
-      {/* Stats — social proof */}
+      {/* Company facts */}
       <StatsCounter />
 
       {/* 16. Reviews, Insurance and Service Highlights */}
@@ -98,7 +125,7 @@ export default async function HomePage() {
       {/* 19. Final Quote CTA */}
       <FinalCtaSection phones={phones} />
 
-      {/* Moving News blog — house/man-and-van content preferred */}
+      {/* Moving News */}
       <NewsSection />
 
       {/* Homepage-only UX enhancements */}

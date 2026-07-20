@@ -13,8 +13,9 @@ export default function ServicesSection() {
           title="Our Nationwide Removal Services"
         />
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          Removals Nationwide covers the full range of removal services across the UK, listed in order of demand.
-          Every service includes fully insured crews and a free survey or instant quote.
+          From our London base, we provide the full range of removal services locally and arrange
+          nationwide and international moves. Every service includes an insured crew and a written
+          quotation following review or a free survey.
         </p>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredServices.map((service, i) => (

@@ -18,12 +18,12 @@ export default function FinalCtaSection({
           id="final-cta-heading"
           className="text-2xl font-extrabold uppercase leading-tight tracking-wide text-white sm:text-3xl md:text-4xl"
         >
-          Get Your Free Nationwide Removal Quote Today
+          Get Your Free Removal Quote Today
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/85">
-          Start your move with our step-by-step booking form. Our team reviews your details and
-          can arrange a free on-site or video survey before providing a fixed price. Removals
-          Nationwide is fully insured and experienced.
+          Start with our step-by-step booking form. Our team reviews the move details and arranges
+          a free on-site or video survey when required before providing a written price. Insured
+          London, nationwide and international services are available by arrangement.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -39,7 +39,7 @@ export default function FinalCtaSection({
           </span>
           <span className="flex items-center gap-1.5">
             <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />
-            industry experienced
+            Vetted moving crews
           </span>
           <span className="flex items-center gap-1.5">
             <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} />

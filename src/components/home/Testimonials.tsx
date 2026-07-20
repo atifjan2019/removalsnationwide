@@ -1,13 +1,7 @@
 import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { StarIcon } from "@/components/ui/icons";
+import { CheckIcon } from "@/components/ui/icons";
 
-/**
- * Reviews panel. No on-site review text is fabricated: the real reviews live on
- * the Trustpilot profile and are linked here. When the official Trustpilot
- * TrustBox embed (template id + business unit id) is available, mount it inside
- * the marked container so the live rating and count render automatically.
- */
 const themes = [
   "International and Scandinavia moves",
   "Clear communication",
@@ -19,27 +13,14 @@ export default function Testimonials() {
   return (
     <section className="bg-brand-grey py-20">
       <div className="mx-auto max-w-[88rem] px-4">
-        <SectionHeading eyebrow="What our customers say" title="Verified Reviews on Trustpilot" />
+        <SectionHeading eyebrow="Service standards" title="Insurance and Service Standards" />
 
         <div className="mx-auto mt-10 max-w-3xl rounded-2xl bg-white p-8 text-center shadow-sm sm:p-12">
-          <div
-            className="flex justify-center gap-1 text-brand-red"
-            aria-label="Rated on Trustpilot"
-          >
-            {Array.from({ length: 5 }).map((_, i) => (
-              <StarIcon key={i} className="h-7 w-7" />
-            ))}
-          </div>
-
-          {/* TrustBox mount point: replace with the official Trustpilot embed
-              once the business unit id is available, so the live rating and
-              review count display and update automatically. */}
-          <div id="trustpilot-trustbox" />
+          <CheckIcon className="mx-auto h-8 w-8 text-brand-red" aria-hidden="true" />
 
           <p className="mt-5 text-base leading-relaxed text-brand-charcoal/80">
-            Removals Nationwide customers leave verified reviews on Trustpilot. Movers most often praise our
-            international and Scandinavia moves, clear communication, careful handling, and the named
-            coordinators and crews who manage each job.
+            Written quotations, insured transport and named move coordinators provide a documented
+            process from enquiry to delivery.
           </p>
 
           <ul className="mt-6 flex flex-wrap justify-center gap-2">
@@ -55,12 +36,10 @@ export default function Testimonials() {
 
           <div className="mt-8">
             <Link
-              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/about-us"
               className="inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red"
             >
-              Read verified reviews on Trustpilot
+              Read Our Service Standards
             </Link>
           </div>
         </div>

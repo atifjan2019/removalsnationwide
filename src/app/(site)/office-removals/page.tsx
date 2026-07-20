@@ -187,15 +187,15 @@ const serviceStandards = [
     signal: "Approved code scheme providing independent dispute resolution.",
   },
   {
-    name: "Independent dispute resolution",
-    signal: "Independent dispute resolution scheme for the furniture and removals sector.",
+    name: "Documented claims process",
+    signal: "Written claims process provided with the booking terms.",
   },
   {
     name: "Clear written quotations",
     signal: "Quality standard independently assessed for removals and storage operations.",
   },
   {
-    name: "Customer-reviewed service",
+    name: "Written service terms",
     signal: "Verified trading history and customer review platform.",
   },
   {
@@ -440,7 +440,7 @@ export default async function OfficeRemovalsPage() {
 
               <div className="hero-anim-trust mt-5 flex flex-wrap gap-2">
                 {[
-                  "industry Experienced",
+                  "Experienced moving crews",
                   "Fully Insured",
                   "Licensed Waste Carrier",
                   "1 Desk to 500+ Staff",
@@ -486,12 +486,12 @@ export default async function OfficeRemovalsPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+                    href="/about-us"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    Trustpilot reviews →
+                    Service standards →
                   </Link>
                   <Link
                     href="/about-us"
@@ -1132,18 +1132,18 @@ export default async function OfficeRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             tone="light"
-            eyebrow="Trustpilot and Google Reviews"
+            eyebrow="Insurance and Service Standards"
             title="What Businesses Say About Our Office Moves"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
-            Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
+            Our written quotations and insurance documents set out the agreed service before booking.{" "}
             <Link
-              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+              href="/about-us"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-red underline underline-offset-2"
             >
-              Read verified reviews on Trustpilot
+              Read our service standards
             </Link>
             .
           </p>
@@ -1152,14 +1152,14 @@ export default async function OfficeRemovalsPage() {
             className="mx-auto mt-8 max-w-xl rounded-2xl bg-white p-8 text-center shadow-sm"
             data-reveal
           >
-            <p className="text-sm font-semibold text-brand-navy">Reviews powered by Trustpilot</p>
+            <p className="text-sm font-semibold text-brand-navy">Documented service standards</p>
             <Link
-              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+              href="/about-us"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block text-sm font-semibold text-brand-red underline underline-offset-2"
             >
-              View all reviews on Trustpilot →
+              View our service standards →
             </Link>
           </div>
         </div>

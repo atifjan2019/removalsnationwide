@@ -54,7 +54,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   urlFacebook: "https://www.facebook.com/removalsnationwide",
   urlX: "https://x.com/removalsnationwide",
   urlLinkedin: "https://www.linkedin.com/company/removals-nationwide",
-  urlTrustpilot: "https://uk.trustpilot.com/review/removalsnationwide.uk",
+  urlTrustpilot: "",
   urlInstagram: "",
   urlYoutube: "",
   urlTiktok: "",

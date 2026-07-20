@@ -1,4 +1,4 @@
-import { PhoneIcon, StarIcon, StarHalfIcon } from "@/components/ui/icons";
+import { CheckIcon, PhoneIcon } from "@/components/ui/icons";
 import type { ResolvedSettings } from "@/lib/settings";
 
 export default function TopBar({ settings }: { settings: ResolvedSettings }) {
@@ -11,17 +11,10 @@ export default function TopBar({ settings }: { settings: ResolvedSettings }) {
         </p>
 
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
-          {/* Trustpilot-style rating badge */}
+          {/* Factual service badge. */}
           <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1">
-            <span className="font-semibold uppercase tracking-wide">Excellent</span>
-            <span className="flex items-center text-white" aria-hidden="true">
-              <StarIcon className="h-3.5 w-3.5" />
-              <StarIcon className="h-3.5 w-3.5" />
-              <StarIcon className="h-3.5 w-3.5" />
-              <StarIcon className="h-3.5 w-3.5" />
-              <StarHalfIcon className="h-3.5 w-3.5" />
-            </span>
-            <span className="sr-only">Rated excellent, four and a half out of five stars</span>
+            <CheckIcon className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="font-semibold uppercase tracking-wide">Fully insured removals</span>
           </span>
 
           {settings.showPhone && <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">

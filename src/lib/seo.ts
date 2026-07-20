@@ -15,8 +15,7 @@ export const SITE = {
     street: "Unit C1A Purfleet Industrial Park, Kerry Avenue",
     locality: "Purfleet",
     region: "Essex",
-    // NAP resolved to RM15 4YA site-wide (code, footer, contact, terms). External
-    // action: correct the Trustpilot listing from RM15 4YE to RM15 4YA to match.
+    // NAP resolved to RM15 4YA site-wide across code, footer, contact and terms.
     postalCode: "RM15 4YA",
     country: "GB",
   },
@@ -27,7 +26,6 @@ export const SITE = {
     "https://www.facebook.com/removalsnationwide",
     "https://x.com/removalsnationwide",
     "https://www.linkedin.com/company/removals-nationwide",
-    "https://uk.trustpilot.com/review/removalsnationwide.uk",
   ],
 };
 
@@ -313,7 +311,7 @@ export function organizationLd(settings?: LdSettings) {
   const london = settings ? e164(settings.phones.london.label) : SITE.telephone;
   const freephone = settings ? e164(settings.phones.freephone.label) : "+448000467877";
   const sameAs = settings
-    ? [settings.urlFacebook, settings.urlX, settings.urlLinkedin, settings.urlTrustpilot].filter(
+    ? [settings.urlFacebook, settings.urlX, settings.urlLinkedin].filter(
         (u) => u && u.trim() !== "",
       )
     : SITE.sameAs;
@@ -334,8 +332,7 @@ export function organizationLd(settings?: LdSettings) {
     telephone: london,
     priceRange: "££", // CONFIRM this reflects reality
     // CONFIRM: add openingHoursSpecification once trading hours are verified; omit rather than guess
-    // AggregateRating intentionally omitted: self-serving review markup is not eligible for LocalBusiness.
-    // Display reviews via the Trustpilot TrustBox widget instead.
+    // AggregateRating is omitted because no verified rating data is currently published.
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -572,4 +569,3 @@ export const HOME_HOWTO_STEPS: { name: string; text: string }[] = [
     text: "Short-term or long-term storage is available for any gap between moving out and moving in.",
   },
 ];
-

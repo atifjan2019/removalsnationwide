@@ -1,8 +1,14 @@
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 import { getAdminRole } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Admin Login | Removals Nationwide",
+  robots: { index: false, follow: false },
+};
 
 export default async function AdminLoginPage() {
   if (await getAdminRole()) redirect("/admin");

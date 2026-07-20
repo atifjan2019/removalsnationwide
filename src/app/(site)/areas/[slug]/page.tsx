@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import PageBanner from "@/components/layout/PageBanner";
-import StickyMobileBar from "@/components/services/StickyMobileBar";
-import HtmlContent from "@/components/news/HtmlContent";
-import CtaBand from "@/components/home/CtaBand";
-import Testimonials from "@/components/home/Testimonials";
 import BoroughPage from "@/components/areas/BoroughPage";
 import { boroughs } from "@/lib/boroughs";
 import { SITE, withTrailingSlash } from "@/lib/seo";
-import { getAreaBySlug } from "@/lib/cms";
+import { areaToBorough, getAreaBySlug } from "@/lib/cms";
 
 export const dynamic = "force-dynamic";
 
@@ -40,10 +34,18 @@ export async function generateMetadata({
 
   const area = await getAreaBySlug(slug);
   if (!area) return { title: "Area Not Found | Removals Nationwide" };
+  const cmsBorough = areaToBorough(area);
   return {
-    title: `Removals in ${area.name} | Removals Nationwide`,
-    description: area.intro || `Removals Nationwide services in ${area.name}.`,
+    title: cmsBorough.metaTitle,
+    description: cmsBorough.metaDescription,
     alternates: { canonical: withTrailingSlash(`/areas/${slug}`) },
+    openGraph: {
+      title: cmsBorough.metaTitle,
+      description: cmsBorough.metaDescription,
+      url: withTrailingSlash(`/areas/${slug}`),
+      siteName: SITE.name,
+      type: "website",
+    },
   };
 }
 
@@ -59,52 +61,5 @@ export default async function AreaPage({
 
   const area = await getAreaBySlug(slug);
   if (!area) notFound();
-
-  return (
-    <>
-      <StickyMobileBar />
-      <PageBanner
-        title={area.name}
-        subtitle="Removals & Storage in Your Area"
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Areas We Cover", href: "/areas" },
-          { label: area.name },
-        ]}
-      />
-
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-4">
-          {area.cover_image && (
-            <div className="relative mb-8 aspect-[16/9] overflow-hidden rounded-2xl shadow-md">
-              <Image
-                src={area.cover_image}
-                alt={area.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
-          {area.intro && (
-            <p className="text-lg font-medium leading-relaxed text-brand-navy">{area.intro}</p>
-          )}
-          <div className="mt-6">
-            <HtmlContent html={area.body_html} />
-          </div>
-        </div>
-      </section>
-
-      <CtaBand
-        heading={`Book Your Move in ${area.name} Today`}
-        actions={[
-          { label: "Book a Service", href: "/bookservice", variant: "navy" },
-          { label: "Quick Quote", href: "/bookservice#quick-quote", variant: "outline-light" },
-        ]}
-      />
-
-      <Testimonials />
-    </>
-  );
+  return <BoroughPage borough={areaToBorough(area)} />;
 }

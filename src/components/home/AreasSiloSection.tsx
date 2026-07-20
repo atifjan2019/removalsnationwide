@@ -78,9 +78,9 @@ export default function AreasSiloSection() {
         />
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          Our removal crews serve all 32 London boroughs, Greater London and Surrey. Coverage
-          extends to the Home Counties and nationwide on request. Select a borough below for
-          local service information.
+          London is our home base, with crews serving all 32 boroughs, Greater London and Surrey.
+          Nationwide and international removals are arranged from London, subject to route and date
+          availability. Select a borough below for local service information.
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5" data-reveal>

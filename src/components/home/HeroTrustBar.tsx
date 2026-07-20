@@ -1,4 +1,4 @@
-import { CheckIcon, StarIcon } from "@/components/ui/icons";
+import { CheckIcon } from "@/components/ui/icons";
 
 type TrustItem = {
   icon: React.ReactNode;
@@ -7,32 +7,21 @@ type TrustItem = {
 
 const ITEMS: TrustItem[] = [
   {
-    icon: <StarIcon className="h-4 w-4 text-brand-red" aria-hidden="true" />,
-    label: (
-      <>
-        <strong className="font-semibold text-brand-navy">Excellent</strong>
-        <span className="text-brand-charcoal/70"> on Trustpilot</span>
-      </>
-    ),
+    icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
+    label: <span className="text-brand-charcoal/70">Written quotations</span>,
   },
   {
     icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
-    label: <span className="text-brand-charcoal/70">industry Experienced</span>,
+    label: <span className="text-brand-charcoal/70">Goods-in-transit cover</span>,
   },
   {
     icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
-    label: <span className="text-brand-charcoal/70">professional Experienced</span>,
+    label: <span className="text-brand-charcoal/70">Vetted moving crews</span>,
   },
   {
     icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
     label: <span className="text-brand-charcoal/70">Fully Insured</span>,
   },
-  /* CONFIRM: add verified established year, then restore this item:
-  {
-    icon: <CheckIcon className="h-4 w-4 text-brand-red" strokeWidth={3} aria-hidden="true" />,
-    label: <span className="text-brand-charcoal/70">Established XXXX</span>,
-  },
-  */
 ];
 
 export default function HeroTrustBar() {

@@ -215,9 +215,9 @@ const priceFactors: CheckItem[] = [
 const serviceStandards = [
   "Fully insured removals",
   "Vetted moving crews",
-  "Independent dispute resolution",
+  "Documented claims process",
   "Clear written quotations",
-  "Customer-reviewed service",
+  "Written service terms",
   "International moving experience",
 ];
 
@@ -362,7 +362,7 @@ export default async function HouseRemovalsPage() {
       <PageBanner
         title="Nationwide House Removals"
         h1={serviceH1["house-removals"]}
-        subtitle="Fully Insured · industry Experienced · 7 Days a Week"
+        subtitle="Fully Insured · Experienced moving crews · 7 Days a Week"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
@@ -421,7 +421,7 @@ export default async function HouseRemovalsPage() {
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {["industry Experienced", "Fully Insured", "7 Days a Week"].map((label) => (
+                {["Experienced moving crews", "Fully Insured", "7 Days a Week"].map((label) => (
                   <span
                     key={label}
                     className="inline-flex items-center gap-1.5 rounded-full bg-brand-grey px-3 py-1.5 text-xs font-semibold text-brand-navy"
@@ -459,12 +459,12 @@ export default async function HouseRemovalsPage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+                    href="/about-us"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    Trustpilot reviews →
+                    Service standards →
                   </Link>
                   <Link
                     href="/about-us"
@@ -1134,18 +1134,18 @@ export default async function HouseRemovalsPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             tone="light"
-            eyebrow="Trustpilot and Google Reviews"
-            title="What Our Customers Say"
+            eyebrow="Insurance and Service Standards"
+            title="How We Define Our Service"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-white/80">
-            Removals Nationwide customers have left verified reviews across Trustpilot and Google.{" "}
+            Our written quotations and insurance documents set out the agreed service before booking.{" "}
             <Link
-              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+              href="/about-us"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-red underline underline-offset-2"
             >
-              Read verified reviews on Trustpilot
+              Read our service standards
             </Link>
             .
           </p>
@@ -1155,15 +1155,15 @@ export default async function HouseRemovalsPage() {
             data-reveal
           >
             <p className="text-sm font-semibold text-brand-navy">
-              Reviews powered by Trustpilot
+              Documented service standards
             </p>
             <Link
-              href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+              href="/about-us"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block text-sm font-semibold text-brand-red underline underline-offset-2"
             >
-              View all reviews on Trustpilot →
+              View our service standards →
             </Link>
           </div>
         </div>

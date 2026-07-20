@@ -27,7 +27,7 @@ import {
   IcoCube,
   IcoCalendar,
 } from "@/components/services/ProcessStepIcons";
-import { CheckIcon, StarIcon } from "@/components/ui/icons";
+import { CheckIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = buildMetadata("london-storage");
 
@@ -257,9 +257,9 @@ const storageServiceStandards = [
   { name: "Fully insured removals" },
   { name: "Vetted moving crews" },
   { name: "International moving experience" },
-  { name: "Independent dispute resolution" },
+  { name: "Documented claims process" },
   { name: "Clear written quotations" },
-  { name: "Customer-reviewed service" },
+  { name: "Written service terms" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -411,12 +411,12 @@ export default async function LondonStoragePage() {
                 </ul>
                 <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                   <Link
-                    href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+                    href="/about-us"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                   >
-                    Trustpilot reviews →
+                    Service standards →
                   </Link>
                   <Link
                     href="/about-us"
@@ -1006,28 +1006,26 @@ export default async function LondonStoragePage() {
         </div>
       </section>
 
-      {/* ── S14: Reviews (Trustpilot only, no placeholder reviews) ───── */}
+      {/* ── S14: Service standards ───── */}
       <section className="bg-brand-navy py-16">
         <div className="mx-auto max-w-[88rem] px-4 text-center" data-reveal>
           <div
             className="flex justify-center gap-1 text-brand-red"
-            aria-label="5 out of 5 stars"
+            aria-label="Service standards"
           >
-            {Array.from({ length: 5 }).map((_, i) => (
-              <StarIcon key={i} className="h-7 w-7" />
-            ))}
+            <CheckIcon className="h-8 w-8" aria-hidden="true" />
           </div>
-          <p className="mt-3 text-xl font-bold text-white">Rated Excellent on Trustpilot</p>
+          <p className="mt-3 text-xl font-bold text-white">Fully insured service</p>
           <p className="mt-2 text-base text-white/70">
-            Read genuine reviews from customers who have used our removal and storage service.
+            Written quotations set out the agreed work, price and insurance terms before booking.
           </p>
           <Link
-            href="https://uk.trustpilot.com/review/removalsnationwide.uk"
+            href="/about-us"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-brand-red px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-brand-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
           >
-            View Reviews on Trustpilot
+            View Our Service Standards
           </Link>
         </div>
       </section>

@@ -1,16 +1,30 @@
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { HOME_HOWTO_STEPS } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { HOMEPAGE_PROCESS_STEPS } from "@/components/home/homepage-content";
 
 const stepIcons = ["01", "02", "03", "04", "05", "06", "07"];
 
 export default function ProcessSection() {
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to book and complete a removal",
+    step: HOMEPAGE_PROCESS_STEPS.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  };
+
   return (
     <section
       id="process"
       className="bg-white py-20"
       aria-labelledby="process-heading"
     >
+      <JsonLd data={howToSchema} />
       <div className="mx-auto max-w-[88rem] px-4">
         <SectionHeading
           eyebrow="Survey to Settled-In"
@@ -18,13 +32,13 @@ export default function ProcessSection() {
         />
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/80">
-          The Removals Nationwide move process runs from your first enquiry to settled in across
+          Our move process runs from your first enquiry to settled in across
           seven steps. Parking, access and permits are handled as part of the process, not
           added on at the end.
         </p>
 
         <ol className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {HOME_HOWTO_STEPS.map((step, i) => (
+          {HOMEPAGE_PROCESS_STEPS.map((step, i) => (
             <li
               key={step.name}
               className="relative flex flex-col rounded-2xl border border-black/5 bg-brand-grey p-7 shadow-sm"
