@@ -131,7 +131,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Hero two-column */}
       <section id="borough-hero" className="bg-white pt-12 pb-0">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
+        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
           <div>
             <p className="text-xl font-bold leading-snug text-brand-navy sm:text-2xl">{b.introLine}</p>
             <p className="mt-3 text-base leading-relaxed text-brand-charcoal/80">{b.valueLine}</p>
@@ -245,13 +245,13 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Local team */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
             eyebrow="Local team"
             title={`Your Local Removals and Man and Van Team in ${b.name}`}
           />
-          <div className="mt-6 max-w-4xl space-y-4 text-base leading-relaxed text-brand-charcoal/85">
+          <div className="mt-6 gap-12 text-base leading-relaxed text-brand-charcoal/85 lg:columns-2 [&>p]:mb-4 [&>p]:break-inside-avoid">
             {(b.localBody ?? []).map((p, i) => (
               <p key={i}>{p}</p>
             ))}
@@ -261,13 +261,13 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Coverage */}
       <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             align="left"
             eyebrow="Coverage"
             title={`Areas and Postcodes We Cover in ${b.name}`}
           />
-          <p className="mt-6 max-w-4xl text-base leading-relaxed text-brand-charcoal/85">{b.coverageIntro}</p>
+          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.coverageIntro}</p>
           {(b.postcodes ?? []).length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2">
               {(b.postcodes ?? []).map((pc) => (
@@ -288,14 +288,14 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
               {b.neighbourhoods}
             </p>
           </div>
-          <p className="mt-4 max-w-4xl text-base leading-relaxed text-brand-charcoal/85">{b.coverageOutro}</p>
+          <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">{b.coverageOutro}</p>
         </div>
       </section>
 
       {/* What we know */}
       {((b.knowBlocks ?? []).length > 0 || b.knowIntro) && (
         <section className="bg-white py-16">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-[88rem] px-4">
             <div className="max-w-4xl">
               <SectionHeading
                 align="left"
@@ -329,7 +329,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Prices */}
       <section className="bg-brand-grey py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Transparent pricing" title={`Man and Van Prices in ${b.name}`} />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/80">
             Our man and van rates are published in full, charged by the hour with a two-hour minimum,
@@ -346,7 +346,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Services */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="One experienced company" title={`Our ${b.name} Services`} />
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-brand-charcoal/75">
             One experienced team for the whole move, from a single item to a full house or office
@@ -382,7 +382,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Experienced, insured, reviewed */}
       <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-7xl px-4 text-center">
+        <div className="mx-auto max-w-[88rem] px-4 text-center">
           <SectionHeading eyebrow="Trust" title="Experienced, Insured and Reviewed" />
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
             Removals Nationwide is an experienced mover. Every move includes goods-in-transit
@@ -404,7 +404,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* How it works */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading align="left" eyebrow="Step by step" title={`How Your ${b.name} Move Works`} />
           <ol className="mt-8 grid gap-5 sm:grid-cols-2">
             {[
@@ -427,9 +427,9 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Nearby areas */}
       {(b.nearby ?? []).length > 0 && <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
-          <p className="mt-6 max-w-4xl text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
             We also serve the boroughs that border {b.name}, including{" "}
             {(b.nearby ?? []).map((n, i) => {
               return (
@@ -452,7 +452,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Quote band (solid navy, readability first) */}
       <section className="bg-brand-navy py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="mx-auto grid max-w-[88rem] gap-10 px-4 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div>
             <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
               Get Your {b.name} Removal Quote
@@ -509,7 +509,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* FAQs */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading eyebrow="Good to know" title={`${b.name} Removals FAQs`} />
           <Faq items={b.faqs ?? []} className="mt-10" />
         </div>

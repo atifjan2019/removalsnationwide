@@ -397,7 +397,7 @@ export default async function InternationalRemovalsPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1710749093416-1e9cdde8d080?auto=format&fit=crop&w=2400&q=82"
+                  src="/images/brand/british-removal-van.webp"
                   alt="Removals Nationwide international removals fleet serving Europe from the UK"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -508,7 +508,7 @@ export default async function InternationalRemovalsPage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1781807124729-a6a68d42a6d7?auto=format&fit=crop&w=2400&q=82"
+                src="/images/brand/british-removal-van.webp"
                 alt="Removals Nationwide crew managing a London international removal with tracked shipment"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

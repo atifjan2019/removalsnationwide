@@ -367,7 +367,7 @@ export default async function PackingServicePage() {
           <div data-reveal data-delay="1" className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
             <div className="relative aspect-[4/3] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1600725935160-f67ee4f6084a?auto=format&fit=crop&w=2400&q=82"
+                src="/images/brand/professional-packing.webp"
                 alt="Removals Nationwide professional packer carefully wrapping belongings in bubble wrap"
                 fill
                 priority

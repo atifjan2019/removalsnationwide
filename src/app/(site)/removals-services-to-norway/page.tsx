@@ -288,7 +288,7 @@ export default async function RemovalsToNorwayPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1710749093416-1e9cdde8d080?auto=format&fit=crop&w=2400&q=82"
+                  src="/images/brand/british-removal-van.webp"
                   alt="Removals Nationwide road-train for weekly removals to Norway from the UK"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -382,7 +382,7 @@ export default async function RemovalsToNorwayPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1730154838368-c37b1fdebcf6?auto=format&fit=crop&w=2400&q=82"
+                  src="/images/brand/professional-packing.webp"
                   alt="Removals Nationwide team loading a truck for international removal to Norway"
                   fill
                   sizes="(max-width: 1024px) 100vw, 38vw"

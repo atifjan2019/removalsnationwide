@@ -470,7 +470,7 @@ export default async function ManAndVanPage() {
             >
               <div className="relative aspect-[16/9] w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1698917414969-feade59e3343?auto=format&fit=crop&w=2400&q=82"
+                  src="/images/brand/british-removal-crew.webp"
                   alt="Removals Nationwide professional mover loading a van for a man and van move in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

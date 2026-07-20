@@ -439,7 +439,7 @@ export default async function HouseRemovalsPage() {
             <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1714647211902-bb711d643a17?auto=format&fit=crop&w=2400&q=82"
+                  src="/images/brand/british-home-move.webp"
                   alt="house move in London, Removals Nationwide fully insured house removal crew"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
