@@ -30,6 +30,16 @@ export type SiteSettings = {
   footerLogoUrl: string;
 };
 
+export type SmtpSettingsSummary = {
+  host: string;
+  port: string;
+  username: string;
+  fromEmail: string;
+  fromName: string;
+  passwordConfigured: boolean;
+  source: "settings" | "cloudflare" | "none";
+};
+
 export const DEFAULT_SETTINGS: SiteSettings = {
   phoneFreephone: "0800 046 7877",
   phoneLondon: "020 7205 2525",

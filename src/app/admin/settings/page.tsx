@@ -3,11 +3,17 @@ import { getSettings } from "@/lib/settings";
 import { getDb } from "@/lib/d1";
 import { requireAdmin } from "@/lib/admin-auth";
 import { PageHeading } from "@/components/admin/AdminPrimitives";
+import { getSmtpSettingsSummary } from "@/lib/smtp-settings";
 
 export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
-  const [settings, db, role] = await Promise.all([getSettings(), getDb(), requireAdmin()]);
+  const [settings, smtpSettings, db, role] = await Promise.all([
+    getSettings(),
+    getSmtpSettingsSummary(),
+    getDb(),
+    requireAdmin(),
+  ]);
 
   return (
     <div className="mx-auto max-w-[1500px]">
@@ -21,7 +27,7 @@ export default async function SettingsPage() {
       )}
 
       <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_300px]">
-        <SettingsForm settings={settings} />
+        <SettingsForm settings={settings} smtpSettings={smtpSettings} />
         <aside className="mt-8 space-y-5">
           <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <p className="text-xs font-bold uppercase tracking-widest text-brand-red">Admin Profile</p>

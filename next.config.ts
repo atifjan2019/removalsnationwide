@@ -37,6 +37,9 @@ const redirectPairs: [string, string][] = [
 ];
 
 const nextConfig: NextConfig = {
+  // Leave Cloudflare runtime modules untouched during Next's webpack pass.
+  // OpenNext resolves them when it bundles the Worker entrypoint.
+  serverExternalPackages: ["cloudflare:sockets"],
   // Match the live WordPress URL format (trailing slash) so every existing
   // ranking URL is preserved at cutover with no mass redirect. Next.js 308s the
   // non-slash form to the slash form, so each page resolves at one URL.

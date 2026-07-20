@@ -3,13 +3,14 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { saveSettings, type SettingsState } from "@/app/admin/settings/actions";
-import type { SiteSettings } from "@/lib/settings";
+import type { SiteSettings, SmtpSettingsSummary } from "@/lib/settings-shared";
 
 const SETTINGS_TABS = [
   { id: "branding", label: "Branding" },
   { id: "contact", label: "Contact & WhatsApp" },
   { id: "social", label: "Social profiles" },
   { id: "company", label: "Company" },
+  { id: "smtp", label: "Email / SMTP" },
 ] as const;
 
 type SettingsTab = (typeof SETTINGS_TABS)[number]["id"];
@@ -115,7 +116,41 @@ function SaveButton() {
   );
 }
 
-export default function SettingsForm({ settings }: { settings: SiteSettings }) {
+function SmtpField({
+  label,
+  name,
+  defaultValue = "",
+  type = "text",
+  placeholder,
+  hint,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  defaultValue?: string;
+  type?: string;
+  placeholder?: string;
+  hint?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <span className="text-sm font-semibold text-brand-navy">{label}</span>
+      <input
+        type={type}
+        name={name}
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+        required={required}
+        autoComplete={type === "password" ? "new-password" : undefined}
+        className="mt-1 w-full rounded-lg border border-black/10 px-3 py-2 text-sm outline-none focus:border-brand-red"
+      />
+      {hint && <span className="mt-1 block text-xs text-brand-charcoal/60">{hint}</span>}
+    </label>
+  );
+}
+
+export default function SettingsForm({ settings, smtpSettings }: { settings: SiteSettings; smtpSettings: SmtpSettingsSummary }) {
   const [activeTab, setActiveTab] = useState<SettingsTab>("branding");
   const [state, formAction] = useActionState<SettingsState, FormData>(saveSettings, {
     ok: false,
@@ -262,6 +297,39 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
             defaultValue={settings.companyReg}
             hint="Shown in the footer's bottom bar."
           />
+        </div>
+      </section>
+
+      <section id="settings-panel-smtp" role="tabpanel" aria-labelledby="settings-tab-smtp" hidden={activeTab !== "smtp"}>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-bold text-brand-navy">Email / SMTP</h2>
+            <p className="mt-1 text-sm text-brand-charcoal/60">
+              Used for customer confirmations, admin notifications, and the Resend emails button.
+            </p>
+          </div>
+          <span className={`rounded-full px-3 py-1 text-xs font-bold ${smtpSettings.passwordConfigured ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-800"}`}>
+            {smtpSettings.passwordConfigured ? "Password configured" : "Password required"}
+          </span>
+        </div>
+
+        <div className="mt-5 grid gap-5 sm:grid-cols-2">
+          <SmtpField label="SMTP host" name="smtpHost" defaultValue={smtpSettings.host} placeholder="smtp.elasticemail.com" required />
+          <SmtpField label="SMTP port" name="smtpPort" defaultValue={smtpSettings.port} type="number" placeholder="2525" required />
+          <SmtpField label="SMTP username" name="smtpUsername" defaultValue={smtpSettings.username} required />
+          <SmtpField
+            label="SMTP password"
+            name="smtpPassword"
+            type="password"
+            placeholder={smtpSettings.passwordConfigured ? "Leave blank to keep current password" : "Enter SMTP password"}
+            hint="The password is encrypted before it is stored and is never shown again."
+          />
+          <SmtpField label="Sender email" name="smtpFromEmail" defaultValue={smtpSettings.fromEmail} type="email" placeholder="mail@webspires.co.uk" required />
+          <SmtpField label="Sender name" name="smtpFromName" defaultValue={smtpSettings.fromName} placeholder="Removals Nationwide Bookings" required />
+        </div>
+
+        <div className="mt-5 rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
+          Current source: <strong>{smtpSettings.source === "settings" ? "Admin settings" : smtpSettings.source === "cloudflare" ? "Cloudflare Worker secrets" : "Not configured"}</strong>. Saving this form makes the values above the active SMTP configuration. Leave the password blank to retain the current password.
         </div>
       </section>
 

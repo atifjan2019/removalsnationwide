@@ -197,7 +197,129 @@ class SmtpConnection {
   };
 }
 
-export async function sendSmtpEmail(message: SmtpMessage): Promise<void> {
+class WorkerSmtpConnection {
+  private reader: ReadableStreamDefaultReader<Uint8Array>;
+  private writer: WritableStreamDefaultWriter<Uint8Array>;
+  private lines: string[] = [];
+  private buffer = "";
+  private decoder = new TextDecoder();
+
+  constructor(private socket: Socket) {
+    this.reader = socket.readable.getReader();
+    this.writer = socket.writable.getWriter();
+  }
+
+  async command(command: string, expectedCodes: number[]) {
+    await this.writer.write(encoder.encode(`${command}\r\n`));
+    return this.expect(expectedCodes);
+  }
+
+  async writeData(data: string, expectedCodes: number[]) {
+    await this.writer.write(encoder.encode(`${dotStuff(data)}\r\n.\r\n`));
+    return this.expect(expectedCodes);
+  }
+
+  async expect(expectedCodes: number[]) {
+    const response = await this.readResponse();
+    if (!expectedCodes.includes(response.code)) {
+      throw new Error(`SMTP server returned ${response.code}: ${response.message}`);
+    }
+    return response;
+  }
+
+  async startTls(host: string) {
+    this.reader.releaseLock();
+    this.writer.releaseLock();
+    this.socket = this.socket.startTls({ expectedServerHostname: host });
+    await this.socket.opened;
+    this.reader = this.socket.readable.getReader();
+    this.writer = this.socket.writable.getWriter();
+    this.lines = [];
+    this.buffer = "";
+    this.decoder = new TextDecoder();
+  }
+
+  async close() {
+    this.reader.releaseLock();
+    this.writer.releaseLock();
+    await this.socket.close();
+  }
+
+  private async readLine(): Promise<string> {
+    while (!this.lines.length) {
+      const { done, value } = await this.reader.read();
+      if (done) throw new Error("SMTP server closed the connection unexpectedly.");
+      this.buffer += this.decoder.decode(value, { stream: true });
+      let newline = this.buffer.indexOf("\r\n");
+      while (newline >= 0) {
+        this.lines.push(this.buffer.slice(0, newline));
+        this.buffer = this.buffer.slice(newline + 2);
+        newline = this.buffer.indexOf("\r\n");
+      }
+    }
+    return this.lines.shift() as string;
+  }
+
+  private async readResponse(): Promise<SmtpResponse> {
+    const firstLine = await this.readLine();
+    const match = /^(\d{3})([ -])(.*)$/.exec(firstLine);
+    if (!match) throw new Error("SMTP server sent an invalid response.");
+
+    const code = Number(match[1]);
+    const lines = [match[3]];
+    if (match[2] === "-") {
+      while (true) {
+        const line = await this.readLine();
+        const continuation = /^(\d{3})([ -])(.*)$/.exec(line);
+        if (!continuation) {
+          lines.push(line);
+          continue;
+        }
+        lines.push(continuation[3]);
+        if (Number(continuation[1]) === code && continuation[2] === " ") break;
+      }
+    }
+    return { code, message: lines.join(" ") };
+  }
+}
+
+async function sendWithWorkerSockets(
+  message: SmtpMessage,
+  connect: typeof import("cloudflare:sockets").connect,
+) {
+  const socket = connect(
+    { hostname: message.host, port: message.port },
+    { secureTransport: "starttls", allowHalfOpen: false },
+  );
+  await socket.opened;
+  const smtp = new WorkerSmtpConnection(socket);
+
+  try {
+    await smtp.expect([220]);
+    const hello = await smtp.command("EHLO removalsnationwide.uk", [250]);
+    if (!hello.message.toUpperCase().includes("STARTTLS")) {
+      throw new Error("SMTP server did not offer STARTTLS.");
+    }
+
+    await smtp.command("STARTTLS", [220]);
+    await smtp.startTls(message.host);
+    await smtp.command("EHLO removalsnationwide.uk", [250]);
+
+    const credentials = encodeBase64(`\0${message.username}\0${message.password}`);
+    const auth = await smtp.command(`AUTH PLAIN ${credentials}`, [235, 334]);
+    if (auth.code === 334) await smtp.command(credentials, [235]);
+
+    await smtp.command(`MAIL FROM:<${cleanHeader(message.fromEmail)}>`, [250]);
+    await smtp.command(`RCPT TO:<${cleanHeader(message.to)}>`, [250, 251]);
+    await smtp.command("DATA", [354]);
+    await smtp.writeData(createMimeMessage(message), [250]);
+    await smtp.command("QUIT", [221]);
+  } finally {
+    await smtp.close().catch(() => undefined);
+  }
+}
+
+async function sendWithNodeSockets(message: SmtpMessage): Promise<void> {
   const socket = createConnection({ host: message.host, port: message.port });
   await new Promise<void>((resolve, reject) => {
     socket.once("connect", resolve);
@@ -227,5 +349,25 @@ export async function sendSmtpEmail(message: SmtpMessage): Promise<void> {
     await smtp.command("QUIT", [221]);
   } finally {
     await smtp.close().catch(() => undefined);
+  }
+}
+
+export async function sendSmtpEmail(message: SmtpMessage): Promise<void> {
+  try {
+    const { connect } = await import("cloudflare:sockets");
+    return await sendWithWorkerSockets(message, connect);
+  } catch (error) {
+    // `cloudflare:sockets` is unavailable under a plain local Node.js server.
+    // Only fall back for that import/runtime mismatch; SMTP errors from the
+    // Worker transport must be preserved rather than retried over Node sockets.
+    if (
+      error instanceof Error &&
+      (error.message.includes("cloudflare:sockets") ||
+        error.message.includes("Unsupported URL scheme") ||
+        error.message.includes("Cannot find module"))
+    ) {
+      return sendWithNodeSockets(message);
+    }
+    throw error;
   }
 }

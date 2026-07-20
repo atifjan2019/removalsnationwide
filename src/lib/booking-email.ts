@@ -1,6 +1,6 @@
 import "server-only";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { sendSmtpEmail } from "@/lib/smtp";
+import { getSmtpConfiguration } from "@/lib/smtp-settings";
 
 const ADMIN_EMAIL = "atifjan2019@gmail.com";
 
@@ -41,23 +41,24 @@ export type BookingEmailResult = {
   adminSent: boolean;
   customerSent: boolean;
   checkedAt: string;
+  errorMessage: string;
 };
 
 const isEmailAddress = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 export async function sendBookingNotification(booking: BookingNotification): Promise<BookingEmailResult> {
   try {
-    const { env } = await getCloudflareContext({ async: true });
-    const smtpPort = Number(env.SMTP_PORT);
+    const configuration = await getSmtpConfiguration();
+    const smtpPort = Number(configuration.port);
     if (
-      !env.SMTP_HOST ||
+      !configuration.host ||
       !Number.isInteger(smtpPort) ||
-      !env.SMTP_USERNAME ||
-      !env.SMTP_PASSWORD ||
-      !env.SMTP_FROM_EMAIL
+      !configuration.username ||
+      !configuration.password ||
+      !configuration.fromEmail
     ) {
       console.warn("Booking email was not sent because SMTP is not fully configured.");
-      return { adminSent: false, customerSent: false, checkedAt: new Date().toISOString() };
+      return { adminSent: false, customerSent: false, checkedAt: new Date().toISOString(), errorMessage: "SMTP is not fully configured." };
     }
 
     const moveType = moveLabels[booking.moveType] ?? booking.moveType;
@@ -150,12 +151,12 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
       .join("");
 
     const smtp = {
-      host: env.SMTP_HOST,
+      host: configuration.host,
       port: smtpPort,
-      username: env.SMTP_USERNAME,
-      password: env.SMTP_PASSWORD,
-      fromEmail: env.SMTP_FROM_EMAIL,
-      fromName: env.SMTP_FROM_NAME || "Removals Nationwide Bookings",
+      username: configuration.username,
+      password: configuration.password,
+      fromEmail: configuration.fromEmail,
+      fromName: configuration.fromName,
     };
 
     const customerEmail = isEmailAddress(booking.email) ? booking.email : "";
@@ -185,15 +186,25 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
     if (customerResult?.status === "rejected") {
       console.error("Could not send customer booking confirmation email", customerResult.reason);
     }
+    const errors = [adminResult, customerResult]
+      .filter((result): result is PromiseRejectedResult => result?.status === "rejected")
+      .map((result) => result.reason instanceof Error ? result.reason.message : "Unknown SMTP error")
+      .filter((message, index, messages) => messages.indexOf(message) === index);
     return {
       adminSent: adminResult.status === "fulfilled",
       customerSent: customerResult?.status === "fulfilled",
       checkedAt: new Date().toISOString(),
+      errorMessage: errors.join(" ").slice(0, 500),
     };
   } catch (error) {
     // The booking is already safely stored in D1. Email delivery must never
     // turn a successful request into an error shown to the customer.
     console.error("Could not send booking notification email", error);
-    return { adminSent: false, customerSent: false, checkedAt: new Date().toISOString() };
+    return {
+      adminSent: false,
+      customerSent: false,
+      checkedAt: new Date().toISOString(),
+      errorMessage: error instanceof Error ? error.message.slice(0, 500) : "Unknown email error",
+    };
   }
 }

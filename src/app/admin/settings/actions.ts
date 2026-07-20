@@ -5,6 +5,7 @@ import { requireDb } from "@/lib/cms";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
 import { DEFAULT_SETTINGS, getSettings, type SiteSettings } from "@/lib/settings";
+import { saveSmtpSettings } from "@/lib/smtp-settings";
 
 /** Trim a required value, falling back to its built-in default when blank. */
 function clean(value: FormDataEntryValue | null, fallback: string): string {
@@ -148,6 +149,7 @@ export async function saveSettings(
         next.urlTiktok,
       )
       .run();
+    await saveSmtpSettings(db, formData);
   } catch (err) {
     return { ok: false, message: `Could not save: ${(err as Error).message}` };
   }

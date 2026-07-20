@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore, useTransition } from "react";
+import { createPortal } from "react-dom";
 import {
   deleteBooking,
   resendBookingEmails,
@@ -24,6 +25,7 @@ const moveLabels: Record<string, string> = {
 };
 
 const fieldClass = "mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-950 focus:ring-2 focus:ring-slate-950/10";
+const subscribeToClient = () => () => undefined;
 
 function sizeLabel(booking: Booking) {
   if (booking.move_type !== "house" && booking.move_type !== "flat") return "Not applicable";
@@ -39,6 +41,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
   const [selected, setSelected] = useState<Booking | null>(null);
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
+  const mounted = useSyncExternalStore(subscribeToClient, () => true, () => false);
   const [pending, startTransition] = useTransition();
   const [emailPending, startEmailTransition] = useTransition();
   const [emailFeedback, setEmailFeedback] = useState<{ ok: boolean; message: string } | null>(null);
@@ -89,7 +92,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
 
       <div className="mt-6 grid gap-4">
         {filtered.map((booking) => { const route = bookingRoute(booking); const status = moveStatus(booking.status); return (
-          <button key={booking.id} onClick={() => { setSelected(booking); setEditing(false); setEmailFeedback(null); }} className="grid w-full gap-5 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md lg:grid-cols-[minmax(200px,1.15fr)_minmax(240px,1.5fr)_minmax(150px,.8fr)_minmax(220px,1fr)_auto] lg:items-center">
+          <button type="button" key={booking.id} aria-haspopup="dialog" onClick={() => { setSelected(booking); setCreating(false); setEditing(false); setEmailFeedback(null); }} className="grid w-full cursor-pointer gap-5 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md lg:grid-cols-[minmax(200px,1.15fr)_minmax(240px,1.5fr)_minmax(150px,.8fr)_minmax(220px,1fr)_auto] lg:items-center">
             <span className="flex items-center gap-3"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-950 font-bold text-white">{booking.full_name.charAt(0).toUpperCase()}</span><span><span className="block font-bold text-slate-950">{booking.full_name}</span><span className="mt-0.5 block font-mono text-xs text-slate-400">#{booking.id.slice(0, 8)}</span></span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Route</span><span className="mt-1 block line-clamp-2 text-sm font-medium text-slate-700">{route.from} <span className="text-brand-red">→</span> {route.to}</span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Type & size</span><span className="mt-1 block text-sm font-semibold text-slate-700">{moveLabels[booking.move_type] || booking.move_type} • {sizeLabel(booking)}</span><span className="mt-1 block text-xs text-slate-500">{shortDate(booking.move_date)}</span></span>
@@ -100,7 +103,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
         {!filtered.length && <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-500">No moves match this filter.</div>}
       </div>
 
-      {(active || creating) && (
+      {mounted && (active || creating) && createPortal((
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/55 p-3 backdrop-blur-[2px] sm:p-6"
           onMouseDown={(event) => {
@@ -199,7 +202,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
             </footer>
           </div>
         </div>
-      )}
+      ), document.body)}
     </div>
   );
 }

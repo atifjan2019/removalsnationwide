@@ -139,7 +139,7 @@ export async function resendBookingEmails(id: string): Promise<ResendBookingEmai
     .run();
   const expectedCustomerEmail = Boolean(booking.email);
   const ok = result.adminSent && (!expectedCustomerEmail || result.customerSent);
-  const message = result.adminSent && result.customerSent
+  const baseMessage = result.adminSent && result.customerSent
     ? "Booking emails sent successfully to the customer and admin."
     : result.adminSent && !expectedCustomerEmail
       ? "Admin email sent. This booking has no customer email address."
@@ -147,7 +147,8 @@ export async function resendBookingEmails(id: string): Promise<ResendBookingEmai
         ? "Admin email sent, but the customer email failed. Check the customer address."
         : result.customerSent
           ? "Customer email sent, but the admin email failed. Check the SMTP sender settings."
-          : "Emails could not be sent. Check the SMTP credentials and sender verification.";
+          : "Emails could not be sent.";
+  const message = result.errorMessage ? `${baseMessage} ${result.errorMessage}` : baseMessage;
   await logActivity("Email status updated", message, id);
   refreshAdmin();
   return {

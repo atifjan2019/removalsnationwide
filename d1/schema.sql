@@ -73,6 +73,12 @@ create table if not exists settings (
   url_instagram     text not null default '',
   url_youtube       text not null default '',
   url_tiktok        text not null default '',
+  smtp_host         text not null default '',
+  smtp_port         integer not null default 2525,
+  smtp_username     text not null default '',
+  smtp_password_encrypted text not null default '',
+  smtp_from_email   text not null default '',
+  smtp_from_name    text not null default '',
   updated_at        text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
