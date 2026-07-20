@@ -5,7 +5,8 @@ import { requireDb } from "@/lib/cms";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
 import { DEFAULT_SETTINGS, getSettings, type SiteSettings } from "@/lib/settings";
-import { saveSmtpSettings } from "@/lib/smtp-settings";
+import { getSmtpConfiguration, saveSmtpSettings } from "@/lib/smtp-settings";
+import { sendSmtpEmail } from "@/lib/smtp";
 
 /** Trim a required value, falling back to its built-in default when blank. */
 function clean(value: FormDataEntryValue | null, fallback: string): string {
@@ -30,6 +31,61 @@ function cleanUrl(value: FormDataEntryValue | null): string {
 }
 
 export type SettingsState = { ok: boolean; message: string };
+
+export async function testSmtpSettings(
+  _prev: SettingsState,
+  formData: FormData,
+): Promise<SettingsState> {
+  await assertAdmin();
+  const current = await getSmtpConfiguration();
+  const value = (name: string, fallback = "") => {
+    const submitted = String(formData.get(name) ?? "").trim();
+    return submitted || fallback;
+  };
+  const port = Number(value("smtpPort", current.port));
+  const configuration = {
+    host: value("smtpHost", current.host).replace(/^smtps?:\/\//i, "").replace(/\/$/, ""),
+    port,
+    username: value("smtpUsername", current.username),
+    password: value("smtpPassword", current.password),
+    fromEmail: value("smtpFromEmail", current.fromEmail).toLowerCase(),
+    fromName: value("smtpFromName", current.fromName),
+  };
+  const recipient = value("smtpTestEmail").toLowerCase();
+
+  if (!configuration.host || /[\s/]/.test(configuration.host)) {
+    return { ok: false, message: "Enter a valid SMTP host name." };
+  }
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    return { ok: false, message: "Enter a valid SMTP port." };
+  }
+  if (!configuration.username || !configuration.password) {
+    return { ok: false, message: "Enter the SMTP username and password." };
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(configuration.fromEmail)) {
+    return { ok: false, message: "Enter a valid sender email address." };
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient)) {
+    return { ok: false, message: "Enter a valid test recipient email address." };
+  }
+
+  try {
+    await sendSmtpEmail({
+      ...configuration,
+      to: recipient,
+      replyTo: "atifjan2019@gmail.com",
+      subject: "SMTP test – Removals Nationwide",
+      text: "Your SMTP configuration is working. This test email was sent from the Removals Nationwide admin settings page.",
+      html: '<div style="font-family:Arial,sans-serif;color:#17233c"><h1>SMTP test successful</h1><p>Your SMTP configuration is working. This test email was sent from the Removals Nationwide admin settings page.</p></div>',
+    });
+    await logActivity("SMTP Tested", `Test email delivered to ${recipient}`, "settings");
+    return { ok: true, message: `Test email sent successfully to ${recipient}.` };
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : "Unknown SMTP error";
+    console.error("SMTP settings test failed", error);
+    return { ok: false, message: `SMTP test failed: ${reason.slice(0, 500)}` };
+  }
+}
 
 export async function saveSettings(
   _prev: SettingsState,

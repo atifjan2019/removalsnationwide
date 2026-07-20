@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { saveSettings, type SettingsState } from "@/app/admin/settings/actions";
+import { saveSettings, testSmtpSettings, type SettingsState } from "@/app/admin/settings/actions";
 import type { SiteSettings, SmtpSettingsSummary } from "@/lib/settings-shared";
 
 const SETTINGS_TABS = [
@@ -153,6 +153,10 @@ function SmtpField({
 export default function SettingsForm({ settings, smtpSettings }: { settings: SiteSettings; smtpSettings: SmtpSettingsSummary }) {
   const [activeTab, setActiveTab] = useState<SettingsTab>("branding");
   const [state, formAction] = useActionState<SettingsState, FormData>(saveSettings, {
+    ok: false,
+    message: "",
+  });
+  const [testState, testAction, testPending] = useActionState<SettingsState, FormData>(testSmtpSettings, {
     ok: false,
     message: "",
   });
@@ -330,6 +334,29 @@ export default function SettingsForm({ settings, smtpSettings }: { settings: Sit
 
         <div className="mt-5 rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
           Current source: <strong>{smtpSettings.source === "settings" ? "Admin settings" : smtpSettings.source === "cloudflare" ? "Cloudflare Worker secrets" : "Not configured"}</strong>. Saving this form makes the values above the active SMTP configuration. Leave the password blank to retain the current password.
+        </div>
+
+        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
+          <h3 className="font-bold text-brand-navy">Test SMTP configuration</h3>
+          <p className="mt-1 text-sm text-slate-500">This uses the values currently entered above. You do not need to save them first.</p>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end">
+            <div className="min-w-0 flex-1">
+              <SmtpField label="Send test email to" name="smtpTestEmail" defaultValue="atifjan2019@gmail.com" type="email" required />
+            </div>
+            <button
+              type="submit"
+              formAction={testAction}
+              disabled={testPending}
+              className="rounded-lg bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-red disabled:cursor-wait disabled:opacity-60"
+            >
+              {testPending ? "Sending test…" : "Send test email"}
+            </button>
+          </div>
+          {testState.message && (
+            <p role="status" aria-live="polite" className={`mt-4 rounded-lg border px-3 py-2 text-sm ${testState.ok ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-red-200 bg-red-50 text-red-800"}`}>
+              {testState.message}
+            </p>
+          )}
         </div>
       </section>
 
