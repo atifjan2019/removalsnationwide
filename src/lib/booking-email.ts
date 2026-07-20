@@ -37,7 +37,13 @@ const escapeHtml = (value: string) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-export async function sendBookingNotification(booking: BookingNotification): Promise<void> {
+export type BookingEmailResult = {
+  adminSent: boolean;
+  customerSent: boolean;
+  checkedAt: string;
+};
+
+export async function sendBookingNotification(booking: BookingNotification): Promise<BookingEmailResult> {
   try {
     const { env } = await getCloudflareContext({ async: true });
     const smtpPort = Number(env.SMTP_PORT);
@@ -49,7 +55,7 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
       !env.SMTP_FROM_EMAIL
     ) {
       console.warn("Booking email was not sent because SMTP is not fully configured.");
-      return;
+      return { adminSent: false, customerSent: false, checkedAt: new Date().toISOString() };
     }
 
     const moveType = moveLabels[booking.moveType] ?? booking.moveType;
@@ -175,9 +181,15 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
     if (customerResult.status === "rejected") {
       console.error("Could not send customer booking confirmation email", customerResult.reason);
     }
+    return {
+      adminSent: adminResult.status === "fulfilled",
+      customerSent: customerResult.status === "fulfilled",
+      checkedAt: new Date().toISOString(),
+    };
   } catch (error) {
     // The booking is already safely stored in D1. Email delivery must never
     // turn a successful request into an error shown to the customer.
     console.error("Could not send booking notification email", error);
+    return { adminSent: false, customerSent: false, checkedAt: new Date().toISOString() };
   }
 }

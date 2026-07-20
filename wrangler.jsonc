@@ -17,6 +17,22 @@
     "enabled": true
   },
 
+  // SMTP settings are uploaded as encrypted Worker secrets at deploy time.
+  // Declaring them here makes deployment fail safely if any are missing.
+  "secrets": {
+    "required": [
+      "SMTP_HOST",
+      "SMTP_PORT",
+      "SMTP_USERNAME",
+      "SMTP_PASSWORD",
+      "SMTP_FROM_EMAIL",
+      "SMTP_FROM_NAME",
+      "ADMIN_PIN",
+      "MASTER_ADMIN_PIN",
+      "ADMIN_SESSION_SECRET"
+    ]
+  },
+
   // CMS content. Region WEUR — the audience is UK, so keep the primary near them.
   "d1_databases": [
     {

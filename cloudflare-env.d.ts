@@ -25,5 +25,8 @@ declare global {
     SMTP_PASSWORD: string;
     SMTP_FROM_EMAIL: string;
     SMTP_FROM_NAME?: string;
+    ADMIN_PIN: string;
+    MASTER_ADMIN_PIN: string;
+    ADMIN_SESSION_SECRET: string;
   }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AdminSidebar, { type NavItem } from "@/components/admin/AdminSidebar";
+import { requireAdmin } from "@/lib/admin-auth";
 import { getSettings } from "@/lib/settings";
 
 export const metadata: Metadata = {
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 
 const nav: NavItem[] = [
   { label: "Dashboard", href: "/admin" },
-  { label: "Bookings", href: "/admin/bookings" },
+  { label: "Moves", href: "/admin/bookings" },
+  { label: "Customers", href: "/admin/customers" },
+  { label: "Reports", href: "/admin/reports" },
+  { label: "Activity Log", href: "/admin/activity" },
   { label: "Posts", href: "/admin/posts" },
   { label: "Areas", href: "/admin/areas" },
   { label: "Media", href: "/admin/media" },
@@ -19,12 +23,12 @@ const nav: NavItem[] = [
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // The sidebar is a client component (collapse state), so the logo is read
   // here and passed in.
-  const { logoUrl } = await getSettings();
+  const [role, { logoUrl }] = await Promise.all([requireAdmin(), getSettings()]);
 
   return (
     <div className="flex min-h-screen bg-brand-grey">
-      <AdminSidebar nav={nav} logoUrl={logoUrl} />
-      <main className="flex-1 overflow-x-hidden p-6 sm:p-10">{children}</main>
+      <AdminSidebar nav={nav} logoUrl={logoUrl} role={role} />
+      <main className="min-w-0 flex-1 overflow-x-hidden p-5 sm:p-8 xl:p-10">{children}</main>
     </div>
   );
 }

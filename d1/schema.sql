@@ -68,6 +68,11 @@ create table if not exists settings (
   -- Empty means "not uploaded", and the built-in mark/icon is used instead.
   logo_url          text not null default '',
   favicon_url       text not null default '',
+  footer_logo_url   text not null default '',
+  show_phone        integer not null default 1,
+  url_instagram     text not null default '',
+  url_youtube       text not null default '',
+  url_tiktok        text not null default '',
   updated_at        text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
@@ -100,12 +105,40 @@ create table if not exists bookings (
   notes          text not null default '',
   status         text not null default 'New'
                  check (status in ('New', 'Contacted', 'Quoted', 'Booked', 'Completed', 'Cancelled')),
+  from_address   text not null default '',
+  to_address     text not null default '',
+  quote          real not null default 0,
+  expenses       real not null default 0,
+  customer_email_sent integer not null default 0,
+  admin_email_sent integer not null default 0,
+  email_checked_at text not null default '',
   created_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
   updated_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
 create index if not exists bookings_created_at_idx on bookings (created_at desc);
 create index if not exists bookings_status_idx on bookings (status, created_at desc);
+create index if not exists bookings_move_date_idx on bookings (move_date asc);
+
+-- Operational audit trail -----------------------------------
+create table if not exists activity_log (
+  id          text primary key,
+  event_type  text not null,
+  source      text not null default 'app',
+  description text not null,
+  related_id  text not null default '',
+  created_at  text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+create index if not exists activity_log_created_at_idx on activity_log (created_at desc);
+
+-- Branding files stored directly in D1 and served by an API route.
+create table if not exists site_assets (
+  kind        text primary key check (kind in ('logo', 'favicon', 'footer-logo')),
+  data        blob not null,
+  mime_type   text not null,
+  updated_at  text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
 
 -- Seed one example area so /areas isn't empty before real content is added.
 insert or ignore into areas (id, slug, name, intro, body_html, cover_image, published)

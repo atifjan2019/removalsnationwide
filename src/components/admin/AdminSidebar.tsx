@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOutAdmin } from "@/app/admin/auth-actions";
+import type { AdminRole } from "@/lib/admin-auth";
 
 export type NavItem = { label: string; href: string };
 
@@ -14,6 +16,9 @@ const ICONS: Record<string, React.ReactNode> = {
   "/admin/bookings": (
     <path d="M6 3h12v18H6zM9 3v3h6V3M9 10h6M9 14h6M9 18h4" />
   ),
+  "/admin/customers": <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />,
+  "/admin/reports": <path d="M4 20V10M10 20V4M16 20v-7M22 20V7" />,
+  "/admin/activity": <path d="M12 8v4l3 2M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9" />,
   "/admin/posts": (
     <path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5" />
   ),
@@ -33,9 +38,11 @@ const STORAGE_KEY = "admin-sidebar-collapsed";
 export default function AdminSidebar({
   nav,
   logoUrl,
+  role,
 }: {
   nav: NavItem[];
   logoUrl: string;
+  role: AdminRole;
 }) {
   const [collapsed, setCollapsed] = useState(false);
   const [ready, setReady] = useState(false);
@@ -151,6 +158,14 @@ export default function AdminSidebar({
       </nav>
 
       <div className="border-t border-white/10 p-3">
+        {!collapsed && (
+          <div className="mb-2 px-4 py-2">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">Signed in as</p>
+            <p className="mt-1 text-xs font-semibold text-white/80">
+              {role === "master-admin" ? "Master Admin" : "Admin"}
+            </p>
+          </div>
+        )}
         <Link
           href="/"
           title={collapsed ? "View site" : undefined}
@@ -172,6 +187,20 @@ export default function AdminSidebar({
           </svg>
           {!collapsed && <span>View site</span>}
         </Link>
+        <form action={signOutAdmin}>
+          <button
+            type="submit"
+            title={collapsed ? "Sign out" : undefined}
+            className={`mt-1 flex w-full items-center rounded-lg px-4 py-2.5 text-sm font-medium text-white/70 transition hover:bg-brand-red hover:text-white ${
+              collapsed ? "justify-center px-0" : "gap-3"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5 shrink-0">
+              <path d="M10 17l5-5-5-5M15 12H3M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5" />
+            </svg>
+            {!collapsed && <span>Sign Out</span>}
+          </button>
+        </form>
       </div>
     </aside>
   );

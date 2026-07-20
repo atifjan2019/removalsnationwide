@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireDb } from "@/lib/d1";
 import { sendBookingNotification } from "@/lib/booking-email";
+import { logActivity } from "@/lib/admin-dashboard";
 
 const MOVE_TYPES = ["house", "office", "flat", "items"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,8 +80,9 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
       .prepare(
         `insert into bookings (
            id, full_name, phone, email, move_type, bedrooms,
-           from_postcode, to_postcode, move_date, flexible_dates, notes, status
-         ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New')`,
+           from_postcode, to_postcode, from_address, to_address,
+           move_date, flexible_dates, notes, status
+         ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New')`,
       )
       .bind(
         bookingId,
@@ -91,13 +93,15 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
         bedrooms,
         fromPostcode,
         toPostcode,
+        fromAddress,
+        toAddress,
         moveDate,
         input.flexibleDates ? 1 : 0,
         notes,
       )
       .run();
 
-    await sendBookingNotification({
+    const emailResult = await sendBookingNotification({
       bookingId,
       fullName,
       phone,
@@ -114,6 +118,24 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
       flexibleDates: input.flexibleDates,
       notes,
     });
+    await db
+      .prepare(
+        `update bookings set customer_email_sent = ?, admin_email_sent = ?, email_checked_at = ?
+         where id = ?`,
+      )
+      .bind(
+        emailResult.customerSent ? 1 : 0,
+        emailResult.adminSent ? 1 : 0,
+        emailResult.checkedAt,
+        bookingId,
+      )
+      .run();
+    await logActivity(
+      "Created",
+      `Booking request created for ${fullName}`,
+      bookingId,
+      "api",
+    );
 
     revalidatePath("/admin");
     revalidatePath("/admin/bookings");
