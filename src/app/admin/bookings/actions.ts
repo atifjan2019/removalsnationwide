@@ -101,7 +101,15 @@ export async function updateBookingStatus(id: string, formData: FormData): Promi
   refreshAdmin();
 }
 
-export async function resendBookingEmails(id: string): Promise<void> {
+export type ResendBookingEmailsResult = {
+  ok: boolean;
+  message: string;
+  customerSent: boolean;
+  adminSent: boolean;
+  checkedAt: string;
+};
+
+export async function resendBookingEmails(id: string): Promise<ResendBookingEmailsResult> {
   await assertAdmin();
   const db = await requireDb();
   const booking = await db.prepare("select * from bookings where id=?").bind(id).first<Booking>();
@@ -129,8 +137,26 @@ export async function resendBookingEmails(id: string): Promise<void> {
     )
     .bind(result.customerSent ? 1 : 0, result.adminSent ? 1 : 0, result.checkedAt, id)
     .run();
-  await logActivity("Email status updated", "Booking emails were resent and delivery status updated", id);
+  const expectedCustomerEmail = Boolean(booking.email);
+  const ok = result.adminSent && (!expectedCustomerEmail || result.customerSent);
+  const message = result.adminSent && result.customerSent
+    ? "Booking emails sent successfully to the customer and admin."
+    : result.adminSent && !expectedCustomerEmail
+      ? "Admin email sent. This booking has no customer email address."
+      : result.adminSent
+        ? "Admin email sent, but the customer email failed. Check the customer address."
+        : result.customerSent
+          ? "Customer email sent, but the admin email failed. Check the SMTP sender settings."
+          : "Emails could not be sent. Check the SMTP credentials and sender verification.";
+  await logActivity("Email status updated", message, id);
   refreshAdmin();
+  return {
+    ok,
+    message,
+    customerSent: result.customerSent,
+    adminSent: result.adminSent,
+    checkedAt: result.checkedAt,
+  };
 }
 
 export async function deleteBooking(id: string): Promise<void> {

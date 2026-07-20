@@ -19,5 +19,16 @@ export async function GET(request: Request) {
     ? faviconUrl
     : new URL("/favicon.ico", request.url).toString();
 
-  return Response.redirect(target, 307);
+  // Browsers cache favicon redirects especially aggressively. The asset URL is
+  // versioned when it is uploaded, so always re-check this small redirect and
+  // let the final image URL carry the long-lived cache instead.
+  return new Response(null, {
+    status: 307,
+    headers: {
+      Location: target,
+      "Cache-Control": "no-store, max-age=0",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
+  });
 }

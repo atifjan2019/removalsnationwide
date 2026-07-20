@@ -43,6 +43,8 @@ export type BookingEmailResult = {
   checkedAt: string;
 };
 
+const isEmailAddress = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
 export async function sendBookingNotification(booking: BookingNotification): Promise<BookingEmailResult> {
   try {
     const { env } = await getCloudflareContext({ async: true });
@@ -156,34 +158,36 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
       fromName: env.SMTP_FROM_NAME || "Removals Nationwide Bookings",
     };
 
-    const [adminResult, customerResult] = await Promise.allSettled([
+    const customerEmail = isEmailAddress(booking.email) ? booking.email : "";
+    const deliveries = [
       sendSmtpEmail({
         ...smtp,
         to: ADMIN_EMAIL,
-        replyTo: booking.email,
+        replyTo: customerEmail || ADMIN_EMAIL,
         subject: `New booking: ${booking.fromPostcode || "collection"} to ${booking.toPostcode || "destination"}`,
         text: adminText,
         html: `<h1 style="font-family:Arial,sans-serif">New booking request</h1><table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">${adminHtmlRows}</table>`,
       }),
-      sendSmtpEmail({
+      ...(customerEmail ? [sendSmtpEmail({
         ...smtp,
-        to: booking.email,
+        to: customerEmail,
         replyTo: ADMIN_EMAIL,
         subject: `We received your booking request – ${booking.bookingId}`,
         text: customerText,
         html: `<div style="font-family:Arial,sans-serif;color:#17233c"><h1>Booking request received</h1><p>Hi ${escapeHtml(booking.fullName)},</p><p>Thank you for your booking request. We have received your details and our team will contact you shortly.</p><table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">${customerHtmlRows}</table><p style="margin-top:24px">Removals Nationwide</p></div>`,
-      }),
-    ]);
+      })] : []),
+    ];
+    const [adminResult, customerResult] = await Promise.allSettled(deliveries);
 
     if (adminResult.status === "rejected") {
       console.error("Could not send admin booking notification email", adminResult.reason);
     }
-    if (customerResult.status === "rejected") {
+    if (customerResult?.status === "rejected") {
       console.error("Could not send customer booking confirmation email", customerResult.reason);
     }
     return {
       adminSent: adminResult.status === "fulfilled",
-      customerSent: customerResult.status === "fulfilled",
+      customerSent: customerResult?.status === "fulfilled",
       checkedAt: new Date().toISOString(),
     };
   } catch (error) {

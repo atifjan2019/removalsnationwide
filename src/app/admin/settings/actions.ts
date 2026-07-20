@@ -60,7 +60,9 @@ export async function saveSettings(
       return existing;
     }
     await db.prepare(`insert into site_assets (kind,data,mime_type,updated_at) values (?,?,?,strftime('%Y-%m-%dT%H:%M:%fZ','now')) on conflict(kind) do update set data=excluded.data,mime_type=excluded.mime_type,updated_at=excluded.updated_at`).bind(kind, await file.arrayBuffer(), file.type).run();
-    return `/api/site-assets/${kind}`;
+    // A new URL makes browsers discard their notoriously persistent favicon
+    // cache immediately after a replacement upload.
+    return `/api/site-assets/${kind}?v=${Date.now()}`;
   }
 
   const logoUrl = await branding("logo", current.logoUrl);

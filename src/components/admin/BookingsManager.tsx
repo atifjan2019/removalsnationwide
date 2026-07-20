@@ -39,6 +39,8 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
   const [selected, setSelected] = useState<Booking | null>(null);
   const [creating, setCreating] = useState(false);
   const [pending, startTransition] = useTransition();
+  const [emailPending, startEmailTransition] = useTransition();
+  const [emailFeedback, setEmailFeedback] = useState<{ ok: boolean; message: string } | null>(null);
   const filtered = useMemo(() => bookings.filter((booking) => (filter === "All" || moveStatus(booking.status) === filter) && (!dateFilter || booking.move_date === dateFilter)), [bookings, filter, dateFilter]);
 
   const active = selected;
@@ -46,6 +48,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
   const closeModal = () => {
     setSelected(null);
     setCreating(false);
+    setEmailFeedback(null);
   };
 
   useEffect(() => {
@@ -83,7 +86,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
 
       <div className="mt-6 grid gap-4">
         {filtered.map((booking) => { const route = bookingRoute(booking); const status = moveStatus(booking.status); return (
-          <button key={booking.id} onClick={() => setSelected(booking)} className="grid w-full gap-5 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md lg:grid-cols-[minmax(200px,1.15fr)_minmax(240px,1.5fr)_minmax(150px,.8fr)_minmax(220px,1fr)_auto] lg:items-center">
+          <button key={booking.id} onClick={() => { setSelected(booking); setEmailFeedback(null); }} className="grid w-full gap-5 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md lg:grid-cols-[minmax(200px,1.15fr)_minmax(240px,1.5fr)_minmax(150px,.8fr)_minmax(220px,1fr)_auto] lg:items-center">
             <span className="flex items-center gap-3"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-950 font-bold text-white">{booking.full_name.charAt(0).toUpperCase()}</span><span><span className="block font-bold text-slate-950">{booking.full_name}</span><span className="mt-0.5 block font-mono text-xs text-slate-400">#{booking.id.slice(0, 8)}</span></span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Route</span><span className="mt-1 block line-clamp-2 text-sm font-medium text-slate-700">{route.from} <span className="text-brand-red">→</span> {route.to}</span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Type & size</span><span className="mt-1 block text-sm font-semibold text-slate-700">{moveLabels[booking.move_type] || booking.move_type} • {sizeLabel(booking)}</span><span className="mt-1 block text-xs text-slate-500">{shortDate(booking.move_date)}</span></span>
@@ -147,7 +150,35 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
                   <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Details</h3><p className="mt-4 text-sm text-slate-600">{moveLabels[active.move_type]} • {sizeLabel(active)}</p><p className="mt-1 text-sm text-slate-600">{shortDate(active.move_date)}</p><p className="mt-3 font-semibold">{money(active.quote)} revenue</p></section>
                 </div>
                 <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Logistics</h3><div className="mt-4 grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-bold uppercase text-slate-400">Pickup</p><p className="mt-1 text-sm">{bookingRoute(active).from}</p></div><div><p className="text-xs font-bold uppercase text-slate-400">Drop-off</p><p className="mt-1 text-sm">{bookingRoute(active).to}</p></div></div></section>
-                <section className="rounded-2xl border border-slate-200 bg-white p-5"><div className="flex flex-wrap items-center justify-between gap-4"><div><h3 className="font-bold">Email Delivery</h3><p className="mt-1 text-xs text-slate-500">Last checked: {active.email_checked_at ? new Date(active.email_checked_at).toLocaleString("en-GB") : "Never"}</p></div><button type="button" disabled={pending} onClick={() => startTransition(async () => { await resendBookingEmails(active.id); })} className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold hover:bg-slate-50">Resend emails</button></div><div className="mt-4 flex flex-wrap gap-3"><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.customer_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Customer: {active.customer_email_sent ? "Sent" : "Not sent"}</span><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.admin_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Admin: {active.admin_email_sent ? "Sent" : "Not sent"}</span></div></section>
+                <section className="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
+                    <div><h3 className="font-bold">Email Delivery</h3><p className="mt-1 text-xs text-slate-500">Last checked: {active.email_checked_at ? new Date(active.email_checked_at).toLocaleString("en-GB") : "Never"}</p></div>
+                    <button
+                      type="button"
+                      disabled={emailPending}
+                      onClick={() => startEmailTransition(async () => {
+                        setEmailFeedback(null);
+                        try {
+                          const result = await resendBookingEmails(active.id);
+                          setSelected((current) => current?.id === active.id ? {
+                            ...current,
+                            customer_email_sent: result.customerSent ? 1 : 0,
+                            admin_email_sent: result.adminSent ? 1 : 0,
+                            email_checked_at: result.checkedAt,
+                          } : current);
+                          setEmailFeedback({ ok: result.ok, message: result.message });
+                        } catch {
+                          setEmailFeedback({ ok: false, message: "The resend request failed. Please try again or check the Worker logs." });
+                        }
+                      })}
+                      className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold hover:bg-slate-50 disabled:cursor-wait disabled:opacity-60"
+                    >
+                      {emailPending ? "Sending…" : "Resend emails"}
+                    </button>
+                  </div>
+                  {emailFeedback && <p role="status" aria-live="polite" className={`mt-4 rounded-xl border px-3 py-2.5 text-sm ${emailFeedback.ok ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-amber-200 bg-amber-50 text-amber-900"}`}>{emailFeedback.message}</p>}
+                  <div className="mt-4 flex flex-wrap gap-3"><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.customer_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Customer: {active.customer_email_sent ? "Sent" : "Not sent"}</span><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.admin_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Admin: {active.admin_email_sent ? "Sent" : "Not sent"}</span></div>
+                </section>
                 <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Status</h3><div className="mt-4 flex flex-wrap gap-2">{MOVE_STATUSES.map((status) => <button type="button" key={status} disabled={pending} onClick={() => startTransition(async () => { const form = new FormData(); form.set("status", status); await updateBookingStatus(active.id, form); })} className={`rounded-xl px-4 py-2 text-sm font-semibold ${moveStatus(active.status) === status ? "bg-slate-950 text-white" : "border border-slate-200 bg-white"}`}>{status}</button>)}</div></section>
                 <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Additional Details</h3><p className="mt-4 whitespace-pre-wrap text-sm text-slate-600">{active.notes || "No additional details provided."}</p></section>
               </div>}
