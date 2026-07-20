@@ -113,6 +113,8 @@ create table if not exists bookings (
                  check (status in ('New', 'Contacted', 'Quoted', 'Booked', 'Completed', 'Cancelled')),
   from_address   text not null default '',
   to_address     text not null default '',
+  route_distance text not null default '',
+  route_duration text not null default '',
   quote          real not null default 0,
   expenses       real not null default 0,
   customer_email_sent integer not null default 0,

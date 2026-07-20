@@ -20,6 +20,8 @@ export type Booking = {
   to_postcode: string;
   from_address: string;
   to_address: string;
+  route_distance: string;
+  route_duration: string;
   move_date: string;
   flexible_dates: number;
   notes: string;

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, useSyncExternalStore, useTransition } from "react";
 import { createPortal } from "react-dom";
+import { importLibrary, setOptions } from "@googlemaps/js-api-loader";
 import {
   deleteBooking,
   resendBookingEmails,
@@ -26,6 +27,39 @@ const moveLabels: Record<string, string> = {
 
 const fieldClass = "mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-950 focus:ring-2 focus:ring-slate-950/10";
 const subscribeToClient = () => () => undefined;
+let mapsConfigured = false;
+
+async function calculateBrowserRoute(apiKey: string, booking: Booking) {
+  if (!apiKey) return null;
+  if (!mapsConfigured) {
+    setOptions({
+      key: apiKey,
+      v: "weekly",
+      language: "en",
+      region: "GB",
+      authReferrerPolicy: "origin",
+    });
+    mapsConfigured = true;
+  }
+  const [{ Route }, { UnitSystem }] = await Promise.all([
+    importLibrary("routes"),
+    importLibrary("core"),
+  ]);
+  const route = (await Route.computeRoutes({
+    origin: booking.from_address || booking.from_postcode,
+    destination: booking.to_address || booking.to_postcode,
+    travelMode: "DRIVING",
+    fields: ["distanceMeters", "durationMillis", "localizedValues"],
+    language: "en-GB",
+    region: "uk",
+    units: UnitSystem.IMPERIAL,
+  })).routes?.[0];
+  if (!route?.distanceMeters) return null;
+  return {
+    distance: route.localizedValues?.distance ?? `${(route.distanceMeters / 1609.344).toFixed(1)} miles`,
+    duration: route.localizedValues?.duration ?? (route.durationMillis ? `${Math.max(1, Math.round(route.durationMillis / 60000))} mins` : ""),
+  };
+}
 
 function sizeLabel(booking: Booking) {
   if (booking.move_type !== "house" && booking.move_type !== "flat") return "Not applicable";
@@ -36,7 +70,7 @@ function Field({ label, name, defaultValue = "", type = "text", required = false
   return <label className="block text-xs font-bold uppercase tracking-wide text-slate-500">{label}<input name={name} type={type} defaultValue={defaultValue} required={required} className={fieldClass} /></label>;
 }
 
-export default function BookingsManager({ bookings, initialStatus, dateFilter }: { bookings: Booking[]; initialStatus: MoveStatus | "All"; dateFilter: string }) {
+export default function BookingsManager({ bookings, initialStatus, dateFilter, mapsApiKey }: { bookings: Booking[]; initialStatus: MoveStatus | "All"; dateFilter: string; mapsApiKey: string }) {
   const [filter, setFilter] = useState<MoveStatus | "All">(initialStatus);
   const [selected, setSelected] = useState<Booking | null>(null);
   const [creating, setCreating] = useState(false);
@@ -171,9 +205,21 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
                       onClick={() => startEmailTransition(async () => {
                         setEmailFeedback(null);
                         try {
-                          const result = await resendBookingEmails(active.id);
+                          let route = active.route_distance && active.route_duration
+                            ? { distance: active.route_distance, duration: active.route_duration }
+                            : null;
+                          if (!route) {
+                            try {
+                              route = await calculateBrowserRoute(mapsApiKey, active);
+                            } catch {
+                              route = null;
+                            }
+                          }
+                          const result = await resendBookingEmails(active.id, route ?? undefined);
                           setSelected((current) => current?.id === active.id ? {
                             ...current,
+                            route_distance: route?.distance ?? current.route_distance,
+                            route_duration: route?.duration ?? current.route_duration,
                             customer_email_sent: result.customerSent ? 1 : 0,
                             admin_email_sent: result.adminSent ? 1 : 0,
                             email_checked_at: result.checkedAt,
