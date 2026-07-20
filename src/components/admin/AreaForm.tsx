@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useId, useRef, useState, useTransition } from "react";
 import ImageField from "@/components/admin/ImageField";
 import { saveArea } from "@/app/admin/actions";
 import {
@@ -23,6 +23,18 @@ type EditableArea = {
 };
 
 type Props = { area?: EditableArea };
+
+const tabs = [
+  { id: "area-seo", label: "Area & SEO", shortLabel: "SEO" },
+  { id: "hero", label: "Hero & conversion", shortLabel: "Hero" },
+  { id: "introduction", label: "Local introduction", shortLabel: "Introduction" },
+  { id: "coverage", label: "Coverage", shortLabel: "Coverage" },
+  { id: "knowledge", label: "Local knowledge", shortLabel: "Knowledge" },
+  { id: "nearby", label: "Nearby areas", shortLabel: "Nearby" },
+  { id: "faqs", label: "FAQs", shortLabel: "FAQs" },
+] as const;
+
+type TabId = (typeof tabs)[number]["id"];
 
 function SectionCard({
   title,
@@ -50,23 +62,31 @@ function TextField({
   onChange,
   placeholder,
   required,
+  error,
 }: {
   title: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
+  error?: string;
 }) {
+  const id = useId();
+
   return (
     <div>
-      <label className={label}>{title}</label>
+      <label htmlFor={id} className={label}>{title}</label>
       <input
+        id={id}
         className={input}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         required={required}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
       />
+      {error && <p id={`${id}-error`} className="mt-1.5 text-sm font-medium text-red-600">{error}</p>}
     </div>
   );
 }
@@ -84,16 +104,43 @@ function TextAreaField({
   placeholder?: string;
   rows?: number;
 }) {
+  const id = useId();
+
   return (
     <div>
-      <label className={label}>{title}</label>
+      <label htmlFor={id} className={label}>{title}</label>
       <textarea
+        id={id}
         className={`${input} resize-y`}
         rows={rows}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
       />
+    </div>
+  );
+}
+
+function TabPanel({
+  id,
+  active,
+  children,
+}: {
+  id: TabId;
+  active: boolean;
+  children: React.ReactNode;
+}) {
+  if (!active) return null;
+
+  return (
+    <div
+      id={`area-panel-${id}`}
+      role="tabpanel"
+      aria-labelledby={`area-tab-${id}`}
+      tabIndex={0}
+      className="outline-none focus-visible:ring-2 focus-visible:ring-brand-red/40"
+    >
+      {children}
     </div>
   );
 }
@@ -147,31 +194,104 @@ export default function AreaForm({ area }: Props) {
         : [{ question: "", answer: "" }],
   });
   const [pending, startTransition] = useTransition();
+  const [activeTab, setActiveTab] = useState<TabId>("area-seo");
+  const [nameError, setNameError] = useState("");
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const set = <K extends keyof AreaTemplateData>(key: K, value: AreaTemplateData[K]) =>
     setTemplate((current) => ({ ...current, [key]: value }));
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
+    if (!name.trim()) {
+      setNameError("Enter an area name before saving.");
+      setActiveTab("area-seo");
+      return;
+    }
+    setNameError("");
     startTransition(() =>
       saveArea({ id: area?.id, name, slug, published, template }),
     );
   }
 
+  function selectTab(index: number) {
+    const tab = tabs[index];
+    if (!tab) return;
+    setActiveTab(tab.id);
+    tabRefs.current[index]?.focus();
+  }
+
+  function handleTabKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    let nextIndex: number | undefined;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+    if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = tabs.length - 1;
+    if (nextIndex === undefined) return;
+    event.preventDefault();
+    selectTab(nextIndex);
+  }
+
   return (
-    <form onSubmit={submit} className="max-w-5xl space-y-6 pb-16">
+    <form onSubmit={submit} noValidate className="max-w-6xl space-y-6 pb-16">
       <div className="rounded-2xl border border-brand-red/20 bg-brand-red/5 p-5 text-sm leading-relaxed text-slate-700">
         <strong className="text-slate-950">Barnet template enabled.</strong> Pricing,
         services, trust signals, the five-step process and quote sections are added
         automatically. Complete the local fields below to make this page specific and useful.
       </div>
 
-      <SectionCard
+      <div className="sticky top-0 z-20 rounded-2xl border border-slate-200 bg-white/95 p-2 shadow-sm backdrop-blur">
+        <div
+          role="tablist"
+          aria-label="Area page sections"
+          className="flex gap-1 overflow-x-auto overscroll-x-contain"
+        >
+          {tabs.map((tab, index) => {
+            const selected = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                ref={(node) => { tabRefs.current[index] = node; }}
+                id={`area-tab-${tab.id}`}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`area-panel-${tab.id}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActiveTab(tab.id)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+                className={`shrink-0 rounded-xl px-4 py-3 text-left text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/50 ${
+                  selected
+                    ? "bg-brand-red text-white shadow-sm"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                }`}
+              >
+                <span className="mr-2 text-xs opacity-70">{index + 1}</span>
+                <span className="hidden lg:inline">{tab.label}</span>
+                <span className="lg:hidden">{tab.shortLabel}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <TabPanel id="area-seo" active={activeTab === "area-seo"}>
+        <SectionCard
         title="1. Area and SEO"
         description="Controls the page URL, search result and structured service-area data."
       >
         <div className="grid gap-5 sm:grid-cols-2">
-          <TextField title="Area name" value={name} onChange={setName} required placeholder="Barnet" />
+          <TextField
+            title="Area name"
+            value={name}
+            onChange={(value) => {
+              setName(value);
+              if (value.trim()) setNameError("");
+            }}
+            required
+            error={nameError}
+            placeholder="Barnet"
+          />
           <TextField title="Slug (optional)" value={slug} onChange={setSlug} placeholder="auto-generated-from-name" />
         </div>
         <TextField title="Page H1" value={template.h1} onChange={(value) => set("h1", value)} placeholder={`Removals in ${name || "Area"}`} />
@@ -181,9 +301,11 @@ export default function AreaForm({ area }: Props) {
           <TextField title="Schema area name" value={template.areaServedName} onChange={(value) => set("areaServedName", value)} placeholder={`Borough or district of ${name || "Area"}`} />
         </div>
         <TextAreaField title="Meta description" value={template.metaDescription} onChange={(value) => set("metaDescription", value)} rows={3} placeholder="Aim for a concise, location-specific description." />
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
-      <SectionCard
+      <TabPanel id="hero" active={activeTab === "hero"}>
+        <SectionCard
         title="2. Hero and conversion copy"
         description="Appears directly below the page banner beside the image, price and quote buttons."
       >
@@ -201,9 +323,11 @@ export default function AreaForm({ area }: Props) {
           />
           <p className="mt-1.5 text-xs text-slate-500">Separate postcode districts with commas.</p>
         </div>
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
-      <SectionCard
+      <TabPanel id="introduction" active={activeTab === "introduction"}>
+        <SectionCard
         title="3. Local team introduction"
         description="Two or three substantial paragraphs explaining the service and what makes local moves different."
       >
@@ -217,18 +341,22 @@ export default function AreaForm({ area }: Props) {
           </div>
         ))}
         <AddButton onClick={() => set("localBody", [...template.localBody, ""])}>Add paragraph</AddButton>
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
-      <SectionCard
+      <TabPanel id="coverage" active={activeTab === "coverage"}>
+        <SectionCard
         title="4. Coverage"
         description="Defines the postcode and neighbourhood section shown after the local introduction."
       >
         <TextAreaField title="Coverage introduction" value={template.coverageIntro} onChange={(value) => set("coverageIntro", value)} rows={4} placeholder={`We cover every part of ${name || "the area"}, including…`} />
         <TextAreaField title="Neighbourhoods covered" value={template.neighbourhoods} onChange={(value) => set("neighbourhoods", value)} rows={5} placeholder="List the principal neighbourhoods in natural prose." />
         <TextAreaField title="Coverage closing paragraph" value={template.coverageOutro} onChange={(value) => set("coverageOutro", value)} rows={4} placeholder="Explain border coverage and invite the customer to confirm their postcode." />
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
-      <SectionCard
+      <TabPanel id="knowledge" active={activeTab === "knowledge"}>
+        <SectionCard
         title="5. Local knowledge"
         description="The strongest differentiator in the Barnet template: researched parking, access, property and road information."
       >
@@ -246,9 +374,11 @@ export default function AreaForm({ area }: Props) {
           </div>
         ))}
         <AddButton onClick={() => set("knowBlocks", [...template.knowBlocks, { label: "", body: "" }])}>Add knowledge card</AddButton>
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
-      <SectionCard
+      <TabPanel id="nearby" active={activeTab === "nearby"}>
+        <SectionCard
         title="6. Nearby areas"
         description="Links this page into the local coverage network. Use an existing /areas/ URL."
       >
@@ -260,9 +390,11 @@ export default function AreaForm({ area }: Props) {
           </div>
         ))}
         <AddButton onClick={() => set("nearby", [...template.nearby, { label: "", href: "" }])}>Add nearby area</AddButton>
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
-      <SectionCard
+      <TabPanel id="faqs" active={activeTab === "faqs"}>
+        <SectionCard
         title="7. Frequently asked questions"
         description="Add local questions about postcodes, parking, property types, pricing or availability."
       >
@@ -279,7 +411,8 @@ export default function AreaForm({ area }: Props) {
           </div>
         ))}
         <AddButton onClick={() => set("faqs", [...template.faqs, { question: "", answer: "" }])}>Add FAQ</AddButton>
-      </SectionCard>
+        </SectionCard>
+      </TabPanel>
 
       <div className="sticky bottom-4 z-20 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-xl backdrop-blur sm:flex-row sm:items-center sm:justify-between">
         <label className="flex items-center gap-3 text-sm font-semibold text-brand-navy">
