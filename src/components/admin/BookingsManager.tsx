@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import {
   deleteBooking,
   resendBookingEmails,
@@ -42,10 +42,35 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
   const filtered = useMemo(() => bookings.filter((booking) => (filter === "All" || moveStatus(booking.status) === filter) && (!dateFilter || booking.move_date === dateFilter)), [bookings, filter, dateFilter]);
 
   const active = selected;
-  const submit = async (formData: FormData) => {
-    await saveBooking(active?.id || "", formData);
+  const modalOpen = Boolean(active || creating);
+  const closeModal = () => {
     setSelected(null);
     setCreating(false);
+  };
+
+  useEffect(() => {
+    if (!modalOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelected(null);
+        setCreating(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [modalOpen]);
+
+  const submit = async (formData: FormData) => {
+    await saveBooking(active?.id || "", formData);
+    closeModal();
   };
 
   return (
@@ -70,39 +95,68 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
       </div>
 
       {(active || creating) && (
-        <div className="fixed inset-0 z-[100] flex justify-end bg-slate-950/45 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Move details">
-          <div className="h-full w-full max-w-3xl overflow-y-auto bg-slate-50 shadow-2xl">
-            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white px-6 py-5">
-              <div><p className="text-xs font-bold uppercase tracking-widest text-brand-red">{active ? "Details" : "New move"}</p><h2 className="mt-1 text-xl font-bold text-slate-950">{active?.full_name || "Add a move manually"}</h2>{active && <p className="mt-1 font-mono text-xs text-slate-400">{active.id}</p>}</div>
-              <button onClick={() => { setSelected(null); setCreating(false); }} className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-xl hover:bg-slate-100" aria-label="Close details">×</button>
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/55 p-3 backdrop-blur-[2px] sm:p-6"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeModal();
+          }}
+        >
+          <div
+            className="flex max-h-[calc(100dvh-1.5rem)] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sm:max-h-[calc(100dvh-3rem)]"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="booking-details-title"
+          >
+            <header className="z-10 flex shrink-0 items-start justify-between gap-4 border-b border-slate-200 bg-white px-5 py-4 sm:px-6 sm:py-5">
+              <div className="min-w-0">
+                <h2 id="booking-details-title" className="text-xl font-bold text-slate-950">
+                  {active ? "Booking Details" : "Add Booking Manually"}
+                </h2>
+                {active && <p className="mt-1 break-all font-mono text-xs text-slate-400">{active.id}</p>}
+              </div>
+              <button type="button" onClick={closeModal} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-xl leading-none text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Close booking details">×</button>
+            </header>
+
+            <div className="min-h-0 flex-1 overflow-y-auto bg-slate-50 p-4 sm:p-6">
+              <form action={submit}>
+                <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <h3 className="font-bold text-slate-950">{active ? "Edit Booking" : "Add Booking"}</h3>
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                    <Field label="Full name" name="fullName" defaultValue={active?.full_name} required />
+                    <Field label="Email" name="email" type="email" defaultValue={active?.email} />
+                    <Field label="Phone" name="phone" defaultValue={active?.phone} />
+                    <label className="block text-xs font-bold uppercase tracking-wide text-slate-500">Type<select name="moveType" defaultValue={active?.move_type || "house"} className={fieldClass}>{Object.entries(moveLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+                    <Field label="From location" name="fromAddress" defaultValue={active?.from_address || active?.from_postcode} />
+                    <Field label="To location" name="toAddress" defaultValue={active?.to_address || active?.to_postcode} />
+                    <Field label="Collection postcode" name="fromPostcode" defaultValue={active?.from_postcode} />
+                    <Field label="Drop-off postcode" name="toPostcode" defaultValue={active?.to_postcode} />
+                    <Field label="Move date" name="moveDate" type="date" defaultValue={active?.move_date} />
+                    <Field label="Size / bedrooms" name="bedrooms" type="number" defaultValue={active?.bedrooms ?? 1} />
+                    <Field label="Quote / revenue (£)" name="quote" type="number" defaultValue={active?.quote ?? 0} />
+                    <Field label="Expenses (£)" name="expenses" type="number" defaultValue={active?.expenses ?? 0} />
+                    <label className="block text-xs font-bold uppercase tracking-wide text-slate-500 sm:col-span-2">Additional details<textarea name="notes" defaultValue={active?.notes} rows={4} className={fieldClass} /></label>
+                    <input type="hidden" name="status" value={active ? moveStatus(active.status) : "New"} />
+                  </div>
+                  <button disabled={pending} className="mt-5 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-red disabled:opacity-60">{active ? "Save Changes" : "Add Move"}</button>
+                </section>
+              </form>
+
+              {active && <div className="mt-6 space-y-6">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Customer</h3><p className="mt-4 font-semibold">{active.full_name}</p><p className="mt-1 text-sm text-slate-500">{active.phone || "Not provided"}</p><p className="text-sm text-slate-500">{active.email || "Not provided"}</p></section>
+                  <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Details</h3><p className="mt-4 text-sm text-slate-600">{moveLabels[active.move_type]} • {sizeLabel(active)}</p><p className="mt-1 text-sm text-slate-600">{shortDate(active.move_date)}</p><p className="mt-3 font-semibold">{money(active.quote)} revenue</p></section>
+                </div>
+                <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Logistics</h3><div className="mt-4 grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-bold uppercase text-slate-400">Pickup</p><p className="mt-1 text-sm">{bookingRoute(active).from}</p></div><div><p className="text-xs font-bold uppercase text-slate-400">Drop-off</p><p className="mt-1 text-sm">{bookingRoute(active).to}</p></div></div></section>
+                <section className="rounded-2xl border border-slate-200 bg-white p-5"><div className="flex flex-wrap items-center justify-between gap-4"><div><h3 className="font-bold">Email Delivery</h3><p className="mt-1 text-xs text-slate-500">Last checked: {active.email_checked_at ? new Date(active.email_checked_at).toLocaleString("en-GB") : "Never"}</p></div><button type="button" disabled={pending} onClick={() => startTransition(async () => { await resendBookingEmails(active.id); })} className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold hover:bg-slate-50">Resend emails</button></div><div className="mt-4 flex flex-wrap gap-3"><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.customer_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Customer: {active.customer_email_sent ? "Sent" : "Not sent"}</span><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.admin_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Admin: {active.admin_email_sent ? "Sent" : "Not sent"}</span></div></section>
+                <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Status</h3><div className="mt-4 flex flex-wrap gap-2">{MOVE_STATUSES.map((status) => <button type="button" key={status} disabled={pending} onClick={() => startTransition(async () => { const form = new FormData(); form.set("status", status); await updateBookingStatus(active.id, form); })} className={`rounded-xl px-4 py-2 text-sm font-semibold ${moveStatus(active.status) === status ? "bg-slate-950 text-white" : "border border-slate-200 bg-white"}`}>{status}</button>)}</div></section>
+                <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Additional Details</h3><p className="mt-4 whitespace-pre-wrap text-sm text-slate-600">{active.notes || "No additional details provided."}</p></section>
+              </div>}
             </div>
 
-            <form action={submit} className="space-y-6 p-6">
-              <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><h3 className="font-bold text-slate-950">Edit</h3><div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <Field label="Full name" name="fullName" defaultValue={active?.full_name} required />
-                <Field label="Email" name="email" type="email" defaultValue={active?.email} />
-                <Field label="Phone" name="phone" defaultValue={active?.phone} />
-                <label className="block text-xs font-bold uppercase tracking-wide text-slate-500">Type<select name="moveType" defaultValue={active?.move_type || "house"} className={fieldClass}>{Object.entries(moveLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
-                <Field label="From location" name="fromAddress" defaultValue={active?.from_address || active?.from_postcode} />
-                <Field label="To location" name="toAddress" defaultValue={active?.to_address || active?.to_postcode} />
-                <Field label="Collection postcode" name="fromPostcode" defaultValue={active?.from_postcode} />
-                <Field label="Drop-off postcode" name="toPostcode" defaultValue={active?.to_postcode} />
-                <Field label="Move date" name="moveDate" type="date" defaultValue={active?.move_date} />
-                <Field label="Size / bedrooms" name="bedrooms" type="number" defaultValue={active?.bedrooms ?? 1} />
-                <Field label="Quote / revenue (£)" name="quote" type="number" defaultValue={active?.quote ?? 0} />
-                <Field label="Expenses (£)" name="expenses" type="number" defaultValue={active?.expenses ?? 0} />
-                <label className="sm:col-span-2 block text-xs font-bold uppercase tracking-wide text-slate-500">Additional details<textarea name="notes" defaultValue={active?.notes} rows={4} className={fieldClass} /></label>
-                <input type="hidden" name="status" value={active ? moveStatus(active.status) : "New"} />
-              </div><button disabled={pending} className="mt-5 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-red disabled:opacity-60">Save Changes</button></section>
-            </form>
-
-            {active && <div className="space-y-6 px-6 pb-8">
-              <div className="grid gap-6 sm:grid-cols-2"><section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Customer</h3><p className="mt-4 font-semibold">{active.full_name}</p><p className="mt-1 text-sm text-slate-500">{active.phone || "Not provided"}</p><p className="text-sm text-slate-500">{active.email || "Not provided"}</p></section><section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Details</h3><p className="mt-4 text-sm text-slate-600">{moveLabels[active.move_type]} • {sizeLabel(active)}</p><p className="mt-1 text-sm text-slate-600">{shortDate(active.move_date)}</p><p className="mt-3 font-semibold">{money(active.quote)} revenue</p></section></div>
-              <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Logistics</h3><div className="mt-4 grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-bold uppercase text-slate-400">Pickup</p><p className="mt-1 text-sm">{bookingRoute(active).from}</p></div><div><p className="text-xs font-bold uppercase text-slate-400">Drop-off</p><p className="mt-1 text-sm">{bookingRoute(active).to}</p></div></div></section>
-              <section className="rounded-2xl border border-slate-200 bg-white p-5"><div className="flex flex-wrap items-center justify-between gap-4"><div><h3 className="font-bold">Email Delivery</h3><p className="mt-1 text-xs text-slate-500">Last checked: {active.email_checked_at ? new Date(active.email_checked_at).toLocaleString("en-GB") : "Never"}</p></div><button disabled={pending} onClick={() => startTransition(async () => { await resendBookingEmails(active.id); })} className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold hover:bg-slate-50">Resend emails</button></div><div className="mt-4 flex flex-wrap gap-3"><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.customer_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Customer: {active.customer_email_sent ? "Sent" : "Not sent"}</span><span className={`rounded-full px-3 py-1 text-xs font-bold ${active.admin_email_sent ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>Admin: {active.admin_email_sent ? "Sent" : "Not sent"}</span></div></section>
-              <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Status</h3><div className="mt-4 flex flex-wrap gap-2">{MOVE_STATUSES.map((status) => <button key={status} disabled={pending} onClick={() => startTransition(async () => { const form = new FormData(); form.set("status", status); await updateBookingStatus(active.id, form); })} className={`rounded-xl px-4 py-2 text-sm font-semibold ${moveStatus(active.status) === status ? "bg-slate-950 text-white" : "border border-slate-200 bg-white"}`}>{status}</button>)}</div></section>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 pt-6"><button disabled={pending} onClick={() => { if (window.confirm("Delete this move permanently?")) startTransition(async () => { await deleteBooking(active.id); setSelected(null); }); }} className="rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-bold text-red-700 hover:bg-red-100">Delete Move</button><button onClick={() => setSelected(null)} className="rounded-xl bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white">Close Details</button></div>
-            </div>}
+            <footer className="flex shrink-0 items-center justify-between gap-3 border-t border-slate-200 bg-white px-5 py-4 sm:px-6">
+              {active ? <button type="button" disabled={pending} onClick={() => { if (window.confirm("Delete this move permanently?")) startTransition(async () => { await deleteBooking(active.id); closeModal(); }); }} className="rounded-xl border border-red-300 bg-white px-4 py-2.5 text-sm font-bold text-red-700 transition hover:bg-red-50 disabled:opacity-60">Delete Booking</button> : <span />}
+              <button type="button" onClick={closeModal} className="rounded-xl bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800">Close Details</button>
+            </footer>
           </div>
         </div>
       )}
