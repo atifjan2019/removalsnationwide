@@ -28,5 +28,7 @@ declare global {
     ADMIN_PIN: string;
     MASTER_ADMIN_PIN: string;
     ADMIN_SESSION_SECRET: string;
+    /** Browser-visible Google Maps JavaScript API key. */
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: string;
   }
 }

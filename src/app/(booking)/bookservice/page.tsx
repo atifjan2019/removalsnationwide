@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { buildMetadata } from "@/lib/seo";
 import { getResolvedSettings } from "@/lib/settings";
 import JsonLd from "@/components/seo/JsonLd";
@@ -17,7 +18,14 @@ const bookPageSchema = {
 };
 
 export default async function BookAServicePage() {
-  const settings = await getResolvedSettings();
+  const [settings, { env }] = await Promise.all([
+    getResolvedSettings(),
+    getCloudflareContext({ async: true }),
+  ]);
+  const mapsApiKey =
+    env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+    process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ||
+    "";
 
   return (
     <>
@@ -28,7 +36,7 @@ export default async function BookAServicePage() {
         whatsapp={settings.whatsapp}
         showPhone={settings.showPhone}
       />
-      <BookingFunnel mapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""} />
+      <BookingFunnel mapsApiKey={mapsApiKey} />
     </>
   );
 }
