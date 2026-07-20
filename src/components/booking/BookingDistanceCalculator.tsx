@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { importLibrary } from "@googlemaps/js-api-loader";
+import { calculateDrivingRoute } from "@/lib/google-route";
 
 type BookingDistanceCalculatorProps = {
   fromPlaceId: string;
   toPlaceId: string;
+  fromAddress: string;
+  toAddress: string;
   onCalculated: (result: { distance: string; duration: string }) => void;
   onError: () => void;
 };
@@ -13,6 +15,8 @@ type BookingDistanceCalculatorProps = {
 export default function BookingDistanceCalculator({
   fromPlaceId,
   toPlaceId,
+  fromAddress,
+  toAddress,
   onCalculated,
   onError,
 }: BookingDistanceCalculatorProps) {
@@ -27,38 +31,13 @@ export default function BookingDistanceCalculator({
 
     const calculate = async () => {
       try {
-        const [{ Route }, { Place }, { UnitSystem }] = await Promise.all([
-          importLibrary("routes"),
-          importLibrary("places"),
-          importLibrary("core"),
-        ]);
-
-        const { routes } = await Route.computeRoutes({
-          origin: new Place({ id: fromPlaceId }),
-          destination: new Place({ id: toPlaceId }),
-          travelMode: "DRIVING",
-          fields: ["distanceMeters", "durationMillis", "localizedValues"],
-          language: "en-GB",
-          region: "uk",
-          units: UnitSystem.IMPERIAL,
+        const result = await calculateDrivingRoute({
+          origin: fromAddress,
+          destination: toAddress,
+          originPlaceId: fromPlaceId,
+          destinationPlaceId: toPlaceId,
         });
-
-        const route = routes?.[0];
-        if (!active || !route?.distanceMeters) {
-          if (active) callbacksRef.current.onError();
-          return;
-        }
-
-        const distance =
-          route.localizedValues?.distance ??
-          `${(route.distanceMeters / 1609.344).toFixed(1)} miles`;
-        const duration =
-          route.localizedValues?.duration ??
-          (route.durationMillis
-            ? `${Math.max(1, Math.round(route.durationMillis / 60000))} mins`
-            : "");
-
-        callbacksRef.current.onCalculated({ distance, duration });
+        if (active) callbacksRef.current.onCalculated(result);
       } catch {
         if (active) callbacksRef.current.onError();
       }
@@ -69,7 +48,7 @@ export default function BookingDistanceCalculator({
     return () => {
       active = false;
     };
-  }, [fromPlaceId, toPlaceId]);
+  }, [fromAddress, fromPlaceId, toAddress, toPlaceId]);
 
   return null;
 }

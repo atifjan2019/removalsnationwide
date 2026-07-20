@@ -213,6 +213,8 @@ export default function BookingFunnel({ mapsApiKey }: { mapsApiKey: string }) {
           key={`${data.fromPlaceId}:${data.toPlaceId}`}
           fromPlaceId={data.fromPlaceId}
           toPlaceId={data.toPlaceId}
+          fromAddress={data.fromAddress || data.fromPostcode}
+          toAddress={data.toAddress || data.toPostcode}
           onCalculated={({ distance, duration }) => {
             setData((current) => ({
               ...current,

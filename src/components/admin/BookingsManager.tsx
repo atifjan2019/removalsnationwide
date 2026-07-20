@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, useSyncExternalStore, useTransition } from "react";
 import { createPortal } from "react-dom";
-import { importLibrary, setOptions } from "@googlemaps/js-api-loader";
+import { setOptions } from "@googlemaps/js-api-loader";
 import {
   deleteBooking,
   resendBookingEmails,
@@ -17,6 +17,7 @@ import {
   type Booking,
   type MoveStatus,
 } from "@/lib/bookings-shared";
+import { calculateDrivingRoute } from "@/lib/google-route";
 
 const moveLabels: Record<string, string> = {
   house: "House move",
@@ -41,24 +42,10 @@ async function calculateBrowserRoute(apiKey: string, booking: Booking) {
     });
     mapsConfigured = true;
   }
-  const [{ Route }, { UnitSystem }] = await Promise.all([
-    importLibrary("routes"),
-    importLibrary("core"),
-  ]);
-  const route = (await Route.computeRoutes({
+  return calculateDrivingRoute({
     origin: booking.from_address || booking.from_postcode,
     destination: booking.to_address || booking.to_postcode,
-    travelMode: "DRIVING",
-    fields: ["distanceMeters", "durationMillis", "localizedValues"],
-    language: "en-GB",
-    region: "uk",
-    units: UnitSystem.IMPERIAL,
-  })).routes?.[0];
-  if (!route?.distanceMeters) return null;
-  return {
-    distance: route.localizedValues?.distance ?? `${(route.distanceMeters / 1609.344).toFixed(1)} miles`,
-    duration: route.localizedValues?.duration ?? (route.durationMillis ? `${Math.max(1, Math.round(route.durationMillis / 60000))} mins` : ""),
-  };
+  });
 }
 
 function sizeLabel(booking: Booking) {
