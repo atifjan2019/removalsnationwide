@@ -326,6 +326,10 @@ export default function AreaForm({ area }: Props) {
           setNearbyError("No nearby areas found. Check the area name and try again.");
           return;
         }
+        if (places.length > 0 && places[0] && "error" in places[0]) {
+          setNearbyError(String(places[0].error));
+          return;
+        }
         const existing = new Set(template.nearby.map((item) => item.href));
         const newItems = places
           .filter((place) => !existing.has(`/areas/${place.slug}`))
