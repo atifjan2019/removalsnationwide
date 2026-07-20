@@ -222,26 +222,12 @@ export default function AreaForm({ area }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [name, setName] = useState(() => {
-    const draft = readDraft(area);
-    return draft?.name ?? area?.name ?? "";
-  });
-  const [slug, setSlug] = useState(() => {
-    const draft = readDraft(area);
-    return draft?.slug ?? area?.slug ?? "";
-  });
-  const [template, setTemplate] = useState<AreaTemplateData>(() => {
-    const draft = readDraft(area);
-    return draft
-      ? parseAreaTemplateData(JSON.stringify(draft.template))
-      : buildInitialTemplate(area);
-  });
-  const [autoSaveStatus, setAutoSaveStatus] = useState(() => {
-    const draft = readDraft(area);
-    return draft
-      ? `Draft restored from ${new Date(draft.savedAt).toLocaleTimeString()}`
-      : "";
-  });
+  const [name, setName] = useState(area?.name ?? "");
+  const [slug, setSlug] = useState(area?.slug ?? "");
+  const [template, setTemplate] = useState<AreaTemplateData>(() =>
+    buildInitialTemplate(area),
+  );
+  const [autoSaveStatus, setAutoSaveStatus] = useState("");
 
   const [pending, startTransition] = useTransition();
   const [findingNearby, startFindingNearby] = useTransition();
@@ -254,6 +240,20 @@ export default function AreaForm({ area }: Props) {
   const [nameError, setNameError] = useState("");
   const [nearbyError, setNearbyError] = useState("");
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  // Restore draft from localStorage after hydration to avoid SSR mismatch.
+  useEffect(() => {
+    const draft = readDraft(area);
+    if (!draft) return;
+    startTransition(() => {
+      setName(draft.name ?? area?.name ?? "");
+      setSlug(draft.slug ?? area?.slug ?? "");
+      setTemplate(parseAreaTemplateData(JSON.stringify(draft.template)));
+      setAutoSaveStatus(
+        `Draft restored from ${new Date(draft.savedAt).toLocaleTimeString()}`,
+      );
+    });
+  }, [area]);
 
   const set = <K extends keyof AreaTemplateData>(key: K, value: AreaTemplateData[K]) =>
     setTemplate((current) => ({ ...current, [key]: value }));
