@@ -315,7 +315,7 @@ export default function SettingsForm({ settings, smtpSettings }: { settings: Sit
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <SmtpField label="SMTP host" name="smtpHost" defaultValue={smtpSettings.host} placeholder="smtp.elasticemail.com" required />
-          <SmtpField label="SMTP port" name="smtpPort" defaultValue={smtpSettings.port} type="number" placeholder="2525" required />
+          <SmtpField label="SMTP port" name="smtpPort" defaultValue={smtpSettings.port} type="number" placeholder="465" hint="Use port 465 for direct TLS on Cloudflare Workers." required />
           <SmtpField label="SMTP username" name="smtpUsername" defaultValue={smtpSettings.username} required />
           <SmtpField
             label="SMTP password"

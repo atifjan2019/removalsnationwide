@@ -198,9 +198,12 @@ class SmtpConnection {
 }
 
 export async function sendSmtpEmail(message: SmtpMessage): Promise<void> {
-  const socket = createConnection({ host: message.host, port: message.port });
+  const directTls = message.port === 465;
+  const socket: NetSocket | TLSSocket = directTls
+    ? connectTls({ host: message.host, port: message.port, servername: message.host })
+    : createConnection({ host: message.host, port: message.port });
   await new Promise<void>((resolve, reject) => {
-    socket.once("connect", resolve);
+    socket.once(directTls ? "secureConnect" : "connect", resolve);
     socket.once("error", reject);
   });
   const smtp = new SmtpConnection(socket);
@@ -208,13 +211,14 @@ export async function sendSmtpEmail(message: SmtpMessage): Promise<void> {
   try {
     await smtp.expect([220]);
     const hello = await smtp.command("EHLO removalsnationwide.uk", [250]);
-    if (!hello.message.toUpperCase().includes("STARTTLS")) {
-      throw new Error("SMTP server did not offer STARTTLS.");
+    if (!directTls) {
+      if (!hello.message.toUpperCase().includes("STARTTLS")) {
+        throw new Error("SMTP server did not offer STARTTLS.");
+      }
+      await smtp.command("STARTTLS", [220]);
+      await smtp.startTls(message.host);
+      await smtp.command("EHLO removalsnationwide.uk", [250]);
     }
-
-    await smtp.command("STARTTLS", [220]);
-    await smtp.startTls(message.host);
-    await smtp.command("EHLO removalsnationwide.uk", [250]);
 
     const credentials = encodeBase64(`\0${message.username}\0${message.password}`);
     const auth = await smtp.command(`AUTH PLAIN ${credentials}`, [235, 334]);
