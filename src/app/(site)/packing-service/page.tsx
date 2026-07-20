@@ -538,7 +538,7 @@ export default async function PackingServicePage() {
           </div>
           <ul
             data-reveal
-            className="mx-auto mt-10 grid max-w-4xl list-none grid-cols-1 gap-4 sm:grid-cols-2"
+            className="mt-10 grid list-none grid-cols-1 gap-4 sm:grid-cols-2"
           >
             {materials.map((item) => (
               <li
@@ -692,7 +692,7 @@ export default async function PackingServicePage() {
               title="Professional Packing vs Packing Yourself"
             />
           </div>
-          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div
               data-reveal
               data-delay="1"
@@ -821,7 +821,7 @@ export default async function PackingServicePage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div
               data-reveal
               data-delay="1"
@@ -903,7 +903,7 @@ export default async function PackingServicePage() {
           </div>
           <ul
             data-reveal
-            className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            className="mt-10 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
           >
             {londonAreas.map((area) => (
               <li

@@ -538,7 +538,7 @@ export default async function InternationalRemovalsPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-4xl" data-reveal data-delay="1">
+          <div className="mt-10" data-reveal data-delay="1">
             <div className="overflow-x-auto rounded-2xl border border-black/8 bg-white shadow-sm">
               <table className="w-full text-left text-sm">
                 <thead>
@@ -622,7 +622,7 @@ export default async function InternationalRemovalsPage() {
           </div>
 
           {/* Part load vs full load */}
-          <div className="mx-auto mt-12 max-w-4xl" data-reveal>
+          <div className="mt-12" data-reveal>
             <h3 className="mb-6 text-center text-lg font-bold text-brand-navy">
               Part Load or Full Load: Which Fits Your Move?
             </h3>
@@ -688,7 +688,7 @@ export default async function InternationalRemovalsPage() {
             </p>
           </div>
           <div
-            className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5"
+            className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5"
             data-reveal
             data-delay="1"
           >
@@ -848,7 +848,7 @@ export default async function InternationalRemovalsPage() {
             fixed price is accurate without a survey. A free survey confirms your exact scope and a
             written fixed quote is issued before any commitment.
           </p>
-          <div className="mx-auto mt-10 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 factor: "Volume of goods",

@@ -27,7 +27,7 @@ export default function WhatYouNeedToKnow() {
           eyebrow="Good to know"
           title="What Do You Need To Know About Removals Nationwide"
         />
-        <ul className="mx-auto mt-12 grid max-w-5xl gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <li key={item} className="flex items-start gap-3">
               <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">

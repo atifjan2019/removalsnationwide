@@ -70,7 +70,7 @@ export default function CostSection() {
           <p className="mb-4 text-center text-sm font-bold uppercase tracking-widest text-brand-navy">
             Full-move starting prices by property size
           </p>
-          <PricingTable columns={moveColumns} rows={moveRows} className="mx-auto max-w-3xl" />
+          <PricingTable columns={moveColumns} rows={moveRows} />
           <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-brand-charcoal/55">
             Starting prices before distance, access, packing and volume adjustments. All prices
             subject to 20% VAT.
@@ -82,14 +82,14 @@ export default function CostSection() {
           <p className="mb-4 text-center text-sm font-bold uppercase tracking-widest text-brand-navy">
             Man and van rates for smaller moves and single items
           </p>
-          <PricingTable columns={vanColumns} rows={vanRows} className="mx-auto max-w-4xl" />
+          <PricingTable columns={vanColumns} rows={vanRows} />
           <p className="mx-auto mt-3 max-w-3xl text-center text-xs text-brand-charcoal/55">
             Man and van rates are per booking. All prices subject to 20% VAT.
           </p>
         </div>
 
         {/* Cost drivers */}
-        <div data-reveal className="mx-auto mt-12 max-w-4xl">
+        <div data-reveal className="mt-12">
           <p className="mb-5 text-center text-sm font-bold uppercase tracking-widest text-brand-navy">
             What affects the final price
           </p>
@@ -121,7 +121,7 @@ export default function CostSection() {
         {/* Note on cheap quotes */}
         <div
           data-reveal
-          className="mx-auto mt-8 max-w-3xl rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5"
+          className="mt-8 rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5"
         >
           <p className="text-sm leading-relaxed text-brand-charcoal/85">
             <strong>A note on cheap quotes:</strong> Uninsured operators leave customers without

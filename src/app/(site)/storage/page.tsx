@@ -969,7 +969,7 @@ export default async function LondonStoragePage() {
           </div>
           <ul
             data-reveal
-            className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4"
+            className="mt-10 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4"
           >
             {londonBoroughs.map((borough) => (
               <li

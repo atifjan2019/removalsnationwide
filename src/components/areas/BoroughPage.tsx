@@ -245,13 +245,13 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Local team */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             align="left"
             eyebrow="Local team"
             title={`Your Local Removals and Man and Van Team in ${b.name}`}
           />
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-charcoal/85">
+          <div className="mt-6 max-w-4xl space-y-4 text-base leading-relaxed text-brand-charcoal/85">
             {(b.localBody ?? []).map((p, i) => (
               <p key={i}>{p}</p>
             ))}
@@ -261,13 +261,13 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Coverage */}
       <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             align="left"
             eyebrow="Coverage"
             title={`Areas and Postcodes We Cover in ${b.name}`}
           />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">{b.coverageIntro}</p>
+          <p className="mt-6 max-w-4xl text-base leading-relaxed text-brand-charcoal/85">{b.coverageIntro}</p>
           {(b.postcodes ?? []).length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2">
               {(b.postcodes ?? []).map((pc) => (
@@ -288,7 +288,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
               {b.neighbourhoods}
             </p>
           </div>
-          <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">{b.coverageOutro}</p>
+          <p className="mt-4 max-w-4xl text-base leading-relaxed text-brand-charcoal/85">{b.coverageOutro}</p>
         </div>
       </section>
 
@@ -296,7 +296,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
       {((b.knowBlocks ?? []).length > 0 || b.knowIntro) && (
         <section className="bg-white py-16">
           <div className="mx-auto max-w-7xl px-4">
-            <div className="mx-auto max-w-3xl">
+            <div className="max-w-4xl">
               <SectionHeading
                 align="left"
                 eyebrow="Local knowledge"
@@ -382,13 +382,13 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Experienced, insured, reviewed */}
       <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center">
+        <div className="mx-auto max-w-7xl px-4 text-center">
           <SectionHeading eyebrow="Trust" title="Experienced, Insured and Reviewed" />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
             Removals Nationwide is an experienced mover. Every move includes goods-in-transit
             insurance in the price, and our crews are trained, vetted and background-checked.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
             Written quotations set out the agreed work, price and insurance terms before booking.
             Read more about our{" "}
             <a
@@ -404,9 +404,9 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* How it works */}
       <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading align="left" eyebrow="Step by step" title={`How Your ${b.name} Move Works`} />
-          <ol className="mt-8 space-y-5">
+          <ol className="mt-8 grid gap-5 sm:grid-cols-2">
             {[
               `Get a quote. Send your details for a free quote, or book a free survey for a larger move. We confirm the price and the plan.`,
               `We plan the access. For ${b.name} we check parking and arrange a suspended bay where needed, and we plan the loading point around the local roads and your building's rules.`,
@@ -427,9 +427,9 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Nearby areas */}
       {(b.nearby ?? []).length > 0 && <section className="bg-brand-sand py-16">
-        <div className="mx-auto max-w-3xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
-          <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
+          <p className="mt-6 max-w-4xl text-base leading-relaxed text-brand-charcoal/85">
             We also serve the boroughs that border {b.name}, including{" "}
             {(b.nearby ?? []).map((n, i) => {
               return (

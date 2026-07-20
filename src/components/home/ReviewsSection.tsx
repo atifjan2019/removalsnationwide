@@ -12,7 +12,7 @@ export default function ReviewsSection() {
           process provide clear records before work begins.
         </p>
 
-        <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-2" data-reveal>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2" data-reveal>
           <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-black/5">
             <h3 className="text-sm font-bold uppercase tracking-wide text-brand-navy">Public liability insurance</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">
