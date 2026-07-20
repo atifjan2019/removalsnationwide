@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { SVGProps, ReactNode } from "react";
 import Button from "@/components/ui/Button";
 import BrandLogo from "@/components/layout/BrandLogo";
-import { PhoneIcon, ArrowRight } from "@/components/ui/icons";
+import { PhoneIcon, ArrowRight, WhatsAppIcon } from "@/components/ui/icons";
 import { footerServices, footerCompany } from "@/lib/site";
 import type { ResolvedSettings } from "@/lib/settings";
 
@@ -33,6 +33,18 @@ function LinkedInIcon(p: SVGProps<SVGSVGElement>) {
   );
 }
 
+function InstagramIcon(p: SVGProps<SVGSVGElement>) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" {...p}><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>;
+}
+
+function YoutubeIcon(p: SVGProps<SVGSVGElement>) {
+  return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}><path d="M23 12s0-4.2-.55-6.2a3 3 0 0 0-2.1-2.1C18.4 3.1 12 3.1 12 3.1s-6.4 0-8.35.6a3 3 0 0 0-2.1 2.1C1 7.8 1 12 1 12s0 4.2.55 6.2a3 3 0 0 0 2.1 2.1c1.95.6 8.35.6 8.35.6s6.4 0 8.35-.6a3 3 0 0 0 2.1-2.1C23 16.2 23 12 23 12Zm-13.2 4V8l6.9 4-6.9 4Z"/></svg>;
+}
+
+function TiktokIcon(p: SVGProps<SVGSVGElement>) {
+  return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}><path d="M16.5 3c.4 2.2 1.7 3.6 4 4v4a9.2 9.2 0 0 1-4-1.2v6.1a6.1 6.1 0 1 1-5.3-6V14a2.2 2.2 0 1 0 1.3 2V3h4Z"/></svg>;
+}
+
 /* ── Data ─────────────────────────────────────────── */
 const servicesA = footerServices.slice(0, 6);
 const servicesB = footerServices.slice(6);
@@ -45,6 +57,10 @@ function socialLinks(s: ResolvedSettings) {
     { name: "Facebook", href: s.urlFacebook, Icon: FacebookIcon },
     { name: "Twitter / X", href: s.urlX, Icon: XIcon },
     { name: "LinkedIn", href: s.urlLinkedin, Icon: LinkedInIcon },
+    { name: "Instagram", href: s.urlInstagram, Icon: InstagramIcon },
+    { name: "YouTube", href: s.urlYoutube, Icon: YoutubeIcon },
+    { name: "TikTok", href: s.urlTiktok, Icon: TiktokIcon },
+    { name: "WhatsApp", href: s.whatsapp.href, Icon: WhatsAppIcon },
   ].filter((l) => l.href.trim() !== "");
 }
 
