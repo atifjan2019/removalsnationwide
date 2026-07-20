@@ -203,7 +203,13 @@ export async function saveArea(input: AreaInput) {
 export async function findNearbyAreas(name: string): Promise<NearbyPlace[]> {
   await assertAdmin();
   if (!name.trim()) return [];
-  return findNearbyAreasForName(name.trim());
+  try {
+    return await findNearbyAreasForName(name.trim());
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("[findNearbyAreas] failed:", message);
+    throw new Error(message);
+  }
 }
 
 export async function deleteArea(id: string) {

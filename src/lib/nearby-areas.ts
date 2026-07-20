@@ -9,7 +9,22 @@
  */
 
 const MILES_50_IN_METERS = 80_467;
-const USER_AGENT = "RemovalsNationwide-Admin/1.0";
+const USER_AGENT = "RemovalsNationwide-Admin/1.0 (contact@removalsnationwide.co.uk)";
+const REQUEST_TIMEOUT_MS = 15_000;
+
+async function fetchWithTimeout(
+  input: RequestInfo | URL,
+  init?: RequestInit,
+): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    const response = await fetch(input, { ...init, signal: controller.signal });
+    return response;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
 export type GeocodedPlace = {
   name: string;
@@ -59,7 +74,7 @@ export async function geocodeAreaName(name: string): Promise<GeocodedPlace | nul
   const query = encodeURIComponent(`${name}, UK`);
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query}&countrycodes=gb&limit=1`;
 
-  const response = await fetch(url, {
+  const response = await fetchWithTimeout(url, {
     headers: {
       Accept: "application/json",
       "User-Agent": USER_AGENT,
@@ -67,7 +82,8 @@ export async function geocodeAreaName(name: string): Promise<GeocodedPlace | nul
   });
 
   if (!response.ok) {
-    throw new Error(`Nominatim returned ${response.status}`);
+    const body = await response.text().catch(() => "");
+    throw new Error(`Nominatim returned ${response.status}: ${body.slice(0, 200)}`);
   }
 
   const data = (await response.json()) as Array<{
@@ -95,15 +111,9 @@ export async function findNearbyPlaces(
   lng: number,
   radiusMeters = MILES_50_IN_METERS,
 ): Promise<NearbyPlace[]> {
-  const overpassQuery = `
-    [out:json][timeout:25];
-    (
-      node["place"~"city|town|village|suburb"]["name"](around:${radiusMeters},${lat},${lng});
-    );
-    out body;
-  `;
+  const overpassQuery = `[out:json][timeout:25];node["place"~"city|town|village|suburb"]["name"](around:${radiusMeters},${lat},${lng});out body;`;
 
-  const response = await fetch("https://overpass-api.de/api/interpreter", {
+  const response = await fetchWithTimeout("https://overpass-api.de/api/interpreter", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -113,7 +123,8 @@ export async function findNearbyPlaces(
   });
 
   if (!response.ok) {
-    throw new Error(`Overpass returned ${response.status}`);
+    const body = await response.text().catch(() => "");
+    throw new Error(`Overpass returned ${response.status}: ${body.slice(0, 200)}`);
   }
 
   const data = (await response.json()) as {
