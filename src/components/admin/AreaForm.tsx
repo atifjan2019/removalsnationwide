@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import {
   useCallback,
   useEffect,
@@ -43,6 +41,37 @@ type DraftState = {
   template: AreaTemplateData;
   savedAt: string;
 };
+
+function buildInitialTemplate(area?: EditableArea): AreaTemplateData {
+  const stored = parseAreaTemplateData(area?.template_data);
+  return {
+    ...stored,
+    heroImage: stored.heroImage || area?.cover_image || "",
+    introLine: stored.introLine || area?.intro || "",
+    localBody: stored.localBody.length > 0 ? stored.localBody : [""],
+    knowBlocks:
+      stored.knowBlocks.length > 0
+        ? stored.knowBlocks
+        : [{ label: "", body: "" }],
+    nearby:
+      stored.nearby.length > 0 ? stored.nearby : [{ label: "", href: "" }],
+    faqs:
+      stored.faqs.length > 0 ? stored.faqs : [{ question: "", answer: "" }],
+  };
+}
+
+function readDraft(area?: EditableArea): DraftState | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY(area?.id ?? "new"));
+    if (!raw) return null;
+    const draft = JSON.parse(raw) as DraftState;
+    if (!draft || typeof draft !== "object") return null;
+    return draft;
+  } catch {
+    return null;
+  }
+}
 
 const tabs = [
   { id: "area-seo", label: "Area & SEO", shortLabel: "SEO" },
@@ -190,32 +219,35 @@ function AddButton({ children, onClick }: { children: React.ReactNode; onClick: 
 }
 
 export default function AreaForm({ area }: Props) {
-  const storedTemplate = parseAreaTemplateData(area?.template_data);
   const draftId = area?.id ?? "new";
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [name, setName] = useState(area?.name ?? "");
-  const [slug, setSlug] = useState(area?.slug ?? "");
-  const [published, setPublished] = useState(area?.published ?? false);
-  const [template, setTemplate] = useState<AreaTemplateData>({
-    ...storedTemplate,
-    heroImage: storedTemplate.heroImage || area?.cover_image || "",
-    introLine: storedTemplate.introLine || area?.intro || "",
-    localBody:
-      storedTemplate.localBody.length > 0 ? storedTemplate.localBody : [""],
-    knowBlocks:
-      storedTemplate.knowBlocks.length > 0
-        ? storedTemplate.knowBlocks
-        : [{ label: "", body: "" }],
-    nearby:
-      storedTemplate.nearby.length > 0
-        ? storedTemplate.nearby
-        : [{ label: "", href: "" }],
-    faqs:
-      storedTemplate.faqs.length > 0
-        ? storedTemplate.faqs
-        : [{ question: "", answer: "" }],
+
+  const [name, setName] = useState(() => {
+    const draft = readDraft(area);
+    return draft?.name ?? area?.name ?? "";
   });
+  const [slug, setSlug] = useState(() => {
+    const draft = readDraft(area);
+    return draft?.slug ?? area?.slug ?? "";
+  });
+  const [published, setPublished] = useState(() => {
+    const draft = readDraft(area);
+    return draft?.published ?? area?.published ?? false;
+  });
+  const [template, setTemplate] = useState<AreaTemplateData>(() => {
+    const draft = readDraft(area);
+    return draft
+      ? parseAreaTemplateData(JSON.stringify(draft.template))
+      : buildInitialTemplate(area);
+  });
+  const [autoSaveStatus, setAutoSaveStatus] = useState(() => {
+    const draft = readDraft(area);
+    return draft
+      ? `Draft restored from ${new Date(draft.savedAt).toLocaleTimeString()}`
+      : "";
+  });
+
   const [pending, startTransition] = useTransition();
   const [findingNearby, startFindingNearby] = useTransition();
   const [activeTab, setActiveTabState] = useState<TabId>(() => {
@@ -226,7 +258,6 @@ export default function AreaForm({ area }: Props) {
   });
   const [nameError, setNameError] = useState("");
   const [nearbyError, setNearbyError] = useState("");
-  const [autoSaveStatus, setAutoSaveStatus] = useState("");
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const set = <K extends keyof AreaTemplateData>(key: K, value: AreaTemplateData[K]) =>
@@ -241,36 +272,6 @@ export default function AreaForm({ area }: Props) {
     },
     [router, searchParams],
   );
-
-  // Restore draft from localStorage once on mount.
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY(draftId));
-      if (!raw) return;
-      const draft = JSON.parse(raw) as DraftState;
-      if (!draft || typeof draft !== "object") return;
-      if (area?.id && area.id !== "new") {
-        // Only restore a server-loaded area's draft if it was saved after the page loaded.
-        // For edits, we restore only when the draft is newer than nothing (user hit back/refresh).
-        setName(draft.name ?? "");
-        setSlug(draft.slug ?? "");
-        setPublished(draft.published ?? false);
-        setTemplate({
-          ...parseAreaTemplateData(JSON.stringify(draft.template)),
-        });
-      } else {
-        setName(draft.name ?? "");
-        setSlug(draft.slug ?? "");
-        setPublished(draft.published ?? false);
-        setTemplate({
-          ...parseAreaTemplateData(JSON.stringify(draft.template)),
-        });
-      }
-      setAutoSaveStatus(`Draft restored from ${new Date(draft.savedAt).toLocaleTimeString()}`);
-    } catch {
-      // Ignore malformed localStorage data.
-    }
-  }, [draftId, area?.id]);
 
   // Auto-save to localStorage whenever form state changes.
   useEffect(() => {
@@ -337,7 +338,7 @@ export default function AreaForm({ area }: Props) {
             href: `/areas/${place.slug}`,
           }));
         set("nearby", [...template.nearby, ...newItems]);
-        setActiveTab("nearby");
+        setAutoSaveStatus(`Added ${newItems.length} nearby area${newItems.length === 1 ? "" : "s"}`);
       } catch {
         setNearbyError("Could not fetch nearby areas. Please try again in a moment.");
       }
@@ -512,6 +513,37 @@ export default function AreaForm({ area }: Props) {
         title="6. Nearby areas"
         description="Links this page into the local coverage network. Use an existing /areas/ URL."
       >
+        <div className="flex flex-col gap-3 rounded-xl border border-brand-red/10 bg-brand-red/5 p-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-brand-navy">
+              Auto-fill nearby areas
+            </p>
+            <p className="text-xs text-slate-500">
+              Finds towns and villages within 50 miles of {name || "this area"}.
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <button
+              type="button"
+              onClick={handleFindNearby}
+              disabled={findingNearby || !name.trim()}
+              className="inline-flex items-center gap-2 rounded-lg border border-brand-red/30 bg-white px-4 py-2 text-sm font-semibold text-brand-red transition hover:bg-brand-red/10 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {findingNearby ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-red/30 border-t-brand-red" />
+                  Finding areas…
+                </>
+              ) : (
+                "Find nearby areas (50 miles)"
+              )}
+            </button>
+            {nearbyError && (
+              <p className="text-sm font-medium text-red-600">{nearbyError}</p>
+            )}
+          </div>
+        </div>
+
         {template.nearby.map((nearby, index) => (
           <div key={index} className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
             <TextField title="Area label" value={nearby.label} onChange={(value) => set("nearby", template.nearby.map((item, itemIndex) => itemIndex === index ? { ...item, label: value } : item))} placeholder="Camden" />
