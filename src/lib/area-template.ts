@@ -6,6 +6,7 @@ export type AreaKnowledgeBlock = {
 export type AreaNearbyLink = {
   label: string;
   href: string;
+  miles?: string;
 };
 
 export type AreaFaq = {
@@ -89,7 +90,7 @@ export function normalizeAreaTemplateData(value: unknown): AreaTemplateData {
     coverageOutro: text(source.coverageOutro),
     knowIntro: text(source.knowIntro),
     knowBlocks: pairList<AreaKnowledgeBlock>(source.knowBlocks, ["label", "body"]),
-    nearby: pairList<AreaNearbyLink>(source.nearby, ["label", "href"]),
+    nearby: pairList<AreaNearbyLink>(source.nearby, ["label", "href", "miles"]),
     faqs: pairList<AreaFaq>(source.faqs, ["question", "answer"]),
   };
 }

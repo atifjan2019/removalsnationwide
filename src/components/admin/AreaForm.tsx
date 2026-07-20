@@ -334,8 +334,9 @@ export default function AreaForm({ area }: Props) {
         const newItems = places
           .filter((place) => !existing.has(`/areas/${place.slug}`))
           .map((place) => ({
-            label: `${place.name} (${place.distanceKm} km)`,
+            label: place.name,
             href: `/areas/${place.slug}`,
+            miles: String(Math.round(place.distanceKm * 0.621371 * 10) / 10),
           }));
         set("nearby", [...template.nearby, ...newItems]);
         setAutoSaveStatus(`Added ${newItems.length} nearby area${newItems.length === 1 ? "" : "s"}`);
@@ -545,13 +546,14 @@ export default function AreaForm({ area }: Props) {
         </div>
 
         {template.nearby.map((nearby, index) => (
-          <div key={index} className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+          <div key={index} className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end">
             <TextField title="Area label" value={nearby.label} onChange={(value) => set("nearby", template.nearby.map((item, itemIndex) => itemIndex === index ? { ...item, label: value } : item))} placeholder="Camden" />
+            <TextField title="Miles" value={nearby.miles ?? ""} onChange={(value) => set("nearby", template.nearby.map((item, itemIndex) => itemIndex === index ? { ...item, miles: value } : item))} placeholder="3.2" />
             <TextField title="Area URL" value={nearby.href} onChange={(value) => set("nearby", template.nearby.map((item, itemIndex) => itemIndex === index ? { ...item, href: value } : item))} placeholder="/areas/camden" />
             <div className="pb-2"><RemoveButton onClick={() => set("nearby", template.nearby.filter((_, itemIndex) => itemIndex !== index))} /></div>
           </div>
         ))}
-        <AddButton onClick={() => set("nearby", [...template.nearby, { label: "", href: "" }])}>Add nearby area</AddButton>
+        <AddButton onClick={() => set("nearby", [...template.nearby, { label: "", href: "", miles: "" }])}>Add nearby area</AddButton>
         </SectionCard>
       </TabPanel>
 

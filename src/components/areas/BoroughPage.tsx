@@ -435,7 +435,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
               return (
                 <span key={n.href}>
                   <Link href={n.href} className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-red">
-                    {n.label}
+                    {n.label}{n.miles ? ` (${n.miles} miles)` : ""}
                   </Link>
                   {i < b.nearby.length - 2 ? ", " : i === b.nearby.length - 2 ? " and " : ""}
                 </span>

@@ -16,7 +16,7 @@ import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 export type BoroughFaq = { question: string; answer: string };
 export type BoroughKnowBlock = { label: string; body: string };
-export type BoroughLink = { label: string; href: string };
+export type BoroughLink = { label: string; href: string; miles?: string };
 
 export type Borough = {
   slug: string;
