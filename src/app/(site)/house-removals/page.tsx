@@ -24,6 +24,7 @@ import CardGrid from "@/components/services/CardGrid";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import { CheckIcon } from "@/components/ui/icons";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 export const metadata: Metadata = buildMetadata("house-removals");
 
@@ -352,6 +353,7 @@ const faqs: FaqItem[] = [
 
 export default async function HouseRemovalsPage() {
   const { phones } = await getResolvedSettings();
+  const priceYear = new Date().getFullYear();
   return (
     <>
       <JsonLd data={serviceLdFor("house-removals")} />
@@ -435,7 +437,7 @@ export default async function HouseRemovalsPage() {
 
             {/* Right: trust panel with team photo */}
             <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
-              <div className="relative aspect-[16/9] w-full">
+              <div className="relative aspect-[4/3] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1714647211902-bb711d643a17?auto=format&fit=crop&w=2400&q=82"
                   alt="house move in London, Removals Nationwide fully insured house removal crew"
@@ -444,35 +446,6 @@ export default async function HouseRemovalsPage() {
                   className="object-cover"
                   priority
                 />
-              </div>
-              <div className="bg-brand-grey p-6">
-                <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-navy">
-                  Service highlights
-                </p>
-                <ul className="space-y-2">
-                  {serviceStandards.map((name) => (
-                    <li key={name} className="flex items-center gap-2">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-brand-red" strokeWidth={3} />
-                      <span className="text-sm text-brand-navy/85">{name}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
-                  <Link
-                    href="/about-us"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
-                  >
-                    Service standards →
-                  </Link>
-                  <Link
-                    href="/about-us"
-                    className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
-                  >
-                    About us →
-                  </Link>
-                </div>
               </div>
             </div>
 
@@ -494,43 +467,76 @@ export default async function HouseRemovalsPage() {
             eyebrow="Moving challenges handled"
             title="Moving House Anywhere in the UK Without the Stress"
           />
-          <div className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85">
-            <p>
-              Moving house in London is not like moving anywhere else. Parking suspensions take days
-              to arrange. Narrow Victorian streets leave no room for a large vehicle. A fourth-floor
-              flat without a lift adds hours to a move. Tight completion windows mean van hire and
-              doing it yourself carries a real risk of running out of time.
-            </p>
-            <p>
-              A trained, insured removal team removes each of those risks. Parking permits are
-              arranged in advance by our operations team. Crew size and vehicle type are matched to
-              your property after the survey. Fragile and heavy items including antiques, white goods and
-              flat-pack furniture are packed, padded and loaded by people who do this every day.
-            </p>
-            <p>
-              Every job is covered by{" "}
-              <strong>public liability insurance and goods-in-transit insurance</strong>. If
-              something goes wrong, there is a clear claims process with a financial remedy, not an
-              unenforceable verbal assurance.
-            </p>
-            <p>
-              The result is a move that runs on time, with your belongings arriving intact and your
-              energy spent on the things that matter on moving day.{" "}
-              <Link href="#process" className="text-brand-red underline underline-offset-2">
-                See how the process works.
-              </Link>
-            </p>
-            <p className="text-sm text-brand-charcoal/60">
-              Moving a business instead?{" "}
-              <Link href="/office-removals" className="underline hover:text-brand-red">
-                Office removals London
-              </Link>
-              . Moving overseas?{" "}
-              <Link href="/international-removals" className="underline hover:text-brand-red">
-                International removals
-              </Link>
-              .
-            </p>
+          <div className="mt-8 grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-14">
+            <div className="space-y-5 text-base leading-relaxed text-brand-charcoal/85">
+              <p>
+                Moving house in London is not like moving anywhere else. Parking suspensions take days
+                to arrange. Narrow Victorian streets leave no room for a large vehicle. A fourth-floor
+                flat without a lift adds hours to a move. Tight completion windows mean van hire and
+                doing it yourself carries a real risk of running out of time.
+              </p>
+              <p>
+                A trained, insured removal team removes each of those risks. Parking permits are
+                arranged in advance by our operations team. Crew size and vehicle type are matched to
+                your property after the survey. Fragile and heavy items including antiques, white goods and
+                flat-pack furniture are packed, padded and loaded by people who do this every day.
+              </p>
+              <p>
+                Every job is covered by{" "}
+                <strong>public liability insurance and goods-in-transit insurance</strong>. If
+                something goes wrong, there is a clear claims process with a financial remedy, not an
+                unenforceable verbal assurance.
+              </p>
+              <p>
+                The result is a move that runs on time, with your belongings arriving intact and your
+                energy spent on the things that matter on moving day.{" "}
+                <Link href="#process" className="text-brand-red underline underline-offset-2">
+                  See how the process works.
+                </Link>
+              </p>
+              <p className="text-sm text-brand-charcoal/60">
+                Moving a business instead?{" "}
+                <Link href="/office-removals" className="underline hover:text-brand-red">
+                  Office removals London
+                </Link>
+                . Moving overseas?{" "}
+                <Link href="/international-removals" className="underline hover:text-brand-red">
+                  International removals
+                </Link>
+                .
+              </p>
+            </div>
+
+            {/* Supporting imagery: crew at work, vehicle, city access */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+                <Image
+                  src={REMOTE_IMAGES.moversLoading}
+                  alt="Trained removal crew carefully loading wrapped furniture during a house move"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+                <Image
+                  src={REMOTE_IMAGES.movingVan}
+                  alt="Removal van loaded and ready to leave for the new address"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 22vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+                <Image
+                  src={REMOTE_IMAGES.movingBoxes}
+                  alt="Packed and labelled moving boxes stacked ready for collection"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 22vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -734,7 +740,7 @@ export default async function HouseRemovalsPage() {
       <section id="cost" className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
-            eyebrow="Removal prices 2026"
+            eyebrow={`Removal prices ${priceYear}`}
             title="How Much House Removals Cost"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
@@ -746,7 +752,7 @@ export default async function HouseRemovalsPage() {
           </p>
 
           <PricingTable
-            className="mx-auto mt-10 max-w-3xl"
+            className="mt-10"
             columns={["Property size", "Guide price (from)", "Typical crew and vehicle"]}
             rows={costRows}
           />
@@ -757,7 +763,7 @@ export default async function HouseRemovalsPage() {
             All prices are subject to VAT at 20%.
           </p>
 
-          <div className="mt-10 mx-auto max-w-3xl rounded-2xl bg-brand-grey p-8">
+          <div className="mt-10 rounded-2xl bg-brand-grey p-8">
             <h3 className="text-base font-bold uppercase tracking-wide text-brand-navy">
               What drives the price up or down?
             </h3>
@@ -964,27 +970,59 @@ export default async function HouseRemovalsPage() {
       {/* ── S9: Price factors ── */}
       <section id="price-factors" className="bg-white py-20">
         <div className="mx-auto max-w-[88rem] px-4">
-          <SectionHeading
-            align="left"
-            eyebrow="Understanding your quote"
-            title="What Affects the Cost of Your House Removal"
-          />
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
-            A house removal quote is built from several variables. Understanding them helps you
-            budget accurately and, where your dates are flexible, reduce the total cost.
-          </p>
-          <CheckList items={priceFactors} className="mt-8 max-w-3xl" />
-          <div className="mt-8 rounded-2xl bg-brand-grey p-6 max-w-3xl">
-            <p className="text-sm font-semibold text-brand-navy">
-              How to get the cheapest day for your house move
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/85">
-              Tuesday, Wednesday and Thursday moves are typically the most cost-effective days.
-              Avoid Fridays, which carry a premium, and the last week of any month, when completion
-              dates cluster. Moving in January, February or March is often cheaper than June,
-              July or August. Ask when you request your quote: if your date is flexible, we will
-              tell you the best available slot.
-            </p>
+          <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(22rem,0.85fr)] lg:gap-16">
+            <div>
+              <SectionHeading
+                align="left"
+                eyebrow="Understanding your quote"
+                title="What Affects the Cost of Your House Removal"
+              />
+              <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-charcoal/85">
+                A house removal quote is built from several variables. Understanding them helps you
+                budget accurately and, where your dates are flexible, reduce the total cost.
+              </p>
+              <CheckList items={priceFactors} className="mt-8 max-w-3xl" />
+              <div className="mt-8 max-w-3xl rounded-2xl bg-brand-grey p-6">
+                <p className="text-sm font-semibold text-brand-navy">
+                  How to get the cheapest day for your house move
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/85">
+                  Tuesday, Wednesday and Thursday moves are typically the most cost-effective days.
+                  Avoid Fridays, which carry a premium, and the last week of any month, when completion
+                  dates cluster. Moving in January, February or March is often cheaper than June,
+                  July or August. Ask when you request your quote: if your date is flexible, we will
+                  tell you the best available slot.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:sticky lg:top-28 lg:grid-cols-1">
+              <figure className="group relative min-h-72 overflow-hidden rounded-2xl bg-brand-grey sm:min-h-80 lg:min-h-[28rem]">
+                <Image
+                  src={REMOTE_IMAGES.homeMove}
+                  alt="Packed boxes arranged in a home ready for moving day"
+                  fill
+                  sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) 50vw, 34vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <figcaption className="absolute inset-x-4 bottom-4 rounded-xl bg-brand-navy/90 px-4 py-3 text-sm font-semibold text-white backdrop-blur-sm">
+                  Volume and property size shape your quote
+                </figcaption>
+              </figure>
+
+              <figure className="group relative min-h-56 overflow-hidden rounded-2xl bg-brand-grey sm:min-h-80 lg:min-h-64">
+                <Image
+                  src={REMOTE_IMAGES.movingBoxes}
+                  alt="Labelled moving boxes prepared for professional transport"
+                  fill
+                  sizes="(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) 50vw, 34vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <figcaption className="absolute inset-x-4 bottom-4 rounded-xl bg-white/90 px-4 py-3 text-sm font-semibold text-brand-navy backdrop-blur-sm">
+                  Packing needs are priced before move day
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
