@@ -116,9 +116,10 @@ export async function findNearbyPlaces(
   const response = await fetchWithTimeout("https://overpass-api.de/api/interpreter", {
     method: "POST",
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "text/plain; charset=utf-8",
+      "User-Agent": USER_AGENT,
     },
-    body: new URLSearchParams({ data: overpassQuery }),
+    body: overpassQuery,
   });
 
   if (!response.ok) {
