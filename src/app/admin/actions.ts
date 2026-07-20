@@ -7,6 +7,7 @@ import { fromBool } from "@/lib/d1";
 import { sanitize } from "@/lib/sanitize";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
+import { findNearbyAreasForName, type NearbyPlace } from "@/lib/nearby-areas";
 import type {
   AreaFaq,
   AreaKnowledgeBlock,
@@ -197,6 +198,12 @@ export async function saveArea(input: AreaInput) {
   revalidatePath("/areas");
   revalidatePath(`/areas/${slug}`);
   redirect("/admin/areas");
+}
+
+export async function findNearbyAreas(name: string): Promise<NearbyPlace[]> {
+  await assertAdmin();
+  if (!name.trim()) return [];
+  return findNearbyAreasForName(name.trim());
 }
 
 export async function deleteArea(id: string) {

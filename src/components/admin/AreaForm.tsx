@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState, useTransition } from "react";
 import ImageField from "@/components/admin/ImageField";
-import { saveArea } from "@/app/admin/actions";
+import { saveArea, findNearbyAreas } from "@/app/admin/actions";
 import {
   parseAreaTemplateData,
   type AreaTemplateData,
@@ -194,8 +194,10 @@ export default function AreaForm({ area }: Props) {
         : [{ question: "", answer: "" }],
   });
   const [pending, startTransition] = useTransition();
+  const [findingNearby, startFindingNearby] = useTransition();
   const [activeTab, setActiveTab] = useState<TabId>("area-seo");
   const [nameError, setNameError] = useState("");
+  const [nearbyError, setNearbyError] = useState("");
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const set = <K extends keyof AreaTemplateData>(key: K, value: AreaTemplateData[K]) =>
@@ -212,6 +214,36 @@ export default function AreaForm({ area }: Props) {
     startTransition(() =>
       saveArea({ id: area?.id, name, slug, published, template }),
     );
+  }
+
+  function handleFindNearby() {
+    const areaName = name.trim();
+    if (!areaName) {
+      setNameError("Enter an area name first.");
+      setActiveTab("area-seo");
+      return;
+    }
+    setNearbyError("");
+    startFindingNearby(async () => {
+      try {
+        const places = await findNearbyAreas(areaName);
+        if (places.length === 0) {
+          setNearbyError("No nearby areas found. Check the area name and try again.");
+          return;
+        }
+        const existing = new Set(template.nearby.map((item) => item.href));
+        const newItems = places
+          .filter((place) => !existing.has(`/areas/${place.slug}`))
+          .map((place) => ({
+            label: `${place.name} (${place.distanceKm} km)`,
+            href: `/areas/${place.slug}`,
+          }));
+        set("nearby", [...template.nearby, ...newItems]);
+        setActiveTab("nearby");
+      } catch {
+        setNearbyError("Could not fetch nearby areas. Please try again in a moment.");
+      }
+    });
   }
 
   function selectTab(index: number) {
@@ -281,17 +313,37 @@ export default function AreaForm({ area }: Props) {
         description="Controls the page URL, search result and structured service-area data."
       >
         <div className="grid gap-5 sm:grid-cols-2">
-          <TextField
-            title="Area name"
-            value={name}
-            onChange={(value) => {
-              setName(value);
-              if (value.trim()) setNameError("");
-            }}
-            required
-            error={nameError}
-            placeholder="Barnet"
-          />
+          <div className="space-y-3">
+            <TextField
+              title="Area name"
+              value={name}
+              onChange={(value) => {
+                setName(value);
+                if (value.trim()) setNameError("");
+              }}
+              required
+              error={nameError}
+              placeholder="Barnet"
+            />
+            <button
+              type="button"
+              onClick={handleFindNearby}
+              disabled={findingNearby}
+              className="inline-flex items-center gap-2 rounded-lg border border-brand-red/30 bg-brand-red/5 px-4 py-2 text-sm font-semibold text-brand-red transition hover:bg-brand-red/10 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {findingNearby ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-red/30 border-t-brand-red" />
+                  Finding areas…
+                </>
+              ) : (
+                "Find nearby areas (50 miles)"
+              )}
+            </button>
+            {nearbyError && (
+              <p className="text-sm font-medium text-red-600">{nearbyError}</p>
+            )}
+          </div>
           <TextField title="Slug (optional)" value={slug} onChange={setSlug} placeholder="auto-generated-from-name" />
         </div>
         <TextField title="Page H1" value={template.h1} onChange={(value) => set("h1", value)} placeholder={`Removals in ${name || "Area"}`} />
