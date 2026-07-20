@@ -10,6 +10,7 @@ import {
   updateBookingStatus,
 } from "@/app/admin/bookings/actions";
 import { PageHeading, StatusBadge, money, shortDate } from "@/components/admin/AdminPrimitives";
+import { PencilIcon, TrashIcon } from "@/components/admin/Icons";
 import {
   bookingRoute,
   moveStatus,
@@ -145,7 +146,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter, m
                 {active && <p className="mt-1 break-all font-mono text-xs text-slate-400">{active.id}</p>}
               </div>
               <div className="flex shrink-0 items-center gap-2">
-                {active && !editing && <button type="button" onClick={() => setEditing(true)} className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-red">Edit Booking</button>}
+                {active && !editing && <button type="button" onClick={() => setEditing(true)} title="Edit booking" aria-label="Edit booking" className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-950"><PencilIcon className="h-5 w-5" /></button>}
                 <button type="button" onClick={closeModal} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-xl leading-none text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Close booking details">×</button>
               </div>
             </header>
@@ -230,7 +231,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter, m
             </div>
 
             <footer className="flex shrink-0 items-center justify-between gap-3 border-t border-slate-200 bg-white px-5 py-4 sm:px-6">
-              {active ? <button type="button" disabled={pending} onClick={() => { if (window.confirm("Delete this move permanently?")) startTransition(async () => { await deleteBooking(active.id); closeModal(); }); }} className="rounded-xl border border-red-300 bg-white px-4 py-2.5 text-sm font-bold text-red-700 transition hover:bg-red-50 disabled:opacity-60">Delete Booking</button> : <span />}
+              {active ? <button type="button" disabled={pending} onClick={() => { if (window.confirm("Delete this move permanently?")) startTransition(async () => { await deleteBooking(active.id); closeModal(); }); }} title="Delete booking" aria-label="Delete booking" className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-red-700 transition hover:bg-red-50 disabled:opacity-60"><TrashIcon className="h-5 w-5" /></button> : <span />}
               <button type="button" onClick={closeModal} className="rounded-xl bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800">Close Details</button>
             </footer>
           </div>

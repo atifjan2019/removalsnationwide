@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getDbPosts } from "@/lib/cms";
 import { deletePost } from "@/app/admin/actions";
 import DeleteButton from "@/components/admin/DeleteButton";
+import { PencilIcon } from "@/components/admin/Icons";
 
 export const dynamic = "force-dynamic";
 
@@ -53,12 +54,14 @@ export default async function AdminPostsPage() {
                     </span>
                   </td>
                   <td className="px-5 py-3">
-                    <div className="flex items-center justify-end gap-4">
+                    <div className="flex items-center justify-end gap-1">
                       <Link
                         href={`/admin/posts/${p.id}`}
-                        className="text-sm font-semibold text-brand-red hover:underline"
+                        title="Edit"
+                        aria-label="Edit"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-brand-red transition hover:bg-brand-red/10"
                       >
-                        Edit
+                        <PencilIcon className="h-5 w-5" />
                       </Link>
                       <DeleteButton id={p.id} action={deletePost} />
                     </div>
