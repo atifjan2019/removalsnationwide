@@ -35,7 +35,7 @@ export async function saveSettings(
   formData: FormData,
 ): Promise<SettingsState> {
   await assertAdmin();
-  let db;
+  let db: D1Database;
   try {
     db = await requireDb();
   } catch (err) {
