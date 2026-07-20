@@ -1,12 +1,24 @@
 "use client";
 
-import { useId, useRef, useState, useTransition } from "react";
+"use client";
+
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import ImageField from "@/components/admin/ImageField";
 import { saveArea, findNearbyAreas } from "@/app/admin/actions";
 import {
   parseAreaTemplateData,
   type AreaTemplateData,
 } from "@/lib/area-template";
+
+const STORAGE_KEY = (id: string) => `removals-area-draft-${id}`;
 
 const input =
   "mt-1.5 w-full rounded-lg border border-black/15 bg-white px-4 py-2.5 text-base shadow-sm focus:border-brand-red focus:outline-none focus:ring-2 focus:ring-brand-red/30";
@@ -23,6 +35,14 @@ type EditableArea = {
 };
 
 type Props = { area?: EditableArea };
+
+type DraftState = {
+  name: string;
+  slug: string;
+  published: boolean;
+  template: AreaTemplateData;
+  savedAt: string;
+};
 
 const tabs = [
   { id: "area-seo", label: "Area & SEO", shortLabel: "SEO" },
@@ -171,9 +191,12 @@ function AddButton({ children, onClick }: { children: React.ReactNode; onClick: 
 
 export default function AreaForm({ area }: Props) {
   const storedTemplate = parseAreaTemplateData(area?.template_data);
+  const draftId = area?.id ?? "new";
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [name, setName] = useState(area?.name ?? "");
   const [slug, setSlug] = useState(area?.slug ?? "");
-  const [published, setPublished] = useState(area?.published ?? true);
+  const [published, setPublished] = useState(area?.published ?? false);
   const [template, setTemplate] = useState<AreaTemplateData>({
     ...storedTemplate,
     heroImage: storedTemplate.heroImage || area?.cover_image || "",
@@ -195,25 +218,100 @@ export default function AreaForm({ area }: Props) {
   });
   const [pending, startTransition] = useTransition();
   const [findingNearby, startFindingNearby] = useTransition();
-  const [activeTab, setActiveTab] = useState<TabId>("area-seo");
+  const [activeTab, setActiveTabState] = useState<TabId>(() => {
+    const fromUrl = searchParams.get("tab");
+    return tabs.some((tab) => tab.id === fromUrl)
+      ? (fromUrl as TabId)
+      : "area-seo";
+  });
   const [nameError, setNameError] = useState("");
   const [nearbyError, setNearbyError] = useState("");
+  const [autoSaveStatus, setAutoSaveStatus] = useState("");
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const set = <K extends keyof AreaTemplateData>(key: K, value: AreaTemplateData[K]) =>
     setTemplate((current) => ({ ...current, [key]: value }));
 
-  function submit(event: React.FormEvent) {
-    event.preventDefault();
+  const setActiveTab = useCallback(
+    (tabId: TabId) => {
+      setActiveTabState(tabId);
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("tab", tabId);
+      router.replace(`?${params.toString()}`, { scroll: false });
+    },
+    [router, searchParams],
+  );
+
+  // Restore draft from localStorage once on mount.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY(draftId));
+      if (!raw) return;
+      const draft = JSON.parse(raw) as DraftState;
+      if (!draft || typeof draft !== "object") return;
+      if (area?.id && area.id !== "new") {
+        // Only restore a server-loaded area's draft if it was saved after the page loaded.
+        // For edits, we restore only when the draft is newer than nothing (user hit back/refresh).
+        setName(draft.name ?? "");
+        setSlug(draft.slug ?? "");
+        setPublished(draft.published ?? false);
+        setTemplate({
+          ...parseAreaTemplateData(JSON.stringify(draft.template)),
+        });
+      } else {
+        setName(draft.name ?? "");
+        setSlug(draft.slug ?? "");
+        setPublished(draft.published ?? false);
+        setTemplate({
+          ...parseAreaTemplateData(JSON.stringify(draft.template)),
+        });
+      }
+      setAutoSaveStatus(`Draft restored from ${new Date(draft.savedAt).toLocaleTimeString()}`);
+    } catch {
+      // Ignore malformed localStorage data.
+    }
+  }, [draftId, area?.id]);
+
+  // Auto-save to localStorage whenever form state changes.
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      try {
+        const draft: DraftState = {
+          name,
+          slug,
+          published,
+          template,
+          savedAt: new Date().toISOString(),
+        };
+        localStorage.setItem(STORAGE_KEY(draftId), JSON.stringify(draft));
+        setAutoSaveStatus(`Auto-saved at ${new Date().toLocaleTimeString()}`);
+      } catch {
+        setAutoSaveStatus("Could not auto-save");
+      }
+    }, 1000);
+    return () => clearTimeout(timeout);
+  }, [draftId, name, slug, published, template]);
+
+  // Clear draft after a successful server save.
+  function clearDraft() {
+    try {
+      localStorage.removeItem(STORAGE_KEY(draftId));
+    } catch {
+      // Ignore localStorage errors.
+    }
+  }
+
+  function save(publish: boolean) {
     if (!name.trim()) {
       setNameError("Enter an area name before saving.");
       setActiveTab("area-seo");
       return;
     }
     setNameError("");
-    startTransition(() =>
-      saveArea({ id: area?.id, name, slug, published, template }),
-    );
+    startTransition(async () => {
+      await saveArea({ id: area?.id, name, slug, published: publish, template });
+      clearDraft();
+    });
   }
 
   function handleFindNearby() {
@@ -265,7 +363,7 @@ export default function AreaForm({ area }: Props) {
   }
 
   return (
-    <form onSubmit={submit} noValidate className="max-w-6xl space-y-6 pb-16">
+    <form onSubmit={(event) => { event.preventDefault(); save(false); }} noValidate className="max-w-6xl space-y-6 pb-16">
       <div className="rounded-2xl border border-brand-red/20 bg-brand-red/5 p-5 text-sm leading-relaxed text-slate-700">
         <strong className="text-slate-950">Barnet template enabled.</strong> Pricing,
         services, trust signals, the five-step process and quote sections are added
@@ -467,13 +565,32 @@ export default function AreaForm({ area }: Props) {
       </TabPanel>
 
       <div className="sticky bottom-4 z-20 flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-xl backdrop-blur sm:flex-row sm:items-center sm:justify-between">
-        <label className="flex items-center gap-3 text-sm font-semibold text-brand-navy">
-          <input type="checkbox" checked={published} onChange={(event) => setPublished(event.target.checked)} className="h-5 w-5 accent-brand-red" />
-          Published
-        </label>
-        <button type="submit" disabled={pending} className="rounded-lg bg-brand-red px-7 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black disabled:opacity-60">
-          {pending ? "Saving…" : "Save Area"}
-        </button>
+        <div className="flex flex-col gap-1">
+          <span className="text-xs font-semibold text-slate-500">
+            {autoSaveStatus || "Changes auto-saved locally"}
+          </span>
+          <span className="text-xs text-slate-400">
+            Save as draft or publish when ready.
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => save(false)}
+            disabled={pending}
+            className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-wide text-slate-700 transition hover:border-slate-950 hover:text-slate-950 disabled:opacity-60"
+          >
+            {pending ? "Saving…" : "Save draft"}
+          </button>
+          <button
+            type="button"
+            onClick={() => save(true)}
+            disabled={pending}
+            className="rounded-lg bg-brand-red px-7 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black disabled:opacity-60"
+          >
+            {pending ? "Saving…" : "Publish"}
+          </button>
+        </div>
       </div>
     </form>
   );
