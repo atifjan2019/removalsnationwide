@@ -43,166 +43,166 @@ type MetaEntry = {
  */
 export const META: Record<string, MetaEntry> = {
   home: {
-    title: "Nationwide Removal Company | House, Office & Storage Moves",
+    title: "UK Removals Company | House, Man & Van, Office & Storage",
     description:
-      "Removals Nationwide is a trusted, fully insured UK removal company. House removals, man and van, office moves, packing and storage nationwide. Get a free quote today.",
+      "Removals Nationwide is a fully insured UK removal company. House removals, man and van, office moves, packing and storage across the UK. Get a free quote.",
     path: "/",
   },
   about: {
-    title: "About Removals Nationwide | Your Trusted Moving Partner",
+    title: "About Removals Nationwide | UK Moving Company",
     description:
-      "No matter if you need us for house or office moving, we are here for you. Founded a decade ago, experienced and fully insured, fully insured. Get to know the team behind your move.",
+      "Learn about Removals Nationwide, a fully insured UK removal company with over a decade of experience in house, office, man and van and storage moves.",
     path: "/about-us",
   },
   services: {
-    title: "Our Services - House, Office & International Removals | Removals Nationwide",
+    title: "Our Services | House, Office, Man & Van & Storage UK",
     description:
-      "Explore the full range of Removals Nationwide services: house, office and international removals, man and van, packing, storage, crate hire, rubbish disposal, single-item deliveries and cleaning across the UK.",
+      "Full range of UK removals services: house and office removals, man and van, packing, storage, crate hire, rubbish disposal, single-item delivery and cleaning.",
     path: "/services",
   },
   "house-removals": {
-    title: "Nationwide House Removals | Insured Movers, 7 Days | Removals Nationwide",
+    title: "House Removals UK | Nationwide Home Moving",
     description:
-      "House removals across the UK, 7 days a week. Fully insured, experienced team. Packing, transport and unloading handled end to end. Get a free quote today.",
+      "House removals across the UK, 7 days a week. Fully insured, experienced team. Packing, transport and unloading handled end to end. Get a free quote.",
     path: "/house-removals",
   },
   "office-removals": {
-    title: "Nationwide Office Removals | Minimal Downtime, Insured | Removals Nationwide",
+    title: "Office Removals UK | Business & Commercial Moves",
     description:
-      "Office removals across the UK with minimal downtime and out-of-hours moves. Experienced, insured, with IT and server relocation. From about £100 per workstation plus VAT.",
+      "Office removals across the UK with minimal downtime and out-of-hours options. Experienced, insured team. IT and server relocation available. Get a quote.",
     path: "/office-removals",
   },
   "international-removals": {
-    title: "International Removals UK | Europe & Worldwide | Removals Nationwide",
+    title: "International Removals UK | Europe & Worldwide",
     description:
-      "International removals from anywhere in the UK to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. Door-to-door and insured.",
+      "International removals from the UK to Europe and worldwide. Weekly road services to Scandinavia, Norway, Germany and the Baltics. Door-to-door and insured.",
     path: "/international-removals",
   },
   "london-storage": {
-    title: "Secure Removals Storage | From £10/Week | Removals Nationwide",
+    title: "Removals Storage UK | Secure & Insured Storage",
     description:
-      "Secure, fully insured removals storage from £10 a week. We collect, load and seal your goods, with no minimum term. Managed storage for homes and businesses across the UK.",
+      "Secure, fully insured removals storage across the UK from £10 a week. We collect, load and seal your goods, with no minimum term. Get a quote.",
     path: "/storage",
   },
   "packing-service": {
-    title: "Nationwide Packing Service | Fully Insured | Removals Nationwide",
+    title: "Packing Services UK | Full & Partial Packing",
     description:
-      "Professional packing services across the UK. Materials and labour included, fully insured. Full or partial packing is available with your move.",
+      "Professional packing services across the UK. Materials and labour included, fully insured. Full or partial packing available with your move. Get a quote.",
     path: "/packing-service",
   },
   "man-and-van": {
-    title: "Nationwide Man and Van | From £55/hr | Removals Nationwide",
+    title: "Man and Van UK | Small Moves & Single Items",
     description:
       "Nationwide man and van service from £55 an hour plus VAT, 7 days a week. Experienced, insured movers for single items, small moves and house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {
-    title: "Packing Materials UK | Removal Boxes & Bubble Wrap | Removals Nationwide",
+    title: "Packing Materials UK | Removal Boxes & Supplies",
     description:
-      "Quality packing materials and removal boxes delivered across the UK. Boxes, bubble wrap, tape, wardrobe and mattress covers with transparent prices.",
+      "Quality packing materials and removal boxes delivered across the UK. Boxes, bubble wrap, tape, wardrobe and mattress covers at transparent prices.",
     path: "/packaging-materials",
   },
   "crate-hire": {
-    title: "Crate Hire UK | Plastic Moving & IT Crates | Removals Nationwide",
+    title: "Crate Hire UK | Plastic Moving & IT Crates",
     description:
-      "Plastic crate hire across the UK. Reusable lidded LC3 and IT crates from £2 a week, delivered and collected. Greener than cardboard and easy to combine with your move.",
+      "Plastic crate hire across the UK. Reusable lidded LC3 and IT crates from £2 a week, delivered and collected. Greener than cardboard. Get a quote.",
     path: "/crate-hire",
   },
   "rubbish-disposal": {
-    title: "Nationwide Rubbish Removal | Licensed Clearance | Removals Nationwide",
+    title: "Rubbish Removal UK | Licensed Clearance",
     description:
-      "Licensed rubbish removal and clearance across the UK. Transparent load prices, all loading included and recycling where possible. Combine clearance with your move.",
+      "Licensed rubbish removal and clearance across the UK. Transparent load prices, all loading included and recycling where possible. Combine with your move.",
     path: "/rubbish-disposal",
   },
   "single-item-deliveries": {
-    title: "Nationwide Single Item Delivery | Furniture Courier | Removals Nationwide",
+    title: "Single Item Delivery UK | Furniture Courier",
     description:
       "Nationwide single-item and marketplace delivery by a real removals company. Own fleet, collection, furniture assembly, proof of delivery and worldwide shipping.",
     path: "/single-item",
   },
   "cleaning-services": {
-    title: "Move In, Move Out & End of Tenancy Cleaning UK | Removals Nationwide",
+    title: "End of Tenancy Cleaning UK | Move In & Out Cleaning",
     description:
-      "Move-in, move-out and end-of-tenancy cleaning coordinated with your removal. Vetted, trained and fully insured teams. Ask about availability in your area.",
+      "Move-in, move-out and end-of-tenancy cleaning coordinated with your removal. Vetted, trained and fully insured teams. Ask about availability.",
     path: "/cleaning-services",
   },
   "removals-to-norway": {
-    title: "Removals to Norway from the UK | Weekly Door-to-Door | Removals Nationwide",
+    title: "Removals to Norway from UK | Weekly Door-to-Door",
     description:
       "Weekly removals to Norway from the UK. Own road-trains, local teams across Norway, Oslo depot, inclusive customs and a personal move coordinator. From single items to a full truck.",
     path: "/removals-services-to-norway",
   },
   "dormitory-move-student-storage": {
-    title: "Dormitory Move and Student Storage | UK & Worldwide | Removals Nationwide",
+    title: "Dormitory & Student Moves UK | Storage & Shipping",
     description:
-      "Full-service dormitory move and student storage. Our movers pack your room, disassemble furniture, then deliver across the UK, ship worldwide, or store securely. You need not be present.",
+      "Full-service dormitory move and student storage. Movers pack your room, disassemble furniture, then deliver across the UK, ship worldwide or store securely.",
     path: "/dormitory-move-student-storage",
   },
   prices: {
-    title: "Check Out the Competitive Prices and Great Rates of Removals Nationwide",
+    title: "Removal Prices UK | Competitive Moving Rates",
     description:
-      "If you are planning to relocate you better check Removals Nationwide' moving prices. We offer affordable rates for a large variety of high-quality services.",
+      "Check Removals Nationwide's competitive moving prices. Affordable rates for house removals, man and van, office moves, packing, storage and more.",
     path: "/prices",
   },
   faq: {
-    title: "Frequently Asked Questions About Nationwide Removals",
+    title: "Removals FAQ | House & Office Moving Questions",
     description:
-      "Frequently Asked Questions about house or office moving, answered by Removals Nationwide - insurance, cancellation, required access and more...",
+      "Frequently asked questions about house and office moving, answered by Removals Nationwide. Insurance, cancellation, access, pricing and more.",
     path: "/faq",
   },
   "our-fleet": {
-    title: "Removals Nationwide Is Proud to Present Its Vehicle Fleet",
+    title: "Our Fleet | Modern Removal Vehicles UK",
     description:
-      "Removals Nationwide is pleased to have modern and new moving vehicles, equipped for every type of situation. Your belongings are safe with us.",
+      "Removals Nationwide's modern removal vehicles are equipped for every moving situation. Insured, reliable fleet for house, office and man and van moves.",
     path: "/our-fleet",
   },
   photos: {
-    title: "Moving Photos from Removals Nationwide",
-    description: "Photos, Removal Men, Removal Photos, Pictures of removal company",
+    title: "Moving Photos | Removals Nationwide",
+    description: "Photos of Removals Nationwide teams, vehicles and moves in action.",
     path: "/photos",
     noindex: true,
   },
   contact: {
-    title: "Contact Us | Removals Nationwide",
+    title: "Contact Us | Removals Nationwide UK",
     description:
-      "Contact Removals Nationwide by email or phone. Call 020 7205 2525 or 0800 046 7877, or send an enquiry for a free no-obligation quote. Purfleet, RM15 4YA.",
+      "Contact Removals Nationwide by email or phone. Call 020 7205 2525 or 0800 046 7877, or send an enquiry for a free no-obligation quote.",
     path: "/contactus",
   },
   "book-a-service": {
     title: "Book a Service | Removals Nationwide",
     description:
-      "Make an instant booking with Removals Nationwide filling this form. Easy to use with ability to add many optional services throughout the process.",
+      "Book your removal service with Removals Nationwide. Easy booking form with optional services including packing, storage and cleaning.",
     path: "/bookservice",
     noindex: true,
   },
   news: {
-    title: "Moving tips and tricks you need to know | Removals Nationwide",
+    title: "Moving News & Guides | Removals Nationwide",
     description:
-      "Are you about to move your house or office? Read the tips and tricks you may use while your house or office removal. Be prepared.",
+      "Moving, packing, storage, office and international removals tips and guides from Removals Nationwide. Be prepared for your next move.",
     path: "/news",
   },
   "current-offers": {
     title: "Current Offers | Removals Nationwide",
     description:
-      "Current offers from Removals Nationwide. We focus on fair, transparent pricing every day, with savings when you combine services. Get a free no-obligation quote.",
+      "Current offers from Removals Nationwide. Fair, transparent pricing every day, with savings when you combine services. Get a free quote.",
     path: "/current-offers",
   },
   terms: {
-    title: "Terms and Conditions - Removals Nationwide",
+    title: "Terms and Conditions | Removals Nationwide",
     description:
-      "The industry Model Terms and Conditions in use by Removals Nationwide Limited. Our quotation, your responsibilities, liability, cancellation and claims terms.",
+      "The industry Model Terms and Conditions used by Removals Nationwide Limited. Quotation, responsibilities, liability, cancellation and claims terms.",
     path: "/terms-and-conditions",
     noindex: true,
   },
   privacy: {
-    title: "Privacy Policy - Removals Nationwide",
+    title: "Privacy Policy | Removals Nationwide",
     description:
-      "How Removals Nationwide collects, uses and protects your personal data in line with the GDPR. Definitions, your rights, cookies and third-party services.",
+      "How Removals Nationwide collects, uses and protects your personal data in line with the GDPR. Your rights, cookies and third-party services.",
     path: "/privacy-policy",
     noindex: true,
   },
   areas: {
-    title: "Areas We Cover | Removals Nationwide",
+    title: "Areas We Cover | UK Removals Coverage",
     description:
       "Removals Nationwide provides house, office and international removals and storage across the UK. Find your local service area.",
     path: "/areas",

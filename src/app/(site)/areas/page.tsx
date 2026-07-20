@@ -258,48 +258,6 @@ export default async function AreasPage() {
         </div>
       </section>
 
-      {areas.length > 0 && (
-        <section className="bg-white py-20 lg:py-28">
-          <div className="mx-auto max-w-[88rem] px-4">
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-red">Beyond the boroughs</p>
-              <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-brand-navy sm:text-5xl">
-                More areas we serve
-              </h2>
-              <p className="mt-5 text-base leading-7 text-brand-charcoal/65">
-                Local and long-distance removals with the same experienced team from quote to completion.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {areas.map((area) => (
-                <article key={area.id} className="group border border-black/10 bg-white">
-                  <Link href={`/areas/${area.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-brand-navy">
-                    <Image
-                      src={area.cover_image || DEFAULT_BANNER_IMAGE}
-                      alt={area.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-                  </Link>
-                  <div className="p-6">
-                    <h3 className="text-xl font-black uppercase tracking-tight text-brand-navy">
-                      <Link href={`/areas/${area.slug}`} className="transition hover:text-brand-red">{area.name}</Link>
-                    </h3>
-                    {area.intro && <p className="mt-3 text-sm leading-6 text-brand-charcoal/65">{area.intro}</p>}
-                    <Link href={`/areas/${area.slug}`} className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-red">
-                      Explore this area
-                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       <CtaBand
         heading="Wherever You're Moving, We'll Get You There"

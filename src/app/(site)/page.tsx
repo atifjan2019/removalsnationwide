@@ -30,14 +30,14 @@ import StickyQuoteBar from "@/components/home/StickyQuoteBar";
 import BackToTop from "@/components/home/BackToTop";
 
 export const metadata: Metadata = {
-  title: "London Removals Company | Nationwide & International Reach",
+  title: "UK Removals Company | House, Man & Van, Office & Storage",
   description:
-    "London removals company providing house, office, man and van, packing and storage services, with nationwide and international moves arranged from London.",
+    "Removals Nationwide is a fully insured UK removal company. House removals, man and van, office moves, packing and storage across the UK. Get a free quote.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "London Removals Company | Nationwide & International Reach",
+    title: "UK Removals Company | House, Man & Van, Office & Storage",
     description:
-      "London-based removals, packing and storage with nationwide and international reach.",
+      "Fully insured UK removals company for house, man and van, office, packing and storage moves nationwide. Get a free quote.",
     url: "/",
     siteName: SITE.name,
     type: "website",
@@ -57,9 +57,9 @@ export default async function HomePage() {
           "@type": "WebPage",
           "@id": `${SITE_URL}/#homepage`,
           url: `${SITE_URL}/`,
-          name: "London Removals Company with Nationwide and International Reach",
+          name: "UK Removals Company | House, Man & Van, Office & Storage",
           description:
-            "London-based removals, packing and storage with nationwide and international reach.",
+            "Fully insured UK removals company for house, man and van, office, packing and storage moves nationwide. Get a free quote.",
           isPartOf: { "@id": `${SITE_URL}/#website` },
           about: { "@id": `${SITE_URL}/#organization` },
         }}
