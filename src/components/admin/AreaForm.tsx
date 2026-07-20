@@ -411,37 +411,17 @@ export default function AreaForm({ area }: Props) {
         description="Controls the page URL, search result and structured service-area data."
       >
         <div className="grid gap-5 sm:grid-cols-2">
-          <div className="space-y-3">
-            <TextField
-              title="Area name"
-              value={name}
-              onChange={(value) => {
-                setName(value);
-                if (value.trim()) setNameError("");
-              }}
-              required
-              error={nameError}
-              placeholder="Barnet"
-            />
-            <button
-              type="button"
-              onClick={handleFindNearby}
-              disabled={findingNearby}
-              className="inline-flex items-center gap-2 rounded-lg border border-brand-red/30 bg-brand-red/5 px-4 py-2 text-sm font-semibold text-brand-red transition hover:bg-brand-red/10 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {findingNearby ? (
-                <>
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-red/30 border-t-brand-red" />
-                  Finding areas…
-                </>
-              ) : (
-                "Find nearby areas (50 miles)"
-              )}
-            </button>
-            {nearbyError && (
-              <p className="text-sm font-medium text-red-600">{nearbyError}</p>
-            )}
-          </div>
+          <TextField
+            title="Area name"
+            value={name}
+            onChange={(value) => {
+              setName(value);
+              if (value.trim()) setNameError("");
+            }}
+            required
+            error={nameError}
+            placeholder="Barnet"
+          />
           <TextField title="Slug (optional)" value={slug} onChange={setSlug} placeholder="auto-generated-from-name" />
         </div>
         <TextField title="Page H1" value={template.h1} onChange={(value) => set("h1", value)} placeholder={`Removals in ${name || "Area"}`} />
