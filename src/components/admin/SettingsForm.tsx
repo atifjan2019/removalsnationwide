@@ -1,9 +1,18 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { saveSettings, type SettingsState } from "@/app/admin/settings/actions";
 import type { SiteSettings } from "@/lib/settings";
+
+const SETTINGS_TABS = [
+  { id: "branding", label: "Branding" },
+  { id: "contact", label: "Contact & WhatsApp" },
+  { id: "social", label: "Social profiles" },
+  { id: "company", label: "Company" },
+] as const;
+
+type SettingsTab = (typeof SETTINGS_TABS)[number]["id"];
 
 function Field({
   label,
@@ -107,6 +116,7 @@ function SaveButton() {
 }
 
 export default function SettingsForm({ settings }: { settings: SiteSettings }) {
+  const [activeTab, setActiveTab] = useState<SettingsTab>("branding");
   const [state, formAction] = useActionState<SettingsState, FormData>(saveSettings, {
     ok: false,
     message: "",
@@ -126,7 +136,26 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
         </div>
       )}
 
-      <section>
+      <div className="overflow-x-auto border-b border-slate-200" role="tablist" aria-label="Settings sections">
+        <div className="flex min-w-max gap-1">
+          {SETTINGS_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              id={`settings-tab-${tab.id}`}
+              aria-controls={`settings-panel-${tab.id}`}
+              aria-selected={activeTab === tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`border-b-2 px-4 py-3 text-sm font-semibold transition ${activeTab === tab.id ? "border-brand-red text-brand-red" : "border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-900"}`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <section id="settings-panel-branding" role="tabpanel" aria-labelledby="settings-tab-branding" hidden={activeTab !== "branding"}>
         <h2 className="text-lg font-bold text-brand-navy">Brand Identity</h2>
         <p className="mt-1 text-sm text-brand-charcoal/60">
           Images are stored inside D1 and served through the site asset API. Leave a file empty to
@@ -154,57 +183,59 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
         </div>
       </section>
 
-      <section>
-        <h2 className="text-lg font-bold text-brand-navy">Contact</h2>
-        <p className="mt-1 text-sm text-brand-charcoal/60">
-          Shown in the top bar, footer, contact page and every call-to-action.
-        </p>
-        <div className="mt-4 grid gap-5 sm:grid-cols-2">
-          <Field
-            label="Freephone number"
-            name="phoneFreephone"
-            defaultValue={settings.phoneFreephone}
-            hint="The tel: link is generated automatically."
-          />
-          <Field label="London number" name="phoneLondon" defaultValue={settings.phoneLondon} />
-          <Field
-            label="Email address"
-            name="email"
-            defaultValue={settings.email}
-            type="email"
-            hint="Leave blank to hide the public email link."
-          />
-          <Field
-            label="Address"
-            name="addressLine"
-            defaultValue={settings.addressLine}
-            hint="Single line, as shown in the footer."
-          />
-        </div>
-        <label className="mt-5 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-          <input type="checkbox" name="showPhone" defaultChecked={settings.showPhone} className="mt-1 h-4 w-4" />
-          <span><span className="block text-sm font-semibold text-slate-900">Show phone number on the website</span><span className="mt-1 block text-xs text-slate-500">Turn this off to hide public call links while keeping the numbers saved.</span></span>
-        </label>
-      </section>
+      <div id="settings-panel-contact" role="tabpanel" aria-labelledby="settings-tab-contact" hidden={activeTab !== "contact"} className="space-y-10">
+        <section>
+          <h2 className="text-lg font-bold text-brand-navy">Contact</h2>
+          <p className="mt-1 text-sm text-brand-charcoal/60">
+            Shown in the top bar, footer, contact page and every call-to-action.
+          </p>
+          <div className="mt-4 grid gap-5 sm:grid-cols-2">
+            <Field
+              label="Freephone number"
+              name="phoneFreephone"
+              defaultValue={settings.phoneFreephone}
+              hint="The tel: link is generated automatically."
+            />
+            <Field label="London number" name="phoneLondon" defaultValue={settings.phoneLondon} />
+            <Field
+              label="Email address"
+              name="email"
+              defaultValue={settings.email}
+              type="email"
+              hint="Leave blank to hide the public email link."
+            />
+            <Field
+              label="Address"
+              name="addressLine"
+              defaultValue={settings.addressLine}
+              hint="Single line, as shown in the footer."
+            />
+          </div>
+          <label className="mt-5 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <input type="checkbox" name="showPhone" defaultChecked={settings.showPhone} className="mt-1 h-4 w-4" />
+            <span><span className="block text-sm font-semibold text-slate-900">Show phone number on the website</span><span className="mt-1 block text-xs text-slate-500">Turn this off to hide public call links while keeping the numbers saved.</span></span>
+          </label>
+        </section>
 
-      <section>
-        <h2 className="text-lg font-bold text-brand-navy">WhatsApp</h2>
-        <div className="mt-4 grid gap-5 sm:grid-cols-2">
-          <Field
-            label="WhatsApp number"
-            name="whatsappNumber"
-            defaultValue={settings.whatsappNumber}
-            hint="Country code and number, digits only — e.g. 442072052525."
-          />
-          <Field
-            label="Button label"
-            name="whatsappLabel"
-            defaultValue={settings.whatsappLabel}
-          />
-        </div>
-      </section>
+        <section>
+          <h2 className="text-lg font-bold text-brand-navy">WhatsApp</h2>
+          <div className="mt-4 grid gap-5 sm:grid-cols-2">
+            <Field
+              label="WhatsApp number"
+              name="whatsappNumber"
+              defaultValue={settings.whatsappNumber}
+              hint="Country code and number, digits only — e.g. 442072052525."
+            />
+            <Field
+              label="Button label"
+              name="whatsappLabel"
+              defaultValue={settings.whatsappLabel}
+            />
+          </div>
+        </section>
+      </div>
 
-      <section>
+      <section id="settings-panel-social" role="tabpanel" aria-labelledby="settings-tab-social" hidden={activeTab !== "social"}>
         <h2 className="text-lg font-bold text-brand-navy">Social profiles</h2>
         <p className="mt-1 text-sm text-brand-charcoal/60">
           Leave a field blank to hide that link. These also feed the
@@ -221,7 +252,7 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
         </div>
       </section>
 
-      <section>
+      <section id="settings-panel-company" role="tabpanel" aria-labelledby="settings-tab-company" hidden={activeTab !== "company"}>
         <h2 className="text-lg font-bold text-brand-navy">Company</h2>
         <div className="mt-4 grid gap-5">
           <Field label="Company name" name="companyName" defaultValue={settings.companyName} />

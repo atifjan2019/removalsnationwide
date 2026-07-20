@@ -38,6 +38,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
   const [filter, setFilter] = useState<MoveStatus | "All">(initialStatus);
   const [selected, setSelected] = useState<Booking | null>(null);
   const [creating, setCreating] = useState(false);
+  const [editing, setEditing] = useState(false);
   const [pending, startTransition] = useTransition();
   const [emailPending, startEmailTransition] = useTransition();
   const [emailFeedback, setEmailFeedback] = useState<{ ok: boolean; message: string } | null>(null);
@@ -45,9 +46,11 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
 
   const active = selected;
   const modalOpen = Boolean(active || creating);
+  const showEditForm = creating || editing;
   const closeModal = () => {
     setSelected(null);
     setCreating(false);
+    setEditing(false);
     setEmailFeedback(null);
   };
 
@@ -78,7 +81,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
 
   return (
     <div className="mx-auto max-w-[1500px]">
-      <PageHeading title="Moves" subtitle="Manage every booking request from lead to completed move." action={<button onClick={() => setCreating(true)} className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-red">+ Add Move manually</button>} />
+      <PageHeading title="Moves" subtitle="Manage every booking request from lead to completed move." action={<button onClick={() => { setCreating(true); setEditing(false); }} className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-red">+ Add Move manually</button>} />
       <div className="mt-7 flex flex-wrap gap-2">
         {(["All", ...MOVE_STATUSES] as const).map((status) => <button key={status} onClick={() => setFilter(status)} className={`rounded-full px-4 py-2 text-sm font-semibold transition ${filter === status ? "bg-slate-950 text-white" : "border border-slate-200 bg-white text-slate-600 hover:border-slate-400"}`}>{status}</button>)}
         {dateFilter && <span className="rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700">Date: {shortDate(dateFilter)}</span>}
@@ -86,7 +89,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
 
       <div className="mt-6 grid gap-4">
         {filtered.map((booking) => { const route = bookingRoute(booking); const status = moveStatus(booking.status); return (
-          <button key={booking.id} onClick={() => { setSelected(booking); setEmailFeedback(null); }} className="grid w-full gap-5 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md lg:grid-cols-[minmax(200px,1.15fr)_minmax(240px,1.5fr)_minmax(150px,.8fr)_minmax(220px,1fr)_auto] lg:items-center">
+          <button key={booking.id} onClick={() => { setSelected(booking); setEditing(false); setEmailFeedback(null); }} className="grid w-full gap-5 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md lg:grid-cols-[minmax(200px,1.15fr)_minmax(240px,1.5fr)_minmax(150px,.8fr)_minmax(220px,1fr)_auto] lg:items-center">
             <span className="flex items-center gap-3"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-950 font-bold text-white">{booking.full_name.charAt(0).toUpperCase()}</span><span><span className="block font-bold text-slate-950">{booking.full_name}</span><span className="mt-0.5 block font-mono text-xs text-slate-400">#{booking.id.slice(0, 8)}</span></span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Route</span><span className="mt-1 block line-clamp-2 text-sm font-medium text-slate-700">{route.from} <span className="text-brand-red">→</span> {route.to}</span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Type & size</span><span className="mt-1 block text-sm font-semibold text-slate-700">{moveLabels[booking.move_type] || booking.move_type} • {sizeLabel(booking)}</span><span className="mt-1 block text-xs text-slate-500">{shortDate(booking.move_date)}</span></span>
@@ -117,13 +120,19 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
                 </h2>
                 {active && <p className="mt-1 break-all font-mono text-xs text-slate-400">{active.id}</p>}
               </div>
-              <button type="button" onClick={closeModal} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-xl leading-none text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Close booking details">×</button>
+              <div className="flex shrink-0 items-center gap-2">
+                {active && !editing && <button type="button" onClick={() => setEditing(true)} className="rounded-xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-red">Edit Booking</button>}
+                <button type="button" onClick={closeModal} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-xl leading-none text-slate-600 transition hover:bg-slate-100 hover:text-slate-950" aria-label="Close booking details">×</button>
+              </div>
             </header>
 
             <div className="min-h-0 flex-1 overflow-y-auto bg-slate-50 p-4 sm:p-6">
-              <form action={submit}>
+              {showEditForm && <form action={submit}>
                 <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <h3 className="font-bold text-slate-950">{active ? "Edit Booking" : "Add Booking"}</h3>
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-bold text-slate-950">{active ? "Edit Booking" : "Add Booking"}</h3>
+                    {active && <button type="button" onClick={() => setEditing(false)} className="text-sm font-semibold text-slate-500 hover:text-slate-950">Cancel edit</button>}
+                  </div>
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
                     <Field label="Full name" name="fullName" defaultValue={active?.full_name} required />
                     <Field label="Email" name="email" type="email" defaultValue={active?.email} />
@@ -142,9 +151,9 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter }:
                   </div>
                   <button disabled={pending} className="mt-5 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-red disabled:opacity-60">{active ? "Save Changes" : "Add Move"}</button>
                 </section>
-              </form>
+              </form>}
 
-              {active && <div className="mt-6 space-y-6">
+              {active && <div className={`${showEditForm ? "mt-6" : ""} space-y-6`}>
                 <div className="grid gap-6 sm:grid-cols-2">
                   <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Customer</h3><p className="mt-4 font-semibold">{active.full_name}</p><p className="mt-1 text-sm text-slate-500">{active.phone || "Not provided"}</p><p className="text-sm text-slate-500">{active.email || "Not provided"}</p></section>
                   <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Details</h3><p className="mt-4 text-sm text-slate-600">{moveLabels[active.move_type]} • {sizeLabel(active)}</p><p className="mt-1 text-sm text-slate-600">{shortDate(active.move_date)}</p><p className="mt-3 font-semibold">{money(active.quote)} revenue</p></section>
