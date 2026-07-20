@@ -37,7 +37,6 @@ type Props = { area?: EditableArea };
 type DraftState = {
   name: string;
   slug: string;
-  published: boolean;
   template: AreaTemplateData;
   savedAt: string;
 };
@@ -231,10 +230,6 @@ export default function AreaForm({ area }: Props) {
     const draft = readDraft(area);
     return draft?.slug ?? area?.slug ?? "";
   });
-  const [published, setPublished] = useState(() => {
-    const draft = readDraft(area);
-    return draft?.published ?? area?.published ?? false;
-  });
   const [template, setTemplate] = useState<AreaTemplateData>(() => {
     const draft = readDraft(area);
     return draft
@@ -280,7 +275,6 @@ export default function AreaForm({ area }: Props) {
         const draft: DraftState = {
           name,
           slug,
-          published,
           template,
           savedAt: new Date().toISOString(),
         };
@@ -291,7 +285,7 @@ export default function AreaForm({ area }: Props) {
       }
     }, 1000);
     return () => clearTimeout(timeout);
-  }, [draftId, name, slug, published, template]);
+  }, [draftId, name, slug, template]);
 
   // Clear draft after a successful server save.
   function clearDraft() {
@@ -314,6 +308,8 @@ export default function AreaForm({ area }: Props) {
       clearDraft();
     });
   }
+
+  const published = area?.published ?? false;
 
   function handleFindNearby() {
     const areaName = name.trim();
@@ -582,7 +578,11 @@ export default function AreaForm({ area }: Props) {
             {autoSaveStatus || "Changes auto-saved locally"}
           </span>
           <span className="text-xs text-slate-400">
-            Save as draft or publish when ready.
+            {area?.id
+              ? published
+                ? "This area is currently published."
+                : "This area is currently a draft."
+              : "New areas stay draft until published."}
           </span>
         </div>
         <div className="flex items-center gap-3">
