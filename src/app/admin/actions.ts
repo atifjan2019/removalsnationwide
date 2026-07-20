@@ -8,13 +8,12 @@ import { sanitize } from "@/lib/sanitize";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
 import { findNearbyAreasForName, type NearbyPlace } from "@/lib/nearby-areas";
-import { boroughs } from "@/lib/boroughs";
-import { cleanAreaTemplate } from "@/lib/area-template";
-import type {
-  AreaFaq,
-  AreaKnowledgeBlock,
-  AreaNearbyLink,
-  AreaTemplateData,
+import {
+  cleanAreaTemplate,
+  type AreaFaq,
+  type AreaKnowledgeBlock,
+  type AreaNearbyLink,
+  type AreaTemplateData,
 } from "@/lib/area-template";
 
 function slugify(input: string): string {
@@ -167,57 +166,3 @@ export async function deleteArea(id: string) {
   revalidatePath("/admin/areas");
 }
 
-export async function seedAreasFromBoroughs() {
-  await assertAdmin();
-  const db = await requireDb();
-
-  const { results } = await db.prepare("select slug from areas").all<{ slug: string }>();
-  const existing = new Set((results ?? []).map((row) => row.slug));
-
-  let inserted = 0;
-  for (const borough of Object.values(boroughs)) {
-    if (existing.has(borough.slug)) continue;
-
-    const template: AreaTemplateData = cleanAreaTemplate({
-      h1: borough.h1,
-      subhead: borough.subhead,
-      metaTitle: borough.metaTitle,
-      metaDescription: borough.metaDescription,
-      areaServedName: borough.areaServedName ?? borough.name,
-      postcodes: borough.postcodes,
-      heroImage: borough.heroImage,
-      heroImageAlt: borough.heroImageAlt,
-      introLine: borough.introLine,
-      valueLine: borough.valueLine,
-      localBody: borough.localBody,
-      coverageIntro: borough.coverageIntro,
-      neighbourhoods: borough.neighbourhoods,
-      coverageOutro: borough.coverageOutro,
-      knowIntro: borough.knowIntro,
-      knowBlocks: borough.knowBlocks,
-      nearby: borough.nearby,
-      faqs: borough.faqs,
-    });
-
-    await db
-      .prepare(
-        "insert into areas (id, slug, name, intro, cover_image, template_data, published) values (?, ?, ?, ?, ?, ?, ?)",
-      )
-      .bind(
-        crypto.randomUUID(),
-        borough.slug,
-        borough.name,
-        template.introLine,
-        template.heroImage,
-        JSON.stringify(template),
-        fromBool(true),
-      )
-      .run();
-    inserted++;
-  }
-
-  await logActivity("Updated", `Seeded ${inserted} service areas from borough registry`);
-  revalidatePath("/areas");
-  revalidatePath("/admin/areas");
-  return { inserted };
-}

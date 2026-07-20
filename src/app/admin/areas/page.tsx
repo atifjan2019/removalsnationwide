@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAreas } from "@/lib/cms";
-import { deleteArea, seedAreasFromBoroughs } from "@/app/admin/actions";
+import { deleteArea } from "@/app/admin/actions";
 import DeleteButton from "@/components/admin/DeleteButton";
 import { EyeIcon, PencilIcon } from "@/components/admin/Icons";
 
@@ -11,24 +11,14 @@ export default async function AdminAreasPage() {
 
   return (
     <div>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-brand-navy">Service Areas</h1>
-        <div className="flex items-center gap-3">
-          <form action={seedAreasFromBoroughs}>
-            <button
-              type="submit"
-              className="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-950 hover:text-slate-950"
-            >
-              Seed London boroughs
-            </button>
-          </form>
-          <Link
-            href="/admin/areas/new"
-            className="rounded-lg bg-brand-red px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-red-dark"
-          >
-            + New Area
-          </Link>
-        </div>
+        <Link
+          href="/admin/areas/new"
+          className="rounded-lg bg-brand-red px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-red-dark"
+        >
+          + New Area
+        </Link>
       </div>
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-black/5 bg-white shadow-sm">

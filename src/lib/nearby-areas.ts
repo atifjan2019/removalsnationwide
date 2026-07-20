@@ -10,20 +10,31 @@
 
 const MILES_50_IN_METERS = 80_467;
 const USER_AGENT = "RemovalsNationwide-Admin/1.0 (contact@removalsnationwide.co.uk)";
-const REQUEST_TIMEOUT_MS = 15_000;
+const REQUEST_TIMEOUT_MS = 10_000;
+
+const OVERPASS_ENDPOINTS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://lz4.overpass-api.de/api/interpreter",
+  "https://z.overpass-api.de/api/interpreter",
+];
 
 async function fetchWithTimeout(
   input: RequestInfo | URL,
   init?: RequestInit,
+  timeoutMs = REQUEST_TIMEOUT_MS,
 ): Promise<Response> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetch(input, { ...init, signal: controller.signal });
     return response;
   } finally {
     clearTimeout(timeout);
   }
+}
+
+async function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export type GeocodedPlace = {
@@ -111,54 +122,73 @@ export async function findNearbyPlaces(
   lng: number,
   radiusMeters = MILES_50_IN_METERS,
 ): Promise<NearbyPlace[]> {
-  const overpassQuery = `[out:json][timeout:25];node["place"~"city|town|village|suburb"]["name"](around:${radiusMeters},${lat},${lng});out body;`;
+  const overpassQuery = `[out:json][timeout:20];(
+    node[place=city]["name"](around:${radiusMeters},${lat},${lng});
+    node[place=town]["name"](around:${radiusMeters},${lat},${lng});
+    node[place=village]["name"](around:${radiusMeters},${lat},${lng});
+    node[place=suburb]["name"](around:${radiusMeters},${lat},${lng});
+  );out body;`;
 
-  const response = await fetchWithTimeout("https://overpass-api.de/api/interpreter", {
-    method: "POST",
-    headers: {
-      Accept: "*/*",
-      "Content-Type": "text/plain; charset=utf-8",
-      "User-Agent": USER_AGENT,
-    },
-    body: overpassQuery,
-  });
+  let lastError: Error | undefined;
+  for (let attempt = 0; attempt < OVERPASS_ENDPOINTS.length; attempt++) {
+    const endpoint = OVERPASS_ENDPOINTS[attempt];
+    try {
+      if (attempt > 0) await sleep(500 * attempt);
 
-  if (!response.ok) {
-    const body = await response.text().catch(() => "");
-    throw new Error(`Overpass returned ${response.status}: ${body.slice(0, 200)}`);
+      const response = await fetchWithTimeout(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "text/plain; charset=utf-8",
+          "User-Agent": USER_AGENT,
+        },
+        body: overpassQuery,
+      });
+
+      if (!response.ok) {
+        const text = await response.text().catch(() => "");
+        throw new Error(`Overpass returned ${response.status}: ${text.slice(0, 200)}`);
+      }
+
+      const data = (await response.json()) as {
+        elements?: Array<{
+          lat?: number;
+          lon?: number;
+          tags?: { name?: string; place?: string };
+        }>;
+      };
+
+      const seen = new Set<string>();
+      const results: NearbyPlace[] = [];
+
+      for (const element of data.elements ?? []) {
+        const placeName = element.tags?.name?.trim();
+        const placeLat = element.lat;
+        const placeLng = element.lon;
+        if (!placeName || placeLat === undefined || placeLng === undefined) continue;
+
+        const slug = slugify(placeName);
+        if (seen.has(slug)) continue;
+        seen.add(slug);
+
+        results.push({
+          name: placeName,
+          slug,
+          distanceKm: Math.round(haversineKm(lat, lng, placeLat, placeLng) * 10) / 10,
+        });
+      }
+
+      return results
+        .sort((a, b) => a.distanceKm - b.distanceKm)
+        .slice(0, 40);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`[findNearbyPlaces] attempt ${attempt + 1} failed for ${endpoint}:`, message);
+      lastError = error instanceof Error ? error : new Error(message);
+    }
   }
 
-  const data = (await response.json()) as {
-    elements?: Array<{
-      lat?: number;
-      lon?: number;
-      tags?: { name?: string; place?: string };
-    }>;
-  };
-
-  const seen = new Set<string>();
-  const results: NearbyPlace[] = [];
-
-  for (const element of data.elements ?? []) {
-    const placeName = element.tags?.name?.trim();
-    const placeLat = element.lat;
-    const placeLng = element.lon;
-    if (!placeName || placeLat === undefined || placeLng === undefined) continue;
-
-    const slug = slugify(placeName);
-    if (seen.has(slug)) continue;
-    seen.add(slug);
-
-    results.push({
-      name: placeName,
-      slug,
-      distanceKm: Math.round(haversineKm(lat, lng, placeLat, placeLng) * 10) / 10,
-    });
-  }
-
-  return results
-    .sort((a, b) => a.distanceKm - b.distanceKm)
-    .slice(0, 40);
+  throw lastError ?? new Error("All Overpass endpoints failed");
 }
 
 /**
