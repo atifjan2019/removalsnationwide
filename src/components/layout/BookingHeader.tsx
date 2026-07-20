@@ -3,12 +3,13 @@ import BrandLogo from "@/components/layout/BrandLogo";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
 import type { ResolvedSettings } from "@/lib/settings-shared";
 
-type BookingHeaderProps = Pick<ResolvedSettings, "logoUrl" | "phones" | "whatsapp">;
+type BookingHeaderProps = Pick<ResolvedSettings, "logoUrl" | "phones" | "whatsapp" | "showPhone">;
 
 export default function BookingHeader({
   logoUrl,
   phones,
   whatsapp,
+  showPhone,
 }: BookingHeaderProps) {
   return (
     <header className="border-b border-black/10 bg-white shadow-sm">
@@ -22,14 +23,14 @@ export default function BookingHeader({
         </Link>
 
         <div className="flex shrink-0 items-center gap-2">
-          <a
+          {showPhone && <a
             href={phones.freephone.href}
             aria-label={`Call us on ${phones.freephone.label}`}
             className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-brand-red px-3 text-sm font-bold text-white transition hover:bg-black sm:px-4"
           >
             <PhoneIcon className="h-5 w-5" />
             <span className="hidden sm:inline">Call</span>
-          </a>
+          </a>}
           <a
             href={whatsapp.href}
             target="_blank"

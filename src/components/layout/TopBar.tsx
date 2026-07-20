@@ -24,7 +24,7 @@ export default function TopBar({ settings }: { settings: ResolvedSettings }) {
             <span className="sr-only">Rated excellent, four and a half out of five stars</span>
           </span>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+          {settings.showPhone && <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <span className="hidden uppercase tracking-wide opacity-90 md:inline">
               To speak with our customer service:
             </span>
@@ -42,7 +42,7 @@ export default function TopBar({ settings }: { settings: ResolvedSettings }) {
               <PhoneIcon className="h-3.5 w-3.5" />
               {phones.london.label}
             </a>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

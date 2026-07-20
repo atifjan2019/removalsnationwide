@@ -89,7 +89,7 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
-              <BrandLogo src={settings.logoUrl} />
+              <BrandLogo src={settings.footerLogoUrl || settings.logoUrl} />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/70">
               Nationwide and international removals and storage.
@@ -122,7 +122,7 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
           {/* Contact */}
           <div>
             <ColHeading>Contact</ColHeading>
-            <ul className="space-y-1">
+            {settings.showPhone && <ul className="space-y-1">
               <li>
                 <a
                   href={phones.london.href}
@@ -141,7 +141,7 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
                   {phones.freephone.label}
                 </a>
               </li>
-            </ul>
+            </ul>}
             <address className="mt-3 not-italic text-sm leading-relaxed text-white/60">
               {settings.addressLine}
             </address>

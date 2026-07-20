@@ -2,8 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { requireDb } from "@/lib/cms";
+import { assertAdmin } from "@/lib/admin-auth";
+import { logActivity } from "@/lib/admin-dashboard";
 import { DEFAULT_SETTINGS, getSettings, type SiteSettings } from "@/lib/settings";
-import { uploadBranding } from "@/lib/r2";
 
 /** Trim a required value, falling back to its built-in default when blank. */
 function clean(value: FormDataEntryValue | null, fallback: string): string {
@@ -33,6 +34,7 @@ export async function saveSettings(
   _prev: SettingsState,
   formData: FormData,
 ): Promise<SettingsState> {
+  await assertAdmin();
   let db;
   try {
     db = await requireDb();
@@ -45,25 +47,31 @@ export async function saveSettings(
   const current = await getSettings();
   const warnings: string[] = [];
 
-  async function branding(field: "logo" | "favicon", existing: string): Promise<string> {
-    if (formData.get(`${field}Clear`) === "on") return "";
+  async function branding(field: "logo" | "favicon" | "footerLogo", existing: string): Promise<string> {
+    const kind = field === "footerLogo" ? "footer-logo" : field;
+    if (formData.get(`${field}Clear`) === "on") {
+      await db.prepare("delete from site_assets where kind=?").bind(kind).run();
+      return "";
+    }
     const file = formData.get(`${field}File`);
     if (!(file instanceof File) || file.size === 0) return existing;
-    const result = await uploadBranding(file, field);
-    if (!result.ok) {
-      warnings.push(`${field}: ${result.error}`);
+    if (file.size > 2 * 1024 * 1024 || !["image/png", "image/jpeg", "image/svg+xml", "image/webp", "image/x-icon", "image/vnd.microsoft.icon"].includes(file.type)) {
+      warnings.push(`${field}: use a supported image under 2 MB`);
       return existing;
     }
-    return result.url;
+    await db.prepare(`insert into site_assets (kind,data,mime_type,updated_at) values (?,?,?,strftime('%Y-%m-%dT%H:%M:%fZ','now')) on conflict(kind) do update set data=excluded.data,mime_type=excluded.mime_type,updated_at=excluded.updated_at`).bind(kind, await file.arrayBuffer(), file.type).run();
+    return `/api/site-assets/${kind}`;
   }
 
   const logoUrl = await branding("logo", current.logoUrl);
   const faviconUrl = await branding("favicon", current.faviconUrl);
+  const footerLogoUrl = await branding("footerLogo", current.footerLogoUrl);
 
   const d = DEFAULT_SETTINGS;
   const next: SiteSettings = {
     logoUrl,
     faviconUrl,
+    footerLogoUrl,
     phoneFreephone: clean(formData.get("phoneFreephone"), d.phoneFreephone),
     phoneLondon: clean(formData.get("phoneLondon"), d.phoneLondon),
     email: cleanOptional(formData.get("email")),
@@ -77,6 +85,10 @@ export async function saveSettings(
     urlX: cleanUrl(formData.get("urlX")),
     urlLinkedin: cleanUrl(formData.get("urlLinkedin")),
     urlTrustpilot: cleanUrl(formData.get("urlTrustpilot")),
+    urlInstagram: cleanUrl(formData.get("urlInstagram")),
+    urlYoutube: cleanUrl(formData.get("urlYoutube")),
+    urlTiktok: cleanUrl(formData.get("urlTiktok")),
+    showPhone: formData.get("showPhone") === "on",
   };
 
   try {
@@ -87,8 +99,9 @@ export async function saveSettings(
            id, phone_freephone, phone_london, email, whatsapp_number,
            whatsapp_label, address_line, company_name, company_reg,
            url_facebook, url_x, url_linkedin, url_trustpilot,
-           logo_url, favicon_url, updated_at
-         ) values ('site', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+           logo_url, favicon_url, footer_logo_url, show_phone,
+           url_instagram, url_youtube, url_tiktok, updated_at
+         ) values ('site', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, strftime('%Y-%m-%dT%H:%M:%fZ','now'))
          on conflict(id) do update set
            phone_freephone = excluded.phone_freephone,
            phone_london    = excluded.phone_london,
@@ -104,6 +117,11 @@ export async function saveSettings(
            url_trustpilot  = excluded.url_trustpilot,
            logo_url        = excluded.logo_url,
            favicon_url     = excluded.favicon_url,
+           footer_logo_url = excluded.footer_logo_url,
+           show_phone      = excluded.show_phone,
+           url_instagram   = excluded.url_instagram,
+           url_youtube     = excluded.url_youtube,
+           url_tiktok      = excluded.url_tiktok,
            updated_at      = excluded.updated_at`,
       )
       .bind(
@@ -121,6 +139,11 @@ export async function saveSettings(
         next.urlTrustpilot,
         next.logoUrl,
         next.faviconUrl,
+        next.footerLogoUrl,
+        next.showPhone ? 1 : 0,
+        next.urlInstagram,
+        next.urlYoutube,
+        next.urlTiktok,
       )
       .run();
   } catch (err) {
@@ -129,6 +152,7 @@ export async function saveSettings(
 
   // Contact details appear in the shared layout, so every page is affected.
   revalidatePath("/", "layout");
+  await logActivity("Settings Updated", "Site-wide brand and contact settings updated", "site");
 
   // A failed upload should not read as a clean save — the text fields did save,
   // but the file did not, and silently succeeding would hide that.

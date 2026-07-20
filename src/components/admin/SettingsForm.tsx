@@ -44,7 +44,7 @@ function BrandingUpload({
   hint,
 }: {
   label: string;
-  field: "logo" | "favicon";
+  field: "logo" | "favicon" | "footerLogo";
   current: string;
   hint: string;
 }) {
@@ -82,6 +82,11 @@ function BrandingUpload({
           Remove and go back to the built-in {label.toLowerCase()}
         </label>
       )}
+
+      <div className="mt-3 flex gap-2">
+        <input readOnly value={current} placeholder="No image uploaded" className="min-w-0 flex-1 rounded-lg border border-black/10 bg-slate-50 px-3 py-2 text-xs text-slate-500" />
+        <button type="button" onClick={() => current && navigator.clipboard.writeText(new URL(current, window.location.origin).href)} className="rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold">Copy</button>
+      </div>
 
       <span className="mt-2 block text-xs text-brand-charcoal/60">{hint}</span>
     </div>
@@ -122,17 +127,23 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
       )}
 
       <section>
-        <h2 className="text-lg font-bold text-brand-navy">Branding</h2>
+        <h2 className="text-lg font-bold text-brand-navy">Brand Identity</h2>
         <p className="mt-1 text-sm text-brand-charcoal/60">
-          Uploaded to R2 and served from the media domain. Leave a file empty to
+          Images are stored inside D1 and served through the site asset API. Leave a file empty to
           keep the current image. Max 2&nbsp;MB; PNG, JPEG, SVG, WebP or ICO.
         </p>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2">
+        <div className="mt-4 grid gap-6 lg:grid-cols-3">
           <BrandingUpload
             label="Logo"
             field="logo"
             current={settings.logoUrl}
             hint="Replaces the built-in RN wordmark in the header and footer."
+          />
+          <BrandingUpload
+            label="Footer Logo"
+            field="footerLogo"
+            current={settings.footerLogoUrl}
+            hint="Optional alternate logo for the dark website footer."
           />
           <BrandingUpload
             label="Favicon"
@@ -170,6 +181,10 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
             hint="Single line, as shown in the footer."
           />
         </div>
+        <label className="mt-5 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+          <input type="checkbox" name="showPhone" defaultChecked={settings.showPhone} className="mt-1 h-4 w-4" />
+          <span><span className="block text-sm font-semibold text-slate-900">Show phone number on the website</span><span className="mt-1 block text-xs text-slate-500">Turn this off to hide public call links while keeping the numbers saved.</span></span>
+        </label>
       </section>
 
       <section>
@@ -200,6 +215,9 @@ export default function SettingsForm({ settings }: { settings: SiteSettings }) {
           <Field label="X / Twitter URL" name="urlX" defaultValue={settings.urlX} />
           <Field label="LinkedIn URL" name="urlLinkedin" defaultValue={settings.urlLinkedin} />
           <Field label="Trustpilot URL" name="urlTrustpilot" defaultValue={settings.urlTrustpilot} />
+          <Field label="Instagram URL" name="urlInstagram" defaultValue={settings.urlInstagram} />
+          <Field label="YouTube URL" name="urlYoutube" defaultValue={settings.urlYoutube} />
+          <Field label="TikTok URL" name="urlTiktok" defaultValue={settings.urlTiktok} />
         </div>
       </section>
 

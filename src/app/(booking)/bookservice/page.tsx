@@ -26,6 +26,7 @@ export default async function BookAServicePage() {
         logoUrl={settings.logoUrl}
         phones={settings.phones}
         whatsapp={settings.whatsapp}
+        showPhone={settings.showPhone}
       />
       <BookingFunnel mapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""} />
     </>

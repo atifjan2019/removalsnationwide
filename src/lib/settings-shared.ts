@@ -19,10 +19,15 @@ export type SiteSettings = {
   urlX: string;
   urlLinkedin: string;
   urlTrustpilot: string;
+  urlInstagram: string;
+  urlYoutube: string;
+  urlTiktok: string;
+  showPhone: boolean;
   /** Public R2 URL of the uploaded logo. Empty means use the built-in mark. */
   logoUrl: string;
   /** Public R2 URL of the uploaded favicon. Empty means use the bundled icon. */
   faviconUrl: string;
+  footerLogoUrl: string;
 };
 
 export const DEFAULT_SETTINGS: SiteSettings = {
@@ -40,8 +45,13 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   urlX: "https://x.com/removalsnationwide",
   urlLinkedin: "https://www.linkedin.com/company/removals-nationwide",
   urlTrustpilot: "https://uk.trustpilot.com/review/removalsnationwide.uk",
+  urlInstagram: "",
+  urlYoutube: "",
+  urlTiktok: "",
+  showPhone: true,
   logoUrl: "",
   faviconUrl: "",
+  footerLogoUrl: "",
 };
 
 /** A phone number as the UI needs it: display label plus a tel: href. */

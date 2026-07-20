@@ -52,8 +52,13 @@ function coalesce(row: Record<string, unknown>): SiteSettings {
     urlX: optional("url_x"),
     urlLinkedin: optional("url_linkedin"),
     urlTrustpilot: optional("url_trustpilot"),
+    urlInstagram: optional("url_instagram"),
+    urlYoutube: optional("url_youtube"),
+    urlTiktok: optional("url_tiktok"),
+    showPhone: row.show_phone !== 0 && row.show_phone !== "0",
     logoUrl: optional("logo_url"),
     faviconUrl: optional("favicon_url"),
+    footerLogoUrl: optional("footer_logo_url"),
   };
 }
 
