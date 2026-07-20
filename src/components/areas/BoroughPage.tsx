@@ -131,7 +131,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
 
       {/* Hero two-column */}
       <section id="borough-hero" className="bg-white pt-12 pb-0">
-        <div className="mx-auto grid max-w-[88rem] grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 lg:grid-cols-[3fr_2fr] lg:gap-16 lg:pb-16">
           <div>
             <p className="text-xl font-bold leading-snug text-brand-navy sm:text-2xl">{b.introLine}</p>
             <p className="mt-3 text-base leading-relaxed text-brand-charcoal/80">{b.valueLine}</p>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getAreas } from "@/lib/cms";
 import { deleteArea } from "@/app/admin/actions";
 import DeleteButton from "@/components/admin/DeleteButton";
-import { PencilIcon } from "@/components/admin/Icons";
+import { EyeIcon, PencilIcon } from "@/components/admin/Icons";
 
 export const dynamic = "force-dynamic";
 
@@ -53,6 +53,15 @@ export default async function AdminAreasPage() {
                   </td>
                   <td className="px-5 py-3">
                     <div className="flex items-center justify-end gap-1">
+                      <Link
+                        href={`/areas/${a.slug}`}
+                        target="_blank"
+                        title="View page"
+                        aria-label="View page"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-brand-navy transition hover:bg-slate-100"
+                      >
+                        <EyeIcon className="h-5 w-5" />
+                      </Link>
                       <Link
                         href={`/admin/areas/${a.id}`}
                         title="Edit"
