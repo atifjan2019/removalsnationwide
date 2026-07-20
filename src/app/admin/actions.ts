@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { requireDb } from "@/lib/cms";
 import { fromBool } from "@/lib/d1";
 import { sanitize } from "@/lib/sanitize";
+import { assertAdmin } from "@/lib/admin-auth";
+import { logActivity } from "@/lib/admin-dashboard";
 
 function slugify(input: string): string {
   return input
@@ -31,6 +33,7 @@ export type PostInput = {
 };
 
 export async function savePost(input: PostInput) {
+  await assertAdmin();
   const db = await requireDb();
   const slug = slugify(input.slug || input.title);
   const values = [
@@ -67,14 +70,17 @@ export async function savePost(input: PostInput) {
       .run();
   }
 
+  await logActivity("Updated", `${input.id ? "Post updated" : "Post created"}: ${input.title}`, input.id || slug);
   revalidatePath("/news");
   revalidatePath(`/news/${slug}`);
   redirect("/admin/posts");
 }
 
 export async function deletePost(id: string) {
+  await assertAdmin();
   const db = await requireDb();
   await db.prepare("delete from posts where id = ?").bind(id).run();
+  await logActivity("Deleted", "News post deleted", id);
   revalidatePath("/news");
   revalidatePath("/admin/posts");
 }
@@ -90,6 +96,7 @@ export type AreaInput = {
 };
 
 export async function saveArea(input: AreaInput) {
+  await assertAdmin();
   const db = await requireDb();
   const slug = slugify(input.slug || input.name);
   const values = [
@@ -121,14 +128,17 @@ export async function saveArea(input: AreaInput) {
       .run();
   }
 
+  await logActivity("Updated", `${input.id ? "Area updated" : "Area created"}: ${input.name}`, input.id || slug);
   revalidatePath("/areas");
   revalidatePath(`/areas/${slug}`);
   redirect("/admin/areas");
 }
 
 export async function deleteArea(id: string) {
+  await assertAdmin();
   const db = await requireDb();
   await db.prepare("delete from areas where id = ?").bind(id).run();
+  await logActivity("Deleted", "Service area deleted", id);
   revalidatePath("/areas");
   revalidatePath("/admin/areas");
 }
