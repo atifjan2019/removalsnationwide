@@ -8,6 +8,8 @@ import { sanitize } from "@/lib/sanitize";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
 import { findNearbyAreasForName, type NearbyPlace } from "@/lib/nearby-areas";
+import { boroughs } from "@/lib/boroughs";
+import { cleanAreaTemplate } from "@/lib/area-template";
 import type {
   AreaFaq,
   AreaKnowledgeBlock,
@@ -103,62 +105,6 @@ export type AreaInput = {
 const plain = (value: unknown, max = 2000) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
 
-function cleanAreaTemplate(value: AreaTemplateData): AreaTemplateData {
-  const stringList = (items: unknown, maxItems: number, maxLength: number) =>
-    Array.isArray(items)
-      ? items.map((item) => plain(item, maxLength)).filter(Boolean).slice(0, maxItems)
-      : [];
-  const pairs = <T,>(
-    items: unknown,
-    make: (item: Record<string, unknown>) => T,
-    keep: (item: T) => boolean,
-    maxItems: number,
-  ) =>
-    Array.isArray(items)
-      ? items
-          .filter((item): item is Record<string, unknown> => Boolean(item) && typeof item === "object")
-          .map(make)
-          .filter(keep)
-          .slice(0, maxItems)
-      : [];
-
-  return {
-    h1: plain(value.h1, 140),
-    subhead: plain(value.subhead, 500),
-    metaTitle: plain(value.metaTitle, 180),
-    metaDescription: plain(value.metaDescription, 320),
-    areaServedName: plain(value.areaServedName, 160),
-    postcodes: [...new Set(stringList(value.postcodes, 30, 16).map((item) => item.toUpperCase()))],
-    heroImage: plain(value.heroImage, 1000),
-    heroImageAlt: plain(value.heroImageAlt, 240),
-    introLine: plain(value.introLine, 700),
-    valueLine: plain(value.valueLine, 700),
-    localBody: stringList(value.localBody, 8, 3000),
-    coverageIntro: plain(value.coverageIntro, 3000),
-    neighbourhoods: plain(value.neighbourhoods, 5000),
-    coverageOutro: plain(value.coverageOutro, 3000),
-    knowIntro: plain(value.knowIntro, 3000),
-    knowBlocks: pairs<AreaKnowledgeBlock>(
-      value.knowBlocks,
-      (item) => ({ label: plain(item.label, 120), body: plain(item.body, 4000) }),
-      (item) => Boolean(item.label && item.body),
-      8,
-    ),
-    nearby: pairs<AreaNearbyLink>(
-      value.nearby,
-      (item) => ({ label: plain(item.label, 120), href: plain(item.href, 300) }),
-      (item) => Boolean(item.label && item.href),
-      12,
-    ),
-    faqs: pairs<AreaFaq>(
-      value.faqs,
-      (item) => ({ question: plain(item.question, 300), answer: plain(item.answer, 5000) }),
-      (item) => Boolean(item.question && item.answer),
-      12,
-    ),
-  };
-}
-
 export async function saveArea(input: AreaInput) {
   await assertAdmin();
   const db = await requireDb();
@@ -219,4 +165,59 @@ export async function deleteArea(id: string) {
   await logActivity("Deleted", "Service area deleted", id);
   revalidatePath("/areas");
   revalidatePath("/admin/areas");
+}
+
+export async function seedAreasFromBoroughs() {
+  await assertAdmin();
+  const db = await requireDb();
+
+  const { results } = await db.prepare("select slug from areas").all<{ slug: string }>();
+  const existing = new Set((results ?? []).map((row) => row.slug));
+
+  let inserted = 0;
+  for (const borough of Object.values(boroughs)) {
+    if (existing.has(borough.slug)) continue;
+
+    const template: AreaTemplateData = cleanAreaTemplate({
+      h1: borough.h1,
+      subhead: borough.subhead,
+      metaTitle: borough.metaTitle,
+      metaDescription: borough.metaDescription,
+      areaServedName: borough.areaServedName ?? borough.name,
+      postcodes: borough.postcodes,
+      heroImage: borough.heroImage,
+      heroImageAlt: borough.heroImageAlt,
+      introLine: borough.introLine,
+      valueLine: borough.valueLine,
+      localBody: borough.localBody,
+      coverageIntro: borough.coverageIntro,
+      neighbourhoods: borough.neighbourhoods,
+      coverageOutro: borough.coverageOutro,
+      knowIntro: borough.knowIntro,
+      knowBlocks: borough.knowBlocks,
+      nearby: borough.nearby,
+      faqs: borough.faqs,
+    });
+
+    await db
+      .prepare(
+        "insert into areas (id, slug, name, intro, cover_image, template_data, published) values (?, ?, ?, ?, ?, ?, ?)",
+      )
+      .bind(
+        crypto.randomUUID(),
+        borough.slug,
+        borough.name,
+        template.introLine,
+        template.heroImage,
+        JSON.stringify(template),
+        fromBool(true),
+      )
+      .run();
+    inserted++;
+  }
+
+  await logActivity("Updated", `Seeded ${inserted} service areas from borough registry`);
+  revalidatePath("/areas");
+  revalidatePath("/admin/areas");
+  return { inserted };
 }
