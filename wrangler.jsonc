@@ -17,16 +17,6 @@
     "enabled": true
   },
 
-  // Transactional notifications for new booking requests. Restrict both ends
-  // so this binding cannot be repurposed as a general email sender.
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "allowed_sender_addresses": ["bookings@removalsnationwide.uk"],
-      "allowed_destination_addresses": ["atifjan2019@gmail.com"]
-    }
-  ],
-
   // CMS content. Region WEUR — the audience is UK, so keep the primary near them.
   "d1_databases": [
     {

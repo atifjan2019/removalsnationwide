@@ -103,7 +103,7 @@ export default function GoogleAddressField({
                 ?.longText?.trim()
                 .toUpperCase() ?? "";
 
-            if (!postcode || !place.formattedAddress) {
+            if (!place.id || !place.formattedAddress) {
               callbacksRef.current.onInput();
               return;
             }

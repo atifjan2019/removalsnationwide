@@ -163,6 +163,11 @@ export default function BookingFunnel({ mapsApiKey }: { mapsApiKey: string }) {
       return;
     }
 
+    if (googlePlacesAvailable) {
+      go(next);
+      return;
+    }
+
     if (!UK_POSTCODE_RE.test(value)) {
       setErrors({ [key]: "Enter a valid UK postcode, for example B15 3DH." });
       return;

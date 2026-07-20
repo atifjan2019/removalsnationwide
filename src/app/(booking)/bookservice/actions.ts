@@ -43,6 +43,8 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
   const toPostcode = clean(input.toPostcode, 12).toUpperCase();
   const fromAddress = clean(input.fromAddress, 500);
   const toAddress = clean(input.toAddress, 500);
+  const fromPlaceId = clean(input.fromPlaceId, 250);
+  const toPlaceId = clean(input.toPlaceId, 250);
   const routeDistance = clean(input.routeDistance, 80);
   const routeDuration = clean(input.routeDuration, 80);
   const moveDate = clean(input.moveDate, 10);
@@ -59,7 +61,11 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
   if (phone.replace(/\D/g, "").length < 10) {
     return { success: false, error: "Please enter a valid phone number." };
   }
-  if (!UK_POSTCODE_RE.test(fromPostcode) || !UK_POSTCODE_RE.test(toPostcode)) {
+  const validCollection =
+    (Boolean(fromPlaceId) && Boolean(fromAddress)) || UK_POSTCODE_RE.test(fromPostcode);
+  const validDestination =
+    (Boolean(toPlaceId) && Boolean(toAddress)) || UK_POSTCODE_RE.test(toPostcode);
+  if (!validCollection || !validDestination) {
     return { success: false, error: "Please enter valid UK collection and delivery postcodes." };
   }
   if (!moveDate && !input.flexibleDates) {

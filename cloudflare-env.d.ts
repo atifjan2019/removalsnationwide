@@ -18,7 +18,12 @@ declare global {
     DB: D1Database;
     /** R2 bucket holding site media (images). */
     MEDIA: R2Bucket;
-    /** Transactional booking notification email sender. */
-    EMAIL: SendEmail;
+    /** Elastic Email SMTP connection settings. */
+    SMTP_HOST: string;
+    SMTP_PORT: string;
+    SMTP_USERNAME: string;
+    SMTP_PASSWORD: string;
+    SMTP_FROM_EMAIL: string;
+    SMTP_FROM_NAME?: string;
   }
 }
