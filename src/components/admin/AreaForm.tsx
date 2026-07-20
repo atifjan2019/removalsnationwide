@@ -514,37 +514,6 @@ export default function AreaForm({ area }: Props) {
         title="6. Nearby areas"
         description="Links this page into the local coverage network. Use an existing /areas/ URL."
       >
-        <div className="flex flex-col gap-3 rounded-xl border border-brand-red/10 bg-brand-red/5 p-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-brand-navy">
-              Auto-fill nearby areas
-            </p>
-            <p className="text-xs text-slate-500">
-              Finds towns and villages within 50 miles of {name || "this area"}.
-            </p>
-          </div>
-          <div className="flex flex-col items-start gap-2 sm:items-end">
-            <button
-              type="button"
-              onClick={handleFindNearby}
-              disabled={findingNearby || !name.trim()}
-              className="inline-flex items-center gap-2 rounded-lg border border-brand-red/30 bg-white px-4 py-2 text-sm font-semibold text-brand-red transition hover:bg-brand-red/10 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {findingNearby ? (
-                <>
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-red/30 border-t-brand-red" />
-                  Finding areas…
-                </>
-              ) : (
-                "Find nearby areas (50 miles)"
-              )}
-            </button>
-            {nearbyError && (
-              <p className="text-sm font-medium text-red-600">{nearbyError}</p>
-            )}
-          </div>
-        </div>
-
         {template.nearby.map((nearby, index) => (
           <div key={index} className="grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end">
             <TextField title="Area label" value={nearby.label} onChange={(value) => set("nearby", template.nearby.map((item, itemIndex) => itemIndex === index ? { ...item, label: value } : item))} placeholder="Camden" />
