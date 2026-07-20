@@ -518,24 +518,6 @@ export default async function HouseRemovalsPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm">
-                <Image
-                  src={REMOTE_IMAGES.movingVan}
-                  alt="Removal van loaded and ready to leave for the new address"
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 22vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative aspect-square overflow-hidden rounded-2xl border border-black/10 shadow-sm">
-                <Image
-                  src={REMOTE_IMAGES.movingBoxes}
-                  alt="Packed and labelled moving boxes stacked ready for collection"
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 22vw"
-                  className="object-cover"
-                />
-              </div>
             </div>
           </div>
         </div>
