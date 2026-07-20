@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "removals-nationwide",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2025-09-23",
+  "compatibility_date": "2026-07-20",
   // nodejs_compat is required by the OpenNext adapter; global_fetch_strictly_public
   // makes fetches to our own domain go out to the internet rather than looping
   // back into the Worker, which is what next/image and RSC fetches expect.

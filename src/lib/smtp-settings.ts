@@ -134,7 +134,10 @@ export async function saveSmtpSettings(db: D1Database, formData: FormData) {
   const username = formValue(formData, "smtpUsername");
   const password = formValue(formData, "smtpPassword", 1000);
   const fromEmail = formValue(formData, "smtpFromEmail").toLowerCase();
-  const fromName = formValue(formData, "smtpFromName", 120) || "Removals Nationwide Bookings";
+  const submittedFromName = formValue(formData, "smtpFromName", 120);
+  const fromName = submittedFromName || "Removals Nationwide Bookings";
+
+  if (!host && !username && !password && !fromEmail && !submittedFromName) return;
 
   if (!host || /[\s/]/.test(host)) throw new Error("Enter a valid SMTP host name.");
   if (!Number.isInteger(portValue) || portValue < 1 || portValue > 65535) {
