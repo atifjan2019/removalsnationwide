@@ -524,7 +524,7 @@ export default async function RemovalsToNorwayPage() {
           <div data-reveal>
             <SectionHeading eyebrow="How it works" title="Door-to-Door or Part-Load?" />
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
 
             {/* Door-to-door */}
             <div
@@ -669,7 +669,7 @@ export default async function RemovalsToNorwayPage() {
             <SectionHeading eyebrow="Costs and timing" title="Prices and Transit Times" />
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:max-w-3xl lg:mx-auto">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <div
               data-reveal
               className="rounded-2xl border-2 border-brand-red bg-white p-8 text-center shadow-sm"

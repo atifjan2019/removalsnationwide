@@ -585,7 +585,7 @@ export default async function PackingServicePage() {
             <PricingTable
               columns={boxColumns}
               rows={boxRows}
-              className="mx-auto mt-10 max-w-4xl"
+              className="mt-10"
             />
           </div>
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-xs text-brand-charcoal/50">
@@ -613,7 +613,7 @@ export default async function PackingServicePage() {
             <PricingTable
               columns={timeColumns}
               rows={timeRows}
-              className="mx-auto mt-10 max-w-3xl"
+              className="mt-10"
             />
           </div>
           <p data-reveal className="mx-auto mt-4 max-w-2xl text-center text-xs text-brand-charcoal/50">

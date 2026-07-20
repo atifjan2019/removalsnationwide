@@ -572,7 +572,7 @@ export default async function LondonStoragePage() {
               Not sure? A free survey confirms your volume before we book anything.
             </p>
           </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-2">
+          <div className="mt-12 grid gap-8 sm:grid-cols-2">
             {/* 250 cu ft */}
             <div
               data-reveal

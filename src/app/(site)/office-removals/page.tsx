@@ -935,7 +935,7 @@ export default async function OfficeRemovalsPage() {
             ))}
           </div>
 
-          <div className="mt-10 mx-auto max-w-3xl grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div data-reveal data-delay="1" className="rounded-2xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Commercial goods-in-transit insurance

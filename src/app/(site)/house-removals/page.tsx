@@ -963,8 +963,8 @@ export default async function HouseRemovalsPage() {
                 A house removal quote is built from several variables. Understanding them helps you
                 budget accurately and, where your dates are flexible, reduce the total cost.
               </p>
-              <CheckList items={priceFactors} className="mt-8 max-w-3xl" />
-              <div className="mt-8 max-w-3xl rounded-2xl bg-brand-grey p-6">
+              <CheckList items={priceFactors} columns={2} className="mt-8" />
+              <div className="mt-8 rounded-2xl bg-brand-grey p-6">
                 <p className="text-sm font-semibold text-brand-navy">
                   How to get the cheapest day for your house move
                 </p>
@@ -1046,7 +1046,7 @@ export default async function HouseRemovalsPage() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Goods-in-transit insurance
@@ -1091,8 +1091,8 @@ export default async function HouseRemovalsPage() {
             because they require specialist handling. Knowing this in advance prevents last-minute
             issues on move day.
           </p>
-          <CheckList items={restrictedItems} className="mt-8 max-w-3xl" />
-          <div className="mt-6 max-w-3xl rounded-xl border-l-4 border-brand-red bg-white p-5">
+          <CheckList items={restrictedItems} columns={2} className="mt-8" />
+          <div className="mt-6 rounded-xl border-l-4 border-brand-red bg-white p-5">
             <p className="text-sm leading-relaxed text-brand-charcoal/85">
               <strong className="text-brand-navy">Gas appliances:</strong> We disconnect and
               reconnect all standard appliances (washing machines, dishwashers, tumble dryers). Gas

@@ -578,7 +578,7 @@ export default async function ManAndVanPage() {
           {/* data-mv-prices enables page-scoped hover on the mobile stacked cards */}
           <div data-mv-prices data-reveal>
             <PricingTable
-              className="mx-auto mt-10 max-w-3xl"
+              className="mt-10"
               columns={pricingColumns}
               rows={pricingRows}
             />
@@ -1073,7 +1073,7 @@ export default async function ManAndVanPage() {
             ))}
           </div>
 
-          <div className="mt-10 mx-auto max-w-3xl grid gap-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
             <div className="rounded-2xl bg-white/10 p-6 text-white">
               <h3 className="text-sm font-bold uppercase tracking-wide">
                 Goods-in-transit insurance
