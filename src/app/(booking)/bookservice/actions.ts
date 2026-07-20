@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { requireDb } from "@/lib/d1";
 import { sendBookingNotification } from "@/lib/booking-email";
 import { logActivity } from "@/lib/admin-dashboard";
-import { calculateRouteDetails } from "@/lib/google-route";
 
 const MOVE_TYPES = ["house", "office", "flat", "items"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -47,8 +46,8 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
   const toAddress = clean(input.toAddress, 500);
   const fromPlaceId = clean(input.fromPlaceId, 250);
   const toPlaceId = clean(input.toPlaceId, 250);
-  let routeDistance = clean(input.routeDistance, 80);
-  let routeDuration = clean(input.routeDuration, 80);
+  const routeDistance = clean(input.routeDistance, 80);
+  const routeDuration = clean(input.routeDuration, 80);
   const moveDate = clean(input.moveDate, 10);
   const notes = clean(input.notes, 2000);
   const bedrooms = Number.isFinite(input.bedrooms)
@@ -77,14 +76,6 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
   try {
     const db = await requireDb();
     const bookingId = crypto.randomUUID();
-    const calculatedRoute = await calculateRouteDetails(
-      { address: fromAddress || fromPostcode, placeId: fromPlaceId || undefined },
-      { address: toAddress || toPostcode, placeId: toPlaceId || undefined },
-    );
-    if (calculatedRoute) {
-      routeDistance = calculatedRoute.distance;
-      routeDuration = calculatedRoute.duration;
-    }
     await db
       .prepare(
         `insert into bookings (

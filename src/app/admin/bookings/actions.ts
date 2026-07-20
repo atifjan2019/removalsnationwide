@@ -11,7 +11,6 @@ import {
   type MoveStatus,
 } from "@/lib/bookings";
 import { requireDb } from "@/lib/d1";
-import { calculateRouteDetails } from "@/lib/google-route";
 
 const MOVE_TYPES = ["house", "flat", "office", "items"];
 const clean = (formData: FormData, key: string, max = 500) =>
@@ -118,27 +117,13 @@ export async function resendBookingEmails(
   const db = await requireDb();
   const booking = await db.prepare("select * from bookings where id=?").bind(id).first<Booking>();
   if (!booking) throw new Error("Move not found.");
-  let routeDistance = String(browserRoute?.distance ?? booking.route_distance).trim().slice(0, 80);
-  let routeDuration = String(browserRoute?.duration ?? booking.route_duration).trim().slice(0, 80);
+  const routeDistance = String(browserRoute?.distance ?? booking.route_distance).trim().slice(0, 80);
+  const routeDuration = String(browserRoute?.duration ?? booking.route_duration).trim().slice(0, 80);
   if (routeDistance && routeDuration && (!booking.route_distance || !booking.route_duration)) {
     await db
       .prepare("update bookings set route_distance=?, route_duration=? where id=?")
       .bind(routeDistance, routeDuration, id)
       .run();
-  }
-  if (!routeDistance || !routeDuration) {
-    const calculatedRoute = await calculateRouteDetails(
-      { address: booking.from_address || booking.from_postcode },
-      { address: booking.to_address || booking.to_postcode },
-    );
-    if (calculatedRoute) {
-      routeDistance = calculatedRoute.distance;
-      routeDuration = calculatedRoute.duration;
-      await db
-        .prepare("update bookings set route_distance=?, route_duration=? where id=?")
-        .bind(routeDistance, routeDuration, id)
-        .run();
-    }
   }
   const result = await sendBookingNotification({
     bookingId: booking.id,
