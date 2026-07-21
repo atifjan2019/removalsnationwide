@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
+import { BuildingIcon, ChevronRight } from "@/components/ui/icons";
 
 type Borough = { name: string; slug: string };
 
@@ -83,20 +84,29 @@ export default function AreasSiloSection() {
           availability. Select a borough below for local service information.
         </p>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5" data-reveal>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal>
           {regions.map((region) => (
-            <div key={region.label}>
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-brand-red">
-                {region.label}
-              </h3>
-              <ul className="space-y-2">
+            <div
+              key={region.label}
+              className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm transition hover:shadow-md"
+            >
+              <div className="mb-4 flex items-center gap-2.5 border-b border-black/5 pb-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                  <BuildingIcon className="h-4 w-4" />
+                </span>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-red">
+                  {region.label}
+                </h3>
+              </div>
+              <ul className="grid gap-1 sm:grid-cols-2 lg:grid-cols-1">
                 {region.boroughs.map((b) => (
                   <li key={b.slug}>
                     <Link
                       href={`/areas/${b.slug}`}
-                      className="block py-1.5 text-sm text-brand-charcoal/80 underline-offset-2 transition hover:text-brand-red hover:underline"
+                      className="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-brand-charcoal/80 transition hover:bg-brand-red/5 hover:text-brand-red"
                     >
-                      {b.name}
+                      <span>{b.name}</span>
+                      <ChevronRight className="h-4 w-4 -translate-x-1 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
                     </Link>
                   </li>
                 ))}
