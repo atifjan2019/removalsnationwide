@@ -53,7 +53,14 @@ export default function RootLayout({
 
   return (
     <html lang="en-GB" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="min-h-screen bg-white text-brand-charcoal antialiased">
+      {/* Browser extensions (ColorZilla `cz-shortcut-listen`, Grammarly, etc.)
+          inject attributes onto <body> before React hydrates, which otherwise
+          triggers a benign hydration-mismatch warning. suppressHydrationWarning
+          only ignores attribute diffs on <body> itself, not its children. */}
+      <body
+        className="min-h-screen bg-white text-brand-charcoal antialiased"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
