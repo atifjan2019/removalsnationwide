@@ -413,7 +413,7 @@ export default async function PackagingMaterialsPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/brand/professional-packing.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/professional-packing.webp"
                   alt="Removal boxes and packing materials supplied across the UK"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -525,7 +525,7 @@ export default async function PackagingMaterialsPage() {
             <div data-reveal data-delay="1" className="relative">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
                 <Image
-                  src="/images/brand/professional-packing.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/professional-packing.webp"
                   alt="Removals Nationwide crew preparing packing materials for a London house move"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

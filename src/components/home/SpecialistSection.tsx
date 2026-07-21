@@ -82,8 +82,8 @@ export default function SpecialistSection() {
                 <div className="relative overflow-hidden rounded-2xl border border-black/10 shadow-lg">
                   <div className="relative aspect-[4/5] w-full">
                     <Image
-                      src={REMOTE_IMAGES.sofa}
-                      alt="Movers carefully handling a specialist high-value item of furniture"
+                      src={REMOTE_IMAGES.specialistPiano}
+                      alt="Specialist movers protecting an upright piano for removal"
                       fill
                       sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover"

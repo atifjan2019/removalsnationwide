@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
+import { preconnect, prefetchDNS } from "react-dom";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
+
+// Hero and inner-page banner imagery is served cross-origin from the R2 media
+// CDN. Warming DNS + TLS in the document head means the LCP hero image starts
+// downloading without first paying a fresh connection round-trip.
+const MEDIA_CDN_ORIGIN = "https://media.removalsnationwide.uk";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,6 +47,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Resource hints for the cross-origin R2 media CDN (emitted into <head>).
+  prefetchDNS(MEDIA_CDN_ORIGIN);
+  preconnect(MEDIA_CDN_ORIGIN);
+
   return (
     <html lang="en-GB" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-screen bg-white text-brand-charcoal antialiased">

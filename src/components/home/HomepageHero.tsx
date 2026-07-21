@@ -139,11 +139,15 @@ export default function HomepageHero() {
       </div>
 
       {/* Previous and next controls use 44 by 44 pixel tap targets. */}
+      {/* Arrows sit over the image on the far right at lg+, where the text column
+          is constrained to the left. On smaller screens the text spans the full
+          width, so the arrows are hidden and navigation is via swipe + the dots
+          below (both always available). */}
       <button
         type="button"
         onClick={prev}
         aria-label="Previous image"
-        className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
+        className="absolute right-16 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95 lg:flex"
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -151,7 +155,7 @@ export default function HomepageHero() {
         type="button"
         onClick={next}
         aria-label="Next image"
-        className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95"
+        className="absolute right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition hover:bg-brand-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-white active:scale-95 lg:flex"
       >
         <ChevronRight className="h-5 w-5" />
       </button>

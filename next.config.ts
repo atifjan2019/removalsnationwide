@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 // Makes the Cloudflare bindings (D1 `DB`, R2 `MEDIA`) available under `next dev`
@@ -41,6 +42,12 @@ const nextConfig: NextConfig = {
   // ranking URL is preserved at cutover with no mass redirect. Next.js 308s the
   // non-slash form to the slash form, so each page resolves at one URL.
   trailingSlash: true,
+  experimental: {
+    // Inline the (small, ~16 KiB) stylesheet into the document <head> as a
+    // <style> tag instead of a render-blocking <link rel="stylesheet">. Removes
+    // the ~900ms critical-request chain PageSpeed flagged and improves FCP/LCP.
+    inlineCss: true,
+  },
   async redirects() {
     // With trailingSlash:true, both ends must carry the slash so each old URL
     // reaches its destination in a single 308 hop, with no slash-normalisation
@@ -87,4 +94,12 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Wrap with the bundle analyzer. Inert unless ANALYZE=true, so normal builds
+// are unaffected; `ANALYZE=true npm run build` emits .next/analyze/*.html
+// treemaps used to confirm chunk contents and rule out duplicate modules.
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+  openAnalyzer: false,
+});
+
+export default withBundleAnalyzer(nextConfig);

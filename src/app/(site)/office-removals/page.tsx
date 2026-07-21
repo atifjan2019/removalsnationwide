@@ -464,7 +464,7 @@ export default async function OfficeRemovalsPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/brand/office-removals.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/office-removals.webp"
                   alt="Removals Nationwide crew managing an office move in London with crates and IT equipment"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

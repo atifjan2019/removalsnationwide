@@ -38,8 +38,11 @@ export default function BrandLogo({
       {/* The bundled logo is the default; an admin-uploaded logo can still override it. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/brand/removals-nationwide-logo.png"
+        src="https://media.removalsnationwide.uk/public/images/brand/removals-nationwide-logo.png"
         alt="Removals Nationwide"
+        width={187}
+        height={60}
+        decoding="async"
         className={`${compact ? "h-9 max-w-[150px]" : "h-12 max-w-[210px]"} w-auto object-contain`}
       />
     </span>

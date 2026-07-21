@@ -27,7 +27,6 @@ import FinalCtaSection from "@/components/home/FinalCtaSection";
 import NewsSection from "@/components/home/NewsSection";
 import ClientAnimations from "@/components/home/ClientAnimations";
 import StickyQuoteBar from "@/components/home/StickyQuoteBar";
-import BackToTop from "@/components/home/BackToTop";
 
 export const metadata: Metadata = {
   title: "UK Removals Company | House, Man & Van, Office & Storage",
@@ -131,7 +130,6 @@ export default async function HomePage() {
       {/* Homepage-only UX enhancements */}
       <ClientAnimations />
       <StickyQuoteBar phones={phones} />
-      <BackToTop />
     </>
   );
 }

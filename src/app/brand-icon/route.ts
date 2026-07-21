@@ -9,15 +9,15 @@ import { getSettings } from "@/lib/settings";
  * statically prerendered page into a dynamic one. Redirecting from a fixed path
  * keeps the metadata static — only this tiny route touches the database.
  *
- * With nothing uploaded, it falls back to the icon bundled in the app.
+ * With nothing uploaded, it falls back to the logo stored in R2.
  */
 export const dynamic = "force-dynamic";
 
-export async function GET(request: Request) {
+export async function GET() {
   const { faviconUrl } = await getSettings();
   const target = faviconUrl?.trim()
     ? faviconUrl
-    : new URL("/favicon.ico", request.url).toString();
+    : "https://media.removalsnationwide.uk/public/images/brand/removals-nationwide-logo.png";
 
   // Browsers cache favicon redirects especially aggressively. The asset URL is
   // versioned when it is uploaded, so always re-check this small redirect and

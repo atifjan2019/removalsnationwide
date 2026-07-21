@@ -51,21 +51,21 @@ export default function QuoteSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white/15 p-7 backdrop-blur-sm">
-            <p className="text-sm font-semibold uppercase tracking-wide text-white/80">
+          <div className="rounded-2xl bg-brand-navy/90 p-7 shadow-lg ring-1 ring-white/10 backdrop-blur-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-white">
               What affects your removal cost
             </p>
             <ul className="mt-4 space-y-3">
               {priceDrivers.map((driver) => (
                 <li key={driver} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/25">
+                  <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red">
                     <CheckIcon className="h-3.5 w-3.5 text-white" strokeWidth={3} />
                   </span>
                   <span className="text-sm leading-relaxed text-white">{driver}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-xs text-white/70">
+            <p className="mt-5 text-xs text-white/85">
               Published prices exclude VAT and are subject to VAT at 20%.
             </p>
           </div>

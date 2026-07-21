@@ -68,56 +68,56 @@ const itemTypes = [
   {
     title: "Sofas and Armchairs",
     desc: "Full two-man carry, wrapped and protected in transit. From £60 plus VAT.",
-    img: "/images/brand/single-item-delivery.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/single-item-delivery.webp",
     alt: "Removals Nationwide team delivering a sofa in London",
     specialist: false,
   },
   {
     title: "Beds and Mattresses",
     desc: "Bed frames dismantled and reassembled at the destination. Mattresses wrapped.",
-    img: "/images/brand/single-item-delivery.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/single-item-delivery.webp",
     alt: "Removals Nationwide team carrying a bed for single item delivery in London",
     specialist: false,
   },
   {
     title: "Wardrobes and Cabinets",
     desc: "Large wardrobes dismantled if needed, transported safely, reassembled at the new address.",
-    img: "/images/brand/single-item-delivery.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/single-item-delivery.webp",
     alt: "Removals Nationwide moving a large wardrobe in London",
     specialist: false,
   },
   {
     title: "White Goods and Appliances",
     desc: "Washing machines, fridges, dryers and dishwashers. Two-man team, transit protection included.",
-    img: "/images/brand/professional-packing.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/professional-packing.webp",
     alt: "Removals Nationwide delivering a white goods appliance in London",
     specialist: false,
   },
   {
     title: "Pianos and Specialist Items",
     desc: "Specialist handling required. Contact us with the item details for an accurate quote.",
-    img: "/images/brand/office-removals.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/office-removals.webp",
     alt: "Removals Nationwide handling a specialist item for single item delivery",
     specialist: true,
   },
   {
     title: "Antiques and Fragile Items",
     desc: "Packing and cushioning used throughout. Handled with extra care from collection to delivery.",
-    img: "/images/brand/british-home-move.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/british-home-move.webp",
     alt: "Removals Nationwide packing a fragile item for single item delivery in London",
     specialist: false,
   },
   {
     title: "IKEA and Flat-Pack Furniture",
     desc: "We collect from any retailer and assemble at the destination. Item must be bought in advance.",
-    img: "/images/brand/british-removal-crew.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/british-removal-crew.webp",
     alt: "Removals Nationwide collecting flat-pack furniture for delivery in London",
     specialist: false,
   },
   {
     title: "eBay and Gumtree Pickup-Only",
     desc: "We collect pickup-only buys across London and deliver same or next day with proof of delivery.",
-    img: "/images/brand/british-removal-van.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/british-removal-van.webp",
     alt: "Removals Nationwide collecting an eBay pickup-only item in London",
     specialist: false,
   },
@@ -411,7 +411,7 @@ export default async function SingleItemPage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/brand/single-item-delivery.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/single-item-delivery.webp"
                   alt="Removals Nationwide single-item and marketplace delivery"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -505,7 +505,7 @@ export default async function SingleItemPage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/images/brand/british-removal-crew.webp"
+                src="https://media.removalsnationwide.uk/public/images/brand/british-removal-crew.webp"
                 alt="Removals Nationwide team loading a single item onto a removal van in London"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -696,7 +696,7 @@ export default async function SingleItemPage() {
           <div data-reveal data-delay="1" className="relative order-2 lg:order-1">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/images/brand/professional-packing.webp"
+                src="https://media.removalsnationwide.uk/public/images/brand/professional-packing.webp"
                 alt="Removals Nationwide secure warehouse for online sellers in London"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

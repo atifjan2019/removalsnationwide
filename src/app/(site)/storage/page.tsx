@@ -389,7 +389,7 @@ export default async function LondonStoragePage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/brand/secure-storage.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/secure-storage.webp"
                   alt="Secure containerised storage facility operated by Removals Nationwide"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -498,7 +498,7 @@ export default async function LondonStoragePage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/images/brand/secure-storage.webp"
+                src="https://media.removalsnationwide.uk/public/images/brand/secure-storage.webp"
                 alt="Professional removal crew helping a London customer with managed storage and collection service"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

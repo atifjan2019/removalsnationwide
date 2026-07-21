@@ -67,7 +67,7 @@ const crates = [
     badge: "Office and home",
     badgeClass: "bg-brand-red",
     use: "Files, documents, folders, books, reports and CDs. The standard choice for office moves and document-heavy relocations. Integral lid, waterproof, sealable with security locks.",
-    img: "/images/brand/secure-storage.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/secure-storage.webp",
     imgAlt: "LC3 lidded plastic crate for office and home moving, supplied by Removals Nationwide",
   },
   {
@@ -79,7 +79,7 @@ const crates = [
     badge: "IT and tech",
     badgeClass: "bg-brand-navy",
     use: "Desktop PCs, laptops, monitors, servers, keyboards, mice and headsets. Tough polypropylene construction provides extra protection in transit and during storage.",
-    img: "/images/brand/secure-storage.webp",
+    img: "https://media.removalsnationwide.uk/public/images/brand/secure-storage.webp",
     imgAlt: "IT plastic crate for moving computer equipment and tech, supplied by Removals Nationwide",
   },
 ];
@@ -357,7 +357,7 @@ export default async function CrateHirePage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/brand/secure-storage.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/secure-storage.webp"
                   alt="Plastic lidded LC3 and IT moving crates for nationwide hire"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -470,7 +470,7 @@ export default async function CrateHirePage() {
           <div data-reveal data-delay="1" className="relative">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/images/brand/secure-storage.webp"
+                src="https://media.removalsnationwide.uk/public/images/brand/secure-storage.webp"
                 alt="Removals Nationwide team preparing crates for a London office move"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

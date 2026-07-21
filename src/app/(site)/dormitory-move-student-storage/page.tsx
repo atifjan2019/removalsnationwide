@@ -282,7 +282,7 @@ export default async function DormitoryMoveStudentStoragePage() {
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
-                  src="/images/brand/professional-packing.webp"
+                  src="https://media.removalsnationwide.uk/public/images/brand/professional-packing.webp"
                   alt="Removals Nationwide crew packing a student dormitory room in London"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

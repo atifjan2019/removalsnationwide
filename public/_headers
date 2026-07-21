@@ -1,0 +1,24 @@
+# Cloudflare Workers Static Assets header rules (same format as Pages).
+# These apply to files served by the ASSETS binding — i.e. everything OpenNext
+# copies into .open-next/assets, which is /public plus Next's /_next/static
+# output. Dynamic (Worker-rendered) responses keep the Cache-Control that
+# Next.js sets per route and are unaffected by this file.
+
+# Content-hashed build assets (JS, CSS, media). The filename hash changes
+# whenever the bytes change, so a given URL is safe to cache forever. This is
+# the fix for crawl-budget waste: Googlebot and browsers stop re-downloading
+# unchanged framework/vendor chunks on every visit.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Brand imagery is versioned by filename (an updated image ships under a new
+# name, as the hero WebP conversions did), so long-term immutable caching is
+# safe here too.
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Root static assets that change rarely.
+/favicon.ico
+  Cache-Control: public, max-age=2592000
+/*.svg
+  Cache-Control: public, max-age=2592000, immutable

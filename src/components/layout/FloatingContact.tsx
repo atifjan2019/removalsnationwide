@@ -19,7 +19,7 @@ export default function FloatingContact({
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
+    <div className="fixed bottom-[calc(env(safe-area-inset-bottom)+5rem)] right-5 z-40 flex flex-col items-end gap-3 sm:bottom-5">
       <button
         type="button"
         aria-label="Back to top"
