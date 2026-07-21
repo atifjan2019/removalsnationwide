@@ -10,30 +10,48 @@ export default function FloatingContact({
   whatsapp: { href: string; label: string };
 }) {
   const [showTop, setShowTop] = useState(false);
-  // On small screens the FAB is lifted above the sticky mobile bar, which places
-  // it over the right edge of the content column, so it can cover body text.
-  // It defaults to HIDDEN — matching "at the top of the page" — so it never
-  // covers first-screen intro text on initial paint (before any scroll event
-  // fires). It stays hidden in the top region (where page intros live) and while
-  // scrolling DOWN; a deliberate scroll-up further down the page reveals it.
-  // Disabled at lg+, where centred content leaves wide gutters clear of the FAB.
-  const [hidden, setHidden] = useState(true);
+  // Visibility model (small screens only; the FAB is always shown at lg+ where
+  // the centred content leaves clear gutters):
+  //   - Visible by default and whenever the page is at rest, near the top, or
+  //     being scrolled UP.
+  //   - Hidden ONLY while the reader is actively scrolling DOWN, so it isn't
+  //     dragged across the text being read.
+  //   - A short idle timer ALWAYS returns it to visible once scrolling stops,
+  //     so it can never get stuck off-screen.
+  // This is deterministic: the resting state is always "visible", independent of
+  // page length, hydration timing, or a browser-restored scroll position — the
+  // two failure modes (stuck-hidden on short pages, and the reload race) both
+  // came from gating visibility on `innerHeight`/the mount-time scrollY, which
+  // this no longer does.
+  const [hidden, setHidden] = useState(false);
   const lastY = useRef(0);
+  const idle = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     lastY.current = window.scrollY;
-    const onScroll = () => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
       const y = window.scrollY;
-      setShowTop(y > 600);
+      setShowTop(y > 500);
       const dy = y - lastY.current;
-      if (Math.abs(dy) >= 6) {
-        setHidden(y < window.innerHeight * 0.6 || dy > 0);
-        lastY.current = y;
-      }
+      lastY.current = y;
+      if (dy > 4) setHidden(true); // actively scrolling down
+      else if (dy < -4) setHidden(false); // scrolling up
+      // Guarantee a return to visible shortly after scrolling stops.
+      clearTimeout(idle.current);
+      idle.current = setTimeout(() => setHidden(false), 450);
     };
-    onScroll();
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update(); // sync showTop for any browser-restored scroll position
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+      clearTimeout(idle.current);
+    };
   }, []);
 
   return (

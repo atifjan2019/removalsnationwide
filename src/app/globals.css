@@ -128,6 +128,18 @@
   transform: translateY(-2px);
 }
 
+/* Keep body prose clear of the fixed WhatsApp / back-to-top FAB (bottom-right,
+   mobile only). The FAB floats over the right of the content column, so reserve
+   space on the reading-width prose classes — used on text, not on card grids —
+   so a visible FAB can never cover trailing words or price values. On mobile
+   these max-widths already exceed the viewport, so this only adds the gutter;
+   at lg+ the FAB sits in the layout gutter and no reservation is needed. */
+@media (max-width: 1023px) {
+  main :is(.max-w-2xl, .max-w-3xl, .max-w-4xl, .hero-anim-sub) {
+    padding-right: 4.5rem;
+  }
+}
+
 /* Reduced motion — highest priority, always wins */
 @media (prefers-reduced-motion: reduce) {
   [data-mv-prices] .sm\:hidden > div {
