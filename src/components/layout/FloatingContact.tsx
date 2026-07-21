@@ -11,11 +11,13 @@ export default function FloatingContact({
 }) {
   const [showTop, setShowTop] = useState(false);
   // On small screens the FAB is lifted above the sticky mobile bar, which places
-  // it over the right edge of the content column. Hide it while the reader
-  // scrolls DOWN through the page so it never covers body text / price values,
-  // and reveal it on scroll-up or near the top. Disabled at lg+ (there the
-  // content is centred with wide gutters, so the FAB sits clear of the text).
-  const [hidden, setHidden] = useState(false);
+  // it over the right edge of the content column, so it can cover body text.
+  // It defaults to HIDDEN — matching "at the top of the page" — so it never
+  // covers first-screen intro text on initial paint (before any scroll event
+  // fires). It stays hidden in the top region (where page intros live) and while
+  // scrolling DOWN; a deliberate scroll-up further down the page reveals it.
+  // Disabled at lg+, where centred content leaves wide gutters clear of the FAB.
+  const [hidden, setHidden] = useState(true);
   const lastY = useRef(0);
 
   useEffect(() => {
@@ -23,10 +25,11 @@ export default function FloatingContact({
     const onScroll = () => {
       const y = window.scrollY;
       setShowTop(y > 600);
-      if (y < 160) setHidden(false); // near the top: always visible
-      else if (y > lastY.current + 6) setHidden(true); // scrolling down
-      else if (y < lastY.current - 6) setHidden(false); // scrolling up
-      lastY.current = y;
+      const dy = y - lastY.current;
+      if (Math.abs(dy) >= 6) {
+        setHidden(y < window.innerHeight * 0.6 || dy > 0);
+        lastY.current = y;
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
