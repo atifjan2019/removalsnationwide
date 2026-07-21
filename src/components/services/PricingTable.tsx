@@ -77,7 +77,9 @@ export default function PricingTable({ columns, rows, className = "" }: Props) {
             </p>
             <dl className="divide-y divide-black/5">
               {row.values.map((value, i) => (
-                <div key={dataColumns[i] ?? i} className="flex items-center justify-between px-5 py-3">
+                // Extra right padding keeps the value clear of the fixed WhatsApp
+                // FAB, which floats over the right edge on mobile.
+                <div key={dataColumns[i] ?? i} className="flex items-center justify-between py-3 pl-5 pr-16">
                   <dt className="text-sm font-semibold text-brand-navy">{dataColumns[i]}</dt>
                   <dd className="text-base font-medium text-brand-charcoal">{value}</dd>
                 </div>
