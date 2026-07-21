@@ -23,7 +23,11 @@ export default function ServiceCard({ title, description, href, Icon }: Service)
         href={href}
         className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-red transition group-hover:gap-2.5"
       >
+        {/* Visible text stays compact; the sr-only suffix gives each link a
+            unique, descriptive accessible name (WCAG 2.4.4) and crawlable anchor
+            text without repeating "View More" identically across cards. */}
         View More
+        <span className="sr-only"> about {title}</span>
         <ArrowRight className="h-4 w-4" />
       </Link>
     </article>

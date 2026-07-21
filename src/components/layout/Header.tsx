@@ -101,9 +101,12 @@ export default function Header({ logoUrl = "" }: { logoUrl?: string }) {
       </div>
 
       {/* Mobile drawer */}
+      {/* `inert` (not aria-hidden) while closed: it removes the whole subtree
+          from the a11y tree AND from the tab order, so the nav links/buttons
+          inside are never focusable behind an aria-hidden ancestor. */}
       <div
         className={`fixed inset-0 z-50 lg:hidden ${mobileOpen ? "" : "pointer-events-none"}`}
-        aria-hidden={!mobileOpen}
+        inert={!mobileOpen}
       >
         <div
           className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${

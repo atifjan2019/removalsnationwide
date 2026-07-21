@@ -91,7 +91,12 @@ export default function HomepageHero() {
               src={slide.src}
               alt={slide.alt}
               fill
+              // First slide is the LCP candidate: priority => eager loading + a
+              // discoverable <link rel="preload"> in the SSR HTML; fetchPriority
+              // "high" marks it as the top-priority fetch. (priority already
+              // forces eager, so no explicit loading prop.)
               priority={i === 0}
+              fetchPriority={i === 0 ? "high" : "auto"}
               sizes="100vw"
               className="object-cover"
               style={{ objectPosition: "65% center" }}
@@ -160,10 +165,13 @@ export default function HomepageHero() {
         <ChevronRight className="h-5 w-5" />
       </button>
 
-      {/* ── Dot indicators ── */}
+      {/* ── Dot indicators ──
+           Each control is a >=24x24px touch target (WCAG 2.5.8) wrapping a
+           smaller visual pill, so the tap area is accessible while the dots stay
+           visually compact. */}
       <div
         aria-label="Slide navigation"
-        className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2"
+        className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1"
       >
         {SLIDES.map((slide, i) => (
           <button
@@ -172,12 +180,16 @@ export default function HomepageHero() {
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === current}
-            className={`h-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none ${
-              i === current
-                ? "w-7 bg-white"
-                : "w-2.5 bg-white/50 hover:bg-white/80 focus-visible:bg-white/80"
-            }`}
-          />
+            className="group flex h-6 w-6 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+          >
+            <span
+              className={`block h-2.5 rounded-full transition-all duration-300 motion-reduce:transition-none ${
+                i === current
+                  ? "w-5 bg-white"
+                  : "w-2.5 bg-white/60 group-hover:bg-white/90"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </section>

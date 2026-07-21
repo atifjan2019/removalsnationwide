@@ -59,19 +59,22 @@ export default function StatsCounter() {
       <div className="mx-auto max-w-[88rem] px-4">
         <dl className="grid grid-cols-2 gap-y-10 gap-x-6 lg:grid-cols-4">
           {stats.map((stat) => (
+            // Each group holds only <dt>/<dd> (valid inside <dl>); dt precedes
+            // its dd(s) in the DOM. Flex `order` keeps the original visual
+            // layout (number on top, label below, sublabel last).
             <div key={stat.label} className="flex flex-col items-center text-center">
-              <dd className="text-4xl font-bold tracking-tight text-brand-red sm:text-5xl">
+              <dt className="order-2 mt-2 text-sm font-semibold uppercase tracking-widest text-white">
+                {stat.label}
+              </dt>
+              <dd className="order-1 text-4xl font-bold tracking-tight text-brand-red sm:text-5xl">
                 {stat.numeric !== undefined ? (
                   <CountUp target={stat.numeric} suffix={stat.suffix} />
                 ) : (
                   stat.value
                 )}
               </dd>
-              <dt className="mt-2 text-sm font-semibold uppercase tracking-widest text-white">
-                {stat.label}
-              </dt>
               {stat.sublabel && (
-                <p className="mt-1 text-xs text-white/55">{stat.sublabel}</p>
+                <dd className="order-3 mt-1 text-xs font-normal text-white/55">{stat.sublabel}</dd>
               )}
             </div>
           ))}

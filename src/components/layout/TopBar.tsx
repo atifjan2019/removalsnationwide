@@ -4,7 +4,7 @@ import type { ResolvedSettings } from "@/lib/settings";
 export default function TopBar({ settings }: { settings: ResolvedSettings }) {
   const { phones } = settings;
   return (
-    <div className="bg-brand-red text-white">
+    <div className="bg-brand-navy text-white">
       <div className="mx-auto flex max-w-[88rem] flex-col items-center gap-2 px-4 py-2 text-center text-[11px] font-medium tracking-wide sm:text-xs lg:flex-row lg:justify-between lg:text-left">
         <p className="uppercase tracking-[0.12em]">
           Nationwide and International Removals and Storage
