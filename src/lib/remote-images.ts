@@ -1,4 +1,7 @@
 export const REMOTE_IMAGES = {
+  londonHouseMove: "/images/brand/london-house-removals-hero.png",
+  londonOfficeRelocation: "/images/brand/london-office-relocation-hero.png",
+  professionalPackingHero: "/images/brand/professional-packing-hero.png",
   movingVan: "/images/brand/british-removal-van.webp",
   moversLoading: "/images/brand/british-removal-crew.webp",
   homeMove: "/images/brand/british-home-move.webp",
@@ -18,6 +21,9 @@ export const REMOTE_IMAGES = {
 } as const;
 
 export const REMOVALS_GALLERY = [
+  { src: REMOTE_IMAGES.londonHouseMove, alt: "Professional movers loading a removal van on a London residential street" },
+  { src: REMOTE_IMAGES.londonOfficeRelocation, alt: "Office relocation crew transporting protected furniture in London" },
+  { src: REMOTE_IMAGES.professionalPackingHero, alt: "Removal specialists carefully packing belongings in a London home" },
   { src: REMOTE_IMAGES.movingVan, alt: "Branded removal van on a London residential street" },
   { src: REMOTE_IMAGES.moversLoading, alt: "Professional movers carrying protected furniture from a London home" },
   { src: REMOTE_IMAGES.homeMove, alt: "Mover checking an inventory in a prepared British home" },

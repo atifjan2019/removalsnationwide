@@ -1,6 +1,8 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 const equipment = [
   "Furniture hoists for properties without safe stair access",
@@ -57,24 +59,37 @@ export default function SpecialistSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl bg-white p-8 shadow-sm">
-            <h3 className="text-lg font-bold uppercase tracking-wide text-brand-navy">
-              Specialist equipment we use
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {equipment.map((e) => (
-                <li key={e} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
-                    <CheckIcon className="h-4 w-4" strokeWidth={3} />
-                  </span>
-                  <span className="text-sm leading-relaxed text-brand-charcoal/90">{e}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8">
-              <Button href="/packing-service" variant="red" size="md">
-                Specialist Packing and Removals
-              </Button>
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={REMOTE_IMAGES.sofa}
+                  alt="Movers carefully handling a specialist high-value item of furniture"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="rounded-2xl bg-white p-8 shadow-sm">
+              <h3 className="text-lg font-bold uppercase tracking-wide text-brand-navy">
+                Specialist equipment we use
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {equipment.map((e) => (
+                  <li key={e} className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
+                      <CheckIcon className="h-4 w-4" strokeWidth={3} />
+                    </span>
+                    <span className="text-sm leading-relaxed text-brand-charcoal/90">{e}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <Button href="/packing-service" variant="red" size="md">
+                  Specialist Packing and Removals
+                </Button>
+              </div>
             </div>
           </div>
         </div>

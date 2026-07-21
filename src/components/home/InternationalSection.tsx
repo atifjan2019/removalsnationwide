@@ -1,6 +1,8 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 const services = [
   "Export-standard packing for long-distance transit",
@@ -20,7 +22,7 @@ export default function InternationalSection() {
       aria-labelledby="international-heading"
     >
       <div className="mx-auto max-w-[88rem] px-4">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center" data-reveal>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start" data-reveal>
           <div>
             <SectionHeading
               align="left"
@@ -60,20 +62,33 @@ export default function InternationalSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
-            <h3 className="text-lg font-bold uppercase tracking-wide text-white">
-              International service includes
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {services.map((s) => (
-                <li key={s} className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
-                    <CheckIcon className="h-4 w-4" strokeWidth={3} />
-                  </span>
-                  <span className="text-sm leading-relaxed text-white/85">{s}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="space-y-6">
+            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-sm">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={REMOTE_IMAGES.london}
+                  alt="Removals Nationwide van loaded for a European and international removal"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8">
+              <h3 className="text-lg font-bold uppercase tracking-wide text-white">
+                International service includes
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {services.map((s) => (
+                  <li key={s} className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white">
+                      <CheckIcon className="h-4 w-4" strokeWidth={3} />
+                    </span>
+                    <span className="text-sm leading-relaxed text-white/85">{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

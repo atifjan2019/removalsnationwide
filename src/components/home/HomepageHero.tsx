@@ -9,16 +9,16 @@ type Slide = { src: string; alt: string };
 
 const SLIDES: Slide[] = [
   {
-    src: REMOTE_IMAGES.movingVan,
-    alt: "Removal van loaded and ready for a nationwide house move",
+    src: REMOTE_IMAGES.londonHouseMove,
+    alt: "Professional movers loading a removal van on a London residential street",
   },
   {
-    src: REMOTE_IMAGES.moversLoading,
-    alt: "Professional movers loading furniture for transport",
+    src: REMOTE_IMAGES.londonOfficeRelocation,
+    alt: "Office relocation crew transporting protected furniture in London",
   },
   {
-    src: REMOTE_IMAGES.homeMove,
-    alt: "Moving boxes being prepared inside a home",
+    src: REMOTE_IMAGES.professionalPackingHero,
+    alt: "Removal specialists carefully packing belongings in a London home",
   },
 ];
 

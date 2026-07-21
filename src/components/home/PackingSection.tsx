@@ -1,6 +1,8 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 const materials = [
   "Double-walled moving boxes",
@@ -73,6 +75,17 @@ export default function PackingSection() {
             </ul>
           </div>
           <div className="flex flex-col gap-4">
+            <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={REMOTE_IMAGES.movingBoxes}
+                  alt="Professional packing service wrapping and boxing fragile household items"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
             <p className="text-base leading-relaxed text-brand-charcoal/85">
               Packing is available as an add-on to any house, office or man and van booking.
               Materials are ordered based on your survey or estimated volume and delivered to

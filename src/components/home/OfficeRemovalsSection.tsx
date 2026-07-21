@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { CheckIcon, ArrowRight } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 const features = [
   "Pre-move planning and project management",
@@ -49,7 +51,18 @@ export default function OfficeRemovalsSection() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold uppercase tracking-wide text-white">
+            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-sm">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={REMOTE_IMAGES.officeMove}
+                  alt="Office removals team relocating business furniture and IT equipment"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <h3 className="mt-8 text-lg font-bold uppercase tracking-wide text-white">
               What the service includes
             </h3>
             <ul className="mt-5 space-y-3">

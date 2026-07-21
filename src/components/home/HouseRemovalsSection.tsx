@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 const propertyTypes = [
   "Studio flats and bedsits",
@@ -57,7 +59,18 @@ export default function HouseRemovalsSection() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-brand-navy">Property types we cover</h3>
+            <div className="overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={REMOTE_IMAGES.homeMove}
+                  alt="Removals Nationwide crew completing a professional house move in the UK"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <h3 className="mt-8 text-lg font-bold text-brand-navy">Property types we cover</h3>
             <ul className="mt-4 space-y-3">
               {propertyTypes.map((type) => (
                 <li key={type} className="flex items-start gap-3">

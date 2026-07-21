@@ -1,6 +1,8 @@
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import { CheckIcon } from "@/components/ui/icons";
+import { REMOTE_IMAGES } from "@/lib/remote-images";
 
 const manAndVanSuits = [
   "Moving the contents of a bedsit or one room",
@@ -40,6 +42,18 @@ export default function ManAndVanSection() {
           and short-distance local moves where a full removal crew is excessive and
           unnecessary.
         </p>
+
+        <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+          <div className="relative aspect-[21/9] w-full">
+            <Image
+              src={REMOTE_IMAGES.moversLoading}
+              alt="Man and van crew loading protected furniture into a Removals Nationwide Luton van"
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover"
+            />
+          </div>
+        </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border border-brand-red/20 bg-brand-grey p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" data-reveal data-delay="1">

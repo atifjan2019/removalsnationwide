@@ -34,22 +34,14 @@ export default function BrandLogo({
   }
 
   return (
-    <span className={`inline-flex items-center gap-2 ${className}`} aria-hidden="true">
-      <span
-        className={`${compact ? "h-9 w-9 text-base" : "h-11 w-11 text-xl"} flex shrink-0 items-center justify-center rounded-lg bg-brand-red font-heading font-black text-white`}
-      >
-        RN
-      </span>
-      <span className="flex flex-col text-left font-heading font-black uppercase leading-none">
-        <span className={`${compact ? "text-base" : "text-lg"} tracking-[-0.04em] text-black`}>
-          Removals
-        </span>
-        <span
-          className={`${compact ? "text-[0.58rem]" : "text-[0.68rem]"} mt-0.5 tracking-[0.18em] text-brand-red`}
-        >
-          Nationwide
-        </span>
-      </span>
+    <span className={`inline-flex items-center ${className}`}>
+      {/* The bundled logo is the default; an admin-uploaded logo can still override it. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/brand/removals-nationwide-logo.png"
+        alt="Removals Nationwide"
+        className={`${compact ? "h-9 max-w-[150px]" : "h-12 max-w-[210px]"} w-auto object-contain`}
+      />
     </span>
   );
 }
