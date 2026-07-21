@@ -1,10 +1,27 @@
+import type { ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
+import { slugify } from "@/lib/slug";
+
+/** Flatten a rendered markdown node to plain text (for heading anchor slugs). */
+function toText(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(toText).join("");
+  if (node && typeof node === "object" && "props" in node) {
+    return toText((node as { props: { children?: ReactNode } }).props.children);
+  }
+  return "";
+}
 
 const components: Components = {
   h2: ({ children }) => (
-    <h2 className="mt-10 text-2xl font-bold text-brand-navy">{children}</h2>
+    <h2
+      id={slugify(toText(children))}
+      className="mt-10 scroll-mt-28 text-2xl font-bold text-brand-navy"
+    >
+      {children}
+    </h2>
   ),
   h3: ({ children }) => (
     <h3 className="mt-8 text-xl font-bold text-brand-navy">{children}</h3>

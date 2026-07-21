@@ -49,8 +49,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   addressLine:
     "Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA",
   companyName: "Removals Nationwide",
-  companyReg:
-    "© All rights reserved. Registered in England and Wales Company No. 6874216",
+  companyReg: "© All rights reserved.",
   urlFacebook: "https://www.facebook.com/removalsnationwide",
   urlX: "https://x.com/removalsnationwide",
   urlLinkedin: "https://www.linkedin.com/company/removals-nationwide",

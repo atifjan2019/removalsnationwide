@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
+import { slugify } from "@/lib/slug";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import ArticleBody from "@/components/news/ArticleBody";
@@ -371,8 +373,6 @@ _Copyright © Removals Nationwide. All rights reserved_
 
 _Removals Nationwide Ltd t/a Removals Nationwide_
 
-_Registered in England and Wales No. 6874216_
-
 _Registered office:_
 
 _Unit C1A, Purfleet Industrial Park_
@@ -382,6 +382,13 @@ _Kerry Avenue_
 _Aveley, South Ockendon_
 
 _RM15 4YA_`;
+
+/** Clause index for the sticky sidebar, derived from the document's own `##`
+ *  headings so it can never drift out of sync with the copy below. */
+const clauses = [...body.matchAll(/^##\s+(.+?)\s*$/gm)].map((m) => ({
+  title: m[1],
+  id: slugify(m[1]),
+}));
 
 export default function TermsPage() {
   return (
@@ -393,9 +400,70 @@ export default function TermsPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Terms & Conditions" }]}
       />
 
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-4">
-          <ArticleBody markdown={body} />
+      <section className="bg-white py-14 md:py-20">
+        <div className="mx-auto max-w-[88rem] px-4">
+          {/* How-to-use / meta card (page framing, not part of the legal copy) */}
+          <div className="rounded-2xl border border-black/10 bg-brand-sand p-6 md:p-8">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-red">Legal</p>
+            <h2 className="mt-2 text-xl font-bold text-brand-navy sm:text-2xl">
+              How these terms work
+            </h2>
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-brand-charcoal/80">
+              These Terms and Conditions govern every booking with Removals Nationwide. Use the
+              clause index to jump straight to a section. We strongly recommend arranging insurance
+              to cover your goods — we can arrange this for you on request.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
+              <Link
+                href="/privacy-policy"
+                className="text-brand-navy underline underline-offset-2 transition hover:text-brand-red"
+              >
+                Privacy policy
+              </Link>
+              <Link
+                href="/contactus"
+                className="text-brand-navy underline underline-offset-2 transition hover:text-brand-red"
+              >
+                Contact us
+              </Link>
+              <Link
+                href="/bookservice#quick-quote"
+                className="text-brand-red underline underline-offset-2 transition hover:text-brand-navy"
+              >
+                Get a quote
+              </Link>
+            </div>
+          </div>
+
+          {/* Clause index (sticky on desktop) + document */}
+          <div className="mt-10 grid gap-10 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-14">
+            <aside className="lg:sticky lg:top-24 lg:self-start">
+              <p className="text-xs font-bold uppercase tracking-widest text-brand-red">
+                Clause index
+              </p>
+              <nav
+                aria-label="Clause index"
+                className="mt-4 max-h-80 overflow-y-auto rounded-xl border border-black/10 p-2 lg:max-h-[calc(100vh-9rem)] lg:rounded-none lg:border-0 lg:p-0"
+              >
+                <ol className="space-y-0.5">
+                  {clauses.map((c) => (
+                    <li key={c.id}>
+                      <a
+                        href={`#${c.id}`}
+                        className="block rounded-lg px-3 py-2 text-sm leading-snug text-brand-charcoal/75 transition hover:bg-brand-red/5 hover:text-brand-red"
+                      >
+                        {c.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </aside>
+
+            <article className="min-w-0 max-w-3xl">
+              <ArticleBody markdown={body} />
+            </article>
+          </div>
         </div>
       </section>
 

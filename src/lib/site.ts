@@ -22,8 +22,7 @@ export const address = {
 
 export const company = {
   name: "Removals Nationwide",
-  registration:
-    "© All rights reserved. Registered in England and Wales Company No. 6874216",
+  registration: "© All rights reserved.",
 };
 
 export type NavItem = {

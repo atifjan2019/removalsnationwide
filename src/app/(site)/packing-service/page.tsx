@@ -875,9 +875,6 @@ export default async function PackingServicePage() {
                 Company Details
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-white/80">
-                Registered in England and Wales, Company No. 6874216.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-white/80">
                 Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/80">

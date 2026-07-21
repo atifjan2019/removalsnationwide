@@ -944,8 +944,7 @@ export default async function CrateHirePage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-white/50">
-            experienced and fully insured &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp;
-            Registered in England No. 6874216
+            experienced and fully insured &nbsp;&middot;&nbsp; Fully insured
           </p>
           <p className="mt-2 text-xs text-white/40">
             Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA

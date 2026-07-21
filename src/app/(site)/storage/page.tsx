@@ -1075,7 +1075,6 @@ export default async function LondonStoragePage() {
           </div>
           <p className="mt-6 text-sm text-white/50">
             professional experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
-            &nbsp;&middot;&nbsp; Company No. 6874216
           </p>
         </div>
       </section>

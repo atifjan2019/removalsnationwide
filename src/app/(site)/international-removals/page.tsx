@@ -1026,7 +1026,7 @@ export default async function InternationalRemovalsPage() {
             </a>
           </div>
           <p className="mt-6 text-sm text-brand-charcoal/50">
-            experienced in international moving &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Registered in England No. 6874216
+            experienced in international moving &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No obligation
           </p>
         </div>
       </section>
