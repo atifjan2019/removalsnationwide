@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { preconnect, prefetchDNS } from "react-dom";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 
@@ -8,6 +9,11 @@ import { SITE_URL } from "@/lib/seo";
 // CDN. Warming DNS + TLS in the document head means the LCP hero image starts
 // downloading without first paying a fresh connection round-trip.
 const MEDIA_CDN_ORIGIN = "https://media.removalsnationwide.uk";
+
+// GA4 measurement ID. Not a secret — it ships in the client bundle either way,
+// so it lives here rather than in an env var that would have to be set in three
+// places (local, CI, Worker) to keep working.
+const GA_MEASUREMENT_ID = "G-3TFCXS5XBB";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -63,6 +69,10 @@ export default function RootLayout({
       >
         {children}
       </body>
+      {/* gtag.js, loaded after hydration. The component form is used instead of
+          the raw snippet because it also sends a page_view on client-side route
+          changes, which the plain snippet misses on an App Router site. */}
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }
