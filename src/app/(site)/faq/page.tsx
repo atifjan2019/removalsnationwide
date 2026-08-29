@@ -117,7 +117,7 @@ const faqBreadcrumb = breadcrumbLd([
 ]);
 
 export default async function FaqPage() {
-  const { phones } = await getResolvedSettings();
+  const { phones, phonePrimary } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={faqSchema} />
@@ -172,7 +172,7 @@ export default async function FaqPage() {
             Still Have a Question?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
-            Speak to a move coordinator 7 days a week. Call {phones.london.label} or {phones.freephone.label}, or send
+            Speak to a move coordinator 7 days a week. Call {phonePrimary.label}, or send
             your details for a free no-obligation quote.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">

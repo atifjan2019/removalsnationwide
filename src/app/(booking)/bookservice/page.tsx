@@ -32,7 +32,7 @@ export default async function BookAServicePage() {
       <JsonLd data={bookPageSchema} />
       <BookingHeader
         logoUrl={settings.logoUrl}
-        phones={settings.phones}
+        phonePrimary={settings.phonePrimary}
         whatsapp={settings.whatsapp}
         showPhone={settings.showPhone}
       />

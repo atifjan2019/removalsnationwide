@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   // Phone numbers are editable from /admin/settings. Both consumers below are
   // client components, so the values are resolved here and passed down.
-  const { phones } = await getResolvedSettings();
+  const { phones, phoneList } = await getResolvedSettings();
 
   return (
     <>
@@ -122,7 +122,7 @@ export default async function HomePage() {
       <HomeFaqSection />
 
       {/* 19. Final Quote CTA */}
-      <FinalCtaSection phones={phones} />
+      <FinalCtaSection phoneList={phoneList} />
 
       {/* Moving News */}
       <NewsSection />

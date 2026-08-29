@@ -6,13 +6,16 @@
 import { services } from "@/lib/services";
 
 export const phones = {
-  freephone: { label: "0800 046 7877", href: "tel:+448000467877" },
-  london: { label: "020 7205 2525", href: "tel:+442072052525" },
+  // One line, published everywhere. These are the build-time fallbacks; the
+  // live values come from /admin/settings via settings-shared.ts.
+  freephone: { label: "", href: "" },
+  london: { label: "0736 054 4819", href: "tel:+447360544819" },
 };
 
 export const whatsapp = {
-  // Placeholder number — swap for the real WhatsApp Business number later.
-  href: "https://wa.me/442072052525",
+  // Points at the mobile. The old placeholder pointed at a landline, which
+  // cannot receive WhatsApp, so every tap on the button dead-ended.
+  href: "https://wa.me/447360544819",
   label: "Chat with us",
 };
 

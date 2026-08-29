@@ -93,7 +93,7 @@ function LinkList({ links }: { links: { label: string; href: string }[] }) {
 
 /* ── Footer ───────────────────────────────────────── */
 export default function Footer({ settings }: { settings: ResolvedSettings }) {
-  const { phones } = settings;
+  const { phoneList } = settings;
   const socials = socialLinks(settings);
   return (
     <footer className="bg-brand-navy text-white">
@@ -138,26 +138,21 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
           {/* Contact */}
           <div>
             <ColHeading>Contact</ColHeading>
-            {settings.showPhone && <ul className="space-y-1">
-              <li>
-                <a
-                  href={phones.london.href}
-                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-red"
-                >
-                  <PhoneIcon className="h-4 w-4 shrink-0 text-brand-red" />
-                  {phones.london.label}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={phones.freephone.href}
-                  className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-red"
-                >
-                  <PhoneIcon className="h-4 w-4 shrink-0 text-brand-red" />
-                  {phones.freephone.label}
-                </a>
-              </li>
-            </ul>}
+            {settings.showPhone && phoneList.length > 0 && (
+              <ul className="space-y-1">
+                {phoneList.map((phone) => (
+                  <li key={phone.label}>
+                    <a
+                      href={phone.href}
+                      className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 transition hover:text-brand-red"
+                    >
+                      <PhoneIcon className="h-4 w-4 shrink-0 text-brand-red" />
+                      {phone.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
             <address className="mt-3 not-italic text-sm leading-relaxed text-white/60">
               {settings.addressLine}
             </address>

@@ -9,8 +9,8 @@ export const SITE = {
   name: "Removals Nationwide",
   url: SITE_URL,
   logo: "https://media.removalsnationwide.uk/public/images/brand/removals-nationwide-logo.png",
-  telephone: "+442072052525",
-  phones: ["020 7205 2525", "0800 046 7877"],
+  telephone: "+447360544819",
+  phones: ["0736 054 4819"],
   address: {
     street: "Unit C1A Purfleet Industrial Park, Kerry Avenue",
     locality: "Purfleet",
@@ -164,8 +164,11 @@ export const META: Record<string, MetaEntry> = {
   },
   contact: {
     title: "Contact Us | Removals Nationwide UK",
+    // No phone number here on purpose. META is a build-time constant that the
+    // admin Settings page cannot reach, so a number written into it goes stale
+    // the moment the line changes and Google keeps serving the dead one.
     description:
-      "Contact Removals Nationwide by email or phone. Call 020 7205 2525 or 0800 046 7877, or send an enquiry for a free no-obligation quote.",
+      "Contact Removals Nationwide by phone, email or enquiry form for a free no-obligation quote on house, office, man and van, packing and storage moves.",
     path: "/contactus",
   },
   "book-a-service": {
@@ -309,7 +312,7 @@ function e164(label: string): string {
 
 export function organizationLd(settings?: LdSettings) {
   const london = settings ? e164(settings.phones.london.label) : SITE.telephone;
-  const freephone = settings ? e164(settings.phones.freephone.label) : "+448000467877";
+  const freephone = settings ? e164(settings.phones.freephone.label) : "";
   const sameAs = settings
     ? [settings.urlFacebook, settings.urlX, settings.urlLinkedin].filter(
         (u) => u && u.trim() !== "",
@@ -317,11 +320,24 @@ export function organizationLd(settings?: LdSettings) {
     : SITE.sameAs;
 
   return {
-    // CONFIRM: legal/brand name, reviews and footer suggest "Removals Nationwide Ltd", Company No. 6874216; use the registered name
+    // legalName is deliberately absent.
+    //
+    // It used to claim "Removals Nationwide Ltd". No company of that name is on
+    // the Companies House register, so the site was publishing a legal entity
+    // that does not exist — bad for the entity Google builds, and a problem
+    // under the Companies Act disclosure rules.
+    //
+    // Company No. 06874216, cited in the previous comment here, resolves to
+    // TOP REMOVALS LTD, incorporated 8 April 2009, registered office Unit C1a,
+    // Thurrock Commercial Centre, Kerry Avenue, Purfleet, Essex, RM15 4YA —
+    // the same unit and postcode this site publishes. That is almost certainly
+    // the operating company with "Removals Nationwide" as a trading name, but
+    // it is not confirmed, so nothing is asserted rather than asserting wrong.
+    // Once confirmed, restore legalName with the registered name and add the
+    // company number to the footer.
     "@type": "MovingCompany", // inherits LocalBusiness and Organization; no type array needed
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
-    legalName: "Removals Nationwide Ltd",
     url: `${SITE.url}/`,
     logo: SITE.logo,
     // Founded a decade ago by two friends; exact foundingDate omitted until confirmed.
@@ -333,6 +349,9 @@ export function organizationLd(settings?: LdSettings) {
     priceRange: "££", // CONFIRM this reflects reality
     // CONFIRM: add openingHoursSpecification once trading hours are verified; omit rather than guess
     // AggregateRating is omitted because no verified rating data is currently published.
+    // Only numbers that actually exist. An empty freephone previously emitted a
+    // ContactPoint with telephone: "", which is an invalid node, and when both
+    // settings held the same line it published the number twice.
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -341,14 +360,18 @@ export function organizationLd(settings?: LdSettings) {
         areaServed: "GB",
         availableLanguage: "English",
       },
-      {
-        "@type": "ContactPoint",
-        telephone: freephone,
-        contactType: "customer service",
-        contactOption: "TollFree",
-        areaServed: "GB",
-        availableLanguage: "English",
-      },
+      ...(freephone && freephone !== london
+        ? [
+            {
+              "@type": "ContactPoint",
+              telephone: freephone,
+              contactType: "customer service",
+              contactOption: "TollFree",
+              areaServed: "GB",
+              availableLanguage: "English",
+            },
+          ]
+        : []),
     ],
     address: {
       "@type": "PostalAddress",

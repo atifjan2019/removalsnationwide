@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
+import PhoneLinks from "@/components/ui/PhoneLinks";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -306,7 +307,7 @@ const serviceOfferSchema = {
 /* ── Page ───────────────────────────────────────────────────────────── */
 
 export default async function SingleItemPage() {
-  const { phones } = await getResolvedSettings();
+  const { phones, phoneList } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("single-item-deliveries")} />
@@ -1021,22 +1022,7 @@ export default async function SingleItemPage() {
               Book a Service
             </Button>
           </div>
-          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
-            <a
-              href={phones.london.href}
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
-            >
-              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              {phones.london.label}
-            </a>
-            <a
-              href={phones.freephone.href}
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
-            >
-              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              {phones.freephone.label} (freephone)
-            </a>
-          </div>
+          <PhoneLinks phones={phoneList} tone="light" />
           <p className="mt-6 text-sm text-white/50">
             experienced and fully insured &nbsp;&middot;&nbsp; Fully insured
           </p>

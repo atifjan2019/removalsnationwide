@@ -137,7 +137,7 @@ const priceFactors: CheckItem[] = [
 const processSteps = [
   {
     name: "Contact us for a quote",
-    text: "Call 020 7205 2525 or submit the quick quote form. Describe the pickup and delivery addresses, what needs moving and the preferred date. For same-day requests, calling is faster.",
+    text: "Call 0736 054 4819 or submit the quick quote form. Describe the pickup and delivery addresses, what needs moving and the preferred date. For same-day requests, calling is faster.",
   },
   {
     name: "Receive a fixed written quote",
@@ -263,7 +263,7 @@ const faqs: FaqItem[] = [
     answer:
       "Our man and van service starts from £55 per hour with a minimum two-hour booking. The final price depends on crew size, vehicle size, distance, duration and access at both addresses.",
     answerAfter:
-      "Request a free survey or call 020 7205 2525 for a confirmed written quote.",
+      "Request a free survey or call 0736 054 4819 for a confirmed written quote.",
   },
   {
     question: "Is there a minimum booking for a man and van?",
@@ -299,7 +299,7 @@ const faqs: FaqItem[] = [
   {
     question: "Can you come the same day?",
     answer:
-      "Yes, subject to crew and vehicle availability. Same-day and short-notice slots are kept available each day for urgent bookings. To check same-day availability call 020 7205 2525 directly for the fastest response. The online quick quote form is also available; a callback arrives within the hour for short-notice requests.",
+      "Yes, subject to crew and vehicle availability. Same-day and short-notice slots are kept available each day for urgent bookings. To check same-day availability call 0736 054 4819 directly for the fastest response. The online quick quote form is also available; a callback arrives within the hour for short-notice requests.",
   },
   {
     question: "What van size do I need?",

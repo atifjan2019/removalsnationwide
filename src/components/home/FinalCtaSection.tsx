@@ -2,11 +2,7 @@ import Button from "@/components/ui/Button";
 import { PhoneIcon, CheckIcon } from "@/components/ui/icons";
 import type { Phone } from "@/lib/settings";
 
-export default function FinalCtaSection({
-  phones,
-}: {
-  phones: { freephone: Phone; london: Phone };
-}) {
+export default function FinalCtaSection({ phoneList }: { phoneList: Phone[] }) {
   return (
     <section
       id="final-cta"
@@ -52,20 +48,16 @@ export default function FinalCtaSection({
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3">
-          <a
-            href={phones.freephone.href}
-            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-red"
-          >
-            <PhoneIcon className="h-4 w-4" />
-            {phones.freephone.label}
-          </a>
-          <a
-            href={phones.london.href}
-            className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-red"
-          >
-            <PhoneIcon className="h-4 w-4" />
-            {phones.london.label}
-          </a>
+          {phoneList.map((phone) => (
+            <a
+              key={phone.label}
+              href={phone.href}
+              className="flex items-center gap-2 text-sm font-semibold text-white transition hover:text-brand-red"
+            >
+              <PhoneIcon className="h-4 w-4" />
+              {phone.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

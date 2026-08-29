@@ -304,7 +304,7 @@ const packingBreadcrumb = breadcrumbLd([
 /* ── Page component ──────────────────────────────────────────────────────── */
 
 export default async function PackingServicePage() {
-  const { phones } = await getResolvedSettings();
+  const { phoneList, phonePrimary } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={packingServiceSchema} />
@@ -351,8 +351,8 @@ export default async function PackingServicePage() {
               <Button href="/bookservice" variant="navy" size="lg">
                 Book a Service
               </Button>
-              <Button href="tel:02072052525" variant="outline" size="lg">
-                {phones.london.label}
+              <Button href={phonePrimary.href} variant="outline" size="lg">
+                {phonePrimary.label}
               </Button>
             </div>
 
@@ -878,7 +878,7 @@ export default async function PackingServicePage() {
                 Unit C1A Purfleet Industrial Park, Kerry Avenue, Purfleet, RM15 4YA.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/80">
-                {phones.london.label} &nbsp;·&nbsp; {phones.freephone.label}
+                {phoneList.map((p) => p.label).join(" \u00b7 ")}
               </p>
             </div>
           </div>

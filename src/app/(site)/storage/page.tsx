@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
+import PhoneLinks from "@/components/ui/PhoneLinks";
 import {
   buildMetadata,
   serviceH1,
@@ -287,7 +288,7 @@ const orgSchema = {
 /* ------------------------------------------------------------------ */
 
 export default async function LondonStoragePage() {
-  const { phones } = await getResolvedSettings();
+  const { phones, phoneList, phonePrimary } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={serviceLdFor("london-storage")} />
@@ -882,8 +883,7 @@ export default async function LondonStoragePage() {
               </p>
               <p>
                 To arrange collection, redelivery or an access visit, contact your coordinator on{" "}
-                <strong className="text-brand-navy">{phones.london.label}</strong> or{" "}
-                <strong className="text-brand-navy">{phones.freephone.label}</strong>.
+                <strong className="text-brand-navy">{phonePrimary.label}</strong>.
               </p>
               <div className="mt-6 flex flex-wrap gap-4">
                 <Button href="/bookservice" variant="red" size="md">
@@ -937,7 +937,7 @@ export default async function LondonStoragePage() {
                     Phone
                   </dt>
                   <dd className="mt-1 text-brand-charcoal">
-                    {phones.london.label} &nbsp;&middot;&nbsp; {phones.freephone.label}
+                    {phoneList.map((p) => p.label).join(" \u00b7 ")}
                   </dd>
                 </div>
                 <div>
@@ -1057,22 +1057,7 @@ export default async function LondonStoragePage() {
               Book a Service
             </Button>
           </div>
-          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
-            <a
-              href={phones.london.href}
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
-            >
-              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              {phones.london.label}
-            </a>
-            <a
-              href={phones.freephone.href}
-              className="flex items-center gap-2 text-base font-bold text-white transition hover:text-brand-red"
-            >
-              <span aria-hidden="true" className="text-brand-red">&#9742;</span>
-              {phones.freephone.label} (freephone)
-            </a>
-          </div>
+          <PhoneLinks phones={phoneList} tone="light" />
           <p className="mt-6 text-sm text-white/50">
             professional experienced &nbsp;&middot;&nbsp; Fully insured &nbsp;&middot;&nbsp; No minimum term
           </p>

@@ -90,7 +90,7 @@ const serviceItems = [
 const processSteps = [
   {
     name: "Contact us for a quote",
-    text: "Call 020 7205 2525 or submit the quick quote form. Describe the current office address, the destination, the size of the move and any out-of-hours requirements.",
+    text: "Call 0736 054 4819 or submit the quick quote form. Describe the current office address, the destination, the size of the move and any out-of-hours requirements.",
   },
   {
     name: "Book a free on-site survey",
@@ -260,7 +260,7 @@ const faqs: FaqItem[] = [
   {
     question: "Can you move at the weekend or out of hours?",
     answer:
-      "Yes. Out-of-hours and weekend office moves are a core part of the service. Evening and weekend slots allow the move to complete without disrupting business operations or requiring staff downtime during working hours. Confirm availability when you request a quote, or call 020 7205 2525 directly for urgent bookings.",
+      "Yes. Out-of-hours and weekend office moves are a core part of the service. Evening and weekend slots allow the move to complete without disrupting business operations or requiring staff downtime during working hours. Confirm availability when you request a quote, or call 0736 054 4819 directly for urgent bookings.",
   },
   {
     question: "How do you keep business downtime low?",
