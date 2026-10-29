@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export default async function AdminBookingsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string; date?: string }>;
+  searchParams: Promise<{ status?: string; date?: string; booking?: string }>;
 }) {
   const [bookings, query, { env }] = await Promise.all([
     getBookings(),
@@ -22,6 +22,7 @@ export default async function AdminBookingsPage({
       bookings={bookings}
       initialStatus={initialStatus}
       dateFilter={query.date || ""}
+      initialBookingId={query.booking || ""}
       mapsApiKey={env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
     />
   );

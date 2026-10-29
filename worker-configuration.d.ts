@@ -4,6 +4,7 @@
 interface __BaseEnv_Env {
 	MEDIA: R2Bucket;
 	NEXT_INC_CACHE_R2_BUCKET: R2Bucket;
+	UPLOADS: R2Bucket;
 	DB: D1Database;
 	ASSETS: Fetcher;
 	SMTP_HOST: string;

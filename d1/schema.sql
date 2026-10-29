@@ -122,12 +122,51 @@ create table if not exists bookings (
   admin_email_sent integer not null default 0,
   email_checked_at text not null default '',
   created_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
-  updated_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+  updated_at     text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+  -- Move details (see d1/migrations/0006_move_details.sql): the secret in the
+  -- customer's /move-details/ link, their answers as JSON, and the version,
+  -- save id and times the form uses to keep two devices from overwriting each other.
+  details_token        text,
+  details              text,
+  details_version      integer not null default 0,
+  details_save_id      text,
+  details_updated_at   text,
+  details_submitted_at text
 );
 
 create index if not exists bookings_created_at_idx on bookings (created_at desc);
 create index if not exists bookings_status_idx on bookings (status, created_at desc);
 create index if not exists bookings_move_date_idx on bookings (move_date asc);
+create unique index if not exists bookings_details_token_idx
+  on bookings (details_token) where details_token is not null;
+
+-- Photos and documents attached on the move details page. The file itself is
+-- in the private R2 bucket bound as UPLOADS, under r2_key.
+create table if not exists booking_files (
+  id           text primary key,
+  booking_id   text not null,
+  client_id    text,
+  name         text not null,
+  content_type text not null,
+  size         integer not null,
+  is_image     integer not null default 0,
+  thumb        text,
+  r2_key       text not null,
+  created_at   text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+create index if not exists booking_files_booking_idx on booking_files (booking_id);
+create unique index if not exists booking_files_client_idx
+  on booking_files (booking_id, client_id) where client_id is not null;
+create index if not exists booking_files_created_idx on booking_files (created_at, size);
+
+-- The form's ids of files a customer removed; an upload under one is refused.
+create table if not exists booking_files_removed (
+  booking_id text not null,
+  client_id  text not null,
+  removed_at text not null default (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+  primary key (booking_id, client_id)
+);
 
 -- Operational audit trail -----------------------------------
 create table if not exists activity_log (

@@ -52,6 +52,14 @@
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
       "bucket_name": "removals-nationwide-cache"
+    },
+    // Customers' photos and documents from the move details page. Private (no
+    // public domain, unlike MEDIA) and held in the EU: the office opens them
+    // through /api/admin/booking-files/<id>/ while signed in.
+    {
+      "binding": "UPLOADS",
+      "bucket_name": "removals-nationwide-uploads",
+      "jurisdiction": "eu"
     }
   ]
 }

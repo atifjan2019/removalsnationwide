@@ -4,7 +4,7 @@ import { getActivity } from "@/lib/admin-dashboard";
 
 export const dynamic = "force-dynamic";
 
-const eventTypes = ["All Events", "Created", "Deleted", "Email status updated", "Updated", "Customer Deleted", "Abandoned Lead", "Lead Converted", "Settings Updated"];
+const eventTypes = ["All Events", "Created", "Deleted", "Email status updated", "Updated", "Customer Deleted", "Abandoned Lead", "Lead Converted", "Settings Updated", "Move details sent", "Move details emailed", "Details link emailed"];
 const relative = (value: string) => { const days=Math.floor((Date.now()-new Date(value).getTime())/86400000); return days<=0?"Today":days===1?"1d ago":`${days}d ago`; };
 
 export default async function ActivityPage({ searchParams }: { searchParams: Promise<{ search?: string; type?: string }> }) {

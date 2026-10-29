@@ -195,6 +195,11 @@ export default function BookingFunnel({ mapsApiKey }: { mapsApiKey: string }) {
     }
     setBookingId(result.bookingId);
     setStep("success");
+    // Straight on to the move details page, where the customer adds everything
+    // else in one go. A full page load rather than the router: the page must
+    // never be rebuilt from a cached copy, and nothing from this page (its
+    // analytics included) should carry over onto the private one.
+    window.location.assign(`/move-details/${encodeURIComponent(result.detailsToken)}/`);
   };
 
   const futureDates = useMemo(() => {
@@ -485,7 +490,7 @@ export default function BookingFunnel({ mapsApiKey }: { mapsApiKey: string }) {
                 <span className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-red text-4xl font-bold text-white">✓</span>
                 <h2 className="mt-6 text-3xl font-bold text-black">Booking request received</h2>
                 <p className="mt-3 max-w-md text-black/65">
-                  Thank you, {data.fullName.split(" ")[0] || "there"}. Our team will review your move from {data.fromAddress || data.fromPostcode} to {data.toAddress || data.toPostcode} and contact you shortly.
+                  Thank you, {data.fullName.split(" ")[0] || "there"}. Taking you to one last step, where you can tell us about your property and the items you are moving.
                 </p>
                 <p className="mt-4 text-xs text-black/45">Reference: {bookingId}</p>
               </div>

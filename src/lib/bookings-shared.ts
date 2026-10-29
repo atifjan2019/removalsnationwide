@@ -33,6 +33,8 @@ export type Booking = {
   email_checked_at: string;
   created_at: string;
   updated_at: string;
+  /** When the customer sent their move details; null until then. */
+  details_submitted_at: string | null;
 };
 
 export const MOVE_STATUSES = ["New", "Upcoming", "Completed", "Abandoned"] as const;

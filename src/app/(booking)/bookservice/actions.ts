@@ -2,8 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { requireDb } from "@/lib/d1";
-import { sendBookingNotification } from "@/lib/booking-email";
+import { detailsUrlFor, sendBookingNotification } from "@/lib/booking-email";
 import { logActivity } from "@/lib/admin-dashboard";
+import { createDetailsToken } from "@/lib/move-details-server";
 
 const MOVE_TYPES = ["house", "office", "flat", "items"] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -29,7 +30,7 @@ export type BookingInput = {
 };
 
 export type BookingResult =
-  | { success: true; bookingId: string }
+  | { success: true; bookingId: string; detailsToken: string }
   | { success: false; error: string };
 
 const clean = (value: unknown, max = 250) =>
@@ -76,13 +77,17 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
   try {
     const db = await requireDb();
     const bookingId = crypto.randomUUID();
+    // The key to the customer's private move details page, which they are sent
+    // to straight after this and which their confirmation email links to.
+    const detailsToken = createDetailsToken();
     await db
       .prepare(
         `insert into bookings (
            id, full_name, phone, email, move_type, bedrooms,
            from_postcode, to_postcode, from_address, to_address,
-           route_distance, route_duration, move_date, flexible_dates, notes, status
-         ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New')`,
+           route_distance, route_duration, move_date, flexible_dates, notes, status,
+           details_token
+         ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New', ?)`,
       )
       .bind(
         bookingId,
@@ -100,6 +105,7 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
         moveDate,
         input.flexibleDates ? 1 : 0,
         notes,
+        detailsToken,
       )
       .run();
 
@@ -119,6 +125,7 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
       moveDate,
       flexibleDates: input.flexibleDates,
       notes,
+      detailsUrl: detailsUrlFor(detailsToken),
     });
     await db
       .prepare(
@@ -141,7 +148,7 @@ export async function createBooking(input: BookingInput): Promise<BookingResult>
 
     revalidatePath("/admin");
     revalidatePath("/admin/bookings");
-    return { success: true, bookingId };
+    return { success: true, bookingId, detailsToken };
   } catch (error) {
     console.error("Could not create booking", error);
     return {

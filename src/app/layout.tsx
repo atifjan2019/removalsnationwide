@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { preconnect, prefetchDNS } from "react-dom";
 import { Inter, Space_Grotesk } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import SiteAnalytics from "@/components/providers/SiteAnalytics";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 
@@ -71,8 +71,9 @@ export default function RootLayout({
       </body>
       {/* gtag.js, loaded after hydration. The component form is used instead of
           the raw snippet because it also sends a page_view on client-side route
-          changes, which the plain snippet misses on an App Router site. */}
-      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+          changes, which the plain snippet misses on an App Router site.
+          SiteAnalytics leaves it off the private move details pages. */}
+      <SiteAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

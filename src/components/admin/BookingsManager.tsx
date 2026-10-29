@@ -10,6 +10,7 @@ import {
   updateBookingStatus,
 } from "@/app/admin/bookings/actions";
 import { PageHeading, StatusBadge, money, shortDate } from "@/components/admin/AdminPrimitives";
+import MoveDetailsPanel from "@/components/admin/MoveDetailsPanel";
 import { PencilIcon, TrashIcon } from "@/components/admin/Icons";
 import {
   bookingRoute,
@@ -58,9 +59,11 @@ function Field({ label, name, defaultValue = "", type = "text", required = false
   return <label className="block text-xs font-bold uppercase tracking-wide text-slate-500">{label}<input name={name} type={type} defaultValue={defaultValue} required={required} className={fieldClass} /></label>;
 }
 
-export default function BookingsManager({ bookings, initialStatus, dateFilter, mapsApiKey }: { bookings: Booking[]; initialStatus: MoveStatus | "All"; dateFilter: string; mapsApiKey: string }) {
+export default function BookingsManager({ bookings, initialStatus, dateFilter, mapsApiKey, initialBookingId = "" }: { bookings: Booking[]; initialStatus: MoveStatus | "All"; dateFilter: string; mapsApiKey: string; initialBookingId?: string }) {
   const [filter, setFilter] = useState<MoveStatus | "All">(initialStatus);
-  const [selected, setSelected] = useState<Booking | null>(null);
+  // Opened straight away when the page is reached from the "move details
+  // received" email, which links to ?booking=<id>.
+  const [selected, setSelected] = useState<Booking | null>(() => bookings.find((booking) => booking.id === initialBookingId) ?? null);
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState(false);
   const mounted = useSyncExternalStore(subscribeToClient, () => true, () => false);
@@ -119,7 +122,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter, m
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Route</span><span className="mt-1 block line-clamp-2 text-sm font-medium text-slate-700">{route.from} <span className="text-brand-red">→</span> {route.to}</span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Type & size</span><span className="mt-1 block text-sm font-semibold text-slate-700">{moveLabels[booking.move_type] || booking.move_type} • {sizeLabel(booking)}</span><span className="mt-1 block text-xs text-slate-500">{shortDate(booking.move_date)}</span></span>
             <span><span className="block text-[10px] font-bold uppercase tracking-widest text-slate-400">Contact</span><span className="mt-1 block text-sm text-slate-700">{booking.phone || "Not provided"}</span><span className="block truncate text-xs text-slate-500">{booking.email || "Not provided"}</span></span>
-            <span className="justify-self-start lg:justify-self-end"><StatusBadge status={status} /></span>
+            <span className="flex flex-wrap items-center gap-2 justify-self-start lg:justify-self-end">{booking.details_submitted_at && <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">Details sent</span>}<StatusBadge status={status} /></span>
           </button>
         ); })}
         {!filtered.length && <div className="rounded-2xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-500">No moves match this filter.</div>}
@@ -183,6 +186,7 @@ export default function BookingsManager({ bookings, initialStatus, dateFilter, m
                   <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Customer</h3><p className="mt-4 font-semibold">{active.full_name}</p><p className="mt-1 text-sm text-slate-500">{active.phone || "Not provided"}</p><p className="text-sm text-slate-500">{active.email || "Not provided"}</p></section>
                   <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Details</h3><p className="mt-4 text-sm text-slate-600">{moveLabels[active.move_type]} • {sizeLabel(active)}</p><p className="mt-1 text-sm text-slate-600">{shortDate(active.move_date)}</p><p className="mt-3 font-semibold">{money(active.quote)} revenue</p></section>
                 </div>
+                <MoveDetailsPanel key={active.id} bookingId={active.id} email={active.email} />
                 <section className="rounded-2xl border border-slate-200 bg-white p-5"><h3 className="font-bold">Logistics</h3><div className="mt-4 grid gap-4 sm:grid-cols-2"><div><p className="text-xs font-bold uppercase text-slate-400">Pickup</p><p className="mt-1 text-sm">{bookingRoute(active).from}</p></div><div><p className="text-xs font-bold uppercase text-slate-400">Drop-off</p><p className="mt-1 text-sm">{bookingRoute(active).to}</p></div></div></section>
                 <section className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="flex flex-wrap items-center justify-between gap-4">

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
-import { sendBookingNotification } from "@/lib/booking-email";
+import { detailsUrlFor, sendBookingNotification, sendMoveDetailsLink } from "@/lib/booking-email";
 import {
   bookingStatus,
   MOVE_STATUSES,
@@ -11,6 +11,12 @@ import {
   type MoveStatus,
 } from "@/lib/bookings";
 import { requireDb } from "@/lib/d1";
+import {
+  deleteBookingFiles,
+  DETAILS_LINK_EVENT,
+  getBookingMoveDetails,
+  type BookingMoveDetails,
+} from "@/lib/move-details-server";
 
 const MOVE_TYPES = ["house", "flat", "office", "items"];
 const clean = (formData: FormData, key: string, max = 500) =>
@@ -117,6 +123,8 @@ export async function resendBookingEmails(
   const db = await requireDb();
   const booking = await db.prepare("select * from bookings where id=?").bind(id).first<Booking>();
   if (!booking) throw new Error("Move not found.");
+  // Also gives a booking from before move details existed its link.
+  const moveDetails = await getBookingMoveDetails(id);
   const routeDistance = String(browserRoute?.distance ?? booking.route_distance).trim().slice(0, 80);
   const routeDuration = String(browserRoute?.duration ?? booking.route_duration).trim().slice(0, 80);
   if (routeDistance && routeDuration && (!booking.route_distance || !booking.route_duration)) {
@@ -141,6 +149,7 @@ export async function resendBookingEmails(
     moveDate: booking.move_date,
     flexibleDates: Boolean(booking.flexible_dates),
     notes: booking.notes,
+    detailsUrl: moveDetails?.token ? detailsUrlFor(moveDetails.token) : undefined,
   });
   await db
     .prepare(
@@ -175,7 +184,60 @@ export async function deleteBooking(id: string): Promise<void> {
   await assertAdmin();
   const db = await requireDb();
   const booking = await db.prepare("select full_name from bookings where id=?").bind(id).first<{ full_name: string }>();
+  // The customer's photos and documents are personal data: they go with the move.
+  await deleteBookingFiles(id);
   await db.prepare("delete from bookings where id=?").bind(id).run();
   await logActivity("Deleted", `Move deleted${booking?.full_name ? ` for ${booking.full_name}` : ""}`, id);
   refreshAdmin();
+}
+
+export type AdminMoveDetails = BookingMoveDetails & {
+  link: string;
+  linkEmails: { count: number; lastAt: string | null };
+};
+
+/** A booking's move details for Booking Details: the customer's link, answers and files. */
+export async function loadBookingMoveDetails(id: string): Promise<AdminMoveDetails> {
+  await assertAdmin();
+  const data = await getBookingMoveDetails(id);
+  if (!data) throw new Error("Move not found.");
+  const db = await requireDb();
+  const emails = await db
+    .prepare("select count(*) as count, max(created_at) as last_at from activity_log where related_id=? and event_type=?")
+    .bind(id, DETAILS_LINK_EVENT)
+    .first<{ count: number; last_at: string | null }>();
+  return {
+    ...data,
+    link: data.token ? detailsUrlFor(data.token) : "",
+    linkEmails: { count: emails?.count ?? 0, lastAt: emails?.last_at ?? null },
+  };
+}
+
+/**
+ * Emails the customer their move details link on its own. Recorded in the
+ * activity log, without the link, which is the key to their answers.
+ */
+export async function emailMoveDetailsLink(id: string): Promise<{ ok: boolean; message: string }> {
+  await assertAdmin();
+  const db = await requireDb();
+  const booking = await db.prepare("select * from bookings where id=?").bind(id).first<Booking>();
+  if (!booking) return { ok: false, message: "Move not found." };
+  if (!booking.email) return { ok: false, message: "This customer has no email address." };
+  const details = await getBookingMoveDetails(id);
+  if (!details?.token) return { ok: false, message: "This move has no details link." };
+
+  const outcome = await sendMoveDetailsLink({
+    fullName: booking.full_name,
+    email: booking.email,
+    moveType: booking.move_type,
+    fromPostcode: booking.from_postcode,
+    toPostcode: booking.to_postcode,
+    moveDate: booking.move_date,
+    flexibleDates: Boolean(booking.flexible_dates),
+    detailsUrl: detailsUrlFor(details.token),
+  });
+  if (!outcome.sent) return { ok: false, message: `The email was not sent: ${outcome.error}` };
+  await logActivity(DETAILS_LINK_EVENT, `Emailed ${booking.full_name} their move details link`, id);
+  revalidatePath("/admin/activity");
+  return { ok: true, message: `Sent to ${booking.email}.` };
 }

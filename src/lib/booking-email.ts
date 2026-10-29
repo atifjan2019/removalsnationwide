@@ -2,9 +2,15 @@ import "server-only";
 
 import { sendSmtpEmail } from "@/lib/smtp";
 import { getSmtpConfiguration } from "@/lib/smtp-settings";
+import { SITE_URL } from "@/lib/seo";
+import { describeDetails } from "@/lib/move-details";
+import type { SubmittedDetails } from "@/lib/move-details-server";
 
 const ADMIN_EMAIL = "atifjan2019@gmail.com";
 const ADMIN_BOOKINGS_URL = "https://removalsnationwide.uk/admin/bookings/";
+
+/** The customer's private move details page. The token is the key to it. */
+export const detailsUrlFor = (token: string) => `${SITE_URL}/move-details/${encodeURIComponent(token)}/`;
 
 type BookingNotification = {
   bookingId: string;
@@ -22,6 +28,8 @@ type BookingNotification = {
   moveDate: string;
   flexibleDates: boolean;
   notes: string;
+  /** The customer's move details link, put in their email. */
+  detailsUrl?: string;
 };
 
 const moveLabels: Record<string, string> = {
@@ -85,6 +93,16 @@ const routeCard = (collection: string, destination: string) => `
       </td>
     </tr>
   </table>`;
+
+// The button that takes the customer to their move details page. It says
+// plainly that this is not a booking yet: the price and date are agreed first.
+const detailsCallToAction = (detailsUrl: string) => `
+  <div style="margin-top:24px;padding:20px;background:#fff5f5;border:1px solid #fed7d7;border-radius:12px;">
+    <div style="font-size:16px;line-height:23px;color:#17233c;font-weight:800;">One more step: tell us about your move</div>
+    <p style="margin:6px 0 16px;font-size:14px;line-height:22px;color:#4a5870;">Answer a few quick questions about your property, the items you are moving and any photos you can share, all in one place. It takes a couple of minutes and lets us give you an accurate price without the back and forth.</p>
+    <a href="${escapeHtml(detailsUrl)}" style="display:inline-block;padding:13px 22px;background:#d71920;border-radius:9px;color:#ffffff;text-decoration:none;font-size:15px;line-height:20px;font-weight:800;">Add your move details</a>
+    <p style="margin:12px 0 0;font-size:12px;line-height:18px;color:#718096;">This link is private to your move. Please do not share it.</p>
+  </div>`;
 
 const emailShell = (preheader: string, content: string) => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -211,6 +229,14 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
       `Property size: ${bedrooms}`,
       `Move date: ${moveDate}`,
       `Notes: ${notes}`,
+      ...(booking.detailsUrl
+        ? [
+            "",
+            "One more step: tell us about your move. Answer a few quick questions about your property and the items you are moving, and add photos if you can:",
+            booking.detailsUrl,
+            "This link is private to your move. Please do not share it.",
+          ]
+        : []),
       "",
       "Removals Nationwide",
     ].join("\n");
@@ -228,7 +254,8 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
          ${detailRow("Move date", moveDate)}
          ${detailRow("Additional notes", notes, true)}
        </table>
-       <div style="margin-top:24px;padding:17px 18px;background:#fff7e6;border:1px solid #f7dfad;border-radius:10px;font-size:14px;line-height:22px;color:#674b16;"><strong>What happens next?</strong><br>One of our moving specialists will review your request and contact you to confirm the details.</div>`,
+       ${booking.detailsUrl ? detailsCallToAction(booking.detailsUrl) : ""}
+       <div style="margin-top:24px;padding:17px 18px;background:#fff7e6;border:1px solid #f7dfad;border-radius:10px;font-size:14px;line-height:22px;color:#674b16;"><strong>What happens next?</strong><br>One of our moving specialists will review your request and contact you to agree the price and the date. Your move is booked once those are agreed.</div>`,
     );
 
     const smtp = {
@@ -256,7 +283,7 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
               ...smtp,
               to: customerEmail,
               replyTo: ADMIN_EMAIL,
-              subject: `Your booking request is confirmed – #${shortReference}`,
+              subject: `We have received your booking request – #${shortReference}`,
               text: customerText,
               html: customerHtml,
             }),
@@ -292,4 +319,138 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
       errorMessage: error instanceof Error ? error.message.slice(0, 500) : "Unknown email error",
     };
   }
+}
+
+type SmtpSettings = Omit<Parameters<typeof sendSmtpEmail>[0], "to" | "replyTo" | "subject" | "text" | "html">;
+
+/** The SMTP settings, or null where they are not complete enough to send with. */
+async function smtpSettings(): Promise<SmtpSettings | null> {
+  const configuration = await getSmtpConfiguration();
+  const port = Number(configuration.port);
+  if (!configuration.host || !Number.isInteger(port) || !configuration.username || !configuration.password || !configuration.fromEmail) {
+    return null;
+  }
+  return {
+    host: configuration.host,
+    port,
+    username: configuration.username,
+    password: configuration.password,
+    fromEmail: configuration.fromEmail,
+    fromName: configuration.fromName,
+  };
+}
+
+export type EmailOutcome = { sent: true } | { sent: false; error: string };
+
+async function deliver(message: Pick<Parameters<typeof sendSmtpEmail>[0], "to" | "replyTo" | "subject" | "text" | "html">): Promise<EmailOutcome> {
+  try {
+    const smtp = await smtpSettings();
+    if (!smtp) return { sent: false, error: "SMTP is not fully configured." };
+    await sendSmtpEmail({ ...smtp, ...message });
+    return { sent: true };
+  } catch (error) {
+    console.error("Could not send email", error);
+    return { sent: false, error: error instanceof Error ? error.message.slice(0, 300) : "Unknown SMTP error" };
+  }
+}
+
+/** The customer's move details link on its own, sent from the admin's Booking Details. */
+export async function sendMoveDetailsLink(booking: {
+  fullName: string;
+  email: string;
+  moveType: string;
+  fromPostcode: string;
+  toPostcode: string;
+  moveDate: string;
+  flexibleDates: boolean;
+  detailsUrl: string;
+}): Promise<EmailOutcome> {
+  if (!isEmailAddress(booking.email)) return { sent: false, error: "This customer has no valid email address." };
+  const firstName = booking.fullName.split(" ")[0] || "there";
+  const moveType = moveLabels[booking.moveType] ?? booking.moveType;
+  const moveDate = formatMoveDate(booking.moveDate, booking.flexibleDates);
+  const route = `${booking.fromPostcode} to ${booking.toPostcode}`;
+
+  const text = [
+    `Hi ${firstName},`,
+    "",
+    `Thank you for your booking request with Removals Nationwide (${moveType}, ${route}, ${moveDate}).`,
+    "",
+    "To give you an accurate price, we need a few details about your property and the items you are moving. You can add them, with photos if you like, here:",
+    booking.detailsUrl,
+    "",
+    "This link is private to your move. Please do not share it.",
+    "",
+    "Removals Nationwide",
+  ].join("\n");
+
+  const html = emailShell(
+    "A few details about your move, all in one place.",
+    `<h1 style="margin:0 0 9px;font-size:26px;line-height:33px;color:#17233c;">A few details about your move</h1>
+     <p style="margin:0;font-size:16px;line-height:25px;color:#4a5870;">Hi ${escapeHtml(firstName)}, thank you for your booking request.</p>
+     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;border-collapse:collapse;">
+       ${detailRow("Move", moveType)}
+       ${detailRow("Route", route)}
+       ${detailRow("Move date", moveDate, true)}
+     </table>
+     ${detailsCallToAction(booking.detailsUrl)}`,
+  );
+
+  return deliver({
+    to: booking.email,
+    replyTo: ADMIN_EMAIL,
+    subject: "Add your move details – Removals Nationwide",
+    text,
+    html,
+  });
+}
+
+/**
+ * "Move details received", to the office, when a customer sends the move
+ * details form or sends it again. The button opens that booking in the admin.
+ */
+export async function sendMoveDetailsReceived(data: SubmittedDetails): Promise<EmailOutcome> {
+  const { booking, details, files } = data;
+  const adminUrl = `${ADMIN_BOOKINGS_URL}?booking=${encodeURIComponent(booking.id)}`;
+  const rows = describeDetails(details) as { label: string; value: string; list?: string[] }[];
+  const fileNames = files.map((file) => file.name);
+  const heading = data.resubmitted ? "Move details updated" : "Move details received";
+  const route = `${booking.fromPostcode} to ${booking.toPostcode}`;
+  const moveType = moveLabels[booking.moveType] ?? booking.moveType;
+
+  const text = [
+    heading.toUpperCase(),
+    "",
+    `Customer: ${booking.customer.fullName}`,
+    `Phone: ${booking.customer.phone}`,
+    `Email: ${booking.customer.email}`,
+    `Move: ${moveType}, ${route}`,
+    "",
+    ...rows.map((row) => `${row.label}: ${row.value}`),
+    `Photos and files: ${fileNames.length ? fileNames.join(", ") : "None"}`,
+    "",
+    `Open in the admin: ${adminUrl}`,
+  ].join("\n");
+
+  const html = emailShell(
+    `${heading} from ${booking.customer.fullName}: ${route}`,
+    `<div style="font-size:12px;line-height:18px;letter-spacing:.1em;text-transform:uppercase;color:#d71920;font-weight:800;">${escapeHtml(heading)}</div>
+     <h1 style="margin:7px 0 8px;font-size:26px;line-height:33px;color:#17233c;">${escapeHtml(booking.customer.fullName)} has ${data.resubmitted ? "updated" : "sent"} their move details</h1>
+     <div style="font-size:14px;line-height:21px;color:#52647e;">${escapeHtml(`${moveType} · ${route}`)}<br>${escapeHtml(booking.customer.phone)} · ${escapeHtml(booking.customer.email)}</div>
+     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:18px;border-collapse:collapse;">
+       ${rows.map((row) => detailRow(row.label, row.list?.length ? row.list.join("\n") : row.value)).join("")}
+       ${detailRow("Photos and files", fileNames.length ? `${fileNames.length}: ${fileNames.join(", ")}` : "None", true)}
+     </table>
+     <div style="padding-top:24px;text-align:center;">
+       <a href="${adminUrl}" style="display:inline-block;padding:13px 22px;background:#d71920;border-radius:9px;color:#ffffff;text-decoration:none;font-size:14px;line-height:20px;font-weight:800;">Open booking details</a>
+     </div>`,
+  );
+
+  return deliver({
+    to: ADMIN_EMAIL,
+    replyTo: isEmailAddress(booking.customer.email) ? booking.customer.email : ADMIN_EMAIL,
+    subject: `${heading}: ${booking.customer.fullName}, ${route}`,
+    text,
+    html,
+  });
 }

@@ -48,6 +48,20 @@ const nextConfig: NextConfig = {
     // the ~900ms critical-request chain PageSpeed flagged and improves FCP/LCP.
     inlineCss: true,
   },
+  async headers() {
+    // A customer's move details page and its API carry the key to their
+    // answers and photos in the address: never cached anywhere, never indexed,
+    // and never passed on to another site as a referrer.
+    const privateHeaders = [
+      { key: "Cache-Control", value: "private, no-store" },
+      { key: "X-Robots-Tag", value: "noindex, nofollow" },
+      { key: "Referrer-Policy", value: "no-referrer" },
+    ];
+    return [
+      { source: "/move-details/:path*", headers: privateHeaders },
+      { source: "/api/move-details/:path*", headers: privateHeaders },
+    ];
+  },
   async redirects() {
     // With trailingSlash:true, both ends must carry the slash so each old URL
     // reaches its destination in a single 308 hop, with no slash-normalisation
