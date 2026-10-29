@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getResolvedSettings } from "@/lib/settings";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -69,7 +69,7 @@ function knowIcon(label: string): IconType {
   return CheckIcon;
 }
 
-const SERVICE_STANDARDS_URL = "/about-us";
+const SERVICE_STANDARDS_URL = "/about-us/";
 
 function boroughSchema(b: Borough) {
   return {
@@ -98,14 +98,7 @@ function boroughSchema(b: Borough) {
           },
         },
       },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Areas", item: `${SITE_URL}/areas/` },
-          { "@type": "ListItem", position: 3, name: b.name, item: `${SITE_URL}${withTrailingSlash(`/areas/${b.slug}`)}` },
-        ],
-      },
+      // BreadcrumbList comes from PageBanner, built from the visible trail.
       // FAQPage is emitted by the Faq component (parsing/AEO only, no rich-result
       // expectation). HowTo is intentionally omitted.
     ],
@@ -337,8 +330,9 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
           </p>
           <PricingTable columns={PRICE_COLUMNS} rows={PRICE_ROWS} className="mx-auto mt-10" />
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-charcoal/70">
-            The price includes loading, transport, unloading, parking fees and tolls, and
-            goods-in-transit insurance. For a full house or office move we give a fixed price after a
+            The price includes loading, transport, unloading and goods-in-transit insurance. Any
+            parking suspension, Congestion Charge or toll on your route is confirmed in writing before
+            you book. For a full house or office move we give a fixed price after a
             free survey. Tell us what you are moving and we will recommend the right crew and van size.
           </p>
         </div>
@@ -501,7 +495,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
               ))}
             </ul>
             <p className="mt-5 border-t border-black/10 pt-4 text-sm font-medium text-brand-charcoal/70">
-              Your fixed quote includes VAT and fuel, with no hidden fees.
+              Your written quote shows every charge, including VAT, before you book. No hidden fees.
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { getResolvedSettings } from "@/lib/settings";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import { buildMetadata, serviceH1, serviceLdFor } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";

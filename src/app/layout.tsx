@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   // would 308 to "/brand-icon/" on every single favicon request.
   icons: { icon: "/brand-icon/", shortcut: "/brand-icon/", apple: "/brand-icon/" },
   title:
-    "UK Removals Company | House, Man & Van, Office & Storage",
+    "London & UK Removals Company | House, Man & Van, Office",
   description:
     "Removals Nationwide is a fully insured UK removal company for house removals, man and van, office moves, packing and storage. Get a free quote.",
   openGraph: {
-    title: "UK Removals Company | House, Man & Van, Office & Storage",
+    title: "London & UK Removals Company | House, Man & Van, Office",
     description:
       "Fully insured UK removals company for house, man and van, office, packing and storage moves nationwide. Get a free quote.",
     type: "website",

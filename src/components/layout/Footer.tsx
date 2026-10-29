@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import type { SVGProps, ReactNode } from "react";
 import Button from "@/components/ui/Button";
 import BrandLogo from "@/components/layout/BrandLogo";
@@ -105,7 +105,7 @@ export default function Footer({ settings }: { settings: ResolvedSettings }) {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
-              <BrandLogo src={settings.footerLogoUrl || settings.logoUrl} />
+              <BrandLogo src={settings.footerLogoUrl || settings.logoUrl} lazy />
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/70">
               Nationwide and international removals and storage.

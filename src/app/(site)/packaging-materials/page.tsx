@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import PhoneLinks from "@/components/ui/PhoneLinks";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
   SITE_URL,
 } from "@/lib/seo";
@@ -259,15 +258,6 @@ const faqs: FaqItem[] = [
 
 /* ── Schema ─────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -284,24 +274,21 @@ const pricedProducts = [
   { name: "Double Mattress Cover", description: "Standard double mattress cover for protecting mattresses during a move.", price: "8.00" },
 ];
 
-const productGraphSchema = {
-  "@context": "https://schema.org",
-  "@graph": pricedProducts.map((p) => ({
-    "@type": "Product",
+/* The items are offers within the packaging Service, not standalone products:
+   Product markup (even nested) is meant for a single product's page and needs
+   an image, so each Offer carries the item's name and description itself. */
+const packagingCatalog = {
+  "@type": "OfferCatalog",
+  name: "Packing materials",
+  itemListElement: pricedProducts.map((p) => ({
+    "@type": "Offer",
     name: p.name,
     description: p.description,
-    brand: { "@type": "Brand", name: "Removals Nationwide" },
-    offers: {
-      "@type": "Offer",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: parseFloat(p.price),
       priceCurrency: "GBP",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: parseFloat(p.price),
-        priceCurrency: "GBP",
-        valueAddedTaxIncluded: false,
-      },
-      availability: "https://schema.org/InStock",
-      seller: { "@id": `${SITE_URL}/#organization` },
+      valueAddedTaxIncluded: false,
     },
   })),
 };
@@ -312,17 +299,8 @@ export default async function PackagingMaterialsPage() {
   const { phones, phoneList } = await getResolvedSettings();
   return (
     <>
-      <JsonLd data={serviceLdFor("packaging-materials")} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...serviceLdFor("packaging-materials"), hasOfferCatalog: packagingCatalog }} />
       <JsonLd data={orgSchema} />
-      <JsonLd data={productGraphSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Packaging Materials" },
-        ])}
-      />
       <PackagingMaterialsAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

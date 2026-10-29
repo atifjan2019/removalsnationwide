@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import Link from "next/link";
-import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -66,7 +66,7 @@ const gbp = (price: string, unitText: string) => ({
 const pricesSchema = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  "@id": `${SITE_URL}/prices#pricelist`,
+  "@id": `${SITE_URL}/prices/#pricelist`,
   name: "Removals Nationwide price list",
   provider: { "@id": `${SITE_URL}/#organization` },
   itemListElement: [
@@ -103,20 +103,15 @@ const pricesSchema = {
   ],
 };
 
-const pricesBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Prices", href: "/prices" },
-]);
 
 export default async function PricesPage() {
   const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={pricesSchema} />
-      <JsonLd data={pricesBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
-        title="Prices"
+        title="Removal and Man and Van Prices"
         subtitle="Competitive Rates for Every Move"
         crumbs={[{ label: "Home", href: "/" }, { label: "Prices" }]}
       />

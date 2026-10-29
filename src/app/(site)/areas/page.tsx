@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import CtaBand from "@/components/home/CtaBand";
 import JsonLd from "@/components/seo/JsonLd";
@@ -91,7 +91,9 @@ const regionBoroughs = (region: Region): Borough[] =>
 const crumbs = [{ label: "Home", href: "/" }, { label: "Areas We Cover" }];
 
 export default async function AreasPage() {
-  const areas = await getAreas();
+  // Areas added in the admin that have no built-in borough guide. Listed below
+  // the regions so every published area page has an internal link.
+  const moreAreas = (await getAreas()).filter((area) => !boroughs[area.slug]);
   const boroughCount = Object.keys(boroughs).length;
 
   return (
@@ -129,7 +131,7 @@ export default async function AreasPage() {
               London expertise. Nationwide reach.
             </p>
             <h1 className="mt-4 max-w-2xl text-4xl font-black uppercase leading-[.98] tracking-[-0.035em] text-white sm:text-6xl lg:text-7xl">
-              Your move starts with local knowledge.
+              Removals in every London borough.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg">
               Experienced, insured removals across every London borough, the Home Counties and
@@ -244,6 +246,23 @@ export default async function AreasPage() {
               );
             })}
           </div>
+
+          {moreAreas.length > 0 && (
+            <div className="mt-5 border border-black/10 bg-white p-7 sm:p-8">
+              <h3 className="text-2xl font-black uppercase tracking-tight text-brand-navy">More areas</h3>
+              <div className="mt-7 grid gap-x-8 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
+                {moreAreas.map((area) => (
+                  <Link
+                    key={area.slug}
+                    href={`/areas/${area.slug}`}
+                    className="flex items-center justify-between border-b border-black/8 py-3 text-sm font-semibold text-brand-charcoal/75 transition hover:border-brand-red/30 hover:text-brand-red"
+                  >
+                    {area.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-8 flex flex-col items-start justify-between gap-5 border-l-4 border-brand-red bg-black px-6 py-7 text-white sm:flex-row sm:items-center sm:px-8">
             <div>

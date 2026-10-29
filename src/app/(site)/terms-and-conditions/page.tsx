@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import { buildMetadata } from "@/lib/seo";
 import { slugify } from "@/lib/slug";
 import PageBanner from "@/components/layout/PageBanner";

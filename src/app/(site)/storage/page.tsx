@@ -5,13 +5,12 @@ import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
   SITE_URL,
 } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
@@ -267,15 +266,6 @@ const storageServiceStandards = [
 /* Schema                                                               */
 /* ------------------------------------------------------------------ */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -292,14 +282,6 @@ export default async function LondonStoragePage() {
   return (
     <>
       <JsonLd data={serviceLdFor("london-storage")} />
-      <JsonLd data={faqPageSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Secure Storage" },
-        ])}
-      />
       <JsonLd data={orgSchema} />
       <StorageAnimations />
       <StickyMobileBar sentinelId="hero-intro" />

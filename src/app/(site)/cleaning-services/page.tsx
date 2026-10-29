@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import PhoneLinks from "@/components/ui/PhoneLinks";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
   SITE_URL,
 } from "@/lib/seo";
@@ -255,15 +254,6 @@ const faqs: FaqItem[] = [
 
 /* ── Schema ─────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -271,23 +261,17 @@ const orgSchema = {
   "@id": `${SITE_URL}/#organization`,
 };
 
-const cleaningServiceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Move In, Move Out and End of Tenancy Cleaning",
-  serviceType: [
-    "End of Tenancy Cleaning",
-    "Move-Out Cleaning",
-    "Move-In Cleaning",
-    "After Builders Cleaning",
-    "Carpet Steam Cleaning",
-    "Upholstery Cleaning",
-    "Regular Domestic Cleaning",
-    "Office and Commercial Cleaning",
-  ],
-  areaServed: { "@type": "Country", name: "United Kingdom" },
-  provider: { "@id": `${SITE_URL}/#organization` },
-};
+/* One Service node per page: the service types are merged into the shared Service. */
+const cleaningServiceTypes = [
+  "End of Tenancy Cleaning",
+  "Move-Out Cleaning",
+  "Move-In Cleaning",
+  "After Builders Cleaning",
+  "Carpet Steam Cleaning",
+  "Upholstery Cleaning",
+  "Regular Domestic Cleaning",
+  "Office and Commercial Cleaning",
+];
 
 /* ── Page ───────────────────────────────────────────────────────────── */
 
@@ -295,17 +279,8 @@ export default async function CleaningServicesPage() {
   const { phones, phoneList } = await getResolvedSettings();
   return (
     <>
-      <JsonLd data={serviceLdFor("cleaning-services")} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...serviceLdFor("cleaning-services"), serviceType: cleaningServiceTypes }} />
       <JsonLd data={orgSchema} />
-      <JsonLd data={cleaningServiceSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Cleaning Services" },
-        ])}
-      />
       <CleaningServicesAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

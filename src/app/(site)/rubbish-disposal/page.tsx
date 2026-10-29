@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import PhoneLinks from "@/components/ui/PhoneLinks";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
   SITE_URL,
 } from "@/lib/seo";
@@ -206,15 +205,6 @@ const faqs: FaqItem[] = [
 
 /* ── Schemas ────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -229,15 +219,7 @@ export default async function RubbishDisposalPage() {
   return (
     <>
       <JsonLd data={serviceLdFor("rubbish-disposal")} />
-      <JsonLd data={faqPageSchema} />
       <JsonLd data={orgSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Rubbish Disposal" },
-        ])}
-      />
       <RubbishDisposalAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

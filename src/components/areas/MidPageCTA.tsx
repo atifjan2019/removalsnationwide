@@ -29,7 +29,7 @@ export default function MidPageCTA({
       </p>
       <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <a
-          href="/bookservice#quick-quote"
+          href="/bookservice/#quick-quote"
           className="inline-flex min-h-[44px] w-full items-center justify-center rounded-lg bg-brand-red px-8 font-semibold text-white transition-colors hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:w-auto"
         >
           Get a Free Quote

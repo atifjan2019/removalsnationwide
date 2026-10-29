@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import Link from "next/link";
-import { buildMetadata, breadcrumbLd, faqLd } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
+import { buildMetadata, faqLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import Button from "@/components/ui/Button";
 import Faq, { type FaqItem } from "@/components/services/Faq";
 import Testimonials from "@/components/home/Testimonials";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = buildMetadata("faq");
 
@@ -111,20 +112,15 @@ const faqSchema = faqLd(
   }),
 );
 
-const faqBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "FAQ", href: "/faq" },
-]);
 
 export default async function FaqPage() {
   const { phones, phonePrimary } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={faqSchema} />
-      <JsonLd data={faqBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
-        title="FAQ"
+        title="Removals FAQ"
         subtitle="Answers to Your Moving Questions"
         crumbs={[{ label: "Home", href: "/" }, { label: "FAQ" }]}
       />
@@ -137,7 +133,8 @@ export default async function FaqPage() {
             answer them, and the selection below covers the basics.
           </p>
 
-          <Faq items={faqs} defaultOpen={null} className="mt-12" />
+          <SectionHeading className="mt-12" title="Removals and Moving Questions" />
+          <Faq items={faqs} defaultOpen={null} className="mt-8" schema={false} />
 
           <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-brand-charcoal/70">
             For service-specific detail, see{" "}

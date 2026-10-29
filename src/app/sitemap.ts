@@ -22,14 +22,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     path: `/news/${post.slug}`,
     lastModified: toIsoDate(post.date) ?? validDate(post.created_at),
   }));
-  const areas = (await getAreas()).map((area) => ({
-    path: `/areas/${area.slug}`,
-    lastModified: validDate(area.created_at),
-  }));
+  // Borough slugs render from src/lib/boroughs.ts, not their DB row, so the
+  // row's seed timestamp says nothing about the page. The areas table has no
+  // updated_at, so DB-only areas carry no lastmod rather than a false one.
+  const areas = (await getAreas())
+    .filter((area) => !boroughs[area.slug])
+    .map((area) => ({ path: `/areas/${area.slug}`, lastModified: undefined }));
   const boroughPaths = Object.values(boroughs).map((b) => `/areas/${b.slug}`);
 
   const datedPaths = new Map<string, Date | undefined>();
-  staticPaths.forEach((path) => datedPaths.set(path, undefined));
+  staticPaths
+    // /news is noindex while it has no finished posts to list.
+    .filter((path) => path !== "/news" || filePosts.length + dbPosts.length > 0)
+    .forEach((path) => datedPaths.set(path, undefined));
   boroughPaths.forEach((path) => datedPaths.set(path, undefined));
   [...filePosts, ...dbPosts, ...areas].forEach(({ path, lastModified }) => {
     datedPaths.set(path, lastModified);

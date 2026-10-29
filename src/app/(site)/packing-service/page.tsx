@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
+import { buildMetadata, serviceH1, SITE_URL, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
@@ -65,12 +65,12 @@ const heroServiceStandards = [
 const packingServiceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${SITE_URL}/packing-service#service`,
+  "@id": `${SITE_URL}/packing-service/#service`,
   name: "Nationwide Packing Service",
   serviceType: "Professional Packing Service",
   description:
     "Full, partial and fragile packing services across the UK. All materials included and fully insured.",
-  url: `${SITE_URL}/packing-service`,
+  url: `${SITE_URL}/packing-service/`,
   areaServed: [
     { "@type": "Country", name: "United Kingdom" },
     { "@type": "Country", name: "United Kingdom" },
@@ -283,23 +283,9 @@ const faqs: FaqItem[] = [
   },
 ];
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = organizationLd();
 
-const packingBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Nationwide Packing Service", href: "/packing-service" },
-]);
 
 /* ── Page component ──────────────────────────────────────────────────────── */
 
@@ -309,9 +295,7 @@ export default async function PackingServicePage() {
     <>
       <JsonLd data={packingServiceSchema} />
       <JsonLd data={howToSchema} />
-      <JsonLd data={faqPageSchema} />
       <JsonLd data={{ ...orgSchema }} />
-      <JsonLd data={packingBreadcrumb} />
       <PackingServiceAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 
@@ -389,7 +373,7 @@ export default async function PackingServicePage() {
               </ul>
               <div className="mt-4 flex gap-4 border-t border-black/10 pt-4">
                 <Link
-                  href="/about-us"
+                  href="/about-us/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
@@ -397,7 +381,7 @@ export default async function PackingServicePage() {
                   Service standards →
                 </Link>
                 <Link
-                  href="/about-us"
+                  href="/about-us/"
                   className="text-xs font-semibold text-brand-red underline underline-offset-2 hover:text-brand-navy"
                 >
                   About us →
@@ -936,7 +920,7 @@ export default async function PackingServicePage() {
             <p className="mt-6 text-base leading-relaxed text-white/80">
               Our written quotations and insurance documents set out the agreed service before booking.{" "}
               <a
-                href="/about-us"
+                href="/about-us/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-red underline underline-offset-2 hover:text-white"

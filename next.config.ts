@@ -42,12 +42,10 @@ const nextConfig: NextConfig = {
   // ranking URL is preserved at cutover with no mass redirect. Next.js 308s the
   // non-slash form to the slash form, so each page resolves at one URL.
   trailingSlash: true,
-  experimental: {
-    // Inline the (small, ~16 KiB) stylesheet into the document <head> as a
-    // <style> tag instead of a render-blocking <link rel="stylesheet">. Removes
-    // the ~900ms critical-request chain PageSpeed flagged and improves FCP/LCP.
-    inlineCss: true,
-  },
+  // experimental.inlineCss was removed: the stylesheet grew to ~104 KB and was
+  // sent twice in every HTML response (once as <style>, once in the RSC
+  // payload), which made each server render far heavier. As a hashed file it
+  // is cached immutably by the browser after the first page.
   async headers() {
     // A customer's move details page and its API carry the key to their
     // answers and photos in the address: never cached anywhere, never indexed,

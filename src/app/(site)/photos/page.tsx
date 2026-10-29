@@ -29,7 +29,7 @@ export default function PhotosPage() {
       <CtaBand
         heading="Like What You See? Let's Plan Your Move"
         actions={[
-          { label: "Quick Quote", href: "/quick-quote", variant: "navy" },
+          { label: "Quick Quote", href: "/bookservice/#quick-quote", variant: "navy" },
           { label: "Book a Service", href: "/bookservice", variant: "outline-light" },
         ]}
       />

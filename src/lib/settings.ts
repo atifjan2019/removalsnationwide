@@ -1,5 +1,6 @@
 import "server-only";
-import { getDb } from "@/lib/d1";
+import { cache } from "react";
+import { getDb, markDegraded } from "@/lib/d1";
 import {
   DEFAULT_SETTINGS,
   resolve,
@@ -62,21 +63,29 @@ function coalesce(row: Record<string, unknown>): SiteSettings {
   };
 }
 
-/** Raw settings, defaults-filled. Never throws — the site must always render. */
-export async function getSettings(): Promise<SiteSettings> {
+/**
+ * Raw settings, defaults-filled. Never throws — the site must always render.
+ * Memoised per request: the layout, the page and the not-found boundary all
+ * ask for it, and one D1 read serves them all.
+ */
+export const getSettings = cache(async (): Promise<SiteSettings> => {
   const db = await getDb();
-  if (!db) return DEFAULT_SETTINGS;
+  if (!db) {
+    markDegraded();
+    return DEFAULT_SETTINGS;
+  }
   try {
     const row = await db
       .prepare("select * from settings where id = 'site' limit 1")
       .first();
     return row ? coalesce(row as Record<string, unknown>) : DEFAULT_SETTINGS;
   } catch {
+    markDegraded();
     return DEFAULT_SETTINGS;
   }
-}
+});
 
 /** Settings with hrefs derived. This is what layouts pass to components. */
-export async function getResolvedSettings(): Promise<ResolvedSettings> {
-  return resolve(await getSettings());
-}
+export const getResolvedSettings = cache(
+  async (): Promise<ResolvedSettings> => resolve(await getSettings()),
+);

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
 } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -147,35 +146,28 @@ const faqs: FaqItem[] = [
 
 /* ── Schema ─────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
   ...organizationLd(),
 };
 
-const norwayOfferSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Removals to Norway from the UK",
-  provider: { "@type": "LocalBusiness", name: "Removals Nationwide" },
+/* One Service node per page, provided by the site Organization. The range runs
+   from a single item to a full household truck. */
+const norwayServiceExtras = {
+  areaServed: [
+    { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "Norway" },
+  ],
   offers: {
     "@type": "Offer",
     priceSpecification: {
       "@type": "PriceSpecification",
       minPrice: 300,
-      maxPrice: 350,
+      maxPrice: 12000,
       priceCurrency: "GBP",
       description:
-        "Single item from £300 to £350. Full household truck up to £10,000 to £12,000 per truck. Insurance charged separately. Contact us to confirm VAT treatment.",
+        "Single item from £300 to £350. Full household truck from £10,000 to £12,000 per truck. Insurance charged separately. Contact us to confirm VAT treatment.",
     },
   },
 };
@@ -186,17 +178,8 @@ export default async function RemovalsToNorwayPage() {
   const { phones } = await getResolvedSettings();
   return (
     <>
-      <JsonLd data={serviceLdFor("removals-to-norway")} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...serviceLdFor("removals-to-norway"), ...norwayServiceExtras }} />
       <JsonLd data={orgSchema} />
-      <JsonLd data={norwayOfferSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Removals to Norway from the UK" },
-        ])}
-      />
       <RemovalsToNorwayAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

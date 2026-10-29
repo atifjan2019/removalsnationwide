@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { bumpPublicCacheVersion } from "@/lib/public-cache";
 import { requireDb } from "@/lib/cms";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
@@ -210,6 +211,8 @@ export async function saveSettings(
     return { ok: false, message: `Could not save: ${(err as Error).message}` };
   }
 
+  // Public pages are served from the edge cache keyed on this version.
+  const pagesRefreshed = await bumpPublicCacheVersion("settings saved");
   // Contact details appear in the shared layout, so every page is affected.
   revalidatePath("/", "layout");
   await logActivity("Settings Updated", "Site-wide brand and contact settings updated", "site");
@@ -219,9 +222,18 @@ export async function saveSettings(
   if (warnings.length) {
     return {
       ok: false,
-      message: `Settings saved, but some uploads failed — ${warnings.join("; ")}`,
+      message: `Settings saved, but some uploads failed — ${warnings.join("; ")}${
+        pagesRefreshed ? "" : ". The public pages could not be refreshed either; save again"
+      }`,
     };
   }
 
+  if (!pagesRefreshed) {
+    return {
+      ok: false,
+      message:
+        "Settings saved, but the public pages could not be refreshed. Save again; until then visitors may see the old details (at most a day).",
+    };
+  }
   return { ok: true, message: "Settings saved. Changes are live on the site." };
 }

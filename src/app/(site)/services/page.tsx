@@ -50,7 +50,7 @@ export default function ServicesPage() {
         heading="Not Sure Which Service You Need?"
         subtext="Get in touch for friendly, professional advice and a no-obligation quote."
         actions={[
-          { label: "Get a Quote", href: "/quick-quote", variant: "navy" },
+          { label: "Get a Quote", href: "/bookservice/#quick-quote", variant: "navy" },
           { label: "Contact Us", href: "/contactus", variant: "outline-light" },
         ]}
       />

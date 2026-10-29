@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import type { ComponentType, SVGProps } from "react";
 import { ArrowRight } from "@/components/ui/icons";
 

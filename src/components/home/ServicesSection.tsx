@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceCard from "@/components/home/ServiceCard";
 import { featuredServices } from "@/lib/services";

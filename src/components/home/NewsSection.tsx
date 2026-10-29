@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -7,6 +7,7 @@ import { getAllPosts } from "@/lib/news";
 
 export default function NewsSection() {
   const articles = getAllPosts().slice(0, 3);
+  if (articles.length === 0) return null;
 
   return (
     <section className="bg-brand-sand py-20">

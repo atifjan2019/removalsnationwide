@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import Link from "next/link";
-import { buildMetadata, breadcrumbLd } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
+import { buildMetadata } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -71,20 +71,15 @@ const fleetSchema = {
   })),
 };
 
-const fleetBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Our Fleet", href: "/our-fleet" },
-]);
 
 export default async function OurFleetPage() {
   const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={fleetSchema} />
-      <JsonLd data={fleetBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
-        title="Our Fleet"
+        title="Our Removal Fleet"
         subtitle="Modern, Eco-Friendly Vehicles"
         crumbs={[{ label: "Home", href: "/" }, { label: "Our Fleet" }]}
       />

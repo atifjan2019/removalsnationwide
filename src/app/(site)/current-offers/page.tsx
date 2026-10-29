@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import Link from "next/link";
-import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -14,8 +14,8 @@ export const metadata: Metadata = buildMetadata("current-offers");
 const offersPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/current-offers#webpage`,
-  url: `${SITE_URL}/current-offers`,
+  "@id": `${SITE_URL}/current-offers/#webpage`,
+  url: `${SITE_URL}/current-offers/`,
   name: "Current Offers",
   description:
     "Current offers from Removals Nationwide. We focus on fair, transparent pricing every day, with savings when you combine services.",
@@ -23,10 +23,6 @@ const offersPageSchema = {
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
-const offersBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Current Offers", href: "/current-offers" },
-]);
 
 /* Ongoing combined-booking savings, confirmed standing benefits (no deadlines,
    no invented percentages). Time-limited promotions are only added here once
@@ -57,7 +53,6 @@ export default async function CurrentOffersPage() {
   return (
     <>
       <JsonLd data={offersPageSchema} />
-      <JsonLd data={offersBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="Current Offers"

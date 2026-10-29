@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
@@ -19,8 +19,8 @@ const highlights = ["7 Days A Week", "Full Nationwide Coverage", "Affordable Rat
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "@id": `${SITE_URL}/about-us#aboutpage`,
-  url: `${SITE_URL}/about-us`,
+  "@id": `${SITE_URL}/about-us/#aboutpage`,
+  url: `${SITE_URL}/about-us/`,
   name: "About Removals Nationwide",
   description:
     "The story, founders, service highlights and people behind Removals Nationwide, an established, experienced and fully insured UK moving company.",
@@ -29,20 +29,15 @@ const aboutPageSchema = {
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
-const aboutBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about-us" },
-]);
 
 export default async function AboutPage() {
   const { phones } = await getResolvedSettings();
   return (
     <>
       <JsonLd data={aboutPageSchema} />
-      <JsonLd data={aboutBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
-        title="About Us"
+        title="About Removals Nationwide"
         crumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
       />
 

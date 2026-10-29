@@ -6,13 +6,14 @@ import PageBanner from "@/components/layout/PageBanner";
 import StickyMobileBar from "@/components/services/StickyMobileBar";
 import ArticleBody from "@/components/news/ArticleBody";
 import HtmlContent from "@/components/news/HtmlContent";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import JsonLd from "@/components/seo/JsonLd";
-import { articleLd, breadcrumbLd, withTrailingSlash } from "@/lib/seo";
+import { articleLd, withTrailingSlash } from "@/lib/seo";
 import Button from "@/components/ui/Button";
 import Testimonials from "@/components/home/Testimonials";
 import { getPostBySlug, getPostSlugs, AUTHOR_BIO } from "@/lib/news";
 import { getDbPostBySlug } from "@/lib/cms";
+import { getAdminRole } from "@/lib/admin-auth";
 
 // Statically prerender the file-based seed articles; DB articles render on demand.
 export function generateStaticParams() {
@@ -28,6 +29,8 @@ type Resolved = {
   coverImage: string;
   markdown?: string;
   html?: string;
+  /** Placeholder or draft: reachable, but kept out of the index. */
+  noindex: boolean;
 };
 
 async function resolvePost(slug: string): Promise<Resolved | null> {
@@ -41,10 +44,12 @@ async function resolvePost(slug: string): Promise<Resolved | null> {
       authorBio: file.authorBio,
       coverImage: file.coverImage,
       markdown: file.body,
+      noindex: file.stub,
     };
   }
   const db = await getDbPostBySlug(slug);
-  if (db) {
+  // A draft is only shown to a signed-in admin previewing it.
+  if (db && (db.published || (await getAdminRole()))) {
     return {
       title: db.title,
       date: db.date,
@@ -53,6 +58,7 @@ async function resolvePost(slug: string): Promise<Resolved | null> {
       authorBio: db.author_bio || AUTHOR_BIO,
       coverImage: db.cover_image || DEFAULT_BANNER_IMAGE,
       html: db.body_html,
+      noindex: !db.published,
     };
   }
   return null;
@@ -68,7 +74,10 @@ export async function generateMetadata({
   if (!post) return { title: "Article Not Found | Removals Nationwide" };
   const canonical = withTrailingSlash(`/news/${slug}`);
   return {
-    title: `${post.title} | Removals Nationwide`,
+    ...(post.noindex ? { robots: { index: false, follow: true } } : {}),
+    // The brand suffix is dropped when it would push the title past ~60 characters.
+    title:
+      post.title.length <= 38 ? `${post.title} | Removals Nationwide` : { absolute: post.title },
     description: post.excerpt,
     alternates: { canonical },
     openGraph: {
@@ -92,6 +101,7 @@ export default async function ArticlePage({
 
   return (
     <>
+      {!post.noindex && (
       <JsonLd
         data={articleLd({
           title: post.title,
@@ -102,13 +112,7 @@ export default async function ArticlePage({
           image: post.coverImage,
         })}
       />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Moving News", href: "/news" },
-          { label: post.title },
-        ])}
-      />
+      )}
       <StickyMobileBar />
       <PageBanner
         title={post.title}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import Image from "next/image";
 import { ChevronRight } from "@/components/ui/icons";
 import JsonLd from "@/components/seo/JsonLd";

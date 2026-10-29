@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
 import { getResolvedSettings } from "@/lib/settings";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
@@ -14,8 +14,8 @@ export const metadata: Metadata = buildMetadata("contact");
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "@id": `${SITE_URL}/contactus#contactpage`,
-  url: `${SITE_URL}/contactus`,
+  "@id": `${SITE_URL}/contactus/#contactpage`,
+  url: `${SITE_URL}/contactus/`,
   name: "Contact Removals Nationwide",
   description:
     "Contact Removals Nationwide by phone or enquiry form. Purfleet, RM15 4YA. Open 7 days a week.",
@@ -23,26 +23,22 @@ const contactPageSchema = {
   mainEntity: { "@id": `${SITE_URL}/#organization` },
 };
 
-const contactBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Contact Us", href: "/contactus" },
-]);
 
 export default async function ContactPage() {
   // These were hardcoded duplicates of the site-wide details. Reading them from
   // settings means the admin Settings page updates the contact page too, rather
   // than leaving it silently stale.
   const settings = await getResolvedSettings();
-  const phones = [settings.phones.london, settings.phones.freephone];
+  // Deduplicated and blank-free, so one line set in both fields prints once.
+  const phones = settings.phoneList;
   const address = settings.addressLine;
 
   return (
     <>
       <JsonLd data={contactPageSchema} />
-      <JsonLd data={contactBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
-        title="Contact Us"
+        title="Contact Removals Nationwide"
         subtitle="Get in Touch"
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
       />
@@ -52,7 +48,7 @@ export default async function ContactPage() {
           {/* Left: form */}
           <div>
             <SectionHeading align="left" eyebrow="Get in touch" title="Send Us a Message" />
-            <p className="mt-4 text-base text-brand-charcoal/80">Contact us via e-mail here</p>
+            <p className="mt-4 text-base text-brand-charcoal/80">Send us your move details using the form below.</p>
             <div className="mt-8">
               <ContactForm />
             </div>

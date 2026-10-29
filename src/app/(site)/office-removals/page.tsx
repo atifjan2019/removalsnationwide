@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getResolvedSettings, withContacts } from "@/lib/settings";
 import Image from "next/image";
-import Link from "next/link";
-import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
+import { buildMetadata, serviceH1, SITE_URL, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -31,12 +31,12 @@ export const metadata: Metadata = buildMetadata("office-removals");
 const officeRemovalsSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${SITE_URL}/office-removals#service`,
+  "@id": `${SITE_URL}/office-removals/#service`,
   name: "Nationwide Office Removals",
   serviceType: "Commercial Relocation",
   description:
     "Managed office relocation service across the UK from one desk to 500-plus staff. Fully insured, with out-of-hours moves, IT handling and furniture reassembly available.",
-  url: `${SITE_URL}/office-removals`,
+  url: `${SITE_URL}/office-removals/`,
   areaServed: [
     { "@type": "Country", name: "United Kingdom" },
     { "@type": "Country", name: "United Kingdom" },
@@ -327,11 +327,6 @@ const faqPageSchema = {
 
 const orgSchema = organizationLd();
 
-const officeBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Nationwide Office Removals", href: "/office-removals" },
-]);
 
 /* ═══════════════════════════════════════════════════════════ */
 
@@ -375,7 +370,6 @@ export default async function OfficeRemovalsPage() {
       <JsonLd data={howToSchemaLive} />
       <JsonLd data={faqPageSchemaLive} />
       <JsonLd data={{ ...orgSchema }} />
-      <JsonLd data={officeBreadcrumb} />
 
       {/* ── S1: Hero ── */}
       <PageBanner
@@ -1182,7 +1176,7 @@ export default async function OfficeRemovalsPage() {
             eyebrow="Common questions answered"
             title="Nationwide Office Removals: Frequently Asked Questions"
           />
-          <Faq items={faqItems} defaultOpen={null} className="mt-10" />
+          <Faq items={faqItems} defaultOpen={null} className="mt-10" schema={false} />
         </div>
       </section>
 

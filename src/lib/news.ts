@@ -28,6 +28,8 @@ export type NewsPost = {
   authorBio: string;
   coverImage: string;
   body: string;
+  /** Placeholder awaiting its full article: noindex, kept out of listings. */
+  stub: boolean;
 };
 
 /** Already sorted newest-first by the generator. */
@@ -37,9 +39,9 @@ export function getPostSlugs(): string[] {
   return posts.map((p) => p.slug);
 }
 
-/** All posts, newest first. */
+/** Finished posts, newest first. Placeholder stubs are left out. */
 export function getAllPosts(): NewsPost[] {
-  return posts;
+  return posts.filter((p) => !p.stub);
 }
 
 export function getPostBySlug(slug: string): NewsPost | null {

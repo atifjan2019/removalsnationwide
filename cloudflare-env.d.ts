@@ -16,6 +16,8 @@ declare global {
   interface CloudflareEnv {
     /** D1 CMS database — posts and areas. */
     DB: D1Database;
+    /** Worker version metadata; its id keys the edge HTML cache per deploy. */
+    CF_VERSION_METADATA: WorkerVersionMetadata;
     /** R2 bucket holding site media (images). */
     MEDIA: R2Bucket;
     /** Private R2 bucket for customers' move details photos and documents. */

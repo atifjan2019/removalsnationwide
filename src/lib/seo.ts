@@ -43,7 +43,7 @@ type MetaEntry = {
  */
 export const META: Record<string, MetaEntry> = {
   home: {
-    title: "UK Removals Company | House, Man & Van, Office & Storage",
+    title: "London & UK Removals Company | House, Man & Van, Office",
     description:
       "Removals Nationwide is a fully insured UK removal company. House removals, man and van, office moves, packing and storage across the UK. Get a free quote.",
     path: "/",
@@ -91,9 +91,9 @@ export const META: Record<string, MetaEntry> = {
     path: "/packing-service",
   },
   "man-and-van": {
-    title: "Man and Van UK | Small Moves & Single Items",
+    title: "Man and Van London | From £55/hr, 7 Days a Week",
     description:
-      "Nationwide man and van service from £55 an hour plus VAT, 7 days a week. Experienced, insured movers for single items, small moves and house moves. Free quote.",
+      "Man and van in London from £55 an hour plus VAT, 7 days a week. Insured movers for single items, flat moves and small house moves. Free quote.",
     path: "/man-and-van-london",
   },
   "packaging-materials": {
@@ -129,7 +129,7 @@ export const META: Record<string, MetaEntry> = {
   "removals-to-norway": {
     title: "Removals to Norway from UK | Weekly Door-to-Door",
     description:
-      "Weekly removals to Norway from the UK. Own road-trains, local teams across Norway, Oslo depot, inclusive customs and a personal move coordinator. From single items to a full truck.",
+      "Weekly UK to Norway removals with our own road-trains, an Oslo depot, local Norwegian teams and customs handled. Single items to full truck loads.",
     path: "/removals-services-to-norway",
   },
   "dormitory-move-student-storage": {
@@ -168,7 +168,7 @@ export const META: Record<string, MetaEntry> = {
     // admin Settings page cannot reach, so a number written into it goes stale
     // the moment the line changes and Google keeps serving the dead one.
     description:
-      "Contact Removals Nationwide by phone, email or enquiry form for a free no-obligation quote on house, office, man and van, packing and storage moves.",
+      "Contact Removals Nationwide by phone or enquiry form for a free no-obligation quote on house, office, man and van, packing and storage moves.",
     path: "/contactus",
   },
   "book-a-service": {
@@ -205,9 +205,9 @@ export const META: Record<string, MetaEntry> = {
     noindex: true,
   },
   areas: {
-    title: "Areas We Cover | UK Removals Coverage",
+    title: "London Removal Areas | 32 Boroughs & the City",
     description:
-      "Removals Nationwide provides house, office and international removals and storage across the UK. Find your local service area.",
+      "Removals and man and van across all 32 London boroughs and the City, with local parking, access and postcode guides. UK-wide and international moves too.",
     path: "/areas",
   },
 };
@@ -220,6 +220,14 @@ export function withTrailingSlash(path: string): string {
 }
 
 /** Build Next.js Metadata for a known page id, with canonical + OpenGraph + robots. */
+/** Share image for pages without their own (a JPG, as some scrapers skip WebP). */
+export const DEFAULT_OG_IMAGE = {
+  url: "/og/removals-nationwide-1200x630.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Removals Nationwide movers carrying furniture to a removal van",
+};
+
 export function buildMetadata(id: keyof typeof META): Metadata {
   const m = META[id];
   const canonical = withTrailingSlash(m.path);
@@ -233,7 +241,10 @@ export function buildMetadata(id: keyof typeof META): Metadata {
       url: canonical,
       siteName: SITE.name,
       type: "website",
+      locale: "en_GB",
+      images: [DEFAULT_OG_IMAGE],
     },
+    twitter: { card: "summary_large_image", images: [DEFAULT_OG_IMAGE.url] },
     ...(m.noindex ? { robots: { index: false, follow: true } } : {}),
   };
 }
@@ -439,7 +450,7 @@ export const serviceH1: Record<string, string> = {
   "international-removals": "International Removals from the UK",
   "london-storage": "Secure Removals Storage",
   "packing-service": "Nationwide Packing Service",
-  "man-and-van": "Nationwide Man and Van",
+  "man-and-van": "Man and Van London",
   "packaging-materials": "Packing Materials and Removal Boxes UK",
   "crate-hire": "Nationwide Crate Hire",
   "rubbish-disposal": "Nationwide Rubbish Removal and Clearance",

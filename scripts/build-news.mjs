@@ -44,6 +44,9 @@ const posts = slugs
       authorBio: data.authorBio ?? AUTHOR_BIO,
       coverImage: data.coverImage ?? `/news/${slug}.jpg`,
       body: content.trim(),
+      // Placeholder posts carry a "to be migrated" marker until the full
+      // article is written. They stay reachable but out of search and listings.
+      stub: /to be migrated/i.test(content),
     };
   })
   .sort((a, b) => parseDate(b.date) - parseDate(a.date));

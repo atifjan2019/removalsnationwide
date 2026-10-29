@@ -7,13 +7,17 @@ type BrandLogoProps = {
    * blank.
    */
   src?: string;
+  /** Below the fold or not normally shown: load lazily so it is not preloaded. */
+  lazy?: boolean;
 };
 
 export default function BrandLogo({
   className = "",
   size = "default",
   src = "",
+  lazy = false,
 }: BrandLogoProps) {
+  const loading = lazy ? "lazy" : undefined;
   const compact = size === "sm";
 
   if (src.trim()) {
@@ -27,6 +31,7 @@ export default function BrandLogo({
         <img
           src={src}
           alt="Removals Nationwide"
+          loading={loading}
           className={`${compact ? "h-10 max-w-[180px]" : "h-[3.25rem] max-w-[264px]"} w-auto object-contain`}
         />
       </span>
@@ -42,6 +47,7 @@ export default function BrandLogo({
         alt="Removals Nationwide"
         width={187}
         height={60}
+        loading={loading}
         decoding="async"
         className={`${compact ? "h-9 max-w-[150px]" : "h-12 max-w-[210px]"} w-auto object-contain`}
       />

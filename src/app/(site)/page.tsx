@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import { SITE, SITE_URL } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 
 import HomepageHero from "@/components/home/HomepageHero";
@@ -29,18 +29,21 @@ import ClientAnimations from "@/components/home/ClientAnimations";
 import StickyQuoteBar from "@/components/home/StickyQuoteBar";
 
 export const metadata: Metadata = {
-  title: "UK Removals Company | House, Man & Van, Office & Storage",
+  title: "London & UK Removals Company | House, Man & Van, Office",
   description:
     "Removals Nationwide is a fully insured UK removal company. House removals, man and van, office moves, packing and storage across the UK. Get a free quote.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "UK Removals Company | House, Man & Van, Office & Storage",
+    title: "London & UK Removals Company | House, Man & Van, Office",
     description:
       "Fully insured UK removals company for house, man and van, office, packing and storage moves nationwide. Get a free quote.",
     url: "/",
     siteName: SITE.name,
     type: "website",
+    locale: "en_GB",
+    images: [DEFAULT_OG_IMAGE],
   },
+  twitter: { card: "summary_large_image", images: [DEFAULT_OG_IMAGE.url] },
 };
 
 export default async function HomePage() {
@@ -56,7 +59,7 @@ export default async function HomePage() {
           "@type": "WebPage",
           "@id": `${SITE_URL}/#homepage`,
           url: `${SITE_URL}/`,
-          name: "UK Removals Company | House, Man & Van, Office & Storage",
+          name: "London & UK Removals Company | House, Man & Van, Office",
           description:
             "Fully insured UK removals company for house, man and van, office, packing and storage moves nationwide. Get a free quote.",
           isPartOf: { "@id": `${SITE_URL}/#website` },

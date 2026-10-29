@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BoroughPage from "@/components/areas/BoroughPage";
 import { boroughs } from "@/lib/boroughs";
-import { SITE, withTrailingSlash } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE, withTrailingSlash } from "@/lib/seo";
 import { areaToBorough, getAreaBySlug } from "@/lib/cms";
+import { getAdminRole } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,10 @@ export async function generateMetadata({
         url: canonical,
         siteName: SITE.name,
         type: "website",
+        locale: "en_GB",
+        images: [DEFAULT_OG_IMAGE],
       },
+      twitter: { card: "summary_large_image", images: [DEFAULT_OG_IMAGE.url] },
     };
   }
 
@@ -36,6 +40,8 @@ export async function generateMetadata({
   if (!area) return { title: "Area Not Found | Removals Nationwide" };
   const cmsBorough = areaToBorough(area);
   return {
+    // A draft is only reachable by a signed-in admin previewing it.
+    ...(area.published ? {} : { robots: { index: false, follow: false } }),
     title: cmsBorough.metaTitle,
     description: cmsBorough.metaDescription,
     alternates: { canonical: withTrailingSlash(`/areas/${slug}`) },
@@ -45,7 +51,10 @@ export async function generateMetadata({
       url: withTrailingSlash(`/areas/${slug}`),
       siteName: SITE.name,
       type: "website",
+      locale: "en_GB",
+      images: [DEFAULT_OG_IMAGE],
     },
+    twitter: { card: "summary_large_image", images: [DEFAULT_OG_IMAGE.url] },
   };
 }
 
@@ -60,6 +69,6 @@ export default async function AreaPage({
   if (borough) return <BoroughPage borough={borough} />;
 
   const area = await getAreaBySlug(slug);
-  if (!area) notFound();
+  if (!area || (!area.published && !(await getAdminRole()))) notFound();
   return <BoroughPage borough={areaToBorough(area)} />;
 }

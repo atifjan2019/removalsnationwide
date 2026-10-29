@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import Button from "@/components/ui/Button";
 import BrandLogo from "@/components/layout/BrandLogo";
 import { navItems } from "@/lib/site";

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import PhoneLinks from "@/components/ui/PhoneLinks";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
   SITE_URL,
 } from "@/lib/seo";
@@ -186,15 +185,6 @@ const faqs: FaqItem[] = [
 
 /* ── Schema ─────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -202,52 +192,39 @@ const orgSchema = {
   "@id": `${SITE_URL}/#organization`,
 };
 
-const crateProductSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      name: "LC3 Plastic Lidded Crate Hire (80 litre)",
-      description:
-        "Reusable 80-litre lidded plastic LC3 crate for hire in London. Holds up to ten lever arch files. Waterproof, sealable with security locks. Disinfected after every use.",
-      brand: { "@type": "Brand", name: "Removals Nationwide" },
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "GBP",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: 2.0,
-          priceCurrency: "GBP",
-          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "WEE" },
-          valueAddedTaxIncluded: false,
-        },
-        availability: "https://schema.org/InStock",
-        areaServed: { "@type": "Country", name: "United Kingdom" },
-        seller: { "@id": `${SITE_URL}/#organization` },
-      },
+/* The crates are offers within the crate hire Service, not standalone products:
+   Product markup (even nested) is meant for a single product's page and needs
+   an image, so each Offer carries the item's name and description itself. */
+const crateOffers = [
+  {
+    name: "LC3 Plastic Lidded Crate Hire (80 litre)",
+    description:
+      "Reusable 80-litre lidded plastic LC3 crate for hire in London. Holds up to ten lever arch files. Waterproof, sealable with security locks. Disinfected after every use.",
+    price: 2.0,
+  },
+  {
+    name: "IT Computer Crate Hire (165 litre)",
+    description:
+      "Reusable 165-litre IT plastic crate for hire in London. Holds up to a 21-inch monitor plus PC and peripherals. Tough polypropylene, lidded and sealable.",
+    price: 3.8,
+  },
+];
+
+const crateCatalog = {
+  "@type": "OfferCatalog",
+  name: "Crate hire",
+  itemListElement: crateOffers.map((c) => ({
+    "@type": "Offer",
+    name: c.name,
+    description: c.description,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: c.price,
+      priceCurrency: "GBP",
+      referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "WEE" },
+      valueAddedTaxIncluded: false,
     },
-    {
-      "@type": "Product",
-      name: "IT Computer Crate Hire (165 litre)",
-      description:
-        "Reusable 165-litre IT plastic crate for hire in London. Holds up to a 21-inch monitor plus PC and peripherals. Tough polypropylene, lidded and sealable.",
-      brand: { "@type": "Brand", name: "Removals Nationwide" },
-      offers: {
-        "@type": "Offer",
-        priceCurrency: "GBP",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: 3.8,
-          priceCurrency: "GBP",
-          referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "WEE" },
-          valueAddedTaxIncluded: false,
-        },
-        availability: "https://schema.org/InStock",
-        areaServed: { "@type": "Country", name: "United Kingdom" },
-        seller: { "@id": `${SITE_URL}/#organization` },
-      },
-    },
-  ],
+  })),
 };
 
 /* ── Page ───────────────────────────────────────────────────────────── */
@@ -256,17 +233,8 @@ export default async function CrateHirePage() {
   const { phones, phoneList } = await getResolvedSettings();
   return (
     <>
-      <JsonLd data={serviceLdFor("crate-hire")} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...serviceLdFor("crate-hire"), hasOfferCatalog: crateCatalog }} />
       <JsonLd data={orgSchema} />
-      <JsonLd data={crateProductSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Crate Hire" },
-        ])}
-      />
       <CrateHireAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

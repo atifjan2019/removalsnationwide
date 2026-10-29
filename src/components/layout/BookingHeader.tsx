@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import BrandLogo from "@/components/layout/BrandLogo";
 import { PhoneIcon, WhatsAppIcon } from "@/components/ui/icons";
 import type { ResolvedSettings } from "@/lib/settings-shared";

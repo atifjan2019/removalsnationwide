@@ -7,6 +7,7 @@ import { fromBool } from "@/lib/d1";
 import { sanitize } from "@/lib/sanitize";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
+import { bumpPublicCacheVersion } from "@/lib/public-cache";
 import { findNearbyAreasForName, type NearbyPlace } from "@/lib/nearby-areas";
 import {
   cleanAreaTemplate,
@@ -78,6 +79,9 @@ export async function savePost(input: PostInput) {
       .run();
   }
 
+  // Refresh the public cache first: a failing activity-log insert must not
+  // leave visitors on the old pages.
+  await bumpPublicCacheVersion("post saved");
   await logActivity("Updated", `${input.id ? "Post updated" : "Post created"}: ${input.title}`, input.id || slug);
   revalidatePath("/news");
   revalidatePath(`/news/${slug}`);
@@ -88,6 +92,7 @@ export async function deletePost(id: string) {
   await assertAdmin();
   const db = await requireDb();
   await db.prepare("delete from posts where id = ?").bind(id).run();
+  await bumpPublicCacheVersion("post deleted");
   await logActivity("Deleted", "News post deleted", id);
   revalidatePath("/news");
   revalidatePath("/admin/posts");
@@ -139,6 +144,7 @@ export async function saveArea(input: AreaInput) {
       .run();
   }
 
+  await bumpPublicCacheVersion("area saved");
   await logActivity("Updated", `${input.id ? "Area updated" : "Area created"}: ${name}`, input.id || slug);
   revalidatePath("/areas");
   revalidatePath(`/areas/${slug}`);
@@ -161,6 +167,7 @@ export async function deleteArea(id: string) {
   await assertAdmin();
   const db = await requireDb();
   await db.prepare("delete from areas where id = ?").bind(id).run();
+  await bumpPublicCacheVersion("area deleted");
   await logActivity("Deleted", "Service area deleted", id);
   revalidatePath("/areas");
   revalidatePath("/admin/areas");

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import PhoneLinks from "@/components/ui/PhoneLinks";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
   SITE_URL,
 } from "@/lib/seo";
@@ -266,15 +265,6 @@ const faqs: FaqItem[] = [
 
 /* ── Schema ─────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -282,26 +272,19 @@ const orgSchema = {
   "@id": `${SITE_URL}/#organization`,
 };
 
-const serviceOfferSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Nationwide Single Item and Marketplace Delivery",
-  serviceType: "Single Item Delivery",
-  areaServed: { "@type": "Country", name: "United Kingdom" },
-  provider: { "@id": `${SITE_URL}/#organization` },
-  offers: {
-    "@type": "Offer",
-    name: "Single Item Delivery",
+/* One Service node per page: the offer is merged into the shared Service. */
+const singleItemOffer = {
+  "@type": "Offer",
+  name: "Single Item Delivery",
+  priceCurrency: "GBP",
+  priceSpecification: {
+    "@type": "PriceSpecification",
+    minPrice: 60,
     priceCurrency: "GBP",
-    priceSpecification: {
-      "@type": "PriceSpecification",
-      minPrice: 60,
-      priceCurrency: "GBP",
-      valueAddedTaxIncluded: false,
-    },
-    availability: "https://schema.org/InStock",
-    areaServed: { "@type": "Country", name: "United Kingdom" },
+    valueAddedTaxIncluded: false,
   },
+  availability: "https://schema.org/InStock",
+  areaServed: { "@type": "Country", name: "United Kingdom" },
 };
 
 /* ── Page ───────────────────────────────────────────────────────────── */
@@ -310,17 +293,8 @@ export default async function SingleItemPage() {
   const { phones, phoneList } = await getResolvedSettings();
   return (
     <>
-      <JsonLd data={serviceLdFor("single-item-deliveries")} />
-      <JsonLd data={faqPageSchema} />
+      <JsonLd data={{ ...serviceLdFor("single-item-deliveries"), offers: singleItemOffer }} />
       <JsonLd data={orgSchema} />
-      <JsonLd data={serviceOfferSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Single Item / eBay Deliveries" },
-        ])}
-      />
       <SingleItemAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { buildMetadata, breadcrumbLd, SITE_URL } from "@/lib/seo";
-import Link from "next/link";
+import { buildMetadata, SITE_URL } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
 import Image from "next/image";
 import { DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 import JsonLd from "@/components/seo/JsonLd";
@@ -13,23 +13,24 @@ import { getDbPosts } from "@/lib/cms";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = buildMetadata("news");
+/** An empty listing is a thin page, so it stays out of the index until posts exist. */
+export async function generateMetadata(): Promise<Metadata> {
+  const base = buildMetadata("news");
+  const hasPosts = getAllPosts().length > 0 || (await getDbPosts()).length > 0;
+  return hasPosts ? base : { ...base, robots: { index: false, follow: true } };
+}
 
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  "@id": `${SITE_URL}/news#blog`,
-  url: `${SITE_URL}/news`,
+  "@id": `${SITE_URL}/news/#blog`,
+  url: `${SITE_URL}/news/`,
   name: "Moving News and Guides",
   description:
     "Moving, packing, storage, office and international removals tips and guides from Removals Nationwide.",
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
-const newsBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Moving News", href: "/news" },
-]);
 
 type Card = { slug: string; title: string; date: string; excerpt: string; cover: string };
 
@@ -73,7 +74,6 @@ export default async function NewsPage({
   return (
     <>
       <JsonLd data={blogSchema} />
-      <JsonLd data={newsBreadcrumb} />
       <StickyMobileBar />
       <PageBanner
         title="Moving News"

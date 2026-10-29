@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import {
   buildMetadata,
   serviceH1,
   serviceLdFor,
-  breadcrumbLd,
   organizationLd,
 } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
@@ -160,15 +159,6 @@ const faqs: FaqItem[] = [
 
 /* ── Schema ─────────────────────────────────────────────────────────── */
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -182,15 +172,7 @@ export default async function DormitoryMoveStudentStoragePage() {
   return (
     <>
       <JsonLd data={serviceLdFor("dormitory-move-student-storage")} />
-      <JsonLd data={faqPageSchema} />
       <JsonLd data={orgSchema} />
-      <JsonLd
-        data={breadcrumbLd([
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Dormitory Move and Student Storage" },
-        ])}
-      />
       <DormitoryMoveAnimations />
       <StickyMobileBar sentinelId="hero-intro" />
 

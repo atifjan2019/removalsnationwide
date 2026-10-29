@@ -19,6 +19,21 @@ export async function getDb(): Promise<D1Database | null> {
   }
 }
 
+/**
+ * Marks the current render as built from fallback data (a failed or missing
+ * D1 read). The edge cache in cf-worker.ts checks this flag on the request
+ * context and does not store such a page, so a passing D1 blip is never served
+ * from cache as default contact details, an empty list or a false 404.
+ */
+export function markDegraded(): void {
+  try {
+    const { ctx } = getCloudflareContext();
+    (ctx as unknown as { rnDegraded?: boolean }).rnDegraded = true;
+  } catch {
+    // No request context (build time): nothing is cached then anyway.
+  }
+}
+
 /** Throws so a server action can surface a real message instead of failing mute. */
 export async function requireDb(): Promise<D1Database> {
   const db = await getDb();

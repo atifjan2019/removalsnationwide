@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getResolvedSettings, withContacts } from "@/lib/settings";
 import Image from "next/image";
-import Link from "next/link";
-import { buildMetadata, serviceH1, SITE_URL, breadcrumbLd, organizationLd } from "@/lib/seo";
+import Link from "@/components/ui/AppLink";
+import { buildMetadata, serviceH1, SITE_URL, organizationLd } from "@/lib/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import PageBanner from "@/components/layout/PageBanner";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -32,17 +32,17 @@ export const metadata: Metadata = buildMetadata("man-and-van");
 const manAndVanSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${SITE_URL}/man-and-van-london#service`,
-  name: "Nationwide Man and Van",
+  "@id": `${SITE_URL}/man-and-van-london/#service`,
+  name: "Man and Van London",
   serviceType: "Man and Van Moving Service",
   description:
     "Professional man and van service across the UK from £55 per hour. Seven-day availability, fully insured crews and local or long-distance moves.",
-  url: `${SITE_URL}/man-and-van-london`,
+  url: `${SITE_URL}/man-and-van-london/`,
   areaServed: { "@type": "Country", name: "United Kingdom" },
   provider: { "@id": `${SITE_URL}/#organization` },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Nationwide Man and Van Prices",
+    name: "Man and Van London Prices",
     itemListElement: [
       {
         "@type": "Offer",
@@ -166,7 +166,7 @@ const processIcons = [IcoPhone, IcoDocument, IcoCheck, IcoWrench, IcoTruck, IcoH
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  name: "How Your Nationwide Man and Van Move Works, Step by Step",
+  name: "How Your Man and Van London Move Works, Step by Step",
   description:
     "The step-by-step process for booking and completing a man and van move with Removals Nationwide in London.",
   step: processSteps.map((s, i) => ({
@@ -326,11 +326,6 @@ const faqPageSchema = {
 
 const orgSchema = organizationLd();
 
-const manVanBreadcrumb = breadcrumbLd([
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Nationwide Man and Van", href: "/man-and-van-london" },
-]);
 
 /* ═══════════════════════════════════════════════════════════ */
 
@@ -374,17 +369,16 @@ export default async function ManAndVanPage() {
       <JsonLd data={howToSchemaLive} />
       <JsonLd data={faqPageSchemaLive} />
       <JsonLd data={{ ...orgSchema }} />
-      <JsonLd data={manVanBreadcrumb} />
 
       {/* ── S1: Hero ── */}
       <PageBanner
-        title="Nationwide Man and Van"
+        title="Man and Van London"
         h1={serviceH1["man-and-van"]}
         subtitle="From £55/hr plus VAT · Same Day · 7 Days a Week · Experienced and Insured"
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Services", href: "/services" },
-          { label: "Nationwide Man and Van" },
+          { label: "Man and Van London" },
         ]}
       />
 
@@ -525,7 +519,7 @@ export default async function ManAndVanPage() {
           <SectionHeading
             align="left"
             eyebrow="Service definition"
-            title="What Is a Nationwide Man and Van Service?"
+            title="What Is a Man and Van London Service?"
           />
           <div
             className="mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-brand-charcoal/85"
@@ -566,7 +560,7 @@ export default async function ManAndVanPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Transparent rates 2026"
-            title="Nationwide Man and Van Prices"
+            title="Man and Van London Prices"
           />
           <p className="mx-auto mt-6 max-w-3xl text-center text-base leading-relaxed text-brand-charcoal/85">
             The rate you are quoted is the rate you pay. Each booking includes the driver, van,
@@ -1203,7 +1197,7 @@ export default async function ManAndVanPage() {
 
       {/* ── S12: Final CTA ── */}
       <CtaBand
-        heading="Book Your Nationwide Man and Van Today"
+        heading="Book Your Man and Van London Today"
         subtext="Free quote in under 2 minutes · same-day available · 7 days a week"
         actions={[
           { label: "Get a Free Quote", href: "/bookservice#quick-quote", variant: "navy" },
@@ -1216,9 +1210,9 @@ export default async function ManAndVanPage() {
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading
             eyebrow="Common questions answered"
-            title="Nationwide Man and Van: Frequently Asked Questions"
+            title="Man and Van London: Frequently Asked Questions"
           />
-          <Faq items={faqItems} defaultOpen={null} className="mt-10" />
+          <Faq items={faqItems} defaultOpen={null} className="mt-10" schema={false} />
         </div>
       </section>
 

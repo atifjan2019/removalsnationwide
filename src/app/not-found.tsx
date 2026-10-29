@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getResolvedSettings } from "@/lib/settings";
-import Link from "next/link";
+import Link from "@/components/ui/AppLink";
 import BrandLogo from "@/components/layout/BrandLogo";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const services = [
   { label: "House Removals", href: "/house-removals" },
-  { label: "Nationwide Man and Van", href: "/man-and-van-london" },
+  { label: "Man and Van London", href: "/man-and-van-london" },
   { label: "Office Removals", href: "/office-removals" },
   { label: "Packing Service", href: "/packing-service" },
   { label: "Storage", href: "/storage" },
@@ -22,7 +22,7 @@ export default async function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-brand-navy px-4 py-16 text-center text-white">
       <Link href="/" className="inline-flex items-center rounded-xl bg-white px-3 py-2">
-        <BrandLogo />
+        <BrandLogo lazy />
       </Link>
 
       <p className="mt-10 text-sm font-bold uppercase tracking-widest text-brand-red">Error 404</p>

@@ -1,5 +1,5 @@
 import "server-only";
-import { getDb, requireDb, toBool } from "@/lib/d1";
+import { getDb, requireDb, toBool, markDegraded } from "@/lib/d1";
 import sanitizeHtml from "sanitize-html";
 import { parseAreaTemplateData } from "@/lib/area-template";
 import { REMOTE_IMAGES } from "@/lib/remote-images";
@@ -121,7 +121,10 @@ function mapRow<T extends { published: boolean }>(row: Record<string, unknown>):
 
 export async function getDbPosts(includeUnpublished = false): Promise<DbPost[]> {
   const db = await getDb();
-  if (!db) return [];
+  if (!db) {
+    markDegraded();
+    return [];
+  }
   try {
     const sql = includeUnpublished
       ? "select * from posts order by created_at desc"
@@ -129,13 +132,17 @@ export async function getDbPosts(includeUnpublished = false): Promise<DbPost[]> 
     const { results } = await db.prepare(sql).all<Record<string, unknown>>();
     return (results ?? []).map((r) => mapRow<DbPost>(r));
   } catch {
+    markDegraded();
     return [];
   }
 }
 
 export async function getDbPostBySlug(slug: string): Promise<DbPost | null> {
   const db = await getDb();
-  if (!db) return null;
+  if (!db) {
+    markDegraded();
+    return null;
+  }
   try {
     const row = await db
       .prepare("select * from posts where slug = ? limit 1")
@@ -143,6 +150,7 @@ export async function getDbPostBySlug(slug: string): Promise<DbPost | null> {
       .first();
     return row ? mapRow<DbPost>(row as Record<string, unknown>) : null;
   } catch {
+    markDegraded();
     return null;
   }
 }
@@ -165,7 +173,10 @@ export async function getDbPostById(id: string): Promise<DbPost | null> {
 
 export async function getAreas(includeUnpublished = false): Promise<Area[]> {
   const db = await getDb();
-  if (!db) return [];
+  if (!db) {
+    markDegraded();
+    return [];
+  }
   try {
     const sql = includeUnpublished
       ? "select * from areas order by name asc"
@@ -173,13 +184,17 @@ export async function getAreas(includeUnpublished = false): Promise<Area[]> {
     const { results } = await db.prepare(sql).all<Record<string, unknown>>();
     return (results ?? []).map((r) => mapRow<Area>(r));
   } catch {
+    markDegraded();
     return [];
   }
 }
 
 export async function getAreaBySlug(slug: string): Promise<Area | null> {
   const db = await getDb();
-  if (!db) return null;
+  if (!db) {
+    markDegraded();
+    return null;
+  }
   try {
     const row = await db
       .prepare("select * from areas where slug = ? limit 1")
@@ -187,6 +202,7 @@ export async function getAreaBySlug(slug: string): Promise<Area | null> {
       .first();
     return row ? mapRow<Area>(row as Record<string, unknown>) : null;
   } catch {
+    markDegraded();
     return null;
   }
 }
