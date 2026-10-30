@@ -205,9 +205,9 @@ export const META: Record<string, MetaEntry> = {
     noindex: true,
   },
   areas: {
-    title: "London Removal Areas | 32 Boroughs & the City",
+    title: "Removal Areas | London Boroughs and Towns Within 100 Miles",
     description:
-      "Removals and man and van across all 32 London boroughs and the City, with local parking, access and postcode guides. UK-wide and international moves too.",
+      "Removals and man and van across all 32 London boroughs, the City and the towns within 100 miles of London, with local parking, access and postcode guides.",
     path: "/areas",
   },
 };

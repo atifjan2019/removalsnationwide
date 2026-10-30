@@ -43,44 +43,35 @@ export type Borough = {
   knowBlocks: BoroughKnowBlock[];
   nearby: BoroughLink[];
   faqs: BoroughFaq[];
+  /** Towns outside Greater London (src/lib/towns) set this; it swaps the few
+   *  London-only sentences in the BoroughPage template. */
+  kind?: "borough" | "town";
+  /** County shown in the areas hub and the schema areaServed name. */
+  county?: string;
+  /** Approximate road distance from central London, e.g. "about 40 miles". */
+  distanceFromLondon?: string;
 };
 
 /* ---- Shared, confirmed company copy (identical for every borough) ---- */
 
-const HERO_IMAGE = REMOTE_IMAGES.movingVan;
+export const HERO_IMAGE = REMOTE_IMAGES.movingVan;
 
 // One stock photo serves every borough, so the alt text describes the photo,
 // not a location it was not taken in.
-const HERO_ALT = "Removals Nationwide movers loading a removal van on a residential street";
+export const HERO_ALT = "Removals Nationwide movers loading a removal van on a residential street";
 const introLine = (n: string) =>
   `An experienced and fully insured removals company that genuinely serves and knows ${n}.`;
-const VALUE_LINE =
+export const VALUE_LINE =
   "Published hourly rates, insurance included, your own accountable crew, and the parking and access handled for you.";
-const localPara1 = (n: string) =>
-  `Removals Nationwide moves homes, offices and single items across the whole of ${n}, 7 days a week. We are a fully experienced and insured London removals company, not an inexperienced local operator and not a booking marketplace. The same team handles your man and van job, your full house or office move, your packing, your storage and your clearance, with one point of contact from quote to completion.`;
-
-const faqPrice = (n: string): BoroughFaq => ({
+export const faqPrice = (n: string): BoroughFaq => ({
   question: `How much is a man and van in ${n}?`,
   answer:
     "Our man and van starts at £55 per hour plus VAT for one mover and a van, from £70 for two movers and from £90 for three, with a two-hour minimum. Half-day and full-day rates are also published. The price includes loading, transport, unloading and insurance. Any parking suspension, Congestion Charge or toll on your route is confirmed in writing before you book.",
 });
-const faqInsured = (): BoroughFaq => ({
+export const faqInsured = (): BoroughFaq => ({
   question: "Are you insured and experienced?",
   answer:
     "Yes. Every move includes goods-in-transit insurance in the price. Our crews are trained, vetted and background-checked.",
-});
-const faqSameDay = (n: string): BoroughFaq => ({
-  question: `Can you do a same-day move in ${n}?`,
-  answer:
-    "Often yes, subject to availability. We operate 7 days a week and usually arrange a crew and van at short notice for smaller moves. Call us and we will tell you what we can do today.",
-});
-const faqFullMove = (n: string): BoroughFaq => ({
-  question: "Do you do full house and office moves, not just man and van?",
-  answer: `Yes. We handle everything from a single item to a full house or office relocation in ${n}, plus packing, storage, clearance and international moves, all from one experienced team.`,
-});
-const faqNearby = (n: string, neighbours: string): BoroughFaq => ({
-  question: `Do you cover areas near ${n}?`,
-  answer: `Yes. We also serve neighbouring ${neighbours}, and all 32 London boroughs, Greater London and Surrey, with nationwide moves on request.`,
 });
 
 const subhead = (n: string, codes: string) =>
@@ -104,7 +95,7 @@ export const islington: Borough = {
   introLine: introLine("Islington"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Islington"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Islington, from Angel and Barnsbury up to Archway and Tufnell Park, 7 days a week. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the borough's controlled parking, the red-route sections on Holloway Road and City Road, and the Georgian and Victorian townhouses with narrow original staircases. Whether it is a man and van job, a full house or office move, packing, storage or clearance, one team handles it, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Islington apart is that we work in the borough constantly, so we plan around its realities: controlled parking, busy main roads, period staircases and tight access. That local knowledge means fewer delays and a smoother move on the day.",
   ],
   coverageIntro:
@@ -154,9 +145,18 @@ export const islington: Borough = {
         "Yes. Islington has extensive controlled parking, so where a move needs it we arrange a suspended parking bay with the council in advance, so the van can load legally and close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Islington"),
-    faqFullMove("Islington"),
-    faqNearby("Islington", "Camden, Hackney, Haringey and the City of London"),
+    {
+      question: "Can you do a same-day move in Islington?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually find a crew and van at short notice for a smaller move. Islington needs at least 14 days notice for most bay suspensions, so a same-day move usually relies on legal loading near your door. Call us and we will say what is possible today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We take on everything from a single item to a complete house or office relocation, whether that is a Georgian townhouse in Canonbury or Barnsbury, an upper-floor conversion in Holloway or a concierge apartment near the City Road basin. Packing, storage, clearance and international moves are all handled by the same experienced team.",
+    },
+    {
+      question: "Do you cover areas near Islington?",
+      answer: "Yes. Islington moves regularly take us over the border into Camden, Hackney, Haringey and the City of London, and we serve all 32 London boroughs, Greater London and Surrey. If you are leaving London altogether, nationwide moves are available on request.",
+    },
   ],
 };
 
@@ -178,7 +178,7 @@ export const camden: Borough = {
   introLine: introLine("Camden"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Camden"),
+    "From Hampstead and Belsize Park down to Bloomsbury and Holborn, Removals Nationwide moves homes, offices and single items across the whole of Camden, 7 days a week. We are an experienced and fully insured London removals company rather than a booking marketplace, and we plan for Camden's realities: a bay suspension that needs at least 17 working days notice, steep and narrow roads in Hampstead, and property that ranges from grand period houses to the estates of Somers Town and Gospel Oak. One team covers your man and van, full move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Camden apart is that the access varies sharply by neighbourhood, from the steep conservation streets above Belsize Park to the market crowds of Camden Town and the Georgian terraces of Bloomsbury. We work the borough constantly, plan the loading point and crew size for each, and that local knowledge means fewer delays on the day.",
   ],
   coverageIntro:
@@ -230,8 +230,14 @@ export const camden: Borough = {
         "Yes. Camden has extensive controlled parking, very restricted in Hampstead and Primrose Hill, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Camden"),
-    faqFullMove("Camden"),
+    {
+      question: "Can you do a same-day move in Camden?",
+      answer: "Often yes, depending on availability. We run 7 days a week and smaller moves can usually be arranged at short notice. Camden asks for at least 17 working days notice for a bay suspension, so a same-day move relies on legal loading rather than a suspended bay. Call us and we will tell you what we can do today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. From a single item to a complete house or office relocation, one experienced team handles it, whether that is a multi-floor period house in Hampstead, a mansion block flat in Swiss Cottage, a Bloomsbury office or an estate flat in Gospel Oak. Packing, storage, clearance and international moves are all part of the same service.",
+    },
     {
       question: "Can you move a large period house in Hampstead?",
       answer:
@@ -258,7 +264,7 @@ export const hackney: Borough = {
   introLine: introLine("Hackney"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Hackney"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Hackney, 7 days a week, from the Victorian terraces of London Fields and Clapton to the Shoreditch warehouse conversions and the new-build flats at Hackney Wick. We are an experienced and fully insured London removals company, not a marketplace that passes your job to whoever bids. We know the resident-only bays of De Beauvoir, the goods lifts and booking rules of the converted warehouses, and the busy loading points on Kingsland Road and Mare Street. Man and van, full move, packing, storage or clearance, one team handles it with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Hackney apart is that the borough mixes tight Victorian streets, warehouse conversions and a high number of estate tower blocks, and each needs a different plan. We coordinate goods lifts, loading bays and porters in advance, so the move stays smooth on the day.",
   ],
   coverageIntro:
@@ -308,8 +314,14 @@ export const hackney: Borough = {
         "Yes. Hackney has extensive controlled parking, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Hackney"),
-    faqFullMove("Hackney"),
+    {
+      question: "Can you do a same-day move in Hackney?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and a smaller Hackney move can usually be arranged at short notice. A bay suspension on the resident-only streets of London Fields or Clapton needs 10 to 14 working days notice, so a same-day move relies on legal loading close to your door. Call us to check today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We cover everything from a single item to a full house or office relocation, whether that is a Victorian terrace in Clapton, a Shoreditch warehouse conversion, an estate tower in Homerton or a new-build flat at Hackney Wick. The same team also provides packing, storage, clearance and international moves.",
+    },
     {
       question: "Can you move from a warehouse conversion or an estate tower with a goods lift?",
       answer:
@@ -336,7 +348,7 @@ export const wandsworth: Borough = {
   introLine: introLine("Wandsworth"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Wandsworth"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Wandsworth, 7 days a week, from Battersea and Clapham Junction through Balham and Tooting to Putney and Roehampton. We are an experienced and fully insured London removals company, not a booking marketplace. We know the long Victorian terraces around Between the Commons with their resident bays and narrow staircases, the mansion blocks of Putney, and the congestion around St John's Road and Lavender Hill that makes timing the van matter. Whether you need a man and van, a full move, packing, storage or clearance, one team does it with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Wandsworth apart is that the borough has one of the highest move turnovers in London, mostly families and professionals in period terraces, with a riverside new-build edge at Nine Elms. We plan the loading point and crew size for each and coordinate concierge blocks in advance.",
   ],
   coverageIntro:
@@ -385,8 +397,14 @@ export const wandsworth: Borough = {
         "Yes. Controlled parking applies across most of Wandsworth, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Wandsworth"),
-    faqFullMove("Wandsworth"),
+    {
+      question: "Can you do a same-day move in Wandsworth?",
+      answer: "Often yes, subject to availability. We work 7 days a week and smaller Wandsworth moves can usually be arranged at short notice. A suspended bay on the resident-parking terraces of Tooting or Earlsfield needs 10 to 14 working days notice, so same-day moves rely on legal loading near your door. Call us and we will tell you what is possible.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. One experienced team handles everything from a single item to a complete house or office relocation, whether that is a family terrace Between the Commons, a Putney mansion block flat or a riverside apartment at Nine Elms or Battersea Power Station. Packing, storage, clearance and international moves are all available alongside.",
+    },
     {
       question: "Can you move within Between the Commons or a Nine Elms concierge block?",
       answer:
@@ -413,7 +431,7 @@ export const lambeth: Borough = {
   introLine: introLine("Lambeth"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Lambeth"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Lambeth, 7 days a week, from Brixton, Clapham and Stockwell down to Streatham, West Norwood and Gipsy Hill. We are an experienced and fully insured London removals company, not a booking marketplace. We know the widespread controlled parking and resident bays of Clapham and Herne Hill, the estate blocks of Brixton and Stockwell that need lift access, and the congestion around Brixton Road and Brixton Hill. Your man and van job, full house or office move, packing, storage or clearance is handled by one team, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Lambeth apart is that the borough runs from period Clapham and Kennington to dense Brixton and Streatham, and the access changes with it. We plan the loading point and crew size for terraces, estate lifts and Vauxhall concierge towers alike.",
   ],
   coverageIntro:
@@ -462,8 +480,14 @@ export const lambeth: Borough = {
         "Yes. Controlled parking is widespread in Lambeth, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Lambeth"),
-    faqFullMove("Lambeth"),
+    {
+      question: "Can you do a same-day move in Lambeth?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually arrange a crew and van at short notice for a smaller Lambeth move. Controlled parking is widespread and a bay suspension needs 10 to 14 working days notice, so a same-day move depends on legal loading near your door. Call us to check today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We move everything from a single item to a full house or office relocation, whether that is a Georgian terrace in Kennington, a Clapham period conversion, an estate flat in Brixton or Stockwell, or a new-build apartment at Vauxhall. Packing, storage, clearance and international moves come from the same experienced team.",
+    },
     {
       question: "Can you move from a Brixton or Stockwell estate block?",
       answer:
@@ -490,7 +514,7 @@ export const towerHamlets: Borough = {
   introLine: introLine("Tower Hamlets"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Tower Hamlets"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Tower Hamlets, 7 days a week, from the Canary Wharf and Isle of Dogs towers to the Victorian terraces of Bow and Bethnal Green and the Georgian houses of Spitalfields. We are an experienced and fully insured London removals company, not a booking marketplace. We know that parking here can be run by private estate management as well as the council, and that Wapping and Limehouse warehouses have cobbled approaches and goods lifts. One team handles man and van, full move, packing, storage and clearance, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Tower Hamlets apart is that the borough has one of the highest concentrations of high-rise flat moves in London, and those moves live or die on building logistics. We book service lifts and loading bays through the building manager and coordinate private estate parking in advance.",
   ],
   coverageIntro:
@@ -544,8 +568,14 @@ export const towerHamlets: Borough = {
         "Yes. Parking is controlled by council zones and, on the Isle of Dogs and at Canary Wharf, by private estate management. We arrange a suspended bay or the estate permit in advance so the van can load legally and close to your entrance.",
     },
     faqInsured(),
-    faqSameDay("Tower Hamlets"),
-    faqFullMove("Tower Hamlets"),
+    {
+      question: "Can you do a same-day move in Tower Hamlets?",
+      answer: "Often yes, subject to availability. We work 7 days a week and smaller moves can usually be arranged at short notice. In the Canary Wharf and Isle of Dogs towers a service lift and loading bay must be booked through the building manager, so a same-day move there depends on the building confirming a slot. Call us to check.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. From a single item to a complete house or office relocation, one experienced team handles it, whether that is a high-rise apartment at Canary Wharf, a warehouse conversion in Wapping, a terrace in Bow or an estate flat in Poplar. Packing, storage, clearance and international moves are all part of the service.",
+    },
   ],
 };
 
@@ -567,7 +597,7 @@ export const westminster: Borough = {
   introLine: introLine("Westminster"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Westminster"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Westminster, 7 days a week, from Mayfair, Marylebone and Belgravia to Pimlico, Paddington, St John's Wood and Maida Vale. We are an experienced and fully insured London removals company, not a booking marketplace. We work around the most controlled parking in London, the Congestion Charge that covers most of the borough, the porters and building rules of the mansion blocks, and the tight loading windows on the narrow streets of Soho and Covent Garden. Man and van, full move, packing, storage or clearance, one team handles it with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Westminster apart is that it is the most access-restricted borough in London and the homes are often high-value, so careful planning, full insurance and a suspended parking bay matter more here than anywhere. We coordinate porter buildings and protect listed interiors.",
   ],
   coverageIntro:
@@ -624,8 +654,14 @@ export const westminster: Borough = {
         "Yes. Much of Westminster is high-value mansion blocks, stucco terraces and listed buildings. Every move includes goods-in-transit insurance in the price, our crews are vetted and background-checked, and we bring full protection for high-value and listed interiors.",
     },
     faqInsured(),
-    faqSameDay("Westminster"),
-    faqFullMove("Westminster"),
+    {
+      question: "Can you do a same-day move in Westminster?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually find a crew and van at short notice for a smaller move. Westminster needs at least 10 working days notice for a bay suspension, so a same-day move relies on legal loading, and the Congestion Charge still applies on a weekday. Call us to check today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. One experienced team handles everything from a single item to a full house or office relocation, whether that is a mansion block flat in Marylebone, a stucco terrace in Belgravia or Pimlico, a Soho or Fitzrovia office, or a listed building. Packing, storage, clearance and international moves are all available.",
+    },
   ],
 };
 
@@ -648,7 +684,7 @@ export const kensingtonAndChelsea: Borough = {
   introLine: introLine("Kensington and Chelsea"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Kensington and Chelsea"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Kensington and Chelsea, 7 days a week, from Chelsea, Knightsbridge and South Kensington to Notting Hill, Ladbroke Grove and North Kensington. We are an experienced and fully insured London removals company, not a booking marketplace. We plan for the borough's narrow cobbled mews entrances, its white-stucco terraces in conservation areas, the porters and strict rules of the Knightsbridge mansion blocks, and the red-route sections on the King's Road and Cromwell Road. Man and van, full move, packing, storage or clearance, one team does it all with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Kensington and Chelsea apart is that the borough is prime, high-value and tightly conserved, with many narrow mews houses, so careful handling, full insurance and a planned approach to access matter. We protect high-value interiors and plan a transfer where a mews entrance only fits a small vehicle.",
   ],
   coverageIntro:
@@ -700,8 +736,14 @@ export const kensingtonAndChelsea: Borough = {
         "Yes. Much of the borough is prime, high-value property in conservation areas. Every move includes goods-in-transit insurance in the price, our crews are vetted and background-checked, and we bring full protection for high-value interiors.",
     },
     faqInsured(),
-    faqSameDay("Kensington and Chelsea"),
-    faqFullMove("Kensington and Chelsea"),
+    {
+      question: "Can you do a same-day move in Kensington and Chelsea?",
+      answer: "Often yes, subject to availability. We work 7 days a week and smaller moves can usually be arranged at short notice. Parking here is among the most controlled in London and a short notice express suspension carries a large surcharge, so a same-day move normally relies on legal loading near your door. Call us to check today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. From a single item to a full house or office relocation, one experienced team handles it, whether that is a mews house in Chelsea, a stucco townhouse in Notting Hill, a mansion block flat in Knightsbridge or South Kensington, or a flat in North Kensington. Packing, storage, clearance and international moves are all included in what we offer.",
+    },
   ],
 };
 
@@ -723,7 +765,7 @@ export const hammersmithAndFulham: Borough = {
   introLine: introLine("Hammersmith and Fulham"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Hammersmith and Fulham"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Hammersmith and Fulham, 7 days a week, from the lettered streets of Fulham to Shepherd's Bush, White City and Barons Court. We are an experienced and fully insured London removals company, not a booking marketplace, and we know this borough's controlled parking and the resident bays that line its Victorian terraces. Whether you need a man and van, a full house or office move, packing, storage or a clearance, one team handles it, with a single point of contact from quote to completion, and the van timed around Fulham Palace Road and King Street.",
     "What sets a Removals Nationwide move in Hammersmith and Fulham apart is that the borough is mostly period terraces and conversions with a growing riverside new-build edge. We plan the loading point and crew size for narrow staircases and coordinate the Imperial Wharf and Fulham Reach concierge blocks in advance.",
   ],
   coverageIntro:
@@ -773,8 +815,14 @@ export const hammersmithAndFulham: Borough = {
         "Yes. Controlled parking applies in most areas, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Hammersmith and Fulham"),
-    faqFullMove("Hammersmith and Fulham"),
+    {
+      question: "Can you do a same-day move in Hammersmith and Fulham?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually put a crew and van together at short notice for a smaller move. A bay suspension in Hammersmith and Fulham needs 10 to 14 working days notice, so same-day moves rely on legal loading near your door. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We move everything from a single item to a full house or office relocation, from a Fulham terrace or a West Kensington mansion block to a riverside flat at Imperial Wharf, plus packing, storage, clearance and international moves, all carried out by one experienced team.",
+    },
     {
       question: "Can you move within the Fulham terraces or an Imperial Wharf concierge block?",
       answer:
@@ -801,7 +849,7 @@ export const southwark: Borough = {
   introLine: introLine("Southwark"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Southwark"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Southwark, 7 days a week, from the Bermondsey and Shad Thames conversions to Peckham, Camberwell and Dulwich Village. We are an experienced and fully insured London removals company rather than a booking marketplace, and we know the borough's controlled inner-area parking, its Victorian terraces with resident bays and the congestion around Borough Market and Bankside. One team handles your man and van job, your full house or office move, your packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Southwark apart is that the borough runs from riverside warehouse conversions to leafy Dulwich and dense Walworth, and the access varies with it. We plan vehicle size and the loading point for cobbled conversion approaches, estate lifts and Elephant new-build towers alike.",
   ],
   coverageIntro:
@@ -849,8 +897,14 @@ export const southwark: Borough = {
         "Yes. Controlled parking applies across the inner areas, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Southwark"),
-    faqFullMove("Southwark"),
+    {
+      question: "Can you do a same-day move in Southwark?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually arrange a crew and van at short notice for a smaller move. A Southwark bay suspension takes 10 to 14 working days, so same-day moves rely on legal loading, and we confirm whether your street sits inside the Congestion Charge zone. Call us today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. From a single item to a full house or office relocation, whether that is a Shad Thames warehouse conversion, an East Dulwich terrace, a Walworth estate flat or a Georgian house in Dulwich Village, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
     {
       question: "Can you move from a Shad Thames or Bermondsey warehouse conversion with a goods lift?",
       answer:
@@ -877,7 +931,7 @@ export const lewisham: Borough = {
   introLine: introLine("Lewisham"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Lewisham"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Lewisham, 7 days a week, from Deptford and New Cross down through Brockley, Catford and Forest Hill to Grove Park. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the Victorian terraces with narrow staircases in Brockley and Hither Green, the estate blocks around Catford and Bellingham, and the traffic on Lewisham High Street and New Cross Road. One team handles your man and van job, full house or office move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Lewisham apart is that it is largely period terraces with pockets of estate housing and new-build, and parking control varies across the borough, so we confirm it per street rather than assume it.",
   ],
   coverageIntro:
@@ -925,9 +979,18 @@ export const lewisham: Borough = {
         "It varies. Inner areas such as New Cross, Deptford and Brockley have controlled parking zones, while outer areas around Grove Park and parts of Lee are less restricted. We confirm parking per street and arrange a suspended bay with the council only where the move needs one.",
     },
     faqInsured(),
-    faqSameDay("Lewisham"),
-    faqFullMove("Lewisham"),
-    faqNearby("Lewisham", "Greenwich, Southwark, Bromley and Tower Hamlets"),
+    {
+      question: "Can you do a same-day move in Lewisham?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually arrange a crew and van at short notice for a smaller move. Parking in Lewisham varies by street, so a same-day move in Brockley or Deptford relies on legal loading, while Grove Park streets are simpler. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We handle everything from a single item to a full house or office relocation in Lewisham, whether that is a Victorian terrace in Hither Green, an estate flat in Bellingham or a new-build on the Deptford riverside, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
+    {
+      question: "Do you cover areas near Lewisham?",
+      answer: "Yes. Lewisham borders Greenwich, Southwark, Bromley and Tower Hamlets, and we move people into and out of each of them every week. We also cover all 32 London boroughs, Greater London and Surrey, with nationwide moves arranged on request.",
+    },
   ],
 };
 
@@ -949,7 +1012,7 @@ export const ealing: Borough = {
   introLine: introLine("Ealing"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Ealing"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Ealing, 7 days a week, from Acton and Ealing Broadway out to Southall, Greenford, Perivale and Northolt. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the borough's mix of large Edwardian and Victorian houses in Pitshanger and Northfields, interwar semis with driveways in Greenford, and the heavy traffic on the Uxbridge Road and around the Hanger Lane gyratory. One team handles your man and van job, full house or office move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Ealing apart is that the borough is more suburban than inner London, so many moves are from larger houses and semis with their own driveways and wider streets, which can make access easier, though there are still congestion and controlled-parking pockets to plan for.",
   ],
   coverageIntro:
@@ -1003,8 +1066,14 @@ export const ealing: Borough = {
         "It varies. Controlled parking applies around Ealing Broadway, Acton and the stations, while many outer residential streets are unrestricted. We confirm parking per street and arrange a suspended bay with the council only where the move needs one.",
     },
     faqInsured(),
-    faqSameDay("Ealing"),
-    faqFullMove("Ealing"),
+    {
+      question: "Can you do a same-day move in Ealing?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually put a crew and van together at short notice for a smaller move. Many outer Ealing streets are unrestricted and a driveway often gives direct access, while near Ealing Broadway and the stations we rely on legal loading. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We move everything from a single item to a full house or office relocation in Ealing, whether that is a large Edwardian house in Pitshanger, an interwar semi in Perivale or a new-build flat near Acton, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
   ],
 };
 
@@ -1026,7 +1095,7 @@ export const barnet: Borough = {
   introLine: introLine("Barnet"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Barnet"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Barnet, 7 days a week, from Golders Green and Hendon through Finchley and Mill Hill to Chipping Barnet, Whetstone and Totteridge. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the borough's interwar and period houses with driveways, the controlled parking around the stations at Finchley and Golders Green, and the heavy traffic on the A1, Watford Way and the North Circular. One team handles your man and van job, full house or office move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Barnet apart is that it is a large outer-London suburban borough, so most moves are from family houses and semis with gardens and driveways where loading is often easier, alongside the high-density Colindale new-build towers we coordinate in advance.",
   ],
   coverageIntro:
@@ -1080,8 +1149,14 @@ export const barnet: Borough = {
         "Yes. Colindale is high-density new-build with concierge desks and service lifts. We book the service lift and loading slot with the building management in advance and plan the crew and timing around it.",
     },
     faqInsured(),
-    faqSameDay("Barnet"),
-    faqFullMove("Barnet"),
+    {
+      question: "Can you do a same-day move in Barnet?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually arrange a crew and van at short notice for a smaller move. Many Barnet streets are unrestricted and a driveway usually gives direct access, while around Finchley and Golders Green stations we rely on legal loading. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We handle everything from a single item to a full house or office relocation in Barnet, whether that is a period family house in Totteridge, an interwar semi in Hendon or a concierge apartment in a Colindale tower, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
   ],
 };
 
@@ -1105,7 +1180,7 @@ export const brent: Borough = {
   introLine: introLine("Brent"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Brent"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Brent, 7 days a week, from Kilburn, Willesden and Harlesden in the east to Kingsbury, Kenton and Sudbury in the west. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the borough's extensive permit zones in the eastern terraces, the Metroland semis where a driveway makes loading easier, and the A406 North Circular red route where stopping is not allowed. One team handles your man and van job, full house or office move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Brent apart is that the borough splits between dense Victorian terraces in the east and Metroland semis in the west, with Wembley Park high-rise and event-day road closures in between. We work it constantly, plan the loading point and crew size for each, and check moves against the Wembley event calendar.",
   ],
   coverageIntro:
@@ -1154,8 +1229,14 @@ export const brent: Borough = {
         "Yes. The eastern terraces sit in controlled parking and permit zones, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door. We plan this into the move rather than leaving it to you.",
     },
     faqInsured(),
-    faqSameDay("Brent"),
-    faqFullMove("Brent"),
+    {
+      question: "Can you do a same-day move in Brent?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually arrange a crew and van at short notice for a smaller move. In Brent we first check your date against the Wembley Stadium and OVO Arena event calendar, because event-day closures around Wembley Park can rule out a slot. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We move everything from a single item to a full house or office relocation in Brent, whether that is a Victorian terrace in Willesden Green, a Metroland semi in Kenton or a build-to-rent apartment in a Wembley Park tower, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
     {
       question: "Can you move around a Wembley event day?",
       answer:
@@ -1180,7 +1261,7 @@ export const croydon: Borough = {
   introLine: introLine("Croydon"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Croydon"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Croydon, 7 days a week, from the town centre and West Croydon out to Thornton Heath, Addiscombe, Purley, Sanderstead and New Addington. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the controlled parking zones around the town centre and stations, the match-day pressure near Selhurst Park, and the retail traffic on the A23 Purley Way. One team handles your man and van job, full house or office move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Croydon apart is that the borough runs from town-centre towers to affluent driveway suburbs in the south, all inside the ULEZ. We plan the loading point and crew size for each, and our compliant fleet means no emissions charge on your move.",
   ],
   coverageIntro:
@@ -1228,8 +1309,14 @@ export const croydon: Borough = {
         "Yes. Controlled parking zones operate around the town centre and stations, so where a move needs it we confirm the zone and hours and arrange a suspended parking bay with the council in advance, close to your door.",
     },
     faqInsured(),
-    faqSameDay("Croydon"),
-    faqFullMove("Croydon"),
+    {
+      question: "Can you do a same-day move in Croydon?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually arrange a crew and van at short notice for a smaller move. Croydon's driveway suburbs such as Purley and Shirley suit same-day work well, while around the town centre and stations we rely on legal loading. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We handle everything from a single item to a full house or office relocation in Croydon, whether that is a town-centre tower apartment, a Victorian terrace in Addiscombe or a detached family home with a driveway in Sanderstead, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
     {
       question: "Does the ULEZ add a charge to my Croydon move?",
       answer:
@@ -1254,7 +1341,7 @@ export const newham: Borough = {
   introLine: introLine("Newham"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Newham"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Newham, 7 days a week, from Stratford and Forest Gate through Plaistow and East Ham to Canning Town, Beckton and the Royal Docks. We are an experienced and fully insured London removals company, not a booking marketplace, and we know the controlled parking zones in Stratford, Upton Park, West Ham and Custom House, the Victorian terraces of Manor Park, and the congestion on the A13 along the south of the borough. One team handles your man and van job, full house or office move, packing, storage and clearance, with a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Newham apart is that the borough mixes high-rise concierge towers at Stratford and the Royal Docks with Victorian terraces in the east, and London Stadium and Olympic Park event days reshape parking. We book service lifts and loading bays in advance and check moves against the event calendar.",
   ],
   coverageIntro:
@@ -1303,8 +1390,14 @@ export const newham: Borough = {
         "Yes. Controlled parking zones cover Stratford, the Royal Docks, Upton Park, West Ham, Canning Town and Custom House, and on stadium event days permit hours can extend to 8am to 9pm. We confirm the zone and hours and arrange a suspended bay where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Newham"),
-    faqFullMove("Newham"),
+    {
+      question: "Can you do a same-day move in Newham?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually arrange a crew and van at short notice for a smaller move. In Newham we check your date against the London Stadium and Olympic Park event calendar first, as permit-only hours can reach 8am to 9pm on event days. Call us and we will confirm today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We move everything from a single item to a full house or office relocation in Newham, whether that is a concierge apartment in a Stratford or Royal Wharf tower, a Victorian terrace in Forest Gate or a family home in Beckton, plus packing, storage, clearance and international moves, all from one experienced team.",
+    },
     {
       question: "Can you handle a Stratford or Royal Docks tower move?",
       answer:
@@ -1329,7 +1422,7 @@ export const haringey: Borough = {
   introLine: introLine("Haringey"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Haringey"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Haringey, 7 days a week, from the Victorian and Edwardian conversions of Crouch End and Stroud Green to the terraces and estates of Tottenham and the new-build at Tottenham Hale. We are an experienced and fully insured London removals company, not a booking marketplace, so the crew that times your van around the Green Lanes congestion corridor or a controlled zone running Monday to Saturday 8am to 6.30pm is the crew that carries your boxes. One team and one point of contact see your move through from quote to completion.",
     "What sets a Removals Nationwide move in Haringey apart is that the borough runs from large period houses in Crouch End and Muswell Hill to denser Tottenham terraces and estates, and Tottenham Hotspur Stadium event days close roads in phases. We plan N17 moves around the fixture list and bring the right crew for period stairs.",
   ],
   coverageIntro:
@@ -1378,8 +1471,14 @@ export const haringey: Borough = {
         "Yes. Most of the borough is controlled parking, commonly Monday to Saturday 8am to 6.30pm with extended hours in the Tottenham zones, so where a move needs it we arrange a suspended parking bay with the council in advance, close to your door.",
     },
     faqInsured(),
-    faqSameDay("Haringey"),
-    faqFullMove("Haringey"),
+    {
+      question: "Can you do a same-day move in Haringey?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually put a crew and van together at short notice for a smaller Haringey move. A suspended bay has to be applied for in advance, so same-day work in a permit zone relies on legal loading. Call us and we will tell you what we can do.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. In Haringey we handle everything from a single item to a full relocation, whether that is a large period house in Muswell Hill, a Victorian conversion in Harringay, a new-build flat at Tottenham Hale or an office in Wood Green. Packing, storage, clearance and international moves come from the same experienced team.",
+    },
     {
       question: "Can you move in N17 on a Tottenham match day?",
       answer:
@@ -1405,7 +1504,7 @@ export const greenwich: Borough = {
   introLine: introLine("Greenwich"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Greenwich"),
+    "Removals Nationwide moves homes, offices and single items throughout the Royal Borough of Greenwich, 7 days a week, from the tight Georgian conservation streets of West Greenwich and Blackheath to the towers of Greenwich Peninsula and Kidbrooke Village and the terraces of Charlton, Woolwich and Eltham. We are an experienced and fully insured London removals company rather than a booking marketplace, so the people who check your date against events at The O2 or a match at The Valley are the people who arrive on the day. You get one team and one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Greenwich, officially the Royal Borough of Greenwich, apart is that it runs from tight Georgian conservation streets and a World Heritage core to Peninsula and Kidbrooke new-build towers. We plan the loading point and crew for narrow period access and book service lifts in the towers in advance.",
   ],
   coverageIntro:
@@ -1453,8 +1552,14 @@ export const greenwich: Borough = {
         "Yes. Controlled parking zones operate across the town centre and stations, so where a move needs it we confirm the zone and hours and arrange a suspended parking bay with the council in advance, close to your door.",
     },
     faqInsured(),
-    faqSameDay("Greenwich"),
-    faqFullMove("Greenwich"),
+    {
+      question: "Can you do a same-day move in Greenwich?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually arrange a crew and van at short notice for a smaller Greenwich move. In the Peninsula and Kidbrooke towers the goods lift needs booking, so a same-day move there depends on the building. Call us and we will tell you what is possible today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We cover everything from a single item to a complete relocation in Greenwich, whether that is a Georgian house in West Greenwich, a Blackheath period home, a high-rise flat on Greenwich Peninsula, a terrace in Charlton or an office in Woolwich. Packing, storage, clearance and international moves all come from one experienced team.",
+    },
     {
       question: "Can you move from a Greenwich conservation street or a Peninsula tower?",
       answer:
@@ -1479,7 +1584,7 @@ export const walthamForest: Borough = {
   introLine: introLine("Waltham Forest"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Waltham Forest"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Waltham Forest, 7 days a week, whether that is a Victorian terrace in a permit-only controlled parking zone in Walthamstow or Leyton or a suburban semi with a driveway in Chingford or Highams Park. We are an experienced and fully insured London removals company, not a booking marketplace, so the crew that works out the loading point on a narrow terraced street and plans around the North Circular is the crew that turns up. One team and one point of contact take care of everything from quote to completion.",
     "What sets a Removals Nationwide move in Waltham Forest apart is that the borough runs from gentrifying Walthamstow and Leyton terraces in tight permit zones to suburban Chingford semis with driveways. We plan the loading point and crew for narrow terraced streets and arrange a suspension or dispensation where the permit bays need it.",
   ],
   coverageIntro:
@@ -1528,8 +1633,14 @@ export const walthamForest: Borough = {
         "Often yes. Walthamstow and Leyton are largely permit-only controlled parking with narrow terraced streets, so a parking suspension or dispensation is usually the safe way to load close to your door. We confirm the zone and arrange it with the council where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Waltham Forest"),
-    faqFullMove("Waltham Forest"),
+    {
+      question: "Can you do a same-day move in Waltham Forest?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually reach you at short notice for a smaller Waltham Forest move. A suspension in the Walthamstow and Leyton permit zones needs applying for in advance, so same-day work there relies on legal loading. Call us and we will tell you what we can do today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. We handle everything from a single item to a full relocation in Waltham Forest, whether that is a Victorian terrace in Walthamstow Village, a flat in Leytonstone, a larger suburban semi in Highams Park or an office in Walthamstow. Packing, storage, clearance and international moves are all handled by the same experienced team.",
+    },
     {
       question: "Is parking easier in Chingford than Walthamstow?",
       answer:
@@ -1554,7 +1665,7 @@ export const redbridge: Borough = {
   introLine: introLine("Redbridge"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Redbridge"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Redbridge, 7 days a week, from the terraces of Ilford, Seven Kings and Goodmayes to the driveway semis and detached homes of Wanstead, Woodford and Barkingside and the new-build flats around Ilford with concierge and lift booking. We are an experienced and fully insured London removals company, not a booking marketplace, so the people who route around the Gants Hill gyratory and the A12 Eastern Avenue are the people who load your van. One team and one point of contact cover everything from quote to completion.",
     "What sets a Removals Nationwide move in Redbridge apart is that the borough runs from Ilford terraces and new-build regeneration to affluent driveway suburbs in Wanstead and Woodford. We plan the loading point and crew for each, route around the A12 and the Gants Hill gyratory, and book loading bays for the Ilford new-builds.",
   ],
   coverageIntro:
@@ -1602,8 +1713,14 @@ export const redbridge: Borough = {
         "Yes. Ilford town centre has controlled parking and new-build loading-bay rules, while Wanstead and Woodford are largely driveway properties with lighter restrictions. We confirm parking per street and arrange a suspended bay where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Redbridge"),
-    faqFullMove("Redbridge"),
+    {
+      question: "Can you do a same-day move in Redbridge?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually arrange a crew and van at short notice for a smaller Redbridge move. A Wanstead driveway gives direct loading, but an Ilford new-build needs its loading bay and lift booked first. Call us and we will tell you what we can do today.",
+    },
+    {
+      question: "Do you do full house and office moves, not just man and van?",
+      answer: "Yes. In Redbridge we handle everything from a single item to a full relocation, whether that is a detached house with a driveway in Wanstead, a semi in Barkingside, a terrace in Seven Kings, a new-build flat near Ilford station or an office in Ilford town centre. Packing, storage, clearance and international moves come from one experienced team.",
+    },
     {
       question: "Can you move a driveway house in Wanstead or a new-build flat in Ilford?",
       answer:
@@ -1632,7 +1749,7 @@ export const enfield: Borough = {
   introLine: introLine("Enfield"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Enfield"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Enfield, 7 days a week, from the leafy semis and detached houses of Southgate, Winchmore Hill and Oakwood, where a driveway often gives direct access and street parking is unrestricted, to the period houses near the stations in Palmers Green and the terraces, estate blocks and Meridian Water new-build in Edmonton and Ponders End. We are an experienced and fully insured London removals company, not a booking marketplace, and we plan the route around the A10 Great Cambridge Road and Hertford Road ourselves. One team and one point of contact handle your move from quote to completion.",
     "What sets a Removals Nationwide move in Enfield apart is that most of the borough is leafy suburb where driveways and unrestricted parking make loading easy, with controlled parking only around the centres and the denser east. We confirm parking per street and bring the right crew for a larger family house.",
   ],
   coverageIntro:
@@ -1679,7 +1796,10 @@ export const enfield: Borough = {
         "In the suburban areas like Southgate, Winchmore Hill and Grange Park many homes have driveways and unrestricted street parking, which makes access easier. Around the town centres and in Edmonton the streets are controlled, so we arrange a bay suspension where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Enfield"),
+    {
+      question: "Can you do a same-day move in Enfield?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually arrange a crew and van at short notice for a smaller Enfield move. A driveway makes same-day work simple; near the centres a bay suspension needs 10 to 14 working days notice, so we rely on legal loading. Call us to check today.",
+    },
     {
       question: "Can you move a large family house in Southgate or Winchmore Hill?",
       answer:
@@ -1704,7 +1824,7 @@ export const bromley: Borough = {
   introLine: introLine("Bromley"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Bromley"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Bromley, 7 days a week, which in the largest London borough by area means everything from large semis and detached houses with their own driveways in Beckenham, Chislehurst, Petts Wood and Bickley to Victorian terraces with controlled parking around central Bromley and Penge. We are an experienced and fully insured London removals company, not a booking marketplace, so the people who plan the route around the A21, the High Street and Beckenham Road are the people who load the van. One team and one point of contact cover your move from quote to completion.",
     "What sets a Removals Nationwide move in Bromley apart is that it is the largest London borough and mostly leafy suburb, so most homes have a driveway and unrestricted parking that make loading easier than inner London. We confirm parking per street and arrange a suspension only where a central move needs it.",
   ],
   coverageIntro:
@@ -1752,7 +1872,10 @@ export const bromley: Borough = {
         "Usually not. Most of the borough is suburban, with driveways and unrestricted street parking, which makes loading easier. Around central Bromley and the stations the streets are controlled, so we arrange a bay suspension only where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Bromley"),
+    {
+      question: "Can you do a same-day move in Bromley?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually get a crew and van out at short notice for a smaller Bromley move. Driveways make most same-day moves easy; in central Bromley a bay suspension needs 10 to 14 working days notice, so we rely on legal loading. Call us to check today.",
+    },
     {
       question: "Can you move a large house in Chislehurst or Petts Wood?",
       answer:
@@ -1777,7 +1900,7 @@ export const merton: Borough = {
   introLine: introLine("Merton"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Merton"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Merton, 7 days a week, from the large period houses on the hill in Wimbledon Village, with their conservation streets and tight controlled parking, to the terraces near the stations in Raynes Park and the interwar semis with driveways in Morden and Mitcham. We are an experienced and fully insured London removals company, not a booking marketplace, so the crew that checks your date against the summer restrictions around the All England Club and plans around the A24 is the crew that moves you. One team and one point of contact handle your move from quote to completion.",
     "What sets a Removals Nationwide move in Merton apart is the range from prime Wimbledon Village on the hill to suburban Morden and Mitcham, plus the summer Championships restrictions we plan around. We bring the right crew for period houses and confirm parking per street.",
   ],
   coverageIntro:
@@ -1855,7 +1978,7 @@ export const hounslow: Borough = {
   introLine: introLine("Hounslow"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Hounslow"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Hounslow, 7 days a week, from the conservation-area period terraces and large houses of Chiswick, where tight controlled parking means the loading point has to be planned, to the Brentford and Kew Bridge riverside new-build with concierge desks and service lifts and the interwar semis with driveways in Heston, Feltham and Bedfont. We are an experienced and fully insured London removals company, not a booking marketplace, and we plan the route around the A4 Great West Road and the A316 ourselves. One team and one point of contact cover your move from quote to completion.",
     "What sets a Removals Nationwide move in Hounslow apart is the range from conservation-area Chiswick and the Brentford riverside new-build to suburban Feltham near Heathrow. We coordinate concierge towers and protect period interiors alike.",
   ],
   coverageIntro:
@@ -1932,7 +2055,7 @@ export const harrow: Borough = {
   introLine: introLine("Harrow"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Harrow"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Harrow, 7 days a week, from the interwar semis of Pinner and Stanmore to the denser streets around Wealdstone and the stations, where parking is controlled and we plan around Station Road, Pinner Road and the A409. We are an experienced and insured London removals company, not a booking marketplace that passes your job to whoever is free. One team carries out your man and van job, your full house or office move, your packing, storage and clearance, and you have one point of contact from the first quote to the last box carried in.",
     "What sets a Removals Nationwide move in Harrow apart is that it is classic Metroland, so most homes have a driveway and unrestricted parking that make loading easier, with tighter access only on Harrow on the Hill and around the centres. We confirm parking per street.",
   ],
   coverageIntro:
@@ -1980,7 +2103,10 @@ export const harrow: Borough = {
         "Usually yes. Most of the borough is suburban Metroland housing with driveways and unrestricted street parking, which makes loading easier. Around central Harrow, Harrow on the Hill and the stations the streets are controlled, so we arrange a bay suspension only where needed.",
     },
     faqInsured(),
-    faqSameDay("Harrow"),
+    {
+      question: "Can you do a same-day move in Harrow?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually put a crew and van together at short notice for a smaller move. Most Harrow streets are unrestricted Metroland with driveways, so a quick booking rarely needs a suspension; near the stations and the Hill we check first. Call us and we will confirm.",
+    },
     {
       question: "Can you move a large house in Pinner or Stanmore?",
       answer:
@@ -2005,7 +2131,7 @@ export const barkingAndDagenham: Borough = {
   introLine: introLine("Barking and Dagenham"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Barking and Dagenham"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Barking and Dagenham, 7 days a week, covering the Becontree estate's interwar semis and terraces, the Victorian streets around central Barking and the newer blocks at Barking Riverside. We know the A13, Ripple Road and the Heathway, and we know where parking is controlled around the town centre and station. We are an experienced and insured London removals company, not a booking marketplace. A single team handles your man and van job, your full house or office move, your packing, storage and clearance, and you deal with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Barking and Dagenham apart is the wider interwar streets and driveways that make most moves easier than inner London, alongside the Barking Riverside new-build we coordinate in advance.",
   ],
   coverageIntro:
@@ -2052,7 +2178,10 @@ export const barkingAndDagenham: Borough = {
         "Usually. Much of the borough is interwar housing on wider streets with driveways and largely unrestricted parking, which makes loading easier. Around central Barking the streets are controlled, so we arrange a bay suspension where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Barking and Dagenham"),
+    {
+      question: "Can you do a same-day move in Barking and Dagenham?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually get a crew and van to you at short notice for a smaller move. Across Becontree and Dagenham parking is largely unrestricted, which helps a quick booking; central Barking is controlled, so tell us the street. Call us and we will confirm.",
+    },
     {
       question: "Can you move from a new-build at Barking Riverside?",
       answer:
@@ -2077,7 +2206,7 @@ export const bexley: Borough = {
   introLine: introLine("Bexley"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Bexley"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Bexley, 7 days a week, from the interwar semis and detached houses of Bexleyheath, Sidcup, Welling and Blackfen to the Victorian houses of Erith and Crayford and the newer apartment blocks around Abbey Wood. Our crews plan routes around the A2, the Broadway and Watling Street, and know which streets near the stations are controlled. We are an experienced and insured London removals company rather than a booking marketplace. The same team takes care of your man and van job, full house or office move, packing, storage and clearance, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Bexley apart is that it is a suburban outer borough where most homes have a driveway and unrestricted parking, with controlled parking limited to Bexleyheath and the busy stations. We confirm parking per street.",
   ],
   coverageIntro:
@@ -2123,7 +2252,10 @@ export const bexley: Borough = {
         "Usually not. Most of the borough is suburban, with driveways and unrestricted street parking, which makes loading easier. Controlled parking is limited to Bexleyheath town centre and the busier stations, where we arrange a bay suspension only if a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Bexley"),
+    {
+      question: "Can you do a same-day move in Bexley?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually arrange a crew and van at short notice for a smaller move. Most Bexley streets are unrestricted with driveways, so a last-minute booking seldom needs a suspension; Bexleyheath town centre and the busier stations are the exception. Call us and we will confirm.",
+    },
     {
       question: "Can you move from a new-build at Abbey Wood?",
       answer:
@@ -2153,7 +2285,7 @@ export const kingstonUponThames: Borough = {
   introLine: introLine("Kingston upon Thames"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Kingston upon Thames"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Kingston upon Thames, 7 days a week. That takes in the riverside apartment blocks in Kingston town, where we book the concierge and service lift and plan around the A3 and the gyratory, the period and Victorian houses of Surbiton with controlled parking near the station, and the interwar semis of Chessington, Tolworth and Berrylands. We are an experienced and insured London removals company, not a booking marketplace. One crew handles your man and van job, full house or office move, packing, storage and clearance, and you keep a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Kingston apart is the range from the riverside town centre and its gyratory to leafy Surbiton and suburban New Malden, where driveways make loading easy. Kingston is one of the cheaper boroughs for a parking suspension where one is needed.",
   ],
   coverageIntro:
@@ -2200,7 +2332,10 @@ export const kingstonUponThames: Borough = {
         "Kingston town and Surbiton have controlled parking, so we arrange a bay suspension where a move needs it, and Kingston is one of the cheaper boroughs for this. In New Malden, Chessington and Tolworth many homes have driveways and lighter parking control.",
     },
     faqInsured(),
-    faqSameDay("Kingston"),
+    {
+      question: "Can you do a same-day move in Kingston upon Thames?",
+      answer: "Often yes, subject to availability. We work 7 days a week and usually have a crew and van for a smaller move at short notice. In Kingston town a same-day move still has to work around the gyratory and controlled parking; New Malden, Chessington and Tolworth driveways are simpler. Call us and we will say what we can do today.",
+    },
     {
       question: "Can you move from a riverside flat in Kingston town?",
       answer:
@@ -2225,7 +2360,7 @@ export const richmondUponThames: Borough = {
   introLine: introLine("Richmond upon Thames"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Richmond upon Thames"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Richmond upon Thames, 7 days a week, on both banks of the river. Our crews work the narrow conservation streets of Richmond, Barnes, Kew and East Sheen, the period terraces of Twickenham, Teddington and St Margarets, and the large riverside houses of Ham, Petersham and Hampton, planning routes around the A316 and Richmond town. We are an experienced and insured London removals company, not a booking marketplace. The same team delivers your man and van job, full house or office move, packing, storage and clearance, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Richmond apart is that it is an affluent, conservation-heavy borough on both sides of the river, so careful handling and a planned approach to access matter, and around Twickenham Stadium rugby match days reshape parking. We protect period interiors and confirm parking per street.",
   ],
   coverageIntro:
@@ -2278,7 +2413,10 @@ export const richmondUponThames: Borough = {
         "Yes. Parking and roads around Twickenham Stadium are heavily restricted on match and event days, so we check your move date against the fixture and event calendar and plan the timing and loading point to avoid problems.",
     },
     faqInsured(),
-    faqSameDay("Richmond"),
+    {
+      question: "Can you do a same-day move in Richmond upon Thames?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually find a crew and van for a smaller move at short notice. For a same-day booking in Richmond we check whether your date clashes with a Twickenham Stadium match or event day, when nearby parking is heavily restricted. Call us and we will confirm.",
+    },
   ],
 };
 
@@ -2298,7 +2436,7 @@ export const sutton: Borough = {
   introLine: introLine("Sutton"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Sutton"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Sutton, 7 days a week, from the interwar semis and detached houses of Cheam, Carshalton and Wallington to the period houses on the tighter village streets and the denser stock around central Sutton, where parking near the town centre and station is controlled. Our crews plan around the A232 and Sutton High Street. We are an experienced and insured London removals company, not a booking marketplace. One team handles your man and van job, your full house or office move, your packing, storage and clearance, and you have a single point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Sutton apart is that it is a suburban outer borough where most homes have a driveway and unrestricted parking, with some period character in the Carshalton and Cheam villages. Sutton is one of the cheaper boroughs for a suspension where one is needed.",
   ],
   coverageIntro:
@@ -2345,7 +2483,10 @@ export const sutton: Borough = {
         "Usually yes. Most of the borough is suburban, with driveways and unrestricted street parking, which makes loading easier, and Sutton is one of the cheaper boroughs for a suspension where one is needed around the town centre. We confirm parking per street.",
     },
     faqInsured(),
-    faqSameDay("Sutton"),
+    {
+      question: "Can you do a same-day move in Sutton?",
+      answer: "Often yes, subject to availability. We run 7 days a week and can usually arrange a crew and van at short notice for a smaller move. Across most of Sutton the driveways and unrestricted streets make a quick booking straightforward; around the town centre and station we check parking first. Call us and we will confirm.",
+    },
     {
       question: "Can you move a large house in Cheam or Carshalton?",
       answer:
@@ -2370,7 +2511,7 @@ export const hillingdon: Borough = {
   introLine: introLine("Hillingdon"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Hillingdon"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Hillingdon, 7 days a week, from the large Metroland houses of Ruislip, Ickenham, Eastcote and Northwood in the north to the denser streets and new-build around Uxbridge, Hayes and West Drayton, with Heathrow close by in the south. Our crews plan around the A40 Western Avenue and know where the Elizabeth line stations bring controlled parking. We are an experienced and insured London removals company, not a booking marketplace. A single team handles your man and van job, full house or office move, packing, storage and clearance, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Hillingdon apart is that it is a large outer borough running to Heathrow, where most homes are Metroland houses with driveways and unrestricted parking, with controlled parking only around the town centres and the busy Elizabeth line stations. We confirm parking per street.",
   ],
   coverageIntro:
@@ -2417,7 +2558,10 @@ export const hillingdon: Borough = {
         "Usually yes. Most of the borough is suburban Metroland housing with driveways and unrestricted street parking, which makes loading easier. Around Uxbridge, Hayes and the Elizabeth line stations the streets are controlled, so we arrange a bay suspension only where needed.",
     },
     faqInsured(),
-    faqSameDay("Hillingdon"),
+    {
+      question: "Can you do a same-day move in Hillingdon?",
+      answer: "Often yes, subject to availability. We work 7 days a week and can usually put a crew and van together at short notice for a smaller move. In Ruislip, Northwood and the Metroland streets a driveway makes a quick booking easy; around Uxbridge, Hayes and the Elizabeth line stations we check parking first. Call us and we will confirm.",
+    },
     {
       question: "Can you move a large house in Ruislip or Northwood?",
       answer:
@@ -2442,7 +2586,7 @@ export const havering: Borough = {
   introLine: introLine("Havering"),
   valueLine: VALUE_LINE,
   localBody: [
-    localPara1("Havering"),
+    "Removals Nationwide moves homes, offices and single items across the whole of Havering, 7 days a week, from the large houses of Hornchurch, Emerson Park and Upminster and the period homes of Gidea Park to the Victorian terraces and new-build towers of central Romford and the estate at Harold Hill. Our crews plan around the A12 and the A127 and know where parking tightens near Romford town centre and station. We are an experienced and insured London removals company, not a booking marketplace. The same team handles your man and van job, full house or office move, packing, storage and clearance, with one point of contact from quote to completion.",
     "What sets a Removals Nationwide move in Havering apart is that it is the furthest east borough, largely suburban and semi-rural, where most homes have driveways and unrestricted parking, with notable period stock in Gidea Park and controlled parking only around central Romford. We confirm parking per street.",
   ],
   coverageIntro:
@@ -2488,7 +2632,10 @@ export const havering: Borough = {
         "Usually yes. Most of the borough is suburban and semi-rural, with driveways and unrestricted street parking, which makes loading easier. Around central Romford the streets are controlled, so we arrange a bay suspension only where a move needs it.",
     },
     faqInsured(),
-    faqSameDay("Havering"),
+    {
+      question: "Can you do a same-day move in Havering?",
+      answer: "Often yes, subject to availability. We operate 7 days a week and can usually arrange a crew and van at short notice for a smaller move. Across suburban and semi-rural Havering a driveway and unrestricted street make a quick booking simple; for central Romford or a new-build tower we check parking and lift access first. Call us to confirm.",
+    },
     {
       question: "Can you move a large house in Emerson Park or Gidea Park?",
       answer:

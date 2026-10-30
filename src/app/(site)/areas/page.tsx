@@ -14,6 +14,8 @@ import {
   VanIcon,
 } from "@/components/ui/icons";
 import { boroughs, type Borough } from "@/lib/boroughs";
+import { allAreas } from "@/lib/areas-registry";
+import { townRegions, towns } from "@/lib/towns";
 import { getAreas } from "@/lib/cms";
 import { REMOTE_IMAGES, DEFAULT_BANNER_IMAGE } from "@/lib/remote-images";
 import { breadcrumbLd, buildMetadata } from "@/lib/seo";
@@ -93,8 +95,9 @@ const crumbs = [{ label: "Home", href: "/" }, { label: "Areas We Cover" }];
 export default async function AreasPage() {
   // Areas added in the admin that have no built-in borough guide. Listed below
   // the regions so every published area page has an internal link.
-  const moreAreas = (await getAreas()).filter((area) => !boroughs[area.slug]);
+  const moreAreas = (await getAreas()).filter((area) => !allAreas[area.slug]);
   const boroughCount = Object.keys(boroughs).length;
+  const townCount = Object.keys(towns).length;
 
   return (
     <>
@@ -131,11 +134,12 @@ export default async function AreasPage() {
               London expertise. Nationwide reach.
             </p>
             <h1 className="mt-4 max-w-2xl text-4xl font-black uppercase leading-[.98] tracking-[-0.035em] text-white sm:text-6xl lg:text-7xl">
-              Removals in every London borough.
+              Removals in every London borough and the towns around it.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg">
-              Experienced, insured removals across every London borough, the Home Counties and
-              the rest of the UK. Find your local guide or tell us where you are moving.
+              Experienced, insured removals across every London borough and the towns and cities
+              within 100 miles of London, from Brighton to Cambridge and Reading to Canterbury.
+              Find your local guide or tell us where you are moving.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href="#boroughs" variant="red" size="lg">
@@ -153,8 +157,8 @@ export default async function AreasPage() {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/55">Coverage at a glance</p>
               <div className="mt-7 grid grid-cols-2 gap-px bg-white/15">
                 <div className="bg-black/80 p-6">
-                  <p className="text-4xl font-black text-brand-red">{boroughCount}</p>
-                  <p className="mt-2 text-sm font-semibold text-white/75">Detailed London guides</p>
+                  <p className="text-4xl font-black text-brand-red">{boroughCount + townCount}</p>
+                  <p className="mt-2 text-sm font-semibold text-white/75">Detailed area guides</p>
                 </div>
                 <div className="bg-black/80 p-6">
                   <p className="text-4xl font-black text-brand-red">7</p>
@@ -246,6 +250,54 @@ export default async function AreasPage() {
               );
             })}
           </div>
+
+          {townRegions.length > 0 && (
+            <div id="towns" className="mt-20 scroll-mt-24">
+              <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-red">Beyond London</p>
+                  <h2 className="mt-4 text-3xl font-black uppercase leading-tight tracking-tight text-brand-navy sm:text-5xl">
+                    Towns within 100 miles
+                  </h2>
+                </div>
+                <p className="max-w-2xl text-base leading-7 text-brand-charcoal/65 lg:justify-self-end">
+                  {townCount} towns and cities across the Home Counties and the South East, each with
+                  its own guide to parking, access and property, and a fixed written price for moves to
+                  or from London.
+                </p>
+              </div>
+              <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                {townRegions.map((region) => (
+                  <article
+                    key={region.name}
+                    className="group relative overflow-hidden border border-black/10 bg-white p-7 shadow-[0_10px_30px_rgba(0,0,0,.04)] transition duration-300 hover:-translate-y-1 hover:border-brand-red/40 hover:shadow-[0_18px_42px_rgba(0,0,0,.09)] sm:p-8"
+                  >
+                    <p className="relative text-[11px] font-bold uppercase tracking-[0.18em] text-brand-red">
+                      {region.eyebrow}
+                    </p>
+                    <h3 className="relative mt-2 text-2xl font-black uppercase tracking-tight text-brand-navy">
+                      {region.name}
+                    </h3>
+                    <div className="relative mt-7 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+                      {region.slugs
+                        .map((slug) => towns[slug])
+                        .filter((town): town is Borough => Boolean(town))
+                        .map((town) => (
+                          <Link
+                            key={town.slug}
+                            href={`/areas/${town.slug}`}
+                            className="group/link flex items-center justify-between border-b border-black/8 py-3 text-sm font-semibold text-brand-charcoal/75 transition hover:border-brand-red/30 hover:text-brand-red"
+                          >
+                            {town.name}
+                            <ArrowRight className="h-4 w-4 -translate-x-1 text-brand-red opacity-0 transition group-hover/link:translate-x-0 group-hover/link:opacity-100" />
+                          </Link>
+                        ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
 
           {moreAreas.length > 0 && (
             <div className="mt-5 border border-black/10 bg-white p-7 sm:p-8">

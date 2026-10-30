@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL, META, withTrailingSlash } from "@/lib/seo";
 import { getAllPosts } from "@/lib/news";
 import { getDbPosts, getAreas } from "@/lib/cms";
-import { boroughs } from "@/lib/boroughs";
+import { allAreas } from "@/lib/areas-registry";
 
 // The DB-backed entries below need the D1 binding, which only exists at request
 // time inside the Worker. Prerendering this at build time would silently bake in
@@ -26,9 +26,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // row's seed timestamp says nothing about the page. The areas table has no
   // updated_at, so DB-only areas carry no lastmod rather than a false one.
   const areas = (await getAreas())
-    .filter((area) => !boroughs[area.slug])
+    .filter((area) => !allAreas[area.slug])
     .map((area) => ({ path: `/areas/${area.slug}`, lastModified: undefined }));
-  const boroughPaths = Object.values(boroughs).map((b) => `/areas/${b.slug}`);
+  const boroughPaths = Object.values(allAreas).map((b) => `/areas/${b.slug}`);
 
   const datedPaths = new Map<string, Date | undefined>();
   staticPaths

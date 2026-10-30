@@ -82,7 +82,9 @@ function boroughSchema(b: Borough) {
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: {
           "@type": "AdministrativeArea",
-          name: b.areaServedName ?? `London Borough of ${b.name}`,
+          name:
+            b.areaServedName ??
+            (b.kind === "town" ? [b.name, b.county].filter(Boolean).join(", ") : `London Borough of ${b.name}`),
           containsPlace: b.postcodes ?? [],
         },
         name: b.h1,
@@ -106,6 +108,7 @@ function boroughSchema(b: Borough) {
 }
 
 export default async function BoroughPage({ borough: b }: { borough: Borough }) {
+  const isTown = b.kind === "town";
   const { phones } = await getResolvedSettings();
   return (
     <>
@@ -332,8 +335,11 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-charcoal/70">
             The price includes loading, transport, unloading and goods-in-transit insurance. Any
             parking suspension, Congestion Charge or toll on your route is confirmed in writing before
-            you book. For a full house or office move we give a fixed price after a
-            free survey. Tell us what you are moving and we will recommend the right crew and van size.
+            you book.{" "}
+            {isTown
+              ? `For a full house or office move, or any move between ${b.name} and London, we give a fixed written price after a free survey.`
+              : "For a full house or office move we give a fixed price after a free survey."}{" "}
+            Tell us what you are moving and we will recommend the right crew and van size.
           </p>
         </div>
       </section>
@@ -403,7 +409,9 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
           <ol className="mt-8 grid gap-5 sm:grid-cols-2">
             {[
               `Get a quote. Send your details for a free quote, or book a free survey for a larger move. We confirm the price and the plan.`,
-              `We plan the access. For ${b.name} we check parking and arrange a suspended bay where needed, and we plan the loading point around the local roads and your building's rules.`,
+              isTown
+                ? `We plan the access. For ${b.name} we check parking and loading at both addresses, arrange a suspended bay where the council offers one, and plan the route and timing for the drive.`
+                : `We plan the access. For ${b.name} we check parking and arrange a suspended bay where needed, and we plan the loading point around the local roads and your building's rules.`,
               `We pack and protect. Optional full or partial packing, with proper protection for period staircases and shared entrances.`,
               `We move you. Your accountable crew loads, transports and unloads, insured throughout, on your schedule.`,
               `We finish the job. Optional clearance of anything left behind, under our licensed waste carrier registration.`,
@@ -424,7 +432,7 @@ export default async function BoroughPage({ borough: b }: { borough: Borough }) 
         <div className="mx-auto max-w-[88rem] px-4">
           <SectionHeading align="left" eyebrow="Nearby" title="Nearby Areas We Cover" />
           <p className="mt-6 text-base leading-relaxed text-brand-charcoal/85">
-            We also serve the boroughs that border {b.name}, including{" "}
+            {isTown ? "We also serve the towns and areas around" : "We also serve the boroughs that border"} {b.name}, including{" "}
             {(b.nearby ?? []).map((n, i) => {
               return (
                 <span key={n.href}>

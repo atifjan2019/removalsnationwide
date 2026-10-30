@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BoroughPage from "@/components/areas/BoroughPage";
-import { boroughs } from "@/lib/boroughs";
+import { allAreas } from "@/lib/areas-registry";
 import { DEFAULT_OG_IMAGE, SITE, withTrailingSlash } from "@/lib/seo";
 import { areaToBorough, getAreaBySlug } from "@/lib/cms";
 import { getAdminRole } from "@/lib/admin-auth";
@@ -16,7 +16,7 @@ export async function generateMetadata({
   const { slug } = await params;
 
   // Borough guide pages (rich, registry-driven) take precedence over CMS areas.
-  const borough = boroughs[slug];
+  const borough = allAreas[slug];
   if (borough) {
     const canonical = withTrailingSlash(`/areas/${borough.slug}`);
     return {
@@ -65,7 +65,7 @@ export default async function AreaPage({
 }) {
   const { slug } = await params;
 
-  const borough = boroughs[slug];
+  const borough = allAreas[slug];
   if (borough) return <BoroughPage borough={borough} />;
 
   const area = await getAreaBySlug(slug);
