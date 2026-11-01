@@ -72,12 +72,13 @@ const nextConfig: NextConfig = {
     }));
   },
   images: {
-    // Images are served as-is. The source assets are already sized and in
-    // modern formats, and most come from the R2 media domain. Vercel's image
-    // optimizer is available now the site runs there; removing this flag turns
-    // it on, at the cost of counting towards the plan's image transformation
-    // allowance.
-    unoptimized: true,
+    // Vercel's image optimizer resizes and re-encodes on the fly, so a phone
+    // gets a ~600px AVIF of the hero instead of the full 1600px WebP from R2.
+    // On Cloudflare this was `unoptimized: true`; the mobile LCP was 5.9s.
+    formats: ["image/avif", "image/webp"],
+    // Source images on the media domain are versioned by filename, so an
+    // optimised copy can be kept for a month regardless of upstream headers.
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       {
         protocol: "https",

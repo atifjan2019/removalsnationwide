@@ -116,7 +116,7 @@ export default async function NewsPage({
                     href={`/news/${post.slug}`}
                     className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand-red transition group-hover:gap-2.5"
                   >
-                    Read More
+                    Read More<span className="sr-only"> about {post.title}</span>
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
