@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { preconnect, prefetchDNS } from "react-dom";
 import { Inter, Space_Grotesk } from "next/font/google";
 import SiteAnalytics from "@/components/providers/SiteAnalytics";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { SITE_URL } from "@/lib/seo";
 
@@ -68,6 +70,10 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
+        {/* Vercel Analytics (page views) and Speed Insights (Core Web Vitals),
+            both first-party to the hosting and cookie-free. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
       {/* gtag.js, loaded after hydration. The component form is used instead of
           the raw snippet because it also sends a page_view on client-side route
