@@ -53,7 +53,7 @@ export default function RightChoice() {
 
         <div className="mt-10">
           <Button href="/about-us" variant="red" size="lg">
-            Read More
+            Read More<span className="sr-only"> about Removals Nationwide</span>
           </Button>
         </div>
       </div>
