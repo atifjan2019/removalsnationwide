@@ -1,22 +1,36 @@
 import "server-only";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { cloudflareConfig } from "@/lib/cloudflare-config";
+import { R2HttpBucket } from "@/lib/r2-client";
 
 /**
- * Uploads for site branding, stored in the R2 `MEDIA` bucket and served over
- * the bucket's custom domain (media.removalsnationwide.uk).
+ * Uploads for site branding and content images, stored in the R2 `MEDIA`
+ * bucket and served over the bucket's custom domain (media.removalsnationwide.uk).
+ * Customers' move details files live in the private `UPLOADS` bucket, read
+ * only through signed-in admin routes.
+ *
+ * Both buckets stayed on Cloudflare when the site moved to Vercel; they are
+ * reached over R2's S3 API (src/lib/r2-client.ts).
  */
 
 /** Public base for the media bucket. Mirrors next.config.ts remotePatterns. */
 export const MEDIA_BASE =
   process.env.NEXT_PUBLIC_R2_PUBLIC_URL ?? "https://media.removalsnationwide.uk";
 
-export async function getMediaBucket(): Promise<R2Bucket | null> {
-  try {
-    const { env } = await getCloudflareContext({ async: true });
-    return env.MEDIA ?? null;
-  } catch {
-    return null;
-  }
+let media: R2HttpBucket | null | undefined;
+let uploads: R2HttpBucket | null | undefined;
+
+export async function getMediaBucket(): Promise<R2HttpBucket | null> {
+  if (media !== undefined) return media;
+  const config = cloudflareConfig();
+  media = config ? new R2HttpBucket(config.mediaBucket, config) : null;
+  return media;
+}
+
+export function getUploadsBucket(): R2HttpBucket | null {
+  if (uploads !== undefined) return uploads;
+  const config = cloudflareConfig();
+  uploads = config ? new R2HttpBucket(config.uploadsBucket, config, config.uploadsJurisdiction) : null;
+  return uploads;
 }
 
 const MAX_BYTES = 2 * 1024 * 1024; // 2 MB — plenty for a logo or icon.
@@ -40,7 +54,7 @@ export type UploadResult = { ok: true; url: string } | { ok: false; error: strin
  */
 export async function uploadBranding(
   file: File,
-  name: "logo" | "favicon",
+  name: "logo" | "favicon" | "footer-logo",
 ): Promise<UploadResult> {
   if (!file || file.size === 0) return { ok: false, error: "No file selected." };
   if (file.size > MAX_BYTES) {
@@ -57,7 +71,7 @@ export async function uploadBranding(
 
   const bucket = await getMediaBucket();
   if (!bucket) {
-    return { ok: false, error: "R2 is not available. Check the MEDIA binding in wrangler.jsonc." };
+    return { ok: false, error: "Media storage is not configured. Set the CLOUDFLARE_* variables." };
   }
 
   const key = `branding/${name}.${ext}`;
@@ -107,7 +121,7 @@ export async function uploadMedia(file: File): Promise<UploadResult> {
   }
   const bucket = await getMediaBucket();
   if (!bucket) {
-    return { ok: false, error: "R2 is not available. Check the MEDIA binding in wrangler.jsonc." };
+    return { ok: false, error: "Media storage is not configured. Set the CLOUDFLARE_* variables." };
   }
 
   // Readable, collision-proof key: uploads/<original-name>-<random>.<ext>
@@ -165,7 +179,7 @@ export async function deleteMedia(key: string): Promise<{ ok: boolean; error?: s
     return { ok: false, error: "Invalid key." };
   }
   const bucket = await getMediaBucket();
-  if (!bucket) return { ok: false, error: "R2 is not available." };
+  if (!bucket) return { ok: false, error: "Media storage is not configured." };
   try {
     await bucket.delete(key);
     return { ok: true };

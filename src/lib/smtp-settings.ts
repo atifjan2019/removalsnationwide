@@ -1,6 +1,5 @@
 import "server-only";
 
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getDb } from "@/lib/d1";
 import type { SmtpSettingsSummary } from "@/lib/settings-shared";
 
@@ -17,6 +16,17 @@ type SmtpRow = {
   smtp_from_name: string;
 };
 
+/**
+ * The deployment's own SMTP values and the key that protects the password
+ * stored in settings. ADMIN_SESSION_SECRET must keep the value it had on the
+ * previous host: a different one cannot decrypt the stored SMTP password.
+ */
+function smtpEnv() {
+  const env = process.env;
+  if (!env.ADMIN_SESSION_SECRET) throw new Error("ADMIN_SESSION_SECRET is not set.");
+  return env as typeof env & { ADMIN_SESSION_SECRET: string };
+}
+
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
@@ -32,7 +42,7 @@ const fromBase64Url = (value: string) => {
 };
 
 async function encryptionKey() {
-  const { env } = await getCloudflareContext({ async: true });
+  const env = smtpEnv();
   const digest = await crypto.subtle.digest("SHA-256", encoder.encode(env.ADMIN_SESSION_SECRET));
   return crypto.subtle.importKey("raw", digest, "AES-GCM", false, ["encrypt", "decrypt"]);
 }
@@ -81,10 +91,8 @@ async function getStoredSmtpSettings(): Promise<SmtpRow | null> {
 }
 
 async function resolveSmtpSettings() {
-  const [{ env }, stored] = await Promise.all([
-    getCloudflareContext({ async: true }),
-    getStoredSmtpSettings(),
-  ]);
+  const env = smtpEnv();
+  const stored = await getStoredSmtpSettings();
   const storedPassword = stored?.smtp_password_encrypted
     ? await decryptSmtpPassword(stored.smtp_password_encrypted)
     : "";
@@ -102,7 +110,7 @@ async function resolveSmtpSettings() {
     password: storedPassword || env.SMTP_PASSWORD || "",
     fromEmail: stored?.smtp_from_email?.trim() || env.SMTP_FROM_EMAIL || "",
     fromName: stored?.smtp_from_name?.trim() || env.SMTP_FROM_NAME || "Removals Nationwide Bookings",
-    source: usesStoredSettings ? "settings" as const : env.SMTP_HOST ? "cloudflare" as const : "none" as const,
+    source: usesStoredSettings ? "settings" as const : env.SMTP_HOST ? "env" as const : "none" as const,
   };
 }
 
@@ -151,7 +159,7 @@ export async function saveSmtpSettings(db: D1Database, formData: FormData) {
   const current = await db
     .prepare("select smtp_password_encrypted from settings where id='site' limit 1")
     .first<{ smtp_password_encrypted: string }>();
-  const { env } = await getCloudflareContext({ async: true });
+  const env = smtpEnv();
   const encryptedPassword = password
     ? await encryptSmtpPassword(password)
     : current?.smtp_password_encrypted || "";

@@ -1,12 +1,5 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-
-// Makes the Cloudflare bindings (D1 `DB`, R2 `MEDIA`) available under `next dev`
-// via the wrangler platform proxy, so local dev hits the same code path as the
-// deployed Worker instead of silently falling back to "no database".
-initOpenNextCloudflareForDev();
-
 /** 301 redirects from our earlier route names to the live-matching slugs. */
 const redirectPairs: [string, string][] = [
   ["/services/house-removals", "/house-removals"],
@@ -55,9 +48,16 @@ const nextConfig: NextConfig = {
       { key: "X-Robots-Tag", value: "noindex, nofollow" },
       { key: "Referrer-Policy", value: "no-referrer" },
     ];
+    // Long-lived caching for files whose URL changes when their bytes do.
+    // (/_next/static is immutable on Vercel already.) These used to live in
+    // public/_headers for Cloudflare's static asset handler.
+    const immutable = [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }];
     return [
       { source: "/move-details/:path*", headers: privateHeaders },
       { source: "/api/move-details/:path*", headers: privateHeaders },
+      { source: "/images/:path*", headers: immutable },
+      { source: "/:file*.svg", headers: [{ key: "Cache-Control", value: "public, max-age=2592000, immutable" }] },
+      { source: "/favicon.ico", headers: [{ key: "Cache-Control", value: "public, max-age=2592000" }] },
     ];
   },
   async redirects() {
@@ -72,12 +72,11 @@ const nextConfig: NextConfig = {
     }));
   },
   images: {
-    // Cloudflare Workers has no Vercel image optimizer, and Cloudflare's own
-    // Image Resizing is a paid zone feature. Serving images as-is is the option
-    // that works on the current plan. The source assets are already sized and
-    // in modern formats, so the practical cost is low. If Image Resizing is
-    // enabled on the zone later, drop this and add a custom loader pointing at
-    // /cdn-cgi/image/ to get resizing and AVIF/WebP negotiation back.
+    // Images are served as-is. The source assets are already sized and in
+    // modern formats, and most come from the R2 media domain. Vercel's image
+    // optimizer is available now the site runs there; removing this flag turns
+    // it on, at the cost of counting towards the plan's image transformation
+    // allowance.
     unoptimized: true,
     remotePatterns: [
       {

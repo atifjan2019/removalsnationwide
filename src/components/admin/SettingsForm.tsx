@@ -319,7 +319,7 @@ export default function SettingsForm({ settings, smtpSettings }: { settings: Sit
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           <SmtpField label="SMTP host" name="smtpHost" defaultValue={smtpSettings.host} placeholder="smtp.elasticemail.com" required />
-          <SmtpField label="SMTP port" name="smtpPort" defaultValue={smtpSettings.port} type="number" placeholder="465" hint="Use port 465 for direct TLS on Cloudflare Workers." required />
+          <SmtpField label="SMTP port" name="smtpPort" defaultValue={smtpSettings.port} type="number" placeholder="465" hint="Use port 465 for direct TLS, or 587 for STARTTLS." required />
           <SmtpField label="SMTP username" name="smtpUsername" defaultValue={smtpSettings.username} required />
           <SmtpField
             label="SMTP password"
@@ -333,7 +333,7 @@ export default function SettingsForm({ settings, smtpSettings }: { settings: Sit
         </div>
 
         <div className="mt-5 rounded-xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-900">
-          Current source: <strong>{smtpSettings.source === "settings" ? "Admin settings" : smtpSettings.source === "cloudflare" ? "Cloudflare Worker secrets" : "Not configured"}</strong>. Saving this form makes the values above the active SMTP configuration. Leave the password blank to retain the current password.
+          Current source: <strong>{smtpSettings.source === "settings" ? "Admin settings" : smtpSettings.source === "env" ? "Hosting environment variables" : "Not configured"}</strong>. Saving this form makes the values above the active SMTP configuration. Leave the password blank to retain the current password.
         </div>
 
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">

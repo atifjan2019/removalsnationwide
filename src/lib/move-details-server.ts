@@ -1,5 +1,7 @@
 import "server-only";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { after } from "next/server";
+import { requireDb } from "@/lib/d1";
+import { getUploadsBucket } from "@/lib/r2";
 
 /**
  * The move details a customer gives on their private /move-details/<token>/
@@ -185,9 +187,13 @@ export class HttpError extends Error {
 }
 
 async function bindings() {
-  const { env, ctx } = await getCloudflareContext({ async: true });
-  if (!env.DB || !env.UPLOADS) throw new Error("The DB and UPLOADS bindings are required for move details.");
-  return { db: env.DB, uploads: env.UPLOADS, ctx };
+  const db = await requireDb();
+  const uploads = getUploadsBucket();
+  if (!uploads) throw new Error("The uploads bucket is not configured (CLOUDFLARE_* variables).");
+  // after() is Vercel's equivalent of the Worker's ctx.waitUntil(): the work
+  // is allowed to finish after the response has gone out.
+  const ctx = { waitUntil: (promise: Promise<unknown>) => after(() => promise) };
+  return { db, uploads, ctx };
 }
 
 const NO_STORE = { "Cache-Control": "no-store" };

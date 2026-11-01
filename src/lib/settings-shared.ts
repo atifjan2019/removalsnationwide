@@ -37,7 +37,7 @@ export type SmtpSettingsSummary = {
   fromEmail: string;
   fromName: string;
   passwordConfigured: boolean;
-  source: "settings" | "cloudflare" | "none";
+  source: "settings" | "env" | "none";
 };
 
 export const DEFAULT_SETTINGS: SiteSettings = {
