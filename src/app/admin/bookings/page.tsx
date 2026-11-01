@@ -1,6 +1,5 @@
 import BookingsManager from "@/components/admin/BookingsManager";
 import { getBookings, MOVE_STATUSES, type MoveStatus } from "@/lib/bookings";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export const dynamic = "force-dynamic";
 
@@ -9,11 +8,7 @@ export default async function AdminBookingsPage({
 }: {
   searchParams: Promise<{ status?: string; date?: string; booking?: string }>;
 }) {
-  const [bookings, query, { env }] = await Promise.all([
-    getBookings(),
-    searchParams,
-    getCloudflareContext({ async: true }),
-  ]);
+  const [bookings, query] = await Promise.all([getBookings(), searchParams]);
   const initialStatus = MOVE_STATUSES.includes(query.status as MoveStatus)
     ? (query.status as MoveStatus)
     : "All";
@@ -23,7 +18,7 @@ export default async function AdminBookingsPage({
       initialStatus={initialStatus}
       dateFilter={query.date || ""}
       initialBookingId={query.booking || ""}
-      mapsApiKey={env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
+      mapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}
     />
   );
 }

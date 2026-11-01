@@ -16,9 +16,9 @@ export default async function MediaPage() {
 
       {!bucket && (
         <div className="mt-6 rounded-xl border border-brand-red bg-white p-4 text-sm text-black">
-          R2 is not available in this environment, so nothing can be listed or
-          uploaded. Check the <code className="font-mono">MEDIA</code> binding
-          in <code className="font-mono">wrangler.jsonc</code>.
+          Media storage is not configured in this environment, so nothing can be
+          listed or uploaded. Set the <code className="font-mono">CLOUDFLARE_*</code>{" "}
+          environment variables.
         </div>
       )}
 

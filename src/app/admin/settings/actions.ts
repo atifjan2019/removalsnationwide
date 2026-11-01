@@ -8,6 +8,7 @@ import { logActivity } from "@/lib/admin-dashboard";
 import { DEFAULT_SETTINGS, getSettings, type SiteSettings } from "@/lib/settings";
 import { getSmtpConfiguration, saveSmtpSettings } from "@/lib/smtp-settings";
 import { sendSmtpEmail } from "@/lib/smtp";
+import { uploadBranding } from "@/lib/r2";
 
 /** Trim a required value, falling back to its built-in default when blank. */
 function clean(value: FormDataEntryValue | null, fallback: string): string {
@@ -117,10 +118,16 @@ export async function saveSettings(
       warnings.push(`${field}: use a supported image under 2 MB`);
       return existing;
     }
-    await db.prepare(`insert into site_assets (kind,data,mime_type,updated_at) values (?,?,?,strftime('%Y-%m-%dT%H:%M:%fZ','now')) on conflict(kind) do update set data=excluded.data,mime_type=excluded.mime_type,updated_at=excluded.updated_at`).bind(kind, await file.arrayBuffer(), file.type).run();
-    // A new URL makes browsers discard their notoriously persistent favicon
-    // cache immediately after a replacement upload.
-    return `/api/site-assets/${kind}?v=${Date.now()}`;
+    // The file goes to the R2 media bucket under a fixed key; the returned URL
+    // carries a version query so browsers discard their notoriously persistent
+    // favicon cache immediately after a replacement upload. (It used to be a
+    // D1 BLOB; D1's HTTP API carries JSON only, and R2 is where images belong.)
+    const uploaded = await uploadBranding(file, kind);
+    if (!uploaded.ok) {
+      warnings.push(`${field}: ${uploaded.error}`);
+      return existing;
+    }
+    return uploaded.url;
   }
 
   const logoUrl = await branding("logo", current.logoUrl);

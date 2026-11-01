@@ -2,9 +2,10 @@ import "server-only";
 import { getDb } from "@/lib/d1";
 
 /**
- * Moves the public site to a new content version. The edge HTML cache in
- * cf-worker.ts keys every page on this number, so after a bump the next
- * request for any page, in any data centre, renders fresh.
+ * Moves the public site to a new content version. On Cloudflare an edge HTML
+ * cache keyed every page on this number. On Vercel public pages render per
+ * request, so the number is informational: it still records when the public
+ * content last changed, and anything that caches pages later can key on it.
  *
  * Call it after the D1 write has committed (never before: a render that starts
  * between a bump and the write would store old content under the new key).

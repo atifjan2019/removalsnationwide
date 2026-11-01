@@ -1,7 +1,6 @@
 import "server-only";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export type AdminRole = "admin" | "master-admin";
 
@@ -9,8 +8,9 @@ const COOKIE_NAME = "rn_admin_session";
 const SESSION_SECONDS = 60 * 60 * 12;
 
 async function authEnv() {
-  const { env } = await getCloudflareContext({ async: true });
-  return env;
+  const { ADMIN_PIN, MASTER_ADMIN_PIN, ADMIN_SESSION_SECRET } = process.env;
+  if (!ADMIN_SESSION_SECRET) throw new Error("ADMIN_SESSION_SECRET is not set.");
+  return { ADMIN_PIN, MASTER_ADMIN_PIN, ADMIN_SESSION_SECRET };
 }
 
 const base64Url = (bytes: ArrayBuffer) => {
