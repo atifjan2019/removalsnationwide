@@ -31,6 +31,12 @@ const redirectPairs: [string, string][] = [
 ];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Inline the stylesheets into <head> instead of linking them, so the first
+    // paint does not wait on a separate CSS request (650 ms on slow 4G in
+    // PageSpeed). Toggle via INLINE_CSS so the trade-off can be measured.
+    inlineCss: process.env.INLINE_CSS === "1",
+  },
   // Match the live WordPress URL format (trailing slash) so every existing
   // ranking URL is preserved at cutover with no mass redirect. Next.js 308s the
   // non-slash form to the slash form, so each page resolves at one URL.
