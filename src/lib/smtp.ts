@@ -14,6 +14,8 @@ type SmtpMessage = {
   subject: string;
   text: string;
   html: string;
+  /** Files to attach, as their bytes. The name is cleaned for the header. */
+  attachments?: { filename: string; contentType: string; content: Uint8Array }[];
 };
 
 type SmtpResponse = {
@@ -36,6 +38,17 @@ const encodeBase64 = (value: string) => {
 
 const wrapBase64 = (value: string) => encodeBase64(value).match(/.{1,76}/g)?.join("\r\n") ?? "";
 
+const wrapBase64Bytes = (bytes: Uint8Array) => {
+  let binary = "";
+  for (let offset = 0; offset < bytes.length; offset += 0x8000) {
+    binary += String.fromCharCode(...bytes.subarray(offset, offset + 0x8000));
+  }
+  return btoa(binary).match(/.{1,76}/g)?.join("\r\n") ?? "";
+};
+
+// An attachment's name goes in a quoted header value: plain characters only.
+const cleanFilename = (value: string) => cleanHeader(value).replace(/[^A-Za-z0-9._ -]+/g, "-") || "attachment";
+
 const dotStuff = (value: string) =>
   value
     .replace(/\r?\n/g, "\r\n")
@@ -46,17 +59,10 @@ const dotStuff = (value: string) =>
 function createMimeMessage(message: SmtpMessage) {
   const boundary = `rn-${crypto.randomUUID()}`;
   const fromName = cleanHeader(message.fromName).replaceAll('"', "'");
+  const attachments = message.attachments ?? [];
 
-  return [
-    `Date: ${new Date().toUTCString()}`,
-    `Message-ID: <${crypto.randomUUID()}@removalsnationwide.uk>`,
-    `From: "${fromName}" <${cleanHeader(message.fromEmail)}>`,
-    `To: <${cleanHeader(message.to)}>`,
-    `Reply-To: <${cleanHeader(message.replyTo)}>`,
-    `Subject: ${cleanHeader(message.subject)}`,
-    "MIME-Version: 1.0",
-    `Content-Type: multipart/alternative; boundary="${boundary}"`,
-    "",
+  // The text and HTML bodies, as alternatives of each other.
+  const body = [
     `--${boundary}`,
     'Content-Type: text/plain; charset="UTF-8"',
     "Content-Transfer-Encoding: base64",
@@ -68,6 +74,43 @@ function createMimeMessage(message: SmtpMessage) {
     "",
     wrapBase64(message.html),
     `--${boundary}--`,
+  ];
+
+  // With files, the bodies become the first part of a mixed message and each
+  // file follows as a part of its own.
+  const mixed = `rn-${crypto.randomUUID()}`;
+  const content = attachments.length
+    ? [
+        `Content-Type: multipart/mixed; boundary="${mixed}"`,
+        "",
+        `--${mixed}`,
+        `Content-Type: multipart/alternative; boundary="${boundary}"`,
+        "",
+        ...body,
+        ...attachments.flatMap((file) => {
+          const name = cleanFilename(file.filename);
+          return [
+            `--${mixed}`,
+            `Content-Type: ${cleanHeader(file.contentType)}; name="${name}"`,
+            "Content-Transfer-Encoding: base64",
+            `Content-Disposition: attachment; filename="${name}"`,
+            "",
+            wrapBase64Bytes(file.content),
+          ];
+        }),
+        `--${mixed}--`,
+      ]
+    : [`Content-Type: multipart/alternative; boundary="${boundary}"`, "", ...body];
+
+  return [
+    `Date: ${new Date().toUTCString()}`,
+    `Message-ID: <${crypto.randomUUID()}@removalsnationwide.uk>`,
+    `From: "${fromName}" <${cleanHeader(message.fromEmail)}>`,
+    `To: <${cleanHeader(message.to)}>`,
+    `Reply-To: <${cleanHeader(message.replyTo)}>`,
+    `Subject: ${cleanHeader(message.subject)}`,
+    "MIME-Version: 1.0",
+    ...content,
     "",
   ].join("\r\n");
 }

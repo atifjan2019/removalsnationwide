@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { emailMoveDetailsLink, loadBookingMoveDetails, type AdminMoveDetails } from "@/app/admin/bookings/actions";
+import { downloadMoveDetailsPdf, emailMoveDetailsLink, loadBookingMoveDetails, type AdminMoveDetails } from "@/app/admin/bookings/actions";
 import { describeDetails } from "@/lib/move-details";
 
 type Row = { label: string; value: string; list?: string[] };
@@ -46,6 +46,8 @@ export default function MoveDetailsPanel({ bookingId, email }: { bookingId: stri
   const [confirming, setConfirming] = useState(false);
   const [sending, setSending] = useState(false);
   const [sendResult, setSendResult] = useState<{ ok: boolean; message: string } | null>(null);
+  const [makingPdf, setMakingPdf] = useState(false);
+  const [pdfError, setPdfError] = useState("");
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -73,6 +75,34 @@ export default function MoveDetailsPanel({ bookingId, email }: { bookingId: stri
       setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
+    }
+  };
+
+  // The move details as a PDF to pass on, without the customer's name, phone
+  // or email. The server makes it; the browser only saves it.
+  const downloadPdf = async () => {
+    setMakingPdf(true);
+    setPdfError("");
+    try {
+      const result = await downloadMoveDetailsPdf(bookingId);
+      if (!result.ok) {
+        setPdfError(result.message);
+        return;
+      }
+      const bytes = Uint8Array.from(atob(result.pdf), (char) => char.charCodeAt(0));
+      const url = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = result.name;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      // Safari needs the address to outlive the click.
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } catch {
+      setPdfError("The PDF could not be made. If you have been signed out, sign in again.");
+    } finally {
+      setMakingPdf(false);
     }
   };
 
@@ -169,6 +199,24 @@ export default function MoveDetailsPanel({ bookingId, email }: { bookingId: stri
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {data && (
+        <div className="mt-5 flex flex-wrap items-center gap-2 text-sm">
+          <button
+            type="button"
+            onClick={downloadPdf}
+            disabled={makingPdf}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-semibold hover:bg-slate-100 disabled:cursor-wait disabled:opacity-60"
+          >
+            {makingPdf ? "Making the PDF…" : "Download PDF for the office"}
+          </button>
+          {pdfError ? (
+            <span role="status" className="font-medium text-red-700">{pdfError}</span>
+          ) : (
+            <span className="text-slate-500">No name, phone or email in it.</span>
+          )}
         </div>
       )}
 

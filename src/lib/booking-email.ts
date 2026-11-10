@@ -4,8 +4,14 @@ import { sendSmtpEmail } from "@/lib/smtp";
 import { getSmtpConfiguration } from "@/lib/smtp-settings";
 import { SITE_URL } from "@/lib/seo";
 import { describeDetails } from "@/lib/move-details";
+import { moveDetailsPdf, moveDetailsPdfName, type PdfRow } from "@/lib/move-details-pdf";
+import { requireDb } from "@/lib/d1";
+import type { Booking } from "@/lib/bookings";
 import type { SubmittedDetails } from "@/lib/move-details-server";
 import {
+  describeBedrooms,
+  formatMoveDate,
+  moveLabels,
   confirmationForCustomer,
   moveDetailsLinkForCustomer,
   moveDetailsReceivedForAdmin,
@@ -99,7 +105,9 @@ export async function sendBookingNotification(booking: BookingNotification): Pro
 
 export type EmailOutcome = { sent: true } | { sent: false; error: string };
 
-async function deliver(message: Pick<Parameters<typeof sendSmtpEmail>[0], "to" | "replyTo" | "subject" | "text" | "html">): Promise<EmailOutcome> {
+async function deliver(
+  message: Pick<Parameters<typeof sendSmtpEmail>[0], "to" | "replyTo" | "subject" | "text" | "html" | "attachments">,
+): Promise<EmailOutcome> {
   try {
     const smtp = await smtpSettings();
     if (!smtp) return { sent: false, error: "SMTP is not fully configured." };
@@ -127,15 +135,57 @@ export async function sendMoveDetailsLink(booking: {
 }
 
 /**
+ * A booking's move details as a PDF to pass on, with its file name: the whole
+ * move (type, addresses, date, size, route, notes) and the customer's answers,
+ * without their name, phone or email. The file alone is named after them.
+ * Null if the booking is not there.
+ */
+export async function buildMoveDetailsPdf(
+  bookingId: string,
+  details: unknown,
+  files: { isImage: boolean }[],
+  resubmitted = false,
+): Promise<{ filename: string; content: Uint8Array } | null> {
+  const db = await requireDb();
+  const booking = await db.prepare("select * from bookings where id=?").bind(bookingId).first<Booking>();
+  if (!booking) return null;
+
+  const route = [booking.route_distance, booking.route_duration].filter(Boolean).join(", ");
+  const move: PdfRow[] = [
+    { label: "Move type", value: moveLabels[booking.move_type] ?? booking.move_type },
+    { label: "Size", value: describeBedrooms(booking.move_type, booking.bedrooms) },
+    { label: "Moving from", value: [booking.from_address, booking.from_postcode].filter(Boolean).join(", ") },
+    { label: "Moving to", value: [booking.to_address, booking.to_postcode].filter(Boolean).join(", ") },
+    { label: "Move date", value: formatMoveDate(booking.move_date, Boolean(booking.flexible_dates)) },
+    { label: "Route", value: route },
+    { label: "Booking notes", value: booking.notes ?? "" },
+  ];
+  const photos = files.filter((file) => file.isImage).length;
+  const content = await moveDetailsPdf({
+    move,
+    answers: details ? (describeDetails(details) as PdfRow[]) : [],
+    photos,
+    otherFiles: files.length - photos,
+    resubmitted,
+  });
+  return { filename: moveDetailsPdfName(booking.full_name, booking.move_date), content };
+}
+
+/**
  * "Move details received", to the office, when a customer sends the move
  * details form or sends it again. The button opens that booking in the admin.
+ * It leaves out the customer's phone and email, and attaches the details as a
+ * PDF that leaves out their name as well. If the PDF cannot be built the
+ * email still goes, and says where the contact details are.
  */
 export async function sendMoveDetailsReceived(data: SubmittedDetails): Promise<EmailOutcome> {
   const { booking, details, files } = data;
+  const pdf = await buildMoveDetailsPdf(booking.id, details, files, Boolean(data.resubmitted)).catch((error) => {
+    console.error("Could not build the move details PDF", error);
+    return null;
+  });
   const email = moveDetailsReceivedForAdmin({
     customerName: booking.customer.fullName,
-    phone: booking.customer.phone,
-    email: booking.customer.email,
     moveType: booking.moveType,
     fromPostcode: booking.fromPostcode,
     toPostcode: booking.toPostcode,
@@ -143,10 +193,12 @@ export async function sendMoveDetailsReceived(data: SubmittedDetails): Promise<E
     fileNames: files.map((file) => file.name),
     resubmitted: Boolean(data.resubmitted),
     adminUrl: `${ADMIN_BOOKINGS_URL}?booking=${encodeURIComponent(booking.id)}`,
+    hasPdf: Boolean(pdf),
   });
   return deliver({
     to: ADMIN_EMAIL,
     replyTo: isEmailAddress(booking.customer.email) ? booking.customer.email : ADMIN_EMAIL,
     ...email,
+    attachments: pdf ? [{ ...pdf, contentType: "application/pdf" }] : undefined,
   });
 }
