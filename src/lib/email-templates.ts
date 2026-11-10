@@ -261,11 +261,13 @@ export function moveDetailsLinkForCustomer(booking: {
   };
 }
 
-/** To the office: a customer has sent (or updated) their move details. */
+/**
+ * To the office: a customer has sent (or updated) their move details. It names
+ * the customer but leaves out their phone and email, which stay in the admin.
+ * `hasPdf` says whether the PDF of the details is attached.
+ */
 export function moveDetailsReceivedForAdmin(data: {
   customerName: string;
-  phone: string;
-  email: string;
   moveType: string;
   fromPostcode: string;
   toPostcode: string;
@@ -273,25 +275,28 @@ export function moveDetailsReceivedForAdmin(data: {
   fileNames: string[];
   resubmitted: boolean;
   adminUrl: string;
+  hasPdf: boolean;
 }): Email {
   const headingText = data.resubmitted ? "Move details updated" : "Move details received";
   const route = `${data.fromPostcode} to ${data.toPostcode}`;
   const moveType = moveLabels[data.moveType] ?? data.moveType;
   const items: Row[] = [
     ["Customer", data.customerName],
-    ["Phone", data.phone],
-    ["Email", data.email],
     ["Move", `${moveType} · ${route}`],
     ...data.details.map((row): Row => [row.label, row.list?.length ? row.list.join("\n") : row.value]),
     ["Photos and files", data.fileNames.length ? `${data.fileNames.length}: ${data.fileNames.join(", ")}` : "None"],
   ];
+  const pdfLine = data.hasPdf
+    ? "The attached PDF has the full move and these answers without the customer's name, phone or email, ready to pass on."
+    : "The customer's phone and email are in the admin.";
   return {
     subject: `${headingText}: ${data.customerName}, ${route}`,
-    text: [headingText.toUpperCase(), "", ...items.map(([l, v]) => `${l}: ${v}`), "", `Open in the admin: ${data.adminUrl}`].join("\n"),
+    text: [headingText.toUpperCase(), "", pdfLine, "", ...items.map(([l, v]) => `${l}: ${v}`), "", `Open in the admin: ${data.adminUrl}`].join("\n"),
     html: shell(
       `${headingText} from ${data.customerName}: ${route}`,
       heading(headingText) +
         paragraph(`${data.customerName} has ${data.resubmitted ? "updated" : "sent"} the details of their move.`) +
+        paragraph(pdfLine) +
         rows(items) +
         button("Open booking", data.adminUrl),
     ),

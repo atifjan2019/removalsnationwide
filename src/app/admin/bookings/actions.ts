@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { assertAdmin } from "@/lib/admin-auth";
 import { logActivity } from "@/lib/admin-dashboard";
-import { detailsUrlFor, sendBookingNotification, sendMoveDetailsLink } from "@/lib/booking-email";
+import { buildMoveDetailsPdf, detailsUrlFor, sendBookingNotification, sendMoveDetailsLink } from "@/lib/booking-email";
 import {
   bookingStatus,
   MOVE_STATUSES,
@@ -240,4 +240,24 @@ export async function emailMoveDetailsLink(id: string): Promise<{ ok: boolean; m
   await logActivity(DETAILS_LINK_EVENT, `Emailed ${booking.full_name} their move details link`, id);
   revalidatePath("/admin/activity");
   return { ok: true, message: `Sent to ${booking.email}.` };
+}
+
+/**
+ * The booking's move details as a PDF, for the admin to download and pass on:
+ * the same PDF the office email carries, with the move and the customer's
+ * answers so far, and without their name, phone or email. Sent back as base64
+ * with its file name, for the browser to save.
+ */
+export async function downloadMoveDetailsPdf(id: string): Promise<{ ok: true; name: string; pdf: string } | { ok: false; message: string }> {
+  await assertAdmin();
+  try {
+    const data = await getBookingMoveDetails(id);
+    if (!data) return { ok: false, message: "Move not found." };
+    const pdf = await buildMoveDetailsPdf(id, data.details, data.files);
+    if (!pdf) return { ok: false, message: "Move not found." };
+    return { ok: true, name: pdf.filename, pdf: Buffer.from(pdf.content).toString("base64") };
+  } catch (error) {
+    console.error("Could not make the move details PDF", error);
+    return { ok: false, message: "The PDF could not be made. Try again in a moment." };
+  }
 }
